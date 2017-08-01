@@ -1,0 +1,23 @@
+{
+    "API_KEY": "<API KEY>",
+    "USER_ID": "XXXX",
+    "MA_ID": "XXXX",
+    "MA_ID2": "XXXX",
+    "ipAddress": "<ip address>",
+    "AttachmentPublicTest":{
+        "CONTENT_TYPE": "image/png",
+        "DESCRIPTION": "TEST PNG PHP",
+        "PATH_IN": "/bunq_App_Icon_Square@4x.png"
+    },
+    "TabUsageSingleTest": {
+        "CASH_REGISTER_ID": "XXX"
+    },
+    "CounterPartySelf": {
+        "Alias": "<Email address>",
+        "Type": "EMAIL"
+    },
+    "CounterPartyOther": {
+        "Alias": "<Email address>",
+        "Type": "EMAIL"
+    }
+}
