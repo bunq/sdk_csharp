@@ -22,10 +22,7 @@ This SDK is in **beta**. We cannot guarantee constant availability or stability.
 Thanks to your feedback we will make improvements on it.
 
 ## Installation
-From your .net CORE project root, run:
-```shell
-$ Install-Package BunqSdk
-```
+TBA
 
 ## Usage
 
