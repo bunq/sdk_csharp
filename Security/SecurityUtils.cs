@@ -7,12 +7,18 @@ using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using Bunq.Sdk.Context;
+using Bunq.Sdk.Exception;
 using Bunq.Sdk.Http;
 
 namespace Bunq.Sdk.Security
 {
     public class SecurityUtils
     {
+        /// <summary>
+        /// Error constants.
+        /// </summary>
+        private const string ERROR_COULD_NOT_VERIFY_RESPONSE = "Could not verify server response.";
+
         /// <summary>
         /// Constants for formatting the request textual representation for signing.
         /// </summary>
@@ -48,6 +54,7 @@ namespace Bunq.Sdk.Security
         private const string HEADER_CLIENT_ENCRYPTION_HMAC = "X-Bunq-Client-Encryption-Hmac";
         private const string HEADER_CLIENT_ENCRYPTION_IV = "X-Bunq-Client-Encryption-Iv";
         private const string HEADER_CLIENT_ENCRYPTION_KEY = "X-Bunq-Client-Encryption-Key";
+        private const string HEADER_SERVER_SIGNATURE = "X-Bunq-Server-Signature";
 
         /// <summary>
         /// Padding modes for the encrypted key and body.
@@ -95,7 +102,7 @@ namespace Bunq.Sdk.Security
         private static byte[] GenerateRequestHeadBytes(HttpRequestMessage requestMessage)
         {
             var requestHeadString = GenerateMethodAndEndpointString(requestMessage) + NEWLINE +
-                GenerateHeadersSortedString(requestMessage) + NEWLINE +
+                GenerateRequestHeadersSortedString(requestMessage) + NEWLINE +
                 NEWLINE;
 
             return Encoding.UTF8.GetBytes(requestHeadString);
@@ -109,13 +116,21 @@ namespace Bunq.Sdk.Security
             return string.Format(FORMAT_METHOD_AND_ENDPOINT_STRING, method, endpoint);
         }
 
-        private static string GenerateHeadersSortedString(HttpRequestMessage requestMessage)
+        private static string GenerateRequestHeadersSortedString(HttpRequestMessage requestMessage)
         {
-            return requestMessage.Headers.Where(x =>
+            return GenerateHeadersSortedString(
+                requestMessage.Headers.Where(x =>
                     x.Key.StartsWith(HEADER_NAME_PREFIX_X_BUNQ) ||
                     x.Key.Equals(ApiClient.HEADER_CACHE_CONTROL) ||
                     x.Key.Equals(ApiClient.HEADER_USER_AGENT)
                 )
+            );
+        }
+
+        private static string GenerateHeadersSortedString(
+            IEnumerable<KeyValuePair<string, IEnumerable<string>>> headers)
+        {
+            return headers
                 .Select(x => new KeyValuePair<string, string>(x.Key, string.Join(DELIMITER_HEADER_VALUE, x.Value)))
                 .ToImmutableSortedDictionary()
                 .Select(x => string.Format(FORMAT_HEADER_STRING, x.Key, x.Value))
@@ -262,6 +277,41 @@ namespace Bunq.Sdk.Security
 
                 return hmacSha1.ComputeHash(buffer);
             }
+        }
+
+        public static void ValidateResponse(HttpResponseMessage responseMessage, RSA serverPublicKey)
+        {
+            var headBytes = GenerateResponseHeadBytes(responseMessage);
+            var bodyBytes = responseMessage.Content.ReadAsByteArrayAsync().Result;
+            var responseBytes = ConcatenateByteArrays(headBytes, bodyBytes);
+            var serverSignatureHeader = responseMessage.Headers.First(h => h.Key == HEADER_SERVER_SIGNATURE).Value
+                .First();
+            var serverSignature = Convert.FromBase64String(serverSignatureHeader);
+
+            if (!serverPublicKey.VerifyData(responseBytes, serverSignature, HashAlgorithmName.SHA256,
+                RSASignaturePadding.Pkcs1))
+            {
+                throw new BunqException(ERROR_COULD_NOT_VERIFY_RESPONSE);
+            }
+        }
+
+        private static byte[] GenerateResponseHeadBytes(HttpResponseMessage responseMessage)
+        {
+            var requestHeadString = (int)responseMessage.StatusCode + NEWLINE +
+                GenerateResponseHeadersSortedString(responseMessage) + NEWLINE +
+                NEWLINE;
+
+            return Encoding.UTF8.GetBytes(requestHeadString);
+        }
+
+        private static string GenerateResponseHeadersSortedString(HttpResponseMessage responseMessage)
+        {
+            return GenerateHeadersSortedString(
+                responseMessage.Headers.Where(x =>
+                    x.Key.StartsWith(HEADER_NAME_PREFIX_X_BUNQ) &&
+                    !x.Key.Equals(HEADER_SERVER_SIGNATURE)
+                )
+            );
         }
     }
 }

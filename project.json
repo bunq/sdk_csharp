@@ -1,0 +1,9 @@
+{
+  "buildOptions": {
+    "copyToOutput": {
+      "include": [
+        "BunqSdkCsharpTest.xunit.runner.json"
+      ]
+    }
+  }
+}

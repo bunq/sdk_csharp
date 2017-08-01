@@ -86,9 +86,20 @@ namespace Bunq.Sdk.Http
             SetSessionHeaders(requestMessage);
             InitializeHttpClientIfNeeded(apiContext);
             var responseMessage = client.SendAsync(requestMessage).Result;
+            ValidateResponse(responseMessage);
             AssertResponseSuccess(responseMessage);
 
             return responseMessage;
+        }
+
+        private void ValidateResponse(HttpResponseMessage responseMessage)
+        {
+            var installationContext = apiContext.InstallationContext;
+
+            if (installationContext != null)
+            {
+                SecurityUtils.ValidateResponse(responseMessage, installationContext.PublicKeyServer);
+            }
         }
 
         private static HttpRequestMessage CreateHttpRequestMessage(HttpMethod method, string uriRelative,
