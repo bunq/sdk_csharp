@@ -263,3 +263,5 @@ pip-log.txt
 # bunq specific
 bunq.conf
 **/Tmp/
+bunq-test.conf
+config.json
