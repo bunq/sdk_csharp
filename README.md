@@ -140,3 +140,35 @@ var users = User.List(apiContext);
 
 ##### Example
 See [`UserListSample.cs`](./Samples/UserListSample.cs)
+
+## Running Samples
+In order to make the experience of getting into bunq C# SDK smoother, we have bundled it with `BunqSdk.Samples`, a
+separate project containing sample use cases of the SDK.
+
+To run a sample, please do the following:
+1. In your IDE, open the sample you are interested in and adjust the constants, such as `API_KEY` or `USER_ID`, to
+hold your data.
+
+2. In your terminal, go to the directory of `BunqSdk.Samples`:
+
+```shell
+$ cd /path/to/bunq/sdk/solution/BunqSdk.Samples/
+```
+
+3. In the terminal, run:
+
+```shell
+$ dotnet run <SomethingSample.cs>
+```
+   Replace `<SomethingSample.cs>` with the name of the sample you would like to run.
+
+In order for samples to run, you would need a valid context file (`bunq.conf`) to be present in the `BunqSdk.Samples`
+directory. The file can either copied from somewhere else (e.g. tests) or created by running the following command
+in your `BunqSdk.Samples` directory:
+
+```shell
+$ dotnet run ApiContextSaveSample.cs
+```
+
+Please do not forget to set the `API_KEY` constant in `ApiContextSaveSample.cs` to your actual API key before running the
+sample!
