@@ -48,7 +48,7 @@ var apiContext = ApiContext.Restore(API_CONTEXT_FILE_PATH);
 to/restored from the `bunq.conf` file in the same folder with your executable.
 
 #### Example
-See [`ApiContextSaveSample.cs`](./Samples/ApiContextSaveSample.cs)
+See [`ApiContextSaveSample.cs`](./BunqSdk.Samples/ApiContextSaveSample.cs)
 
 The API context can then be saved with:
 
@@ -89,7 +89,7 @@ var paymentId = Payment.Create(apiContext, paymentMap, USER_ITEM_ID,
 ```
 
 ##### Example
-See [`PaymentSample.cs`](./Samples/PaymentSample.cs)
+See [`PaymentSample.cs`](./BunqSdk.Samples/PaymentSample.cs)
 
 #### Reading objects
 Reading objects through the API requires an `ApiContext`, identifiers of all dependencies (such as
@@ -103,7 +103,7 @@ var monetaryAccount = MonetaryAccount.Get(apiContext, USER_ITEM_ID, MONETARY_ACC
 ```
 
 ##### Example
-See [`MonetaryAccountSample.cs`](./Samples/MonetaryAccountSample.cs)
+See [`MonetaryAccountSample.cs`](./BunqSdk.Samples/MonetaryAccountSample.cs)
 
 #### Updating objects
 Updating objects through the API goes the same way as creating objects, except that also the object to update identifier 
@@ -116,7 +116,7 @@ var requestUpdated = RequestInquiry.Update(apiContext, requestUpdateMap, USER_IT
 ```
 
 ##### Example
-See [`RequestSample.cs`](./Samples/RequestSample.cs)
+See [`RequestSample.cs`](./BunqSdk.Samples/RequestSample.cs)
 
 #### Deleting objects
 Deleting objects through the API requires an `ApiContext`, identifiers of all dependencies (such as User ID required for
@@ -128,7 +128,7 @@ CustomerStatementExport.Delete(apiContext, userId, monetaryAccountId, customerSt
 ```
 
 ##### Example
-See [`CustomerStatementExportSample.cs`](./Samples/CustomerStatementExportSample.cs)
+See [`CustomerStatementExportSample.cs`](./BunqSdk.Samples/CustomerStatementExportSample.cs)
 
 #### Listing objects
 Listing objects through the API requires an `ApiContext` and identifiers of all dependencies (such as User ID required
@@ -139,7 +139,7 @@ var users = User.List(apiContext);
 ```
 
 ##### Example
-See [`UserListSample.cs`](./Samples/UserListSample.cs)
+See [`UserListSample.cs`](./BunqSdk.Samples/UserListSample.cs)
 
 ## Running Samples
 In order to make the experience of getting into bunq C# SDK smoother, we have bundled it with `BunqSdk.Samples`, a

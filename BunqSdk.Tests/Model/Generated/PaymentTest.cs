@@ -10,7 +10,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
     /// Tests:
     ///     Payment
     /// </summary>
-    public class PaymentTests : BunqSdkTestBase
+    public class PaymentTest : BunqSdkTestBase
     {
         /// <summary>
         /// Config values.
