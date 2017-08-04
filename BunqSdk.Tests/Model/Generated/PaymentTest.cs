@@ -15,7 +15,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string AMOUNT_IN_EUR = "00.01";
+        private const string AMOUNT_IN_EUR = "0.01";
         private const string FIELD_CURRENCY = "EUR";
         private const string FIELD_PAYMENT_DESCRIPTION = "C# test Payment";
 

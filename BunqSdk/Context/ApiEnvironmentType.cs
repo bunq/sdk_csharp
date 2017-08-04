@@ -21,7 +21,7 @@ namespace Bunq.Sdk.Context
         /// </summary>
         public static readonly ApiEnvironmentType PRODUCTION = new ApiEnvironmentType(ENVIRONMENT_TYPE_PRODUCTION);
         private const string ENVIRONMENT_TYPE_PRODUCTION = "PRODUCTION";
-        private const string BASE_URI_PRODUCTION = "https://public.api.bunq.com/v1/";
+        private const string BASE_URI_PRODUCTION = "https://api.bunq.com/v1/";
 
         /// <summary>
         /// Sandbox environment constants.
