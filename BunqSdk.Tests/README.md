@@ -33,5 +33,5 @@ In order to make use of the configuration file, please copy the example to the
 same directory, fill in your sandbox user data and rename the copy to `config.json`.
 
 ## Execution
-To run tests via Rider, you can right click on the `BunqSdk.Tests solution and should be able to run
+To run tests via Rider, you can right click on the `BunqSdk.Tests` solution and should be able to run
 the tests cases form the IDE.
