@@ -175,4 +175,4 @@ sample!
 
 ## Running tests
 Information regarding the test cases can be found in the [README.md](./BunqSdk.Tests/README.md)
-located in [test](./BunqSdk.Tests)
+located in [test](./BunqSdk.Tests).
