@@ -10,7 +10,7 @@ We're very happy to introduce yet another unique product: complete banking SDKs!
 Now you can build even bigger and better apps and integrate them with your bank of the free! 🌈
 
 Before you dive into this brand new SDK, please consider:
-- Checking out our new developer’s page [bunq.com/developers](https://bunq.com/developers) 🙌  
+- Checking out our new developer’s page [https://bunq.com/en/developer](https://bunq.com/en/developer) 🙌  
 - Grabbing your production API key from the bunq app or asking our support for a Sandbox API key 🗝
 - Visiting [together.bunq.com](https://together.bunq.com) where you can share your creations,
 questions and experience 🎤
@@ -22,10 +22,7 @@ This SDK is in **beta**. We cannot guarantee constant availability or stability.
 Thanks to your feedback we will make improvements on it.
 
 ## Installation
-From your .net CORE project root, run:
-```shell
-$ Install-Package BunqSdk
-```
+TBA
 
 ## Usage
 
@@ -51,7 +48,7 @@ var apiContext = ApiContext.Restore(API_CONTEXT_FILE_PATH);
 to/restored from the `bunq.conf` file in the same folder with your executable.
 
 #### Example
-See [`ApiContextSaveSample.cs`](./Samples/ApiContextSaveSample.cs)
+See [`ApiContextSaveSample.cs`](./BunqSdk.Samples/ApiContextSaveSample.cs)
 
 The API context can then be saved with:
 
@@ -92,7 +89,7 @@ var paymentId = Payment.Create(apiContext, paymentMap, USER_ITEM_ID,
 ```
 
 ##### Example
-See [`PaymentSample.cs`](./Samples/PaymentSample.cs)
+See [`PaymentSample.cs`](./BunqSdk.Samples/PaymentSample.cs)
 
 #### Reading objects
 Reading objects through the API requires an `ApiContext`, identifiers of all dependencies (such as
@@ -106,7 +103,7 @@ var monetaryAccount = MonetaryAccount.Get(apiContext, USER_ITEM_ID, MONETARY_ACC
 ```
 
 ##### Example
-See [`MonetaryAccountSample.cs`](./Samples/MonetaryAccountSample.cs)
+See [`MonetaryAccountSample.cs`](./BunqSdk.Samples/MonetaryAccountSample.cs)
 
 #### Updating objects
 Updating objects through the API goes the same way as creating objects, except that also the object to update identifier 
@@ -119,7 +116,7 @@ var requestUpdated = RequestInquiry.Update(apiContext, requestUpdateMap, USER_IT
 ```
 
 ##### Example
-See [`RequestSample.cs`](./Samples/RequestSample.cs)
+See [`RequestSample.cs`](./BunqSdk.Samples/RequestSample.cs)
 
 #### Deleting objects
 Deleting objects through the API requires an `ApiContext`, identifiers of all dependencies (such as User ID required for
@@ -131,7 +128,7 @@ CustomerStatementExport.Delete(apiContext, userId, monetaryAccountId, customerSt
 ```
 
 ##### Example
-See [`CustomerStatementExportSample.cs`](./Samples/CustomerStatementExportSample.cs)
+See [`CustomerStatementExportSample.cs`](./BunqSdk.Samples/CustomerStatementExportSample.cs)
 
 #### Listing objects
 Listing objects through the API requires an `ApiContext` and identifiers of all dependencies (such as User ID required
@@ -142,4 +139,36 @@ var users = User.List(apiContext);
 ```
 
 ##### Example
-See [`UserListSample.cs`](./Samples/UserListSample.cs)
+See [`UserListSample.cs`](./BunqSdk.Samples/UserListSample.cs)
+
+## Running Samples
+In order to make the experience of getting into bunq C# SDK smoother, we have bundled it with `BunqSdk.Samples`, a
+separate project containing sample use cases of the SDK.
+
+To run a sample, please do the following:
+1. In your IDE, open the sample you are interested in and adjust the constants, such as `API_KEY` or `USER_ID`, to
+hold your data.
+
+2. In your terminal, go to the directory of `BunqSdk.Samples`:
+
+```shell
+$ cd /path/to/bunq/sdk/solution/BunqSdk.Samples/
+```
+
+3. In the terminal, run:
+
+```shell
+$ dotnet run <SomethingSample.cs>
+```
+   Replace `<SomethingSample.cs>` with the name of the sample you would like to run.
+
+In order for samples to run, you would need a valid context file (`bunq.conf`) to be present in the `BunqSdk.Samples`
+directory. The file can either copied from somewhere else (e.g. tests) or created by running the following command
+in your `BunqSdk.Samples` directory:
+
+```shell
+$ dotnet run ApiContextSaveSample.cs
+```
+
+Please do not forget to set the `API_KEY` constant in `ApiContextSaveSample.cs` to your actual API key before running the
+sample!

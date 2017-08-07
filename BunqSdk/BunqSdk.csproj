@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RuntimeFrameworkVersion>1.1.2</RuntimeFrameworkVersion>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>5</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyName>BunqSdk</AssemblyName>
+    <PackageId>BunqSdk</PackageId>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>beta</VersionSuffix>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Bunq.Sdk</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Authors>bunq</Authors>
+    <Company>bunq</Company>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <AssemblyTitle>bunq SDK</AssemblyTitle>
+    <Copyright>bunq 2017</Copyright>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3-*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="../CHANGELOG.md" />
+    <Content Include="../CONTRIBUTING.md" />
+    <Content Include="../LICENSE.md" />
+    <Content Include="../README.md" />
+    <Content Include="../.gitignore" />
+  </ItemGroup>
+</Project>
