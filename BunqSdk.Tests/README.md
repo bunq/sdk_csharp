@@ -1,4 +1,4 @@
-# bunq c# SDK
+# bunq C# SDK
 
 ## Introduction
 Hi developers!
