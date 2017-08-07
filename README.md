@@ -6,7 +6,7 @@ Hi developers!
 
 Welcome to the bunq C# SDK! 👨‍💻
 
-We're very happy to introduce yet another unique product: complete banking SDKs! 
+We're very happy to introduce yet another unique product: complete banking SDKs!
 Now you can build even bigger and better apps and integrate them with your bank of the free! 🌈
 
 Before you dive into this brand new SDK, please consider:
@@ -18,7 +18,7 @@ questions and experience 🎤
 Give us your feedback, create pull requests, build your very own bunq apps and most importantly:
 have fun! 💪
 
-This SDK is in **beta**. We cannot guarantee constant availability or stability. 
+This SDK is in **beta**. We cannot guarantee constant availability or stability.
 Thanks to your feedback we will make improvements on it.
 
 ## Installation
@@ -106,7 +106,7 @@ var monetaryAccount = MonetaryAccount.Get(apiContext, USER_ITEM_ID, MONETARY_ACC
 See [`MonetaryAccountSample.cs`](./BunqSdk.Samples/MonetaryAccountSample.cs)
 
 #### Updating objects
-Updating objects through the API goes the same way as creating objects, except that also the object to update identifier 
+Updating objects through the API goes the same way as creating objects, except that also the object to update identifier
 (ID or UUID) is needed.
 
 ```
@@ -172,3 +172,7 @@ $ dotnet run ApiContextSaveSample.cs
 
 Please do not forget to set the `API_KEY` constant in `ApiContextSaveSample.cs` to your actual API key before running the
 sample!
+
+## Running tests
+Information regarding the test cases can be found in the [README.md](./BunqSdk.Tests/README.md)
+located in [test](./BunqSdk.Tests)
