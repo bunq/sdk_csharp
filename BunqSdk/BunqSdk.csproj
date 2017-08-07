@@ -6,11 +6,11 @@
     <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>BunqSdk</AssemblyName>
-    <PackageId>BunqSdk</PackageId>
+    <AssemblyName>Bunq.Sdk</AssemblyName>
+    <PackageId>Bunq.Sdk</PackageId>
   </PropertyGroup>
   <PropertyGroup>
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>0.9.0.0</VersionPrefix>
     <VersionSuffix>beta</VersionSuffix>
   </PropertyGroup>
   <PropertyGroup>
@@ -19,6 +19,7 @@
   <PropertyGroup>
     <Authors>bunq</Authors>
     <Company>bunq</Company>
+    <RepositoryUrl>https://github.com/bunq/sdk_csharp</RepositoryUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
     <AssemblyTitle>bunq SDK</AssemblyTitle>
     <Copyright>bunq 2017</Copyright>
