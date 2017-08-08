@@ -68,7 +68,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
             };
 
             return TabUsageSingle.Create(API_CONTEXT, createTabMap, USER_ID, MONETARY_ACCOUNT_ID,
-                CASH_REGISTER_ID);
+                CASH_REGISTER_ID).Value;
         }
 
         private static void AddTabItem(string tabUuid)
