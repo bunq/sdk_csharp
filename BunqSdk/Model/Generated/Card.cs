@@ -24,6 +24,8 @@ namespace Bunq.Sdk.Model.Generated
         public const string FIELD_MAG_STRIPE_PERMISSION = "mag_stripe_permission";
         public const string FIELD_COUNTRY_PERMISSION = "country_permission";
         public const string FIELD_MONETARY_ACCOUNT_CURRENT_ID = "monetary_account_current_id";
+        public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
+        public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
 
         /// <summary>
         /// Endpoint constants.
@@ -129,6 +131,12 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         [JsonProperty(PropertyName = "label_monetary_account_current")]
         public MonetaryAccountReference LabelMonetaryAccountCurrent { get; private set; }
+
+        /// <summary>
+        /// Array of Types, PINs, account IDs assigned to the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "pin_code_assignment")]
+        public CardPinAssignment PinCodeAssignment { get; private set; }
 
         public static BunqResponse<Card> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
             int userId, int cardId)
