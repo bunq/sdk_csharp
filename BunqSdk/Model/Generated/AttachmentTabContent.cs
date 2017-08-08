@@ -20,7 +20,8 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "AttachmentTabContent";
 
-        public static byte[] List(ApiContext apiContext, int userId, int monetaryAccountId, int attachmentTabId)
+        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int monetaryAccountId,
+            int attachmentTabId)
         {
             return List(apiContext, userId, monetaryAccountId, attachmentTabId, new Dictionary<string, string>());
         }
@@ -28,14 +29,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get the raw content of a specific attachment.
         /// </summary>
-        public static byte[] List(ApiContext apiContext, int userId, int monetaryAccountId, int attachmentTabId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int monetaryAccountId,
+            int attachmentTabId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
+            var responseRaw =
+                apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, attachmentTabId),
+                    customHeaders);
 
-            return apiClient
-                .Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, attachmentTabId), customHeaders)
-                .Content.ReadAsByteArrayAsync().Result;
+            return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
     }
 }

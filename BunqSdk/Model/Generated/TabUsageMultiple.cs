@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text;
 using Bunq.Sdk.Context;
@@ -157,8 +156,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "tab_attachment")]
         public List<BunqId> TabAttachment { get; private set; }
 
-        public static string Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int cashRegisterId)
+        public static BunqResponse<string> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int cashRegisterId)
         {
             return Create(apiContext, requestMap, userId, monetaryAccountId, cashRegisterId,
                 new Dictionary<string, string>());
@@ -167,19 +166,20 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Create a TabUsageMultiple. On creation the status must be set to OPEN
         /// </summary>
-        public static string Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int cashRegisterId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<string> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int cashRegisterId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, cashRegisterId),
-                requestBytes, customHeaders);
+            var responseRaw =
+                apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, cashRegisterId),
+                    requestBytes, customHeaders);
 
-            return ProcessForUuid(response.Content.ReadAsStringAsync().Result);
+            return ProcessForUuid(responseRaw);
         }
 
-        public static string Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int cashRegisterId, string tabUsageMultipleUuid)
+        public static BunqResponse<string> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int cashRegisterId, string tabUsageMultipleUuid)
         {
             return Update(apiContext, requestMap, userId, monetaryAccountId, cashRegisterId, tabUsageMultipleUuid,
                 new Dictionary<string, string>());
@@ -191,41 +191,44 @@ namespace Bunq.Sdk.Model.Generated
         /// TabItems for a Tab the sum of the amounts of these items must be equal to the total_amount of the Tab when
         /// you change its status to PAYABLE.
         /// </summary>
-        public static string Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int cashRegisterId, string tabUsageMultipleUuid,
+        public static BunqResponse<string> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int cashRegisterId, string tabUsageMultipleUuid,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response =
+            var responseRaw =
                 apiClient.Put(
                     string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, cashRegisterId, tabUsageMultipleUuid),
                     requestBytes, customHeaders);
 
-            return ProcessForUuid(response.Content.ReadAsStringAsync().Result);
+            return ProcessForUuid(responseRaw);
         }
 
-        public static void Delete(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId,
-            string tabUsageMultipleUuid)
+        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
+            int cashRegisterId, string tabUsageMultipleUuid)
         {
-            Delete(apiContext, userId, monetaryAccountId, cashRegisterId, tabUsageMultipleUuid,
+            return Delete(apiContext, userId, monetaryAccountId, cashRegisterId, tabUsageMultipleUuid,
                 new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Close a specific TabUsageMultiple. This request returns an empty response.
         /// </summary>
-        public static void Delete(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId,
-            string tabUsageMultipleUuid, IDictionary<String, String> customHeaders)
+        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
+            int cashRegisterId, string tabUsageMultipleUuid, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            apiClient.Delete(
-                string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, cashRegisterId, tabUsageMultipleUuid),
-                customHeaders);
+            var responseRaw =
+                apiClient.Delete(
+                    string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, cashRegisterId, tabUsageMultipleUuid),
+                    customHeaders);
+
+            return new BunqResponse<object>(null, responseRaw.Headers);
         }
 
-        public static TabUsageMultiple Get(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId,
-            string tabUsageMultipleUuid)
+        public static BunqResponse<TabUsageMultiple> Get(ApiContext apiContext, int userId, int monetaryAccountId,
+            int cashRegisterId, string tabUsageMultipleUuid)
         {
             return Get(apiContext, userId, monetaryAccountId, cashRegisterId, tabUsageMultipleUuid,
                 new Dictionary<string, string>());
@@ -234,20 +237,20 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a specific TabUsageMultiple.
         /// </summary>
-        public static TabUsageMultiple Get(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId,
-            string tabUsageMultipleUuid, IDictionary<string, string> customHeaders)
+        public static BunqResponse<TabUsageMultiple> Get(ApiContext apiContext, int userId, int monetaryAccountId,
+            int cashRegisterId, string tabUsageMultipleUuid, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response =
+            var responseRaw =
                 apiClient.Get(
                     string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUsageMultipleUuid),
                     customHeaders);
 
-            return FromJson<TabUsageMultiple>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<TabUsageMultiple>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<TabUsageMultiple> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId)
+        public static BunqResponse<List<TabUsageMultiple>> List(ApiContext apiContext, int userId,
+            int monetaryAccountId, int cashRegisterId)
         {
             return List(apiContext, userId, monetaryAccountId, cashRegisterId, new Dictionary<string, string>());
         }
@@ -255,14 +258,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a collection of TabUsageMultiple.
         /// </summary>
-        public static List<TabUsageMultiple> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<TabUsageMultiple>> List(ApiContext apiContext, int userId,
+            int monetaryAccountId, int cashRegisterId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId),
-                customHeaders);
+            var responseRaw =
+                apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId),
+                    customHeaders);
 
-            return FromJsonList<TabUsageMultiple>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<TabUsageMultiple>(responseRaw, OBJECT_TYPE);
         }
     }
 }

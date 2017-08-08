@@ -20,8 +20,8 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "CashRegisterQrCodeContent";
 
-        public static byte[] List(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId,
-            int qrCodeId)
+        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int monetaryAccountId,
+            int cashRegisterId, int qrCodeId)
         {
             return List(apiContext, userId, monetaryAccountId, cashRegisterId, qrCodeId,
                 new Dictionary<string, string>());
@@ -30,14 +30,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Show the raw contents of a QR code
         /// </summary>
-        public static byte[] List(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId,
-            int qrCodeId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int monetaryAccountId,
+            int cashRegisterId, int qrCodeId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
+            var responseRaw =
+                apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId, qrCodeId),
+                    customHeaders);
 
-            return apiClient
-                .Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId, qrCodeId),
-                    customHeaders).Content.ReadAsByteArrayAsync().Result;
+            return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
     }
 }

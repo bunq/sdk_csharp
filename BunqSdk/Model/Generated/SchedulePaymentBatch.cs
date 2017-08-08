@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text;
 using Bunq.Sdk.Context;
@@ -44,27 +43,27 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "schedule")]
         public Schedule Schedule { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId)
         {
             return Create(apiContext, requestMap, userId, monetaryAccountId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes,
-                customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
+                requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static int Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int schedulePaymentBatchId)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int schedulePaymentBatchId)
         {
             return Update(apiContext, requestMap, userId, monetaryAccountId, schedulePaymentBatchId,
                 new Dictionary<string, string>());
@@ -72,31 +71,36 @@ namespace Bunq.Sdk.Model.Generated
 
         /// <summary>
         /// </summary>
-        public static int Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int schedulePaymentBatchId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int schedulePaymentBatchId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response =
+            var responseRaw =
                 apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, schedulePaymentBatchId),
                     requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static void Delete(ApiContext apiContext, int userId, int monetaryAccountId, int schedulePaymentBatchId)
+        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
+            int schedulePaymentBatchId)
         {
-            Delete(apiContext, userId, monetaryAccountId, schedulePaymentBatchId, new Dictionary<string, string>());
+            return Delete(apiContext, userId, monetaryAccountId, schedulePaymentBatchId,
+                new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static void Delete(ApiContext apiContext, int userId, int monetaryAccountId, int schedulePaymentBatchId,
-            IDictionary<String, String> customHeaders)
+        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
+            int schedulePaymentBatchId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, schedulePaymentBatchId),
-                customHeaders);
+            var responseRaw =
+                apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, schedulePaymentBatchId),
+                    customHeaders);
+
+            return new BunqResponse<object>(null, responseRaw.Headers);
         }
     }
 }

@@ -34,8 +34,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "tab_items")]
         public List<TabItemShop> TabItems { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int cashRegisterId, string tabUuid)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int cashRegisterId, string tabUuid)
         {
             return Create(apiContext, requestMap, userId, monetaryAccountId, cashRegisterId, tabUuid,
                 new Dictionary<string, string>());
@@ -44,16 +44,17 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Create tab items as a batch.
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int cashRegisterId, string tabUuid, IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int cashRegisterId, string tabUuid,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response =
+            var responseRaw =
                 apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, cashRegisterId, tabUuid),
                     requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
     }
 }

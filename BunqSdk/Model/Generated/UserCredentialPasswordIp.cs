@@ -47,37 +47,38 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "permitted_device")]
         public PermittedDevice PermittedDevice { get; private set; }
 
-        public static UserCredentialPasswordIp Get(ApiContext apiContext, int userId, int userCredentialPasswordIpId)
+        public static BunqResponse<UserCredentialPasswordIp> Get(ApiContext apiContext, int userId,
+            int userCredentialPasswordIpId)
         {
             return Get(apiContext, userId, userCredentialPasswordIpId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static UserCredentialPasswordIp Get(ApiContext apiContext, int userId, int userCredentialPasswordIpId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<UserCredentialPasswordIp> Get(ApiContext apiContext, int userId,
+            int userCredentialPasswordIpId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, userCredentialPasswordIpId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, userCredentialPasswordIpId),
                 customHeaders);
 
-            return FromJson<UserCredentialPasswordIp>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<UserCredentialPasswordIp>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<UserCredentialPasswordIp> List(ApiContext apiContext, int userId)
+        public static BunqResponse<List<UserCredentialPasswordIp>> List(ApiContext apiContext, int userId)
         {
             return List(apiContext, userId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static List<UserCredentialPasswordIp> List(ApiContext apiContext, int userId,
+        public static BunqResponse<List<UserCredentialPasswordIp>> List(ApiContext apiContext, int userId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
 
-            return FromJsonList<UserCredentialPasswordIp>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<UserCredentialPasswordIp>(responseRaw, OBJECT_TYPE);
         }
     }
 }

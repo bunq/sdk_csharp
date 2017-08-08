@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Samples
         public void Run()
         {
             var apiContext = ApiContext.Restore();
-            var paymentList = Payment.List(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID);
+            var paymentList = Payment.List(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
 
             foreach (var payment in paymentList)
             {

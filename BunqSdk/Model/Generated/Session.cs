@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
@@ -20,18 +19,21 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "Session";
 
-        public static void Delete(ApiContext apiContext, int sessionId)
+        public static BunqResponse<object> Delete(ApiContext apiContext, int sessionId)
         {
-            Delete(apiContext, sessionId, new Dictionary<string, string>());
+            return Delete(apiContext, sessionId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Deletes the current session. No response is returned for this request.
         /// </summary>
-        public static void Delete(ApiContext apiContext, int sessionId, IDictionary<String, String> customHeaders)
+        public static BunqResponse<object> Delete(ApiContext apiContext, int sessionId,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, sessionId), customHeaders);
+            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, sessionId), customHeaders);
+
+            return new BunqResponse<object>(null, responseRaw.Headers);
         }
     }
 }

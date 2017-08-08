@@ -245,7 +245,7 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "notification_filters")]
         public List<NotificationFilter> NotificationFilters { get; private set; }
 
-        public static UserPerson Get(ApiContext apiContext, int userPersonId)
+        public static BunqResponse<UserPerson> Get(ApiContext apiContext, int userPersonId)
         {
             return Get(apiContext, userPersonId, new Dictionary<string, string>());
         }
@@ -253,15 +253,17 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a specific person.
         /// </summary>
-        public static UserPerson Get(ApiContext apiContext, int userPersonId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<UserPerson> Get(ApiContext apiContext, int userPersonId,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userPersonId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userPersonId), customHeaders);
 
-            return FromJson<UserPerson>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<UserPerson>(responseRaw, OBJECT_TYPE);
         }
 
-        public static int Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userPersonId)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userPersonId)
         {
             return Update(apiContext, requestMap, userPersonId, new Dictionary<string, string>());
         }
@@ -269,14 +271,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Modify a specific person object's data.
         /// </summary>
-        public static int Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userPersonId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userPersonId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userPersonId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userPersonId), requestBytes,
+                customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
     }
 }

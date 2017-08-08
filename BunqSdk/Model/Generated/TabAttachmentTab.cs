@@ -45,7 +45,7 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; private set; }
 
-        public static TabAttachmentTab Get(ApiContext apiContext, string tabUuid, int tabAttachmentTabId)
+        public static BunqResponse<TabAttachmentTab> Get(ApiContext apiContext, string tabUuid, int tabAttachmentTabId)
         {
             return Get(apiContext, tabUuid, tabAttachmentTabId, new Dictionary<string, string>());
         }
@@ -53,13 +53,14 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a specific attachment. The header of the response contains the content-type of the attachment.
         /// </summary>
-        public static TabAttachmentTab Get(ApiContext apiContext, string tabUuid, int tabAttachmentTabId,
+        public static BunqResponse<TabAttachmentTab> Get(ApiContext apiContext, string tabUuid, int tabAttachmentTabId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, tabUuid, tabAttachmentTabId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, tabUuid, tabAttachmentTabId),
+                customHeaders);
 
-            return FromJson<TabAttachmentTab>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<TabAttachmentTab>(responseRaw, OBJECT_TYPE);
         }
     }
 }

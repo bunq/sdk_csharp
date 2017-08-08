@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "server_public_key")]
         public string ServerPublicKey { get; private set; }
 
-        public static List<InstallationServerPublicKey> List(ApiContext apiContext, int installationId)
+        public static BunqResponse<List<InstallationServerPublicKey>> List(ApiContext apiContext, int installationId)
         {
             return List(apiContext, installationId, new Dictionary<string, string>());
         }
@@ -35,13 +35,13 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Show the ServerPublicKey for this Installation.
         /// </summary>
-        public static List<InstallationServerPublicKey> List(ApiContext apiContext, int installationId,
+        public static BunqResponse<List<InstallationServerPublicKey>> List(ApiContext apiContext, int installationId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, installationId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, installationId), customHeaders);
 
-            return FromJsonList<InstallationServerPublicKey>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<InstallationServerPublicKey>(responseRaw, OBJECT_TYPE);
         }
     }
 }

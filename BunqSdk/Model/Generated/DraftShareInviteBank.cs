@@ -77,24 +77,26 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId)
         {
             return Create(apiContext, requestMap, userId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static DraftShareInviteBank Get(ApiContext apiContext, int userId, int draftShareInviteBankId)
+        public static BunqResponse<DraftShareInviteBank> Get(ApiContext apiContext, int userId,
+            int draftShareInviteBankId)
         {
             return Get(apiContext, userId, draftShareInviteBankId, new Dictionary<string, string>());
         }
@@ -102,18 +104,18 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get the details of a specific draft of a share invite.
         /// </summary>
-        public static DraftShareInviteBank Get(ApiContext apiContext, int userId, int draftShareInviteBankId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<DraftShareInviteBank> Get(ApiContext apiContext, int userId,
+            int draftShareInviteBankId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, draftShareInviteBankId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, draftShareInviteBankId),
                 customHeaders);
 
-            return FromJson<DraftShareInviteBank>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
         }
 
-        public static DraftShareInviteBank Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int draftShareInviteBankId)
+        public static BunqResponse<DraftShareInviteBank> Update(ApiContext apiContext,
+            IDictionary<string, object> requestMap, int userId, int draftShareInviteBankId)
         {
             return Update(apiContext, requestMap, userId, draftShareInviteBankId, new Dictionary<string, string>());
         }
@@ -121,31 +123,32 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Update a draft share invite. When sending status CANCELLED it is possible to cancel the draft share invite.
         /// </summary>
-        public static DraftShareInviteBank Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int draftShareInviteBankId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<DraftShareInviteBank> Update(ApiContext apiContext,
+            IDictionary<string, object> requestMap, int userId, int draftShareInviteBankId,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, draftShareInviteBankId),
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, draftShareInviteBankId),
                 requestBytes, customHeaders);
 
-            return FromJson<DraftShareInviteBank>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<DraftShareInviteBank> List(ApiContext apiContext, int userId)
+        public static BunqResponse<List<DraftShareInviteBank>> List(ApiContext apiContext, int userId)
         {
             return List(apiContext, userId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static List<DraftShareInviteBank> List(ApiContext apiContext, int userId,
+        public static BunqResponse<List<DraftShareInviteBank>> List(ApiContext apiContext, int userId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
 
-            return FromJsonList<DraftShareInviteBank>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
         }
     }
 }

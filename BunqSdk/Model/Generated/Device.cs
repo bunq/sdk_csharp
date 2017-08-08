@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "DeviceServer")]
         public DeviceServer DeviceServer { get; private set; }
 
-        public static Device Get(ApiContext apiContext, int deviceId)
+        public static BunqResponse<Device> Get(ApiContext apiContext, int deviceId)
         {
             return Get(apiContext, deviceId, new Dictionary<string, string>());
         }
@@ -39,15 +39,16 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a single Device. A Device is either a DevicePhone or a DeviceServer.
         /// </summary>
-        public static Device Get(ApiContext apiContext, int deviceId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<Device> Get(ApiContext apiContext, int deviceId,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceId), customHeaders);
 
-            return FromJson<Device>(response.Content.ReadAsStringAsync().Result);
+            return FromJson<Device>(responseRaw);
         }
 
-        public static List<Device> List(ApiContext apiContext)
+        public static BunqResponse<List<Device>> List(ApiContext apiContext)
         {
             return List(apiContext, new Dictionary<string, string>());
         }
@@ -55,12 +56,12 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a collection of Devices. A Device is either a DevicePhone or a DeviceServer.
         /// </summary>
-        public static List<Device> List(ApiContext apiContext, IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<Device>> List(ApiContext apiContext, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(ENDPOINT_URL_LISTING, customHeaders);
+            var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, customHeaders);
 
-            return FromJsonList<Device>(response.Content.ReadAsStringAsync().Result);
+            return FromJsonList<Device>(responseRaw);
         }
     }
 }

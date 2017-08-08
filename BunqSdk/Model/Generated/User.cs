@@ -37,7 +37,7 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "UserCompany")]
         public UserCompany UserCompany { get; private set; }
 
-        public static User Get(ApiContext apiContext, int userId)
+        public static BunqResponse<User> Get(ApiContext apiContext, int userId)
         {
             return Get(apiContext, userId, new Dictionary<string, string>());
         }
@@ -45,15 +45,16 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a specific user.
         /// </summary>
-        public static User Get(ApiContext apiContext, int userId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<User> Get(ApiContext apiContext, int userId,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId), customHeaders);
 
-            return FromJson<User>(response.Content.ReadAsStringAsync().Result);
+            return FromJson<User>(responseRaw);
         }
 
-        public static List<User> List(ApiContext apiContext)
+        public static BunqResponse<List<User>> List(ApiContext apiContext)
         {
             return List(apiContext, new Dictionary<string, string>());
         }
@@ -61,12 +62,12 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a collection of all available users.
         /// </summary>
-        public static List<User> List(ApiContext apiContext, IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<User>> List(ApiContext apiContext, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(ENDPOINT_URL_LISTING, customHeaders);
+            var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, customHeaders);
 
-            return FromJsonList<User>(response.Content.ReadAsStringAsync().Result);
+            return FromJsonList<User>(responseRaw);
         }
     }
 }

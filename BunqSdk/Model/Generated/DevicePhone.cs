@@ -12,6 +12,7 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         public const string FIELD_DESCRIPTION = "description";
         public const string FIELD_PHONE_NUMBER = "phone_number";
+        public const string FIELD_REMOVE_OLD_DEVICES = "remove_old_devices";
 
         /// <summary>
         /// Object type.

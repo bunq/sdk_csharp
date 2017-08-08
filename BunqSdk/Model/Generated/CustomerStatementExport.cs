@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text;
 using Bunq.Sdk.Context;
@@ -95,27 +94,27 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "alias_monetary_account")]
         public MonetaryAccountReference AliasMonetaryAccount { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId)
         {
             return Create(apiContext, requestMap, userId, monetaryAccountId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes,
-                customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
+                requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static CustomerStatementExport Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int customerStatementExportId)
+        public static BunqResponse<CustomerStatementExport> Get(ApiContext apiContext, int userId,
+            int monetaryAccountId, int customerStatementExportId)
         {
             return Get(apiContext, userId, monetaryAccountId, customerStatementExportId,
                 new Dictionary<string, string>());
@@ -123,47 +122,54 @@ namespace Bunq.Sdk.Model.Generated
 
         /// <summary>
         /// </summary>
-        public static CustomerStatementExport Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int customerStatementExportId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<CustomerStatementExport> Get(ApiContext apiContext, int userId,
+            int monetaryAccountId, int customerStatementExportId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response =
+            var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, customerStatementExportId),
                     customHeaders);
 
-            return FromJson<CustomerStatementExport>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<CustomerStatementExport>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<CustomerStatementExport> List(ApiContext apiContext, int userId, int monetaryAccountId)
+        public static BunqResponse<List<CustomerStatementExport>> List(ApiContext apiContext, int userId,
+            int monetaryAccountId)
         {
             return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static List<CustomerStatementExport> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<CustomerStatementExport>> List(ApiContext apiContext, int userId,
+            int monetaryAccountId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+                customHeaders);
 
-            return FromJsonList<CustomerStatementExport>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<CustomerStatementExport>(responseRaw, OBJECT_TYPE);
         }
 
-        public static void Delete(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
             int customerStatementExportId)
         {
-            Delete(apiContext, userId, monetaryAccountId, customerStatementExportId, new Dictionary<string, string>());
+            return Delete(apiContext, userId, monetaryAccountId, customerStatementExportId,
+                new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static void Delete(ApiContext apiContext, int userId, int monetaryAccountId,
-            int customerStatementExportId, IDictionary<String, String> customHeaders)
+        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
+            int customerStatementExportId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, customerStatementExportId),
-                customHeaders);
+            var responseRaw =
+                apiClient.Delete(
+                    string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, customerStatementExportId),
+                    customHeaders);
+
+            return new BunqResponse<object>(null, responseRaw.Headers);
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
@@ -23,23 +22,26 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "ShareInviteBankAmountUsed";
 
-        public static void Delete(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
             int shareInviteBankInquiryId, int shareInviteBankAmountUsedId)
         {
-            Delete(apiContext, userId, monetaryAccountId, shareInviteBankInquiryId, shareInviteBankAmountUsedId,
+            return Delete(apiContext, userId, monetaryAccountId, shareInviteBankInquiryId, shareInviteBankAmountUsedId,
                 new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Reset the available budget for a bank account share. To be called without any ID at the end of the path.
         /// </summary>
-        public static void Delete(ApiContext apiContext, int userId, int monetaryAccountId,
-            int shareInviteBankInquiryId, int shareInviteBankAmountUsedId, IDictionary<String, String> customHeaders)
+        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
+            int shareInviteBankInquiryId, int shareInviteBankAmountUsedId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            apiClient.Delete(
-                string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, shareInviteBankInquiryId,
-                    shareInviteBankAmountUsedId), customHeaders);
+            var responseRaw =
+                apiClient.Delete(
+                    string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, shareInviteBankInquiryId,
+                        shareInviteBankAmountUsedId), customHeaders);
+
+            return new BunqResponse<object>(null, responseRaw.Headers);
         }
     }
 }

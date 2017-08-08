@@ -177,8 +177,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
         public int? EligibleWhitelistId { get; private set; }
 
-        public static RequestResponse Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int requestResponseId)
+        public static BunqResponse<RequestResponse> Update(ApiContext apiContext,
+            IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int requestResponseId)
         {
             return Update(apiContext, requestMap, userId, monetaryAccountId, requestResponseId,
                 new Dictionary<string, string>());
@@ -187,19 +187,20 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Update the status to accept or reject the RequestResponse.
         /// </summary>
-        public static RequestResponse Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int requestResponseId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<RequestResponse> Update(ApiContext apiContext,
+            IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int requestResponseId,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response =
+            var responseRaw =
                 apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, requestResponseId),
                     requestBytes, customHeaders);
 
-            return FromJson<RequestResponse>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<RequestResponse>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<RequestResponse> List(ApiContext apiContext, int userId, int monetaryAccountId)
+        public static BunqResponse<List<RequestResponse>> List(ApiContext apiContext, int userId, int monetaryAccountId)
         {
             return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
         }
@@ -207,16 +208,17 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get all RequestResponses for a MonetaryAccount.
         /// </summary>
-        public static List<RequestResponse> List(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<List<RequestResponse>> List(ApiContext apiContext, int userId, int monetaryAccountId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+                customHeaders);
 
-            return FromJsonList<RequestResponse>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<RequestResponse>(responseRaw, OBJECT_TYPE);
         }
 
-        public static RequestResponse Get(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<RequestResponse> Get(ApiContext apiContext, int userId, int monetaryAccountId,
             int requestResponseId)
         {
             return Get(apiContext, userId, monetaryAccountId, requestResponseId, new Dictionary<string, string>());
@@ -225,14 +227,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get the details for a specific existing RequestResponse.
         /// </summary>
-        public static RequestResponse Get(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<RequestResponse> Get(ApiContext apiContext, int userId, int monetaryAccountId,
             int requestResponseId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, requestResponseId),
-                customHeaders);
+            var responseRaw =
+                apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, requestResponseId),
+                    customHeaders);
 
-            return FromJson<RequestResponse>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<RequestResponse>(responseRaw, OBJECT_TYPE);
         }
     }
 }
