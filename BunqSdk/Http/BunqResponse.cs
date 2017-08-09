@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Bunq.Sdk.Model
+namespace Bunq.Sdk.Http
 {
     public class BunqResponse<T>
     {
