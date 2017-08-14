@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Samples
         public void Run()
         {
             var apiContext = ApiContext.Restore();
-            var monetaryAccount = MonetaryAccount.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID);
+            var monetaryAccount = MonetaryAccount.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
             Console.WriteLine(monetaryAccount.MonetaryAccountBank);
         }
     }

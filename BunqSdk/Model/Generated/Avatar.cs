@@ -44,36 +44,37 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "image")]
         public List<Image> Image { get; private set; }
 
-        public static string Create(ApiContext apiContext, IDictionary<string, object> requestMap)
+        public static BunqResponse<string> Create(ApiContext apiContext, IDictionary<string, object> requestMap)
         {
             return Create(apiContext, requestMap, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static string Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+        public static BunqResponse<string> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
 
-            return ProcessForUuid(response.Content.ReadAsStringAsync().Result);
+            return ProcessForUuid(responseRaw);
         }
 
-        public static Avatar Get(ApiContext apiContext, string avatarUuid)
+        public static BunqResponse<Avatar> Get(ApiContext apiContext, string avatarUuid)
         {
             return Get(apiContext, avatarUuid, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static Avatar Get(ApiContext apiContext, string avatarUuid, IDictionary<string, string> customHeaders)
+        public static BunqResponse<Avatar> Get(ApiContext apiContext, string avatarUuid,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, avatarUuid), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, avatarUuid), customHeaders);
 
-            return FromJson<Avatar>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<Avatar>(responseRaw, OBJECT_TYPE);
         }
     }
 }

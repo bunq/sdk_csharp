@@ -34,7 +34,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; private set; }
 
-        public static int Create(ApiContext apiContext, byte[] requestBytes, int userId, int monetaryAccountId)
+        public static BunqResponse<int> Create(ApiContext apiContext, byte[] requestBytes, int userId,
+            int monetaryAccountId)
         {
             return Create(apiContext, requestBytes, userId, monetaryAccountId, new Dictionary<string, string>());
         }
@@ -45,14 +46,14 @@ namespace Bunq.Sdk.Model.Generated
         /// in the Content-Type header. You are required to provide a description of the attachment using the
         /// X-Bunq-Attachment-Description header.
         /// </summary>
-        public static int Create(ApiContext apiContext, byte[] requestBytes, int userId, int monetaryAccountId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, byte[] requestBytes, int userId,
+            int monetaryAccountId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes,
-                customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
+                requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
     }
 }

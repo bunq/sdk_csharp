@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Samples
             };
 
             var paymentBatchId = PaymentBatch.Create(apiContext, paymentBatchMap, USER_ITEM_ID,
-                MONETARY_ACCOUNT_ITEM_ID);
+                MONETARY_ACCOUNT_ITEM_ID).Value;
 
             Console.WriteLine(PaymentBatch.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, paymentBatchId));
         }

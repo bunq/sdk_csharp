@@ -28,7 +28,7 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "possible_card_name_array")]
         public List<string> PossibleCardNameArray { get; private set; }
 
-        public static List<CardName> List(ApiContext apiContext, int userId)
+        public static BunqResponse<List<CardName>> List(ApiContext apiContext, int userId)
         {
             return List(apiContext, userId, new Dictionary<string, string>());
         }
@@ -36,12 +36,13 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Return all the accepted card names for a specific user.
         /// </summary>
-        public static List<CardName> List(ApiContext apiContext, int userId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<CardName>> List(ApiContext apiContext, int userId,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
 
-            return FromJsonList<CardName>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<CardName>(responseRaw, OBJECT_TYPE);
         }
     }
 }

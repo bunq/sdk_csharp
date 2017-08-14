@@ -20,7 +20,8 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "Schedule";
 
-        public static Schedule Get(ApiContext apiContext, int userId, int monetaryAccountId, int scheduleId)
+        public static BunqResponse<Schedule> Get(ApiContext apiContext, int userId, int monetaryAccountId,
+            int scheduleId)
         {
             return Get(apiContext, userId, monetaryAccountId, scheduleId, new Dictionary<string, string>());
         }
@@ -28,17 +29,17 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a specific schedule definition for a given monetary account.
         /// </summary>
-        public static Schedule Get(ApiContext apiContext, int userId, int monetaryAccountId, int scheduleId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<Schedule> Get(ApiContext apiContext, int userId, int monetaryAccountId,
+            int scheduleId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, scheduleId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, scheduleId),
                 customHeaders);
 
-            return FromJson<Schedule>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<Schedule>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<Schedule> List(ApiContext apiContext, int userId, int monetaryAccountId)
+        public static BunqResponse<List<Schedule>> List(ApiContext apiContext, int userId, int monetaryAccountId)
         {
             return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
         }
@@ -48,13 +49,14 @@ namespace Bunq.Sdk.Model.Generated
         /// filter the response. When type={SCHEDULE_DEFINITION_PAYMENT,SCHEDULE_DEFINITION_PAYMENT_BATCH} is provided
         /// only schedule definition object that relate to these definitions are returned.
         /// </summary>
-        public static List<Schedule> List(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<List<Schedule>> List(ApiContext apiContext, int userId, int monetaryAccountId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+                customHeaders);
 
-            return FromJsonList<Schedule>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<Schedule>(responseRaw, OBJECT_TYPE);
         }
     }
 }

@@ -52,18 +52,18 @@ namespace Bunq.Sdk.Samples
                 {CustomerStatementExport.FIELD_DATE_END, dateEnd.ToString(FORMAT_DATE_STATEMENT)},
             };
 
-            var userId = User.List(apiContext)[INDEX_FIRST].UserCompany.Id;
+            var userId = User.List(apiContext).Value[INDEX_FIRST].UserCompany.Id;
 
             if (userId != null)
             {
                 var userIdInt = (int) userId;
-                var monetaryAccountId = MonetaryAccountBank.List(apiContext, userIdInt)[INDEX_FIRST].Id;
+                var monetaryAccountId = MonetaryAccountBank.List(apiContext, userIdInt).Value[INDEX_FIRST].Id;
 
                 if (monetaryAccountId != null)
                 {
                     var monetaryAccountIdInt = (int) monetaryAccountId;
                     var customerStatementId = CustomerStatementExport.Create(apiContext, customerStatementMap,
-                        userIdInt, monetaryAccountIdInt);
+                        userIdInt, monetaryAccountIdInt).Value;
 
                     CustomerStatementExport.Delete(apiContext, userIdInt, monetaryAccountIdInt, customerStatementId);
                 }

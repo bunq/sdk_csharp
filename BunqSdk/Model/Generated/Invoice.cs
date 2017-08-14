@@ -125,37 +125,38 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "vat_number")]
         public string VatNumber { get; private set; }
 
-        public static List<Invoice> List(ApiContext apiContext, int userId, int monetaryAccountId)
+        public static BunqResponse<List<Invoice>> List(ApiContext apiContext, int userId, int monetaryAccountId)
         {
             return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static List<Invoice> List(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<List<Invoice>> List(ApiContext apiContext, int userId, int monetaryAccountId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+                customHeaders);
 
-            return FromJsonList<Invoice>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<Invoice>(responseRaw, OBJECT_TYPE);
         }
 
-        public static Invoice Get(ApiContext apiContext, int userId, int monetaryAccountId, int invoiceId)
+        public static BunqResponse<Invoice> Get(ApiContext apiContext, int userId, int monetaryAccountId, int invoiceId)
         {
             return Get(apiContext, userId, monetaryAccountId, invoiceId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static Invoice Get(ApiContext apiContext, int userId, int monetaryAccountId, int invoiceId,
+        public static BunqResponse<Invoice> Get(ApiContext apiContext, int userId, int monetaryAccountId, int invoiceId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, invoiceId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, invoiceId),
                 customHeaders);
 
-            return FromJson<Invoice>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<Invoice>(responseRaw, OBJECT_TYPE);
         }
     }
 }

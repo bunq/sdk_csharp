@@ -47,7 +47,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; private set; }
 
-        public static int Create(ApiContext apiContext, byte[] requestBytes, int userId, int monetaryAccountId)
+        public static BunqResponse<int> Create(ApiContext apiContext, byte[] requestBytes, int userId,
+            int monetaryAccountId)
         {
             return Create(apiContext, requestBytes, userId, monetaryAccountId, new Dictionary<string, string>());
         }
@@ -58,17 +59,18 @@ namespace Bunq.Sdk.Model.Generated
         /// MIME type (i.e. image/jpeg) in the Content-Type header. You are required to provide a description of the
         /// attachment using the X-Bunq-Attachment-Description header.
         /// </summary>
-        public static int Create(ApiContext apiContext, byte[] requestBytes, int userId, int monetaryAccountId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, byte[] requestBytes, int userId,
+            int monetaryAccountId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes,
-                customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
+                requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static AttachmentTab Get(ApiContext apiContext, int userId, int monetaryAccountId, int attachmentTabId)
+        public static BunqResponse<AttachmentTab> Get(ApiContext apiContext, int userId, int monetaryAccountId,
+            int attachmentTabId)
         {
             return Get(apiContext, userId, monetaryAccountId, attachmentTabId, new Dictionary<string, string>());
         }
@@ -76,14 +78,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a specific attachment. The header of the response contains the content-type of the attachment.
         /// </summary>
-        public static AttachmentTab Get(ApiContext apiContext, int userId, int monetaryAccountId, int attachmentTabId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<AttachmentTab> Get(ApiContext apiContext, int userId, int monetaryAccountId,
+            int attachmentTabId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, attachmentTabId),
-                customHeaders);
+            var responseRaw =
+                apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, attachmentTabId),
+                    customHeaders);
 
-            return FromJson<AttachmentTab>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<AttachmentTab>(responseRaw, OBJECT_TYPE);
         }
     }
 }

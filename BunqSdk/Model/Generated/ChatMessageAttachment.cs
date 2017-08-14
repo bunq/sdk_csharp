@@ -34,8 +34,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int chatConversationId)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int chatConversationId)
         {
             return Create(apiContext, requestMap, userId, chatConversationId, new Dictionary<string, string>());
         }
@@ -43,15 +43,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Create a new message holding a file attachment to a specific conversation.
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int chatConversationId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int chatConversationId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, chatConversationId), requestBytes,
-                customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, chatConversationId),
+                requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
     }
 }

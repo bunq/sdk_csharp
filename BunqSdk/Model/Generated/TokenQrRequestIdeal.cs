@@ -154,8 +154,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
         public int? EligibleWhitelistId { get; private set; }
 
-        public static TokenQrRequestIdeal Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId)
+        public static BunqResponse<TokenQrRequestIdeal> Create(ApiContext apiContext,
+            IDictionary<string, object> requestMap, int userId)
         {
             return Create(apiContext, requestMap, userId, new Dictionary<string, string>());
         }
@@ -163,14 +163,14 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Create a request from an ideal transaction.
         /// </summary>
-        public static TokenQrRequestIdeal Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<TokenQrRequestIdeal> Create(ApiContext apiContext,
+            IDictionary<string, object> requestMap, int userId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
 
-            return FromJson<TokenQrRequestIdeal>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<TokenQrRequestIdeal>(responseRaw, OBJECT_TYPE);
         }
     }
 }

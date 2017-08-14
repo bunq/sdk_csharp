@@ -38,14 +38,14 @@ namespace Bunq.Sdk.Tests.Model.Generated
         public void TestSendPaymentChat()
         {
             var paymentChatMap = new Dictionary<string, object>();
-            var cahtId = PaymentChat.Create(API_CONTEXT, paymentChatMap, USER_ID, MONETARTY_ACCOUNT_ID,
-                CreatePaymentAndGetId());
+            var chatId = PaymentChat.Create(API_CONTEXT, paymentChatMap, USER_ID, MONETARTY_ACCOUNT_ID,
+                CreatePaymentAndGetId()).Value;
 
             var chatMessageMap = new Dictionary<string, object>
             {
                 {ChatMessageText.FIELD_TEXT, MESSAGE_TEXT}
             };
-            ChatMessageText.Create(API_CONTEXT, chatMessageMap, USER_ID, cahtId);
+            ChatMessageText.Create(API_CONTEXT, chatMessageMap, USER_ID, chatId);
         }
 
         private static int CreatePaymentAndGetId()
@@ -57,7 +57,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
                 {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
             };
 
-            return Payment.Create(API_CONTEXT, requestMap, USER_ID, MONETARTY_ACCOUNT_ID);
+            return Payment.Create(API_CONTEXT, requestMap, USER_ID, MONETARTY_ACCOUNT_ID).Value;
         }
     }
 }

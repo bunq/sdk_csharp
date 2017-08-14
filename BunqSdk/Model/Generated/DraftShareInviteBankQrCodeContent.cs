@@ -20,7 +20,7 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "DraftShareInviteBankQrCodeContent";
 
-        public static byte[] List(ApiContext apiContext, int userId, int draftShareInviteBankId)
+        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int draftShareInviteBankId)
         {
             return List(apiContext, userId, draftShareInviteBankId, new Dictionary<string, string>());
         }
@@ -29,13 +29,14 @@ namespace Bunq.Sdk.Model.Generated
         /// Returns the raw content of the QR code that links to this draft share invite. The raw content is the binary
         /// representation of a file, without any JSON wrapping.
         /// </summary>
-        public static byte[] List(ApiContext apiContext, int userId, int draftShareInviteBankId,
+        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int draftShareInviteBankId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, draftShareInviteBankId),
+                customHeaders);
 
-            return apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, draftShareInviteBankId), customHeaders)
-                .Content.ReadAsByteArrayAsync().Result;
+            return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
         private static string AcceptRequest()
         {
             var requestResponseId = RequestResponse
-                .List(API_CONTEXT, USER_ID, SECOND_MONETARY_ACCOUNT_ID)[INDEX_FIRST].Id.Value;
+                .List(API_CONTEXT, USER_ID, SECOND_MONETARY_ACCOUNT_ID).Value[INDEX_FIRST].Id.Value;
 
             var requestMap = new Dictionary<string, object>
             {
@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
             };
 
             return RequestResponse.Update(API_CONTEXT, requestMap, USER_ID, SECOND_MONETARY_ACCOUNT_ID,
-                requestResponseId).Status;
+                requestResponseId).Value.Status;
         }
     }
 }

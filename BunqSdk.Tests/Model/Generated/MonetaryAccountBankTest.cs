@@ -39,7 +39,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
                 {MonetaryAccountBank.FIELD_CURRENCY, CURRENCY},
                 {MonetaryAccountBank.FIELD_DESCRIPTION, MONETARY_ACCOUNT_DESCRIPTION}
             };
-            var monetaryAccountToCloseId = MonetaryAccountBank.Create(API_CONTEXT, requestMap, USER_ID);
+            var monetaryAccountToCloseId = MonetaryAccountBank.Create(API_CONTEXT, requestMap, USER_ID).Value;
 
             DeleteMonetaryAccount(monetaryAccountToCloseId);
         }

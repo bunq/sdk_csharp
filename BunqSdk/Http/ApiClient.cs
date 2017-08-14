@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -38,10 +39,15 @@ namespace Bunq.Sdk.Http
         /// Values for the default headers
         /// </summary>
         private const string CACHE_CONTROL_NONE = "no-cache";
-        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/0.9.0.1-beta";
+        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/0.9.1-beta";
         private const string LANGUAGE_EN_US = "en_US";
         private const string REGION_NL_NL = "nl_NL";
         private const string GEOLOCATION_ZERO = "0 0 0 0 NL";
+
+        /// <summary>
+        /// Delimiter between multiple header values.
+        /// </summary>
+        private const string DELIMITER_HEADER_VALUE = ",";
 
         private static HttpClient client;
 
@@ -55,13 +61,13 @@ namespace Bunq.Sdk.Http
         /// <summary>
         /// Executes a POST request and returns the resulting HTTP response message.
         /// </summary>
-        public HttpResponseMessage Post(string uriRelative, byte[] requestBytes,
+        public BunqResponseRaw Post(string uriRelative, byte[] requestBytes,
             IDictionary<string, string> customHeaders)
         {
             return SendRequest(HttpMethod.Post, uriRelative, requestBytes, customHeaders);
         }
 
-        private HttpResponseMessage SendRequest(HttpMethod method, string uriRelative, byte[] requestBodyBytes,
+        private BunqResponseRaw SendRequest(HttpMethod method, string uriRelative, byte[] requestBodyBytes,
             IDictionary<string, string> customHeaders)
         {
             var requestMessage = CreateHttpRequestMessage(method, uriRelative, requestBodyBytes);
@@ -69,7 +75,7 @@ namespace Bunq.Sdk.Http
             return SendRequest(requestMessage, customHeaders);
         }
 
-        private HttpResponseMessage SendRequest(HttpMethod method, string uriRelative,
+        private BunqResponseRaw SendRequest(HttpMethod method, string uriRelative,
             IDictionary<string, string> customHeaders)
         {
             var requestMessage = CreateHttpRequestMessage(method, uriRelative);
@@ -77,7 +83,7 @@ namespace Bunq.Sdk.Http
             return SendRequest(requestMessage, customHeaders);
         }
 
-        private HttpResponseMessage SendRequest(HttpRequestMessage requestMessage,
+        private BunqResponseRaw SendRequest(HttpRequestMessage requestMessage,
             IDictionary<string, string> customHeaders)
         {
             apiContext.EnsureSessionActive();
@@ -89,7 +95,22 @@ namespace Bunq.Sdk.Http
             AssertResponseSuccess(responseMessage);
             ValidateResponse(responseMessage);
 
-            return responseMessage;
+            return CreateBunqResponseRaw(responseMessage);
+        }
+
+        private static BunqResponseRaw CreateBunqResponseRaw(HttpResponseMessage responseMessage)
+        {
+            var bodyBytes = responseMessage.Content.ReadAsByteArrayAsync().Result;
+            var headers = GetHeaders(responseMessage);
+
+            return new BunqResponseRaw(bodyBytes, headers);
+        }
+
+        private static IDictionary<string, string> GetHeaders(HttpResponseMessage responseMessage)
+        {
+            return responseMessage.Headers
+                .Select(x => new KeyValuePair<string, string>(x.Key, string.Join(DELIMITER_HEADER_VALUE, x.Value)))
+                .ToImmutableDictionary();
         }
 
         private void ValidateResponse(HttpResponseMessage responseMessage)
@@ -231,7 +252,7 @@ namespace Bunq.Sdk.Http
         /// <summary>
         /// Executes a PUT request and returns the resulting HTTP response message.
         /// </summary>
-        public HttpResponseMessage Put(string uriRelative, byte[] requestBytes,
+        public BunqResponseRaw Put(string uriRelative, byte[] requestBytes,
             IDictionary<string, string> customHeaders)
         {
             return SendRequest(HttpMethod.Put, uriRelative, requestBytes, customHeaders);
@@ -240,7 +261,7 @@ namespace Bunq.Sdk.Http
         /// <summary>
         /// Executes a GET request and returns the resulting HTTP response message.
         /// </summary>
-        public HttpResponseMessage Get(string uriRelative, IDictionary<string, string> customHeaders)
+        public BunqResponseRaw Get(string uriRelative, IDictionary<string, string> customHeaders)
         {
             return SendRequest(HttpMethod.Get, uriRelative, customHeaders);
         }
@@ -248,7 +269,7 @@ namespace Bunq.Sdk.Http
         /// <summary>
         /// Executes a DELETE request and returns the resulting HTTP response message.
         /// </summary>
-        public HttpResponseMessage Delete(string uriRelative, IDictionary<string, string> customHeaders)
+        public BunqResponseRaw Delete(string uriRelative, IDictionary<string, string> customHeaders)
         {
             return SendRequest(HttpMethod.Delete, uriRelative, customHeaders);
         }

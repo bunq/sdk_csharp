@@ -19,7 +19,7 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "ScheduleUser";
 
-        public static List<ScheduleUser> List(ApiContext apiContext, int userId)
+        public static BunqResponse<List<ScheduleUser>> List(ApiContext apiContext, int userId)
         {
             return List(apiContext, userId, new Dictionary<string, string>());
         }
@@ -30,13 +30,13 @@ namespace Bunq.Sdk.Model.Generated
         /// type={SCHEDULE_DEFINITION_PAYMENT,SCHEDULE_DEFINITION_PAYMENT_BATCH} is provided only schedule definition
         /// object that relate to these definitions are returned.
         /// </summary>
-        public static List<ScheduleUser> List(ApiContext apiContext, int userId,
+        public static BunqResponse<List<ScheduleUser>> List(ApiContext apiContext, int userId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
 
-            return FromJsonList<ScheduleUser>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<ScheduleUser>(responseRaw, OBJECT_TYPE);
         }
     }
 }
