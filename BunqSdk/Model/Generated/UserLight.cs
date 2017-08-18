@@ -249,7 +249,7 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "notification_filters")]
         public List<NotificationFilter> NotificationFilters { get; private set; }
 
-        public static UserLight Get(ApiContext apiContext, int userLightId)
+        public static BunqResponse<UserLight> Get(ApiContext apiContext, int userLightId)
         {
             return Get(apiContext, userLightId, new Dictionary<string, string>());
         }
@@ -257,12 +257,13 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a specific bunq light user.
         /// </summary>
-        public static UserLight Get(ApiContext apiContext, int userLightId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<UserLight> Get(ApiContext apiContext, int userLightId,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userLightId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userLightId), customHeaders);
 
-            return FromJson<UserLight>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<UserLight>(responseRaw, OBJECT_TYPE);
         }
     }
 }

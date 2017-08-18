@@ -21,21 +21,23 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "CustomerStatementExportContent";
 
-        public static byte[] List(ApiContext apiContext, int userId, int monetaryAccountId, int customerStatementId)
+        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int monetaryAccountId,
+            int customerStatementId)
         {
             return List(apiContext, userId, monetaryAccountId, customerStatementId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
-        public static byte[] List(ApiContext apiContext, int userId, int monetaryAccountId, int customerStatementId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int monetaryAccountId,
+            int customerStatementId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
+            var responseRaw =
+                apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, customerStatementId),
+                    customHeaders);
 
-            return apiClient
-                .Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, customerStatementId), customHeaders)
-                .Content.ReadAsByteArrayAsync().Result;
+            return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
     }
 }

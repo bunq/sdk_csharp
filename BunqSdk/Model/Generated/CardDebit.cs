@@ -100,7 +100,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "alias")]
         public LabelUser Alias { get; private set; }
 
-        public static CardDebit Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId)
+        public static BunqResponse<CardDebit> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId)
         {
             return Create(apiContext, requestMap, userId, new Dictionary<string, string>());
         }
@@ -108,15 +109,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Create a new debit card request.
         /// </summary>
-        public static CardDebit Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<CardDebit> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             requestBytes = SecurityUtils.Encrypt(apiContext, requestBytes, customHeaders);
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
 
-            return FromJson<CardDebit>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<CardDebit>(responseRaw, OBJECT_TYPE);
         }
     }
 }

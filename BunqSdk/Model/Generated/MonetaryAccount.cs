@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "MonetaryAccountBank")]
         public MonetaryAccountBank MonetaryAccountBank { get; private set; }
 
-        public static MonetaryAccount Get(ApiContext apiContext, int userId, int monetaryAccountId)
+        public static BunqResponse<MonetaryAccount> Get(ApiContext apiContext, int userId, int monetaryAccountId)
         {
             return Get(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
         }
@@ -37,16 +37,16 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a specific MonetaryAccount.
         /// </summary>
-        public static MonetaryAccount Get(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<MonetaryAccount> Get(ApiContext apiContext, int userId, int monetaryAccountId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId), customHeaders);
 
-            return FromJson<MonetaryAccount>(response.Content.ReadAsStringAsync().Result);
+            return FromJson<MonetaryAccount>(responseRaw);
         }
 
-        public static List<MonetaryAccount> List(ApiContext apiContext, int userId)
+        public static BunqResponse<List<MonetaryAccount>> List(ApiContext apiContext, int userId)
         {
             return List(apiContext, userId, new Dictionary<string, string>());
         }
@@ -54,13 +54,13 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a collection of all your MonetaryAccounts.
         /// </summary>
-        public static List<MonetaryAccount> List(ApiContext apiContext, int userId,
+        public static BunqResponse<List<MonetaryAccount>> List(ApiContext apiContext, int userId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
 
-            return FromJsonList<MonetaryAccount>(response.Content.ReadAsStringAsync().Result);
+            return FromJsonList<MonetaryAccount>(responseRaw);
         }
     }
 }

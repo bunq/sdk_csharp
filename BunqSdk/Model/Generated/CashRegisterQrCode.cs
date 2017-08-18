@@ -70,8 +70,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "tab_object")]
         public Tab TabObject { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int cashRegisterId)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int cashRegisterId)
         {
             return Create(apiContext, requestMap, userId, monetaryAccountId, cashRegisterId,
                 new Dictionary<string, string>());
@@ -80,19 +80,20 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Create a new QR code for this CashRegister. You can only have one ACTIVE CashRegister QR code at the time.
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int cashRegisterId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int cashRegisterId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, cashRegisterId),
-                requestBytes, customHeaders);
+            var responseRaw =
+                apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, cashRegisterId),
+                    requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static int Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int cashRegisterId, int cashRegisterQrCodeId)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int cashRegisterId, int cashRegisterQrCodeId)
         {
             return Update(apiContext, requestMap, userId, monetaryAccountId, cashRegisterId, cashRegisterQrCodeId,
                 new Dictionary<string, string>());
@@ -101,21 +102,21 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Modify a QR code in a given CashRegister. You can only have one ACTIVE CashRegister QR code at the time.
         /// </summary>
-        public static int Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int cashRegisterId, int cashRegisterQrCodeId,
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int cashRegisterId, int cashRegisterQrCodeId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response =
+            var responseRaw =
                 apiClient.Put(
                     string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, cashRegisterId, cashRegisterQrCodeId),
                     requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static CashRegisterQrCode Get(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<CashRegisterQrCode> Get(ApiContext apiContext, int userId, int monetaryAccountId,
             int cashRegisterId, int cashRegisterQrCodeId)
         {
             return Get(apiContext, userId, monetaryAccountId, cashRegisterId, cashRegisterQrCodeId,
@@ -125,20 +126,20 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get the information of a specific QR code. To get the RAW content of the QR code use ../qr-code/{id}/content
         /// </summary>
-        public static CashRegisterQrCode Get(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<CashRegisterQrCode> Get(ApiContext apiContext, int userId, int monetaryAccountId,
             int cashRegisterId, int cashRegisterQrCodeId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response =
+            var responseRaw =
                 apiClient.Get(
                     string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, cashRegisterQrCodeId),
                     customHeaders);
 
-            return FromJson<CashRegisterQrCode>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<CashRegisterQrCode>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<CashRegisterQrCode> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId)
+        public static BunqResponse<List<CashRegisterQrCode>> List(ApiContext apiContext, int userId,
+            int monetaryAccountId, int cashRegisterId)
         {
             return List(apiContext, userId, monetaryAccountId, cashRegisterId, new Dictionary<string, string>());
         }
@@ -146,14 +147,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a collection of QR code information from a given CashRegister
         /// </summary>
-        public static List<CashRegisterQrCode> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<CashRegisterQrCode>> List(ApiContext apiContext, int userId,
+            int monetaryAccountId, int cashRegisterId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId),
-                customHeaders);
+            var responseRaw =
+                apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId),
+                    customHeaders);
 
-            return FromJsonList<CashRegisterQrCode>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<CashRegisterQrCode>(responseRaw, OBJECT_TYPE);
         }
     }
 }

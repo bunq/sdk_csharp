@@ -39,13 +39,13 @@ namespace Bunq.Sdk.Model
         /// "X-Bunq-Client-Authentication" header for the creation of a DeviceServer
         /// and SessionServer.
         /// </summary>
-        public static Installation Create(ApiContext apiContext, string publicKeyClientString)
+        public static BunqResponse<Installation> Create(ApiContext apiContext, string publicKeyClientString)
         {
             var requestBytes = GenerateRequestBodyBytes(publicKeyClientString);
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Post(ENDPOINT_URL_POST, requestBytes, new Dictionary<string, string>());
+            var responseRaw = apiClient.Post(ENDPOINT_URL_POST, requestBytes, new Dictionary<string, string>());
 
-            return FromJsonArrayNested<Installation>(response.Content.ReadAsStringAsync().Result);
+            return FromJsonArrayNested<Installation>(responseRaw);
         }
 
         private static byte[] GenerateRequestBodyBytes(string publicKeyClientString)

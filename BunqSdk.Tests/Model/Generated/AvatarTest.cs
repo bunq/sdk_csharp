@@ -44,10 +44,11 @@ namespace Bunq.Sdk.Tests.Model.Generated
             {
                 {Avatar.FIELD_ATTACHMENT_PUBLIC_UUID, attachmentUuid}
             };
-            var avatarUuid = Avatar.Create(API_CONTEXT, avatarMap);
+            var avatarUuid = Avatar.Create(API_CONTEXT, avatarMap).Value;
 
-            var attachmentUuidFromAvatar = Avatar.Get(API_CONTEXT, avatarUuid).Image[INDEX_FIRST].AttachmentPublicUuid;
-            var revievedFileContentByte = AttachmentPublicContent.List(API_CONTEXT, attachmentUuidFromAvatar);
+            var attachmentUuidFromAvatar = Avatar.Get(API_CONTEXT, avatarUuid).Value
+                .Image[INDEX_FIRST].AttachmentPublicUuid;
+            var revievedFileContentByte = AttachmentPublicContent.List(API_CONTEXT, attachmentUuidFromAvatar).Value;
 
             Assert.Equal(attachmentUuid, attachmentUuidFromAvatar);
             Assert.Equal(fileContentByte, revievedFileContentByte);
@@ -61,7 +62,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
                 {ApiClient.HEADER_CONTENT_TYPE, CONTEN_TYPE},
             };
 
-            return AttachmentPublic.Create(API_CONTEXT, fileContentByte, customHeaders);
+            return AttachmentPublic.Create(API_CONTEXT, fileContentByte, customHeaders).Value;
         }
     }
 }

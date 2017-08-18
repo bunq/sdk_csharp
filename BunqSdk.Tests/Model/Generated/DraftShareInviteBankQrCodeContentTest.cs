@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
         {
             var draftId = GetShareInviteId();
 
-            var qrContent = DraftShareInviteBankQrCodeContent.List(API_CONTEXT, USER_ID, draftId);
+            var qrContent = DraftShareInviteBankQrCodeContent.List(API_CONTEXT, USER_ID, draftId).Value;
 
             var fileOut = new FileInfo(FILENAME_QR_CODE_IMAGE);
             fileOut.Directory.Create();
@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
                 {DraftShareInviteBank.FIELD_EXPIRATION, expirationTime}
             };
 
-            return DraftShareInviteBank.Create(API_CONTEXT, requestMap, USER_ID);
+            return DraftShareInviteBank.Create(API_CONTEXT, requestMap, USER_ID).Value;
         }
     }
 }

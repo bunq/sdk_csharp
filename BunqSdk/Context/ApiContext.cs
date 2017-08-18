@@ -8,7 +8,6 @@ using Bunq.Sdk.Model;
 using Bunq.Sdk.Model.Generated;
 using Bunq.Sdk.Security;
 using Newtonsoft.Json;
-using DeviceServer = Bunq.Sdk.Model.DeviceServer;
 
 namespace Bunq.Sdk.Context
 {
@@ -112,13 +111,23 @@ namespace Bunq.Sdk.Context
         {
             var keyPairClient = SecurityUtils.GenerateKeyPair();
             var publicKeyFormattedString = SecurityUtils.GetPublicKeyFormattedString(keyPairClient);
-            var installation = Installation.Create(this, publicKeyFormattedString);
-            InstallationContext = new InstallationContext(installation, keyPairClient);
+            var installationResponse = Installation.Create(this, publicKeyFormattedString);
+            InstallationContext = new InstallationContext(installationResponse.Value, keyPairClient);
         }
 
         private void RegisterDevice(string deviceDescription, IList<string> permittedIps)
         {
-            DeviceServer.Create(this, deviceDescription, permittedIps);
+            DeviceServer.Create(this, GenerateRequestBodyBytes(deviceDescription, permittedIps));
+        }
+
+        private IDictionary<string, object> GenerateRequestBodyBytes(string description, IList<string> permittedIps)
+        {
+            return new Dictionary<string, object>
+            {
+                {DeviceServer.FIELD_DESCRIPTION, description},
+                {DeviceServer.FIELD_SECRET, ApiKey},
+                {DeviceServer.FIELD_PERMITTED_IPS, permittedIps}
+            };
         }
 
         /// <summary>
@@ -126,7 +135,7 @@ namespace Bunq.Sdk.Context
         /// </summary>
         private void InitializeSessionContext()
         {
-            SessionContext = new SessionContext(SessionServer.Create(this));
+            SessionContext = new SessionContext(SessionServer.Create(this).Value);
         }
 
         /// <summary>

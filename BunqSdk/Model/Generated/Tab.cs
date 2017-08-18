@@ -35,8 +35,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "TabUsageMultiple")]
         public TabUsageMultiple TabUsageMultiple { get; private set; }
 
-        public static Tab Get(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId,
-            string tabUuid)
+        public static BunqResponse<Tab> Get(ApiContext apiContext, int userId, int monetaryAccountId,
+            int cashRegisterId, string tabUuid)
         {
             return Get(apiContext, userId, monetaryAccountId, cashRegisterId, tabUuid,
                 new Dictionary<string, string>());
@@ -45,18 +45,19 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a specific tab. This returns a TabUsageSingle or TabUsageMultiple.
         /// </summary>
-        public static Tab Get(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId,
-            string tabUuid, IDictionary<string, string> customHeaders)
+        public static BunqResponse<Tab> Get(ApiContext apiContext, int userId, int monetaryAccountId,
+            int cashRegisterId, string tabUuid, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response =
+            var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUuid),
                     customHeaders);
 
-            return FromJson<Tab>(response.Content.ReadAsStringAsync().Result);
+            return FromJson<Tab>(responseRaw);
         }
 
-        public static List<Tab> List(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId)
+        public static BunqResponse<List<Tab>> List(ApiContext apiContext, int userId, int monetaryAccountId,
+            int cashRegisterId)
         {
             return List(apiContext, userId, monetaryAccountId, cashRegisterId, new Dictionary<string, string>());
         }
@@ -64,14 +65,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a collection of tabs.
         /// </summary>
-        public static List<Tab> List(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<Tab>> List(ApiContext apiContext, int userId, int monetaryAccountId,
+            int cashRegisterId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId),
-                customHeaders);
+            var responseRaw =
+                apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId),
+                    customHeaders);
 
-            return FromJsonList<Tab>(response.Content.ReadAsStringAsync().Result);
+            return FromJsonList<Tab>(responseRaw);
         }
     }
 }

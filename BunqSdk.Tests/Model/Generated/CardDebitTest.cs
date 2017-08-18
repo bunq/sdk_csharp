@@ -44,9 +44,9 @@ namespace Bunq.Sdk.Tests.Model.Generated
                 {CardDebit.FIELD_PIN_CODE, PIN_CODE},
                 {CardDebit.FIELD_SECOND_LINE, GenerateRandomSecondLine()}
             };
-            var cardDebit = CardDebit.Create(API_CONTEXT, cardDebitMap, USER_ID);
+            var cardDebit = CardDebit.Create(API_CONTEXT, cardDebitMap, USER_ID).Value;
 
-            var cardFromCardEndpoint = Card.Get(API_CONTEXT, USER_ID, cardDebit.Id.Value);
+            var cardFromCardEndpoint = Card.Get(API_CONTEXT, USER_ID, cardDebit.Id.Value).Value;
 
             Assert.Equal(cardDebit.SecondLine, cardFromCardEndpoint.SecondLine);
             Assert.Equal(cardDebit.Created, cardFromCardEndpoint.Created);
@@ -55,7 +55,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
 
         private static string GetAnAllowedName()
         {
-            return CardName.List(API_CONTEXT, USER_ID)[INDEX_FIRST].PossibleCardNameArray[INDEX_FIRST];
+            return CardName.List(API_CONTEXT, USER_ID).Value[INDEX_FIRST].PossibleCardNameArray[INDEX_FIRST];
         }
 
         private static string GenerateRandomSecondLine()
@@ -70,7 +70,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
 
         private static Pointer GetAlias()
         {
-            return User.Get(API_CONTEXT, USER_ID).UserCompany.Alias[INDEX_FIRST];
+            return User.Get(API_CONTEXT, USER_ID).Value.UserCompany.Alias[INDEX_FIRST];
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Bunq.Sdk.Samples
                 {RequestInquiry.FIELD_DESCRIPTION, REQUEST_DESCRIPTION},
                 {RequestInquiry.FIELD_ALLOW_BUNQME, true}
             };
-            var requestId = RequestInquiry.Create(apiContext, requestMap, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID);
+            var requestId = RequestInquiry.Create(apiContext, requestMap, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
             Console.WriteLine(RequestInquiry.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, requestId));
 
             var requestUpdateMap = new Dictionary<string, object> {{RequestInquiry.FIELD_STATUS, STATUS_REVOKED}};

@@ -56,8 +56,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "unread_message_count")]
         public int? UnreadMessageCount { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int requestInquiryId)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int requestInquiryId)
         {
             return Create(apiContext, requestMap, userId, monetaryAccountId, requestInquiryId,
                 new Dictionary<string, string>());
@@ -66,20 +66,21 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Create a chat for a specific request inquiry.
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int requestInquiryId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int requestInquiryId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response =
+            var responseRaw =
                 apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, requestInquiryId),
                     requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static RequestInquiryChat Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int requestInquiryId, int requestInquiryChatId)
+        public static BunqResponse<RequestInquiryChat> Update(ApiContext apiContext,
+            IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int requestInquiryId,
+            int requestInquiryChatId)
         {
             return Update(apiContext, requestMap, userId, monetaryAccountId, requestInquiryId, requestInquiryChatId,
                 new Dictionary<string, string>());
@@ -88,22 +89,22 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Update the last read message in the chat of a specific request inquiry.
         /// </summary>
-        public static RequestInquiryChat Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int requestInquiryId, int requestInquiryChatId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<RequestInquiryChat> Update(ApiContext apiContext,
+            IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int requestInquiryId,
+            int requestInquiryChatId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response =
+            var responseRaw =
                 apiClient.Put(
                     string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, requestInquiryId,
                         requestInquiryChatId), requestBytes, customHeaders);
 
-            return FromJson<RequestInquiryChat>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<RequestInquiryChat>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<RequestInquiryChat> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int requestInquiryId)
+        public static BunqResponse<List<RequestInquiryChat>> List(ApiContext apiContext, int userId,
+            int monetaryAccountId, int requestInquiryId)
         {
             return List(apiContext, userId, monetaryAccountId, requestInquiryId, new Dictionary<string, string>());
         }
@@ -111,15 +112,15 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get the chat for a specific request inquiry.
         /// </summary>
-        public static List<RequestInquiryChat> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int requestInquiryId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<RequestInquiryChat>> List(ApiContext apiContext, int userId,
+            int monetaryAccountId, int requestInquiryId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response =
+            var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, requestInquiryId),
                     customHeaders);
 
-            return FromJsonList<RequestInquiryChat>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<RequestInquiryChat>(responseRaw, OBJECT_TYPE);
         }
     }
 }

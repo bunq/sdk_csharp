@@ -46,13 +46,13 @@ namespace Bunq.Sdk.Model
         /// for all future API calls. The ip address making this call needs to match
         /// the ip address bound to your API key.
         /// </summary>
-        public static SessionServer Create(ApiContext apiContext)
+        public static BunqResponse<SessionServer> Create(ApiContext apiContext)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = GenerateRequestBodyBytes(apiContext.ApiKey);
-            var response = apiClient.Post(ENDPOINT_URL_POST, requestBytes, new Dictionary<string, string>());
+            var responseRaw = apiClient.Post(ENDPOINT_URL_POST, requestBytes, new Dictionary<string, string>());
 
-            return FromJsonArrayNested<SessionServer>(response.Content.ReadAsStringAsync().Result);
+            return FromJsonArrayNested<SessionServer>(responseRaw);
         }
 
         private static byte[] GenerateRequestBodyBytes(string apiKey)

@@ -47,7 +47,7 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; private set; }
 
-        public static string Create(ApiContext apiContext, byte[] requestBytes)
+        public static BunqResponse<string> Create(ApiContext apiContext, byte[] requestBytes)
         {
             return Create(apiContext, requestBytes, new Dictionary<string, string>());
         }
@@ -58,16 +58,16 @@ namespace Bunq.Sdk.Model.Generated
         /// in the Content-Type header. You are required to provide a description of the attachment using the
         /// X-Bunq-Attachment-Description header.
         /// </summary>
-        public static string Create(ApiContext apiContext, byte[] requestBytes,
+        public static BunqResponse<string> Create(ApiContext apiContext, byte[] requestBytes,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
 
-            return ProcessForUuid(response.Content.ReadAsStringAsync().Result);
+            return ProcessForUuid(responseRaw);
         }
 
-        public static AttachmentPublic Get(ApiContext apiContext, string attachmentPublicUuid)
+        public static BunqResponse<AttachmentPublic> Get(ApiContext apiContext, string attachmentPublicUuid)
         {
             return Get(apiContext, attachmentPublicUuid, new Dictionary<string, string>());
         }
@@ -76,13 +76,13 @@ namespace Bunq.Sdk.Model.Generated
         /// Get a specific attachment's metadata through its UUID. The Content-Type header of the response will describe
         /// the MIME type of the attachment file.
         /// </summary>
-        public static AttachmentPublic Get(ApiContext apiContext, string attachmentPublicUuid,
+        public static BunqResponse<AttachmentPublic> Get(ApiContext apiContext, string attachmentPublicUuid,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, attachmentPublicUuid), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, attachmentPublicUuid), customHeaders);
 
-            return FromJson<AttachmentPublic>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<AttachmentPublic>(responseRaw, OBJECT_TYPE);
         }
     }
 }

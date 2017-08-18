@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text;
 using Bunq.Sdk.Context;
@@ -45,7 +44,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId)
         {
             return Create(apiContext, requestMap, userId, new Dictionary<string, string>());
         }
@@ -53,32 +53,35 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Pin the certificate chain.
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static void Delete(ApiContext apiContext, int userId, int certificatePinnedId)
+        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int certificatePinnedId)
         {
-            Delete(apiContext, userId, certificatePinnedId, new Dictionary<string, string>());
+            return Delete(apiContext, userId, certificatePinnedId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Remove the pinned certificate chain with the specific ID.
         /// </summary>
-        public static void Delete(ApiContext apiContext, int userId, int certificatePinnedId,
-            IDictionary<String, String> customHeaders)
+        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int certificatePinnedId,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, userId, certificatePinnedId), customHeaders);
+            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, userId, certificatePinnedId),
+                customHeaders);
+
+            return new BunqResponse<object>(null, responseRaw.Headers);
         }
 
-        public static List<CertificatePinned> List(ApiContext apiContext, int userId)
+        public static BunqResponse<List<CertificatePinned>> List(ApiContext apiContext, int userId)
         {
             return List(apiContext, userId, new Dictionary<string, string>());
         }
@@ -86,16 +89,16 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// List all the pinned certificate chain for the given user.
         /// </summary>
-        public static List<CertificatePinned> List(ApiContext apiContext, int userId,
+        public static BunqResponse<List<CertificatePinned>> List(ApiContext apiContext, int userId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
 
-            return FromJsonList<CertificatePinned>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<CertificatePinned>(responseRaw, OBJECT_TYPE);
         }
 
-        public static CertificatePinned Get(ApiContext apiContext, int userId, int certificatePinnedId)
+        public static BunqResponse<CertificatePinned> Get(ApiContext apiContext, int userId, int certificatePinnedId)
         {
             return Get(apiContext, userId, certificatePinnedId, new Dictionary<string, string>());
         }
@@ -103,13 +106,14 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get the pinned certificate chain with the specified ID.
         /// </summary>
-        public static CertificatePinned Get(ApiContext apiContext, int userId, int certificatePinnedId,
+        public static BunqResponse<CertificatePinned> Get(ApiContext apiContext, int userId, int certificatePinnedId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, certificatePinnedId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, certificatePinnedId),
+                customHeaders);
 
-            return FromJson<CertificatePinned>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<CertificatePinned>(responseRaw, OBJECT_TYPE);
         }
     }
 }

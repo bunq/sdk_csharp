@@ -10,7 +10,7 @@ namespace Bunq.Sdk.Samples
         public void Run()
         {
             var apiContext = ApiContext.Restore();
-            var users = User.List(apiContext);
+            var users = User.List(apiContext).Value;
 
             apiContext.Save();
 

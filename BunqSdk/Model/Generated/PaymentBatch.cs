@@ -37,8 +37,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "payments")]
         public List<Payment> Payments { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId)
         {
             return Create(apiContext, requestMap, userId, monetaryAccountId, new Dictionary<string, string>());
         }
@@ -46,19 +46,19 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Create a payment batch by sending an array of single payment objects, that will become part of the batch.
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes,
-                customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
+                requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static int Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int paymentBatchId)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int paymentBatchId)
         {
             return Update(apiContext, requestMap, userId, monetaryAccountId, paymentBatchId,
                 new Dictionary<string, string>());
@@ -67,18 +67,20 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Revoke a bunq.to payment batch. The status of all the payments will be set to REVOKED.
         /// </summary>
-        public static int Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int paymentBatchId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int paymentBatchId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, paymentBatchId),
-                requestBytes, customHeaders);
+            var responseRaw =
+                apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, paymentBatchId),
+                    requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static PaymentBatch Get(ApiContext apiContext, int userId, int monetaryAccountId, int paymentBatchId)
+        public static BunqResponse<PaymentBatch> Get(ApiContext apiContext, int userId, int monetaryAccountId,
+            int paymentBatchId)
         {
             return Get(apiContext, userId, monetaryAccountId, paymentBatchId, new Dictionary<string, string>());
         }
@@ -86,17 +88,17 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Return the details of a specific payment batch.
         /// </summary>
-        public static PaymentBatch Get(ApiContext apiContext, int userId, int monetaryAccountId, int paymentBatchId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<PaymentBatch> Get(ApiContext apiContext, int userId, int monetaryAccountId,
+            int paymentBatchId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, paymentBatchId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, paymentBatchId),
                 customHeaders);
 
-            return FromJson<PaymentBatch>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<PaymentBatch>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<PaymentBatch> List(ApiContext apiContext, int userId, int monetaryAccountId)
+        public static BunqResponse<List<PaymentBatch>> List(ApiContext apiContext, int userId, int monetaryAccountId)
         {
             return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
         }
@@ -104,13 +106,14 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Return all the payment batches for a monetary account.
         /// </summary>
-        public static List<PaymentBatch> List(ApiContext apiContext, int userId, int monetaryAccountId,
+        public static BunqResponse<List<PaymentBatch>> List(ApiContext apiContext, int userId, int monetaryAccountId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+                customHeaders);
 
-            return FromJsonList<PaymentBatch>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<PaymentBatch>(responseRaw, OBJECT_TYPE);
         }
     }
 }

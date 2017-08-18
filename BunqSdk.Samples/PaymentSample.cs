@@ -30,8 +30,7 @@ namespace Bunq.Sdk.Samples
                 {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION}
             };
 
-            var paymentId = Payment.Create(apiContext, paymentMap, USER_ITEM_ID,
-                MONETARY_ACCOUNT_ITEM_ID);
+            var paymentId = Payment.Create(apiContext, paymentMap, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
 
             Console.WriteLine(Payment.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, paymentId));
         }

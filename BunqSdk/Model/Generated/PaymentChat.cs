@@ -53,8 +53,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "unread_message_count")]
         public int? UnreadMessageCount { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int paymentId)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int paymentId)
         {
             return Create(apiContext, requestMap, userId, monetaryAccountId, paymentId,
                 new Dictionary<string, string>());
@@ -63,19 +63,19 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Create a chat for a specific payment.
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int paymentId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int paymentId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, paymentId),
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, paymentId),
                 requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static PaymentChat Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int paymentId, int paymentChatId)
+        public static BunqResponse<PaymentChat> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int paymentId, int paymentChatId)
         {
             return Update(apiContext, requestMap, userId, monetaryAccountId, paymentId, paymentChatId,
                 new Dictionary<string, string>());
@@ -84,19 +84,21 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Update the last read message in the chat of a specific payment.
         /// </summary>
-        public static PaymentChat Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            int monetaryAccountId, int paymentId, int paymentChatId, IDictionary<string, string> customHeaders)
+        public static BunqResponse<PaymentChat> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, int monetaryAccountId, int paymentId, int paymentChatId,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response =
+            var responseRaw =
                 apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, paymentId, paymentChatId),
                     requestBytes, customHeaders);
 
-            return FromJson<PaymentChat>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<PaymentChat>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<PaymentChat> List(ApiContext apiContext, int userId, int monetaryAccountId, int paymentId)
+        public static BunqResponse<List<PaymentChat>> List(ApiContext apiContext, int userId, int monetaryAccountId,
+            int paymentId)
         {
             return List(apiContext, userId, monetaryAccountId, paymentId, new Dictionary<string, string>());
         }
@@ -104,14 +106,14 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get the chat for a specific payment.
         /// </summary>
-        public static List<PaymentChat> List(ApiContext apiContext, int userId, int monetaryAccountId, int paymentId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<PaymentChat>> List(ApiContext apiContext, int userId, int monetaryAccountId,
+            int paymentId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, paymentId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, paymentId),
                 customHeaders);
 
-            return FromJsonList<PaymentChat>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<PaymentChat>(responseRaw, OBJECT_TYPE);
         }
     }
 }

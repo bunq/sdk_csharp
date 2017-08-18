@@ -61,7 +61,8 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "alias_user")]
         public LabelUser AliasUser { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId)
         {
             return Create(apiContext, requestMap, userId, new Dictionary<string, string>());
         }
@@ -69,17 +70,18 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Create a new annual overview for a specific year. An overview can be generated only for a past year.
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+            int userId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static ExportAnnualOverview Get(ApiContext apiContext, int userId, int exportAnnualOverviewId)
+        public static BunqResponse<ExportAnnualOverview> Get(ApiContext apiContext, int userId,
+            int exportAnnualOverviewId)
         {
             return Get(apiContext, userId, exportAnnualOverviewId, new Dictionary<string, string>());
         }
@@ -87,17 +89,17 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get an annual overview for a user by its id.
         /// </summary>
-        public static ExportAnnualOverview Get(ApiContext apiContext, int userId, int exportAnnualOverviewId,
-            IDictionary<string, string> customHeaders)
+        public static BunqResponse<ExportAnnualOverview> Get(ApiContext apiContext, int userId,
+            int exportAnnualOverviewId, IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, exportAnnualOverviewId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, exportAnnualOverviewId),
                 customHeaders);
 
-            return FromJson<ExportAnnualOverview>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<ExportAnnualOverview>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<ExportAnnualOverview> List(ApiContext apiContext, int userId)
+        public static BunqResponse<List<ExportAnnualOverview>> List(ApiContext apiContext, int userId)
         {
             return List(apiContext, userId, new Dictionary<string, string>());
         }
@@ -105,13 +107,13 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// List all the annual overviews for a user.
         /// </summary>
-        public static List<ExportAnnualOverview> List(ApiContext apiContext, int userId,
+        public static BunqResponse<List<ExportAnnualOverview>> List(ApiContext apiContext, int userId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
 
-            return FromJsonList<ExportAnnualOverview>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<ExportAnnualOverview>(responseRaw, OBJECT_TYPE);
         }
     }
 }

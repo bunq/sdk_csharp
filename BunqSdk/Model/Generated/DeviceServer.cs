@@ -68,7 +68,7 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "status")]
         public string Status { get; private set; }
 
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap)
         {
             return Create(apiContext, requestMap, new Dictionary<string, string>());
         }
@@ -78,17 +78,17 @@ namespace Bunq.Sdk.Model.Generated
         /// sign this request with the key of which you used the public part to create the Installation. Your API key
         /// will be bound to the ip address of this DeviceServer.
         /// </summary>
-        public static int Create(ApiContext apiContext, IDictionary<string, object> requestMap,
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var response = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
 
-            return ProcessForId(response.Content.ReadAsStringAsync().Result);
+            return ProcessForId(responseRaw);
         }
 
-        public static DeviceServer Get(ApiContext apiContext, int deviceServerId)
+        public static BunqResponse<DeviceServer> Get(ApiContext apiContext, int deviceServerId)
         {
             return Get(apiContext, deviceServerId, new Dictionary<string, string>());
         }
@@ -96,16 +96,16 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get one of your DeviceServers.
         /// </summary>
-        public static DeviceServer Get(ApiContext apiContext, int deviceServerId,
+        public static BunqResponse<DeviceServer> Get(ApiContext apiContext, int deviceServerId,
             IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceServerId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceServerId), customHeaders);
 
-            return FromJson<DeviceServer>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJson<DeviceServer>(responseRaw, OBJECT_TYPE);
         }
 
-        public static List<DeviceServer> List(ApiContext apiContext)
+        public static BunqResponse<List<DeviceServer>> List(ApiContext apiContext)
         {
             return List(apiContext, new Dictionary<string, string>());
         }
@@ -113,12 +113,13 @@ namespace Bunq.Sdk.Model.Generated
         /// <summary>
         /// Get a collection of all the DeviceServers you have created.
         /// </summary>
-        public static List<DeviceServer> List(ApiContext apiContext, IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<DeviceServer>> List(ApiContext apiContext,
+            IDictionary<string, string> customHeaders)
         {
             var apiClient = new ApiClient(apiContext);
-            var response = apiClient.Get(ENDPOINT_URL_LISTING, customHeaders);
+            var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, customHeaders);
 
-            return FromJsonList<DeviceServer>(response.Content.ReadAsStringAsync().Result, OBJECT_TYPE);
+            return FromJsonList<DeviceServer>(responseRaw, OBJECT_TYPE);
         }
     }
 }
