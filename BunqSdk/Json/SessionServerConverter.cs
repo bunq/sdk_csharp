@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Bunq.Sdk.Model;
 using Bunq.Sdk.Model.Generated;
 using Newtonsoft.Json;
@@ -26,19 +25,19 @@ namespace Bunq.Sdk.Json
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
         {
-            var jObjects = JArray.Load(reader).ToObject<List<JObject>>();
-            var id = GetByIndexAndFieldName(jObjects, INDEX_ID, FIELD_ID).ToObject<Id>();
-            var token = GetByIndexAndFieldName(jObjects, INDEX_TOKEN, FIELD_TOKEN).ToObject<SessionToken>();
+            var jObjects = JArray.Load(reader);
+            var id = FetchObject<Id>(jObjects[INDEX_ID], FIELD_ID);
+            var token = FetchObject<SessionToken>(jObjects[INDEX_TOKEN], FIELD_TOKEN);
             var userBody = jObjects[INDEX_USER];
 
             return userBody[FIELD_USER_COMPANY] == null
-                ? new SessionServer(id, token, userBody.GetValue(FIELD_USER_PERSON).ToObject<UserPerson>())
-                : new SessionServer(id, token, userBody.GetValue(FIELD_USER_COMPANY).ToObject<UserCompany>());
+                ? new SessionServer(id, token, FetchObject<UserPerson>(userBody, FIELD_USER_PERSON))
+                : new SessionServer(id, token, FetchObject<UserCompany>(userBody, FIELD_USER_COMPANY));
         }
 
-        private static JToken GetByIndexAndFieldName(IReadOnlyList<JObject> jObjects, int index, string fieldName)
+        private static T FetchObject<T>(JToken jToken, string fieldName)
         {
-            return jObjects[index].GetValue(fieldName);
+            return jToken[fieldName].ToObject<T>();
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
