@@ -17,6 +17,11 @@ namespace Bunq.Sdk.Model
         private const string FIELD_UUID = "Uuid";
 
         /// <summary>
+        /// Index of the very first item in an array.
+        /// </summary>
+        private const int INDEX_FIRST = 0;
+
+        /// <summary>
         /// De-serializes an object from a JSON format specific to Installation and SessionServer.
         /// </summary>
         protected static BunqResponse<T> FromJsonArrayNested<T>(BunqResponseRaw responseRaw)
@@ -46,7 +51,7 @@ namespace Bunq.Sdk.Model
             var json = Encoding.UTF8.GetString(responseRaw.BodyBytes);
             var responseWithWrapper = BunqJsonConvert.DeserializeObject<JObject>(json);
 
-            return responseWithWrapper.GetValue(FIELD_RESPONSE).ToObject<JArray>().Value<JObject>(0);
+            return responseWithWrapper.GetValue(FIELD_RESPONSE).ToObject<JArray>().Value<JObject>(INDEX_FIRST);
         }
 
         private static string GetWrappedContentString(JObject json, string wrapper)
