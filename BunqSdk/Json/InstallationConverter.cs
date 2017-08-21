@@ -25,12 +25,17 @@ namespace Bunq.Sdk.Json
             JsonSerializer serializer)
         {
             var jObjects = JArray.Load(reader).ToObject<List<JObject>>();
-            var id = jObjects[INDEX_ID].GetValue(FIELD_ID).ToObject<Id>();
-            var token = jObjects[INDEX_TOKEN].GetValue(FIELD_TOKEN).ToObject<SessionToken>();
-            var publicKeyServer = jObjects[INDEX_SERVER_PUBLIC_KEY].GetValue(FIELD_SERVER_PUBLIC_KEY)
-                .ToObject<PublicKeyServer>();
+            var id = FetchObject<Id>(jObjects[INDEX_ID], FIELD_ID);
+            var token = FetchObject<SessionToken>(jObjects[INDEX_TOKEN], FIELD_TOKEN);
+            var publicKeyServer =
+                FetchObject<PublicKeyServer>(jObjects[INDEX_SERVER_PUBLIC_KEY], FIELD_SERVER_PUBLIC_KEY);
 
             return new Installation(id, token, publicKeyServer);
+        }
+
+        private static T FetchObject<T>(JToken jToken, string fieldName)
+        {
+            return jToken[fieldName].ToObject<T>();
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
