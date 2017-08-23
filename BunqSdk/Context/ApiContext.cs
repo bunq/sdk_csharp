@@ -63,6 +63,9 @@ namespace Bunq.Sdk.Context
         [JsonProperty(PropertyName = "session_context")]
         public SessionContext SessionContext { get; private set; }
 
+        [JsonProperty(PropertyName = "proxy")]
+        public string Proxy { get; private set; }
+
         [JsonConstructor]
         private ApiContext()
         {
@@ -71,21 +74,23 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Create and initialize an API Context with current IP as permitted.
         /// </summary>
-        public static ApiContext Create(ApiEnvironmentType environmentType, string apiKey, string deviceDescription)
+        public static ApiContext Create(ApiEnvironmentType environmentType, string apiKey, string deviceDescription,
+            string proxy=null)
         {
-            return Create(environmentType, apiKey, deviceDescription, new List<string>());
+            return Create(environmentType, apiKey, deviceDescription, new List<string>(), proxy);
         }
 
         /// <summary>
         /// Create and initialize an API Context.
         /// </summary>
         public static ApiContext Create(ApiEnvironmentType environmentType, string apiKey, string deviceDescription,
-            IList<string> permittedIps)
+            IList<string> permittedIps, string proxy=null)
         {
             var apiContext = new ApiContext
             {
                 ApiKey = apiKey,
                 EnvironmentType = environmentType,
+                Proxy = proxy,
             };
             apiContext.Initialize(deviceDescription, permittedIps);
 
@@ -201,12 +206,20 @@ namespace Bunq.Sdk.Context
         {
             try
             {
-                File.WriteAllText(fileName, BunqJsonConvert.SerializeObject(this), ENCODING_BUNQ_CONF);
+                File.WriteAllText(fileName, ToJson(), ENCODING_BUNQ_CONF);
             }
             catch (IOException exception)
             {
                 throw new BunqException(ERROR_COULD_NOT_SAVE_API_CONTEXT, exception);
             }
+        }
+
+        /// <summary>
+        /// Serialize the API Context to JSON.
+        /// </summary>
+        public string ToJson()
+        {
+            return BunqJsonConvert.SerializeObject(this);
         }
 
         /// <summary>
@@ -224,14 +237,20 @@ namespace Bunq.Sdk.Context
         {
             try
             {
-                var apiContextJson = File.ReadAllText(fileName, ENCODING_BUNQ_CONF);
-
-                return BunqJsonConvert.DeserializeObject<ApiContext>(apiContextJson);
+                return FromJson(File.ReadAllText(fileName, ENCODING_BUNQ_CONF));
             }
             catch (IOException exception)
             {
                 throw new BunqException(ERROR_COULD_NOT_RESTORE_API_CONTEXT, exception);
             }
+        }
+
+        /// <summary>
+        /// De-serializes a context from JSON.
+        /// </summary>
+        public static ApiContext FromJson(string json)
+        {
+            return BunqJsonConvert.DeserializeObject<ApiContext>(json);
         }
 
         /// <summary>

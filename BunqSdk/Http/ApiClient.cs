@@ -39,7 +39,7 @@ namespace Bunq.Sdk.Http
         /// Values for the default headers
         /// </summary>
         private const string CACHE_CONTROL_NONE = "no-cache";
-        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/0.9.2.0-beta";
+        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/0.10.0.0-beta";
         private const string LANGUAGE_EN_US = "en_US";
         private const string REGION_NL_NL = "nl_NL";
         private const string GEOLOCATION_ZERO = "0 0 0 0 NL";
@@ -49,14 +49,41 @@ namespace Bunq.Sdk.Http
         /// </summary>
         private const string DELIMITER_HEADER_VALUE = ",";
 
-        private static HttpClient client;
+        private readonly HttpClient client;
 
         private readonly ApiContext apiContext;
 
         public ApiClient(ApiContext apiContext)
         {
             this.apiContext = apiContext;
+            client = CreateHttpClient();
         }
+
+        private HttpClient CreateHttpClient()
+        {
+            return new HttpClient(CreateHttpClientHandler())
+            {
+                BaseAddress = new Uri(apiContext.GetBaseUri())
+            };
+        }
+
+        private HttpClientHandler CreateHttpClientHandler()
+        {
+            // TODO: Add HTTP Public Key Pinning. It is needed to prevent possible man-in-the-middle attacks using
+            // the fake (or mis-issued) certificates.
+            // More info: https://timtaubert.de/blog/2014/10/http-public-key-pinning-explained/
+            // Simply put, we reduce the amount of certificates which are accepted in bunq API responses.
+            var handler = new HttpClientHandler();
+
+            if (apiContext.Proxy != null)
+            {
+                handler.Proxy = new BunqProxy(apiContext.Proxy);
+                handler.UseProxy = true;
+            }
+
+            return handler;
+        }
+
 
         /// <summary>
         /// Executes a POST request and returns the resulting HTTP response message.
@@ -90,7 +117,6 @@ namespace Bunq.Sdk.Http
             SetDefaultHeaders(requestMessage);
             SetHeaders(requestMessage, customHeaders);
             SetSessionHeaders(requestMessage);
-            InitializeHttpClientIfNeeded(apiContext);
             var responseMessage = client.SendAsync(requestMessage).Result;
             AssertResponseSuccess(responseMessage);
             ValidateResponse(responseMessage);
@@ -192,21 +218,6 @@ namespace Bunq.Sdk.Http
         private string GenerateSignature(HttpRequestMessage requestMessage)
         {
             return SecurityUtils.GenerateSignature(requestMessage, apiContext.InstallationContext.KeyPairClient);
-        }
-
-        private static void InitializeHttpClientIfNeeded(ApiContext apiContext)
-        {
-            if (client == null)
-            {
-                // TODO: Add HTTP Public Key Pinning. It is needed to prevent possible man-in-the-middle attacks using
-                // the fake (or mis-issued) certificates.
-                // More info: https://timtaubert.de/blog/2014/10/http-public-key-pinning-explained/
-                // Simply put, we reduce the amount of certificates which are accepted in bunq API responses.
-                client = new HttpClient
-                {
-                    BaseAddress = new Uri(apiContext.GetBaseUri())
-                };
-            }
         }
 
         private static void AssertResponseSuccess(HttpResponseMessage responseMessage)
