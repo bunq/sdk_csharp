@@ -201,12 +201,20 @@ namespace Bunq.Sdk.Context
         {
             try
             {
-                File.WriteAllText(fileName, BunqJsonConvert.SerializeObject(this), ENCODING_BUNQ_CONF);
+                File.WriteAllText(fileName, ToJson(), ENCODING_BUNQ_CONF);
             }
             catch (IOException exception)
             {
                 throw new BunqException(ERROR_COULD_NOT_SAVE_API_CONTEXT, exception);
             }
+        }
+
+        /// <summary>
+        /// Serialize the API Context to JSON.
+        /// </summary>
+        public string ToJson()
+        {
+            return BunqJsonConvert.SerializeObject(this);
         }
 
         /// <summary>
@@ -224,14 +232,20 @@ namespace Bunq.Sdk.Context
         {
             try
             {
-                var apiContextJson = File.ReadAllText(fileName, ENCODING_BUNQ_CONF);
-
-                return BunqJsonConvert.DeserializeObject<ApiContext>(apiContextJson);
+                return FromJson(File.ReadAllText(fileName, ENCODING_BUNQ_CONF));
             }
             catch (IOException exception)
             {
                 throw new BunqException(ERROR_COULD_NOT_RESTORE_API_CONTEXT, exception);
             }
+        }
+
+        /// <summary>
+        /// De-serializes a context from JSON.
+        /// </summary>
+        public static ApiContext FromJson(string json)
+        {
+            return BunqJsonConvert.DeserializeObject<ApiContext>(json);
         }
 
         /// <summary>

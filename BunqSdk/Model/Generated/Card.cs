@@ -136,7 +136,7 @@ namespace Bunq.Sdk.Model.Generated
         /// Array of Types, PINs, account IDs assigned to the card.
         /// </summary>
         [JsonProperty(PropertyName = "pin_code_assignment")]
-        public CardPinAssignment PinCodeAssignment { get; private set; }
+        public List<CardPinAssignment> PinCodeAssignment { get; private set; }
 
         public static BunqResponse<Card> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
             int userId, int cardId)
