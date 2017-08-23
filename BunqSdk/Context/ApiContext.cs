@@ -63,6 +63,9 @@ namespace Bunq.Sdk.Context
         [JsonProperty(PropertyName = "session_context")]
         public SessionContext SessionContext { get; private set; }
 
+        [JsonProperty(PropertyName = "proxy")]
+        public string Proxy { get; private set; }
+
         [JsonConstructor]
         private ApiContext()
         {
@@ -71,21 +74,23 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Create and initialize an API Context with current IP as permitted.
         /// </summary>
-        public static ApiContext Create(ApiEnvironmentType environmentType, string apiKey, string deviceDescription)
+        public static ApiContext Create(ApiEnvironmentType environmentType, string apiKey, string deviceDescription,
+            string proxy=null)
         {
-            return Create(environmentType, apiKey, deviceDescription, new List<string>());
+            return Create(environmentType, apiKey, deviceDescription, new List<string>(), proxy);
         }
 
         /// <summary>
         /// Create and initialize an API Context.
         /// </summary>
         public static ApiContext Create(ApiEnvironmentType environmentType, string apiKey, string deviceDescription,
-            IList<string> permittedIps)
+            IList<string> permittedIps, string proxy=null)
         {
             var apiContext = new ApiContext
             {
                 ApiKey = apiKey,
                 EnvironmentType = environmentType,
+                Proxy = proxy,
             };
             apiContext.Initialize(deviceDescription, permittedIps);
 
