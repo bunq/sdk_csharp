@@ -21,24 +21,19 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "TabQrCodeContent";
 
-        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid)
-        {
-            return List(apiContext, userId, monetaryAccountId, cashRegisterId, tabUuid,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Returns the raw content of the QR code that links to this Tab. The raw content is the binary representation
         /// of a file, without any JSON wrapping.
         /// </summary>
         public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid, IDictionary<string, string> customHeaders)
+            int cashRegisterId, string tabUuid, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId, tabUuid),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }

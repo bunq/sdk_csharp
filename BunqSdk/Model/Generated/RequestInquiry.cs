@@ -196,18 +196,14 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "allow_chat")]
         public bool? AllowChat { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId)
-        {
-            return Create(apiContext, requestMap, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Create a new payment request.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders)
+            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
@@ -216,19 +212,14 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<RequestInquiry> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int requestInquiryId)
-        {
-            return Update(apiContext, requestMap, userId, monetaryAccountId, requestInquiryId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Revoke a request for payment, by updating the status to REVOKED.
         /// </summary>
         public static BunqResponse<RequestInquiry> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int requestInquiryId, IDictionary<string, string> customHeaders)
+            int userId, int monetaryAccountId, int requestInquiryId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -238,40 +229,34 @@ namespace Bunq.Sdk.Model.Generated
             return FromJson<RequestInquiry>(responseRaw, OBJECT_TYPE);
         }
 
-        public static BunqResponse<List<RequestInquiry>> List(ApiContext apiContext, int userId, int monetaryAccountId)
-        {
-            return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get all payment requests for a user's monetary account.
         /// </summary>
         public static BunqResponse<List<RequestInquiry>> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams,
                 customHeaders);
 
             return FromJsonList<RequestInquiry>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<RequestInquiry> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int requestInquiryId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, requestInquiryId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Get the details of a specific payment request, including its status.
         /// </summary>
         public static BunqResponse<RequestInquiry> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int requestInquiryId, IDictionary<string, string> customHeaders)
+            int requestInquiryId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, requestInquiryId),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return FromJson<RequestInquiry>(responseRaw, OBJECT_TYPE);
         }

@@ -45,20 +45,17 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; private set; }
 
-        public static BunqResponse<TabAttachmentTab> Get(ApiContext apiContext, string tabUuid, int tabAttachmentTabId)
-        {
-            return Get(apiContext, tabUuid, tabAttachmentTabId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a specific attachment. The header of the response contains the content-type of the attachment.
         /// </summary>
         public static BunqResponse<TabAttachmentTab> Get(ApiContext apiContext, string tabUuid, int tabAttachmentTabId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, tabUuid, tabAttachmentTabId),
-                customHeaders);
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<TabAttachmentTab>(responseRaw, OBJECT_TYPE);
         }

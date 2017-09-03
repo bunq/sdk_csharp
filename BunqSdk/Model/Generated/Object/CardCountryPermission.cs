@@ -18,6 +18,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "expiry_time")]
         public string ExpiryTime { get; set; }
 
+        /// <summary>
+        /// The id of the card country permission entry.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
+
         public CardCountryPermission(string country)
         {
             Country = country;

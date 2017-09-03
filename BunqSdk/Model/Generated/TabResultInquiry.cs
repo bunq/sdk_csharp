@@ -36,45 +36,38 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; private set; }
 
-        public static BunqResponse<TabResultInquiry> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid, int tabResultInquiryId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, cashRegisterId, tabUuid, tabResultInquiryId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Used to view a single TabResultInquiry belonging to a tab.
         /// </summary>
         public static BunqResponse<TabResultInquiry> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid, int tabResultInquiryId, IDictionary<string, string> customHeaders)
+            int cashRegisterId, string tabUuid, int tabResultInquiryId,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(
                     string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUuid,
-                        tabResultInquiryId), customHeaders);
+                        tabResultInquiryId), new Dictionary<string, string>(), customHeaders);
 
             return FromJson<TabResultInquiry>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<List<TabResultInquiry>> List(ApiContext apiContext, int userId,
-            int monetaryAccountId, int cashRegisterId, string tabUuid)
-        {
-            return List(apiContext, userId, monetaryAccountId, cashRegisterId, tabUuid,
-                new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Used to view a list of TabResultInquiry objects belonging to a tab.
         /// </summary>
         public static BunqResponse<List<TabResultInquiry>> List(ApiContext apiContext, int userId,
-            int monetaryAccountId, int cashRegisterId, string tabUuid, IDictionary<string, string> customHeaders)
+            int monetaryAccountId, int cashRegisterId, string tabUuid, IDictionary<string, string> urlParams = null,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId, tabUuid),
-                    customHeaders);
+                    urlParams, customHeaders);
 
             return FromJsonList<TabResultInquiry>(responseRaw, OBJECT_TYPE);
         }

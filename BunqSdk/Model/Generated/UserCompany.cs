@@ -19,7 +19,6 @@ namespace Bunq.Sdk.Model.Generated
         public const string FIELD_NAME = "name";
         public const string FIELD_PUBLIC_NICK_NAME = "public_nick_name";
         public const string FIELD_AVATAR_UUID = "avatar_uuid";
-        public const string FIELD_ADDRESS = "address";
         public const string FIELD_ADDRESS_MAIN = "address_main";
         public const string FIELD_ADDRESS_POSTAL = "address_postal";
         public const string FIELD_LANGUAGE = "language";
@@ -155,6 +154,12 @@ namespace Bunq.Sdk.Model.Generated
         public string Language { get; private set; }
 
         /// <summary>
+        /// The country as an ISO 3166-1 alpha-2 country code..
+        /// </summary>
+        [JsonProperty(PropertyName = "country")]
+        public string Country { get; private set; }
+
+        /// <summary>
         /// The person's preferred region. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
         /// code, seperated by an underscore.
         /// </summary>
@@ -198,35 +203,47 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "notification_filters")]
         public List<NotificationFilter> NotificationFilters { get; private set; }
 
-        public static BunqResponse<UserCompany> Get(ApiContext apiContext, int userCompanyId)
-        {
-            return Get(apiContext, userCompanyId, new Dictionary<string, string>());
-        }
+        /// <summary>
+        /// The customer profile of the company.
+        /// </summary>
+        [JsonProperty(PropertyName = "customer")]
+        public Customer Customer { get; private set; }
+
+        /// <summary>
+        /// The customer limits of the company.
+        /// </summary>
+        [JsonProperty(PropertyName = "customer_limit")]
+        public CustomerLimit CustomerLimit { get; private set; }
+
+        /// <summary>
+        /// The subscription of the company.
+        /// </summary>
+        [JsonProperty(PropertyName = "billing_contract")]
+        public List<BillingContractSubscription> BillingContract { get; private set; }
 
         /// <summary>
         /// Get a specific company.
         /// </summary>
         public static BunqResponse<UserCompany> Get(ApiContext apiContext, int userCompanyId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userCompanyId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userCompanyId),
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<UserCompany>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userCompanyId)
-        {
-            return Update(apiContext, requestMap, userCompanyId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Modify a specific company's data.
         /// </summary>
         public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userCompanyId, IDictionary<string, string> customHeaders)
+            int userCompanyId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userCompanyId), requestBytes,

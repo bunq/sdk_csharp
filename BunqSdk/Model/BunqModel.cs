@@ -15,6 +15,7 @@ namespace Bunq.Sdk.Model
         private const string FIELD_RESPONSE = "Response";
         private const string FIELD_ID = "Id";
         private const string FIELD_UUID = "Uuid";
+        private const string FIELD_PAGINATION = "Pagination";
 
         /// <summary>
         /// Index of the very first item in an array.
@@ -39,14 +40,14 @@ namespace Bunq.Sdk.Model
         /// </summary>
         protected static BunqResponse<int> ProcessForId(BunqResponseRaw responseRaw)
         {
-            var responseContent = GetResponseContent(responseRaw);
-            var jsonObjectString = GetWrappedContentString(responseContent, FIELD_ID);
-            var responseValue = BunqJsonConvert.DeserializeObject<Id>(jsonObjectString).IdInt;
+            var responseItemObject = GetResponseItemObject(responseRaw);
+            var unwrappedItemJsonString = GetUnwrappedItemJsonString(responseItemObject, FIELD_ID);
+            var responseValue = BunqJsonConvert.DeserializeObject<Id>(unwrappedItemJsonString).IdInt;
 
             return new BunqResponse<int>(responseValue, responseRaw.Headers);
         }
 
-        private static JObject GetResponseContent(BunqResponseRaw responseRaw)
+        private static JObject GetResponseItemObject(BunqResponseRaw responseRaw)
         {
             var json = Encoding.UTF8.GetString(responseRaw.BodyBytes);
             var responseWithWrapper = BunqJsonConvert.DeserializeObject<JObject>(json);
@@ -54,7 +55,7 @@ namespace Bunq.Sdk.Model
             return responseWithWrapper.GetValue(FIELD_RESPONSE).ToObject<JArray>().Value<JObject>(INDEX_FIRST);
         }
 
-        private static string GetWrappedContentString(JObject json, string wrapper)
+        private static string GetUnwrappedItemJsonString(JObject json, string wrapper)
         {
             return json.GetValue(wrapper).ToString();
         }
@@ -64,9 +65,9 @@ namespace Bunq.Sdk.Model
         /// </summary>
         protected static BunqResponse<string> ProcessForUuid(BunqResponseRaw responseRaw)
         {
-            var responseContent = GetResponseContent(responseRaw);
-            var jsonObjectString = GetWrappedContentString(responseContent, FIELD_UUID);
-            var responseValue = BunqJsonConvert.DeserializeObject<Uuid>(jsonObjectString).UuidString;
+            var responseItemObject = GetResponseItemObject(responseRaw);
+            var unwrappedItemJsonString = GetUnwrappedItemJsonString(responseItemObject, FIELD_UUID);
+            var responseValue = BunqJsonConvert.DeserializeObject<Uuid>(unwrappedItemJsonString).UuidString;
 
             return new BunqResponse<string>(responseValue, responseRaw.Headers);
         }
@@ -76,17 +77,17 @@ namespace Bunq.Sdk.Model
         /// </summary>
         protected static BunqResponse<T> FromJson<T>(BunqResponseRaw responseRaw, string wrapper)
         {
-            var responseContent = GetResponseContent(responseRaw);
-            var objectContentString = GetWrappedContentString(responseContent, wrapper);
-            var responseValue = BunqJsonConvert.DeserializeObject<T>(objectContentString);
+            var responseItemObject = GetResponseItemObject(responseRaw);
+            var unwrappedItemJsonString = GetUnwrappedItemJsonString(responseItemObject, wrapper);
+            var responseValue = BunqJsonConvert.DeserializeObject<T>(unwrappedItemJsonString);
 
             return new BunqResponse<T>(responseValue, responseRaw.Headers);
         }
 
         protected static BunqResponse<T> FromJson<T>(BunqResponseRaw responseRaw)
         {
-            var responseContent = GetResponseContent(responseRaw);
-            var responseValue = BunqJsonConvert.DeserializeObject<T>(responseContent.ToString());
+            var responseItemObject = GetResponseItemObject(responseRaw);
+            var responseValue = BunqJsonConvert.DeserializeObject<T>(responseItemObject.ToString());
 
             return new BunqResponse<T>(responseValue, responseRaw.Headers);
         }
@@ -96,31 +97,42 @@ namespace Bunq.Sdk.Model
         /// </summary>
         protected static BunqResponse<List<T>> FromJsonList<T>(BunqResponseRaw responseRaw, string wrapper)
         {
-            var responseObjectsArray = GetResponseContentArray(responseRaw);
-            var responseValue = responseObjectsArray
-                .Select(objectContentWithWrapper =>
-                    GetWrappedContentString(objectContentWithWrapper.ToObject<JObject>(), wrapper))
-                .Select(BunqJsonConvert.DeserializeObject<T>).ToList();
+            var responseObject = DeserializeResponseObject(responseRaw);
+            var responseValue = responseObject
+                .GetValue(FIELD_RESPONSE).ToObject<JArray>()
+                .Select(unwrappedItemObject =>
+                    GetUnwrappedItemJsonString(unwrappedItemObject.ToObject<JObject>(), wrapper))
+                .Select(BunqJsonConvert.DeserializeObject<T>)
+                .ToList();
+            var pagination = DeserializePagination(responseObject);
 
-            return new BunqResponse<List<T>>(responseValue, responseRaw.Headers);
+            return new BunqResponse<List<T>>(responseValue, responseRaw.Headers, pagination);
         }
 
         protected static BunqResponse<List<T>> FromJsonList<T>(BunqResponseRaw responseRaw)
         {
-            var responseObjectsArray = GetResponseContentArray(responseRaw);
-            var responseValue = responseObjectsArray
-                .Select(objectContent => BunqJsonConvert.DeserializeObject<T>(objectContent.ToString()))
+            var responseObject = DeserializeResponseObject(responseRaw);
+            var responseValue = responseObject
+                .GetValue(FIELD_RESPONSE).ToObject<JArray>()
+                .Select(itemObject => BunqJsonConvert.DeserializeObject<T>(itemObject.ToString()))
                 .ToList();
+            var pagination = DeserializePagination(responseObject);
 
-            return new BunqResponse<List<T>>(responseValue, responseRaw.Headers);
+            return new BunqResponse<List<T>>(responseValue, responseRaw.Headers, pagination);
         }
 
-        private static JArray GetResponseContentArray(BunqResponseRaw responseRaw)
+        private static Pagination DeserializePagination(JObject responseObject)
+        {
+            var paginationBody = responseObject.GetValue(FIELD_PAGINATION).ToString();
+
+            return BunqJsonConvert.DeserializeObject<Pagination>(paginationBody);
+        }
+
+        private static JObject DeserializeResponseObject(BunqResponseRaw responseRaw)
         {
             var json = Encoding.UTF8.GetString(responseRaw.BodyBytes);
-            var responseWithWrapper = BunqJsonConvert.DeserializeObject<JObject>(json);
 
-            return responseWithWrapper.GetValue(FIELD_RESPONSE).ToObject<JArray>();
+            return BunqJsonConvert.DeserializeObject<JObject>(json);
         }
 
         public override string ToString()

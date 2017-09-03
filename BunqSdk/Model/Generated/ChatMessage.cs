@@ -69,19 +69,17 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "content")]
         public BunqModel Content { get; private set; }
 
-        public static BunqResponse<List<ChatMessage>> List(ApiContext apiContext, int userId, int chatConversationId)
-        {
-            return List(apiContext, userId, chatConversationId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get all the messages that are part of a specific conversation.
         /// </summary>
         public static BunqResponse<List<ChatMessage>> List(ApiContext apiContext, int userId, int chatConversationId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, chatConversationId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, chatConversationId), urlParams,
                 customHeaders);
 
             return FromJsonList<ChatMessage>(responseRaw, OBJECT_TYPE);

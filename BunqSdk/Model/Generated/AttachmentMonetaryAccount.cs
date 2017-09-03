@@ -34,12 +34,6 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, byte[] requestBytes, int userId,
-            int monetaryAccountId)
-        {
-            return Create(apiContext, requestBytes, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Create a new monetary account attachment. Create a POST request with a payload that contains the binary
         /// representation of the file, without any JSON wrapping. Make sure you define the MIME type (i.e. image/jpeg)
@@ -47,8 +41,10 @@ namespace Bunq.Sdk.Model.Generated
         /// X-Bunq-Attachment-Description header.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, byte[] requestBytes, int userId,
-            int monetaryAccountId, IDictionary<string, string> customHeaders)
+            int monetaryAccountId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
                 requestBytes, customHeaders);

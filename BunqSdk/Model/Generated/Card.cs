@@ -138,11 +138,12 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "pin_code_assignment")]
         public List<CardPinAssignment> PinCodeAssignment { get; private set; }
 
-        public static BunqResponse<Card> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int cardId)
-        {
-            return Update(apiContext, requestMap, userId, cardId, new Dictionary<string, string>());
-        }
+        /// <summary>
+        /// ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
+        /// not supplied.
+        /// </summary>
+        [JsonProperty(PropertyName = "monetary_account_id_fallback")]
+        public int? MonetaryAccountIdFallback { get; private set; }
 
         /// <summary>
         /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary
@@ -150,8 +151,10 @@ namespace Bunq.Sdk.Model.Generated
         /// endpoint.
         /// </summary>
         public static BunqResponse<Card> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int cardId, IDictionary<string, string> customHeaders)
+            int userId, int cardId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             requestBytes = SecurityUtils.Encrypt(apiContext, requestBytes, customHeaders);
@@ -161,36 +164,32 @@ namespace Bunq.Sdk.Model.Generated
             return FromJson<Card>(responseRaw, OBJECT_TYPE);
         }
 
-        public static BunqResponse<Card> Get(ApiContext apiContext, int userId, int cardId)
-        {
-            return Get(apiContext, userId, cardId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Return the details of a specific card.
         /// </summary>
         public static BunqResponse<Card> Get(ApiContext apiContext, int userId, int cardId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, cardId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, cardId),
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<Card>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<List<Card>> List(ApiContext apiContext, int userId)
-        {
-            return List(apiContext, userId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Return all the cards available to the user.
         /// </summary>
         public static BunqResponse<List<Card>> List(ApiContext apiContext, int userId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
 
             return FromJsonList<Card>(responseRaw, OBJECT_TYPE);
         }

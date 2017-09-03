@@ -56,19 +56,14 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "unread_message_count")]
         public int? UnreadMessageCount { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int requestResponseId)
-        {
-            return Create(apiContext, requestMap, userId, monetaryAccountId, requestResponseId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Create a chat for a specific request response.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int requestResponseId, IDictionary<string, string> customHeaders)
+            int userId, int monetaryAccountId, int requestResponseId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -78,21 +73,15 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<RequestResponseChat> Update(ApiContext apiContext,
-            IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int requestResponseId,
-            int requestResponseChatId)
-        {
-            return Update(apiContext, requestMap, userId, monetaryAccountId, requestResponseId, requestResponseChatId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Update the last read message in the chat of a specific request response.
         /// </summary>
         public static BunqResponse<RequestResponseChat> Update(ApiContext apiContext,
             IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int requestResponseId,
-            int requestResponseChatId, IDictionary<string, string> customHeaders)
+            int requestResponseChatId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -103,22 +92,20 @@ namespace Bunq.Sdk.Model.Generated
             return FromJson<RequestResponseChat>(responseRaw, OBJECT_TYPE);
         }
 
-        public static BunqResponse<List<RequestResponseChat>> List(ApiContext apiContext, int userId,
-            int monetaryAccountId, int requestResponseId)
-        {
-            return List(apiContext, userId, monetaryAccountId, requestResponseId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get the chat for a specific request response.
         /// </summary>
         public static BunqResponse<List<RequestResponseChat>> List(ApiContext apiContext, int userId,
-            int monetaryAccountId, int requestResponseId, IDictionary<string, string> customHeaders)
+            int monetaryAccountId, int requestResponseId, IDictionary<string, string> urlParams = null,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, requestResponseId),
-                    customHeaders);
+                    urlParams, customHeaders);
 
             return FromJsonList<RequestResponseChat>(responseRaw, OBJECT_TYPE);
         }

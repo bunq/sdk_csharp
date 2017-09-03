@@ -45,18 +45,14 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "total_amount_inquired")]
         public Amount TotalAmountInquired { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId)
-        {
-            return Create(apiContext, requestMap, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Create a request batch by sending an array of single request objects, that will become part of the batch.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders)
+            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
@@ -65,19 +61,15 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int requestInquiryBatchId)
-        {
-            return Update(apiContext, requestMap, userId, monetaryAccountId, requestInquiryBatchId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Revoke a request batch. The status of all the requests will be set to REVOKED.
         /// </summary>
         public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int requestInquiryBatchId, IDictionary<string, string> customHeaders)
+            int userId, int monetaryAccountId, int requestInquiryBatchId,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -87,40 +79,34 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<RequestInquiryBatch> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int requestInquiryBatchId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, requestInquiryBatchId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Return the details of a specific request batch.
         /// </summary>
         public static BunqResponse<RequestInquiryBatch> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int requestInquiryBatchId, IDictionary<string, string> customHeaders)
+            int requestInquiryBatchId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, requestInquiryBatchId),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return FromJson<RequestInquiryBatch>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<List<RequestInquiryBatch>> List(ApiContext apiContext, int userId,
-            int monetaryAccountId)
-        {
-            return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Return all the request batches for a monetary account.
         /// </summary>
         public static BunqResponse<List<RequestInquiryBatch>> List(ApiContext apiContext, int userId,
-            int monetaryAccountId, IDictionary<string, string> customHeaders)
+            int monetaryAccountId, IDictionary<string, string> urlParams = null,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams,
                 customHeaders);
 
             return FromJsonList<RequestInquiryBatch>(responseRaw, OBJECT_TYPE);

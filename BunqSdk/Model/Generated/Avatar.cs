@@ -44,16 +44,13 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "image")]
         public List<Image> Image { get; private set; }
 
-        public static BunqResponse<string> Create(ApiContext apiContext, IDictionary<string, object> requestMap)
-        {
-            return Create(apiContext, requestMap, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<string> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
@@ -61,18 +58,16 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForUuid(responseRaw);
         }
 
-        public static BunqResponse<Avatar> Get(ApiContext apiContext, string avatarUuid)
-        {
-            return Get(apiContext, avatarUuid, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<Avatar> Get(ApiContext apiContext, string avatarUuid,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, avatarUuid), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, avatarUuid),
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<Avatar>(responseRaw, OBJECT_TYPE);
         }

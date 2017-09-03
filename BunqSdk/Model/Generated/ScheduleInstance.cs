@@ -66,40 +66,30 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "result_object")]
         public BunqModel ResultObject { get; private set; }
 
-        public static BunqResponse<ScheduleInstance> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int scheduleId, int scheduleInstanceId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, scheduleId, scheduleInstanceId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<ScheduleInstance> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int scheduleId, int scheduleInstanceId, IDictionary<string, string> customHeaders)
+            int scheduleId, int scheduleInstanceId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(
                     string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, scheduleId, scheduleInstanceId),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return FromJson<ScheduleInstance>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int scheduleId, int scheduleInstanceId)
-        {
-            return Update(apiContext, requestMap, userId, monetaryAccountId, scheduleId, scheduleInstanceId,
-                new Dictionary<string, string>());
         }
 
         /// <summary>
         /// </summary>
         public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
             int userId, int monetaryAccountId, int scheduleId, int scheduleInstanceId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -110,20 +100,18 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<List<ScheduleInstance>> List(ApiContext apiContext, int userId,
-            int monetaryAccountId, int scheduleId)
-        {
-            return List(apiContext, userId, monetaryAccountId, scheduleId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<List<ScheduleInstance>> List(ApiContext apiContext, int userId,
-            int monetaryAccountId, int scheduleId, IDictionary<string, string> customHeaders)
+            int monetaryAccountId, int scheduleId, IDictionary<string, string> urlParams = null,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, scheduleId),
-                customHeaders);
+                urlParams, customHeaders);
 
             return FromJsonList<ScheduleInstance>(responseRaw, OBJECT_TYPE);
         }
