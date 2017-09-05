@@ -3,7 +3,7 @@
     "USER_ID": "XXXX",
     "MONETARY_ACCOUNT_ID": "XXXX",
     "MONETARY_ACCOUNT_ID2": "XXXX",
-    "ipAddress": "<ip address>",
+    "PERMITTED_IPS": "<ip address>,<another ip address>",
     "AttachmentPublicTest": {
         "CONTENT_TYPE": "image/png",
         "DESCRIPTION": "TEST PNG PHP",
