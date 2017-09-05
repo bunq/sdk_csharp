@@ -52,6 +52,7 @@ namespace Bunq.Sdk.Tests.Http
                 {Pagination.PARAM_OLDER_ID, PAGINATION_OLDER_ID_CUSTOM.ToString()}
             };
 
+            Assert.True(pagination.HasPreviousPage());
             Assert.Equal(urlParamsPreviousPageExpected, pagination.UrlParamsPreviousPage);
         }
 
@@ -65,6 +66,7 @@ namespace Bunq.Sdk.Tests.Http
                 {Pagination.PARAM_NEWER_ID, PAGINATION_NEWER_ID_CUSTOM.ToString()}
             };
 
+            Assert.True(pagination.HasNextPageAssured());
             Assert.Equal(urlParamsNextPageExpected, pagination.UrlParamsNextPage);
         }
 
