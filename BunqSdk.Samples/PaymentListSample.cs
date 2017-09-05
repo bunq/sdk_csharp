@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Samples
             PrintPayments(paymentResponse.Value);
             var pagination = paymentResponse.Pagination;
 
-            if (pagination.HasPreviousItem())
+            if (pagination.HasPreviousPage())
             {
                 Console.WriteLine(MESSAGE_SECOND_LATEST_PAGE_IDS);
                 var previousPaymentResponse = Payment.List(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID,

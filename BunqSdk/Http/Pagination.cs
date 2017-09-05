@@ -9,7 +9,8 @@ namespace Bunq.Sdk.Http
         /// Error constants.
         /// </summary>
         private const string ERROR_NO_PREVIOUS_PAGE =
-            "Could not generate previous page URL params: there is no previous page.";
+            "Could not generate previous page URL params: previous page not found.";
+        private const string ERROR_NO_NEXT_PAGE = "Could not generate next page URL params: next page not found.";
 
         /// <summary>
         /// URL param constants.
@@ -18,13 +19,6 @@ namespace Bunq.Sdk.Http
         public const string PARAM_NEWER_ID = "newer_id";
         public const string PARAM_FUTURE_ID = "future_id";
         public const string PARAM_COUNT = "count";
-
-        /// <summary>
-        /// Field constants.
-        /// </summary>
-        private const string FIELD_OLDER_URL = "older_url";
-        private const string FIELD_NEWER_URL = "newer_url";
-        private const string FIELD_FUTURE_URL = "future_url";
 
         public int? OlderId { get; set; }
         public int? NewerId { get; set; }
@@ -38,11 +32,21 @@ namespace Bunq.Sdk.Http
         {
             get
             {
+                AssertHasNextPage();
+
                 var urlParams = new Dictionary<string, string>();
                 urlParams[PARAM_NEWER_ID] = NextId.ToString();
                 AddCountToParamsIfNeeded(urlParams);
 
                 return urlParams;
+            }
+        }
+
+        private void AssertHasNextPage()
+        {
+            if (NextId == null)
+            {
+                throw new BunqException(ERROR_NO_NEXT_PAGE);
             }
         }
 
@@ -56,10 +60,10 @@ namespace Bunq.Sdk.Http
 
         private int? NextId
         {
-            get { return HasNextItemAssured() ? NewerId : FutureId; }
+            get { return HasNextPageAssured() ? NewerId : FutureId; }
         }
 
-        public bool HasNextItemAssured()
+        public bool HasNextPageAssured()
         {
             return NewerId != null;
         }
@@ -85,10 +89,7 @@ namespace Bunq.Sdk.Http
         {
             get
             {
-                if (!HasPreviousItem())
-                {
-                    throw new BunqException(ERROR_NO_PREVIOUS_PAGE);
-                }
+                AssertHasPreviousPage();
 
                 var urlParams = new Dictionary<string, string>();
                 urlParams[PARAM_OLDER_ID] = OlderId.ToString();
@@ -98,7 +99,15 @@ namespace Bunq.Sdk.Http
             }
         }
 
-        public bool HasPreviousItem()
+        private void AssertHasPreviousPage()
+        {
+            if (!HasPreviousPage())
+            {
+                throw new BunqException(ERROR_NO_PREVIOUS_PAGE);
+            }
+        }
+
+        public bool HasPreviousPage()
         {
             return OlderId != null;
         }
