@@ -44,7 +44,7 @@ namespace Bunq.Sdk.Tests.Http
         public void TestApiScenarioPaymentListingWithPagination()
         {
             EnsureEnoughPayments();
-            var paymentsExpected = new HashSet<Payment>(GetPaymentsRequired());
+            var paymentsExpected = new List<Payment>(GetPaymentsRequired());
             var paginationCountOnly = new Pagination
             {
                 Count = PAYMENT_LISTING_PAGE_SIZE
@@ -56,9 +56,9 @@ namespace Bunq.Sdk.Tests.Http
             var paginationPrevious = paymentResponsePrevious.Pagination;
             var paymentResponsePreviousNext = ListPayments(paginationPrevious.UrlParamsNextPage);
 
-            var paymentsActual = new HashSet<Payment>();
-            paymentsActual.UnionWith(paymentResponsePreviousNext.Value);
-            paymentsActual.UnionWith(paymentResponsePrevious.Value);
+            var paymentsActual = new List<Payment>();
+            paymentsActual.AddRange(paymentResponsePreviousNext.Value);
+            paymentsActual.AddRange(paymentResponsePrevious.Value);
             var paymentsExpectedSerialized = BunqJsonConvert.SerializeObject(paymentsExpected);
             var paymentsActualSerialized = BunqJsonConvert.SerializeObject(paymentsActual);
 
