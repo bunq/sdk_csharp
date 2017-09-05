@@ -9,7 +9,7 @@ namespace Bunq.Sdk.Tests.Http
     /// Tests:
     ///     Pagination
     /// </summary>
-    public class PaginationTest : BunqSdkTestBase
+    public class PaginationTest
     {
         /// <summary>
         /// Values of pagination properties for testing.
