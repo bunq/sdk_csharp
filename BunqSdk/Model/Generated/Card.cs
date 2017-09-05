@@ -77,6 +77,12 @@ namespace Bunq.Sdk.Model.Generated
         public string Status { get; private set; }
 
         /// <summary>
+        /// The sub-status of the card. Can be NONE or REPLACED.
+        /// </summary>
+        [JsonProperty(PropertyName = "sub_status")]
+        public string SubStatus { get; private set; }
+
+        /// <summary>
         /// The order status of the card. Can be CARD_UPDATE_REQUESTED, CARD_UPDATE_SENT, CARD_UPDATE_ACCEPTED,
         /// ACCEPTED_FOR_PRODUCTION or DELIVERED_TO_CUSTOMER.
         /// </summary>

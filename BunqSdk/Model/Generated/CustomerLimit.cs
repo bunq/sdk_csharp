@@ -39,6 +39,12 @@ namespace Bunq.Sdk.Model.Generated
         public int? LimitCardDebitMastercard { get; private set; }
 
         /// <summary>
+        /// The limit of free replacement cards.
+        /// </summary>
+        [JsonProperty(PropertyName = "limit_card_debit_replacement")]
+        public int? LimitCardDebitReplacement { get; private set; }
+
+        /// <summary>
         /// Get all limits for the authenticated user.
         /// </summary>
         public static BunqResponse<List<CustomerLimit>> List(ApiContext apiContext, int userId,
