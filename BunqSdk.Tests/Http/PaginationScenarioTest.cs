@@ -50,15 +50,15 @@ namespace Bunq.Sdk.Tests.Http
                 Count = PAYMENT_LISTING_PAGE_SIZE
             };
 
-            var paymentResponseLatest = ListPayments(paginationCountOnly.UrlParamsCountOnly);
-            var paginationLatest = paymentResponseLatest.Pagination;
-            var paymentResponsePrevious = ListPayments(paginationLatest.UrlParamsPreviousPage);
-            var paginationPrevious = paymentResponsePrevious.Pagination;
-            var paymentResponsePreviousNext = ListPayments(paginationPrevious.UrlParamsNextPage);
+            var responseLatest = ListPayments(paginationCountOnly.UrlParamsCountOnly);
+            var paginationLatest = responseLatest.Pagination;
+            var responsePrevious = ListPayments(paginationLatest.UrlParamsPreviousPage);
+            var paginationPrevious = responsePrevious.Pagination;
+            var responsePreviousNext = ListPayments(paginationPrevious.UrlParamsNextPage);
 
             var paymentsActual = new List<Payment>();
-            paymentsActual.AddRange(paymentResponsePreviousNext.Value);
-            paymentsActual.AddRange(paymentResponsePrevious.Value);
+            paymentsActual.AddRange(responsePreviousNext.Value);
+            paymentsActual.AddRange(responsePrevious.Value);
             var paymentsExpectedSerialized = BunqJsonConvert.SerializeObject(paymentsExpected);
             var paymentsActualSerialized = BunqJsonConvert.SerializeObject(paymentsActual);
 
