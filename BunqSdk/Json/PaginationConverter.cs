@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Json
         private const int INDEX_PARAM_VALUE = 1;
 
         /// <summary>
-        /// Base dummy URL to hack though the incomplete relative URI functionality of dotnetcore.
+        /// Base dummy URL to hack through the incomplete relative URI functionality of dotnetcore.
         /// </summary>
         private const string URI_BASE_DUMMY = "https://example.com";
 

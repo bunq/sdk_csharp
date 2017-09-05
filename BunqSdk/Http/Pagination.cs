@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Http
             "Could not generate previous page URL params: there is no previous page.";
 
         /// <summary>
-        /// URL Param constants.
+        /// URL param constants.
         /// </summary>
         public const string PARAM_OLDER_ID = "older_id";
         public const string PARAM_NEWER_ID = "newer_id";
