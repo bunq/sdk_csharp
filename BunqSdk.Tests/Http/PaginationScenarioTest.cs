@@ -78,7 +78,7 @@ namespace Bunq.Sdk.Tests.Http
             return PAYMENT_REQUIRED_COUNT_MINIMUM - GetPaymentsRequired().Count;
         }
 
-        private static List<Payment> GetPaymentsRequired()
+        private static IList<Payment> GetPaymentsRequired()
         {
             var pagination = new Pagination
             {
