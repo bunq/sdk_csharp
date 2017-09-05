@@ -46,40 +46,40 @@ namespace Bunq.Sdk.Tests.Http
         public void TestGetUrlParamsPreviousPage()
         {
             var pagination = CreatePaginationWithAllPropertiesSet();
-            var urlParamsCountOnlyExpected = new Dictionary<string, string>
+            var urlParamsPreviousPageExpected = new Dictionary<string, string>
             {
                 {Pagination.PARAM_COUNT, PAGINATION_COUNT_CUSTOM.ToString()},
                 {Pagination.PARAM_OLDER_ID, PAGINATION_OLDER_ID_CUSTOM.ToString()}
             };
 
-            Assert.Equal(urlParamsCountOnlyExpected, pagination.UrlParamsPreviousPage);
+            Assert.Equal(urlParamsPreviousPageExpected, pagination.UrlParamsPreviousPage);
         }
 
         [Fact]
         public void TestGetUrlParamsNextPageNewer()
         {
             var pagination = CreatePaginationWithAllPropertiesSet();
-            var urlParamsCountOnlyExpected = new Dictionary<string, string>
+            var urlParamsNextPageExpected = new Dictionary<string, string>
             {
                 {Pagination.PARAM_COUNT, PAGINATION_COUNT_CUSTOM.ToString()},
                 {Pagination.PARAM_NEWER_ID, PAGINATION_NEWER_ID_CUSTOM.ToString()}
             };
 
-            Assert.Equal(urlParamsCountOnlyExpected, pagination.UrlParamsNextPage);
+            Assert.Equal(urlParamsNextPageExpected, pagination.UrlParamsNextPage);
         }
 
         [Fact]
         public void TestGetUrlParamsNextPageFuture()
         {
             var pagination = CreatePaginationWithNoNextPageAssured();
-            var urlParamsCountOnlyExpected = new Dictionary<string, string>
+            var urlParamsNextPageExpected = new Dictionary<string, string>
             {
                 {Pagination.PARAM_COUNT, PAGINATION_COUNT_CUSTOM.ToString()},
                 {Pagination.PARAM_NEWER_ID, PAGINATION_FUTURE_ID_CUSTOM.ToString()}
             };
 
             Assert.False(pagination.HasNextPageAssured());
-            Assert.Equal(urlParamsCountOnlyExpected, pagination.UrlParamsNextPage);
+            Assert.Equal(urlParamsNextPageExpected, pagination.UrlParamsNextPage);
         }
 
         private static Pagination CreatePaginationWithNoNextPageAssured()
