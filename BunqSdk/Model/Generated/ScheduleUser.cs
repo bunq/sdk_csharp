@@ -19,11 +19,6 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "ScheduleUser";
 
-        public static BunqResponse<List<ScheduleUser>> List(ApiContext apiContext, int userId)
-        {
-            return List(apiContext, userId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a collection of scheduled definition for all accessible monetary accounts of the user. You can add the
         /// parameter type to filter the response. When
@@ -31,10 +26,13 @@ namespace Bunq.Sdk.Model.Generated
         /// object that relate to these definitions are returned.
         /// </summary>
         public static BunqResponse<List<ScheduleUser>> List(ApiContext apiContext, int userId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
 
             return FromJsonList<ScheduleUser>(responseRaw, OBJECT_TYPE);
         }

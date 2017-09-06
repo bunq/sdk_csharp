@@ -154,18 +154,14 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
         public int? EligibleWhitelistId { get; private set; }
 
-        public static BunqResponse<TokenQrRequestIdeal> Create(ApiContext apiContext,
-            IDictionary<string, object> requestMap, int userId)
-        {
-            return Create(apiContext, requestMap, userId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Create a request from an ideal transaction.
         /// </summary>
         public static BunqResponse<TokenQrRequestIdeal> Create(ApiContext apiContext,
-            IDictionary<string, object> requestMap, int userId, IDictionary<string, string> customHeaders)
+            IDictionary<string, object> requestMap, int userId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);

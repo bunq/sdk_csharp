@@ -135,7 +135,7 @@ namespace Bunq.Sdk.Model.Generated
         public Geolocation Geolocation { get; private set; }
 
         /// <summary>
-        /// The type of the RequestInquiry. Can be DIRECT_DEBIT, IDEAL or INTERNAL.
+        /// The type of the RequestInquiry. Can be DIRECT_DEBIT, DIRECT_DEBIT_B2B, IDEAL or INTERNAL.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
@@ -172,25 +172,32 @@ namespace Bunq.Sdk.Model.Generated
         public bool? AllowChat { get; private set; }
 
         /// <summary>
+        /// The credit scheme id provided by the counterparty for DIRECT_DEBIT inquiries.
+        /// </summary>
+        [JsonProperty(PropertyName = "credit_scheme_identifier")]
+        public string CreditSchemeIdentifier { get; private set; }
+
+        /// <summary>
+        /// The mandate id provided by the counterparty for DIRECT_DEBIT inquiries.
+        /// </summary>
+        [JsonProperty(PropertyName = "mandate_identifier")]
+        public string MandateIdentifier { get; private set; }
+
+        /// <summary>
         /// The whitelist id for this action or null.
         /// </summary>
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
         public int? EligibleWhitelistId { get; private set; }
-
-        public static BunqResponse<RequestResponse> Update(ApiContext apiContext,
-            IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int requestResponseId)
-        {
-            return Update(apiContext, requestMap, userId, monetaryAccountId, requestResponseId,
-                new Dictionary<string, string>());
-        }
 
         /// <summary>
         /// Update the status to accept or reject the RequestResponse.
         /// </summary>
         public static BunqResponse<RequestResponse> Update(ApiContext apiContext,
             IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int requestResponseId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -200,40 +207,34 @@ namespace Bunq.Sdk.Model.Generated
             return FromJson<RequestResponse>(responseRaw, OBJECT_TYPE);
         }
 
-        public static BunqResponse<List<RequestResponse>> List(ApiContext apiContext, int userId, int monetaryAccountId)
-        {
-            return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get all RequestResponses for a MonetaryAccount.
         /// </summary>
         public static BunqResponse<List<RequestResponse>> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams,
                 customHeaders);
 
             return FromJsonList<RequestResponse>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<RequestResponse> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int requestResponseId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, requestResponseId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Get the details for a specific existing RequestResponse.
         /// </summary>
         public static BunqResponse<RequestResponse> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int requestResponseId, IDictionary<string, string> customHeaders)
+            int requestResponseId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, requestResponseId),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return FromJson<RequestResponse>(responseRaw, OBJECT_TYPE);
         }

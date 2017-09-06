@@ -20,23 +20,18 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "CashRegisterQrCodeContent";
 
-        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, int qrCodeId)
-        {
-            return List(apiContext, userId, monetaryAccountId, cashRegisterId, qrCodeId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Show the raw contents of a QR code
         /// </summary>
         public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, int qrCodeId, IDictionary<string, string> customHeaders)
+            int cashRegisterId, int qrCodeId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId, qrCodeId),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }

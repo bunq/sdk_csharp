@@ -20,21 +20,18 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "DraftShareInviteBankQrCodeContent";
 
-        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int draftShareInviteBankId)
-        {
-            return List(apiContext, userId, draftShareInviteBankId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Returns the raw content of the QR code that links to this draft share invite. The raw content is the binary
         /// representation of a file, without any JSON wrapping.
         /// </summary>
         public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int draftShareInviteBankId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, draftShareInviteBankId),
-                customHeaders);
+                new Dictionary<string, string>(), customHeaders);
 
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }

@@ -89,29 +89,19 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "description")]
         public string Description { get; private set; }
 
-        public static BunqResponse<ShareInviteBankResponse> Get(ApiContext apiContext, int userId,
-            int shareInviteBankResponseId)
-        {
-            return Get(apiContext, userId, shareInviteBankResponseId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Return the details of a specific share a user was invited to.
         /// </summary>
         public static BunqResponse<ShareInviteBankResponse> Get(ApiContext apiContext, int userId,
-            int shareInviteBankResponseId, IDictionary<string, string> customHeaders)
+            int shareInviteBankResponseId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, shareInviteBankResponseId),
-                customHeaders);
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<ShareInviteBankResponse>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<ShareInviteBankResponse> Update(ApiContext apiContext,
-            IDictionary<string, object> requestMap, int userId, int shareInviteBankResponseId)
-        {
-            return Update(apiContext, requestMap, userId, shareInviteBankResponseId, new Dictionary<string, string>());
         }
 
         /// <summary>
@@ -119,8 +109,10 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         public static BunqResponse<ShareInviteBankResponse> Update(ApiContext apiContext,
             IDictionary<string, object> requestMap, int userId, int shareInviteBankResponseId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, shareInviteBankResponseId),
@@ -129,19 +121,17 @@ namespace Bunq.Sdk.Model.Generated
             return FromJson<ShareInviteBankResponse>(responseRaw, OBJECT_TYPE);
         }
 
-        public static BunqResponse<List<ShareInviteBankResponse>> List(ApiContext apiContext, int userId)
-        {
-            return List(apiContext, userId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Return all the shares a user was invited to.
         /// </summary>
         public static BunqResponse<List<ShareInviteBankResponse>> List(ApiContext apiContext, int userId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
 
             return FromJsonList<ShareInviteBankResponse>(responseRaw, OBJECT_TYPE);
         }

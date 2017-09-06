@@ -20,19 +20,17 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "AttachmentPublicContent";
 
-        public static BunqResponse<byte[]> List(ApiContext apiContext, string attachmentPublicUuid)
-        {
-            return List(apiContext, attachmentPublicUuid, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get the raw content of a specific attachment.
         /// </summary>
         public static BunqResponse<byte[]> List(ApiContext apiContext, string attachmentPublicUuid,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, attachmentPublicUuid), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, attachmentPublicUuid),
+                new Dictionary<string, string>(), customHeaders);
 
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }

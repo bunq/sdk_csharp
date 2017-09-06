@@ -44,36 +44,28 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "status")]
         public string Status { get; private set; }
 
-        public static BunqResponse<PermittedIp> Get(ApiContext apiContext, int userId, int credentialPasswordIpId,
-            int permittedIpId)
-        {
-            return Get(apiContext, userId, credentialPasswordIpId, permittedIpId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<PermittedIp> Get(ApiContext apiContext, int userId, int credentialPasswordIpId,
-            int permittedIpId, IDictionary<string, string> customHeaders)
+            int permittedIpId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, credentialPasswordIpId, permittedIpId),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return FromJson<PermittedIp>(responseRaw, OBJECT_TYPE);
         }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int credentialPasswordIpId)
-        {
-            return Create(apiContext, requestMap, userId, credentialPasswordIpId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int credentialPasswordIpId, IDictionary<string, string> customHeaders)
+            int userId, int credentialPasswordIpId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, credentialPasswordIpId),
@@ -82,36 +74,29 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<List<PermittedIp>> List(ApiContext apiContext, int userId,
-            int credentialPasswordIpId)
-        {
-            return List(apiContext, userId, credentialPasswordIpId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<List<PermittedIp>> List(ApiContext apiContext, int userId,
-            int credentialPasswordIpId, IDictionary<string, string> customHeaders)
+            int credentialPasswordIpId, IDictionary<string, string> urlParams = null,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, credentialPasswordIpId),
-                customHeaders);
+                urlParams, customHeaders);
 
             return FromJsonList<PermittedIp>(responseRaw, OBJECT_TYPE);
         }
 
-        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int credentialPasswordIpId, int permittedIpId)
-        {
-            return Update(apiContext, requestMap, userId, credentialPasswordIpId, permittedIpId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int credentialPasswordIpId, int permittedIpId, IDictionary<string, string> customHeaders)
+            int userId, int credentialPasswordIpId, int permittedIpId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =

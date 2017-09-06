@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bunq.Sdk.Context;
+using Bunq.Sdk.Http;
 using Bunq.Sdk.Model;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
@@ -26,6 +27,7 @@ namespace Bunq.Sdk.Json
             RegisterConverter(typeof(decimal?), new NonIntegerNumberConverter());
             RegisterConverter(typeof(double?), new NonIntegerNumberConverter());
             RegisterConverter(typeof(float?), new NonIntegerNumberConverter());
+            RegisterConverter(typeof(Pagination), new PaginationConverter());
         }
 
         private void RegisterConverter(Type objectType, JsonConverter converter)

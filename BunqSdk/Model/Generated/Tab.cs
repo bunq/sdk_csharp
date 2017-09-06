@@ -35,42 +35,35 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "TabUsageMultiple")]
         public TabUsageMultiple TabUsageMultiple { get; private set; }
 
-        public static BunqResponse<Tab> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid)
-        {
-            return Get(apiContext, userId, monetaryAccountId, cashRegisterId, tabUuid,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a specific tab. This returns a TabUsageSingle or TabUsageMultiple.
         /// </summary>
         public static BunqResponse<Tab> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid, IDictionary<string, string> customHeaders)
+            int cashRegisterId, string tabUuid, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUuid),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return FromJson<Tab>(responseRaw);
-        }
-
-        public static BunqResponse<List<Tab>> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId)
-        {
-            return List(apiContext, userId, monetaryAccountId, cashRegisterId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Get a collection of tabs.
         /// </summary>
         public static BunqResponse<List<Tab>> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, IDictionary<string, string> customHeaders)
+            int cashRegisterId, IDictionary<string, string> urlParams = null,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
-                apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId),
+                apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId), urlParams,
                     customHeaders);
 
             return FromJsonList<Tab>(responseRaw);

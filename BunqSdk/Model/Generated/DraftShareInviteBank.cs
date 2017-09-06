@@ -77,17 +77,13 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId)
-        {
-            return Create(apiContext, requestMap, userId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, IDictionary<string, string> customHeaders)
+            int userId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
@@ -95,29 +91,19 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<DraftShareInviteBank> Get(ApiContext apiContext, int userId,
-            int draftShareInviteBankId)
-        {
-            return Get(apiContext, userId, draftShareInviteBankId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get the details of a specific draft of a share invite.
         /// </summary>
         public static BunqResponse<DraftShareInviteBank> Get(ApiContext apiContext, int userId,
-            int draftShareInviteBankId, IDictionary<string, string> customHeaders)
+            int draftShareInviteBankId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, draftShareInviteBankId),
-                customHeaders);
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<DraftShareInviteBank> Update(ApiContext apiContext,
-            IDictionary<string, object> requestMap, int userId, int draftShareInviteBankId)
-        {
-            return Update(apiContext, requestMap, userId, draftShareInviteBankId, new Dictionary<string, string>());
         }
 
         /// <summary>
@@ -125,8 +111,10 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         public static BunqResponse<DraftShareInviteBank> Update(ApiContext apiContext,
             IDictionary<string, object> requestMap, int userId, int draftShareInviteBankId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, draftShareInviteBankId),
@@ -135,18 +123,16 @@ namespace Bunq.Sdk.Model.Generated
             return FromJson<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
         }
 
-        public static BunqResponse<List<DraftShareInviteBank>> List(ApiContext apiContext, int userId)
-        {
-            return List(apiContext, userId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<List<DraftShareInviteBank>> List(ApiContext apiContext, int userId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
 
             return FromJsonList<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
         }

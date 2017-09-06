@@ -19,17 +19,14 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "Session";
 
-        public static BunqResponse<object> Delete(ApiContext apiContext, int sessionId)
-        {
-            return Delete(apiContext, sessionId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Deletes the current session. No response is returned for this request.
         /// </summary>
         public static BunqResponse<object> Delete(ApiContext apiContext, int sessionId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, sessionId), customHeaders);
 
