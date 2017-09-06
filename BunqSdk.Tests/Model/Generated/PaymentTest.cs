@@ -15,8 +15,8 @@ namespace Bunq.Sdk.Tests.Model.Generated
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string AMOUNT_EUR = "0.01";
-        private const string CURRENCY = "EUR";
+        private const string PAYMENT_AMOUNT_EUR = "0.01";
+        private const string PAYMENT_CURRENCY = "EUR";
         private const string PAYMENT_DESCRIPTION = "C# test Payment";
 
         private static readonly int USER_ID = Config.GetUserId();
@@ -39,7 +39,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(AMOUNT_EUR, CURRENCY)},
+                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY)},
                 {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
                 {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_OTHER}
             };
@@ -57,7 +57,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(AMOUNT_EUR, CURRENCY)},
+                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY)},
                 {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
                 {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_SELF}
             };

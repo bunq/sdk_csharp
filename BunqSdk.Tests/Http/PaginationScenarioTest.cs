@@ -31,8 +31,8 @@ namespace Bunq.Sdk.Tests.Http
         /// <summary>
         /// Constants for payment creation.
         /// </summary>
-        private const string AMOUNT_EUR = "0.01";
-        private const string CURRENCY = "EUR";
+        private const string PAYMENT_AMOUNT_EUR = "0.01";
+        private const string PAYMENT_CURRENCY = "EUR";
         private const string PAYMENT_DESCRIPTION = "C# test Payment";
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Bunq.Sdk.Tests.Http
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(AMOUNT_EUR, CURRENCY)},
+                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY)},
                 {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
                 {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_OTHER}
             };
