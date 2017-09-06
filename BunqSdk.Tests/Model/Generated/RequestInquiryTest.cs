@@ -25,7 +25,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
         private static readonly int USER_ID = Config.GetUserId();
         private static readonly int MONETARY_ACCOUNT_ID = Config.GetMonetarytAccountId();
         private static readonly int SECOND_MONETARY_ACCOUNT_ID = Config.GetSecondMonetaryAccountId();
-        private static readonly Pointer COUNTER_PARTY_SELF = Config.GetCounterAliasSelf();
+        private static readonly Pointer COUNTER_PARTY_SELF = Config.GetCounterPartyAliasSelf();
 
         /// <summary>
         /// API context to use for the test API calls.

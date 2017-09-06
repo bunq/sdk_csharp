@@ -42,7 +42,7 @@ namespace Bunq.Sdk.Tests
             return GetConfig()[FIELD_TAB_USAGE_SINGLE][FIELD_CASH_REGISTER_ID].ToObject<int>();
         }
 
-        public static Pointer GetCounterAliasOther()
+        public static Pointer GetCounterPartyAliasOther()
         {
             var alias = GetConfig()[FIELD_COUNTER_PARTY_OTHER][FIELD_COUNTER_ALIAS].ToString();
             var type = GetConfig()[FIELD_COUNTER_PARTY_OTHER][FIELD_COUNTER_TYPE].ToString();
@@ -50,7 +50,7 @@ namespace Bunq.Sdk.Tests
             return new Pointer(type, alias);
         }
 
-        public static Pointer GetCounterAliasSelf()
+        public static Pointer GetCounterPartyAliasSelf()
         {
             var alias = GetConfig()[FIELD_COUNTER_PARTY_SELF][FIELD_COUNTER_ALIAS].ToString();
             var type = GetConfig()[FIELD_COUNTER_PARTY_SELF][FIELD_COUNTER_TYPE].ToString();

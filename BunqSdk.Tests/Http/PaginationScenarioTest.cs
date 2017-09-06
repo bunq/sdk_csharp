@@ -19,7 +19,7 @@ namespace Bunq.Sdk.Tests.Http
         /// </summary>
         private static readonly int USER_ID = Config.GetUserId();
         private static readonly int MONETARY_ACCOUNT_ID = Config.GetMonetarytAccountId();
-        private static readonly Pointer COUNTER_PARTY_OTHER = Config.GetCounterAliasOther();
+        private static readonly Pointer COUNTER_PARTY_OTHER = Config.GetCounterPartyAliasOther();
 
         /// <summary>
         /// Constants for scenario testing.
