@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Tests
         /// Configuration items.
         /// </summary>
         private static readonly string API_KEY = Config.GetApiKey();
-        private static readonly string FIELD_PERMITTED_IP = Config.GetPermittedIp();
+        private static readonly string[] FIELD_PERMITTED_IPS = Config.GetPermittedIps();
 
         /// <summary>
         /// Gets an Api Context, re-creates if needed and returns it.
@@ -54,9 +54,8 @@ namespace Bunq.Sdk.Tests
 
         private static ApiContext CreateApiContext()
         {
-            var permittedIps = new List<string> {FIELD_PERMITTED_IP};
-
-            return ApiContext.Create(ApiEnvironmentType.SANDBOX, API_KEY, DEVICE_DESCRIPTION_TEST, permittedIps);
+            return ApiContext.Create(ApiEnvironmentType.SANDBOX, API_KEY, DEVICE_DESCRIPTION_TEST,
+                new List<string>(FIELD_PERMITTED_IPS));
         }
     }
 }

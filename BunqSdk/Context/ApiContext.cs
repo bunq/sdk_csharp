@@ -75,7 +75,7 @@ namespace Bunq.Sdk.Context
         /// Create and initialize an API Context with current IP as permitted.
         /// </summary>
         public static ApiContext Create(ApiEnvironmentType environmentType, string apiKey, string deviceDescription,
-            string proxy=null)
+            string proxy = null)
         {
             return Create(environmentType, apiKey, deviceDescription, new List<string>(), proxy);
         }
@@ -84,7 +84,7 @@ namespace Bunq.Sdk.Context
         /// Create and initialize an API Context.
         /// </summary>
         public static ApiContext Create(ApiEnvironmentType environmentType, string apiKey, string deviceDescription,
-            IList<string> permittedIps, string proxy=null)
+            IList<string> permittedIps, string proxy = null)
         {
             var apiContext = new ApiContext
             {

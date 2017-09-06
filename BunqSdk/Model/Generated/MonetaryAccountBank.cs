@@ -172,18 +172,14 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "setting")]
         public MonetaryAccountSetting Setting { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId)
-        {
-            return Create(apiContext, requestMap, userId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Create new MonetaryAccountBank.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, IDictionary<string, string> customHeaders)
+            int userId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
@@ -191,37 +187,29 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<MonetaryAccountBank> Get(ApiContext apiContext, int userId,
-            int monetaryAccountBankId)
-        {
-            return Get(apiContext, userId, monetaryAccountBankId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a specific MonetaryAccountBank.
         /// </summary>
         public static BunqResponse<MonetaryAccountBank> Get(ApiContext apiContext, int userId,
-            int monetaryAccountBankId, IDictionary<string, string> customHeaders)
+            int monetaryAccountBankId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountBankId),
-                customHeaders);
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<MonetaryAccountBank>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountBankId)
-        {
-            return Update(apiContext, requestMap, userId, monetaryAccountBankId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Update a specific existing MonetaryAccountBank.
         /// </summary>
         public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountBankId, IDictionary<string, string> customHeaders)
+            int userId, int monetaryAccountBankId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountBankId),
@@ -230,19 +218,17 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<List<MonetaryAccountBank>> List(ApiContext apiContext, int userId)
-        {
-            return List(apiContext, userId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Gets a listing of all MonetaryAccountBanks of a given user.
         /// </summary>
         public static BunqResponse<List<MonetaryAccountBank>> List(ApiContext apiContext, int userId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
 
             return FromJsonList<MonetaryAccountBank>(responseRaw, OBJECT_TYPE);
         }

@@ -20,28 +20,19 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "Schedule";
 
-        public static BunqResponse<Schedule> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int scheduleId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, scheduleId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a specific schedule definition for a given monetary account.
         /// </summary>
         public static BunqResponse<Schedule> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int scheduleId, IDictionary<string, string> customHeaders)
+            int scheduleId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, scheduleId),
-                customHeaders);
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<Schedule>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<List<Schedule>> List(ApiContext apiContext, int userId, int monetaryAccountId)
-        {
-            return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
         }
 
         /// <summary>
@@ -50,10 +41,13 @@ namespace Bunq.Sdk.Model.Generated
         /// only schedule definition object that relate to these definitions are returned.
         /// </summary>
         public static BunqResponse<List<Schedule>> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams,
                 customHeaders);
 
             return FromJsonList<Schedule>(responseRaw, OBJECT_TYPE);

@@ -47,12 +47,6 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, byte[] requestBytes, int userId,
-            int monetaryAccountId)
-        {
-            return Create(apiContext, requestBytes, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Upload a new attachment to use with a tab, and to read its metadata. Create a POST request with a payload
         /// that contains the binary representation of the file, without any JSON wrapping. Make sure you define the
@@ -60,8 +54,10 @@ namespace Bunq.Sdk.Model.Generated
         /// attachment using the X-Bunq-Attachment-Description header.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, byte[] requestBytes, int userId,
-            int monetaryAccountId, IDictionary<string, string> customHeaders)
+            int monetaryAccountId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
                 requestBytes, customHeaders);
@@ -69,22 +65,18 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<AttachmentTab> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int attachmentTabId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, attachmentTabId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a specific attachment. The header of the response contains the content-type of the attachment.
         /// </summary>
         public static BunqResponse<AttachmentTab> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int attachmentTabId, IDictionary<string, string> customHeaders)
+            int attachmentTabId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, attachmentTabId),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return FromJson<AttachmentTab>(responseRaw, OBJECT_TYPE);
         }

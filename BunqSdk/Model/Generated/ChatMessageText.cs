@@ -34,18 +34,14 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int chatConversationId)
-        {
-            return Create(apiContext, requestMap, userId, chatConversationId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Add a new text message to a specific conversation.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int chatConversationId, IDictionary<string, string> customHeaders)
+            int userId, int chatConversationId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, chatConversationId),

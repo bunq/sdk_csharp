@@ -85,20 +85,15 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int cashRegisterId, string tabUuid)
-        {
-            return Create(apiContext, requestMap, userId, monetaryAccountId, cashRegisterId, tabUuid,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Create a new TabItem for a given Tab.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
             int userId, int monetaryAccountId, int cashRegisterId, string tabUuid,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -108,20 +103,15 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int cashRegisterId, string tabUuid, int tabItemShopId)
-        {
-            return Update(apiContext, requestMap, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Modify a TabItem from a given Tab.
         /// </summary>
         public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
             int userId, int monetaryAccountId, int cashRegisterId, string tabUuid, int tabItemShopId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -132,19 +122,14 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid, int tabItemShopId)
-        {
-            return Delete(apiContext, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Delete a specific TabItem from a Tab. This request returns an empty response.
         /// </summary>
         public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid, int tabItemShopId, IDictionary<string, string> customHeaders)
+            int cashRegisterId, string tabUuid, int tabItemShopId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Delete(
@@ -154,45 +139,37 @@ namespace Bunq.Sdk.Model.Generated
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
 
-        public static BunqResponse<List<TabItemShop>> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid)
-        {
-            return List(apiContext, userId, monetaryAccountId, cashRegisterId, tabUuid,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a collection of TabItems from a given Tab.
         /// </summary>
         public static BunqResponse<List<TabItemShop>> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid, IDictionary<string, string> customHeaders)
+            int cashRegisterId, string tabUuid, IDictionary<string, string> urlParams = null,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId, tabUuid),
-                    customHeaders);
+                    urlParams, customHeaders);
 
             return FromJsonList<TabItemShop>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<TabItemShop> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid, int tabItemShopId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId,
-                new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Get a specific TabItem from a given Tab.
         /// </summary>
         public static BunqResponse<TabItemShop> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, string tabUuid, int tabItemShopId, IDictionary<string, string> customHeaders)
+            int cashRegisterId, string tabUuid, int tabItemShopId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(
                     string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return FromJson<TabItemShop>(responseRaw, OBJECT_TYPE);
         }

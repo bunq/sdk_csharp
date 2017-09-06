@@ -17,14 +17,14 @@ namespace Bunq.Sdk.Tests.Model.Generated
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string AMOUNT_IN_EUR = "0.01";
+        private const string AMOUNT_EUR = "0.01";
         private const string CURRENCY = "EUR";
         private const string PAYMENT_DESCRIPTION = "Payment From C# Test";
         private const string MESSAGE_TEXT = "test msg send from C# test";
 
         private static readonly int USER_ID = Config.GetUserId();
         private static readonly int MONETARTY_ACCOUNT_ID = Config.GetMonetarytAccountId();
-        private static readonly Pointer COUNTER_PARTY_ALIAS = Config.GetCounterAliasSelf();
+        private static readonly Pointer COUNTER_PARTY_ALIAS = Config.GetCounterPartyAliasSelf();
 
         /// <summary>
         /// API context used for the test API calls.
@@ -52,7 +52,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(AMOUNT_IN_EUR, CURRENCY)},
+                {Payment.FIELD_AMOUNT, new Amount(AMOUNT_EUR, CURRENCY)},
                 {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_ALIAS},
                 {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
             };

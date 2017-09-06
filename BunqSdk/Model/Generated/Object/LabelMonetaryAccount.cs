@@ -41,5 +41,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "bunq_me")]
         public MonetaryAccountReference BunqMe { get; set; }
+
+        /// <summary>
+        /// Whether or not the monetary account is light.
+        /// </summary>
+        [JsonProperty(PropertyName = "is_light")]
+        public bool? IsLight { get; set; }
     }
 }

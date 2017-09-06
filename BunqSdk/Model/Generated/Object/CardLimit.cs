@@ -25,6 +25,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
+        /// <summary>
+        /// The id of the card limit entry.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
+
         public CardLimit(string dailyLimit, string currency, string type)
         {
             DailyLimit = dailyLimit;

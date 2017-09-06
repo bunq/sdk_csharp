@@ -29,36 +29,32 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "MonetaryAccountBank")]
         public MonetaryAccountBank MonetaryAccountBank { get; private set; }
 
-        public static BunqResponse<MonetaryAccount> Get(ApiContext apiContext, int userId, int monetaryAccountId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a specific MonetaryAccount.
         /// </summary>
         public static BunqResponse<MonetaryAccount> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId),
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<MonetaryAccount>(responseRaw);
-        }
-
-        public static BunqResponse<List<MonetaryAccount>> List(ApiContext apiContext, int userId)
-        {
-            return List(apiContext, userId, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Get a collection of all your MonetaryAccounts.
         /// </summary>
         public static BunqResponse<List<MonetaryAccount>> List(ApiContext apiContext, int userId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
 
             return FromJsonList<MonetaryAccount>(responseRaw);
         }

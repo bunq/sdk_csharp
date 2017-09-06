@@ -22,19 +22,15 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "ShareInviteBankAmountUsed";
 
-        public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
-            int shareInviteBankInquiryId, int shareInviteBankAmountUsedId)
-        {
-            return Delete(apiContext, userId, monetaryAccountId, shareInviteBankInquiryId, shareInviteBankAmountUsedId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Reset the available budget for a bank account share. To be called without any ID at the end of the path.
         /// </summary>
         public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId,
-            int shareInviteBankInquiryId, int shareInviteBankAmountUsedId, IDictionary<string, string> customHeaders)
+            int shareInviteBankInquiryId, int shareInviteBankAmountUsedId,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Delete(

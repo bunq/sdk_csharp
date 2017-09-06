@@ -16,7 +16,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string AMOUNT_IN_EUR = "0.01";
+        private const string AMOUNT_EUR = "0.01";
         private const string FIELD_CURRENCY = "EUR";
         private const string FIELD_PAYMENT_DESCRIPTION = "C# test Payment";
         private const string FIELD_STATUS = "ACCEPTED";
@@ -25,7 +25,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
         private static readonly int USER_ID = Config.GetUserId();
         private static readonly int MONETARY_ACCOUNT_ID = Config.GetMonetarytAccountId();
         private static readonly int SECOND_MONETARY_ACCOUNT_ID = Config.GetSecondMonetaryAccountId();
-        private static readonly Pointer COUNTER_PARTY_SELF = Config.GetCounterAliasSelf();
+        private static readonly Pointer COUNTER_PARTY_SELF = Config.GetCounterPartyAliasSelf();
 
         /// <summary>
         /// API context to use for the test API calls.
@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Tests.Model.Generated
         {
             var requestMap = new Dictionary<string, object>
             {
-                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(AMOUNT_IN_EUR, FIELD_CURRENCY)},
+                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(AMOUNT_EUR, FIELD_CURRENCY)},
                 {RequestInquiry.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_SELF},
                 {RequestInquiry.FIELD_DESCRIPTION, FIELD_PAYMENT_DESCRIPTION},
                 {RequestInquiry.FIELD_ALLOW_BUNQME, false}

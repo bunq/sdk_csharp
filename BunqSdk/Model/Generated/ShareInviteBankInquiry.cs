@@ -105,19 +105,15 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId)
-        {
-            return Create(apiContext, requestMap, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Create a new share inquiry for a monetary account, specifying the permission the other bunq user will have
         /// on it.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders)
+            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
@@ -126,32 +122,20 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<ShareInviteBankInquiry> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int shareInviteBankInquiryId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, shareInviteBankInquiryId,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get the details of a specific share inquiry.
         /// </summary>
         public static BunqResponse<ShareInviteBankInquiry> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int shareInviteBankInquiryId, IDictionary<string, string> customHeaders)
+            int shareInviteBankInquiryId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw =
                 apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, shareInviteBankInquiryId),
-                    customHeaders);
+                    new Dictionary<string, string>(), customHeaders);
 
             return FromJson<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<ShareInviteBankInquiry> Update(ApiContext apiContext,
-            IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int shareInviteBankInquiryId)
-        {
-            return Update(apiContext, requestMap, userId, monetaryAccountId, shareInviteBankInquiryId,
-                new Dictionary<string, string>());
         }
 
         /// <summary>
@@ -160,8 +144,10 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         public static BunqResponse<ShareInviteBankInquiry> Update(ApiContext apiContext,
             IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int shareInviteBankInquiryId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -171,21 +157,19 @@ namespace Bunq.Sdk.Model.Generated
             return FromJson<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE);
         }
 
-        public static BunqResponse<List<ShareInviteBankInquiry>> List(ApiContext apiContext, int userId,
-            int monetaryAccountId)
-        {
-            return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a list with all the share inquiries for a monetary account, only if the requesting user has permission
         /// to change the details of the various ones.
         /// </summary>
         public static BunqResponse<List<ShareInviteBankInquiry>> List(ApiContext apiContext, int userId,
-            int monetaryAccountId, IDictionary<string, string> customHeaders)
+            int monetaryAccountId, IDictionary<string, string> urlParams = null,
+            IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams,
                 customHeaders);
 
             return FromJsonList<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE);

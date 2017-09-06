@@ -20,20 +20,17 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         private const string OBJECT_TYPE = "ExportAnnualOverviewContent";
 
-        public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int exportAnnualOverviewId)
-        {
-            return List(apiContext, userId, exportAnnualOverviewId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Used to retrieve the raw content of an annual overview.
         /// </summary>
         public static BunqResponse<byte[]> List(ApiContext apiContext, int userId, int exportAnnualOverviewId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, exportAnnualOverviewId),
-                customHeaders);
+                new Dictionary<string, string>(), customHeaders);
 
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }

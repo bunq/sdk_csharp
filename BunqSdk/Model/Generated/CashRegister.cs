@@ -91,20 +91,16 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "tab_text_waiting_screen")]
         public List<TabTextWaitingScreen> TabTextWaitingScreen { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId)
-        {
-            return Create(apiContext, requestMap, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Create a new CashRegister. Only an UserCompany can create a CashRegisters. They need to be created with
         /// status PENDING_APPROVAL, an bunq admin has to approve your CashRegister before you can use it. In the
         /// sandbox testing environment an CashRegister will be automatically approved immediately after creation.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders)
+            int userId, int monetaryAccountId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId),
@@ -113,30 +109,19 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<CashRegister> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId)
-        {
-            return Get(apiContext, userId, monetaryAccountId, cashRegisterId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a specific CashRegister.
         /// </summary>
         public static BunqResponse<CashRegister> Get(ApiContext apiContext, int userId, int monetaryAccountId,
-            int cashRegisterId, IDictionary<string, string> customHeaders)
+            int cashRegisterId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId),
-                customHeaders);
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<CashRegister>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int cashRegisterId)
-        {
-            return Update(apiContext, requestMap, userId, monetaryAccountId, cashRegisterId,
-                new Dictionary<string, string>());
         }
 
         /// <summary>
@@ -144,8 +129,10 @@ namespace Bunq.Sdk.Model.Generated
         /// name, avatar or location of a CashRegister. To close a cash register put its status to CLOSED.
         /// </summary>
         public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int cashRegisterId, IDictionary<string, string> customHeaders)
+            int userId, int monetaryAccountId, int cashRegisterId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -155,19 +142,17 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<List<CashRegister>> List(ApiContext apiContext, int userId, int monetaryAccountId)
-        {
-            return List(apiContext, userId, monetaryAccountId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a collection of CashRegister for a given user and monetary account.
         /// </summary>
         public static BunqResponse<List<CashRegister>> List(ApiContext apiContext, int userId, int monetaryAccountId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId),
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams,
                 customHeaders);
 
             return FromJsonList<CashRegister>(responseRaw, OBJECT_TYPE);

@@ -68,19 +68,19 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "status")]
         public string Status { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap)
-        {
-            return Create(apiContext, requestMap, new Dictionary<string, string>());
-        }
-
         /// <summary>
-        /// Create a new DeviceServer. Provide the Installation token in the "X-Bunq-Client-Authentication" header. And
-        /// sign this request with the key of which you used the public part to create the Installation. Your API key
-        /// will be bound to the ip address of this DeviceServer.
+        /// Create a new DeviceServer providing the installation token in the header and signing the request with the
+        /// private part of the key you used to create the installation. The API Key that you are using will be bound to
+        /// the IP address of the DeviceServer which you have created.<br/><br/>Using a Wildcard API Key gives you the
+        /// freedom to make API calls even if the IP address has changed after the POST device-server.<br/><br/>Find out
+        /// more at this link <a href="https://bunq.com/en/apikey-dynamic-ip"
+        /// target="_blank">https://bunq.com/en/apikey-dynamic-ip</a>.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
@@ -88,36 +88,32 @@ namespace Bunq.Sdk.Model.Generated
             return ProcessForId(responseRaw);
         }
 
-        public static BunqResponse<DeviceServer> Get(ApiContext apiContext, int deviceServerId)
-        {
-            return Get(apiContext, deviceServerId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get one of your DeviceServers.
         /// </summary>
         public static BunqResponse<DeviceServer> Get(ApiContext apiContext, int deviceServerId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceServerId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceServerId),
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<DeviceServer>(responseRaw, OBJECT_TYPE);
-        }
-
-        public static BunqResponse<List<DeviceServer>> List(ApiContext apiContext)
-        {
-            return List(apiContext, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Get a collection of all the DeviceServers you have created.
         /// </summary>
         public static BunqResponse<List<DeviceServer>> List(ApiContext apiContext,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, customHeaders);
+            var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, urlParams, customHeaders);
 
             return FromJsonList<DeviceServer>(responseRaw, OBJECT_TYPE);
         }

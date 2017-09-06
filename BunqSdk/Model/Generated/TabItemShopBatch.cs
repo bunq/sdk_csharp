@@ -34,20 +34,15 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "tab_items")]
         public List<TabItemShop> TabItems { get; private set; }
 
-        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, int monetaryAccountId, int cashRegisterId, string tabUuid)
-        {
-            return Create(apiContext, requestMap, userId, monetaryAccountId, cashRegisterId, tabUuid,
-                new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Create tab items as a batch.
         /// </summary>
         public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
             int userId, int monetaryAccountId, int cashRegisterId, string tabUuid,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =

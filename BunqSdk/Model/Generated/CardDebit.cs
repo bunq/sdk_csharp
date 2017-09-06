@@ -23,6 +23,8 @@ namespace Bunq.Sdk.Model.Generated
         public const string FIELD_PIN_CODE = "pin_code";
         public const string FIELD_ALIAS = "alias";
         public const string FIELD_TYPE = "type";
+        public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
+        public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
 
         /// <summary>
         /// Endpoint constants.
@@ -53,6 +55,12 @@ namespace Bunq.Sdk.Model.Generated
         public string Updated { get; private set; }
 
         /// <summary>
+        /// The public UUID of the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "public_uuid")]
+        public string PublicUuid { get; private set; }
+
+        /// <summary>
         /// The second line of text on the card
         /// </summary>
         [JsonProperty(PropertyName = "second_line")]
@@ -63,6 +71,12 @@ namespace Bunq.Sdk.Model.Generated
         /// </summary>
         [JsonProperty(PropertyName = "name_on_card")]
         public string NameOnCard { get; private set; }
+
+        /// <summary>
+        /// The last 4 digits of the PAN of the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "primary_account_number_four_digit")]
+        public string PrimaryAccountNumberFourDigit { get; private set; }
 
         /// <summary>
         /// The status to set for the card. After ordering the card it will be DEACTIVATED.
@@ -95,23 +109,44 @@ namespace Bunq.Sdk.Model.Generated
         public List<CardCountryPermission> CountryPermission { get; private set; }
 
         /// <summary>
+        /// The monetary account this card was ordered on and the label user that owns the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "label_monetary_account_ordered")]
+        public MonetaryAccountReference LabelMonetaryAccountOrdered { get; private set; }
+
+        /// <summary>
+        /// The monetary account that this card is currently linked to and the label user viewing it.
+        /// </summary>
+        [JsonProperty(PropertyName = "label_monetary_account_current")]
+        public MonetaryAccountReference LabelMonetaryAccountCurrent { get; private set; }
+
+        /// <summary>
         /// The label for the user who requested the card.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public LabelUser Alias { get; private set; }
 
-        public static BunqResponse<CardDebit> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId)
-        {
-            return Create(apiContext, requestMap, userId, new Dictionary<string, string>());
-        }
+        /// <summary>
+        /// Array of Types, PINs, account IDs assigned to the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "pin_code_assignment")]
+        public List<CardPinAssignment> PinCodeAssignment { get; private set; }
+
+        /// <summary>
+        /// ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
+        /// not supplied.
+        /// </summary>
+        [JsonProperty(PropertyName = "monetary_account_id_fallback")]
+        public int? MonetaryAccountIdFallback { get; private set; }
 
         /// <summary>
         /// Create a new debit card request.
         /// </summary>
         public static BunqResponse<CardDebit> Create(ApiContext apiContext, IDictionary<string, object> requestMap,
-            int userId, IDictionary<string, string> customHeaders)
+            int userId, IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             requestBytes = SecurityUtils.Encrypt(apiContext, requestBytes, customHeaders);

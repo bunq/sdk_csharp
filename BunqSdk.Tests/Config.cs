@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Immutable;
+using System.IO;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json.Linq;
 
@@ -6,10 +7,23 @@ namespace Bunq.Sdk.Tests
 {
     public class Config
     {
+        /// <summary>
+        /// Delimiter between the IP addresses in the PERMITTED_IPS field.
+        /// </summary>
+        private const char DELIMITER_IPS = ',';
+
+        /// <summary>
+        /// Length of an empty array.
+        /// </summary>
+        private const int LENGTH_NONE = 0;
+
+        /// <summary>
+        /// Field constants.
+        /// </summary>
         private const string FIELD_CONFIG_FILE_PATH = "../../../Resources/config.json";
         private const string FIELD_USER_ID = "USER_ID";
         private const string FIELD_API_KEY = "API_KEY";
-        private const string FIELD_PERMITTED_IP = "ipAddress";
+        private const string FIELD_PERMITTED_IPS = "PERMITTED_IPS";
         private const string FIELD_ATTACHMENT_PUBLIC_TEST = "AttachmentPublicTest";
         private const string FIELD_ATTACHMENT_PATH_IN = "PATH_IN";
         private const string FIELD_ATTACHMENT_DESCRIPTION = "DESCRIPTION";
@@ -28,7 +42,7 @@ namespace Bunq.Sdk.Tests
             return GetConfig()[FIELD_TAB_USAGE_SINGLE][FIELD_CASH_REGISTER_ID].ToObject<int>();
         }
 
-        public static Pointer GetCounterAliasOther()
+        public static Pointer GetCounterPartyAliasOther()
         {
             var alias = GetConfig()[FIELD_COUNTER_PARTY_OTHER][FIELD_COUNTER_ALIAS].ToString();
             var type = GetConfig()[FIELD_COUNTER_PARTY_OTHER][FIELD_COUNTER_TYPE].ToString();
@@ -36,7 +50,7 @@ namespace Bunq.Sdk.Tests
             return new Pointer(type, alias);
         }
 
-        public static Pointer GetCounterAliasSelf()
+        public static Pointer GetCounterPartyAliasSelf()
         {
             var alias = GetConfig()[FIELD_COUNTER_PARTY_SELF][FIELD_COUNTER_ALIAS].ToString();
             var type = GetConfig()[FIELD_COUNTER_PARTY_SELF][FIELD_COUNTER_TYPE].ToString();
@@ -69,9 +83,13 @@ namespace Bunq.Sdk.Tests
             return GetConfig()[FIELD_ATTACHMENT_PUBLIC_TEST][FIELD_ATTACHMENT_CONTENT_TYPE].ToString();
         }
 
-        public static string GetPermittedIp()
+        public static string[] GetPermittedIps()
         {
-            return GetConfig()[FIELD_PERMITTED_IP].ToString();
+            var permittedIpsString = GetConfig()[FIELD_PERMITTED_IPS].ToString();
+
+            return permittedIpsString.Length == LENGTH_NONE ?
+                new string[LENGTH_NONE] :
+                permittedIpsString.Split(DELIMITER_IPS);
         }
 
         public static string GetApiKey()

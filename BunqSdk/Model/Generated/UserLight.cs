@@ -19,7 +19,6 @@ namespace Bunq.Sdk.Model.Generated
         public const string FIELD_LAST_NAME = "last_name";
         public const string FIELD_PUBLIC_NICK_NAME = "public_nick_name";
         public const string FIELD_COUNTER_BANK_IBAN = "counter_bank_iban";
-        public const string FIELD_ADDRESS = "address";
         public const string FIELD_ADDRESS_MAIN = "address_main";
         public const string FIELD_ADDRESS_POSTAL = "address_postal";
         public const string FIELD_AVATAR_UUID = "avatar_uuid";
@@ -249,19 +248,17 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "notification_filters")]
         public List<NotificationFilter> NotificationFilters { get; private set; }
 
-        public static BunqResponse<UserLight> Get(ApiContext apiContext, int userLightId)
-        {
-            return Get(apiContext, userLightId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a specific bunq light user.
         /// </summary>
         public static BunqResponse<UserLight> Get(ApiContext apiContext, int userLightId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userLightId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userLightId),
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<UserLight>(responseRaw, OBJECT_TYPE);
         }

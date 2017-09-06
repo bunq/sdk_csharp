@@ -31,35 +31,32 @@ namespace Bunq.Sdk.Model.Generated
         [JsonProperty(PropertyName = "DeviceServer")]
         public DeviceServer DeviceServer { get; private set; }
 
-        public static BunqResponse<Device> Get(ApiContext apiContext, int deviceId)
-        {
-            return Get(apiContext, deviceId, new Dictionary<string, string>());
-        }
-
         /// <summary>
         /// Get a single Device. A Device is either a DevicePhone or a DeviceServer.
         /// </summary>
         public static BunqResponse<Device> Get(ApiContext apiContext, int deviceId,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders = null)
         {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceId), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceId),
+                new Dictionary<string, string>(), customHeaders);
 
             return FromJson<Device>(responseRaw);
-        }
-
-        public static BunqResponse<List<Device>> List(ApiContext apiContext)
-        {
-            return List(apiContext, new Dictionary<string, string>());
         }
 
         /// <summary>
         /// Get a collection of Devices. A Device is either a DevicePhone or a DeviceServer.
         /// </summary>
-        public static BunqResponse<List<Device>> List(ApiContext apiContext, IDictionary<string, string> customHeaders)
+        public static BunqResponse<List<Device>> List(ApiContext apiContext,
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, customHeaders);
+            var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, urlParams, customHeaders);
 
             return FromJsonList<Device>(responseRaw);
         }
