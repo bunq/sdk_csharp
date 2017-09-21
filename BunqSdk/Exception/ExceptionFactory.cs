@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Bunq.Sdk.Model;
 
 namespace Bunq.Sdk.Exception
 {

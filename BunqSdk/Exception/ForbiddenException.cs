@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Bunq.Sdk.Exception
+﻿namespace Bunq.Sdk.Exception
 {
     public class ForbiddenException : ApiException
     {

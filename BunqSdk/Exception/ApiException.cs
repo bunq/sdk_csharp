@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace Bunq.Sdk.Exception
 {
     public class ApiException : System.Exception
