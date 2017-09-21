@@ -13,10 +13,5 @@ namespace Bunq.Sdk.Exception
             ResponseCode = responseCode;
             Messages = messages;
         }
-
-        protected ApiException()
-        {
-            throw new System.NotImplementedException();
-        }
     }   
 }

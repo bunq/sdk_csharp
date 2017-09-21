@@ -4,6 +4,9 @@ namespace Bunq.Sdk.Exception
 {
     public class ExceptionFactory
     {
+        /// <summary>
+        /// HTTP error response codes constants.
+        /// </summary>
         private const int HTTP_RESPONSE_CODE_BAD_REQUEST = 400;
         private const int HTTP_RESPONSE_CODE_UNAUTHORIZED = 401;
         private const int HTTP_RESPONSE_CODE_FORBIDDEN = 403;
@@ -17,10 +20,7 @@ namespace Bunq.Sdk.Exception
         /// </summary>
         private const string GLUE_ERROR_MESSAGES = "\n";
 
-
-
-        /// <param name="responseCode"></param>
-        /// <param name="messages"></param>
+        
         /// <returns>The exception that belongs to this status code.</returns>
         public static ApiException CreateExceptionForResponse(int responseCode, IList<string> messages)
         {

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Bunq.Sdk.Exception
+﻿namespace Bunq.Sdk.Exception
 {
     /// <summary>
     /// Exception triggered by API requests failed on the server side.
