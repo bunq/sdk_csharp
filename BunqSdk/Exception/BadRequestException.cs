@@ -2,7 +2,7 @@
 
 namespace Bunq.Sdk.Exception
 {
-    public class BadRequestException : BunqError
+    public class BadRequestException : ApiException
     {
         public BadRequestException(int responseCode, string messages) : base(responseCode, messages)
         {

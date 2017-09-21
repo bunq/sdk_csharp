@@ -267,15 +267,15 @@ namespace Bunq.Sdk.Http
             throw CreateApiExceptionRequestUnsuccessful(responseCode, responseBody);
         }
 
-        private static BunqError CreateApiExceptionRequestUnsuccessful(int responseCode, string responseBody)
+        private static ApiException CreateApiExceptionRequestUnsuccessful(int responseCode, string responseBody)
         {
             try
             {
-                return ExceptionHandler.CreateExceptionForResponse(responseCode, FetchErrorDescriptions(responseBody));
+                return ExceptionFactory.CreateExceptionForResponse(responseCode, FetchErrorDescriptions(responseBody));
             }
             catch (JsonException)
             {
-                return ExceptionHandler.CreateExceptionForResponse(responseCode, new List<string> {responseBody});
+                return ExceptionFactory.CreateExceptionForResponse(responseCode, new List<string> {responseBody});
             }
         }
 

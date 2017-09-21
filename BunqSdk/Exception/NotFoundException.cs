@@ -2,7 +2,7 @@
 
 namespace Bunq.Sdk.Exception
 {
-    public class NotFoundException : BunqError
+    public class NotFoundException : ApiException
     {
         public NotFoundException(int responseCode, string messages) : base(responseCode, messages)
         {
