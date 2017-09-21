@@ -18,6 +18,10 @@ namespace Bunq.Sdk.Exception
         private const string GLUE_ERROR_MESSAGES = "\n";
 
 
+
+        /// <param name="responseCode"></param>
+        /// <param name="messages"></param>
+        /// <returns>The exception that belongs to this status code.</returns>
         public static ApiException CreateExceptionForResponse(int responseCode, IList<string> messages)
         {
             var errorMessage = ConcatenateMessages(messages);
