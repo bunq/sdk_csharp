@@ -19,7 +19,6 @@ namespace Bunq.Sdk.Exception
         /// Glue to concatenate the error messages.
         /// </summary>
         private const string GLUE_ERROR_MESSAGES = "\n";
-
         
         /// <returns>The exception that belongs to this status code.</returns>
         public static ApiException CreateExceptionForResponse(int responseCode, IList<string> messages)
