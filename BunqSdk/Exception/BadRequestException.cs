@@ -2,7 +2,7 @@
 {
     public class BadRequestException : ApiException
     {
-        public BadRequestException(int responseCode, string messages) : base(responseCode, messages)
+        public BadRequestException(int responseCode, string message) : base(responseCode, message)
         {
         }
     }

@@ -2,7 +2,7 @@
 {
     public class TooManyRequestsException : ApiException
     {
-        public TooManyRequestsException(int responseCode, string messages) : base(responseCode, messages)
+        public TooManyRequestsException(int responseCode, string message) : base(responseCode, message)
         {
         }
     }

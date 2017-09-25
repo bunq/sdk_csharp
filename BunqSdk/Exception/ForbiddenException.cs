@@ -2,7 +2,7 @@
 {
     public class ForbiddenException : ApiException
     {
-        public ForbiddenException(int responseCode, string messages) : base(responseCode, messages)
+        public ForbiddenException(int responseCode, string message) : base(responseCode, message)
         {
         }
     }

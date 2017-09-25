@@ -2,7 +2,7 @@
 {
     public class NotFoundException : ApiException
     {
-        public NotFoundException(int responseCode, string messages) : base(responseCode, messages)
+        public NotFoundException(int responseCode, string message) : base(responseCode, message)
         {
         }
     }

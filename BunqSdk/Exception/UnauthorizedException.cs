@@ -2,7 +2,7 @@
 {
     public class UnauthorizedException : ApiException
     {
-        public UnauthorizedException(int responseCode, string messages) : base(responseCode, messages)
+        public UnauthorizedException(int responseCode, string message) : base(responseCode, message)
         {
         }
     }

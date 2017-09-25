@@ -5,7 +5,7 @@
     /// </summary>
     public class UnknownApiErrorException : ApiException
     {
-        public UnknownApiErrorException(int responseCode, string messages) : base(responseCode, messages)
+        public UnknownApiErrorException(int responseCode, string message) : base(responseCode, message)
         {
         }
     }
