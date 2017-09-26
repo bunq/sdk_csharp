@@ -1,6 +1,6 @@
 ﻿using System;
-using Bunq.Sdk.Model;
-using Bunq.Sdk.Model.Generated;
+using Bunq.Sdk.Model.Core;
+using Bunq.Sdk.Model.Generated.Endpoint;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

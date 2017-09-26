@@ -2,7 +2,7 @@
 using System.IO;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Model.Generated;
+using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Samples.Utils;
 
 namespace Bunq.Sdk.Samples
@@ -11,8 +11,8 @@ namespace Bunq.Sdk.Samples
     {
         private const string CONTENT_TYPE_IMAGE_JPEG = "image/jpeg";
         private const string DESCRIPTION_TEST_JPG_ATTACHMENT = "A test JPG attachment.";
-        private const string PATH_ATTACHMENT_IN = "Samples/Assets/Attachment.jpg";
-        private const string PATH_ATTACHMENT_OUT = "Samples/Tmp/AttachmentOut.jpg";
+        private const string PATH_ATTACHMENT_IN = "Assets/Attachment.jpg";
+        private const string PATH_ATTACHMENT_OUT = "Tmp/AttachmentOut.jpg";
 
         public void Run()
         {

@@ -1,4 +1,6 @@
+using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -12,14 +14,14 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "notification_delivery_method")]
         public string NotificationDeliveryMethod { get; set; }
-
+    
         /// <summary>
         /// The target of notifications that match this notification filter. For URL notification filters this is the
         /// URL to which the callback will be made. For PUSH notifications filters this should always be null.
         /// </summary>
         [JsonProperty(PropertyName = "notification_target")]
         public string NotificationTarget { get; set; }
-
+    
         /// <summary>
         /// The notification category that will match this notification filter. Possible choices are BILLING,
         /// CARD_TRANSACTION_FAILED, CARD_TRANSACTION_SUCCESSFUL, CHAT, DRAFT_PAYMENT, IDEAL, SOFORT,
@@ -28,7 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
-
+    
         public NotificationFilter(string notificationDeliveryMethod, string notificationTarget, string category)
         {
             NotificationDeliveryMethod = notificationDeliveryMethod;

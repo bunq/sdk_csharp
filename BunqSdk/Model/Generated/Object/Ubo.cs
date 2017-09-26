@@ -1,4 +1,6 @@
+using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,13 +13,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-
+    
         /// <summary>
         /// The date of birth of the ultimate beneficiary owner.
         /// </summary>
         [JsonProperty(PropertyName = "date_of_birth")]
         public string DateOfBirth { get; set; }
-
+    
         /// <summary>
         /// The nationality of the ultimate beneficiary owner.
         /// </summary>
