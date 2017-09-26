@@ -180,3 +180,4 @@ located in [test](./BunqSdk.Tests).
 ## Exceptions
 The SDK can raise multiple exceptions. For an overview of these exceptions please
 take a look at [EXCEPTIONS.md](./BunqSdk/Exception/EXCEPTIONS.md)
+ 
