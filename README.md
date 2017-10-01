@@ -178,6 +178,6 @@ Information regarding the test cases can be found in the [README.md](./BunqSdk.T
 located in [test](./BunqSdk.Tests).
 
 ## Exceptions
-The SDK can raise multiple exceptions. For an overview of these exceptions please
+The SDK can throw multiple exceptions. For an overview of these exceptions please
 take a look at [EXCEPTIONS.md](./BunqSdk/Exception/EXCEPTIONS.md)
  
