@@ -14,7 +14,7 @@ corresponding to the error occurred is thrown.
 * `TooManyRequestsException` If the request returns with status code `429`
 * `PleaseContactBunqException` If the request returns with status code `500`.
 If you get this exception, please contact us preferably via the support chat in the bunq app.
-* `UnknownApiErrorException` If none of the above mentioned exceptions are raised,
+* `UnknownApiErrorException` If none of the above mentioned exceptions are thrown,
 this exception will be thrown instead.
 
 For more information regarding these errors, please take a look on the documentation
