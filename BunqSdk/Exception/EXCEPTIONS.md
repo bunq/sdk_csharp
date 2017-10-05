@@ -26,23 +26,18 @@ All the exceptions have the same base exception which looks like this:
 ```c#
    public class ApiException : System.Exception
     {
-        private readonly string message;
         public int ResponseCode { get;}
-
-        public override string Message
-        {
-            get { return message; }
-        }
 
         /// <param name="responseCode">The HTTP Response code of the failed request.</param>
         /// <param name="message">The list of messages related to this exception.</param>
         public ApiException(int responseCode, string message) : base(message)
         {
+            // hidden code
         }
     } 
 ```
 This means that each exception will have a response code and an error message
-related to the specific exception that has been thrown.
+related to the specific error returned by API.
 
 ---
 #### Exception handling
