@@ -2,7 +2,7 @@
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
-using Bunq.Sdk.Model.Generated;
+using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
 using Xunit;
 

@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using System.IO;
+﻿using System.IO;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json.Linq;
 

@@ -1,4 +1,6 @@
+using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,19 +13,19 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "attachment_public_uuid")]
         public string AttachmentPublicUuid { get; set; }
-
+    
         /// <summary>
         /// The content-type as a MIME filetype.
         /// </summary>
         [JsonProperty(PropertyName = "content_type")]
         public string ContentType { get; set; }
-
+    
         /// <summary>
         /// The image height in pixels.
         /// </summary>
         [JsonProperty(PropertyName = "height")]
         public int? Height { get; set; }
-
+    
         /// <summary>
         /// The image width in pixels.
         /// </summary>
