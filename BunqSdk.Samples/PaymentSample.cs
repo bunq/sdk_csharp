@@ -33,6 +33,10 @@ namespace Bunq.Sdk.Samples
             var paymentId = Payment.Create(apiContext, paymentMap, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
 
             Console.WriteLine(Payment.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, paymentId));
+            
+            // Save the API context to account for all the changes that might have occurred to it
+            // during the sample execution
+            apiContext.Save();
         }
     }
 }
