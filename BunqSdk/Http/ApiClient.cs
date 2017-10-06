@@ -271,11 +271,11 @@ namespace Bunq.Sdk.Http
         {
             try
             {
-                return new ApiException(responseCode, FetchErrorDescriptions(responseBody));
+                return ExceptionFactory.CreateExceptionForResponse(responseCode, FetchErrorDescriptions(responseBody));
             }
             catch (JsonException)
             {
-                return new ApiException(responseCode, new List<string> {responseBody});
+                return ExceptionFactory.CreateExceptionForResponse(responseCode, new List<string> {responseBody});
             }
         }
 

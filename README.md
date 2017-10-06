@@ -176,3 +176,8 @@ sample!
 ## Running tests
 Information regarding the test cases can be found in the [README.md](./BunqSdk.Tests/README.md)
 located in [test](./BunqSdk.Tests).
+
+## Exceptions
+The SDK can throw multiple exceptions. For an overview of these exceptions please
+take a look at [EXCEPTIONS.md](./BunqSdk/Exception/EXCEPTIONS.md)
+ 
