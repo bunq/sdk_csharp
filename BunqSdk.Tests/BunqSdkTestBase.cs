@@ -36,13 +36,14 @@ namespace Bunq.Sdk.Tests
             try
             {
                 apiContext = ApiContext.Restore(FILENAME_CONTEXT_CONF);
-                apiContext.EnsureSessionActive();
+//                apiContext.EnsureSessionActive();
             }
             catch (BunqException)
             {
                 apiContext = CreateApiContext();
             }
 
+            apiContext.EnsureSessionActive();
             apiContext.Save(FILENAME_CONTEXT_CONF);
 
             return apiContext;
