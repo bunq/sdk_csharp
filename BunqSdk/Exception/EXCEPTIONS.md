@@ -29,7 +29,7 @@ All the exceptions have the same base exception which looks like this:
         public int ResponseCode { get;}
 
         /// <param name="responseCode">The HTTP Response code of the failed request.</param>
-        /// <param name="message">The list of messages related to this exception.</param>
+        /// <param name="message">The error messages related to this exception.</param>
         public ApiException(int responseCode, string message) : base(message)
         {
             // hidden code
