@@ -1,5 +1,5 @@
 ﻿using System.Security.Cryptography;
-using Bunq.Sdk.Model;
+using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Security;
 
 namespace Bunq.Sdk.Context

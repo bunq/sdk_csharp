@@ -1,4 +1,6 @@
+using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,20 +13,20 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "cash_register_qr_code")]
         public bool? CashRegisterQrCode { get; set; }
-
+    
         /// <summary>
         /// When true the tab will be visible through its own QR code. Use ../tab/{tab-id}/qr-code-content to get the
         /// raw content of this QR code
         /// </summary>
         [JsonProperty(PropertyName = "tab_qr_code")]
         public bool? TabQrCode { get; set; }
-
+    
         /// <summary>
         /// The location of the Tab in NearPay.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public Geolocation Location { get; set; }
-
+    
         public TabVisibility(bool? cashRegisterQrCode, bool? tabQrCode)
         {
             CashRegisterQrCode = cashRegisterQrCode;

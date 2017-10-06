@@ -1,4 +1,6 @@
+using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,7 +13,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-
+    
         /// <summary>
         /// The IP address of the device that may use the credential.
         /// </summary>

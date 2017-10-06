@@ -1,4 +1,6 @@
+using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,7 +13,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "certificate")]
         public string CertificateString { get; set; }
-
+    
         public Certificate(string certificateString)
         {
             CertificateString = certificateString;

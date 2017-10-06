@@ -1,4 +1,6 @@
+using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,13 +13,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
-
+    
         /// <summary>
         /// The currency of the amount. It is an ISO 4217 formatted currency code.
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; set; }
-
+    
         public Amount(string value, string currency)
         {
             Value = value;

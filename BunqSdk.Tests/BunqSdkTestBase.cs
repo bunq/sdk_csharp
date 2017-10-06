@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
-using Bunq.Sdk.Model.Generated;
+using Bunq.Sdk.Model.Generated.Endpoint;
 
 namespace Bunq.Sdk.Tests
 {

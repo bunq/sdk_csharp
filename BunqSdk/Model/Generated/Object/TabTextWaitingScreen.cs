@@ -1,4 +1,6 @@
+using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,13 +13,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "language")]
         public string Language { get; set; }
-
+    
         /// <summary>
         /// Tab text
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-
+    
         public TabTextWaitingScreen(string language, string description)
         {
             Language = language;
