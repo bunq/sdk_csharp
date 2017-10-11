@@ -81,16 +81,6 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "ScheduledRequestInquiryBatch")]
-        public ScheduleRequestInquiryBatch ScheduledRequestInquiryBatch { get; set; }
-    
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "ScheduledRequestInquiry")]
-        public ScheduleRequestInquiry ScheduledRequestInquiry { get; set; }
-    
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "ScheduledInstance")]
         public ScheduleInstance ScheduledInstance { get; set; }
     
