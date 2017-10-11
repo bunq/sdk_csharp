@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bunq.Sdk.Context;
-using Bunq.Sdk.Model.Generated;
+using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
 using Bunq.Sdk.Samples.Utils;
 
@@ -33,6 +33,10 @@ namespace Bunq.Sdk.Samples
             var paymentId = Payment.Create(apiContext, paymentMap, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
 
             Console.WriteLine(Payment.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, paymentId));
+            
+            // Save the API context to account for all the changes that might have occurred to it
+            // during the sample execution
+            apiContext.Save();
         }
     }
 }

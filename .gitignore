@@ -265,3 +265,4 @@ bunq.conf
 **/Tmp/
 bunq-test.conf
 config.json
+.idea/.idea.BunqSdk/.idea/preferred-vcs.xml

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bunq.Sdk.Context;
-using Bunq.Sdk.Model.Generated;
+using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
 using Bunq.Sdk.Samples.Utils;
 

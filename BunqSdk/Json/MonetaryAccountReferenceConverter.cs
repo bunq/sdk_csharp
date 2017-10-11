@@ -1,5 +1,5 @@
 ﻿using System;
-using Bunq.Sdk.Model;
+using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

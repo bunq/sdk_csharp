@@ -4,8 +4,8 @@ using System.IO;
 using System.Text;
 using Bunq.Sdk.Exception;
 using Bunq.Sdk.Json;
-using Bunq.Sdk.Model;
-using Bunq.Sdk.Model.Generated;
+using Bunq.Sdk.Model.Core;
+using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Security;
 using Newtonsoft.Json;
 

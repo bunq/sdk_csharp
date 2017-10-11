@@ -1,6 +1,6 @@
 ﻿using System;
 using Bunq.Sdk.Context;
-using Bunq.Sdk.Model.Generated;
+using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Samples.Utils;
 
 namespace Bunq.Sdk.Samples
