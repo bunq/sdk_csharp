@@ -3,7 +3,7 @@
     <RuntimeFrameworkVersion>1.1.2</RuntimeFrameworkVersion>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <OutputType>Library</OutputType>
-    <LangVersion>5</LangVersion>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyName>Bunq.Sdk</AssemblyName>

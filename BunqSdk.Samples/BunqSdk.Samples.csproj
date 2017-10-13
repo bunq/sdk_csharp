@@ -3,7 +3,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Bunq.Sdk.Samples</RootNamespace>
     <TargetFramework>netcoreapp1.1</TargetFramework>
-    <LangVersion>5</LangVersion>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\BunqSdk\BunqSdk.csproj" />
