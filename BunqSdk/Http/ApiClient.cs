@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Http
     {
 
         /// <summary>
-        ///  Endpoints not requiring active session for the request to succeed.
+        /// Endpoints not requiring active session for the request to succeed.
         /// </summary>
         private const string DEVICE_SERVER_URL = "device-server";
         private const string INSTALLATION_URL = "installation";
