@@ -16,6 +16,20 @@ namespace Bunq.Sdk.Http
 {
     public class ApiClient
     {
+
+        /// <summary>
+        /// Endpoints not requiring active session for the request to succeed.
+        /// </summary>
+        private const string DEVICE_SERVER_URL = "device-server";
+        private const string INSTALLATION_URL = "installation";
+        private const string SESSION_SERVER_URL = "session-server";
+        private static readonly string[] URIS_NOT_REQUIRING_ACTIVE_SESSION = new string[]
+        {
+            DEVICE_SERVER_URL,
+            INSTALLATION_URL,
+            SESSION_SERVER_URL
+        };
+
         /// <summary>
         /// Header constants.
         /// </summary>
@@ -115,7 +129,7 @@ namespace Bunq.Sdk.Http
         {
             var requestMessage = CreateHttpRequestMessage(method, uriRelative, uriParams, requestBodyBytes);
 
-            return SendRequest(requestMessage, customHeaders);
+            return SendRequest(requestMessage, customHeaders, uriRelative);
         }
 
         private BunqResponseRaw SendRequest(HttpMethod method, string uriRelative,
@@ -123,13 +137,17 @@ namespace Bunq.Sdk.Http
         {
             var requestMessage = CreateHttpRequestMessage(method, uriRelative, uriParams);
 
-            return SendRequest(requestMessage, customHeaders);
+            return SendRequest(requestMessage, customHeaders, uriRelative);
         }
 
         private BunqResponseRaw SendRequest(HttpRequestMessage requestMessage,
-            IDictionary<string, string> customHeaders)
+            IDictionary<string, string> customHeaders, string uriRelative)
         {
-            apiContext.EnsureSessionActive();
+            if (!URIS_NOT_REQUIRING_ACTIVE_SESSION.Contains(uriRelative))
+            {
+                apiContext.EnsureSessionActive();
+            }
+            
             SetDefaultHeaders(requestMessage);
             SetHeaders(requestMessage, customHeaders);
             SetSessionHeaders(requestMessage);

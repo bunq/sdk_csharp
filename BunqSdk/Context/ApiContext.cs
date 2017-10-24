@@ -176,8 +176,19 @@ namespace Bunq.Sdk.Context
         /// </summary>
         public void EnsureSessionActive()
         {
-            if (SessionContext == null) return;
+            if (!IsSessionActive())
+            {
+                ResetSession();
+            }
+        }
 
+        public bool IsSessionActive()
+        {
+            if (SessionContext == null)
+            {
+                return false;
+            }
+            
             var timeToExpiry = SessionContext.ExpiryTime.Subtract(DateTime.Now);
             var timeToExpiryMinimum = new TimeSpan(
                 TIME_UNIT_COUNT_NONE,
@@ -185,10 +196,7 @@ namespace Bunq.Sdk.Context
                 TIME_TO_SESSION_EXPIRY_MINIMUM_SECONDS
             );
 
-            if (timeToExpiry < timeToExpiryMinimum)
-            {
-                ResetSession();
-            }
+            return timeToExpiry > timeToExpiryMinimum;
         }
 
         /// <summary>
