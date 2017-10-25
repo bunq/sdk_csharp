@@ -63,6 +63,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string PublicUuid { get; private set; }
     
         /// <summary>
+        /// The type of the card. Can be MAESTRO, MASTERCARD.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+    
+        /// <summary>
         /// The second line of text on the card
         /// </summary>
         [JsonProperty(PropertyName = "second_line")]
