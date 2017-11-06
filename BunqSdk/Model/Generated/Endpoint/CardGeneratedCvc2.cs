@@ -28,6 +28,24 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE = "CardGeneratedCvc2";
     
         /// <summary>
+        /// The id of the cvc code.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; private set; }
+    
+        /// <summary>
+        /// The timestamp of the cvc code's creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "created")]
+        public string Created { get; private set; }
+    
+        /// <summary>
+        /// The timestamp of the cvc code's last update.
+        /// </summary>
+        [JsonProperty(PropertyName = "updated")]
+        public string Updated { get; private set; }
+    
+        /// <summary>
         /// The cvc2 code.
         /// </summary>
         [JsonProperty(PropertyName = "cvc2")]
