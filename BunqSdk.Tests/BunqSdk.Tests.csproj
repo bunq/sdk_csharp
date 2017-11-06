@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <RootNamespace>Bunq.Sdk.Tests</RootNamespace>
-    <LangVersion>5</LangVersion>
+    <LangVersion>default</LangVersion>
     <AssemblyName>BunqSdk.Tests.xunit.runner.json</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
