@@ -38,7 +38,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE = "DraftPayment";
     
         /// <summary>
-        /// The id of the DraftPayment.
+        /// The id of the created DrafPayment.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; private set; }
@@ -83,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The Payment or PaymentBatch. This will only be present after the DraftPayment has been accepted.
         /// </summary>
         [JsonProperty(PropertyName = "object")]
-        public BunqModel Object { get; private set; }
+        public DraftPaymentAnchorObject Object { get; private set; }
     
         /// <summary>
         /// Create a new DraftPayment.
