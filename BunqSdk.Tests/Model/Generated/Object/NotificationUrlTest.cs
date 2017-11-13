@@ -134,3 +134,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GET_DRAFT_PAYMENT
                 );
         }      
+        
+        [Fact]
+        public void TestMasterCardActionModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_MASTER_CARD_ACTION_MODEL,
+                typeof(MasterCardAction),
+                GET_MASTER_CARD_ACTION
+                );
+        }  
