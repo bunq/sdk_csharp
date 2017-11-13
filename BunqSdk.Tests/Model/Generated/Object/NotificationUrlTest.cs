@@ -204,3 +204,25 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GET_SCHEDULE_PAYMENT
                 );
         }       
+        
+        [Fact]
+        public void TestShareInviteBankModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_SHARE_INVITE_BANK_INQUIRY_MODEL,
+                typeof(ShareInviteBankInquiry),
+                GET_SHARE_INVITE_BANK_INQUIRY
+                );
+        }       
+        
+        [Fact]
+        public void TestShareInviteBankResponse()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_SHARE_INVITE_BANK_RESPONSE_MODEL,
+                typeof(ShareInviteBankResponse),
+                GET_SHARE_INVITE_BANK_RESPONSE
+                );
+        }
+    }
+}
