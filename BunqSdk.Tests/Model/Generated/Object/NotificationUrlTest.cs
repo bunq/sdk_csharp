@@ -94,3 +94,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
 
             return notificationUrlObject.ToString();
         }
+
+        [Fact]
+        public void TestMutationModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_MUTATION_MODEL,
+                typeof(Payment),
+                GET_PAYMENT
+                );
+        }
