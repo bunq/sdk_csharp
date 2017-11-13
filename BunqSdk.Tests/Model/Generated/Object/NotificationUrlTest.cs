@@ -114,3 +114,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GET_BUNQ_ME_TAB
                 );
         }   
+        
+        [Fact]
+        public void TestChatMessageAnnouncementModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_CHAT_MESSAGE_ANNOUNCEMENT_MODEL,
+                typeof(ChatMessageAnnouncement),
+                GET_CHAT_MESSAGE_ANNOUNCEMENT
+                );
+        }        
