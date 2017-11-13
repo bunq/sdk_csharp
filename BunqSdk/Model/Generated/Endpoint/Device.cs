@@ -1,4 +1,5 @@
 using Bunq.Sdk.Context;
+using Bunq.Sdk.Exception;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
@@ -14,6 +15,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// </summary>
     public class Device : BunqModel
     {
+        /// <summary>
+        /// Error constants.
+        /// </summary>
+        private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
+    
         /// <summary>
         /// Endpoint constants.
         /// </summary>
@@ -60,6 +66,24 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, urlParams, customHeaders);
     
             return FromJsonList<Device>(responseRaw);
+        }
+    
+    
+        /// <summary>
+        /// </summary>
+        public BunqModel GetReferencedObject()
+        {
+            if (this.DevicePhone != null)
+            {
+                return this.DevicePhone;
+            }
+    
+            if (this.DeviceServer != null)
+            {
+                return this.DeviceServer;
+            }
+    
+            throw new BunqException(ERROR_NULL_FIELDS);
         }
     }
 }

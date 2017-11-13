@@ -16,17 +16,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class Invoice : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/invoice";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/invoice/{2}";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_STATUS = "status";
         public const string FIELD_DESCRIPTION = "description";
         public const string FIELD_EXTERNAL_URL = "external_url";
-    
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/invoice";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/invoice/{2}";
     
         /// <summary>
         /// Object type.

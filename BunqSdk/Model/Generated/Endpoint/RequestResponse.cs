@@ -19,19 +19,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class RequestResponse : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/request-response/{2}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/request-response";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/request-response/{2}";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_AMOUNT_RESPONDED = "amount_responded";
         public const string FIELD_STATUS = "status";
         public const string FIELD_ADDRESS_SHIPPING = "address_shipping";
         public const string FIELD_ADDRESS_BILLING = "address_billing";
-    
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/request-response/{2}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/request-response";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/request-response/{2}";
     
         /// <summary>
         /// Object type.

@@ -19,15 +19,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class Avatar : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_ATTACHMENT_PUBLIC_UUID = "attachment_public_uuid";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "avatar";
         private const string ENDPOINT_URL_READ = "avatar/{0}";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_ATTACHMENT_PUBLIC_UUID = "attachment_public_uuid";
     
         /// <summary>
         /// Object type.

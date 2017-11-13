@@ -8,7 +8,7 @@ namespace Bunq.Sdk.Model.Generated.Object
 {
     /// <summary>
     /// </summary>
-    public class DraftPaymentAnchorObject : BunqModel
+    public class ScheduleInstanceAnchorObject : BunqModel
     {
         /// <summary>
         /// Error constants.

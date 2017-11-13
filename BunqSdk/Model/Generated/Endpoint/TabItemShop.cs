@@ -20,6 +20,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class TabItemShop : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item";
+        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
+        private const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_DESCRIPTION = "description";
@@ -30,18 +39,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_AMOUNT = "amount";
     
         /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item";
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
-        private const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
-    
-        /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TabItem";
+        private const string OBJECT_TYPE = "TabItemShop";
     
         /// <summary>
         /// The id of the created TabItem.

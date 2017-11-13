@@ -16,6 +16,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class UserLight : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_READ = "user-light/{0}";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_FIRST_NAME = "first_name";
@@ -48,14 +53,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
     
         /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_READ = "user-light/{0}";
-    
-        /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "UserPerson";
+        private const string OBJECT_TYPE = "UserLight";
     
         /// <summary>
         /// The id of the user.

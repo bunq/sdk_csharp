@@ -17,11 +17,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class CashRegisterQrCode : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_STATUS = "status";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code";
@@ -30,9 +25,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code";
     
         /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_STATUS = "status";
+    
+        /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TokenQrCashRegister";
+        private const string OBJECT_TYPE = "CashRegisterQrCode";
     
         /// <summary>
         /// The id of the created QR code. Use this id to get the RAW content of the QR code with:

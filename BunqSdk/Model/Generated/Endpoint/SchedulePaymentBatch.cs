@@ -16,17 +16,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class SchedulePaymentBatch : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_PAYMENTS = "payments";
-        public const string FIELD_SCHEDULE = "schedule";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/schedule-payment-batch";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/schedule-payment-batch/{2}";
         private const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/schedule-payment-batch/{2}";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_PAYMENTS = "payments";
+        public const string FIELD_SCHEDULE = "schedule";
     
         /// <summary>
         /// Object type.

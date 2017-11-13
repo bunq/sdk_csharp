@@ -17,6 +17,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class Card : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_UPDATE = "user/{0}/card/{1}";
+        private const string ENDPOINT_URL_READ = "user/{0}/card/{1}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/card";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_PIN_CODE = "pin_code";
@@ -30,16 +37,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
     
         /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/card/{1}";
-        private const string ENDPOINT_URL_READ = "user/{0}/card/{1}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/card";
-    
-        /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CardDebit";
+        private const string OBJECT_TYPE = "Card";
     
         /// <summary>
         /// The id of the card.
@@ -70,6 +70,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
+    
+        /// <summary>
+        /// The sub-type of the card. Can be WILDCARD or NONE.
+        /// </summary>
+        [JsonProperty(PropertyName = "sub_type")]
+        public string SubType { get; private set; }
     
         /// <summary>
         /// The second line of text on the card
@@ -158,6 +164,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
         public int? MonetaryAccountIdFallback { get; private set; }
+    
+        /// <summary>
+        /// The country that is domestic to the card. Defaults to country of residence of user.
+        /// </summary>
+        [JsonProperty(PropertyName = "country")]
+        public string Country { get; private set; }
     
         /// <summary>
         /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary

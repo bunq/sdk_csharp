@@ -20,6 +20,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class CashRegister : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}";
+        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/cash-register/{2}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_NAME = "name";
@@ -28,14 +36,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_LOCATION = "location";
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
         public const string FIELD_TAB_TEXT_WAITING_SCREEN = "tab_text_waiting_screen";
-    
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}";
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/cash-register/{2}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register";
     
         /// <summary>
         /// Object type.

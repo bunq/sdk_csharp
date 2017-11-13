@@ -16,16 +16,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ScheduleInstance : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_STATE = "state";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/schedule/{2}/schedule-instance/{3}";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/schedule/{2}/schedule-instance/{3}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/schedule/{2}/schedule-instance";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_STATE = "state";
     
         /// <summary>
         /// Object type.
@@ -57,16 +57,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public List<Error> ErrorMessage { get; private set; }
     
         /// <summary>
-        /// The scheduled object.
+        /// The scheduled object. (Payment, PaymentBatch)
         /// </summary>
         [JsonProperty(PropertyName = "scheduled_object")]
-        public BunqModel ScheduledObject { get; private set; }
+        public ScheduleAnchorObject ScheduledObject { get; private set; }
     
         /// <summary>
-        /// The result object of this schedule instance. (payment, payment batch)
+        /// The result object of this schedule instance. (Payment, PaymentBatch)
         /// </summary>
         [JsonProperty(PropertyName = "result_object")]
-        public BunqModel ResultObject { get; private set; }
+        public ScheduleInstanceAnchorObject ResultObject { get; private set; }
     
         /// <summary>
         /// </summary>

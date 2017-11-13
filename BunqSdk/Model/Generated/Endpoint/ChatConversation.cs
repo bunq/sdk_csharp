@@ -1,4 +1,5 @@
 using Bunq.Sdk.Context;
+using Bunq.Sdk.Exception;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
@@ -14,6 +15,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// </summary>
     public class ChatConversation : BunqModel
     {
+        /// <summary>
+        /// Error constants.
+        /// </summary>
+        private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
+    
         /// <summary>
         /// Endpoint constants.
         /// </summary>
@@ -58,6 +64,24 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, chatConversationId), new Dictionary<string, string>(), customHeaders);
     
             return FromJson<ChatConversation>(responseRaw);
+        }
+    
+    
+        /// <summary>
+        /// </summary>
+        public BunqModel GetReferencedObject()
+        {
+            if (this.SupportConversationExternal != null)
+            {
+                return this.SupportConversationExternal;
+            }
+    
+            if (this.ChatConversationReference != null)
+            {
+                return this.ChatConversationReference;
+            }
+    
+            throw new BunqException(ERROR_NULL_FIELDS);
         }
     }
 }

@@ -18,6 +18,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class UserCompany : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_READ = "user-company/{0}";
+        private const string ENDPOINT_URL_UPDATE = "user-company/{0}";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_NAME = "name";
@@ -36,12 +42,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
         public const string FIELD_COUNTER_BANK_IBAN = "counter_bank_iban";
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
-    
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_READ = "user-company/{0}";
-        private const string ENDPOINT_URL_UPDATE = "user-company/{0}";
     
         /// <summary>
         /// Object type.

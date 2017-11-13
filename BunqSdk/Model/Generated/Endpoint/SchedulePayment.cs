@@ -16,12 +16,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class SchedulePayment : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_PAYMENT = "payment";
-        public const string FIELD_SCHEDULE = "schedule";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/schedule-payment";
@@ -29,6 +23,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/schedule-payment/{2}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/schedule-payment";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/schedule-payment/{2}";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_PAYMENT = "payment";
+        public const string FIELD_SCHEDULE = "schedule";
     
         /// <summary>
         /// Object type.

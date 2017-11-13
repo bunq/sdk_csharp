@@ -26,7 +26,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CredentialPasswordIp";
+        private const string OBJECT_TYPE = "UserCredentialPasswordIp";
     
         /// <summary>
         /// The id of the credential.

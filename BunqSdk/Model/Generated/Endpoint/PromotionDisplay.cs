@@ -16,15 +16,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class PromotionDisplay : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_STATUS = "status";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_READ = "user/{0}/promotion-display/{1}";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/promotion-display/{1}";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_STATUS = "status";
     
         /// <summary>
         /// Object type.

@@ -21,7 +21,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "BunqMeTab";
+        private const string OBJECT_TYPE = "BunqMeTabEntry";
     
         /// <summary>
         /// The uuid of the bunq.me.

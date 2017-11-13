@@ -20,6 +20,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class MonetaryAccountBank : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account-bank";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account-bank/{1}";
+        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account-bank/{1}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account-bank";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_CURRENCY = "currency";
@@ -35,14 +43,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SHARE = "share";
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
         public const string FIELD_SETTING = "setting";
-    
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account-bank";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account-bank/{1}";
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account-bank/{1}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account-bank";
     
         /// <summary>
         /// Object type.

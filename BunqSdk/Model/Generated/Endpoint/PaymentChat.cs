@@ -15,11 +15,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class PaymentChat : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_LAST_READ_MESSAGE_ID = "last_read_message_id";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/payment/{2}/chat";
@@ -27,9 +22,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/payment/{2}/chat";
     
         /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_LAST_READ_MESSAGE_ID = "last_read_message_id";
+    
+        /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ChatConversationPayment";
+        private const string OBJECT_TYPE = "PaymentChat";
     
         /// <summary>
         /// The id of the chat conversation.

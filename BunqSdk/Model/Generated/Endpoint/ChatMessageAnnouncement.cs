@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ChatMessageUser";
+        private const string OBJECT_TYPE = "ChatMessageAnnouncement";
     
         /// <summary>
         /// The id of the message.

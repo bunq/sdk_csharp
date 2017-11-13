@@ -18,6 +18,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class CardDebit : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_CREATE = "user/{0}/card-debit";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_SECOND_LINE = "second_line";
@@ -27,11 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_TYPE = "type";
         public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
         public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
-    
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/card-debit";
+        public const string FIELD_COUNTRY = "country";
     
         /// <summary>
         /// Object type.
@@ -146,6 +147,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
         public int? MonetaryAccountIdFallback { get; private set; }
+    
+        /// <summary>
+        /// The country that is domestic to the card. Defaults to country of residence of user.
+        /// </summary>
+        [JsonProperty(PropertyName = "country")]
+        public string Country { get; private set; }
     
         /// <summary>
         /// Create a new debit card request.

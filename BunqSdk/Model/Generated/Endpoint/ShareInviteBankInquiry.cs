@@ -18,22 +18,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ShareInviteBankInquiry : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_COUNTER_USER_ALIAS = "counter_user_alias";
-        public const string FIELD_DRAFT_SHARE_INVITE_BANK_ID = "draft_share_invite_bank_id";
-        public const string FIELD_SHARE_DETAIL = "share_detail";
-        public const string FIELD_STATUS = "status";
-        public const string FIELD_START_DATE = "start_date";
-        public const string FIELD_END_DATE = "end_date";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry";
         private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry/{2}";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry/{2}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_COUNTER_USER_ALIAS = "counter_user_alias";
+        public const string FIELD_DRAFT_SHARE_INVITE_BANK_ID = "draft_share_invite_bank_id";
+        public const string FIELD_SHARE_DETAIL = "share_detail";
+        public const string FIELD_STATUS = "status";
+        public const string FIELD_SHARE_TYPE = "share_type";
+        public const string FIELD_START_DATE = "start_date";
+        public const string FIELD_END_DATE = "end_date";
     
         /// <summary>
         /// Object type.
@@ -83,11 +84,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public ShareDetail ShareDetail { get; private set; }
     
         /// <summary>
-        /// The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted)
-        /// or CANCELLED (the user deletes an active share).
+        /// The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted),
+        /// ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED,
+        /// CANCELLATION_REJECTED (for canceling mutual connects)
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; private set; }
+    
+        /// <summary>
+        /// The share type, either STANDARD or MUTUAL.
+        /// </summary>
+        [JsonProperty(PropertyName = "share_type")]
+        public string ShareType { get; private set; }
     
         /// <summary>
         /// The start date of this share.

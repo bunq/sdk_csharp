@@ -43,6 +43,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? LimitCardDebitMastercard { get; private set; }
     
         /// <summary>
+        /// The limit of wildcards, e.g. Maestro or MasterCard cards.
+        /// </summary>
+        [JsonProperty(PropertyName = "limit_card_debit_wildcard")]
+        public int? LimitCardDebitWildcard { get; private set; }
+    
+        /// <summary>
         /// The limit of free replacement cards.
         /// </summary>
         [JsonProperty(PropertyName = "limit_card_debit_replacement")]

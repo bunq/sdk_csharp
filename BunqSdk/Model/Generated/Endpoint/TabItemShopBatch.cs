@@ -15,14 +15,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class TabItemShopBatch : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_TAB_ITEMS = "tab_items";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item-batch";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_TAB_ITEMS = "tab_items";
     
         /// <summary>
         /// Object type.
