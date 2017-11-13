@@ -104,3 +104,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GET_PAYMENT
                 );
         }
+        
+        [Fact]
+        public void TestBunqMeTabModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_BUNQ_ME_TAB_MODEL,
+                typeof(BunqMeTab),
+                GET_BUNQ_ME_TAB
+                );
+        }   
