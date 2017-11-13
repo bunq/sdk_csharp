@@ -124,3 +124,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GET_CHAT_MESSAGE_ANNOUNCEMENT
                 );
         }        
+        
+        [Fact]
+        public void TestDraftPaymentModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_DRAFT_PAYMENT_MODEL,
+                typeof(DraftPayment),
+                GET_DRAFT_PAYMENT
+                );
+        }      
