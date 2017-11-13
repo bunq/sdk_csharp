@@ -164,3 +164,23 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GET_PAYMENT_BATCH
                 );
         }     
+        
+        [Fact]
+        public void TestRequestInquiryModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_REQUEST_INQUIRY_MODEL,
+                typeof(RequestInquiry),
+                GET_REQUEST_INQUIRY
+                );
+        }     
+        
+        [Fact]
+        public void TestRequestResponseModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_REQUEST_RESPONSE_MODEL,
+                typeof(RequestResponse),
+                GET_REQUEST_RESPONSE
+                );
+        }  
