@@ -144,3 +144,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GET_MASTER_CARD_ACTION
                 );
         }  
+        
+        [Fact]
+        public void TestMonetaryAccountBankModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_MONETARY_ACCOUNT_BANK_MODEL,
+                typeof(MonetaryAccountBank),
+                GET_MONETARY_ACCOUNT_BANK
+                );
+        }    
