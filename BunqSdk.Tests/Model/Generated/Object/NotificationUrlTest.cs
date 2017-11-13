@@ -154,3 +154,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GET_MONETARY_ACCOUNT_BANK
                 );
         }    
+        
+        [Fact]
+        public void TestPaymentBatchModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_PAYMENT_BATCH_MODEL,
+                typeof(PaymentBatch),
+                GET_PAYMENT_BATCH
+                );
+        }     
