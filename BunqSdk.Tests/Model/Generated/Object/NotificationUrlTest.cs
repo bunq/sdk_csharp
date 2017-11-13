@@ -184,3 +184,23 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GET_REQUEST_RESPONSE
                 );
         }  
+        
+        [Fact]
+        public void TestScheduledInstanceModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_SCHEDULE_INSTANCE_MODEL,
+                typeof(ScheduleInstance),
+                GET_SCHEDULE_INSTANCE
+                );
+        }     
+        
+        [Fact]
+        public void TestScheduledPaymentModel()
+        {
+            ExeceuteNotificationUrlTest(
+                JSON_PATH_SCHEDULE_PAYMENT_MODEL,
+                typeof(SchedulePayment),
+                GET_SCHEDULE_PAYMENT
+                );
+        }       
