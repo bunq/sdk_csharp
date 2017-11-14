@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "InstallationServerPublicKey";
+        private const string OBJECT_TYPE = "ServerPublicKey";
     
         /// <summary>
         /// The server's public key for this Installation.

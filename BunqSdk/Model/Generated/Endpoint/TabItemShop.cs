@@ -41,7 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TabItemShop";
+        private const string OBJECT_TYPE = "TabItem";
     
         /// <summary>
         /// The id of the created TabItem.

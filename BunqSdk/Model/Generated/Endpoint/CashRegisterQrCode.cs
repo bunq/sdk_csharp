@@ -32,7 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CashRegisterQrCode";
+        private const string OBJECT_TYPE = "TokenQrCashRegister";
     
         /// <summary>
         /// The id of the created QR code. Use this id to get the RAW content of the QR code with:

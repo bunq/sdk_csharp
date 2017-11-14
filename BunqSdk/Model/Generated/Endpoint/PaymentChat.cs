@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "PaymentChat";
+        private const string OBJECT_TYPE = "ChatConversationPayment";
     
         /// <summary>
         /// The id of the chat conversation.

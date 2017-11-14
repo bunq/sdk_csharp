@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "InvoiceByUser";
+        private const string OBJECT_TYPE = "Invoice";
     
         /// <summary>
         /// The id of the invoice object.

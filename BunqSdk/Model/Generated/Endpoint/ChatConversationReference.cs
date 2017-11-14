@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ChatConversationReference";
+        private const string OBJECT_TYPE = "SupportConversationReference";
     
         /// <summary>
         /// The id of this conversation.

@@ -39,7 +39,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Card";
+        private const string OBJECT_TYPE = "CardDebit";
     
         /// <summary>
         /// The id of the card.
@@ -70,12 +70,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
-    
-        /// <summary>
-        /// The sub-type of the card. Can be WILDCARD or NONE.
-        /// </summary>
-        [JsonProperty(PropertyName = "sub_type")]
-        public string SubType { get; private set; }
     
         /// <summary>
         /// The second line of text on the card

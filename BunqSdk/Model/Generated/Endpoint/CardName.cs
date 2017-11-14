@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CardName";
+        private const string OBJECT_TYPE = "CardUserNameArray";
     
         /// <summary>
         /// All possible variations (of suitable length) of user's legal name for the debit card.

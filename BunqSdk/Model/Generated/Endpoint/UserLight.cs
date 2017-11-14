@@ -55,7 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "UserLight";
+        private const string OBJECT_TYPE = "UserPerson";
     
         /// <summary>
         /// The id of the user.

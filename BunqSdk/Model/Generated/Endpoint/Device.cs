@@ -33,11 +33,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "DevicePhone")]
-        public DevicePhone DevicePhone { get; private set; }
-    
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "DeviceServer")]
         public DeviceServer DeviceServer { get; private set; }
     
@@ -73,11 +68,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public BunqModel GetReferencedObject()
         {
-            if (this.DevicePhone != null)
-            {
-                return this.DevicePhone;
-            }
-    
             if (this.DeviceServer != null)
             {
                 return this.DeviceServer;
