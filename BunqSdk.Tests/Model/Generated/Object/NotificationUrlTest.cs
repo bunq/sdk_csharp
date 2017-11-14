@@ -63,7 +63,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         /// </summary>
         private const string KEY_NOTIFICATION_URL_MODEL = "NotificationUrl";
 
-        private void ExeceuteNotificationUrlTest(
+        private void ExecuteNotificationUrlTest(
             string expectedJsonFileName,
             Type classNameExpected,
             string referencedObjectGetterName)
@@ -98,7 +98,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestMutationModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_MUTATION_MODEL,
                 typeof(Payment),
                 GET_PAYMENT
@@ -108,7 +108,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestBunqMeTabModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_BUNQ_ME_TAB_MODEL,
                 typeof(BunqMeTab),
                 GET_BUNQ_ME_TAB
@@ -118,7 +118,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestChatMessageAnnouncementModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_CHAT_MESSAGE_ANNOUNCEMENT_MODEL,
                 typeof(ChatMessageAnnouncement),
                 GET_CHAT_MESSAGE_ANNOUNCEMENT
@@ -128,7 +128,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestDraftPaymentModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_DRAFT_PAYMENT_MODEL,
                 typeof(DraftPayment),
                 GET_DRAFT_PAYMENT
@@ -138,7 +138,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestMasterCardActionModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_MASTER_CARD_ACTION_MODEL,
                 typeof(MasterCardAction),
                 GET_MASTER_CARD_ACTION
@@ -148,7 +148,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestMonetaryAccountBankModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_MONETARY_ACCOUNT_BANK_MODEL,
                 typeof(MonetaryAccountBank),
                 GET_MONETARY_ACCOUNT_BANK
@@ -158,7 +158,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestPaymentBatchModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_PAYMENT_BATCH_MODEL,
                 typeof(PaymentBatch),
                 GET_PAYMENT_BATCH
@@ -168,7 +168,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestRequestInquiryModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_REQUEST_INQUIRY_MODEL,
                 typeof(RequestInquiry),
                 GET_REQUEST_INQUIRY
@@ -178,7 +178,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestRequestResponseModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_REQUEST_RESPONSE_MODEL,
                 typeof(RequestResponse),
                 GET_REQUEST_RESPONSE
@@ -188,7 +188,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestScheduledInstanceModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_SCHEDULE_INSTANCE_MODEL,
                 typeof(ScheduleInstance),
                 GET_SCHEDULE_INSTANCE
@@ -198,7 +198,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestScheduledPaymentModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_SCHEDULE_PAYMENT_MODEL,
                 typeof(SchedulePayment),
                 GET_SCHEDULE_PAYMENT
@@ -208,7 +208,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestShareInviteBankModel()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_SHARE_INVITE_BANK_INQUIRY_MODEL,
                 typeof(ShareInviteBankInquiry),
                 GET_SHARE_INVITE_BANK_INQUIRY
@@ -218,7 +218,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         [Fact]
         public void TestShareInviteBankResponse()
         {
-            ExeceuteNotificationUrlTest(
+            ExecuteNotificationUrlTest(
                 JSON_PATH_SHARE_INVITE_BANK_RESPONSE_MODEL,
                 typeof(ShareInviteBankResponse),
                 GET_SHARE_INVITE_BANK_RESPONSE
