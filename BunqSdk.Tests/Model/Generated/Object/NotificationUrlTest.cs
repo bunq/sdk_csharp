@@ -66,15 +66,15 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         private void ExecuteNotificationUrlTest(
             string expectedJsonFileName,
             Type classNameExpected,
-            string referencedObjectGetterName)
-        {
+            string referencedObjectPropertyName
+            ) {
             var jsonString = ReadJsonFromFile(expectedJsonFileName);
-            var notificationUrl = BunqModel.FromJsonString<NotificationUrl>(jsonString);
+            var notificationUrl = BunqModel.CreateFromJsonString<NotificationUrl>(jsonString);
             
             Assert.NotNull(notificationUrl);
             Assert.NotNull(notificationUrl.Object);
 
-            var model = notificationUrl.Object.GetType().GetProperty(referencedObjectGetterName).GetValue(
+            var model = notificationUrl.Object.GetType().GetProperty(referencedObjectPropertyName).GetValue(
                 notificationUrl.Object);
             var referencedModel = notificationUrl.Object.GetReferencedObject();
             
