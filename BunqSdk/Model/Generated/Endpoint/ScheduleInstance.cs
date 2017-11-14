@@ -30,7 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ScheduleInstance";
+        private const string OBJECT_TYPE = "ScheduledInstance";
     
         /// <summary>
         /// The state of the scheduleInstance. (FINISHED_SUCCESSFULLY, RETRY, FAILED_USER_ERROR)
@@ -82,7 +82,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int scheduleId, int scheduleInstanceId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ScheduleInstance> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int scheduleId, int scheduleInstanceId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -90,7 +90,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, scheduleId, scheduleInstanceId), requestBytes, customHeaders);
     
-            return ProcessForId(responseRaw);
+            return FromJson<ScheduleInstance>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
