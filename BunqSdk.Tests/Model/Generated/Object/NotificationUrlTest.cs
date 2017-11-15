@@ -95,7 +95,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_MUTATION_MODEL,
                 typeof(Payment),
                 GET_PAYMENT
-                );
+            );
         }
         
         [Fact]
@@ -105,7 +105,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_BUNQ_ME_TAB_MODEL,
                 typeof(BunqMeTab),
                 GET_BUNQ_ME_TAB
-                );
+            );
         }   
         
         [Fact]
@@ -115,7 +115,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_CHAT_MESSAGE_ANNOUNCEMENT_MODEL,
                 typeof(ChatMessageAnnouncement),
                 GET_CHAT_MESSAGE_ANNOUNCEMENT
-                );
+            );
         }        
         
         [Fact]
@@ -125,7 +125,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_DRAFT_PAYMENT_MODEL,
                 typeof(DraftPayment),
                 GET_DRAFT_PAYMENT
-                );
+            );
         }      
         
         [Fact]
@@ -135,7 +135,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_MASTER_CARD_ACTION_MODEL,
                 typeof(MasterCardAction),
                 GET_MASTER_CARD_ACTION
-                );
+            );
         }  
         
         [Fact]
@@ -145,7 +145,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_MONETARY_ACCOUNT_BANK_MODEL,
                 typeof(MonetaryAccountBank),
                 GET_MONETARY_ACCOUNT_BANK
-                );
+            );
         }    
         
         [Fact]
@@ -155,7 +155,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_PAYMENT_BATCH_MODEL,
                 typeof(PaymentBatch),
                 GET_PAYMENT_BATCH
-                );
+            );
         }     
         
         [Fact]
@@ -165,7 +165,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_REQUEST_INQUIRY_MODEL,
                 typeof(RequestInquiry),
                 GET_REQUEST_INQUIRY
-                );
+            );
         }     
         
         [Fact]
@@ -175,7 +175,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_REQUEST_RESPONSE_MODEL,
                 typeof(RequestResponse),
                 GET_REQUEST_RESPONSE
-                );
+            );
         }  
         
         [Fact]
@@ -185,7 +185,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_SCHEDULE_INSTANCE_MODEL,
                 typeof(ScheduleInstance),
                 GET_SCHEDULE_INSTANCE
-                );
+            );
         }     
         
         [Fact]
@@ -195,7 +195,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_SCHEDULE_PAYMENT_MODEL,
                 typeof(SchedulePayment),
                 GET_SCHEDULE_PAYMENT
-                );
+            );
         }       
         
         [Fact]
@@ -205,7 +205,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_SHARE_INVITE_BANK_INQUIRY_MODEL,
                 typeof(ShareInviteBankInquiry),
                 GET_SHARE_INVITE_BANK_INQUIRY
-                );
+            );
         }       
         
         [Fact]
@@ -215,7 +215,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 JSON_PATH_SHARE_INVITE_BANK_RESPONSE_MODEL,
                 typeof(ShareInviteBankResponse),
                 GET_SHARE_INVITE_BANK_RESPONSE
-                );
+            );
         }
     }
 }
