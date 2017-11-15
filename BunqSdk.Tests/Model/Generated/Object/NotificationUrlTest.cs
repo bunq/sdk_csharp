@@ -30,13 +30,6 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         private const string GET_SHARE_INVITE_BANK_RESPONSE = "ShareInviteBankResponse";
         
         /// <summary>
-        /// Assert error constants.
-        /// </summary>
-        private const string ASSERT_SHOULD_NOT_REACH_THIS_CODE_ERROR = "Congratulations you\"ve reached unreachable code.";
-        private const string ASSERT_JSON_DECODE_ERROR = "Error accorded while decoding the JSON file.";
-        private const string ASSERT_OBJECT_IS_NULL_ERROR = "The field object of NotificationUrl is null.";
-        
-        /// <summary>
         /// Model json paths constants.
         /// </summary>
         private const string BASE_PATH_JSON_MODEL = "../../../Resources/NotificationUrlJsons";
