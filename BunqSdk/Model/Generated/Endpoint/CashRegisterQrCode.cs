@@ -17,17 +17,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class CashRegisterQrCode : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_STATUS = "status";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code/{3}";
         private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code/{3}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_STATUS = "status";
     
         /// <summary>
         /// Object type.

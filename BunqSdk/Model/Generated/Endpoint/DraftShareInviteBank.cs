@@ -18,19 +18,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class DraftShareInviteBank : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_STATUS = "status";
-        public const string FIELD_EXPIRATION = "expiration";
-        public const string FIELD_DRAFT_SHARE_SETTINGS = "draft_share_settings";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/draft-share-invite-bank";
         private const string ENDPOINT_URL_READ = "user/{0}/draft-share-invite-bank/{1}";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/draft-share-invite-bank/{1}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/draft-share-invite-bank";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_STATUS = "status";
+        public const string FIELD_EXPIRATION = "expiration";
+        public const string FIELD_DRAFT_SHARE_SETTINGS = "draft_share_settings";
     
         /// <summary>
         /// Object type.

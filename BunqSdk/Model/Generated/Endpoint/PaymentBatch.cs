@@ -15,18 +15,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class PaymentBatch : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_PAYMENTS = "payments";
-        public const string FIELD_BUNQTO_STATUS = "bunqto_status";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/payment-batch";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/payment-batch/{2}";
         private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/payment-batch/{2}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/payment-batch";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_PAYMENTS = "payments";
+        public const string FIELD_BUNQTO_STATUS = "bunqto_status";
     
         /// <summary>
         /// Object type.

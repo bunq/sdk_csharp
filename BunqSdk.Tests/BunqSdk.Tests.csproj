@@ -19,4 +19,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\NotificationUrlJsons" />
+  </ItemGroup>
 </Project>

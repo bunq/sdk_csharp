@@ -17,16 +17,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ExportAnnualOverview : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_YEAR = "year";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/export-annual-overview";
         private const string ENDPOINT_URL_READ = "user/{0}/export-annual-overview/{1}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/export-annual-overview";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_YEAR = "year";
     
         /// <summary>
         /// Object type.

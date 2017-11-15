@@ -20,14 +20,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class TokenQrRequestIdeal : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_TOKEN = "token";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/token-qr-request-ideal";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_TOKEN = "token";
     
         /// <summary>
         /// Object type.

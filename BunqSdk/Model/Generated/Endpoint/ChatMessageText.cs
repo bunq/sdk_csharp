@@ -15,15 +15,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ChatMessageText : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_CREATE = "user/{0}/chat-conversation/{1}/message-text";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_CLIENT_MESSAGE_UUID = "client_message_uuid";
         public const string FIELD_TEXT = "text";
-    
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/chat-conversation/{1}/message-text";
     
         /// <summary>
         /// Object type.

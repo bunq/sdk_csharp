@@ -15,15 +15,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class BillingContractSubscription : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_SUBSCRIPTION_TYPE = "subscription_type";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/billing-contract-subscription";
         private const string ENDPOINT_URL_LISTING = "user/{0}/billing-contract-subscription";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_SUBSCRIPTION_TYPE = "subscription_type";
     
         /// <summary>
         /// Object type.

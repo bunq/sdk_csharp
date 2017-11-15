@@ -1,3 +1,4 @@
+using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Newtonsoft.Json;
@@ -9,6 +10,12 @@ namespace Bunq.Sdk.Model.Generated.Object
     /// </summary>
     public class AnchoredObject : BunqModel
     {
+        /// <summary>
+        /// Error constants.
+        /// </summary>
+        private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
+    
+    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CardDebit")]
@@ -98,5 +105,103 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "UserCredentialPasswordIp")]
         public UserCredentialPasswordIp UserCredentialPasswordIp { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public BunqModel GetReferencedObject()
+        {
+            if (this.CardDebit != null)
+            {
+                return this.CardDebit;
+            }
+    
+            if (this.CardPinChange != null)
+            {
+                return this.CardPinChange;
+            }
+    
+            if (this.CardResult != null)
+            {
+                return this.CardResult;
+            }
+    
+            if (this.DraftPayment != null)
+            {
+                return this.DraftPayment;
+            }
+    
+            if (this.IdealMerchantTransaction != null)
+            {
+                return this.IdealMerchantTransaction;
+            }
+    
+            if (this.Invoice != null)
+            {
+                return this.Invoice;
+            }
+    
+            if (this.Payment != null)
+            {
+                return this.Payment;
+            }
+    
+            if (this.PaymentBatch != null)
+            {
+                return this.PaymentBatch;
+            }
+    
+            if (this.PromotionDisplay != null)
+            {
+                return this.PromotionDisplay;
+            }
+    
+            if (this.RequestInquiryBatch != null)
+            {
+                return this.RequestInquiryBatch;
+            }
+    
+            if (this.RequestInquiry != null)
+            {
+                return this.RequestInquiry;
+            }
+    
+            if (this.RequestResponse != null)
+            {
+                return this.RequestResponse;
+            }
+    
+            if (this.ScheduledPaymentBatch != null)
+            {
+                return this.ScheduledPaymentBatch;
+            }
+    
+            if (this.ScheduledPayment != null)
+            {
+                return this.ScheduledPayment;
+            }
+    
+            if (this.ScheduledInstance != null)
+            {
+                return this.ScheduledInstance;
+            }
+    
+            if (this.ShareInviteBankInquiry != null)
+            {
+                return this.ShareInviteBankInquiry;
+            }
+    
+            if (this.ShareInviteBankResponse != null)
+            {
+                return this.ShareInviteBankResponse;
+            }
+    
+            if (this.UserCredentialPasswordIp != null)
+            {
+                return this.UserCredentialPasswordIp;
+            }
+    
+            throw new BunqException(ERROR_NULL_FIELDS);
+        }
     }
 }

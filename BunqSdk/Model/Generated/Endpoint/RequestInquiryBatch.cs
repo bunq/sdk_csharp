@@ -16,19 +16,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class RequestInquiryBatch : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_REQUEST_INQUIRIES = "request_inquiries";
-        public const string FIELD_STATUS = "status";
-        public const string FIELD_TOTAL_AMOUNT_INQUIRED = "total_amount_inquired";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/request-inquiry-batch";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/request-inquiry-batch/{2}";
         private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/request-inquiry-batch/{2}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/request-inquiry-batch";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_REQUEST_INQUIRIES = "request_inquiries";
+        public const string FIELD_STATUS = "status";
+        public const string FIELD_TOTAL_AMOUNT_INQUIRED = "total_amount_inquired";
     
         /// <summary>
         /// Object type.

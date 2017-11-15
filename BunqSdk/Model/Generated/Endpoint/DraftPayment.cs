@@ -17,20 +17,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class DraftPayment : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_STATUS = "status";
-        public const string FIELD_ENTRIES = "entries";
-        public const string FIELD_PREVIOUS_UPDATED_TIMESTAMP = "previous_updated_timestamp";
-        public const string FIELD_NUMBER_OF_REQUIRED_ACCEPTS = "number_of_required_accepts";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/draft-payment";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/draft-payment/{2}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/draft-payment";
         private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/draft-payment/{2}";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_STATUS = "status";
+        public const string FIELD_ENTRIES = "entries";
+        public const string FIELD_PREVIOUS_UPDATED_TIMESTAMP = "previous_updated_timestamp";
+        public const string FIELD_NUMBER_OF_REQUIRED_ACCEPTS = "number_of_required_accepts";
     
         /// <summary>
         /// Object type.

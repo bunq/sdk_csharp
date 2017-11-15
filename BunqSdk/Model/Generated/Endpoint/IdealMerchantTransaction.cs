@@ -16,17 +16,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class IdealMerchantTransaction : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_AMOUNT_REQUESTED = "amount_requested";
-        public const string FIELD_ISSUER = "issuer";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/ideal-merchant-transaction";
         private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/ideal-merchant-transaction/{2}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/ideal-merchant-transaction";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_AMOUNT_REQUESTED = "amount_requested";
+        public const string FIELD_ISSUER = "issuer";
     
         /// <summary>
         /// Object type.

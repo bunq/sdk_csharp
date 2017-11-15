@@ -15,18 +15,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class PermittedIp : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_IP = "ip";
-        public const string FIELD_STATUS = "status";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_READ = "user/{0}/credential-password-ip/{1}/ip/{2}";
         private const string ENDPOINT_URL_CREATE = "user/{0}/credential-password-ip/{1}/ip";
         private const string ENDPOINT_URL_LISTING = "user/{0}/credential-password-ip/{1}/ip";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/credential-password-ip/{1}/ip/{2}";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_IP = "ip";
+        public const string FIELD_STATUS = "status";
     
         /// <summary>
         /// Object type.

@@ -16,18 +16,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class DeviceServer : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_DESCRIPTION = "description";
-        public const string FIELD_SECRET = "secret";
-        public const string FIELD_PERMITTED_IPS = "permitted_ips";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "device-server";
         private const string ENDPOINT_URL_READ = "device-server/{0}";
         private const string ENDPOINT_URL_LISTING = "device-server";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_DESCRIPTION = "description";
+        public const string FIELD_SECRET = "secret";
+        public const string FIELD_PERMITTED_IPS = "permitted_ips";
     
         /// <summary>
         /// Object type.
