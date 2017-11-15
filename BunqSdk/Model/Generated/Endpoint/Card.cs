@@ -72,6 +72,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Type { get; private set; }
     
         /// <summary>
+        /// The sub-type of the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "sub_type")]
+        public string SubType { get; private set; }
+    
+        /// <summary>
         /// The second line of text on the card
         /// </summary>
         [JsonProperty(PropertyName = "second_line")]
