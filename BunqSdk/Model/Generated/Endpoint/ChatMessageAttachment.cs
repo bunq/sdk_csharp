@@ -15,15 +15,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ChatMessageAttachment : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_CREATE = "user/{0}/chat-conversation/{1}/message-attachment";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_CLIENT_MESSAGE_UUID = "client_message_uuid";
         public const string FIELD_ATTACHMENT = "attachment";
-    
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/chat-conversation/{1}/message-attachment";
     
         /// <summary>
         /// Object type.

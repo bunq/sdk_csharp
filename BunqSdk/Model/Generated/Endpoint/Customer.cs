@@ -15,16 +15,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class Customer : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_BILLING_ACCOUNT_ID = "billing_account_id";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_LISTING = "user/{0}/customer";
         private const string ENDPOINT_URL_READ = "user/{0}/customer/{1}";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/customer/{1}";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_BILLING_ACCOUNT_ID = "billing_account_id";
     
         /// <summary>
         /// Object type.

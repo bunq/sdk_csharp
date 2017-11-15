@@ -92,6 +92,13 @@ namespace Bunq.Sdk.Model.Core
             return new BunqResponse<T>(responseValue, responseRaw.Headers);
         }
 
+        public static T CreateFromJsonString<T>(string json)
+        {
+            var modelValue = BunqJsonConvert.DeserializeObject<T>(json);
+            
+            return modelValue;
+        }
+
         /// <summary>
         /// De-serializes a list from JSON.
         /// </summary>

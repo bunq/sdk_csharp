@@ -19,15 +19,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class CardReplace : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_CREATE = "user/{0}/card/{1}/replace";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_PIN_CODE = "pin_code";
         public const string FIELD_SECOND_LINE = "second_line";
-    
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/card/{1}/replace";
     
         /// <summary>
         /// Object type.

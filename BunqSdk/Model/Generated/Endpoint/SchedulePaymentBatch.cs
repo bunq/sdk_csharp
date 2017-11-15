@@ -16,12 +16,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class SchedulePaymentBatch : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_PAYMENTS = "payments";
-        public const string FIELD_SCHEDULE = "schedule";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/schedule-payment-batch";
@@ -29,9 +23,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/schedule-payment-batch/{2}";
     
         /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_PAYMENTS = "payments";
+        public const string FIELD_SCHEDULE = "schedule";
+    
+        /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "SchedulePaymentBatch";
+        private const string OBJECT_TYPE = "ScheduledPaymentBatch";
     
         /// <summary>
         /// The payment details.
@@ -60,7 +60,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int schedulePaymentBatchId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<SchedulePaymentBatch> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int schedulePaymentBatchId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -68,7 +68,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, schedulePaymentBatchId), requestBytes, customHeaders);
     
-            return ProcessForId(responseRaw);
+            return FromJson<SchedulePaymentBatch>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>

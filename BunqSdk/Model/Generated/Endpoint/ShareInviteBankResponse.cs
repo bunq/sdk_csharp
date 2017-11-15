@@ -17,16 +17,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ShareInviteBankResponse : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_STATUS = "status";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_READ = "user/{0}/share-invite-bank-response/{1}";
         private const string ENDPOINT_URL_UPDATE = "user/{0}/share-invite-bank-response/{1}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/share-invite-bank-response";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_STATUS = "status";
     
         /// <summary>
         /// Object type.
@@ -64,14 +64,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public ShareDetail ShareDetail { get; private set; }
     
         /// <summary>
-        /// The status of the share. Can be ACCEPTED (other user scans the QR and accepts the share), REVOKED (other
-        /// user scans the QR but denies the share), CANCELLED (other user cancels an existing share), EXPIRED (other
-        /// user did not react before expiration), PENDING (share is waiting for reply by the other user) or REJECTED
-        /// (share initiated by other user but rejected). Once the share's status becomes REVOKED, CANCELLED, EXPIRED or
-        /// REJECTED, its status can no longer be updated.
+        /// The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted),
+        /// ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED,
+        /// CANCELLATION_REJECTED (for canceling mutual connects)
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; private set; }
+    
+        /// <summary>
+        /// The share type: STANDARD.
+        /// </summary>
+        [JsonProperty(PropertyName = "share_type")]
+        public string ShareType { get; private set; }
     
         /// <summary>
         /// The start date of this share.

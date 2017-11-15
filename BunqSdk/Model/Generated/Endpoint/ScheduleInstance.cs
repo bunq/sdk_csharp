@@ -16,11 +16,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ScheduleInstance : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_STATE = "state";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/schedule/{2}/schedule-instance/{3}";
@@ -28,9 +23,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/schedule/{2}/schedule-instance";
     
         /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_STATE = "state";
+    
+        /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ScheduleInstance";
+        private const string OBJECT_TYPE = "ScheduledInstance";
     
         /// <summary>
         /// The state of the scheduleInstance. (FINISHED_SUCCESSFULLY, RETRY, FAILED_USER_ERROR)
@@ -57,16 +57,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public List<Error> ErrorMessage { get; private set; }
     
         /// <summary>
-        /// The scheduled object.
+        /// The scheduled object. (Payment, PaymentBatch)
         /// </summary>
         [JsonProperty(PropertyName = "scheduled_object")]
-        public BunqModel ScheduledObject { get; private set; }
+        public ScheduleAnchorObject ScheduledObject { get; private set; }
     
         /// <summary>
-        /// The result object of this schedule instance. (payment, payment batch)
+        /// The result object of this schedule instance. (Payment, PaymentBatch)
         /// </summary>
         [JsonProperty(PropertyName = "result_object")]
-        public BunqModel ResultObject { get; private set; }
+        public ScheduleInstanceAnchorObject ResultObject { get; private set; }
     
         /// <summary>
         /// </summary>
@@ -82,7 +82,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int scheduleId, int scheduleInstanceId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ScheduleInstance> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int scheduleId, int scheduleInstanceId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -90,7 +90,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, scheduleId, scheduleInstanceId), requestBytes, customHeaders);
     
-            return ProcessForId(responseRaw);
+            return FromJson<ScheduleInstance>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>

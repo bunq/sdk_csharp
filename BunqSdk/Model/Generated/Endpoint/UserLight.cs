@@ -16,6 +16,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class UserLight : BunqModel
     {
         /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        private const string ENDPOINT_URL_READ = "user-light/{0}";
+    
+        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_FIRST_NAME = "first_name";
@@ -46,11 +51,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SESSION_TIMEOUT = "session_timeout";
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
-    
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        private const string ENDPOINT_URL_READ = "user-light/{0}";
     
         /// <summary>
         /// Object type.

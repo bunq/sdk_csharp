@@ -16,17 +16,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class CertificatePinned : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_CERTIFICATE_CHAIN = "certificate_chain";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/certificate-pinned";
         private const string ENDPOINT_URL_DELETE = "user/{0}/certificate-pinned/{1}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/certificate-pinned";
         private const string ENDPOINT_URL_READ = "user/{0}/certificate-pinned/{1}";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_CERTIFICATE_CHAIN = "certificate_chain";
     
         /// <summary>
         /// Object type.

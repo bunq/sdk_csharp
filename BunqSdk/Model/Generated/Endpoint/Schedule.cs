@@ -2,6 +2,7 @@ using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
+using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
@@ -21,9 +22,53 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/schedule";
     
         /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_TIME_START = "time_start";
+        public const string FIELD_TIME_END = "time_end";
+        public const string FIELD_RECURRENCE_UNIT = "recurrence_unit";
+        public const string FIELD_RECURRENCE_SIZE = "recurrence_size";
+    
+        /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE = "Schedule";
+    
+        /// <summary>
+        /// The schedule start time (UTC).
+        /// </summary>
+        [JsonProperty(PropertyName = "time_start")]
+        public string TimeStart { get; private set; }
+    
+        /// <summary>
+        /// The schedule end time (UTC).
+        /// </summary>
+        [JsonProperty(PropertyName = "time_end")]
+        public string TimeEnd { get; private set; }
+    
+        /// <summary>
+        /// The schedule recurrence unit, options: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY, YEARLY
+        /// </summary>
+        [JsonProperty(PropertyName = "recurrence_unit")]
+        public string RecurrenceUnit { get; private set; }
+    
+        /// <summary>
+        /// The schedule recurrence size. For example size 4 and unit WEEKLY means the recurrence is every 4 weeks.
+        /// </summary>
+        [JsonProperty(PropertyName = "recurrence_size")]
+        public int? RecurrenceSize { get; private set; }
+    
+        /// <summary>
+        /// The schedule status, options: ACTIVE, FINISHED, CANCELLED.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; private set; }
+    
+        /// <summary>
+        /// The scheduled object. (Payment, PaymentBatch)
+        /// </summary>
+        [JsonProperty(PropertyName = "object")]
+        public ScheduleAnchorObject Object { get; private set; }
     
         /// <summary>
         /// Get a specific schedule definition for a given monetary account.

@@ -17,20 +17,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class CustomerStatementExport : BunqModel
     {
         /// <summary>
-        /// Field constants.
-        /// </summary>
-        public const string FIELD_STATEMENT_FORMAT = "statement_format";
-        public const string FIELD_DATE_START = "date_start";
-        public const string FIELD_DATE_END = "date_end";
-        public const string FIELD_REGIONAL_FORMAT = "regional_format";
-    
-        /// <summary>
         /// Endpoint constants.
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/customer-statement";
         private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/customer-statement/{2}";
         private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/customer-statement";
         private const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/customer-statement/{2}";
+    
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_STATEMENT_FORMAT = "statement_format";
+        public const string FIELD_DATE_START = "date_start";
+        public const string FIELD_DATE_END = "date_end";
+        public const string FIELD_REGIONAL_FORMAT = "regional_format";
     
         /// <summary>
         /// Object type.
