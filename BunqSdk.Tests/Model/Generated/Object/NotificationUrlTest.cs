@@ -60,8 +60,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
 
         private void ExecuteNotificationUrlTest(
             string expectedJsonFileName,
-            Type classNameExpected,
-            string referencedObjectPropertyName
+            Type classTypeExpected,
+            string referencedObjectPropertyName,
+            string subClassObjectPropertyName = null,
+            Type subClassTypeExpected = null
             ) {
             var jsonString = ReadJsonFromFile(expectedJsonFileName);
             var notificationUrl = BunqModel.CreateFromJsonString<NotificationUrl>(jsonString);
@@ -71,13 +73,19 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
 
             var model = notificationUrl.Object.GetType().GetProperty(referencedObjectPropertyName).GetValue(
                 notificationUrl.Object);
-//            Console.WriteLine(notificationUrl.Object);
             var referencedModel = notificationUrl.Object.GetReferencedObject();
             
             Assert.NotNull(model);
             Assert.NotNull(referencedModel);
-            Assert.IsType(classNameExpected, referencedModel);
-            Assert.Equal(classNameExpected, referencedModel.GetType());
+            Assert.IsType(classTypeExpected, referencedModel);
+            Assert.Equal(classTypeExpected, referencedModel.GetType());
+
+            if (subClassObjectPropertyName == null || subClassTypeExpected == null) return;
+            var subClass = referencedModel.GetType().GetProperty(subClassObjectPropertyName).GetValue(
+                referencedModel);
+                
+            Assert.NotNull(subClass);
+            Assert.Equal(subClassTypeExpected, subClass.GetType());
         }
 
         private static string ReadJsonFromFile(string fileName)
@@ -117,7 +125,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
             ExecuteNotificationUrlTest(
                 JSON_PATH_CHAT_MESSAGE_ANNOUNCEMENT_MODEL,
                 typeof(ChatMessage),
-                GET_CHAT_MESSAGE
+                GET_CHAT_MESSAGE,
+                GET_CHAT_MESSAGE_ANNOUNCEMENT,
+                typeof(ChatMessageAnnouncement)
             );
         }        
         
@@ -147,7 +157,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
             ExecuteNotificationUrlTest(
                 JSON_PATH_MONETARY_ACCOUNT_BANK_MODEL,
                 typeof(MonetaryAccount),
-                GET_MONETARY_ACCOUNT
+                GET_MONETARY_ACCOUNT,
+                GET_MONETARY_ACCOUNT_BANK,
+                typeof(MonetaryAccountBank)
             );
         }    
         
