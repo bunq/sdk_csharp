@@ -146,5 +146,7 @@ namespace Bunq.Sdk.Model.Core
         {
             return BunqJsonConvert.SerializeObject(this);
         }
+
+        public abstract bool AreAllFieldNull();
     }
 }
