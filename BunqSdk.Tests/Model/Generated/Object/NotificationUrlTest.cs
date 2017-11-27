@@ -18,9 +18,11 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         private const string GET_PAYMENT = "Payment";
         private const string GET_BUNQ_ME_TAB = "BunqMeTab";
         private const string GET_CHAT_MESSAGE_ANNOUNCEMENT = "ChatMessageAnnouncement";
+        private const string GET_CHAT_MESSAGE = "ChatMessage";
         private const string GET_DRAFT_PAYMENT = "DraftPayment";
         private const string GET_MASTER_CARD_ACTION = "MasterCardAction";
         private const string GET_MONETARY_ACCOUNT_BANK = "MonetaryAccountBank";
+        private const string GET_MONETARY_ACCOUNT = "MonetaryAccount";
         private const string GET_PAYMENT_BATCH = "PaymentBatch";
         private const string GET_REQUEST_INQUIRY = "RequestInquiry";
         private const string GET_REQUEST_RESPONSE = "RequestResponse";
@@ -69,6 +71,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
 
             var model = notificationUrl.Object.GetType().GetProperty(referencedObjectPropertyName).GetValue(
                 notificationUrl.Object);
+//            Console.WriteLine(notificationUrl.Object);
             var referencedModel = notificationUrl.Object.GetReferencedObject();
             
             Assert.NotNull(model);
@@ -113,8 +116,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         {
             ExecuteNotificationUrlTest(
                 JSON_PATH_CHAT_MESSAGE_ANNOUNCEMENT_MODEL,
-                typeof(ChatMessageAnnouncement),
-                GET_CHAT_MESSAGE_ANNOUNCEMENT
+                typeof(ChatMessage),
+                GET_CHAT_MESSAGE
             );
         }        
         
@@ -143,8 +146,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         {
             ExecuteNotificationUrlTest(
                 JSON_PATH_MONETARY_ACCOUNT_BANK_MODEL,
-                typeof(MonetaryAccountBank),
-                GET_MONETARY_ACCOUNT_BANK
+                typeof(MonetaryAccount),
+                GET_MONETARY_ACCOUNT
             );
         }    
         
