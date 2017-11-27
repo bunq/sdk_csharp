@@ -61,5 +61,30 @@ namespace Bunq.Sdk.Model.Core
 
             return Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(sessionServerRequestBody));
         }
+
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+
+            if (this.SessionToken != null)
+            {
+                return false;
+            }
+
+            if (this.UserCompany != null)
+            {
+                return false;
+            }
+
+            if (this.UserPerson != null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
