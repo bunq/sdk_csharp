@@ -20,11 +20,10 @@ namespace Bunq.Sdk.Json
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var list = new List<Type> {typeof(IAnchorObjectInterface)};
             var jsonSerializer = JsonSerializer.CreateDefault(
                 new JsonSerializerSettings
             {
-                ContractResolver = new BunqContractResolver(list),
+                ContractResolver = new BunqContractResolver(new List<Type> {typeof(IAnchorObjectInterface)}),
                 DateFormatString = FORMAT_DATE,
                 FloatParseHandling = FloatParseHandling.Decimal,
                 Formatting = Formatting.Indented,

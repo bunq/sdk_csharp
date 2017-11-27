@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Model.Core;
+using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
 namespace Bunq.Sdk.Json
@@ -14,9 +17,9 @@ namespace Bunq.Sdk.Json
     /// </summary>
     public class BunqContractResolver : DefaultContractResolver
     {
-        private readonly Dictionary<Type, JsonConverter> converterRegistry = new Dictionary<Type, JsonConverter>();
+        protected readonly Dictionary<Type, JsonConverter> converterRegistry = new Dictionary<Type, JsonConverter>();
 
-        public BunqContractResolver()
+        public BunqContractResolver(IReadOnlyCollection<Type> typesToExclude=null)
         {
             RegisterConverter(typeof(ApiEnvironmentType), new ApiEnvironmentTypeConverter());
             RegisterConverter(typeof(Geolocation), new GeolocationConverter());
@@ -28,6 +31,20 @@ namespace Bunq.Sdk.Json
             RegisterConverter(typeof(double?), new NonIntegerNumberConverter());
             RegisterConverter(typeof(float?), new NonIntegerNumberConverter());
             RegisterConverter(typeof(Pagination), new PaginationConverter());
+            RegisterConverter(typeof(IAnchorObjectInterface), new AnchorObjectConverter());
+
+            if (typesToExclude == null)
+            {
+                return;                
+            }
+            
+            foreach (var type in typesToExclude)
+            {
+                if (converterRegistry.ContainsKey(type))
+                {
+                    converterRegistry.Remove(type);
+                }
+            }
         }
 
         private void RegisterConverter(Type objectType, JsonConverter converter)
@@ -50,6 +67,13 @@ namespace Bunq.Sdk.Json
 
         private JsonConverter GetCustomConverterOrNull(Type objectType)
         {
+            if (typeof(IAnchorObjectInterface).IsAssignableFrom(objectType))
+            {
+                return converterRegistry.ContainsKey(typeof(IAnchorObjectInterface))
+                    ? converterRegistry[typeof(IAnchorObjectInterface)]
+                    : null;
+            }
+            
             return converterRegistry.ContainsKey(objectType) ? converterRegistry[objectType] : null;
         }
     }
