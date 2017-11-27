@@ -109,5 +109,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<SchedulePayment>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Payment != null)
+            {
+                return false;
+            }
+    
+            if (this.Schedule != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

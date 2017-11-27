@@ -228,5 +228,113 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<MonetaryAccountBank>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.Avatar != null)
+            {
+                return false;
+            }
+    
+            if (this.Currency != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.DailyLimit != null)
+            {
+                return false;
+            }
+    
+            if (this.DailySpent != null)
+            {
+                return false;
+            }
+    
+            if (this.OverdraftLimit != null)
+            {
+                return false;
+            }
+    
+            if (this.Balance != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.PublicUuid != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.SubStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.Reason != null)
+            {
+                return false;
+            }
+    
+            if (this.ReasonDescription != null)
+            {
+                return false;
+            }
+    
+            if (this.UserId != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountProfile != null)
+            {
+                return false;
+            }
+    
+            if (this.NotificationFilters != null)
+            {
+                return false;
+            }
+    
+            if (this.Setting != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

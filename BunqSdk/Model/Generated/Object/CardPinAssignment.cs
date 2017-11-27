@@ -30,5 +30,23 @@ namespace Bunq.Sdk.Model.Generated.Object
         {
             Type = type;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

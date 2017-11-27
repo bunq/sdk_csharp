@@ -135,5 +135,63 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<ShareInviteBankResponse>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.CounterAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.UserAliasCancelled != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.DraftShareInviteBankId != null)
+            {
+                return false;
+            }
+    
+            if (this.ShareDetail != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.ShareType != null)
+            {
+                return false;
+            }
+    
+            if (this.StartDate != null)
+            {
+                return false;
+            }
+    
+            if (this.EndDate != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

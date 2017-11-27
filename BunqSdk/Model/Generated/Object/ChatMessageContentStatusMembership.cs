@@ -19,5 +19,23 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "member")]
         public LabelUser Member { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Action != null)
+            {
+                return false;
+            }
+    
+            if (this.Member != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

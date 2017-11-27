@@ -13,5 +13,18 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "geolocation")]
         public Geolocation Geolocation { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Geolocation != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

@@ -252,5 +252,138 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<RequestInquiry>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.TimeResponded != null)
+            {
+                return false;
+            }
+    
+            if (this.TimeExpiry != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountInquired != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountResponded != null)
+            {
+                return false;
+            }
+    
+            if (this.UserAliasCreated != null)
+            {
+                return false;
+            }
+    
+            if (this.UserAliasRevoked != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterpartyAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.MerchantReference != null)
+            {
+                return false;
+            }
+    
+            if (this.Attachment != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.BatchId != null)
+            {
+                return false;
+            }
+    
+            if (this.ScheduledId != null)
+            {
+                return false;
+            }
+    
+            if (this.MinimumAge != null)
+            {
+                return false;
+            }
+    
+            if (this.RequireAddress != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqmeShareUrl != null)
+            {
+                return false;
+            }
+    
+            if (this.RedirectUrl != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressShipping != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressBilling != null)
+            {
+                return false;
+            }
+    
+            if (this.Geolocation != null)
+            {
+                return false;
+            }
+    
+            if (this.AllowChat != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

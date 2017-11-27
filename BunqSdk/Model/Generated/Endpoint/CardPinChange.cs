@@ -86,5 +86,43 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<CardPinChange>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.LabelCard != null)
+            {
+                return false;
+            }
+    
+            if (this.LabelMonetaryAccountCurrent != null)
+            {
+                return false;
+            }
+    
+            if (this.TimeRequest != null)
+            {
+                return false;
+            }
+    
+            if (this.TimeAccept != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

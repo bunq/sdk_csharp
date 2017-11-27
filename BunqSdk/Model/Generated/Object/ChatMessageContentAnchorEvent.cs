@@ -17,5 +17,18 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "anchored_object")]
         public AnchoredObject AnchoredObject { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.AnchoredObject != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

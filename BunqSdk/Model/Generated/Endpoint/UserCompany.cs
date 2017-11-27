@@ -251,5 +251,158 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return ProcessForId(responseRaw);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.PublicUuid != null)
+            {
+                return false;
+            }
+    
+            if (this.Name != null)
+            {
+                return false;
+            }
+    
+            if (this.DisplayName != null)
+            {
+                return false;
+            }
+    
+            if (this.PublicNickName != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.ChamberOfCommerceNumber != null)
+            {
+                return false;
+            }
+    
+            if (this.TypeOfBusinessEntity != null)
+            {
+                return false;
+            }
+    
+            if (this.SectorOfIndustry != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterBankIban != null)
+            {
+                return false;
+            }
+    
+            if (this.Avatar != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressMain != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressPostal != null)
+            {
+                return false;
+            }
+    
+            if (this.VersionTermsOfService != null)
+            {
+                return false;
+            }
+    
+            if (this.DirectorAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.Language != null)
+            {
+                return false;
+            }
+    
+            if (this.Country != null)
+            {
+                return false;
+            }
+    
+            if (this.Region != null)
+            {
+                return false;
+            }
+    
+            if (this.Ubo != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.SubStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.SessionTimeout != null)
+            {
+                return false;
+            }
+    
+            if (this.DailyLimitWithoutConfirmationLogin != null)
+            {
+                return false;
+            }
+    
+            if (this.NotificationFilters != null)
+            {
+                return false;
+            }
+    
+            if (this.Customer != null)
+            {
+                return false;
+            }
+    
+            if (this.CustomerLimit != null)
+            {
+                return false;
+            }
+    
+            if (this.BillingContract != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

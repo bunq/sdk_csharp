@@ -30,5 +30,28 @@ namespace Bunq.Sdk.Model.Generated.Object
         {
             Country = country;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Country != null)
+            {
+                return false;
+            }
+    
+            if (this.ExpiryTime != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

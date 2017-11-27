@@ -139,5 +139,53 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<DraftPayment>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.UserAliasCreated != null)
+            {
+                return false;
+            }
+    
+            if (this.Responses != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.Entries != null)
+            {
+                return false;
+            }
+    
+            if (this.Object != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

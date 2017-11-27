@@ -146,5 +146,63 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.DateStart != null)
+            {
+                return false;
+            }
+    
+            if (this.DateEnd != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.StatementNumber != null)
+            {
+                return false;
+            }
+    
+            if (this.StatementFormat != null)
+            {
+                return false;
+            }
+    
+            if (this.RegionalFormat != null)
+            {
+                return false;
+            }
+    
+            if (this.AliasMonetaryAccount != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

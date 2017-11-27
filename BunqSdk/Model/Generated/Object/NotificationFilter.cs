@@ -37,5 +37,28 @@ namespace Bunq.Sdk.Model.Generated.Object
             NotificationTarget = notificationTarget;
             Category = category;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.NotificationDeliveryMethod != null)
+            {
+                return false;
+            }
+    
+            if (this.NotificationTarget != null)
+            {
+                return false;
+            }
+    
+            if (this.Category != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

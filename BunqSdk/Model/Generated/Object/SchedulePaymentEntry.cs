@@ -58,5 +58,43 @@ namespace Bunq.Sdk.Model.Generated.Object
             CounterpartyAlias = counterpartyAlias;
             Description = description;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Amount != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterpartyAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.Attachment != null)
+            {
+                return false;
+            }
+    
+            if (this.MerchantReference != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

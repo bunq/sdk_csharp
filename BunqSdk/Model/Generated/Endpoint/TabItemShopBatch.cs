@@ -48,5 +48,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return ProcessForId(responseRaw);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.TabItems != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

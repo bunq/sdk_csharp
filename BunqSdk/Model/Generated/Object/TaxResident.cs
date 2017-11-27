@@ -25,5 +25,23 @@ namespace Bunq.Sdk.Model.Generated.Object
             Country = country;
             TaxNumber = taxNumber;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Country != null)
+            {
+                return false;
+            }
+    
+            if (this.TaxNumber != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

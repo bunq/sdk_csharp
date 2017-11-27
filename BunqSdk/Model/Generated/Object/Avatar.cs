@@ -30,5 +30,28 @@ namespace Bunq.Sdk.Model.Generated.Object
         {
             Uuid = uuid;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Uuid != null)
+            {
+                return false;
+            }
+    
+            if (this.AnchorUuid != null)
+            {
+                return false;
+            }
+    
+            if (this.Image != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

@@ -138,5 +138,58 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<BunqMeTab>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.TimeExpiry != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqmeTabShareUrl != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqmeTabEntry != null)
+            {
+                return false;
+            }
+    
+            if (this.ResultInquiries != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

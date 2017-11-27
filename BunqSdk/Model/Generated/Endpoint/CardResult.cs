@@ -146,5 +146,93 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<CardResult>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.CardId != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountOriginal != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountFinal != null)
+            {
+                return false;
+            }
+    
+            if (this.Decision != null)
+            {
+                return false;
+            }
+    
+            if (this.DecisionDescription != null)
+            {
+                return false;
+            }
+    
+            if (this.DecisionDescriptionTranslated != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.MessageType != null)
+            {
+                return false;
+            }
+    
+            if (this.AuthorisationType != null)
+            {
+                return false;
+            }
+    
+            if (this.City != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterpartyAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.LabelCard != null)
+            {
+                return false;
+            }
+    
+            if (this.ReservationStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.ReservationExpiryTime != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

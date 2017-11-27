@@ -19,5 +19,23 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "ip")]
         public string Ip { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.Ip != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

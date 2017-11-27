@@ -19,5 +19,23 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
         public LabelUser UserAliasCreated { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.UserAliasCreated != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

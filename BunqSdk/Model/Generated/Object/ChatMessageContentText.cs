@@ -13,5 +13,18 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Text != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

@@ -32,5 +32,28 @@ namespace Bunq.Sdk.Model.Generated.Object
             CashRegisterQrCode = cashRegisterQrCode;
             TabQrCode = tabQrCode;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.CashRegisterQrCode != null)
+            {
+                return false;
+            }
+    
+            if (this.TabQrCode != null)
+            {
+                return false;
+            }
+    
+            if (this.Location != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

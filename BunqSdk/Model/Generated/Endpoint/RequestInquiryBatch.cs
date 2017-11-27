@@ -101,5 +101,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<RequestInquiryBatch>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.RequestInquiries != null)
+            {
+                return false;
+            }
+    
+            if (this.TotalAmountInquired != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

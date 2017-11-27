@@ -61,5 +61,33 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<TabAttachmentTab>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.Attachment != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

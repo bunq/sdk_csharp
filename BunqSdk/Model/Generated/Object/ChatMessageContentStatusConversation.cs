@@ -13,5 +13,18 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Action != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

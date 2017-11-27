@@ -25,5 +25,28 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "restriction_chat")]
         public string RestrictionChat { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Color != null)
+            {
+                return false;
+            }
+    
+            if (this.DefaultAvatarStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.RestrictionChat != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

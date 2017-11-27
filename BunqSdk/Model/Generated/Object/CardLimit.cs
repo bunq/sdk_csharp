@@ -39,5 +39,33 @@ namespace Bunq.Sdk.Model.Generated.Object
             Currency = currency;
             Type = type;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.DailyLimit != null)
+            {
+                return false;
+            }
+    
+            if (this.Currency != null)
+            {
+                return false;
+            }
+    
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

@@ -24,5 +24,23 @@ namespace Bunq.Sdk.Model.Generated.Object
         {
             Bic = bic;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Bic != null)
+            {
+                return false;
+            }
+    
+            if (this.Name != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

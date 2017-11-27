@@ -45,5 +45,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<CardName>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.PossibleCardNameArray != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

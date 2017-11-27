@@ -61,5 +61,58 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "swift_account_number")]
         public string SwiftAccountNumber { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Iban != null)
+            {
+                return false;
+            }
+    
+            if (this.DisplayName != null)
+            {
+                return false;
+            }
+    
+            if (this.Avatar != null)
+            {
+                return false;
+            }
+    
+            if (this.LabelUser != null)
+            {
+                return false;
+            }
+    
+            if (this.Country != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqMe != null)
+            {
+                return false;
+            }
+    
+            if (this.IsLight != null)
+            {
+                return false;
+            }
+    
+            if (this.SwiftBic != null)
+            {
+                return false;
+            }
+    
+            if (this.SwiftAccountNumber != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

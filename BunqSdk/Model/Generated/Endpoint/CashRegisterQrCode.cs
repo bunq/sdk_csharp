@@ -126,5 +126,43 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<CashRegisterQrCode>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.CashRegister != null)
+            {
+                return false;
+            }
+    
+            if (this.TabObject != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

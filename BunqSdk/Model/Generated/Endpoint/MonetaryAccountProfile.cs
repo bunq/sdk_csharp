@@ -32,5 +32,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "profile_drain")]
         public MonetaryAccountProfileDrain ProfileDrain { get; private set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.ProfileFill != null)
+            {
+                return false;
+            }
+    
+            if (this.ProfileDrain != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

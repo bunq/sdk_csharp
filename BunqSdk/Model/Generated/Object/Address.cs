@@ -58,5 +58,48 @@ namespace Bunq.Sdk.Model.Generated.Object
             City = city;
             Country = country;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Street != null)
+            {
+                return false;
+            }
+    
+            if (this.HouseNumber != null)
+            {
+                return false;
+            }
+    
+            if (this.PoBox != null)
+            {
+                return false;
+            }
+    
+            if (this.PostalCode != null)
+            {
+                return false;
+            }
+    
+            if (this.City != null)
+            {
+                return false;
+            }
+    
+            if (this.Country != null)
+            {
+                return false;
+            }
+    
+            if (this.Province != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

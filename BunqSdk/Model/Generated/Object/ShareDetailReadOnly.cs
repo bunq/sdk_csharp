@@ -32,5 +32,28 @@ namespace Bunq.Sdk.Model.Generated.Object
             ViewOldEvents = viewOldEvents;
             ViewNewEvents = viewNewEvents;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.ViewBalance != null)
+            {
+                return false;
+            }
+    
+            if (this.ViewOldEvents != null)
+            {
+                return false;
+            }
+    
+            if (this.ViewNewEvents != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

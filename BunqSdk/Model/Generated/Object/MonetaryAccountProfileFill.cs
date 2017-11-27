@@ -45,5 +45,38 @@ namespace Bunq.Sdk.Model.Generated.Object
             BalanceThresholdLow = balanceThresholdLow;
             MethodFill = methodFill;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.BalancePreferred != null)
+            {
+                return false;
+            }
+    
+            if (this.BalanceThresholdLow != null)
+            {
+                return false;
+            }
+    
+            if (this.MethodFill != null)
+            {
+                return false;
+            }
+    
+            if (this.Issuer != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

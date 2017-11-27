@@ -19,5 +19,23 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "content_type")]
         public string ContentType { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.ContentType != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

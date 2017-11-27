@@ -105,5 +105,43 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<ScheduleInstance>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.State != null)
+            {
+                return false;
+            }
+    
+            if (this.TimeStart != null)
+            {
+                return false;
+            }
+    
+            if (this.TimeEnd != null)
+            {
+                return false;
+            }
+    
+            if (this.ErrorMessage != null)
+            {
+                return false;
+            }
+    
+            if (this.ScheduledObject != null)
+            {
+                return false;
+            }
+    
+            if (this.ResultObject != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

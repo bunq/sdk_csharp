@@ -8,7 +8,7 @@ namespace Bunq.Sdk.Model.Generated.Object
 {
     /// <summary>
     /// </summary>
-    public class AnchoredObject : BunqModel
+    public class AnchoredObject :  BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -202,6 +202,103 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             throw new BunqException(ERROR_NULL_FIELDS);
+        }
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.CardDebit != null)
+            {
+                return false;
+            }
+    
+            if (this.CardPinChange != null)
+            {
+                return false;
+            }
+    
+            if (this.CardResult != null)
+            {
+                return false;
+            }
+    
+            if (this.DraftPayment != null)
+            {
+                return false;
+            }
+    
+            if (this.IdealMerchantTransaction != null)
+            {
+                return false;
+            }
+    
+            if (this.Invoice != null)
+            {
+                return false;
+            }
+    
+            if (this.Payment != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentBatch != null)
+            {
+                return false;
+            }
+    
+            if (this.PromotionDisplay != null)
+            {
+                return false;
+            }
+    
+            if (this.RequestInquiryBatch != null)
+            {
+                return false;
+            }
+    
+            if (this.RequestInquiry != null)
+            {
+                return false;
+            }
+    
+            if (this.RequestResponse != null)
+            {
+                return false;
+            }
+    
+            if (this.ScheduledPaymentBatch != null)
+            {
+                return false;
+            }
+    
+            if (this.ScheduledPayment != null)
+            {
+                return false;
+            }
+    
+            if (this.ScheduledInstance != null)
+            {
+                return false;
+            }
+    
+            if (this.ShareInviteBankInquiry != null)
+            {
+                return false;
+            }
+    
+            if (this.ShareInviteBankResponse != null)
+            {
+                return false;
+            }
+    
+            if (this.UserCredentialPasswordIp != null)
+            {
+                return false;
+            }
+    
+            return true;
         }
     }
 }

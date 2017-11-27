@@ -64,5 +64,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<TabResultInquiry>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Tab != null)
+            {
+                return false;
+            }
+    
+            if (this.Payment != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

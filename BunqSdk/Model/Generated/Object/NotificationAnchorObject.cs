@@ -8,13 +8,18 @@ namespace Bunq.Sdk.Model.Generated.Object
 {
     /// <summary>
     /// </summary>
-    public class NotificationAnchorObject : BunqModel
+    public class NotificationAnchorObject :  BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
     
+    
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "BunqMeFundraiserResult")]
+        public BunqMeFundraiserResult BunqMeFundraiserResult { get; set; }
     
         /// <summary>
         /// </summary>
@@ -33,18 +38,8 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "ChatMessageStatus")]
-        public ChatMessageStatus ChatMessageStatus { get; set; }
-    
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "ChatMessageUser")]
-        public ChatMessageUser ChatMessageUser { get; set; }
-    
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "ChatMessageAnnouncement")]
-        public ChatMessageAnnouncement ChatMessageAnnouncement { get; set; }
+        [JsonProperty(PropertyName = "ChatMessage")]
+        public ChatMessage ChatMessage { get; set; }
     
         /// <summary>
         /// </summary>
@@ -68,8 +63,8 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "MonetaryAccountBank")]
-        public MonetaryAccountBank MonetaryAccountBank { get; set; }
+        [JsonProperty(PropertyName = "MonetaryAccount")]
+        public MonetaryAccount MonetaryAccount { get; set; }
     
         /// <summary>
         /// </summary>
@@ -128,19 +123,19 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "UserPerson")]
-        public UserPerson UserPerson { get; set; }
-    
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "UserCompany")]
-        public UserCompany UserCompany { get; set; }
+        [JsonProperty(PropertyName = "User")]
+        public User User { get; set; }
     
     
         /// <summary>
         /// </summary>
         public BunqModel GetReferencedObject()
         {
+            if (this.BunqMeFundraiserResult != null)
+            {
+                return this.BunqMeFundraiserResult;
+            }
+    
             if (this.BunqMeTab != null)
             {
                 return this.BunqMeTab;
@@ -156,19 +151,9 @@ namespace Bunq.Sdk.Model.Generated.Object
                 return this.BunqMeTabResultResponse;
             }
     
-            if (this.ChatMessageStatus != null)
+            if (this.ChatMessage != null)
             {
-                return this.ChatMessageStatus;
-            }
-    
-            if (this.ChatMessageUser != null)
-            {
-                return this.ChatMessageUser;
-            }
-    
-            if (this.ChatMessageAnnouncement != null)
-            {
-                return this.ChatMessageAnnouncement;
+                return this.ChatMessage;
             }
     
             if (this.DraftPayment != null)
@@ -191,9 +176,9 @@ namespace Bunq.Sdk.Model.Generated.Object
                 return this.MasterCardAction;
             }
     
-            if (this.MonetaryAccountBank != null)
+            if (this.MonetaryAccount != null)
             {
-                return this.MonetaryAccountBank;
+                return this.MonetaryAccount;
             }
     
             if (this.Payment != null)
@@ -251,17 +236,129 @@ namespace Bunq.Sdk.Model.Generated.Object
                 return this.TabResultResponse;
             }
     
-            if (this.UserPerson != null)
+            if (this.User != null)
             {
-                return this.UserPerson;
-            }
-    
-            if (this.UserCompany != null)
-            {
-                return this.UserCompany;
+                return this.User;
             }
     
             throw new BunqException(ERROR_NULL_FIELDS);
+        }
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.BunqMeFundraiserResult != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqMeTab != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqMeTabResultInquiry != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqMeTabResultResponse != null)
+            {
+                return false;
+            }
+    
+            if (this.ChatMessage != null)
+            {
+                return false;
+            }
+    
+            if (this.DraftPayment != null)
+            {
+                return false;
+            }
+    
+            if (this.IdealMerchantTransaction != null)
+            {
+                return false;
+            }
+    
+            if (this.Invoice != null)
+            {
+                return false;
+            }
+    
+            if (this.MasterCardAction != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccount != null)
+            {
+                return false;
+            }
+    
+            if (this.Payment != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentBatch != null)
+            {
+                return false;
+            }
+    
+            if (this.RequestInquiry != null)
+            {
+                return false;
+            }
+    
+            if (this.RequestInquiryBatch != null)
+            {
+                return false;
+            }
+    
+            if (this.RequestResponse != null)
+            {
+                return false;
+            }
+    
+            if (this.ShareInviteBankInquiry != null)
+            {
+                return false;
+            }
+    
+            if (this.ShareInviteBankResponse != null)
+            {
+                return false;
+            }
+    
+            if (this.ScheduledPayment != null)
+            {
+                return false;
+            }
+    
+            if (this.ScheduledInstance != null)
+            {
+                return false;
+            }
+    
+            if (this.TabResultInquiry != null)
+            {
+                return false;
+            }
+    
+            if (this.TabResultResponse != null)
+            {
+                return false;
+            }
+    
+            if (this.User != null)
+            {
+                return false;
+            }
+    
+            return true;
         }
     }
 }

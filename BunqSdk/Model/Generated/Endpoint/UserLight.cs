@@ -264,5 +264,173 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<UserLight>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.PublicUuid != null)
+            {
+                return false;
+            }
+    
+            if (this.FirstName != null)
+            {
+                return false;
+            }
+    
+            if (this.MiddleName != null)
+            {
+                return false;
+            }
+    
+            if (this.LastName != null)
+            {
+                return false;
+            }
+    
+            if (this.LegalName != null)
+            {
+                return false;
+            }
+    
+            if (this.DisplayName != null)
+            {
+                return false;
+            }
+    
+            if (this.PublicNickName != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.SocialSecurityNumber != null)
+            {
+                return false;
+            }
+    
+            if (this.TaxResident != null)
+            {
+                return false;
+            }
+    
+            if (this.DocumentType != null)
+            {
+                return false;
+            }
+    
+            if (this.DocumentNumber != null)
+            {
+                return false;
+            }
+    
+            if (this.DocumentCountryOfIssuance != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressMain != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressPostal != null)
+            {
+                return false;
+            }
+    
+            if (this.DateOfBirth != null)
+            {
+                return false;
+            }
+    
+            if (this.PlaceOfBirth != null)
+            {
+                return false;
+            }
+    
+            if (this.CountryOfBirth != null)
+            {
+                return false;
+            }
+    
+            if (this.Nationality != null)
+            {
+                return false;
+            }
+    
+            if (this.Language != null)
+            {
+                return false;
+            }
+    
+            if (this.Region != null)
+            {
+                return false;
+            }
+    
+            if (this.Gender != null)
+            {
+                return false;
+            }
+    
+            if (this.Avatar != null)
+            {
+                return false;
+            }
+    
+            if (this.VersionTermsOfService != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.SubStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.SessionTimeout != null)
+            {
+                return false;
+            }
+    
+            if (this.DailyLimitWithoutConfirmationLogin != null)
+            {
+                return false;
+            }
+    
+            if (this.NotificationFilters != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

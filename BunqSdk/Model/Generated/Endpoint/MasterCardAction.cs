@@ -189,5 +189,128 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<MasterCardAction>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.CardId != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountLocal != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountBilling != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountOriginalLocal != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountOriginalBilling != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountFee != null)
+            {
+                return false;
+            }
+    
+            if (this.Decision != null)
+            {
+                return false;
+            }
+    
+            if (this.DecisionDescription != null)
+            {
+                return false;
+            }
+    
+            if (this.DecisionDescriptionTranslated != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.AuthorisationStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.AuthorisationType != null)
+            {
+                return false;
+            }
+    
+            if (this.PanEntryModeUser != null)
+            {
+                return false;
+            }
+    
+            if (this.City != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterpartyAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.LabelCard != null)
+            {
+                return false;
+            }
+    
+            if (this.TokenStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.ReservationExpiryTime != null)
+            {
+                return false;
+            }
+    
+            if (this.AppliedLimit != null)
+            {
+                return false;
+            }
+    
+            if (this.AllowChat != null)
+            {
+                return false;
+            }
+    
+            if (this.EligibleWhitelistId != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

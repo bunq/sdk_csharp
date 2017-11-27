@@ -70,5 +70,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<Avatar>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Uuid != null)
+            {
+                return false;
+            }
+    
+            if (this.Image != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

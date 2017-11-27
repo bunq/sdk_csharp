@@ -31,5 +31,28 @@ namespace Bunq.Sdk.Model.Generated.Object
             Type = type;
             Value = value;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.Value != null)
+            {
+                return false;
+            }
+    
+            if (this.Name != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

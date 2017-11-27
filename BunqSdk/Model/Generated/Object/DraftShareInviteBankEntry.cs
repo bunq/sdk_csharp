@@ -30,5 +30,28 @@ namespace Bunq.Sdk.Model.Generated.Object
         {
             ShareDetail = shareDetail;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.ShareDetail != null)
+            {
+                return false;
+            }
+    
+            if (this.StartDate != null)
+            {
+                return false;
+            }
+    
+            if (this.EndDate != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

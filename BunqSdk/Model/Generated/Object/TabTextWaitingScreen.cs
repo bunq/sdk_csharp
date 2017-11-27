@@ -25,5 +25,23 @@ namespace Bunq.Sdk.Model.Generated.Object
             Language = language;
             Description = description;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool AreAllFieldNull()
+        {
+            if (this.Language != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
     }
 }

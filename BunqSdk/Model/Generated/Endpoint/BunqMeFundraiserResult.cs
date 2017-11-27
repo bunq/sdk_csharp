@@ -5,38 +5,44 @@ using System.Collections.Generic;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Manages user's support conversation.
+    /// bunq.me fundraiser result containing all payments.
     /// </summary>
-    public class ChatConversationSupportExternal : BunqModel
+    public class BunqMeFundraiserResult : BunqModel
     {
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "SupportConversationExternal";
+        private const string OBJECT_TYPE = "BunqMeFundraiserResult";
     
         /// <summary>
-        /// The id of this conversation.
+        /// The id of the bunq.me.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; private set; }
     
         /// <summary>
-        /// The timestamp of the support conversation's creation.
+        /// The timestamp when the bunq.me was created.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; private set; }
     
         /// <summary>
-        /// The timestamp of the support conversation's last update.
+        /// The timestamp when the bunq.me was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; private set; }
     
         /// <summary>
-        /// The last message posted to this conversation if any.
+        /// The bunq.me fundraiser profile.
         /// </summary>
-        [JsonProperty(PropertyName = "last_message")]
-        public ChatMessage LastMessage { get; private set; }
+        [JsonProperty(PropertyName = "bunqme_fundraiser_profile")]
+        public BunqMeFundraiserProfile BunqmeFundraiserProfile { get; private set; }
+    
+        /// <summary>
+        /// The list of payments, paid to the bunq.me fundraiser profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "payments")]
+        public List<Payment> Payments { get; private set; }
     
     
         /// <summary>
@@ -58,7 +64,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.LastMessage != null)
+            if (this.BunqmeFundraiserProfile != null)
+            {
+                return false;
+            }
+    
+            if (this.Payments != null)
             {
                 return false;
             }
