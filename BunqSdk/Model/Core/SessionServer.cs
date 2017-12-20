@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Model.Core
             return Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(sessionServerRequestBody));
         }
 
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.Id != null)
             {

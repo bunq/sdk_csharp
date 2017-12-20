@@ -66,7 +66,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
             Type subClassTypeExpected = null
             ) {
             var jsonString = ReadJsonFromFile(expectedJsonFileName);
-            var notificationUrl = BunqModel.CreateFromJsonString<NotificationUrl>(jsonString);
+            var notificationUrl = NotificationUrl.CreateFromJsonString(jsonString);
             
             Assert.NotNull(notificationUrl);
             Assert.NotNull(notificationUrl.Object);

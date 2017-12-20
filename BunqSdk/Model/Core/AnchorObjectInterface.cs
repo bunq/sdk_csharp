@@ -2,7 +2,7 @@
 {
     public interface IAnchorObjectInterface
     {
-        bool AreAllFieldNull();
+        bool IsAllFieldNull();
 
         BunqModel GetReferencedObject();
     }

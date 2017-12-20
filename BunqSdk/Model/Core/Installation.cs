@@ -66,7 +66,7 @@ namespace Bunq.Sdk.Model.Core
             return publicKeyServer.ServerPublicKey;
         }
 
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.SessionToken != null)
             {

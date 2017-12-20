@@ -33,7 +33,7 @@ namespace Bunq.Sdk.Json
             JToken token = JObject.Load(reader);
             var model = (IAnchorObjectInterface) jsonSerializer.Deserialize(token.CreateReader(), objectType);
 
-            if (!model.AreAllFieldNull()) return model;
+            if (!model.IsAllFieldNull()) return model;
             var fields = objectType.GetProperties();
 
             foreach (var field in fields)
@@ -47,7 +47,7 @@ namespace Bunq.Sdk.Json
                 
                 var fieldContent = (BunqModel) jsonSerializer.Deserialize(token.CreateReader(), fieldType);
 
-                field.SetValue(model, fieldContent.AreAllFieldNull() ? null : fieldContent);
+                field.SetValue(model, fieldContent.IsAllFieldNull() ? null : fieldContent);
             }
 
             return model;
