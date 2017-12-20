@@ -42,9 +42,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static TabQrCodeContent CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<TabQrCodeContent>(json);
         }
     }
 }

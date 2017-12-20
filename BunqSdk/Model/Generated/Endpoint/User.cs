@@ -14,7 +14,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// Using this call you can retrieve information of the user you are logged in as. This includes your user id, which
     /// is referred to in endpoints.
     /// </summary>
-    public class User :  BunqModel, IAnchorObjectInterface
+    public class User : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -99,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.UserLight != null)
             {
@@ -117,6 +117,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static User CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<User>(json);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.Action != null)
             {
@@ -36,6 +36,13 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static ChatMessageContentStatusMembership CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<ChatMessageContentStatusMembership>(json);
         }
     }
 }

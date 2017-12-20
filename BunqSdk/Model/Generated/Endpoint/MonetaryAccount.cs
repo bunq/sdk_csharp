@@ -16,7 +16,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// account level to receive callbacks. For more information check the <a href="/api/2/page/callbacks">dedicated
     /// callbacks page</a>.
     /// </summary>
-    public class MonetaryAccount :  BunqModel, IAnchorObjectInterface
+    public class MonetaryAccount : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -81,7 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.MonetaryAccountBank != null)
             {
@@ -89,6 +89,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static MonetaryAccount CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<MonetaryAccount>(json);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.Payment != null)
             {
@@ -32,6 +32,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static BunqMeTabResultInquiry CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<BunqMeTabResultInquiry>(json);
         }
     }
 }

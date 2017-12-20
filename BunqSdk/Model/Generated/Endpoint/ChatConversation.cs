@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// <summary>
     /// Manages user's conversations.
     /// </summary>
-    public class ChatConversation :  BunqModel, IAnchorObjectInterface
+    public class ChatConversation : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -86,7 +86,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.SupportConversationExternal != null)
             {
@@ -99,6 +99,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static ChatConversation CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<ChatConversation>(json);
         }
     }
 }

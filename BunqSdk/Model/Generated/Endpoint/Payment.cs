@@ -226,7 +226,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.Id != null)
             {
@@ -344,6 +344,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Payment CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Payment>(json);
         }
     }
 }

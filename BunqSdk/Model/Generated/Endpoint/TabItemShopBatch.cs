@@ -52,7 +52,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.TabItems != null)
             {
@@ -60,6 +60,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static TabItemShopBatch CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<TabItemShopBatch>(json);
         }
     }
 }

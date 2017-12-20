@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// <summary>
     /// Used to get a Device or a listing of Devices. Creating a DeviceServer should happen via /device-server
     /// </summary>
-    public class Device :  BunqModel, IAnchorObjectInterface
+    public class Device : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -78,7 +78,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.DeviceServer != null)
             {
@@ -86,6 +86,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Device CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Device>(json);
         }
     }
 }

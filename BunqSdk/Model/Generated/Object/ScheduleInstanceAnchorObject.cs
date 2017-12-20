@@ -8,7 +8,7 @@ namespace Bunq.Sdk.Model.Generated.Object
 {
     /// <summary>
     /// </summary>
-    public class ScheduleInstanceAnchorObject :  BunqModel, IAnchorObjectInterface
+    public class ScheduleInstanceAnchorObject : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -46,7 +46,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.Payment != null)
             {
@@ -59,6 +59,13 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static ScheduleInstanceAnchorObject CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<ScheduleInstanceAnchorObject>(json);
         }
     }
 }

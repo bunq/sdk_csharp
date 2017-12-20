@@ -102,7 +102,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.TimeStart != null)
             {
@@ -135,6 +135,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Schedule CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Schedule>(json);
         }
     }
 }

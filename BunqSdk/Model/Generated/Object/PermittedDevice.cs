@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.Description != null)
             {
@@ -36,6 +36,13 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static PermittedDevice CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<PermittedDevice>(json);
         }
     }
 }

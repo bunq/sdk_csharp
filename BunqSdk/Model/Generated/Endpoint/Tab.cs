@@ -17,7 +17,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// TabUsageSingle is a Tab that can be paid once. A TabUsageMultiple is a Tab that can be paid multiple times by
     /// different users.
     /// </summary>
-    public class Tab :  BunqModel, IAnchorObjectInterface
+    public class Tab : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -92,7 +92,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.TabUsageSingle != null)
             {
@@ -105,6 +105,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Tab CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Tab>(json);
         }
     }
 }

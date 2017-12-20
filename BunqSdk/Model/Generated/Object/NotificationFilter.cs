@@ -41,7 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.NotificationDeliveryMethod != null)
             {
@@ -59,6 +59,13 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static NotificationFilter CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<NotificationFilter>(json);
         }
     }
 }

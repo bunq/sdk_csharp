@@ -35,7 +35,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.Latitude != null)
             {
@@ -58,6 +58,13 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Geolocation CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Geolocation>(json);
         }
     }
 }

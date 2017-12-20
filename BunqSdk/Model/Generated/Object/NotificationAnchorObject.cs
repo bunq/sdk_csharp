@@ -8,7 +8,7 @@ namespace Bunq.Sdk.Model.Generated.Object
 {
     /// <summary>
     /// </summary>
-    public class NotificationAnchorObject :  BunqModel, IAnchorObjectInterface
+    public class NotificationAnchorObject : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -246,7 +246,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.BunqMeFundraiserResult != null)
             {
@@ -359,6 +359,13 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static NotificationAnchorObject CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<NotificationAnchorObject>(json);
         }
     }
 }

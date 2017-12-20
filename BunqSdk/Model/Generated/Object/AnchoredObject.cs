@@ -8,7 +8,7 @@ namespace Bunq.Sdk.Model.Generated.Object
 {
     /// <summary>
     /// </summary>
-    public class AnchoredObject :  BunqModel, IAnchorObjectInterface
+    public class AnchoredObject : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -206,7 +206,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.CardDebit != null)
             {
@@ -299,6 +299,13 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static AnchoredObject CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<AnchoredObject>(json);
         }
     }
 }

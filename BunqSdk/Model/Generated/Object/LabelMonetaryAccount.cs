@@ -65,7 +65,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        public override bool AreAllFieldNull()
+        public override bool IsAllFieldNull()
         {
             if (this.Iban != null)
             {
@@ -113,6 +113,13 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static LabelMonetaryAccount CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<LabelMonetaryAccount>(json);
         }
     }
 }
