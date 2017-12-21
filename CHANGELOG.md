@@ -1,5 +1,26 @@
 # Change Log
 
+## [0.12.4](https://github.com/bunq/sdk_csharp/tree/0.12.4) (2017-12-21)
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.3...0.12.4)
+
+**Implemented enhancements:**
+
+- Introduce CreateFromJsonString method. [\#56](https://github.com/bunq/sdk_csharp/issues/56)
+- Make sure received signatures headers are correctly cased [\#49](https://github.com/bunq/sdk_csharp/issues/49)
+- Return base class from createFromJsonString [\#48](https://github.com/bunq/sdk_csharp/issues/48)
+- CHANGELOG.md is empty [\#46](https://github.com/bunq/sdk_csharp/issues/46)
+- Improve decoder to recognise child objects [\#43](https://github.com/bunq/sdk_csharp/issues/43)
+
+**Closed issues:**
+
+- Payment example doesn't work without a name for the pointer [\#54](https://github.com/bunq/sdk_csharp/issues/54)
+
+**Merged pull requests:**
+
+- Insure that headers are correctly cased before signature verification… [\#59](https://github.com/bunq/sdk_csharp/pull/59) ([OGKevin](https://github.com/OGKevin))
+- Improve decoder bunq/sdk csharp\#43 [\#57](https://github.com/bunq/sdk_csharp/pull/57) ([OGKevin](https://github.com/OGKevin))
+- Generated CHANGELOG.md :clap:. \(bunq/sdk\_csharp\#46\) [\#47](https://github.com/bunq/sdk_csharp/pull/47) ([OGKevin](https://github.com/OGKevin))
+
 ## [0.12.3](https://github.com/bunq/sdk_csharp/tree/0.12.3) (2017-11-15)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.2...0.12.3)
 
