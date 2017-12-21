@@ -36,5 +36,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static CashRegisterQrCodeContent CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<CashRegisterQrCodeContent>(json);
+        }
     }
 }

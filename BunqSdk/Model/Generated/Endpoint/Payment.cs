@@ -222,5 +222,135 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<Payment>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.Amount != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterpartyAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.SubType != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqtoStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqtoSubStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqtoShareUrl != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqtoExpiry != null)
+            {
+                return false;
+            }
+    
+            if (this.BunqtoTimeResponded != null)
+            {
+                return false;
+            }
+    
+            if (this.Attachment != null)
+            {
+                return false;
+            }
+    
+            if (this.MerchantReference != null)
+            {
+                return false;
+            }
+    
+            if (this.BatchId != null)
+            {
+                return false;
+            }
+    
+            if (this.ScheduledId != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressShipping != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressBilling != null)
+            {
+                return false;
+            }
+    
+            if (this.Geolocation != null)
+            {
+                return false;
+            }
+    
+            if (this.AllowChat != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Payment CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Payment>(json);
+        }
     }
 }

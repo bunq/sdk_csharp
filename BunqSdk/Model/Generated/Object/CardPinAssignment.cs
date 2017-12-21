@@ -30,5 +30,30 @@ namespace Bunq.Sdk.Model.Generated.Object
         {
             Type = type;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static CardPinAssignment CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<CardPinAssignment>(json);
+        }
     }
 }

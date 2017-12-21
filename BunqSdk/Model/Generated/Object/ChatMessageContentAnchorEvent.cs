@@ -17,5 +17,25 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "anchored_object")]
         public AnchoredObject AnchoredObject { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.AnchoredObject != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static ChatMessageContentAnchorEvent CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<ChatMessageContentAnchorEvent>(json);
+        }
     }
 }

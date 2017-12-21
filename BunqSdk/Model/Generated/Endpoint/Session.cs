@@ -36,5 +36,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Session CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Session>(json);
+        }
     }
 }

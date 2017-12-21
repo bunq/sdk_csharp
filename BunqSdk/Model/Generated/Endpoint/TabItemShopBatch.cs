@@ -48,5 +48,25 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return ProcessForId(responseRaw);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.TabItems != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static TabItemShopBatch CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<TabItemShopBatch>(json);
+        }
     }
 }

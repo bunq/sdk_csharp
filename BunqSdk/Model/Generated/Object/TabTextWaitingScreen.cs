@@ -25,5 +25,30 @@ namespace Bunq.Sdk.Model.Generated.Object
             Language = language;
             Description = description;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Language != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static TabTextWaitingScreen CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<TabTextWaitingScreen>(json);
+        }
     }
 }

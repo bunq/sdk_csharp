@@ -154,5 +154,90 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<IdealMerchantTransaction>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterpartyAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountGuaranteed != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountRequested != null)
+            {
+                return false;
+            }
+    
+            if (this.Expiration != null)
+            {
+                return false;
+            }
+    
+            if (this.Issuer != null)
+            {
+                return false;
+            }
+    
+            if (this.IssuerName != null)
+            {
+                return false;
+            }
+    
+            if (this.IssuerAuthenticationUrl != null)
+            {
+                return false;
+            }
+    
+            if (this.PurchaseIdentifier != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.StatusTimestamp != null)
+            {
+                return false;
+            }
+    
+            if (this.TransactionIdentifier != null)
+            {
+                return false;
+            }
+    
+            if (this.AllowChat != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static IdealMerchantTransaction CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<IdealMerchantTransaction>(json);
+        }
     }
 }

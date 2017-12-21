@@ -39,5 +39,40 @@ namespace Bunq.Sdk.Model.Generated.Object
             Currency = currency;
             Type = type;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.DailyLimit != null)
+            {
+                return false;
+            }
+    
+            if (this.Currency != null)
+            {
+                return false;
+            }
+    
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static CardLimit CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<CardLimit>(json);
+        }
     }
 }

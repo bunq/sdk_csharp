@@ -98,5 +98,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<CertificatePinned>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.CertificateChain != null)
+            {
+                return false;
+            }
+    
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static CertificatePinned CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<CertificatePinned>(json);
+        }
     }
 }

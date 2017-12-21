@@ -236,5 +236,115 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<TabUsageSingle>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Uuid != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.MerchantReference != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountTotal != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountPaid != null)
+            {
+                return false;
+            }
+    
+            if (this.QrCodeToken != null)
+            {
+                return false;
+            }
+    
+            if (this.TabUrl != null)
+            {
+                return false;
+            }
+    
+            if (this.Visibility != null)
+            {
+                return false;
+            }
+    
+            if (this.MinimumAge != null)
+            {
+                return false;
+            }
+    
+            if (this.RequireAddress != null)
+            {
+                return false;
+            }
+    
+            if (this.RedirectUrl != null)
+            {
+                return false;
+            }
+    
+            if (this.Expiration != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.CashRegisterLocation != null)
+            {
+                return false;
+            }
+    
+            if (this.TabItem != null)
+            {
+                return false;
+            }
+    
+            if (this.TabAttachment != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static TabUsageSingle CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<TabUsageSingle>(json);
+        }
     }
 }

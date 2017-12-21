@@ -13,5 +13,25 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "expiry_time")]
         public string ExpiryTime { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.ExpiryTime != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static CardMagStripePermission CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<CardMagStripePermission>(json);
+        }
     }
 }

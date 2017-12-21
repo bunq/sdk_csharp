@@ -27,5 +27,40 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "object")]
         public NotificationAnchorObject Object { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.TargetUrl != null)
+            {
+                return false;
+            }
+    
+            if (this.Category != null)
+            {
+                return false;
+            }
+    
+            if (this.EventType != null)
+            {
+                return false;
+            }
+    
+            if (this.Object != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static NotificationUrl CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<NotificationUrl>(json);
+        }
     }
 }

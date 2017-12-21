@@ -39,5 +39,40 @@ namespace Bunq.Sdk.Model.Generated.Object
             BalanceThresholdHigh = balanceThresholdHigh;
             SavingsAccountAlias = savingsAccountAlias;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.BalancePreferred != null)
+            {
+                return false;
+            }
+    
+            if (this.BalanceThresholdHigh != null)
+            {
+                return false;
+            }
+    
+            if (this.SavingsAccountAlias != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static MonetaryAccountProfileDrain CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<MonetaryAccountProfileDrain>(json);
+        }
     }
 }

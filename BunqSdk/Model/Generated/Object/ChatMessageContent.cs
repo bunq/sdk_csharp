@@ -7,7 +7,7 @@ namespace Bunq.Sdk.Model.Generated.Object
 {
     /// <summary>
     /// </summary>
-    public class ChatMessageContent : BunqModel
+    public class ChatMessageContent : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -91,6 +91,55 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             throw new BunqException(ERROR_NULL_FIELDS);
+        }
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.ChatMessageContentAnchorEvent != null)
+            {
+                return false;
+            }
+    
+            if (this.ChatMessageContentAttachment != null)
+            {
+                return false;
+            }
+    
+            if (this.ChatMessageContentGeolocation != null)
+            {
+                return false;
+            }
+    
+            if (this.ChatMessageContentStatusConversationTitle != null)
+            {
+                return false;
+            }
+    
+            if (this.ChatMessageContentStatusConversation != null)
+            {
+                return false;
+            }
+    
+            if (this.ChatMessageContentStatusMembership != null)
+            {
+                return false;
+            }
+    
+            if (this.ChatMessageContentText != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static ChatMessageContent CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<ChatMessageContent>(json);
         }
     }
 }

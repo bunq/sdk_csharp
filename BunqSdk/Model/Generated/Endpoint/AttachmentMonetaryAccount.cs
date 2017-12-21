@@ -53,5 +53,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return ProcessForId(responseRaw);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Attachment != null)
+            {
+                return false;
+            }
+    
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static AttachmentMonetaryAccount CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<AttachmentMonetaryAccount>(json);
+        }
     }
 }

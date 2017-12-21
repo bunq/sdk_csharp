@@ -26,5 +26,35 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "ShareDetailDraftPayment")]
         public ShareDetailDraftPayment DraftPayment { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Payment != null)
+            {
+                return false;
+            }
+    
+            if (this.ReadOnly != null)
+            {
+                return false;
+            }
+    
+            if (this.DraftPayment != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static ShareDetail CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<ShareDetail>(json);
+        }
     }
 }

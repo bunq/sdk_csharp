@@ -50,5 +50,50 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "content")]
         public ChatMessageContent Content { get; private set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.ConversationId != null)
+            {
+                return false;
+            }
+    
+            if (this.Creator != null)
+            {
+                return false;
+            }
+    
+            if (this.Content != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static ChatMessageStatus CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<ChatMessageStatus>(json);
+        }
     }
 }

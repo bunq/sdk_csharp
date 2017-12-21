@@ -67,5 +67,45 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<CustomerLimit>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.LimitMonetaryAccount != null)
+            {
+                return false;
+            }
+    
+            if (this.LimitCardDebitMaestro != null)
+            {
+                return false;
+            }
+    
+            if (this.LimitCardDebitMastercard != null)
+            {
+                return false;
+            }
+    
+            if (this.LimitCardDebitWildcard != null)
+            {
+                return false;
+            }
+    
+            if (this.LimitCardDebitReplacement != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static CustomerLimit CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<CustomerLimit>(json);
+        }
     }
 }

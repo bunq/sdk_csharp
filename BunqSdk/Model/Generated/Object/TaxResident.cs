@@ -25,5 +25,30 @@ namespace Bunq.Sdk.Model.Generated.Object
             Country = country;
             TaxNumber = taxNumber;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Country != null)
+            {
+                return false;
+            }
+    
+            if (this.TaxNumber != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static TaxResident CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<TaxResident>(json);
+        }
     }
 }

@@ -31,5 +31,35 @@ namespace Bunq.Sdk.Model.Generated.Object
             Type = type;
             Value = value;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.Value != null)
+            {
+                return false;
+            }
+    
+            if (this.Name != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Pointer CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Pointer>(json);
+        }
     }
 }

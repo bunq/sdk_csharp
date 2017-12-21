@@ -152,5 +152,55 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<TabItemShop>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.EanCode != null)
+            {
+                return false;
+            }
+    
+            if (this.AvatarAttachment != null)
+            {
+                return false;
+            }
+    
+            if (this.TabAttachment != null)
+            {
+                return false;
+            }
+    
+            if (this.Quantity != null)
+            {
+                return false;
+            }
+    
+            if (this.Amount != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static TabItemShop CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<TabItemShop>(json);
+        }
     }
 }

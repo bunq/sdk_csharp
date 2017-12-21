@@ -32,5 +32,35 @@ namespace Bunq.Sdk.Model.Generated.Object
             CashRegisterQrCode = cashRegisterQrCode;
             TabQrCode = tabQrCode;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.CashRegisterQrCode != null)
+            {
+                return false;
+            }
+    
+            if (this.TabQrCode != null)
+            {
+                return false;
+            }
+    
+            if (this.Location != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static TabVisibility CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<TabVisibility>(json);
+        }
     }
 }

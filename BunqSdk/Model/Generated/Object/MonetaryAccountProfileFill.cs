@@ -45,5 +45,45 @@ namespace Bunq.Sdk.Model.Generated.Object
             BalanceThresholdLow = balanceThresholdLow;
             MethodFill = methodFill;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.BalancePreferred != null)
+            {
+                return false;
+            }
+    
+            if (this.BalanceThresholdLow != null)
+            {
+                return false;
+            }
+    
+            if (this.MethodFill != null)
+            {
+                return false;
+            }
+    
+            if (this.Issuer != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static MonetaryAccountProfileFill CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<MonetaryAccountProfileFill>(json);
+        }
     }
 }

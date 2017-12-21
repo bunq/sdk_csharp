@@ -51,5 +51,50 @@ namespace Bunq.Sdk.Model.Generated.Object
             ViewOldEvents = viewOldEvents;
             ViewNewEvents = viewNewEvents;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.MakePayments != null)
+            {
+                return false;
+            }
+    
+            if (this.MakeDraftPayments != null)
+            {
+                return false;
+            }
+    
+            if (this.ViewBalance != null)
+            {
+                return false;
+            }
+    
+            if (this.ViewOldEvents != null)
+            {
+                return false;
+            }
+    
+            if (this.ViewNewEvents != null)
+            {
+                return false;
+            }
+    
+            if (this.Budget != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static ShareDetailPayment CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<ShareDetailPayment>(json);
+        }
     }
 }

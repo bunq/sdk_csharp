@@ -169,5 +169,120 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<TokenQrRequestIdeal>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.TimeResponded != null)
+            {
+                return false;
+            }
+    
+            if (this.TimeExpiry != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountInquired != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountResponded != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterpartyAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.Attachment != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.MinimumAge != null)
+            {
+                return false;
+            }
+    
+            if (this.RequireAddress != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressShipping != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressBilling != null)
+            {
+                return false;
+            }
+    
+            if (this.Geolocation != null)
+            {
+                return false;
+            }
+    
+            if (this.RedirectUrl != null)
+            {
+                return false;
+            }
+    
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.SubType != null)
+            {
+                return false;
+            }
+    
+            if (this.AllowChat != null)
+            {
+                return false;
+            }
+    
+            if (this.EligibleWhitelistId != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static TokenQrRequestIdeal CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<TokenQrRequestIdeal>(json);
+        }
     }
 }

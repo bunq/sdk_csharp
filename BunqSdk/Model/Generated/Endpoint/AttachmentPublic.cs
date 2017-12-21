@@ -80,5 +80,40 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<AttachmentPublic>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Uuid != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.Attachment != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static AttachmentPublic CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<AttachmentPublic>(json);
+        }
     }
 }
