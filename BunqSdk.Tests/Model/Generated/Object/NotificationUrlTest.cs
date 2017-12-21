@@ -63,7 +63,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
             Type classTypeExpected,
             string referencedObjectPropertyName,
             string subClassObjectPropertyName = null,
-            Type subClassTypeExpected = null) {
+            Type subClassTypeExpected = null) 
+        {
             var jsonString = ReadJsonFromFile(expectedJsonFileName);
             var notificationUrl = NotificationUrl.CreateFromJsonString(jsonString);
             
