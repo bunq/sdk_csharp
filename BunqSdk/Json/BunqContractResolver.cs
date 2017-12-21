@@ -40,10 +40,7 @@ namespace Bunq.Sdk.Json
             
             foreach (var type in typesToExclude)
             {
-                if (converterRegistry.ContainsKey(type))
-                {
-                    converterRegistry.Remove(type);
-                }
+                converterRegistry.Remove(type);
             }
         }
 
