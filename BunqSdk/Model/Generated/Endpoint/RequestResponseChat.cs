@@ -99,5 +99,40 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<RequestResponseChat>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.UnreadMessageCount != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static RequestResponseChat CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<RequestResponseChat>(json);
+        }
     }
 }

@@ -30,5 +30,35 @@ namespace Bunq.Sdk.Model.Generated.Object
         {
             ShareDetail = shareDetail;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.ShareDetail != null)
+            {
+                return false;
+            }
+    
+            if (this.StartDate != null)
+            {
+                return false;
+            }
+    
+            if (this.EndDate != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static DraftShareInviteBankEntry CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<DraftShareInviteBankEntry>(json);
+        }
     }
 }

@@ -174,5 +174,120 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<CardDebit>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.PublicUuid != null)
+            {
+                return false;
+            }
+    
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.SubType != null)
+            {
+                return false;
+            }
+    
+            if (this.SecondLine != null)
+            {
+                return false;
+            }
+    
+            if (this.NameOnCard != null)
+            {
+                return false;
+            }
+    
+            if (this.PrimaryAccountNumberFourDigit != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.OrderStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.ExpiryDate != null)
+            {
+                return false;
+            }
+    
+            if (this.Limit != null)
+            {
+                return false;
+            }
+    
+            if (this.CountryPermission != null)
+            {
+                return false;
+            }
+    
+            if (this.LabelMonetaryAccountOrdered != null)
+            {
+                return false;
+            }
+    
+            if (this.LabelMonetaryAccountCurrent != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.PinCodeAssignment != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountIdFallback != null)
+            {
+                return false;
+            }
+    
+            if (this.Country != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static CardDebit CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<CardDebit>(json);
+        }
     }
 }

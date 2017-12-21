@@ -58,5 +58,55 @@ namespace Bunq.Sdk.Model.Generated.Object
             City = city;
             Country = country;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Street != null)
+            {
+                return false;
+            }
+    
+            if (this.HouseNumber != null)
+            {
+                return false;
+            }
+    
+            if (this.PoBox != null)
+            {
+                return false;
+            }
+    
+            if (this.PostalCode != null)
+            {
+                return false;
+            }
+    
+            if (this.City != null)
+            {
+                return false;
+            }
+    
+            if (this.Country != null)
+            {
+                return false;
+            }
+    
+            if (this.Province != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Address CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Address>(json);
+        }
     }
 }

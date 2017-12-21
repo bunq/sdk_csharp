@@ -25,5 +25,30 @@ namespace Bunq.Sdk.Model.Generated.Object
             Value = value;
             Currency = currency;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Value != null)
+            {
+                return false;
+            }
+    
+            if (this.Currency != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Amount CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Amount>(json);
+        }
     }
 }

@@ -43,5 +43,50 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "label_user")]
         public LabelUser LabelUser { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Uuid != null)
+            {
+                return false;
+            }
+    
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.SecondLine != null)
+            {
+                return false;
+            }
+    
+            if (this.ExpiryDate != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.LabelUser != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static LabelCard CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<LabelCard>(json);
+        }
     }
 }

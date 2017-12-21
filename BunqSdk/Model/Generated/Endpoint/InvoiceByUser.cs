@@ -146,5 +146,100 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJson<InvoiceByUser>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Created != null)
+            {
+                return false;
+            }
+    
+            if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.InvoiceDate != null)
+            {
+                return false;
+            }
+    
+            if (this.InvoiceNumber != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.Group != null)
+            {
+                return false;
+            }
+    
+            if (this.TotalVatInclusive != null)
+            {
+                return false;
+            }
+    
+            if (this.TotalVatExclusive != null)
+            {
+                return false;
+            }
+    
+            if (this.TotalVat != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
+            {
+                return false;
+            }
+    
+            if (this.Address != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterpartyAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterpartyAddress != null)
+            {
+                return false;
+            }
+    
+            if (this.ChamberOfCommerceNumber != null)
+            {
+                return false;
+            }
+    
+            if (this.VatNumber != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static InvoiceByUser CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<InvoiceByUser>(json);
+        }
     }
 }

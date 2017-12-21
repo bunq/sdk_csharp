@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Security;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
 using Bunq.Sdk.Http;
@@ -79,6 +80,16 @@ namespace Bunq.Sdk.Security
         private const int INDEX_FIRST = 0;
 
         /// <summary>
+        /// The index after the firts character in a string. 
+        /// </summary>
+        private const int INDEX_LAST_FIRST_CHAR = 1;
+        
+        /// <summary>
+        /// Regex constants.
+        /// </summary>
+        private const string REGEX_FOR_LOWERCASE_HEADERS = "(-[a-z])";
+
+        /// <summary>
         /// Generates a base64-representation of RSA/SHA256/PKCS1 signature for a given RequestMessage.
         /// </summary>
         public static string GenerateSignature(HttpRequestMessage requestMessage, RSA keyPair)
@@ -125,6 +136,20 @@ namespace Bunq.Sdk.Security
                     x.Key.Equals(ApiClient.HEADER_USER_AGENT)
                 )
             );
+        }
+
+        private static string GetHeaderNameCorrectlyCased(string headerName)
+        {
+            headerName = headerName.ToLower();
+            headerName = headerName.First().ToString().ToUpper() + headerName.Substring(INDEX_LAST_FIRST_CHAR);
+            var matches = Regex.Matches(headerName, REGEX_FOR_LOWERCASE_HEADERS);
+
+            return matches.Cast<Match>().Aggregate(
+                headerName,
+                (current, match) => current.Replace(
+                        match.Groups[INDEX_FIRST].Value, match.Groups[INDEX_FIRST].Value.ToUpper()
+                    )
+                );
         }
 
         private static string GenerateHeadersSortedString(
@@ -307,8 +332,8 @@ namespace Bunq.Sdk.Security
         {
             return GenerateHeadersSortedString(
                 responseMessage.Headers.Where(x =>
-                    x.Key.StartsWith(HEADER_NAME_PREFIX_X_BUNQ) &&
-                    !x.Key.Equals(HEADER_SERVER_SIGNATURE)
+                    GetHeaderNameCorrectlyCased(x.Key).StartsWith(HEADER_NAME_PREFIX_X_BUNQ) &&
+                    !GetHeaderNameCorrectlyCased(x.Key).Equals(HEADER_SERVER_SIGNATURE)
                 )
             );
         }

@@ -20,5 +20,25 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; private set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Payment != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static BunqMeTabResultResponse CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<BunqMeTabResultResponse>(json);
+        }
     }
 }

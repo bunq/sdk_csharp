@@ -57,5 +57,55 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; private set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
+            if (this.Description != null)
+            {
+                return false;
+            }
+    
+            if (this.EanCode != null)
+            {
+                return false;
+            }
+    
+            if (this.AvatarAttachment != null)
+            {
+                return false;
+            }
+    
+            if (this.TabAttachment != null)
+            {
+                return false;
+            }
+    
+            if (this.Quantity != null)
+            {
+                return false;
+            }
+    
+            if (this.Amount != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static TabItem CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<TabItem>(json);
+        }
     }
 }

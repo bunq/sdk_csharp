@@ -25,5 +25,35 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "nationality")]
         public string Nationality { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Name != null)
+            {
+                return false;
+            }
+    
+            if (this.DateOfBirth != null)
+            {
+                return false;
+            }
+    
+            if (this.Nationality != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Ubo CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Ubo>(json);
+        }
     }
 }

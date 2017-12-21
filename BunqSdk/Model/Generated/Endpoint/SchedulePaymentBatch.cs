@@ -82,5 +82,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Payments != null)
+            {
+                return false;
+            }
+    
+            if (this.Schedule != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static SchedulePaymentBatch CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<SchedulePaymentBatch>(json);
+        }
     }
 }

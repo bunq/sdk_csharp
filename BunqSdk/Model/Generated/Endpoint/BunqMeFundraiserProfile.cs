@@ -6,50 +6,53 @@ using System.Collections.Generic;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// bunq.me tabs allows you to create a payment request and share the link through e-mail, chat, etc. Multiple
-    /// persons are able to respond to the payment request and pay through bunq, iDeal or SOFORT.
+    /// bunq.me public profile of the user.
     /// </summary>
-    public class BunqMeTabEntry : BunqModel
+    public class BunqMeFundraiserProfile : BunqModel
     {
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_AMOUNT_INQUIRED = "amount_inquired";
-        public const string FIELD_DESCRIPTION = "description";
-        public const string FIELD_REDIRECT_URL = "redirect_url";
+        public const string FIELD_POINTER = "pointer";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "BunqMeTab";
+        private const string OBJECT_TYPE = "BunqMeFundraiserProfileModel";
     
         /// <summary>
-        /// The uuid of the bunq.me.
+        /// The color chosen for the bunq.me fundraiser profile in hexadecimal format.
         /// </summary>
-        [JsonProperty(PropertyName = "uuid")]
-        public string Uuid { get; private set; }
-    
-        /// <summary>
-        /// The requested Amount.
-        /// </summary>
-        [JsonProperty(PropertyName = "amount_inquired")]
-        public Amount AmountInquired { get; private set; }
+        [JsonProperty(PropertyName = "color")]
+        public string Color { get; private set; }
     
         /// <summary>
         /// The LabelMonetaryAccount with the public information of the User and the MonetaryAccount that created the
-        /// bunq.me link.
+        /// bunq.me fundraiser profile.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public MonetaryAccountReference Alias { get; private set; }
     
         /// <summary>
-        /// The description for the bunq.me. Maximum 9000 characters.
+        /// The description of the bunq.me fundraiser profile.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; private set; }
     
         /// <summary>
-        /// The status of the bunq.me. Can be WAITING_FOR_PAYMENT, CANCELLED or EXPIRED.
+        /// The attachments attached to the fundraiser profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "attachment")]
+        public List<AttachmentPublic> Attachment { get; private set; }
+    
+        /// <summary>
+        /// The pointer (url) which will be used to access the bunq.me fundraiser profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "pointer")]
+        public MonetaryAccountReference Pointer { get; private set; }
+    
+        /// <summary>
+        /// The status of the bunq.me fundraiser profile, can be ACTIVE or DEACTIVATED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; private set; }
@@ -60,23 +63,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "redirect_url")]
         public string RedirectUrl { get; private set; }
     
-        /// <summary>
-        /// List of available merchants.
-        /// </summary>
-        [JsonProperty(PropertyName = "merchant_available")]
-        public List<BunqMeMerchantAvailable> MerchantAvailable { get; private set; }
-    
     
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Uuid != null)
-            {
-                return false;
-            }
-    
-            if (this.AmountInquired != null)
+            if (this.Color != null)
             {
                 return false;
             }
@@ -91,6 +83,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
+            if (this.Attachment != null)
+            {
+                return false;
+            }
+    
+            if (this.Pointer != null)
+            {
+                return false;
+            }
+    
             if (this.Status != null)
             {
                 return false;
@@ -101,19 +103,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.MerchantAvailable != null)
-            {
-                return false;
-            }
-    
             return true;
         }
     
         /// <summary>
         /// </summary>
-        public static BunqMeTabEntry CreateFromJsonString(string json)
+        public static BunqMeFundraiserProfile CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<BunqMeTabEntry>(json);
+            return BunqModel.CreateFromJsonString<BunqMeFundraiserProfile>(json);
         }
     }
 }

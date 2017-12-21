@@ -101,5 +101,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<RequestInquiryBatch>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.RequestInquiries != null)
+            {
+                return false;
+            }
+    
+            if (this.TotalAmountInquired != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static RequestInquiryBatch CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<RequestInquiryBatch>(json);
+        }
     }
 }

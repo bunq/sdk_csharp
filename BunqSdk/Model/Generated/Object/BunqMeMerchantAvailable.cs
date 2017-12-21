@@ -19,5 +19,30 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "available")]
         public bool? Available { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.MerchantType != null)
+            {
+                return false;
+            }
+    
+            if (this.Available != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static BunqMeMerchantAvailable CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<BunqMeMerchantAvailable>(json);
+        }
     }
 }

@@ -18,5 +18,25 @@ namespace Bunq.Sdk.Model.Generated.Object
         {
             CertificateString = certificateString;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.CertificateString != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Certificate CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Certificate>(json);
+        }
     }
 }

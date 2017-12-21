@@ -44,5 +44,45 @@ namespace Bunq.Sdk.Model.Generated.Object
             DisplayName = displayName;
             Country = country;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Uuid != null)
+            {
+                return false;
+            }
+    
+            if (this.Avatar != null)
+            {
+                return false;
+            }
+    
+            if (this.PublicNickName != null)
+            {
+                return false;
+            }
+    
+            if (this.DisplayName != null)
+            {
+                return false;
+            }
+    
+            if (this.Country != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static LabelUser CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<LabelUser>(json);
+        }
     }
 }

@@ -93,5 +93,25 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<PaymentBatch>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Payments != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static PaymentBatch CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<PaymentBatch>(json);
+        }
     }
 }

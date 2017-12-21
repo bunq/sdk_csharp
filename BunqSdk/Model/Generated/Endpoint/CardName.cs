@@ -45,5 +45,25 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             return FromJsonList<CardName>(responseRaw, OBJECT_TYPE);
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.PossibleCardNameArray != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static CardName CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<CardName>(json);
+        }
     }
 }

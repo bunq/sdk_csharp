@@ -24,5 +24,30 @@ namespace Bunq.Sdk.Model.Generated.Object
         {
             Bic = bic;
         }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Bic != null)
+            {
+                return false;
+            }
+    
+            if (this.Name != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Issuer CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Issuer>(json);
+        }
     }
 }

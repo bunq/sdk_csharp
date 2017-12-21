@@ -13,5 +13,25 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Title != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static ChatMessageContentStatusConversationTitle CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<ChatMessageContentStatusConversationTitle>(json);
+        }
     }
 }

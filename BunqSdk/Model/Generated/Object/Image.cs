@@ -31,5 +31,40 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "width")]
         public int? Width { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.AttachmentPublicUuid != null)
+            {
+                return false;
+            }
+    
+            if (this.ContentType != null)
+            {
+                return false;
+            }
+    
+            if (this.Height != null)
+            {
+                return false;
+            }
+    
+            if (this.Width != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static Image CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<Image>(json);
+        }
     }
 }

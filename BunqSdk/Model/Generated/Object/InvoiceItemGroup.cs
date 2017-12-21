@@ -49,5 +49,55 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "item")]
         public InvoiceItem Item { get; set; }
+    
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.TypeDescription != null)
+            {
+                return false;
+            }
+    
+            if (this.TypeDescriptionTranslated != null)
+            {
+                return false;
+            }
+    
+            if (this.InstanceDescription != null)
+            {
+                return false;
+            }
+    
+            if (this.ProductVatExclusive != null)
+            {
+                return false;
+            }
+    
+            if (this.ProductVatInclusive != null)
+            {
+                return false;
+            }
+    
+            if (this.Item != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static InvoiceItemGroup CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<InvoiceItemGroup>(json);
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Bunq.Sdk.Model.Generated.Object
 {
     /// <summary>
     /// </summary>
-    public class DraftPaymentAnchorObject : BunqModel
+    public class DraftPaymentAnchorObject : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
         /// Error constants.
@@ -42,6 +42,30 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             throw new BunqException(ERROR_NULL_FIELDS);
+        }
+    
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.Payment != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentBatch != null)
+            {
+                return false;
+            }
+    
+            return true;
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static DraftPaymentAnchorObject CreateFromJsonString(string json)
+        {
+            return BunqModel.CreateFromJsonString<DraftPaymentAnchorObject>(json);
         }
     }
 }
