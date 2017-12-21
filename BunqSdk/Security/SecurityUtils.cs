@@ -78,6 +78,11 @@ namespace Bunq.Sdk.Security
         /// Number of the very first index in an array or a string.
         /// </summary>
         private const int INDEX_FIRST = 0;
+
+        /// <summary>
+        /// The index after the firts character in a string. 
+        /// </summary>
+        private const int INDEX_LAST_FIRST_CHAR = 1;
         
         /// <summary>
         /// Regex constants.
@@ -136,7 +141,7 @@ namespace Bunq.Sdk.Security
         private static string GetHeaderNameCorrectyCased(string headerName)
         {
             headerName = headerName.ToLower();
-            headerName = headerName.First().ToString().ToUpper() + headerName.Substring(1);
+            headerName = headerName.First().ToString().ToUpper() + headerName.Substring(INDEX_LAST_FIRST_CHAR);
             var matches = Regex.Matches(headerName, REGEX_FOR_LOWERCASE_HEADERS);
 
             return matches.Cast<Match>().Aggregate(
