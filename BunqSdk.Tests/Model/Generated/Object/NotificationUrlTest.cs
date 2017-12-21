@@ -63,29 +63,29 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
             Type classTypeExpected,
             string referencedObjectPropertyName,
             string subClassObjectPropertyName = null,
-            Type subClassTypeExpected = null
-            ) {
+            Type subClassTypeExpected = null) {
             var jsonString = ReadJsonFromFile(expectedJsonFileName);
             var notificationUrl = NotificationUrl.CreateFromJsonString(jsonString);
             
             Assert.NotNull(notificationUrl);
             Assert.NotNull(notificationUrl.Object);
 
-            var model = notificationUrl.Object.GetType().GetProperty(referencedObjectPropertyName).GetValue(
-                notificationUrl.Object);
+            var model = notificationUrl.Object.GetType()
+                .GetProperty(referencedObjectPropertyName)
+                .GetValue(notificationUrl.Object);
             var referencedModel = notificationUrl.Object.GetReferencedObject();
             
             Assert.NotNull(model);
             Assert.NotNull(referencedModel);
             Assert.IsType(classTypeExpected, referencedModel);
-            Assert.Equal(classTypeExpected, referencedModel.GetType());
 
             if (subClassObjectPropertyName == null || subClassTypeExpected == null) return;
-            var subClass = referencedModel.GetType().GetProperty(subClassObjectPropertyName).GetValue(
-                referencedModel);
+            var subClass = referencedModel.GetType()
+                .GetProperty(subClassObjectPropertyName)
+                .GetValue(referencedModel);
                 
             Assert.NotNull(subClass);
-            Assert.Equal(subClassTypeExpected, subClass.GetType());
+            Assert.IsType(subClassTypeExpected, subClass);
         }
 
         private static string ReadJsonFromFile(string fileName)
