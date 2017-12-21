@@ -55,7 +55,7 @@ namespace Bunq.Sdk.Json
 
         public override bool CanConvert(Type objectType)
         {
-            throw new NotImplementedException();
+            return objectType == typeof(IAnchorObjectInterface);
         }
     }
 }
