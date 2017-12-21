@@ -138,7 +138,7 @@ namespace Bunq.Sdk.Security
             );
         }
 
-        private static string GetHeaderNameCorrectyCased(string headerName)
+        private static string GetHeaderNameCorrectlyCased(string headerName)
         {
             headerName = headerName.ToLower();
             headerName = headerName.First().ToString().ToUpper() + headerName.Substring(INDEX_LAST_FIRST_CHAR);
@@ -332,8 +332,8 @@ namespace Bunq.Sdk.Security
         {
             return GenerateHeadersSortedString(
                 responseMessage.Headers.Where(x =>
-                    GetHeaderNameCorrectyCased(x.Key).StartsWith(HEADER_NAME_PREFIX_X_BUNQ) &&
-                    !GetHeaderNameCorrectyCased(x.Key).Equals(HEADER_SERVER_SIGNATURE)
+                    GetHeaderNameCorrectlyCased(x.Key).StartsWith(HEADER_NAME_PREFIX_X_BUNQ) &&
+                    !GetHeaderNameCorrectlyCased(x.Key).Equals(HEADER_SERVER_SIGNATURE)
                 )
             );
         }
