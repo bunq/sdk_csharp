@@ -1,5 +1,334 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.2.0/build/netcoreapp1.0/xunit.runner.reporters.netstandard15.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.2.0/build/netcoreapp1.0/xunit.runner.utility.netstandard15.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.2.0/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p=".gitignore" t="Include" />
+      <e p="BunqSdk" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="BunqSdk.csproj" t="IncludeRecursive" />
+        <e p="Context" t="Include">
+          <e p="ApiContext.cs" t="Include" />
+          <e p="ApiEnvironmentType.cs" t="Include" />
+          <e p="InstallationContext.cs" t="Include" />
+          <e p="SessionContext.cs" t="Include" />
+        </e>
+        <e p="Exception" t="Include">
+          <e p="ApiException.cs" t="Include" />
+          <e p="BadRequestException.cs" t="Include" />
+          <e p="BunqException.cs" t="Include" />
+          <e p="ExceptionFactory.cs" t="Include" />
+          <e p="EXCEPTIONS.md" t="Include" />
+          <e p="ForbiddenException.cs" t="Include" />
+          <e p="MethodNotAllowedException.cs" t="Include" />
+          <e p="NotFoundException.cs" t="Include" />
+          <e p="PleaseContactBunqException.cs" t="Include" />
+          <e p="TooManyRequestsException.cs" t="Include" />
+          <e p="UnauthorizedException.cs" t="Include" />
+          <e p="UnknownApiErrorException.cs" t="Include" />
+        </e>
+        <e p="Http" t="Include">
+          <e p="ApiClient.cs" t="Include" />
+          <e p="BunqProxy.cs" t="Include" />
+          <e p="BunqResponse.cs" t="Include" />
+          <e p="BunqResponseRaw.cs" t="Include" />
+          <e p="Pagination.cs" t="Include" />
+        </e>
+        <e p="Json" t="Include">
+          <e p="AnchorObjectConverter.cs" t="Include" />
+          <e p="ApiEnvironmentTypeConverter.cs" t="Include" />
+          <e p="BunqContractResolver.cs" t="Include" />
+          <e p="BunqJsonConvert.cs" t="Include" />
+          <e p="GeolocationConverter.cs" t="Include" />
+          <e p="InstallationContextConverter.cs" t="Include" />
+          <e p="InstallationConverter.cs" t="Include" />
+          <e p="MonetaryAccountReferenceConverter.cs" t="Include" />
+          <e p="NonIntegerNumberConverter.cs" t="Include" />
+          <e p="PaginationConverter.cs" t="Include" />
+          <e p="SessionServerConverter.cs" t="Include" />
+        </e>
+        <e p="Model" t="Include">
+          <e p="Core" t="Include">
+            <e p="AnchorObjectInterface.cs" t="Include" />
+            <e p="BunqModel.cs" t="Include" />
+            <e p="Id.cs" t="Include" />
+            <e p="Installation.cs" t="Include" />
+            <e p="MonetaryAccountReference.cs" t="Include" />
+            <e p="PublicKeyServer.cs" t="Include" />
+            <e p="SessionServer.cs" t="Include" />
+            <e p="SessionToken.cs" t="Include" />
+            <e p="Uuid.cs" t="Include" />
+          </e>
+          <e p="Generated" t="Include">
+            <e p="Endpoint" t="Include">
+              <e p="AttachmentConversationContent.cs" t="Include" />
+              <e p="AttachmentMonetaryAccount.cs" t="Include" />
+              <e p="AttachmentPublic.cs" t="Include" />
+              <e p="AttachmentPublicContent.cs" t="Include" />
+              <e p="AttachmentTab.cs" t="Include" />
+              <e p="AttachmentTabContent.cs" t="Include" />
+              <e p="Avatar.cs" t="Include" />
+              <e p="BillingContractSubscription.cs" t="Include" />
+              <e p="BunqMeFundraiserProfile.cs" t="Include" />
+              <e p="BunqMeFundraiserResult.cs" t="Include" />
+              <e p="BunqMeTab.cs" t="Include" />
+              <e p="BunqMeTabEntry.cs" t="Include" />
+              <e p="BunqMeTabResultInquiry.cs" t="Include" />
+              <e p="BunqMeTabResultResponse.cs" t="Include" />
+              <e p="Card.cs" t="Include" />
+              <e p="CardDebit.cs" t="Include" />
+              <e p="CardGeneratedCvc2.cs" t="Include" />
+              <e p="CardName.cs" t="Include" />
+              <e p="CardPinChange.cs" t="Include" />
+              <e p="CardReplace.cs" t="Include" />
+              <e p="CardResult.cs" t="Include" />
+              <e p="CashRegister.cs" t="Include" />
+              <e p="CashRegisterQrCode.cs" t="Include" />
+              <e p="CashRegisterQrCodeContent.cs" t="Include" />
+              <e p="CertificatePinned.cs" t="Include" />
+              <e p="ChatConversation.cs" t="Include" />
+              <e p="ChatConversationReference.cs" t="Include" />
+              <e p="ChatConversationSupportExternal.cs" t="Include" />
+              <e p="ChatMessage.cs" t="Include" />
+              <e p="ChatMessageAnnouncement.cs" t="Include" />
+              <e p="ChatMessageAttachment.cs" t="Include" />
+              <e p="ChatMessageStatus.cs" t="Include" />
+              <e p="ChatMessageText.cs" t="Include" />
+              <e p="ChatMessageUser.cs" t="Include" />
+              <e p="Customer.cs" t="Include" />
+              <e p="CustomerLimit.cs" t="Include" />
+              <e p="CustomerStatementExport.cs" t="Include" />
+              <e p="CustomerStatementExportContent.cs" t="Include" />
+              <e p="Device.cs" t="Include" />
+              <e p="DeviceServer.cs" t="Include" />
+              <e p="DraftPayment.cs" t="Include" />
+              <e p="DraftShareInviteBank.cs" t="Include" />
+              <e p="DraftShareInviteBankQrCodeContent.cs" t="Include" />
+              <e p="ExportAnnualOverview.cs" t="Include" />
+              <e p="ExportAnnualOverviewContent.cs" t="Include" />
+              <e p="IdealMerchantTransaction.cs" t="Include" />
+              <e p="InstallationServerPublicKey.cs" t="Include" />
+              <e p="Invoice.cs" t="Include" />
+              <e p="InvoiceByUser.cs" t="Include" />
+              <e p="MasterCardAction.cs" t="Include" />
+              <e p="MonetaryAccount.cs" t="Include" />
+              <e p="MonetaryAccountBank.cs" t="Include" />
+              <e p="MonetaryAccountProfile.cs" t="Include" />
+              <e p="Payment.cs" t="Include" />
+              <e p="PaymentBatch.cs" t="Include" />
+              <e p="PaymentChat.cs" t="Include" />
+              <e p="PermittedIp.cs" t="Include" />
+              <e p="PromotionDisplay.cs" t="Include" />
+              <e p="RequestInquiry.cs" t="Include" />
+              <e p="RequestInquiryBatch.cs" t="Include" />
+              <e p="RequestInquiryChat.cs" t="Include" />
+              <e p="RequestResponse.cs" t="Include" />
+              <e p="RequestResponseChat.cs" t="Include" />
+              <e p="Schedule.cs" t="Include" />
+              <e p="ScheduleInstance.cs" t="Include" />
+              <e p="SchedulePayment.cs" t="Include" />
+              <e p="SchedulePaymentBatch.cs" t="Include" />
+              <e p="ScheduleUser.cs" t="Include" />
+              <e p="Session.cs" t="Include" />
+              <e p="ShareInviteBankAmountUsed.cs" t="Include" />
+              <e p="ShareInviteBankInquiry.cs" t="Include" />
+              <e p="ShareInviteBankResponse.cs" t="Include" />
+              <e p="Tab.cs" t="Include" />
+              <e p="TabAttachmentTab.cs" t="Include" />
+              <e p="TabAttachmentTabContent.cs" t="Include" />
+              <e p="TabItem.cs" t="Include" />
+              <e p="TabItemShop.cs" t="Include" />
+              <e p="TabItemShopBatch.cs" t="Include" />
+              <e p="TabQrCodeContent.cs" t="Include" />
+              <e p="TabResultInquiry.cs" t="Include" />
+              <e p="TabResultResponse.cs" t="Include" />
+              <e p="TabUsageMultiple.cs" t="Include" />
+              <e p="TabUsageSingle.cs" t="Include" />
+              <e p="TokenQrRequestIdeal.cs" t="Include" />
+              <e p="User.cs" t="Include" />
+              <e p="UserCompany.cs" t="Include" />
+              <e p="UserCredentialPasswordIp.cs" t="Include" />
+              <e p="UserLight.cs" t="Include" />
+              <e p="UserPerson.cs" t="Include" />
+            </e>
+            <e p="Object" t="Include">
+              <e p="Address.cs" t="Include" />
+              <e p="Amount.cs" t="Include" />
+              <e p="AnchoredObject.cs" t="Include" />
+              <e p="Attachment.cs" t="Include" />
+              <e p="AttachmentMonetaryAccountPayment.cs" t="Include" />
+              <e p="AttachmentPublic.cs" t="Include" />
+              <e p="AttachmentTab.cs" t="Include" />
+              <e p="Avatar.cs" t="Include" />
+              <e p="BudgetRestriction.cs" t="Include" />
+              <e p="BunqId.cs" t="Include" />
+              <e p="BunqMeMerchantAvailable.cs" t="Include" />
+              <e p="CardCountryPermission.cs" t="Include" />
+              <e p="CardLimit.cs" t="Include" />
+              <e p="CardMagStripePermission.cs" t="Include" />
+              <e p="CardPinAssignment.cs" t="Include" />
+              <e p="Certificate.cs" t="Include" />
+              <e p="ChatMessageContent.cs" t="Include" />
+              <e p="ChatMessageContentAnchorEvent.cs" t="Include" />
+              <e p="ChatMessageContentAttachment.cs" t="Include" />
+              <e p="ChatMessageContentGeolocation.cs" t="Include" />
+              <e p="ChatMessageContentStatusConversation.cs" t="Include" />
+              <e p="ChatMessageContentStatusConversationTitle.cs" t="Include" />
+              <e p="ChatMessageContentStatusMembership.cs" t="Include" />
+              <e p="ChatMessageContentText.cs" t="Include" />
+              <e p="DraftPaymentAnchorObject.cs" t="Include" />
+              <e p="DraftPaymentEntry.cs" t="Include" />
+              <e p="DraftPaymentResponse.cs" t="Include" />
+              <e p="DraftShareInviteBankEntry.cs" t="Include" />
+              <e p="Error.cs" t="Include" />
+              <e p="Geolocation.cs" t="Include" />
+              <e p="Image.cs" t="Include" />
+              <e p="InvoiceItem.cs" t="Include" />
+              <e p="InvoiceItemGroup.cs" t="Include" />
+              <e p="Issuer.cs" t="Include" />
+              <e p="LabelCard.cs" t="Include" />
+              <e p="LabelMonetaryAccount.cs" t="Include" />
+              <e p="LabelUser.cs" t="Include" />
+              <e p="MonetaryAccountProfileDrain.cs" t="Include" />
+              <e p="MonetaryAccountProfileFill.cs" t="Include" />
+              <e p="MonetaryAccountSetting.cs" t="Include" />
+              <e p="NotificationAnchorObject.cs" t="Include" />
+              <e p="NotificationFilter.cs" t="Include" />
+              <e p="NotificationUrl.cs" t="Include" />
+              <e p="PermittedDevice.cs" t="Include" />
+              <e p="Pointer.cs" t="Include" />
+              <e p="ScheduleAnchorObject.cs" t="Include" />
+              <e p="ScheduleInstanceAnchorObject.cs" t="Include" />
+              <e p="SchedulePaymentEntry.cs" t="Include" />
+              <e p="ShareDetail.cs" t="Include" />
+              <e p="ShareDetailDraftPayment.cs" t="Include" />
+              <e p="ShareDetailPayment.cs" t="Include" />
+              <e p="ShareDetailReadOnly.cs" t="Include" />
+              <e p="TabTextWaitingScreen.cs" t="Include" />
+              <e p="TabVisibility.cs" t="Include" />
+              <e p="TaxResident.cs" t="Include" />
+              <e p="Ubo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp1.1" t="Include">
+              <e p="BunqSdk.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Security" t="Include">
+          <e p="AsnMessage.cs" t="Include" />
+          <e p="AsnType.cs" t="Include" />
+          <e p="Helpers.cs" t="Include" />
+          <e p="RsaKeyUtils.cs" t="Include" />
+          <e p="RsaParameterTraits.cs" t="Include" />
+          <e p="SecurityUtils.cs" t="Include" />
+        </e>
+      </e>
+      <e p="BunqSdk.Samples" t="IncludeRecursive">
+        <e p="ApiContextSaveSample.cs" t="Include" />
+        <e p="Assets" t="Include">
+          <e p="Attachment.jpg" t="Include" />
+        </e>
+        <e p="AttachmentPublicSample.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="BunqSdk.Samples.csproj" t="IncludeRecursive" />
+        <e p="CardDebitSample.cs" t="Include" />
+        <e p="CustomerStatementExportSample.cs" t="Include" />
+        <e p="MonetaryAccountSample.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp1.1" t="Include">
+              <e p="BunqSdk.Samples.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PaymentBatchSample.cs" t="Include" />
+        <e p="PaymentListSample.cs" t="Include" />
+        <e p="PaymentSample.cs" t="Include" />
+        <e p="RequestSample.cs" t="Include" />
+        <e p="UserListSample.cs" t="Include" />
+        <e p="Utils" t="Include">
+          <e p="ISample.cs" t="Include" />
+          <e p="SampleRunner.cs" t="Include" />
+        </e>
+      </e>
+      <e p="BunqSdk.sln" t="IncludeFlat" />
+      <e p="BunqSdk.Tests" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="bunq-test.conf" t="Include" />
+        <e p="BunqSdk.Tests.csproj" t="IncludeRecursive" />
+        <e p="BunqSdkTestBase.cs" t="Include" />
+        <e p="Config.cs" t="Include" />
+        <e p="Context" t="Include">
+          <e p="ApiContextTest.cs" t="Include" />
+        </e>
+        <e p="Http" t="Include">
+          <e p="PaginationScenarioTest.cs" t="Include" />
+          <e p="PaginationTest.cs" t="Include" />
+        </e>
+        <e p="Model" t="Include">
+          <e p="Generated" t="Include">
+            <e p="Endpoint" t="Include">
+              <e p="AttachmentPublicTest.cs" t="Include" />
+              <e p="AvatarTest.cs" t="Include" />
+              <e p="CardDebitTest.cs" t="Include" />
+              <e p="DraftShareInviteBankQrCodeContentTest.cs" t="Include" />
+              <e p="MonetaryAccountBankTest.cs" t="Include" />
+              <e p="PaymentChatTest.cs" t="Include" />
+              <e p="PaymentTest.cs" t="Include" />
+              <e p="RequestInquiryTest.cs" t="Include" />
+              <e p="SessionTest.cs" t="Include" />
+              <e p="TabUsageSingleTest.cs" t="Include" />
+            </e>
+            <e p="Object" t="Include">
+              <e p="NotificationUrlTest.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp1.1" t="Include">
+              <e p="BunqSdk.Tests.AssemblyInfo.cs" t="Include" />
+              <e p="BunqSdk.Tests.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="README.md" t="Include" />
+        <e p="Resources" t="Include">
+          <e p="bunq_App_Icon_Square@4x.png" t="Include" />
+          <e p="config.example.json" t="Include" />
+          <e p="config.json" t="Include" />
+          <e p="NotificationUrlJsons" t="Include">
+            <e p="BunqMeTab.json" t="Include" />
+            <e p="ChatMessageAnnouncement.json" t="Include" />
+            <e p="DraftPayment.json" t="Include" />
+            <e p="MasterCardAction.json" t="Include" />
+            <e p="MonetaryAccountBank.json" t="Include" />
+            <e p="Mutation.json" t="Include" />
+            <e p="PaymentBatch.json" t="Include" />
+            <e p="RequestInquiry.json" t="Include" />
+            <e p="RequestResponse.json" t="Include" />
+            <e p="ScheduledInstance.json" t="Include" />
+            <e p="ScheduledPayment.json" t="Include" />
+            <e p="ShareInviteBankInquiry.json" t="Include" />
+            <e p="ShareInviteBankResponse.json" t="Include" />
+          </e>
+        </e>
+        <e p="xunit.runner.json" t="Include" />
+      </e>
+      <e p="CHANGELOG.md" t="Include" />
+      <e p="CONTRIBUTING.md" t="Include" />
+      <e p="LICENSE.md" t="Include" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="README.md" t="Include" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_BunqSdk.-616357279.00" t="ExcludeRecursive" />
+  </component>
   <component name="RiderRiderContentModelStore">
     <excludedPaths />
   </component>
