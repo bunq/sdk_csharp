@@ -1,25 +1,24 @@
+## Steps to reproduce:
+1.
 
-  ## Steps to reproduce:
-  1.
+## What should happen:
+1.
 
-  ## What should happen:
-  1.
+## What happens:
+1.
 
-  ## What happens:
-  1.
-
-  ## Traceback
-  [//]: # (If there is a traceback please share it in a quote! You can do this by pasting the traceback text, then highlight it and press the quote button.)
+## Traceback
+[//]: # "If there is a traceback please share it in a quote! You can do this by pasting the traceback text, then highlight it and press the quote button."
 
   ## SDK version and environment
   - Tested on [0.12.4](https://github.com/bunq/sdk_csharp/releases/tag/0.12.4)
   - [ ] Sandbox
   - [ ] Production
 
-  ## Response id
-  [//]: # (If this error has something to do with a request that fails, please provide the response id of the request.)
+## Response id
+[//]: # "If this error has something to do with a request that fails, please provide the response id of the request."
   - Response id:
 
-  ## Extra info:
-  [//]: # (Please provide any other relevant information here)
+## Extra info:
+[//]: # "Please provide any other relevant information here"
 
