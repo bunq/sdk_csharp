@@ -16,7 +16,10 @@ namespace Bunq.Sdk.Json
         /// </summary>
         private static void Initialize()
         {
-            if (_isInitialized) return;
+            if (_isInitialized) 
+            {
+                return;
+            }
 
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
             {
