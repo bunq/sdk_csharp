@@ -16,20 +16,20 @@ namespace Bunq.Sdk.Json
         /// <summary>
         /// Field constants.
         /// </summary>
-        private const string FIELD_OLDER_URL = "older_url";
-        private const string FIELD_NEWER_URL = "newer_url";
-        private const string FIELD_FUTURE_URL = "future_url";
+        private const string FieldOlderUrl = "older_url";
+        private const string FieldNewerUrl = "newer_url";
+        private const string FieldFutureUrl = "future_url";
 
         /// <summary>
         /// Indices of param key and value after parsing.
         /// </summary>
-        private const int INDEX_PARAM_KEY = 0;
-        private const int INDEX_PARAM_VALUE = 1;
+        private const int IndexParamKey = 0;
+        private const int IndexParamValue = 1;
 
         /// <summary>
         /// Base dummy URL to hack through the incomplete relative URI functionality of dotnetcore.
         /// </summary>
-        private const string URI_BASE_DUMMY = "https://example.com";
+        private const string UriBaseDummy = "https://example.com";
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
@@ -39,10 +39,10 @@ namespace Bunq.Sdk.Json
 
             return new Pagination
             {
-                OlderId = GetValueOrNull(paginationBody, Pagination.PARAM_OLDER_ID),
-                NewerId = GetValueOrNull(paginationBody, Pagination.PARAM_NEWER_ID),
-                FutureId = GetValueOrNull(paginationBody, Pagination.PARAM_FUTURE_ID),
-                Count = GetValueOrNull(paginationBody, Pagination.PARAM_COUNT),
+                OlderId = GetValueOrNull(paginationBody, Pagination.ParamOlderId),
+                NewerId = GetValueOrNull(paginationBody, Pagination.ParamNewerId),
+                FutureId = GetValueOrNull(paginationBody, Pagination.ParamFutureId),
+                Count = GetValueOrNull(paginationBody, Pagination.ParamCount),
             };
         }
 
@@ -56,24 +56,24 @@ namespace Bunq.Sdk.Json
             var paginationBody = new Dictionary<string, int?>();
             UpdatePaginationBodyFromResponseField(
                 paginationBody,
-                Pagination.PARAM_OLDER_ID,
+                Pagination.ParamOlderId,
                 responseJson,
-                FIELD_OLDER_URL,
-                Pagination.PARAM_OLDER_ID
+                FieldOlderUrl,
+                Pagination.ParamOlderId
             );
             UpdatePaginationBodyFromResponseField(
                 paginationBody,
-                Pagination.PARAM_NEWER_ID,
+                Pagination.ParamNewerId,
                 responseJson,
-                FIELD_NEWER_URL,
-                Pagination.PARAM_NEWER_ID
+                FieldNewerUrl,
+                Pagination.ParamNewerId
             );
             UpdatePaginationBodyFromResponseField(
                 paginationBody,
-                Pagination.PARAM_FUTURE_ID,
+                Pagination.ParamFutureId,
                 responseJson,
-                FIELD_FUTURE_URL,
-                Pagination.PARAM_NEWER_ID
+                FieldFutureUrl,
+                Pagination.ParamNewerId
             );
 
             return paginationBody;
@@ -92,10 +92,10 @@ namespace Bunq.Sdk.Json
                 {
                     paginationBody[idField] = int.Parse(param.Value);
                 }
-                else if (Pagination.PARAM_COUNT.Equals(param.Key) &&
-                    !paginationBody.ContainsKey(Pagination.PARAM_COUNT))
+                else if (Pagination.ParamCount.Equals(param.Key) &&
+                    !paginationBody.ContainsKey(Pagination.ParamCount))
                 {
-                    paginationBody[Pagination.PARAM_COUNT] = int.Parse(param.Value);
+                    paginationBody[Pagination.ParamCount] = int.Parse(param.Value);
                 }
             }
         }
@@ -104,11 +104,11 @@ namespace Bunq.Sdk.Json
         {
             if (uriToken == null) return new Dictionary<string, string>();
 
-            return new Uri(URI_BASE_DUMMY + uriToken).Query
-                .TrimStart(ApiClient.DELIMITER_URI_QUERY)
-                .Split(ApiClient.DELIMITER_URI_PARAMS)
-                .Select(param => param.Split(ApiClient.DELIMITER_URI_PARAM_KEY_VALUE))
-                .ToDictionary(pair => pair[INDEX_PARAM_KEY], pair => pair[INDEX_PARAM_VALUE]);
+            return new Uri(UriBaseDummy + uriToken).Query
+                .TrimStart(ApiClient.DelimiterUriQuery)
+                .Split(ApiClient.DelimiterUriParams)
+                .Select(param => param.Split(ApiClient.DelimiterUriParamKeyValue))
+                .ToDictionary(pair => pair[IndexParamKey], pair => pair[IndexParamValue]);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

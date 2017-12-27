@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Default assumed value for session timeout.
         /// </summary>
-        private const double SESSION_TIMEOUT_DEFAULT = 0.0;
+        private const double SessionTimeoutDefault = 0.0;
 
         /// <summary>
         /// Session token returned as a response to POST /session-server.
@@ -49,7 +49,7 @@ namespace Bunq.Sdk.Context
                 return (double) sessionServer.UserPerson.SessionTimeout;
             }
 
-            return SESSION_TIMEOUT_DEFAULT;
+            return SessionTimeoutDefault;
         }
     }
 }

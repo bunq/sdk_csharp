@@ -6,7 +6,6 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -18,20 +17,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/ideal-merchant-transaction";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/ideal-merchant-transaction/{2}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/ideal-merchant-transaction";
+        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/ideal-merchant-transaction";
+        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/ideal-merchant-transaction/{2}";
+        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/ideal-merchant-transaction";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_AMOUNT_REQUESTED = "amount_requested";
-        public const string FIELD_ISSUER = "issuer";
+        public const string FieldAmountRequested = "amount_requested";
+        public const string FieldIssuer = "issuer";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "IdealMerchantTransaction";
+        private const string ObjectType = "IdealMerchantTransaction";
     
         /// <summary>
         /// The id of the monetary account this ideal merchant transaction links to.
@@ -125,7 +124,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -137,9 +136,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, idealMerchantTransactionId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, idealMerchantTransactionId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<IdealMerchantTransaction>(responseRaw, OBJECT_TYPE);
+            return FromJson<IdealMerchantTransaction>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -150,9 +149,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<IdealMerchantTransaction>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<IdealMerchantTransaction>(responseRaw, ObjectType);
         }
     
     

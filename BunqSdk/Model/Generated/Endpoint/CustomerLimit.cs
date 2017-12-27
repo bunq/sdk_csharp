@@ -17,12 +17,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_LISTING = "user/{0}/limit";
+        private const string EndpointUrlListing = "user/{0}/limit";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CustomerLimit";
+        private const string ObjectType = "CustomerLimit";
     
         /// <summary>
         /// The limit of monetary accounts.
@@ -63,9 +63,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
     
-            return FromJsonList<CustomerLimit>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CustomerLimit>(responseRaw, ObjectType);
         }
     
     

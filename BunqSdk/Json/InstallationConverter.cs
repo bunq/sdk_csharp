@@ -12,23 +12,23 @@ namespace Bunq.Sdk.Json
     /// </summary>
     public class InstallationConverter : JsonConverter
     {
-        private const int INDEX_ID = 0;
-        private const string FIELD_ID = "Id";
+        private const int IndexId = 0;
+        private const string FieldId = "Id";
 
-        private const int INDEX_TOKEN = 1;
-        private const string FIELD_TOKEN = "Token";
+        private const int IndexToken = 1;
+        private const string FieldToken = "Token";
 
-        private const int INDEX_SERVER_PUBLIC_KEY = 2;
-        private const string FIELD_SERVER_PUBLIC_KEY = "ServerPublicKey";
+        private const int IndexServerPublicKey = 2;
+        private const string FieldServerPublicKey = "ServerPublicKey";
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
         {
             var jObjects = JArray.Load(reader).ToObject<List<JObject>>();
-            var id = FetchObject<Id>(jObjects[INDEX_ID], FIELD_ID);
-            var token = FetchObject<SessionToken>(jObjects[INDEX_TOKEN], FIELD_TOKEN);
+            var id = FetchObject<Id>(jObjects[IndexId], FieldId);
+            var token = FetchObject<SessionToken>(jObjects[IndexToken], FieldToken);
             var publicKeyServer =
-                FetchObject<PublicKeyServer>(jObjects[INDEX_SERVER_PUBLIC_KEY], FIELD_SERVER_PUBLIC_KEY);
+                FetchObject<PublicKeyServer>(jObjects[IndexServerPublicKey], FieldServerPublicKey);
 
             return new Installation(id, token, publicKeyServer);
         }

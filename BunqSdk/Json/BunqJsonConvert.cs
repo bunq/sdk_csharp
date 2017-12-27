@@ -7,27 +7,27 @@ namespace Bunq.Sdk.Json
     /// </summary>
     public static class BunqJsonConvert
     {
-        private const string FORMAT_DATE = "yyyy-MM-dd HH:mm:ss.ffffff";
+        private const string FormatDate = "yyyy-MM-dd HH:mm:ss.ffffff";
 
-        private static bool isInitialized;
+        private static bool _isInitialized;
 
         /// <summary>
         /// This method MUST be called before any (de)serialization with Newtonsoft JSON happens.
         /// </summary>
         private static void Initialize()
         {
-            if (isInitialized) return;
+            if (_isInitialized) return;
 
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
             {
                 ContractResolver = new BunqContractResolver(),
-                DateFormatString = FORMAT_DATE,
+                DateFormatString = FormatDate,
                 FloatParseHandling = FloatParseHandling.Decimal,
                 Formatting = Formatting.Indented,
                 NullValueHandling = NullValueHandling.Ignore,
             };
 
-            isInitialized = true;
+            _isInitialized = true;
         }
 
         /// <summary>Serializes the specified object to a JSON string.</summary>

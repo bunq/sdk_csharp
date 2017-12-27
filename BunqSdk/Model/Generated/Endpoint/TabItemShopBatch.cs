@@ -5,7 +5,6 @@ using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -17,17 +16,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item-batch";
+        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item-batch";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_TAB_ITEMS = "tab_items";
+        public const string FieldTabItems = "tab_items";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TabItemShopBatch";
+        private const string ObjectType = "TabItemShopBatch";
     
         /// <summary>
         /// The list of tab items in the batch.
@@ -44,7 +43,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, cashRegisterId, tabUuid), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId, cashRegisterId, tabUuid), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }

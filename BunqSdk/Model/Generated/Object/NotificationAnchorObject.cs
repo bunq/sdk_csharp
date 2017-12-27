@@ -2,7 +2,6 @@ using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -13,7 +12,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// <summary>
         /// Error constants.
         /// </summary>
-        private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
+        private const string ErrorNullFields = "All fields of an extended model or object are null.";
     
     
         /// <summary>
@@ -241,7 +240,7 @@ namespace Bunq.Sdk.Model.Generated.Object
                 return this.User;
             }
     
-            throw new BunqException(ERROR_NULL_FIELDS);
+            throw new BunqException(ErrorNullFields);
         }
     
         /// <summary>

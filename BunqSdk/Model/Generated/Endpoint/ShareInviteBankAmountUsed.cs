@@ -1,11 +1,7 @@
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -19,12 +15,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry/{2}/amount-used/{3}";
+        private const string EndpointUrlDelete = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry/{2}/amount-used/{3}";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ShareInviteBankAmountUsed";
+        private const string ObjectType = "ShareInviteBankAmountUsed";
     
         /// <summary>
         /// Reset the available budget for a bank account share. To be called without any ID at the end of the path.
@@ -34,7 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, shareInviteBankInquiryId, shareInviteBankAmountUsedId), customHeaders);
+            var responseRaw = apiClient.Delete(string.Format(EndpointUrlDelete, userId, monetaryAccountId, shareInviteBankInquiryId, shareInviteBankAmountUsedId), customHeaders);
     
             return new BunqResponse<object>(null, responseRaw.Headers);
         }

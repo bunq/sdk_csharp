@@ -19,23 +19,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/customer-statement";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/customer-statement/{2}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/customer-statement";
-        private const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/customer-statement/{2}";
+        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/customer-statement";
+        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/customer-statement/{2}";
+        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/customer-statement";
+        private const string EndpointUrlDelete = "user/{0}/monetary-account/{1}/customer-statement/{2}";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_STATEMENT_FORMAT = "statement_format";
-        public const string FIELD_DATE_START = "date_start";
-        public const string FIELD_DATE_END = "date_end";
-        public const string FIELD_REGIONAL_FORMAT = "regional_format";
+        public const string FieldStatementFormat = "statement_format";
+        public const string FieldDateStart = "date_start";
+        public const string FieldDateEnd = "date_end";
+        public const string FieldRegionalFormat = "regional_format";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CustomerStatementExport";
+        private const string ObjectType = "CustomerStatementExport";
     
         /// <summary>
         /// The id of the customer statement model.
@@ -105,7 +105,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -117,9 +117,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, customerStatementExportId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, customerStatementExportId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CustomerStatementExport>(responseRaw, OBJECT_TYPE);
+            return FromJson<CustomerStatementExport>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -130,9 +130,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<CustomerStatementExport>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CustomerStatementExport>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -142,7 +142,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, customerStatementExportId), customHeaders);
+            var responseRaw = apiClient.Delete(string.Format(EndpointUrlDelete, userId, monetaryAccountId, customerStatementExportId), customHeaders);
     
             return new BunqResponse<object>(null, responseRaw.Headers);
         }

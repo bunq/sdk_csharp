@@ -21,18 +21,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "avatar";
-        private const string ENDPOINT_URL_READ = "avatar/{0}";
+        private const string EndpointUrlCreate = "avatar";
+        private const string EndpointUrlRead = "avatar/{0}";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_ATTACHMENT_PUBLIC_UUID = "attachment_public_uuid";
+        public const string FieldAttachmentPublicUuid = "attachment_public_uuid";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Avatar";
+        private const string ObjectType = "Avatar";
     
         /// <summary>
         /// The UUID of the created avatar.
@@ -54,7 +54,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(EndpointUrlCreate, requestBytes, customHeaders);
     
             return ProcessForUuid(responseRaw);
         }
@@ -66,9 +66,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, avatarUuid), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, avatarUuid), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<Avatar>(responseRaw, OBJECT_TYPE);
+            return FromJson<Avatar>(responseRaw, ObjectType);
         }
     
     

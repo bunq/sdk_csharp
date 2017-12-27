@@ -6,7 +6,6 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -20,22 +19,22 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/draft-share-invite-bank";
-        private const string ENDPOINT_URL_READ = "user/{0}/draft-share-invite-bank/{1}";
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/draft-share-invite-bank/{1}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/draft-share-invite-bank";
+        private const string EndpointUrlCreate = "user/{0}/draft-share-invite-bank";
+        private const string EndpointUrlRead = "user/{0}/draft-share-invite-bank/{1}";
+        private const string EndpointUrlUpdate = "user/{0}/draft-share-invite-bank/{1}";
+        private const string EndpointUrlListing = "user/{0}/draft-share-invite-bank";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_STATUS = "status";
-        public const string FIELD_EXPIRATION = "expiration";
-        public const string FIELD_DRAFT_SHARE_SETTINGS = "draft_share_settings";
+        public const string FieldStatus = "status";
+        public const string FieldExpiration = "expiration";
+        public const string FieldDraftShareSettings = "draft_share_settings";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "DraftShareInviteBank";
+        private const string ObjectType = "DraftShareInviteBank";
     
         /// <summary>
         /// The user who created the draft share invite.
@@ -87,7 +86,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -100,9 +99,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, draftShareInviteBankId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, draftShareInviteBankId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
+            return FromJson<DraftShareInviteBank>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -114,9 +113,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, draftShareInviteBankId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, draftShareInviteBankId), requestBytes, customHeaders);
     
-            return FromJson<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
+            return FromJson<DraftShareInviteBank>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -127,9 +126,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
     
-            return FromJsonList<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<DraftShareInviteBank>(responseRaw, ObjectType);
         }
     
     

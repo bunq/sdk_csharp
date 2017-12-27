@@ -6,7 +6,6 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -19,19 +18,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_READ = "user/{0}/share-invite-bank-response/{1}";
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/share-invite-bank-response/{1}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/share-invite-bank-response";
+        private const string EndpointUrlRead = "user/{0}/share-invite-bank-response/{1}";
+        private const string EndpointUrlUpdate = "user/{0}/share-invite-bank-response/{1}";
+        private const string EndpointUrlListing = "user/{0}/share-invite-bank-response";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_STATUS = "status";
+        public const string FieldStatus = "status";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ShareInviteBankResponse";
+        private const string ObjectType = "ShareInviteBankResponse";
     
         /// <summary>
         /// The monetary account and user who created the share.
@@ -103,9 +102,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, shareInviteBankResponseId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, shareInviteBankResponseId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<ShareInviteBankResponse>(responseRaw, OBJECT_TYPE);
+            return FromJson<ShareInviteBankResponse>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -117,9 +116,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, shareInviteBankResponseId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, shareInviteBankResponseId), requestBytes, customHeaders);
     
-            return FromJson<ShareInviteBankResponse>(responseRaw, OBJECT_TYPE);
+            return FromJson<ShareInviteBankResponse>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -131,9 +130,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
     
-            return FromJsonList<ShareInviteBankResponse>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<ShareInviteBankResponse>(responseRaw, ObjectType);
         }
     
     

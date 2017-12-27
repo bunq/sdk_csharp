@@ -18,13 +18,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/card-result/{2}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/card-result";
+        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/card-result/{2}";
+        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/card-result";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CardResult";
+        private const string ObjectType = "CardResult";
     
         /// <summary>
         /// The id of the monetary account this card result links to.
@@ -129,9 +129,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cardResultId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, cardResultId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CardResult>(responseRaw, OBJECT_TYPE);
+            return FromJson<CardResult>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -142,9 +142,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<CardResult>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CardResult>(responseRaw, ObjectType);
         }
     
     

@@ -18,20 +18,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/certificate-pinned";
-        private const string ENDPOINT_URL_DELETE = "user/{0}/certificate-pinned/{1}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/certificate-pinned";
-        private const string ENDPOINT_URL_READ = "user/{0}/certificate-pinned/{1}";
+        private const string EndpointUrlCreate = "user/{0}/certificate-pinned";
+        private const string EndpointUrlDelete = "user/{0}/certificate-pinned/{1}";
+        private const string EndpointUrlListing = "user/{0}/certificate-pinned";
+        private const string EndpointUrlRead = "user/{0}/certificate-pinned/{1}";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_CERTIFICATE_CHAIN = "certificate_chain";
+        public const string FieldCertificateChain = "certificate_chain";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CertificatePinned";
+        private const string ObjectType = "CertificatePinned";
     
         /// <summary>
         /// The certificate chain in .PEM format. Certificates are glued with newline characters.
@@ -54,7 +54,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -67,7 +67,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, userId, certificatePinnedId), customHeaders);
+            var responseRaw = apiClient.Delete(string.Format(EndpointUrlDelete, userId, certificatePinnedId), customHeaders);
     
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
@@ -81,9 +81,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
     
-            return FromJsonList<CertificatePinned>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CertificatePinned>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -94,9 +94,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, certificatePinnedId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, certificatePinnedId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CertificatePinned>(responseRaw, OBJECT_TYPE);
+            return FromJson<CertificatePinned>(responseRaw, ObjectType);
         }
     
     

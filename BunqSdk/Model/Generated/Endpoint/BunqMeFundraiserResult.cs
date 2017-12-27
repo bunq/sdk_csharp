@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "BunqMeFundraiserResult";
+        private const string ObjectType = "BunqMeFundraiserResult";
     
         /// <summary>
         /// The id of the bunq.me.

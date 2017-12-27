@@ -18,17 +18,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Error constants.
         /// </summary>
-        private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
+        private const string ErrorNullFields = "All fields of an extended model or object are null.";
     
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_LISTING = "user/{0}/chat-conversation/{1}/message";
+        private const string EndpointUrlListing = "user/{0}/chat-conversation/{1}/message";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ChatMessage";
+        private const string ObjectType = "ChatMessage";
     
         /// <summary>
         /// </summary>
@@ -54,7 +54,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, chatConversationId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, chatConversationId), urlParams, customHeaders);
     
             return FromJsonList<ChatMessage>(responseRaw);
         }
@@ -79,7 +79,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return this.ChatMessageUser;
             }
     
-            throw new BunqException(ERROR_NULL_FIELDS);
+            throw new BunqException(ErrorNullFields);
         }
     
         /// <summary>

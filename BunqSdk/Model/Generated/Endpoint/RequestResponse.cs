@@ -21,22 +21,22 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/request-response/{2}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/request-response";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/request-response/{2}";
+        private const string EndpointUrlUpdate = "user/{0}/monetary-account/{1}/request-response/{2}";
+        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/request-response";
+        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/request-response/{2}";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_AMOUNT_RESPONDED = "amount_responded";
-        public const string FIELD_STATUS = "status";
-        public const string FIELD_ADDRESS_SHIPPING = "address_shipping";
-        public const string FIELD_ADDRESS_BILLING = "address_billing";
+        public const string FieldAmountResponded = "amount_responded";
+        public const string FieldStatus = "status";
+        public const string FieldAddressShipping = "address_shipping";
+        public const string FieldAddressBilling = "address_billing";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "RequestResponse";
+        private const string ObjectType = "RequestResponse";
     
         /// <summary>
         /// The id of the Request Response.
@@ -200,9 +200,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, requestResponseId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, monetaryAccountId, requestResponseId), requestBytes, customHeaders);
     
-            return FromJson<RequestResponse>(responseRaw, OBJECT_TYPE);
+            return FromJson<RequestResponse>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -214,9 +214,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<RequestResponse>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<RequestResponse>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -227,9 +227,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, requestResponseId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, requestResponseId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<RequestResponse>(responseRaw, OBJECT_TYPE);
+            return FromJson<RequestResponse>(responseRaw, ObjectType);
         }
     
     

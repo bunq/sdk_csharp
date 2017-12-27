@@ -6,7 +6,6 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -19,23 +18,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/draft-payment";
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/draft-payment/{2}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/draft-payment";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/draft-payment/{2}";
+        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/draft-payment";
+        private const string EndpointUrlUpdate = "user/{0}/monetary-account/{1}/draft-payment/{2}";
+        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/draft-payment";
+        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/draft-payment/{2}";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_STATUS = "status";
-        public const string FIELD_ENTRIES = "entries";
-        public const string FIELD_PREVIOUS_UPDATED_TIMESTAMP = "previous_updated_timestamp";
-        public const string FIELD_NUMBER_OF_REQUIRED_ACCEPTS = "number_of_required_accepts";
+        public const string FieldStatus = "status";
+        public const string FieldEntries = "entries";
+        public const string FieldPreviousUpdatedTimestamp = "previous_updated_timestamp";
+        public const string FieldNumberOfRequiredAccepts = "number_of_required_accepts";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "DraftPayment";
+        private const string ObjectType = "DraftPayment";
     
         /// <summary>
         /// The id of the created DrafPayment.
@@ -94,7 +93,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -108,7 +107,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, draftPaymentId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, monetaryAccountId, draftPaymentId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -122,9 +121,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<DraftPayment>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<DraftPayment>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -135,9 +134,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, draftPaymentId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, draftPaymentId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<DraftPayment>(responseRaw, OBJECT_TYPE);
+            return FromJson<DraftPayment>(responseRaw, ObjectType);
         }
     
     

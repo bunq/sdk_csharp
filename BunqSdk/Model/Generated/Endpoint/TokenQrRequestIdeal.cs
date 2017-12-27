@@ -6,7 +6,6 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -22,17 +21,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/token-qr-request-ideal";
+        private const string EndpointUrlCreate = "user/{0}/token-qr-request-ideal";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_TOKEN = "token";
+        public const string FieldToken = "token";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TokenQrRequestIdeal";
+        private const string ObjectType = "TokenQrRequestIdeal";
     
         /// <summary>
         /// The timestamp of when the RequestResponse was responded to.
@@ -165,9 +164,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId), requestBytes, customHeaders);
     
-            return FromJson<TokenQrRequestIdeal>(responseRaw, OBJECT_TYPE);
+            return FromJson<TokenQrRequestIdeal>(responseRaw, ObjectType);
         }
     
     

@@ -6,7 +6,6 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -22,32 +21,32 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account-bank";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account-bank/{1}";
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account-bank/{1}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account-bank";
+        private const string EndpointUrlCreate = "user/{0}/monetary-account-bank";
+        private const string EndpointUrlRead = "user/{0}/monetary-account-bank/{1}";
+        private const string EndpointUrlUpdate = "user/{0}/monetary-account-bank/{1}";
+        private const string EndpointUrlListing = "user/{0}/monetary-account-bank";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_CURRENCY = "currency";
-        public const string FIELD_DESCRIPTION = "description";
-        public const string FIELD_DAILY_LIMIT = "daily_limit";
-        public const string FIELD_OVERDRAFT_LIMIT = "overdraft_limit";
-        public const string FIELD_ALIAS = "alias";
-        public const string FIELD_AVATAR_UUID = "avatar_uuid";
-        public const string FIELD_STATUS = "status";
-        public const string FIELD_SUB_STATUS = "sub_status";
-        public const string FIELD_REASON = "reason";
-        public const string FIELD_REASON_DESCRIPTION = "reason_description";
-        public const string FIELD_SHARE = "share";
-        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
-        public const string FIELD_SETTING = "setting";
+        public const string FieldCurrency = "currency";
+        public const string FieldDescription = "description";
+        public const string FieldDailyLimit = "daily_limit";
+        public const string FieldOverdraftLimit = "overdraft_limit";
+        public const string FieldAlias = "alias";
+        public const string FieldAvatarUuid = "avatar_uuid";
+        public const string FieldStatus = "status";
+        public const string FieldSubStatus = "sub_status";
+        public const string FieldReason = "reason";
+        public const string FieldReasonDescription = "reason_description";
+        public const string FieldShare = "share";
+        public const string FieldNotificationFilters = "notification_filters";
+        public const string FieldSetting = "setting";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "MonetaryAccountBank";
+        private const string ObjectType = "MonetaryAccountBank";
     
         /// <summary>
         /// The id of the MonetaryAccountBank.
@@ -183,7 +182,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -196,9 +195,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountBankId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountBankId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<MonetaryAccountBank>(responseRaw, OBJECT_TYPE);
+            return FromJson<MonetaryAccountBank>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -210,7 +209,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountBankId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, monetaryAccountBankId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -224,9 +223,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
     
-            return FromJsonList<MonetaryAccountBank>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<MonetaryAccountBank>(responseRaw, ObjectType);
         }
     
     

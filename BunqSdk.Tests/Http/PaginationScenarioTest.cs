@@ -17,28 +17,28 @@ namespace Bunq.Sdk.Tests.Http
         /// <summary>
         /// Config values.
         /// </summary>
-        private static readonly int USER_ID = Config.GetUserId();
-        private static readonly int MONETARY_ACCOUNT_ID = Config.GetMonetarytAccountId();
-        private static readonly Pointer COUNTER_PARTY_OTHER = Config.GetCounterPartyAliasOther();
+        private static readonly int UserId = Config.GetUserId();
+        private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
+        private static readonly Pointer CounterPartyOther = Config.GetCounterPartyAliasOther();
 
         /// <summary>
         /// Constants for scenario testing.
         /// </summary>
-        private const int PAYMENT_LISTING_PAGE_SIZE = 2;
-        private const int PAYMENT_REQUIRED_COUNT_MINIMUM = PAYMENT_LISTING_PAGE_SIZE * 2;
-        private const int NUMBER_ZERO = 0;
+        private const int PaymentListingPageSize = 2;
+        private const int PaymentRequiredCountMinimum = PaymentListingPageSize * 2;
+        private const int NumberZero = 0;
 
         /// <summary>
         /// Constants for payment creation.
         /// </summary>
-        private const string PAYMENT_AMOUNT_EUR = "0.01";
-        private const string PAYMENT_CURRENCY = "EUR";
-        private const string PAYMENT_DESCRIPTION = "C# test Payment";
+        private const string PaymentAmountEur = "0.01";
+        private const string PaymentCurrency = "EUR";
+        private const string PaymentDescription = "C# test Payment";
 
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext ApiContext = GetApiContext();
 
         [Fact]
         public void TestApiScenarioPaymentListingWithPagination()
@@ -47,7 +47,7 @@ namespace Bunq.Sdk.Tests.Http
             var paymentsExpected = new List<Payment>(GetPaymentsRequired());
             var paginationCountOnly = new Pagination
             {
-                Count = PAYMENT_LISTING_PAGE_SIZE
+                Count = PaymentListingPageSize
             };
 
             var responseLatest = ListPayments(paginationCountOnly.UrlParamsCountOnly);
@@ -67,7 +67,7 @@ namespace Bunq.Sdk.Tests.Http
 
         private static void EnsureEnoughPayments()
         {
-            for (var i = NUMBER_ZERO; i < GetPaymentsMissingCount(); ++i)
+            for (var i = NumberZero; i < GetPaymentsMissingCount(); ++i)
             {
                 CreatePayment();
             }
@@ -75,14 +75,14 @@ namespace Bunq.Sdk.Tests.Http
 
         private static int GetPaymentsMissingCount()
         {
-            return PAYMENT_REQUIRED_COUNT_MINIMUM - GetPaymentsRequired().Count;
+            return PaymentRequiredCountMinimum - GetPaymentsRequired().Count;
         }
 
         private static IList<Payment> GetPaymentsRequired()
         {
             var pagination = new Pagination
             {
-                Count = PAYMENT_REQUIRED_COUNT_MINIMUM
+                Count = PaymentRequiredCountMinimum
             };
 
             return ListPayments(pagination.UrlParamsCountOnly).Value;
@@ -90,19 +90,19 @@ namespace Bunq.Sdk.Tests.Http
 
         private static BunqResponse<List<Payment>> ListPayments(IDictionary<string, string> urlParams)
         {
-            return Payment.List(API_CONTEXT, USER_ID, MONETARY_ACCOUNT_ID, urlParams);
+            return Payment.List(ApiContext, UserId, MonetaryAccountId, urlParams);
         }
 
         private static void CreatePayment()
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY)},
-                {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_OTHER}
+                {Payment.FieldAmount, new Amount(PaymentAmountEur, PaymentCurrency)},
+                {Payment.FieldDescription, PaymentDescription},
+                {Payment.FieldCounterpartyAlias, CounterPartyOther}
             };
 
-            Payment.Create(API_CONTEXT, requestMap, USER_ID, MONETARY_ACCOUNT_ID);
+            Payment.Create(ApiContext, requestMap, UserId, MonetaryAccountId);
         }
     }
 }

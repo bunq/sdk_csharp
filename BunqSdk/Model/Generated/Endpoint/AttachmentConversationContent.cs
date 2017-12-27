@@ -18,12 +18,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_LISTING = "user/{0}/chat-conversation/{1}/attachment/{2}/content";
+        private const string EndpointUrlListing = "user/{0}/chat-conversation/{1}/attachment/{2}/content";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "AttachmentConversationContent";
+        private const string ObjectType = "AttachmentConversationContent";
     
         /// <summary>
         /// Get the raw content of a specific attachment.
@@ -33,7 +33,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, chatConversationId, attachmentId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, chatConversationId, attachmentId), new Dictionary<string, string>(), customHeaders);
     
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
