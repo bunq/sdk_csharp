@@ -5,6 +5,7 @@ using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -19,19 +20,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/request-inquiry/{2}/chat";
-        private const string EndpointUrlUpdate = "user/{0}/monetary-account/{1}/request-inquiry/{2}/chat/{3}";
-        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/request-inquiry/{2}/chat";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/request-inquiry/{2}/chat";
+        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/request-inquiry/{2}/chat/{3}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/request-inquiry/{2}/chat";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldLastReadMessageId = "last_read_message_id";
+        public const string FIELD_LAST_READ_MESSAGE_ID = "last_read_message_id";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "RequestInquiryChat";
+        private const string OBJECT_TYPE = "RequestInquiryChat";
     
         /// <summary>
         /// The id of the newly created chat conversation.
@@ -66,7 +67,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId, requestInquiryId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, requestInquiryId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -80,9 +81,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, monetaryAccountId, requestInquiryId, requestInquiryChatId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, requestInquiryId, requestInquiryChatId), requestBytes, customHeaders);
     
-            return FromJson<RequestInquiryChat>(responseRaw, ObjectType);
+            return FromJson<RequestInquiryChat>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -94,9 +95,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId, requestInquiryId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, requestInquiryId), urlParams, customHeaders);
     
-            return FromJsonList<RequestInquiryChat>(responseRaw, ObjectType);
+            return FromJsonList<RequestInquiryChat>(responseRaw, OBJECT_TYPE);
         }
     
     

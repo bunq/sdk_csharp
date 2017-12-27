@@ -6,6 +6,7 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -17,22 +18,22 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/request-inquiry-batch";
-        private const string EndpointUrlUpdate = "user/{0}/monetary-account/{1}/request-inquiry-batch/{2}";
-        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/request-inquiry-batch/{2}";
-        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/request-inquiry-batch";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/request-inquiry-batch";
+        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/request-inquiry-batch/{2}";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/request-inquiry-batch/{2}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/request-inquiry-batch";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldRequestInquiries = "request_inquiries";
-        public const string FieldStatus = "status";
-        public const string FieldTotalAmountInquired = "total_amount_inquired";
+        public const string FIELD_REQUEST_INQUIRIES = "request_inquiries";
+        public const string FIELD_STATUS = "status";
+        public const string FIELD_TOTAL_AMOUNT_INQUIRED = "total_amount_inquired";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "RequestInquiryBatch";
+        private const string OBJECT_TYPE = "RequestInquiryBatch";
     
         /// <summary>
         /// The list of requests that were made.
@@ -55,7 +56,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -69,7 +70,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, monetaryAccountId, requestInquiryBatchId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, requestInquiryBatchId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -82,9 +83,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, requestInquiryBatchId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, requestInquiryBatchId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<RequestInquiryBatch>(responseRaw, ObjectType);
+            return FromJson<RequestInquiryBatch>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -96,9 +97,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<RequestInquiryBatch>(responseRaw, ObjectType);
+            return FromJsonList<RequestInquiryBatch>(responseRaw, OBJECT_TYPE);
         }
     
     

@@ -17,7 +17,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string PathAttachment = "../../../Resources";
+        private const string PATH_ATTACHMENT = "../../../Resources";
 
         private static readonly string CONTENT_TYPE = Config.GetAttachmentContentType();
         private static readonly string ATTACHMENT_DESCRIPTION = Config.GetAttachmentDescrpition();
@@ -35,11 +35,11 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestAttachmentUploadAndRetrieval()
         {
-            var fileContentBytes = File.ReadAllBytes(PathAttachment + ATTACHMENT_PATH_IN);
+            var fileContentBytes = File.ReadAllBytes(PATH_ATTACHMENT + ATTACHMENT_PATH_IN);
             var customHeaders = new Dictionary<string, string>
             {
-                {ApiClient.HeaderContentType, CONTENT_TYPE},
-                {ApiClient.HeaderAttachmentDescription, ATTACHMENT_DESCRIPTION}
+                {ApiClient.HEADER_CONTENT_TYPE, CONTENT_TYPE},
+                {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, ATTACHMENT_DESCRIPTION}
             };
 
             var attachmentUuid = AttachmentPublic.Create(API_CONTEXT, fileContentBytes, customHeaders).Value;

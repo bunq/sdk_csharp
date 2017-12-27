@@ -6,6 +6,7 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -19,44 +20,44 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlRead = "user-person/{0}";
-        private const string EndpointUrlUpdate = "user-person/{0}";
+        private const string ENDPOINT_URL_READ = "user-person/{0}";
+        private const string ENDPOINT_URL_UPDATE = "user-person/{0}";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldFirstName = "first_name";
-        public const string FieldMiddleName = "middle_name";
-        public const string FieldLastName = "last_name";
-        public const string FieldPublicNickName = "public_nick_name";
-        public const string FieldAddressMain = "address_main";
-        public const string FieldAddressPostal = "address_postal";
-        public const string FieldAvatarUuid = "avatar_uuid";
-        public const string FieldTaxResident = "tax_resident";
-        public const string FieldDocumentType = "document_type";
-        public const string FieldDocumentNumber = "document_number";
-        public const string FieldDocumentCountryOfIssuance = "document_country_of_issuance";
-        public const string FieldDocumentFrontAttachmentId = "document_front_attachment_id";
-        public const string FieldDocumentBackAttachmentId = "document_back_attachment_id";
-        public const string FieldDateOfBirth = "date_of_birth";
-        public const string FieldPlaceOfBirth = "place_of_birth";
-        public const string FieldCountryOfBirth = "country_of_birth";
-        public const string FieldNationality = "nationality";
-        public const string FieldLanguage = "language";
-        public const string FieldRegion = "region";
-        public const string FieldGender = "gender";
-        public const string FieldStatus = "status";
-        public const string FieldSubStatus = "sub_status";
-        public const string FieldLegalGuardianAlias = "legal_guardian_alias";
-        public const string FieldSessionTimeout = "session_timeout";
-        public const string FieldDailyLimitWithoutConfirmationLogin = "daily_limit_without_confirmation_login";
-        public const string FieldCounterBankIban = "counter_bank_iban";
-        public const string FieldNotificationFilters = "notification_filters";
+        public const string FIELD_FIRST_NAME = "first_name";
+        public const string FIELD_MIDDLE_NAME = "middle_name";
+        public const string FIELD_LAST_NAME = "last_name";
+        public const string FIELD_PUBLIC_NICK_NAME = "public_nick_name";
+        public const string FIELD_ADDRESS_MAIN = "address_main";
+        public const string FIELD_ADDRESS_POSTAL = "address_postal";
+        public const string FIELD_AVATAR_UUID = "avatar_uuid";
+        public const string FIELD_TAX_RESIDENT = "tax_resident";
+        public const string FIELD_DOCUMENT_TYPE = "document_type";
+        public const string FIELD_DOCUMENT_NUMBER = "document_number";
+        public const string FIELD_DOCUMENT_COUNTRY_OF_ISSUANCE = "document_country_of_issuance";
+        public const string FIELD_DOCUMENT_FRONT_ATTACHMENT_ID = "document_front_attachment_id";
+        public const string FIELD_DOCUMENT_BACK_ATTACHMENT_ID = "document_back_attachment_id";
+        public const string FIELD_DATE_OF_BIRTH = "date_of_birth";
+        public const string FIELD_PLACE_OF_BIRTH = "place_of_birth";
+        public const string FIELD_COUNTRY_OF_BIRTH = "country_of_birth";
+        public const string FIELD_NATIONALITY = "nationality";
+        public const string FIELD_LANGUAGE = "language";
+        public const string FIELD_REGION = "region";
+        public const string FIELD_GENDER = "gender";
+        public const string FIELD_STATUS = "status";
+        public const string FIELD_SUB_STATUS = "sub_status";
+        public const string FIELD_LEGAL_GUARDIAN_ALIAS = "legal_guardian_alias";
+        public const string FIELD_SESSION_TIMEOUT = "session_timeout";
+        public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
+        public const string FIELD_COUNTER_BANK_IBAN = "counter_bank_iban";
+        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "UserPerson";
+        private const string OBJECT_TYPE = "UserPerson";
     
         /// <summary>
         /// The id of the modified person object.
@@ -255,9 +256,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userPersonId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userPersonId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<UserPerson>(responseRaw, ObjectType);
+            return FromJson<UserPerson>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -269,7 +270,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userPersonId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userPersonId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }

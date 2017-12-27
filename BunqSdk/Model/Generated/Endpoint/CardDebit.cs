@@ -20,24 +20,24 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/card-debit";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/card-debit";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldSecondLine = "second_line";
-        public const string FieldNameOnCard = "name_on_card";
-        public const string FieldPinCode = "pin_code";
-        public const string FieldAlias = "alias";
-        public const string FieldType = "type";
-        public const string FieldPinCodeAssignment = "pin_code_assignment";
-        public const string FieldMonetaryAccountIdFallback = "monetary_account_id_fallback";
-        public const string FieldCountry = "country";
+        public const string FIELD_SECOND_LINE = "second_line";
+        public const string FIELD_NAME_ON_CARD = "name_on_card";
+        public const string FIELD_PIN_CODE = "pin_code";
+        public const string FIELD_ALIAS = "alias";
+        public const string FIELD_TYPE = "type";
+        public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
+        public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
+        public const string FIELD_COUNTRY = "country";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "CardDebit";
+        private const string OBJECT_TYPE = "CardDebit";
     
         /// <summary>
         /// The id of the card.
@@ -170,9 +170,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             requestBytes = SecurityUtils.Encrypt(apiContext, requestBytes, customHeaders);
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
     
-            return FromJson<CardDebit>(responseRaw, ObjectType);
+            return FromJson<CardDebit>(responseRaw, OBJECT_TYPE);
         }
     
     

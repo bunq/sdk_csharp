@@ -18,13 +18,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlListing = "user/{0}/card/{1}/pin-change";
-        private const string EndpointUrlRead = "user/{0}/card/{1}/pin-change/{2}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/card/{1}/pin-change";
+        private const string ENDPOINT_URL_READ = "user/{0}/card/{1}/pin-change/{2}";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "CardPinChange";
+        private const string OBJECT_TYPE = "CardPinChange";
     
         /// <summary>
         /// The id of the pin change.
@@ -70,9 +70,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, cardId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, cardId), urlParams, customHeaders);
     
-            return FromJsonList<CardPinChange>(responseRaw, ObjectType);
+            return FromJsonList<CardPinChange>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -82,9 +82,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, cardId, cardPinChangeId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, cardId, cardPinChangeId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CardPinChange>(responseRaw, ObjectType);
+            return FromJson<CardPinChange>(responseRaw, OBJECT_TYPE);
         }
     
     

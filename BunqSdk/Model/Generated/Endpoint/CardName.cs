@@ -19,12 +19,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlListing = "user/{0}/card-name";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/card-name";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "CardUserNameArray";
+        private const string OBJECT_TYPE = "CardUserNameArray";
     
         /// <summary>
         /// All possible variations (of suitable length) of user's legal name for the debit card.
@@ -41,9 +41,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<CardName>(responseRaw, ObjectType);
+            return FromJsonList<CardName>(responseRaw, OBJECT_TYPE);
         }
     
     

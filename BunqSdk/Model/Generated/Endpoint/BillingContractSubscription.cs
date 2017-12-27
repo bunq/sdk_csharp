@@ -17,18 +17,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/billing-contract-subscription";
-        private const string EndpointUrlListing = "user/{0}/billing-contract-subscription";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/billing-contract-subscription";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/billing-contract-subscription";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldSubscriptionType = "subscription_type";
+        public const string FIELD_SUBSCRIPTION_TYPE = "subscription_type";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "BillingContractSubscription";
+        private const string OBJECT_TYPE = "BillingContractSubscription";
     
         /// <summary>
         /// The id of the billing contract.
@@ -81,9 +81,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
     
-            return FromJson<BillingContractSubscription>(responseRaw, ObjectType);
+            return FromJson<BillingContractSubscription>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -95,9 +95,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<BillingContractSubscription>(responseRaw, ObjectType);
+            return FromJsonList<BillingContractSubscription>(responseRaw, OBJECT_TYPE);
         }
     
     

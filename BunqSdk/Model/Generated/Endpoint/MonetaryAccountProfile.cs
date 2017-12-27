@@ -1,6 +1,7 @@
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -12,13 +13,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldProfileFill = "profile_fill";
-        public const string FieldProfileDrain = "profile_drain";
+        public const string FIELD_PROFILE_FILL = "profile_fill";
+        public const string FIELD_PROFILE_DRAIN = "profile_drain";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "MonetaryAccountProfile";
+        private const string OBJECT_TYPE = "MonetaryAccountProfile";
     
         /// <summary>
         /// The profile settings for triggering the fill of a monetary account.

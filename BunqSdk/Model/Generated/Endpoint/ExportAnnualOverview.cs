@@ -6,6 +6,7 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -18,19 +19,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/export-annual-overview";
-        private const string EndpointUrlRead = "user/{0}/export-annual-overview/{1}";
-        private const string EndpointUrlListing = "user/{0}/export-annual-overview";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/export-annual-overview";
+        private const string ENDPOINT_URL_READ = "user/{0}/export-annual-overview/{1}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/export-annual-overview";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldYear = "year";
+        public const string FIELD_YEAR = "year";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "ExportAnnualOverview";
+        private const string OBJECT_TYPE = "ExportAnnualOverview";
     
         /// <summary>
         /// The id of the annual overview as created on the server.
@@ -71,7 +72,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -84,9 +85,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, exportAnnualOverviewId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, exportAnnualOverviewId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<ExportAnnualOverview>(responseRaw, ObjectType);
+            return FromJson<ExportAnnualOverview>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -98,9 +99,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<ExportAnnualOverview>(responseRaw, ObjectType);
+            return FromJsonList<ExportAnnualOverview>(responseRaw, OBJECT_TYPE);
         }
     
     

@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "BunqMeTabResultResponse";
+        private const string OBJECT_TYPE = "BunqMeTabResultResponse";
     
         /// <summary>
         /// The payment made for the bunq.me tab.

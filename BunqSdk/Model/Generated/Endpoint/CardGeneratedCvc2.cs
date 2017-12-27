@@ -18,14 +18,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/card/{1}/generated-cvc2";
-        private const string EndpointUrlRead = "user/{0}/card/{1}/generated-cvc2/{2}";
-        private const string EndpointUrlListing = "user/{0}/card/{1}/generated-cvc2";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/card/{1}/generated-cvc2";
+        private const string ENDPOINT_URL_READ = "user/{0}/card/{1}/generated-cvc2/{2}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/card/{1}/generated-cvc2";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "CardGeneratedCvc2";
+        private const string OBJECT_TYPE = "CardGeneratedCvc2";
     
         /// <summary>
         /// The id of the cvc code.
@@ -73,9 +73,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             requestBytes = SecurityUtils.Encrypt(apiContext, requestBytes, customHeaders);
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, cardId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, cardId), requestBytes, customHeaders);
     
-            return FromJson<CardGeneratedCvc2>(responseRaw, ObjectType);
+            return FromJson<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -86,9 +86,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, cardId, cardGeneratedCvc2Id), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, cardId, cardGeneratedCvc2Id), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CardGeneratedCvc2>(responseRaw, ObjectType);
+            return FromJson<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -100,9 +100,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, cardId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, cardId), urlParams, customHeaders);
     
-            return FromJsonList<CardGeneratedCvc2>(responseRaw, ObjectType);
+            return FromJsonList<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE);
         }
     
     

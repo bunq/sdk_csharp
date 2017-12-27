@@ -6,6 +6,7 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -21,26 +22,26 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item";
-        private const string EndpointUrlUpdate = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
-        private const string EndpointUrlDelete = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
-        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item";
-        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item";
+        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
+        private const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item/{4}";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldDescription = "description";
-        public const string FieldEanCode = "ean_code";
-        public const string FieldAvatarAttachmentUuid = "avatar_attachment_uuid";
-        public const string FieldTabAttachment = "tab_attachment";
-        public const string FieldQuantity = "quantity";
-        public const string FieldAmount = "amount";
+        public const string FIELD_DESCRIPTION = "description";
+        public const string FIELD_EAN_CODE = "ean_code";
+        public const string FIELD_AVATAR_ATTACHMENT_UUID = "avatar_attachment_uuid";
+        public const string FIELD_TAB_ATTACHMENT = "tab_attachment";
+        public const string FIELD_QUANTITY = "quantity";
+        public const string FIELD_AMOUNT = "amount";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "TabItem";
+        private const string OBJECT_TYPE = "TabItem";
     
         /// <summary>
         /// The id of the created TabItem.
@@ -93,7 +94,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId, cashRegisterId, tabUuid), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, cashRegisterId, tabUuid), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -107,7 +108,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -120,7 +121,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Delete(string.Format(EndpointUrlDelete, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId), customHeaders);
+            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId), customHeaders);
     
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
@@ -134,9 +135,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId, cashRegisterId, tabUuid), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId, tabUuid), urlParams, customHeaders);
     
-            return FromJsonList<TabItemShop>(responseRaw, ObjectType);
+            return FromJsonList<TabItemShop>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -147,9 +148,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<TabItemShop>(responseRaw, ObjectType);
+            return FromJson<TabItemShop>(responseRaw, OBJECT_TYPE);
         }
     
     

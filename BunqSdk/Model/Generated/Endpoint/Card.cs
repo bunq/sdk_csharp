@@ -19,27 +19,27 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlUpdate = "user/{0}/card/{1}";
-        private const string EndpointUrlRead = "user/{0}/card/{1}";
-        private const string EndpointUrlListing = "user/{0}/card";
+        private const string ENDPOINT_URL_UPDATE = "user/{0}/card/{1}";
+        private const string ENDPOINT_URL_READ = "user/{0}/card/{1}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/card";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldPinCode = "pin_code";
-        public const string FieldActivationCode = "activation_code";
-        public const string FieldStatus = "status";
-        public const string FieldLimit = "limit";
-        public const string FieldMagStripePermission = "mag_stripe_permission";
-        public const string FieldCountryPermission = "country_permission";
-        public const string FieldMonetaryAccountCurrentId = "monetary_account_current_id";
-        public const string FieldPinCodeAssignment = "pin_code_assignment";
-        public const string FieldMonetaryAccountIdFallback = "monetary_account_id_fallback";
+        public const string FIELD_PIN_CODE = "pin_code";
+        public const string FIELD_ACTIVATION_CODE = "activation_code";
+        public const string FIELD_STATUS = "status";
+        public const string FIELD_LIMIT = "limit";
+        public const string FIELD_MAG_STRIPE_PERMISSION = "mag_stripe_permission";
+        public const string FIELD_COUNTRY_PERMISSION = "country_permission";
+        public const string FIELD_MONETARY_ACCOUNT_CURRENT_ID = "monetary_account_current_id";
+        public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
+        public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "CardDebit";
+        private const string OBJECT_TYPE = "CardDebit";
     
         /// <summary>
         /// The id of the card.
@@ -183,9 +183,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             requestBytes = SecurityUtils.Encrypt(apiContext, requestBytes, customHeaders);
-            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, cardId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, cardId), requestBytes, customHeaders);
     
-            return FromJson<Card>(responseRaw, ObjectType);
+            return FromJson<Card>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -196,9 +196,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, cardId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, cardId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<Card>(responseRaw, ObjectType);
+            return FromJson<Card>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -210,9 +210,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<Card>(responseRaw, ObjectType);
+            return FromJsonList<Card>(responseRaw, OBJECT_TYPE);
         }
     
     

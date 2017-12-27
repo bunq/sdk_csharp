@@ -6,6 +6,7 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -19,33 +20,33 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlRead = "user-company/{0}";
-        private const string EndpointUrlUpdate = "user-company/{0}";
+        private const string ENDPOINT_URL_READ = "user-company/{0}";
+        private const string ENDPOINT_URL_UPDATE = "user-company/{0}";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldName = "name";
-        public const string FieldPublicNickName = "public_nick_name";
-        public const string FieldAvatarUuid = "avatar_uuid";
-        public const string FieldAddressMain = "address_main";
-        public const string FieldAddressPostal = "address_postal";
-        public const string FieldLanguage = "language";
-        public const string FieldRegion = "region";
-        public const string FieldCountry = "country";
-        public const string FieldUbo = "ubo";
-        public const string FieldChamberOfCommerceNumber = "chamber_of_commerce_number";
-        public const string FieldStatus = "status";
-        public const string FieldSubStatus = "sub_status";
-        public const string FieldSessionTimeout = "session_timeout";
-        public const string FieldDailyLimitWithoutConfirmationLogin = "daily_limit_without_confirmation_login";
-        public const string FieldCounterBankIban = "counter_bank_iban";
-        public const string FieldNotificationFilters = "notification_filters";
+        public const string FIELD_NAME = "name";
+        public const string FIELD_PUBLIC_NICK_NAME = "public_nick_name";
+        public const string FIELD_AVATAR_UUID = "avatar_uuid";
+        public const string FIELD_ADDRESS_MAIN = "address_main";
+        public const string FIELD_ADDRESS_POSTAL = "address_postal";
+        public const string FIELD_LANGUAGE = "language";
+        public const string FIELD_REGION = "region";
+        public const string FIELD_COUNTRY = "country";
+        public const string FIELD_UBO = "ubo";
+        public const string FIELD_CHAMBER_OF_COMMERCE_NUMBER = "chamber_of_commerce_number";
+        public const string FIELD_STATUS = "status";
+        public const string FIELD_SUB_STATUS = "sub_status";
+        public const string FIELD_SESSION_TIMEOUT = "session_timeout";
+        public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
+        public const string FIELD_COUNTER_BANK_IBAN = "counter_bank_iban";
+        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "UserCompany";
+        private const string OBJECT_TYPE = "UserCompany";
     
         /// <summary>
         /// The id of the modified company.
@@ -232,9 +233,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userCompanyId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userCompanyId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<UserCompany>(responseRaw, ObjectType);
+            return FromJson<UserCompany>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -246,7 +247,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userCompanyId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userCompanyId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }

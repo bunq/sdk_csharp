@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "SupportConversationExternal";
+        private const string OBJECT_TYPE = "SupportConversationExternal";
     
         /// <summary>
         /// The id of this conversation.

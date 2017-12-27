@@ -6,6 +6,7 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -20,25 +21,25 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/payment";
-        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/payment/{2}";
-        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/payment";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/payment";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/payment/{2}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/payment";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldAmount = "amount";
-        public const string FieldCounterpartyAlias = "counterparty_alias";
-        public const string FieldDescription = "description";
-        public const string FieldAttachment = "attachment";
-        public const string FieldMerchantReference = "merchant_reference";
-        public const string FieldAllowBunqto = "allow_bunqto";
-        public const string FieldBunqtoStatus = "bunqto_status";
+        public const string FIELD_AMOUNT = "amount";
+        public const string FIELD_COUNTERPARTY_ALIAS = "counterparty_alias";
+        public const string FIELD_DESCRIPTION = "description";
+        public const string FIELD_ATTACHMENT = "attachment";
+        public const string FIELD_MERCHANT_REFERENCE = "merchant_reference";
+        public const string FIELD_ALLOW_BUNQTO = "allow_bunqto";
+        public const string FIELD_BUNQTO_STATUS = "bunqto_status";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "Payment";
+        private const string OBJECT_TYPE = "Payment";
     
         /// <summary>
         /// The id of the created Payment.
@@ -190,7 +191,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -203,9 +204,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, paymentId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, paymentId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<Payment>(responseRaw, ObjectType);
+            return FromJson<Payment>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -217,9 +218,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<Payment>(responseRaw, ObjectType);
+            return FromJsonList<Payment>(responseRaw, OBJECT_TYPE);
         }
     
     

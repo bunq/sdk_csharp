@@ -1,9 +1,13 @@
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
+using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
+using Bunq.Sdk.Security;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -16,13 +20,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlRead = "user/{0}/credential-password-ip/{1}";
-        private const string EndpointUrlListing = "user/{0}/credential-password-ip";
+        private const string ENDPOINT_URL_READ = "user/{0}/credential-password-ip/{1}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/credential-password-ip";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "CredentialPasswordIp";
+        private const string OBJECT_TYPE = "CredentialPasswordIp";
     
         /// <summary>
         /// The id of the credential.
@@ -73,9 +77,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, userCredentialPasswordIpId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, userCredentialPasswordIpId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<UserCredentialPasswordIp>(responseRaw, ObjectType);
+            return FromJson<UserCredentialPasswordIp>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -86,9 +90,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<UserCredentialPasswordIp>(responseRaw, ObjectType);
+            return FromJsonList<UserCredentialPasswordIp>(responseRaw, OBJECT_TYPE);
         }
     
     

@@ -1,7 +1,11 @@
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
+using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -13,12 +17,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlDelete = "session/{0}";
+        private const string ENDPOINT_URL_DELETE = "session/{0}";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "Session";
+        private const string OBJECT_TYPE = "Session";
     
         /// <summary>
         /// Deletes the current session. No response is returned for this request.
@@ -28,7 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Delete(string.Format(EndpointUrlDelete, sessionId), customHeaders);
+            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, sessionId), customHeaders);
     
             return new BunqResponse<object>(null, responseRaw.Headers);
         }

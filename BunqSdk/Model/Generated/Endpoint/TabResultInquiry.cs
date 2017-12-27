@@ -1,8 +1,11 @@
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
+using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -15,13 +18,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-result-inquiry/{4}";
-        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-result-inquiry";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-result-inquiry/{4}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-result-inquiry";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "TabResultInquiry";
+        private const string OBJECT_TYPE = "TabResultInquiry";
     
         /// <summary>
         /// The Tab details.
@@ -43,9 +46,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, cashRegisterId, tabUuid, tabResultInquiryId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUuid, tabResultInquiryId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<TabResultInquiry>(responseRaw, ObjectType);
+            return FromJson<TabResultInquiry>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -57,9 +60,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId, cashRegisterId, tabUuid), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId, tabUuid), urlParams, customHeaders);
     
-            return FromJsonList<TabResultInquiry>(responseRaw, ObjectType);
+            return FromJsonList<TabResultInquiry>(responseRaw, OBJECT_TYPE);
         }
     
     

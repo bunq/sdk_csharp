@@ -1,9 +1,12 @@
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
+using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -15,21 +18,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/schedule/{2}";
-        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/schedule";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/schedule/{2}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/schedule";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldTimeStart = "time_start";
-        public const string FieldTimeEnd = "time_end";
-        public const string FieldRecurrenceUnit = "recurrence_unit";
-        public const string FieldRecurrenceSize = "recurrence_size";
+        public const string FIELD_TIME_START = "time_start";
+        public const string FIELD_TIME_END = "time_end";
+        public const string FIELD_RECURRENCE_UNIT = "recurrence_unit";
+        public const string FIELD_RECURRENCE_SIZE = "recurrence_size";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "Schedule";
+        private const string OBJECT_TYPE = "Schedule";
     
         /// <summary>
         /// The schedule start time (UTC).
@@ -75,9 +78,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, scheduleId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, scheduleId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<Schedule>(responseRaw, ObjectType);
+            return FromJson<Schedule>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -91,9 +94,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<Schedule>(responseRaw, ObjectType);
+            return FromJsonList<Schedule>(responseRaw, OBJECT_TYPE);
         }
     
     

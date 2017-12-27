@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices.ComTypes;
+using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json.Linq;
@@ -13,48 +15,48 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         /// <summary>
         /// Getter constans.
         /// </summary>
-        private const string GetPayment = "Payment";
-        private const string GetBunqMeTab = "BunqMeTab";
-        private const string GetChatMessageAnnouncement = "ChatMessageAnnouncement";
-        private const string GetChatMessage = "ChatMessage";
-        private const string GetDraftPayment = "DraftPayment";
-        private const string GetMasterCardAction = "MasterCardAction";
-        private const string GetMonetaryAccountBank = "MonetaryAccountBank";
-        private const string GetMonetaryAccount = "MonetaryAccount";
-        private const string GetPaymentBatch = "PaymentBatch";
-        private const string GetRequestInquiry = "RequestInquiry";
-        private const string GetRequestResponse = "RequestResponse";
-        private const string GetSchedulePayment = "ScheduledPayment";
-        private const string GetScheduleInstance = "ScheduledInstance";
-        private const string GetShareInviteBankInquiry = "ShareInviteBankInquiry";
-        private const string GetShareInviteBankResponse = "ShareInviteBankResponse";
+        private const string GET_PAYMENT = "Payment";
+        private const string GET_BUNQ_ME_TAB = "BunqMeTab";
+        private const string GET_CHAT_MESSAGE_ANNOUNCEMENT = "ChatMessageAnnouncement";
+        private const string GET_CHAT_MESSAGE = "ChatMessage";
+        private const string GET_DRAFT_PAYMENT = "DraftPayment";
+        private const string GET_MASTER_CARD_ACTION = "MasterCardAction";
+        private const string GET_MONETARY_ACCOUNT_BANK = "MonetaryAccountBank";
+        private const string GET_MONETARY_ACCOUNT = "MonetaryAccount";
+        private const string GET_PAYMENT_BATCH = "PaymentBatch";
+        private const string GET_REQUEST_INQUIRY = "RequestInquiry";
+        private const string GET_REQUEST_RESPONSE = "RequestResponse";
+        private const string GET_SCHEDULE_PAYMENT = "ScheduledPayment";
+        private const string GET_SCHEDULE_INSTANCE = "ScheduledInstance";
+        private const string GET_SHARE_INVITE_BANK_INQUIRY = "ShareInviteBankInquiry";
+        private const string GET_SHARE_INVITE_BANK_RESPONSE = "ShareInviteBankResponse";
         
         /// <summary>
         /// Model json paths constants.
         /// </summary>
-        private const string BasePathJsonModel = "../../../Resources/NotificationUrlJsons";
-        private const string JsonPathMutationModel = BasePathJsonModel + "/Mutation.json";
-        private const string JsonPathBunqMeTabModel = BasePathJsonModel + "/BunqMeTab.json";
-        private const string JsonPathChatMessageAnnouncementModel = BasePathJsonModel + 
+        private const string BASE_PATH_JSON_MODEL = "../../../Resources/NotificationUrlJsons";
+        private const string JSON_PATH_MUTATION_MODEL = BASE_PATH_JSON_MODEL + "/Mutation.json";
+        private const string JSON_PATH_BUNQ_ME_TAB_MODEL = BASE_PATH_JSON_MODEL + "/BunqMeTab.json";
+        private const string JSON_PATH_CHAT_MESSAGE_ANNOUNCEMENT_MODEL = BASE_PATH_JSON_MODEL + 
                                                                          "/ChatMessageAnnouncement.json";
-        private const string JsonPathDraftPaymentModel = BasePathJsonModel + "/DraftPayment.json";
-        private const string JsonPathMasterCardActionModel = BasePathJsonModel + "/MasterCardAction.json";
-        private const string JsonPathMonetaryAccountBankModel = BasePathJsonModel + "/MonetaryAccountBank.json";
-        private const string JsonPathPaymentBatchModel = BasePathJsonModel + "/PaymentBatch.json";
-        private const string JsonPathRequestInquiryModel = BasePathJsonModel + "/RequestInquiry.json";
-        private const string JsonPathRequestResponseModel = BasePathJsonModel + "/RequestResponse.json";
-        private const string JsonPathSchedulePaymentModel = BasePathJsonModel + "/ScheduledPayment.json";
-        private const string JsonPathScheduleInstanceModel = BasePathJsonModel + "/ScheduledInstance.json";
-        private const string JsonPathShareInviteBankInquiryModel = BasePathJsonModel + 
+        private const string JSON_PATH_DRAFT_PAYMENT_MODEL = BASE_PATH_JSON_MODEL + "/DraftPayment.json";
+        private const string JSON_PATH_MASTER_CARD_ACTION_MODEL = BASE_PATH_JSON_MODEL + "/MasterCardAction.json";
+        private const string JSON_PATH_MONETARY_ACCOUNT_BANK_MODEL = BASE_PATH_JSON_MODEL + "/MonetaryAccountBank.json";
+        private const string JSON_PATH_PAYMENT_BATCH_MODEL = BASE_PATH_JSON_MODEL + "/PaymentBatch.json";
+        private const string JSON_PATH_REQUEST_INQUIRY_MODEL = BASE_PATH_JSON_MODEL + "/RequestInquiry.json";
+        private const string JSON_PATH_REQUEST_RESPONSE_MODEL = BASE_PATH_JSON_MODEL + "/RequestResponse.json";
+        private const string JSON_PATH_SCHEDULE_PAYMENT_MODEL = BASE_PATH_JSON_MODEL + "/ScheduledPayment.json";
+        private const string JSON_PATH_SCHEDULE_INSTANCE_MODEL = BASE_PATH_JSON_MODEL + "/ScheduledInstance.json";
+        private const string JSON_PATH_SHARE_INVITE_BANK_INQUIRY_MODEL = BASE_PATH_JSON_MODEL + 
                                                                          "/ShareInviteBankInquiry.json";
 
-        private const string JsonPathShareInviteBankResponseModel = BasePathJsonModel +
+        private const string JSON_PATH_SHARE_INVITE_BANK_RESPONSE_MODEL = BASE_PATH_JSON_MODEL +
                                                                           "/ShareInviteBankResponse.json";
         
         /// <summary>
         /// Model root key.
         /// </summary>
-        private const string KeyNotificationUrlModel = "NotificationUrl";
+        private const string KEY_NOTIFICATION_URL_MODEL = "NotificationUrl";
 
         private void ExecuteNotificationUrlTest(
             string expectedJsonFileName,
@@ -91,7 +93,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         {
             var fileContentString = File.ReadAllText(fileName);
             var jsonObj = JObject.Parse(fileContentString);
-            var notificationUrlObject = jsonObj[KeyNotificationUrlModel];
+            var notificationUrlObject = jsonObj[KEY_NOTIFICATION_URL_MODEL];
             
             Assert.NotNull(notificationUrlObject);
 
@@ -102,9 +104,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestMutationModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathMutationModel,
+                JSON_PATH_MUTATION_MODEL,
                 typeof(Payment),
-                GetPayment
+                GET_PAYMENT
             );
         }
         
@@ -112,9 +114,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestBunqMeTabModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathBunqMeTabModel,
+                JSON_PATH_BUNQ_ME_TAB_MODEL,
                 typeof(BunqMeTab),
-                GetBunqMeTab
+                GET_BUNQ_ME_TAB
             );
         }   
         
@@ -122,10 +124,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestChatMessageAnnouncementModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathChatMessageAnnouncementModel,
+                JSON_PATH_CHAT_MESSAGE_ANNOUNCEMENT_MODEL,
                 typeof(ChatMessage),
-                GetChatMessage,
-                GetChatMessageAnnouncement,
+                GET_CHAT_MESSAGE,
+                GET_CHAT_MESSAGE_ANNOUNCEMENT,
                 typeof(ChatMessageAnnouncement)
             );
         }        
@@ -134,9 +136,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestDraftPaymentModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathDraftPaymentModel,
+                JSON_PATH_DRAFT_PAYMENT_MODEL,
                 typeof(DraftPayment),
-                GetDraftPayment
+                GET_DRAFT_PAYMENT
             );
         }      
         
@@ -144,9 +146,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestMasterCardActionModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathMasterCardActionModel,
+                JSON_PATH_MASTER_CARD_ACTION_MODEL,
                 typeof(MasterCardAction),
-                GetMasterCardAction
+                GET_MASTER_CARD_ACTION
             );
         }  
         
@@ -154,10 +156,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestMonetaryAccountBankModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathMonetaryAccountBankModel,
+                JSON_PATH_MONETARY_ACCOUNT_BANK_MODEL,
                 typeof(MonetaryAccount),
-                GetMonetaryAccount,
-                GetMonetaryAccountBank,
+                GET_MONETARY_ACCOUNT,
+                GET_MONETARY_ACCOUNT_BANK,
                 typeof(MonetaryAccountBank)
             );
         }    
@@ -166,9 +168,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestPaymentBatchModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathPaymentBatchModel,
+                JSON_PATH_PAYMENT_BATCH_MODEL,
                 typeof(PaymentBatch),
-                GetPaymentBatch
+                GET_PAYMENT_BATCH
             );
         }     
         
@@ -176,9 +178,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestRequestInquiryModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathRequestInquiryModel,
+                JSON_PATH_REQUEST_INQUIRY_MODEL,
                 typeof(RequestInquiry),
-                GetRequestInquiry
+                GET_REQUEST_INQUIRY
             );
         }     
         
@@ -186,9 +188,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestRequestResponseModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathRequestResponseModel,
+                JSON_PATH_REQUEST_RESPONSE_MODEL,
                 typeof(RequestResponse),
-                GetRequestResponse
+                GET_REQUEST_RESPONSE
             );
         }  
         
@@ -196,9 +198,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestScheduledInstanceModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathScheduleInstanceModel,
+                JSON_PATH_SCHEDULE_INSTANCE_MODEL,
                 typeof(ScheduleInstance),
-                GetScheduleInstance
+                GET_SCHEDULE_INSTANCE
             );
         }     
         
@@ -206,9 +208,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestScheduledPaymentModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathSchedulePaymentModel,
+                JSON_PATH_SCHEDULE_PAYMENT_MODEL,
                 typeof(SchedulePayment),
-                GetSchedulePayment
+                GET_SCHEDULE_PAYMENT
             );
         }       
         
@@ -216,9 +218,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestShareInviteBankModel()
         {
             ExecuteNotificationUrlTest(
-                JsonPathShareInviteBankInquiryModel,
+                JSON_PATH_SHARE_INVITE_BANK_INQUIRY_MODEL,
                 typeof(ShareInviteBankInquiry),
-                GetShareInviteBankInquiry
+                GET_SHARE_INVITE_BANK_INQUIRY
             );
         }       
         
@@ -226,9 +228,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         public void TestShareInviteBankResponse()
         {
             ExecuteNotificationUrlTest(
-                JsonPathShareInviteBankResponseModel,
+                JSON_PATH_SHARE_INVITE_BANK_RESPONSE_MODEL,
                 typeof(ShareInviteBankResponse),
-                GetShareInviteBankResponse
+                GET_SHARE_INVITE_BANK_RESPONSE
             );
         }
     }

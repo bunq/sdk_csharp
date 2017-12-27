@@ -17,18 +17,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/chat-conversation/{1}/message-text";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/chat-conversation/{1}/message-text";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldClientMessageUuid = "client_message_uuid";
-        public const string FieldText = "text";
+        public const string FIELD_CLIENT_MESSAGE_UUID = "client_message_uuid";
+        public const string FIELD_TEXT = "text";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "Id";
+        private const string OBJECT_TYPE = "Id";
     
         /// <summary>
         /// The id of the newly created chat message.
@@ -45,7 +45,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, chatConversationId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, chatConversationId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }

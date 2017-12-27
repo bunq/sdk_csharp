@@ -21,18 +21,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/card/{1}/replace";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/card/{1}/replace";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldPinCode = "pin_code";
-        public const string FieldSecondLine = "second_line";
+        public const string FIELD_PIN_CODE = "pin_code";
+        public const string FIELD_SECOND_LINE = "second_line";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "CardReplace";
+        private const string OBJECT_TYPE = "CardReplace";
     
         /// <summary>
         /// The id of the new card.
@@ -50,7 +50,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             requestBytes = SecurityUtils.Encrypt(apiContext, requestBytes, customHeaders);
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, cardId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, cardId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }

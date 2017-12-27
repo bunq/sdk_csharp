@@ -1,9 +1,12 @@
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
 using Bunq.Sdk.Http;
+using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -16,18 +19,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Error constants.
         /// </summary>
-        private const string ErrorNullFields = "All fields of an extended model or object are null.";
+        private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
     
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlRead = "user/{0}";
-        private const string EndpointUrlListing = "user";
+        private const string ENDPOINT_URL_READ = "user/{0}";
+        private const string ENDPOINT_URL_LISTING = "user";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "User";
+        private const string OBJECT_TYPE = "User";
     
         /// <summary>
         /// </summary>
@@ -52,7 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId), new Dictionary<string, string>(), customHeaders);
     
             return FromJson<User>(responseRaw);
         }
@@ -66,7 +69,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(EndpointUrlListing, urlParams, customHeaders);
+            var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, urlParams, customHeaders);
     
             return FromJsonList<User>(responseRaw);
         }
@@ -91,7 +94,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return this.UserCompany;
             }
     
-            throw new BunqException(ErrorNullFields);
+            throw new BunqException(ERROR_NULL_FIELDS);
         }
     
         /// <summary>

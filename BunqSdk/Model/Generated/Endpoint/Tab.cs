@@ -1,9 +1,12 @@
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
 using Bunq.Sdk.Http;
+using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -19,18 +22,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Error constants.
         /// </summary>
-        private const string ErrorNullFields = "All fields of an extended model or object are null.";
+        private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
     
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}";
-        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/cash-register/{2}/tab";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register/{2}/tab";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "Tab";
+        private const string OBJECT_TYPE = "Tab";
     
         /// <summary>
         /// </summary>
@@ -50,7 +53,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, cashRegisterId, tabUuid), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUuid), new Dictionary<string, string>(), customHeaders);
     
             return FromJson<Tab>(responseRaw);
         }
@@ -64,7 +67,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId, cashRegisterId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId), urlParams, customHeaders);
     
             return FromJsonList<Tab>(responseRaw);
         }
@@ -84,7 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return this.TabUsageMultiple;
             }
     
-            throw new BunqException(ErrorNullFields);
+            throw new BunqException(ERROR_NULL_FIELDS);
         }
     
         /// <summary>

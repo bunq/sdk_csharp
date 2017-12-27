@@ -22,25 +22,25 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/cash-register";
-        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/cash-register/{2}";
-        private const string EndpointUrlUpdate = "user/{0}/monetary-account/{1}/cash-register/{2}";
-        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/cash-register";
+        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register";
+        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}";
+        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/cash-register/{2}";
+        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldName = "name";
-        public const string FieldStatus = "status";
-        public const string FieldAvatarUuid = "avatar_uuid";
-        public const string FieldLocation = "location";
-        public const string FieldNotificationFilters = "notification_filters";
-        public const string FieldTabTextWaitingScreen = "tab_text_waiting_screen";
+        public const string FIELD_NAME = "name";
+        public const string FIELD_STATUS = "status";
+        public const string FIELD_AVATAR_UUID = "avatar_uuid";
+        public const string FIELD_LOCATION = "location";
+        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
+        public const string FIELD_TAB_TEXT_WAITING_SCREEN = "tab_text_waiting_screen";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "CashRegister";
+        private const string OBJECT_TYPE = "CashRegister";
     
         /// <summary>
         /// The id of the created CashRegister.
@@ -107,7 +107,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -120,9 +120,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, cashRegisterId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CashRegister>(responseRaw, ObjectType);
+            return FromJson<CashRegister>(responseRaw, OBJECT_TYPE);
         }
     
         /// <summary>
@@ -135,7 +135,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, monetaryAccountId, cashRegisterId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, cashRegisterId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -149,9 +149,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<CashRegister>(responseRaw, ObjectType);
+            return FromJsonList<CashRegister>(responseRaw, OBJECT_TYPE);
         }
     
     

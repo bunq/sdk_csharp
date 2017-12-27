@@ -14,14 +14,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FieldAmountInquired = "amount_inquired";
-        public const string FieldDescription = "description";
-        public const string FieldRedirectUrl = "redirect_url";
+        public const string FIELD_AMOUNT_INQUIRED = "amount_inquired";
+        public const string FIELD_DESCRIPTION = "description";
+        public const string FIELD_REDIRECT_URL = "redirect_url";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string ObjectType = "BunqMeTab";
+        private const string OBJECT_TYPE = "BunqMeTab";
     
         /// <summary>
         /// The uuid of the bunq.me.
