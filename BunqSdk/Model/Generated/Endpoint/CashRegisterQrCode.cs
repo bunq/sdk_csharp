@@ -19,20 +19,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code";
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code/{3}";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code/{3}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code";
+        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code";
+        private const string EndpointUrlUpdate = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code/{3}";
+        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code/{3}";
+        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/cash-register/{2}/qr-code";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_STATUS = "status";
+        public const string FieldStatus = "status";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TokenQrCashRegister";
+        private const string ObjectType = "TokenQrCashRegister";
     
         /// <summary>
         /// The id of the created QR code. Use this id to get the RAW content of the QR code with:
@@ -81,7 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId, cashRegisterId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId, cashRegisterId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -95,7 +95,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, cashRegisterId, cashRegisterQrCodeId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, monetaryAccountId, cashRegisterId, cashRegisterQrCodeId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -108,9 +108,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, cashRegisterQrCodeId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, cashRegisterId, cashRegisterQrCodeId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CashRegisterQrCode>(responseRaw, OBJECT_TYPE);
+            return FromJson<CashRegisterQrCode>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -122,9 +122,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId, cashRegisterId), urlParams, customHeaders);
     
-            return FromJsonList<CashRegisterQrCode>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CashRegisterQrCode>(responseRaw, ObjectType);
         }
     
     

@@ -5,7 +5,6 @@ using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -17,21 +16,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_READ = "user/{0}/credential-password-ip/{1}/ip/{2}";
-        private const string ENDPOINT_URL_CREATE = "user/{0}/credential-password-ip/{1}/ip";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/credential-password-ip/{1}/ip";
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/credential-password-ip/{1}/ip/{2}";
+        private const string EndpointUrlRead = "user/{0}/credential-password-ip/{1}/ip/{2}";
+        private const string EndpointUrlCreate = "user/{0}/credential-password-ip/{1}/ip";
+        private const string EndpointUrlListing = "user/{0}/credential-password-ip/{1}/ip";
+        private const string EndpointUrlUpdate = "user/{0}/credential-password-ip/{1}/ip/{2}";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_IP = "ip";
-        public const string FIELD_STATUS = "status";
+        public const string FieldIp = "ip";
+        public const string FieldStatus = "status";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "PermittedIp";
+        private const string ObjectType = "PermittedIp";
     
         /// <summary>
         /// The IP address.
@@ -53,9 +52,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, credentialPasswordIpId, permittedIpId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, credentialPasswordIpId, permittedIpId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<PermittedIp>(responseRaw, OBJECT_TYPE);
+            return FromJson<PermittedIp>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -66,7 +65,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, credentialPasswordIpId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, credentialPasswordIpId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -79,9 +78,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, credentialPasswordIpId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, credentialPasswordIpId), urlParams, customHeaders);
     
-            return FromJsonList<PermittedIp>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<PermittedIp>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -92,7 +91,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, credentialPasswordIpId, permittedIpId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, credentialPasswordIpId, permittedIpId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }

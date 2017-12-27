@@ -18,18 +18,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Error constants.
         /// </summary>
-        private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
+        private const string ErrorNullFields = "All fields of an extended model or object are null.";
     
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_LISTING = "user/{0}/chat-conversation";
-        private const string ENDPOINT_URL_READ = "user/{0}/chat-conversation/{1}";
+        private const string EndpointUrlListing = "user/{0}/chat-conversation";
+        private const string EndpointUrlRead = "user/{0}/chat-conversation/{1}";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ChatConversation";
+        private const string ObjectType = "ChatConversation";
     
         /// <summary>
         /// </summary>
@@ -49,7 +49,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId), urlParams, customHeaders);
     
             return FromJsonList<ChatConversation>(responseRaw);
         }
@@ -61,7 +61,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, chatConversationId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, chatConversationId), new Dictionary<string, string>(), customHeaders);
     
             return FromJson<ChatConversation>(responseRaw);
         }
@@ -81,7 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return this.ChatConversationReference;
             }
     
-            throw new BunqException(ERROR_NULL_FIELDS);
+            throw new BunqException(ErrorNullFields);
         }
     
         /// <summary>

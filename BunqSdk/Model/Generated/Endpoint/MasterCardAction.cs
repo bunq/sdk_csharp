@@ -1,12 +1,9 @@
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -18,13 +15,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/mastercard-action/{2}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/mastercard-action";
+        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/mastercard-action/{2}";
+        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/mastercard-action";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "MasterCardAction";
+        private const string ObjectType = "MasterCardAction";
     
         /// <summary>
         /// The id of the monetary account this action links to.
@@ -172,9 +169,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, masterCardActionId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, masterCardActionId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<MasterCardAction>(responseRaw, OBJECT_TYPE);
+            return FromJson<MasterCardAction>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -185,9 +182,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<MasterCardAction>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<MasterCardAction>(responseRaw, ObjectType);
         }
     
     

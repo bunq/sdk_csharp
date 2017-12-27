@@ -19,13 +19,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "attachment-public";
-        private const string ENDPOINT_URL_READ = "attachment-public/{0}";
+        private const string EndpointUrlCreate = "attachment-public";
+        private const string EndpointUrlRead = "attachment-public/{0}";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "AttachmentPublic";
+        private const string ObjectType = "AttachmentPublic";
     
         /// <summary>
         /// The UUID of the attachment.
@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(EndpointUrlCreate, requestBytes, customHeaders);
     
             return ProcessForUuid(responseRaw);
         }
@@ -76,9 +76,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, attachmentPublicUuid), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, attachmentPublicUuid), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<AttachmentPublic>(responseRaw, OBJECT_TYPE);
+            return FromJson<AttachmentPublic>(responseRaw, ObjectType);
         }
     
     

@@ -9,28 +9,28 @@ namespace Bunq.Sdk.Samples
 {
     public class CardDebitSample : ISample
     {
-        private const string NAME_YOUR_COMPANY = "USER_COMPANY_NAME"; // Put your user name here
-        private const string PIN_CODE = "0461";
-        private const string POINTER_TYPE_EMAIL = "EMAIL";
-        private const string EMAIL_YOUR_COMPANY = "at@at.at"; // Put your user email here
-        private const string POINTER_NAME_TEST = "test pointer";
-        private const int USER_ITEM_ID = 0; // Put your user ID here
+        private const string NameYourCompany = "USER_COMPANY_NAME"; // Put your user name here
+        private const string PinCode = "0461";
+        private const string PointerTypeEmail = "EMAIL";
+        private const string EmailYourCompany = "at@at.at"; // Put your user email here
+        private const string PointerNameTest = "test pointer";
+        private const int UserItemId = 0; // Put your user ID here
 
         public void Run()
         {
             var apiContext = ApiContext.Restore();
             var requestMap = new Dictionary<string, object>
             {
-                {CardDebit.FIELD_NAME_ON_CARD, NAME_YOUR_COMPANY},
-                {CardDebit.FIELD_SECOND_LINE, GenerateRandomSecondLine()},
-                {CardDebit.FIELD_PIN_CODE, PIN_CODE},
+                {CardDebit.FieldNameOnCard, NameYourCompany},
+                {CardDebit.FieldSecondLine, GenerateRandomSecondLine()},
+                {CardDebit.FieldPinCode, PinCode},
                 {
-                    CardDebit.FIELD_ALIAS,
-                    new Pointer(POINTER_TYPE_EMAIL, EMAIL_YOUR_COMPANY) {Name = POINTER_NAME_TEST}
+                    CardDebit.FieldAlias,
+                    new Pointer(PointerTypeEmail, EmailYourCompany) {Name = PointerNameTest}
                 },
             };
 
-            Console.WriteLine(CardDebit.Create(apiContext, requestMap, USER_ITEM_ID));
+            Console.WriteLine(CardDebit.Create(apiContext, requestMap, UserItemId));
         }
 
         private static string GenerateRandomSecondLine()

@@ -19,13 +19,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/attachment-tab";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/attachment-tab/{2}";
+        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/attachment-tab";
+        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/attachment-tab/{2}";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "AttachmentTab";
+        private const string ObjectType = "AttachmentTab";
     
         /// <summary>
         /// The id of the attachment.
@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -75,9 +75,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, attachmentTabId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, attachmentTabId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<AttachmentTab>(responseRaw, OBJECT_TYPE);
+            return FromJson<AttachmentTab>(responseRaw, ObjectType);
         }
     
     

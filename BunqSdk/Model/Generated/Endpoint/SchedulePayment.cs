@@ -6,7 +6,6 @@ using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -18,22 +17,22 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/schedule-payment";
-        private const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/schedule-payment/{2}";
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/schedule-payment/{2}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/schedule-payment";
-        private const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/schedule-payment/{2}";
+        private const string EndpointUrlCreate = "user/{0}/monetary-account/{1}/schedule-payment";
+        private const string EndpointUrlDelete = "user/{0}/monetary-account/{1}/schedule-payment/{2}";
+        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/schedule-payment/{2}";
+        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/schedule-payment";
+        private const string EndpointUrlUpdate = "user/{0}/monetary-account/{1}/schedule-payment/{2}";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_PAYMENT = "payment";
-        public const string FIELD_SCHEDULE = "schedule";
+        public const string FieldPayment = "payment";
+        public const string FieldSchedule = "schedule";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ScheduledPayment";
+        private const string ObjectType = "ScheduledPayment";
     
         /// <summary>
         /// The payment details.
@@ -55,7 +54,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, monetaryAccountId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(EndpointUrlCreate, userId, monetaryAccountId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -67,7 +66,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, userId, monetaryAccountId, schedulePaymentId), customHeaders);
+            var responseRaw = apiClient.Delete(string.Format(EndpointUrlDelete, userId, monetaryAccountId, schedulePaymentId), customHeaders);
     
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
@@ -79,9 +78,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, schedulePaymentId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, schedulePaymentId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<SchedulePayment>(responseRaw, OBJECT_TYPE);
+            return FromJson<SchedulePayment>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -92,9 +91,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<SchedulePayment>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<SchedulePayment>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -105,9 +104,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, schedulePaymentId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(EndpointUrlUpdate, userId, monetaryAccountId, schedulePaymentId), requestBytes, customHeaders);
     
-            return FromJson<SchedulePayment>(responseRaw, OBJECT_TYPE);
+            return FromJson<SchedulePayment>(responseRaw, ObjectType);
         }
     
     

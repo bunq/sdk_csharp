@@ -18,76 +18,76 @@ namespace Bunq.Sdk.Security
         /// <summary>
         /// Error constants.
         /// </summary>
-        private const string ERROR_COULD_NOT_VERIFY_RESPONSE = "Could not verify server response.";
+        private const string ErrorCouldNotVerifyResponse = "Could not verify server response.";
 
         /// <summary>
         /// Constants for formatting the request textual representation for signing.
         /// </summary>
-        private const string NEWLINE = "\n";
-        private const string FORMAT_METHOD_AND_ENDPOINT_STRING = "{0} /v1/{1}";
-        private const string HEADER_NAME_PREFIX_X_BUNQ = "X-Bunq-";
-        private const string DELIMITER_HEADER_VALUE = ",";
-        private const string FORMAT_HEADER_STRING = "{0}: {1}";
+        private const string Newline = "\n";
+        private const string FormatMethodAndEndpointString = "{0} /v1/{1}";
+        private const string HeaderNamePrefixXBunq = "X-Bunq-";
+        private const string DelimiterHeaderValue = ",";
+        private const string FormatHeaderString = "{0}: {1}";
 
         /// <summary>
         /// Length of an empty array.
         /// </summary>
-        private const int ARRAY_LENGTH_EMPTY = 0;
+        private const int ArrayLengthEmpty = 0;
 
         /// <summary>
         /// Constants for formatting RSA keys.
         /// </summary>
-        private const string PUBLIC_KEY_START = "-----BEGIN PUBLIC KEY-----\n";
-        private const string PUBLIC_KEY_END = "\n-----END PUBLIC KEY-----\n";
-        private const string FORMAT_PUBLIC_KEY = PUBLIC_KEY_START + "{0}" + PUBLIC_KEY_END;
-        private const string PRIVATE_KEY_START = "-----BEGIN PRIVATE KEY-----\n";
-        private const string PRIVATE_KEY_END = "\n-----END PRIVATE KEY-----\n";
-        private const string FORMAT_PRIVATE_KEY = PRIVATE_KEY_START + "{0}" + PRIVATE_KEY_END;
+        private const string PublicKeyStart = "-----BEGIN PUBLIC KEY-----\n";
+        private const string PublicKeyEnd = "\n-----END PUBLIC KEY-----\n";
+        private const string FormatPublicKey = PublicKeyStart + "{0}" + PublicKeyEnd;
+        private const string PrivateKeyStart = "-----BEGIN PRIVATE KEY-----\n";
+        private const string PrivateKeyEnd = "\n-----END PRIVATE KEY-----\n";
+        private const string FormatPrivateKey = PrivateKeyStart + "{0}" + PrivateKeyEnd;
 
         /// <summary>
         /// Size of the encryption key.
         /// </summary>
-        private const int RSA_KEY_SIZE = 2048;
+        private const int RsaKeySize = 2048;
 
         /// <summary>
         /// Encryption-specific headers.
         /// </summary>
-        private const string HEADER_CLIENT_ENCRYPTION_HMAC = "X-Bunq-Client-Encryption-Hmac";
-        private const string HEADER_CLIENT_ENCRYPTION_IV = "X-Bunq-Client-Encryption-Iv";
-        private const string HEADER_CLIENT_ENCRYPTION_KEY = "X-Bunq-Client-Encryption-Key";
-        private const string HEADER_SERVER_SIGNATURE = "X-Bunq-Server-Signature";
+        private const string HeaderClientEncryptionHmac = "X-Bunq-Client-Encryption-Hmac";
+        private const string HeaderClientEncryptionIv = "X-Bunq-Client-Encryption-Iv";
+        private const string HeaderClientEncryptionKey = "X-Bunq-Client-Encryption-Key";
+        private const string HeaderServerSignature = "X-Bunq-Server-Signature";
 
         /// <summary>
         /// Padding modes for the encrypted key and body.
         /// </summary>
-        private static readonly RSAEncryptionPadding BUNQ_PADDING_MODE_KEY = RSAEncryptionPadding.Pkcs1;
-        private const PaddingMode BUNQ_PADDING_MODE_BODY = PaddingMode.PKCS7;
+        private static readonly RSAEncryptionPadding BunqPaddingModeKey = RSAEncryptionPadding.Pkcs1;
+        private const PaddingMode BunqPaddingModeBody = PaddingMode.PKCS7;
 
         /// <summary>
         /// Sizes of key and IV/block to be used for encrypting bodies of encrypted requests.
         /// </summary>
-        private const int BUNQ_KEY_SIZE_BITS = 256;
-        private const int BUNQ_BLOCK_SIZE_BITS = 128;
+        private const int BunqKeySizeBits = 256;
+        private const int BunqBlockSizeBits = 128;
 
         /// <summary>
         /// Cipher mode for encrypting bodies of encrypted requests.
         /// </summary>
-        private const CipherMode BUNQ_CIPHER_MODE = CipherMode.CBC;
+        private const CipherMode BunqCipherMode = CipherMode.CBC;
 
         /// <summary>
         /// Number of the very first index in an array or a string.
         /// </summary>
-        private const int INDEX_FIRST = 0;
+        private const int IndexFirst = 0;
 
         /// <summary>
         /// The index after the firts character in a string. 
         /// </summary>
-        private const int INDEX_LAST_FIRST_CHAR = 1;
+        private const int IndexLastFirstChar = 1;
         
         /// <summary>
         /// Regex constants.
         /// </summary>
-        private const string REGEX_FOR_LOWERCASE_HEADERS = "(-[a-z])";
+        private const string RegexForLowercaseHeaders = "(-[a-z])";
 
         /// <summary>
         /// Generates a base64-representation of RSA/SHA256/PKCS1 signature for a given RequestMessage.
@@ -107,14 +107,14 @@ namespace Bunq.Sdk.Security
         {
             var requestContent = requestMessage.Content;
 
-            return requestContent == null ? new byte[ARRAY_LENGTH_EMPTY] : requestContent.ReadAsByteArrayAsync().Result;
+            return requestContent == null ? new byte[ArrayLengthEmpty] : requestContent.ReadAsByteArrayAsync().Result;
         }
 
         private static byte[] GenerateRequestHeadBytes(HttpRequestMessage requestMessage)
         {
-            var requestHeadString = GenerateMethodAndEndpointString(requestMessage) + NEWLINE +
-                GenerateRequestHeadersSortedString(requestMessage) + NEWLINE +
-                NEWLINE;
+            var requestHeadString = GenerateMethodAndEndpointString(requestMessage) + Newline +
+                GenerateRequestHeadersSortedString(requestMessage) + Newline +
+                Newline;
 
             return Encoding.UTF8.GetBytes(requestHeadString);
         }
@@ -124,16 +124,16 @@ namespace Bunq.Sdk.Security
             var method = requestMessage.Method.ToString();
             var endpoint = requestMessage.RequestUri.ToString();
 
-            return string.Format(FORMAT_METHOD_AND_ENDPOINT_STRING, method, endpoint);
+            return string.Format(FormatMethodAndEndpointString, method, endpoint);
         }
 
         private static string GenerateRequestHeadersSortedString(HttpRequestMessage requestMessage)
         {
             return GenerateHeadersSortedString(
                 requestMessage.Headers.Where(x =>
-                    x.Key.StartsWith(HEADER_NAME_PREFIX_X_BUNQ) ||
-                    x.Key.Equals(ApiClient.HEADER_CACHE_CONTROL) ||
-                    x.Key.Equals(ApiClient.HEADER_USER_AGENT)
+                    x.Key.StartsWith(HeaderNamePrefixXBunq) ||
+                    x.Key.Equals(ApiClient.HeaderCacheControl) ||
+                    x.Key.Equals(ApiClient.HeaderUserAgent)
                 )
             );
         }
@@ -141,13 +141,13 @@ namespace Bunq.Sdk.Security
         private static string GetHeaderNameCorrectlyCased(string headerName)
         {
             headerName = headerName.ToLower();
-            headerName = headerName.First().ToString().ToUpper() + headerName.Substring(INDEX_LAST_FIRST_CHAR);
-            var matches = Regex.Matches(headerName, REGEX_FOR_LOWERCASE_HEADERS);
+            headerName = headerName.First().ToString().ToUpper() + headerName.Substring(IndexLastFirstChar);
+            var matches = Regex.Matches(headerName, RegexForLowercaseHeaders);
 
             return matches.Cast<Match>().Aggregate(
                 headerName,
                 (current, match) => current.Replace(
-                        match.Groups[INDEX_FIRST].Value, match.Groups[INDEX_FIRST].Value.ToUpper()
+                        match.Groups[IndexFirst].Value, match.Groups[IndexFirst].Value.ToUpper()
                     )
                 );
         }
@@ -156,10 +156,10 @@ namespace Bunq.Sdk.Security
             IEnumerable<KeyValuePair<string, IEnumerable<string>>> headers)
         {
             return headers
-                .Select(x => new KeyValuePair<string, string>(x.Key, string.Join(DELIMITER_HEADER_VALUE, x.Value)))
+                .Select(x => new KeyValuePair<string, string>(x.Key, string.Join(DelimiterHeaderValue, x.Value)))
                 .ToImmutableSortedDictionary()
-                .Select(x => string.Format(FORMAT_HEADER_STRING, x.Key, x.Value))
-                .Aggregate((a, b) => a + NEWLINE + b);
+                .Select(x => string.Format(FormatHeaderString, x.Key, x.Value))
+                .Aggregate((a, b) => a + Newline + b);
         }
 
         private static byte[] ConcatenateByteArrays(byte[] byteArray1, byte[] byteArray2)
@@ -179,7 +179,7 @@ namespace Bunq.Sdk.Security
             var publicKey = keyPair.ExportParameters(false);
             var publicKeyBytes = RsaKeyUtils.PublicKeyToX509(publicKey);
 
-            return string.Format(FORMAT_PUBLIC_KEY, Convert.ToBase64String(publicKeyBytes));
+            return string.Format(FormatPublicKey, Convert.ToBase64String(publicKeyBytes));
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Bunq.Sdk.Security
                 var privateKey = keyPair.ExportParameters(true);
                 var privateKeyBytes = RsaKeyUtils.PrivateKeyToPkcs8(privateKey);
 
-                return string.Format(FORMAT_PRIVATE_KEY, Convert.ToBase64String(privateKeyBytes));
+                return string.Format(FormatPrivateKey, Convert.ToBase64String(privateKeyBytes));
             }
             catch (SecurityException)
             {
@@ -207,8 +207,8 @@ namespace Bunq.Sdk.Security
         public static RSA CreateKeyPairFromPrivateKeyFormattedString(string privateKeyString)
         {
             var privateKeyStringTrimmed = privateKeyString
-                .Replace(PRIVATE_KEY_START, string.Empty)
-                .Replace(PRIVATE_KEY_END, string.Empty);
+                .Replace(PrivateKeyStart, string.Empty)
+                .Replace(PrivateKeyEnd, string.Empty);
 
             return RsaKeyUtils.DecodePrivateKeyInfo(Convert.FromBase64String(privateKeyStringTrimmed));
         }
@@ -219,8 +219,8 @@ namespace Bunq.Sdk.Security
         public static RSA CreatePublicKeyFromPublicKeyFormattedString(string publicKeyString)
         {
             var publicKeyStringTrimmed = publicKeyString
-                .Replace(PUBLIC_KEY_START, string.Empty)
-                .Replace(PUBLIC_KEY_END, string.Empty);
+                .Replace(PublicKeyStart, string.Empty)
+                .Replace(PublicKeyEnd, string.Empty);
 
             return RsaKeyUtils.DecodePublicKey(Convert.FromBase64String(publicKeyStringTrimmed));
         }
@@ -231,7 +231,7 @@ namespace Bunq.Sdk.Security
         public static RSA GenerateKeyPair()
         {
             var rsa = RSA.Create();
-            rsa.KeySize = RSA_KEY_SIZE;
+            rsa.KeySize = RsaKeySize;
 
             return rsa;
         }
@@ -255,10 +255,10 @@ namespace Bunq.Sdk.Security
         private static Aes CreateBunqAes()
         {
             var aes = Aes.Create();
-            aes.KeySize = BUNQ_KEY_SIZE_BITS;
-            aes.BlockSize = BUNQ_BLOCK_SIZE_BITS;
-            aes.Padding = BUNQ_PADDING_MODE_BODY;
-            aes.Mode = BUNQ_CIPHER_MODE;
+            aes.KeySize = BunqKeySizeBits;
+            aes.BlockSize = BunqBlockSizeBits;
+            aes.Padding = BunqPaddingModeBody;
+            aes.Mode = BunqCipherMode;
             aes.GenerateKey();
             aes.GenerateIV();
 
@@ -268,20 +268,20 @@ namespace Bunq.Sdk.Security
         private static void AddHeaderEncryptionKey(ApiContext apiContext, IDictionary<string, string> headers,
             SymmetricAlgorithm aes)
         {
-            var keyEncrypted = apiContext.InstallationContext.PublicKeyServer.Encrypt(aes.Key, BUNQ_PADDING_MODE_KEY);
-            headers.Add(HEADER_CLIENT_ENCRYPTION_KEY, Convert.ToBase64String(keyEncrypted));
+            var keyEncrypted = apiContext.InstallationContext.PublicKeyServer.Encrypt(aes.Key, BunqPaddingModeKey);
+            headers.Add(HeaderClientEncryptionKey, Convert.ToBase64String(keyEncrypted));
         }
 
         private static void AddHeaderEncryptionIv(IDictionary<string, string> headers, SymmetricAlgorithm aes)
         {
-            headers.Add(HEADER_CLIENT_ENCRYPTION_IV, Convert.ToBase64String(aes.IV));
+            headers.Add(HeaderClientEncryptionIv, Convert.ToBase64String(aes.IV));
         }
 
         private static byte[] EncryptBytes(SymmetricAlgorithm aes, byte[] bytesToEncrypt)
         {
             using (var encrypt = aes.CreateEncryptor())
             {
-                return encrypt.TransformFinalBlock(bytesToEncrypt, INDEX_FIRST, bytesToEncrypt.Length);
+                return encrypt.TransformFinalBlock(bytesToEncrypt, IndexFirst, bytesToEncrypt.Length);
             }
         }
 
@@ -289,7 +289,7 @@ namespace Bunq.Sdk.Security
             byte[] requestBytesEncrypted)
         {
             var hash = HashHmac(aes.IV, requestBytesEncrypted, aes.Key);
-            headers.Add(HEADER_CLIENT_ENCRYPTION_HMAC, Convert.ToBase64String(hash));
+            headers.Add(HeaderClientEncryptionHmac, Convert.ToBase64String(hash));
         }
 
         private static byte[] HashHmac(byte[] iv, byte[] bytes, byte[] key)
@@ -298,7 +298,7 @@ namespace Bunq.Sdk.Security
             {
                 var buffer = new byte[iv.Length + bytes.Length];
                 Array.Copy(iv, buffer, iv.Length);
-                Array.Copy(bytes, INDEX_FIRST, buffer, iv.Length, bytes.Length);
+                Array.Copy(bytes, IndexFirst, buffer, iv.Length, bytes.Length);
 
                 return hmacSha1.ComputeHash(buffer);
             }
@@ -309,21 +309,21 @@ namespace Bunq.Sdk.Security
             var headBytes = GenerateResponseHeadBytes(responseMessage);
             var bodyBytes = responseMessage.Content.ReadAsByteArrayAsync().Result;
             var responseBytes = ConcatenateByteArrays(headBytes, bodyBytes);
-            var serverSignatureHeader = string.Join(",", responseMessage.Headers.GetValues(HEADER_SERVER_SIGNATURE));
+            var serverSignatureHeader = string.Join(",", responseMessage.Headers.GetValues(HeaderServerSignature));
             var serverSignature = Convert.FromBase64String(serverSignatureHeader);
 
             if (!serverPublicKey.VerifyData(responseBytes, serverSignature, HashAlgorithmName.SHA256,
                 RSASignaturePadding.Pkcs1))
             {
-                throw new BunqException(ERROR_COULD_NOT_VERIFY_RESPONSE);
+                throw new BunqException(ErrorCouldNotVerifyResponse);
             }
         }
 
         private static byte[] GenerateResponseHeadBytes(HttpResponseMessage responseMessage)
         {
-            var requestHeadString = (int) responseMessage.StatusCode + NEWLINE +
-                GenerateResponseHeadersSortedString(responseMessage) + NEWLINE +
-                NEWLINE;
+            var requestHeadString = (int) responseMessage.StatusCode + Newline +
+                GenerateResponseHeadersSortedString(responseMessage) + Newline +
+                Newline;
 
             return Encoding.UTF8.GetBytes(requestHeadString);
         }
@@ -332,8 +332,8 @@ namespace Bunq.Sdk.Security
         {
             return GenerateHeadersSortedString(
                 responseMessage.Headers.Where(x =>
-                    GetHeaderNameCorrectlyCased(x.Key).StartsWith(HEADER_NAME_PREFIX_X_BUNQ) &&
-                    !GetHeaderNameCorrectlyCased(x.Key).Equals(HEADER_SERVER_SIGNATURE)
+                    GetHeaderNameCorrectlyCased(x.Key).StartsWith(HeaderNamePrefixXBunq) &&
+                    !GetHeaderNameCorrectlyCased(x.Key).Equals(HeaderServerSignature)
                 )
             );
         }

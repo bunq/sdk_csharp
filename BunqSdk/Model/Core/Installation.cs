@@ -11,22 +11,22 @@ namespace Bunq.Sdk.Model.Core
         /// <summary>
         /// Endpoint name.
         /// </summary>
-        private const string ENDPOINT_URL_POST = "installation";
+        private const string EndpointUrlPost = "installation";
 
         /// <summary>
         /// Field constants.
         /// </summary>
-        private const string FIELD_CLIENT_PUBLIC_KEY = "client_public_key";
+        private const string FieldClientPublicKey = "client_public_key";
 
         public SessionToken SessionToken { get; private set; }
-        private readonly Id id;
-        private readonly PublicKeyServer publicKeyServer;
+        private readonly Id _id;
+        private readonly PublicKeyServer _publicKeyServer;
 
         public Installation(Id id, SessionToken sessionToken, PublicKeyServer publicKeyServer)
         {
-            this.id = id;
+            _id = id;
             SessionToken = sessionToken;
-            this.publicKeyServer = publicKeyServer;
+            _publicKeyServer = publicKeyServer;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Bunq.Sdk.Model.Core
         {
             var requestBytes = GenerateRequestBodyBytes(publicKeyClientString);
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Post(ENDPOINT_URL_POST, requestBytes, new Dictionary<string, string>());
+            var responseRaw = apiClient.Post(EndpointUrlPost, requestBytes, new Dictionary<string, string>());
 
             return FromJsonArrayNested<Installation>(responseRaw);
         }
@@ -51,19 +51,19 @@ namespace Bunq.Sdk.Model.Core
         private static byte[] GenerateRequestBodyBytes(string publicKeyClientString)
         {
             var installationRequestBody =
-                new Dictionary<string, object> {{FIELD_CLIENT_PUBLIC_KEY, publicKeyClientString}};
+                new Dictionary<string, object> {{FieldClientPublicKey, publicKeyClientString}};
 
             return Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(installationRequestBody));
         }
 
         public int GetIdInt()
         {
-            return id.IdInt;
+            return _id.IdInt;
         }
 
         public string GetPublicKeyServerString()
         {
-            return publicKeyServer.ServerPublicKey;
+            return _publicKeyServer.ServerPublicKey;
         }
 
         public override bool IsAllFieldNull()
@@ -73,12 +73,12 @@ namespace Bunq.Sdk.Model.Core
                 return false;
             }           
             
-            if (this.id != null)
+            if (this._id != null)
             {
                 return false;
             }
             
-            if (this.publicKeyServer != null)
+            if (this._publicKeyServer != null)
             {
                 return false;
             }

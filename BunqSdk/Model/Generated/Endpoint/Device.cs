@@ -18,18 +18,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Error constants.
         /// </summary>
-        private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
+        private const string ErrorNullFields = "All fields of an extended model or object are null.";
     
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_READ = "device/{0}";
-        private const string ENDPOINT_URL_LISTING = "device";
+        private const string EndpointUrlRead = "device/{0}";
+        private const string EndpointUrlListing = "device";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Device";
+        private const string ObjectType = "Device";
     
         /// <summary>
         /// </summary>
@@ -44,7 +44,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, deviceId), new Dictionary<string, string>(), customHeaders);
     
             return FromJson<Device>(responseRaw);
         }
@@ -58,7 +58,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, urlParams, customHeaders);
+            var responseRaw = apiClient.Get(EndpointUrlListing, urlParams, customHeaders);
     
             return FromJsonList<Device>(responseRaw);
         }
@@ -73,7 +73,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return this.DeviceServer;
             }
     
-            throw new BunqException(ERROR_NULL_FIELDS);
+            throw new BunqException(ErrorNullFields);
         }
     
         /// <summary>

@@ -18,21 +18,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "device-server";
-        private const string ENDPOINT_URL_READ = "device-server/{0}";
-        private const string ENDPOINT_URL_LISTING = "device-server";
+        private const string EndpointUrlCreate = "device-server";
+        private const string EndpointUrlRead = "device-server/{0}";
+        private const string EndpointUrlListing = "device-server";
     
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_DESCRIPTION = "description";
-        public const string FIELD_SECRET = "secret";
-        public const string FIELD_PERMITTED_IPS = "permitted_ips";
+        public const string FieldDescription = "description";
+        public const string FieldSecret = "secret";
+        public const string FieldPermittedIps = "permitted_ips";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "DeviceServer";
+        private const string ObjectType = "DeviceServer";
     
         /// <summary>
         /// The id of the DeviceServer as created on the server.
@@ -84,7 +84,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var apiClient = new ApiClient(apiContext);
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(EndpointUrlCreate, requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -97,9 +97,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceServerId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, deviceServerId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<DeviceServer>(responseRaw, OBJECT_TYPE);
+            return FromJson<DeviceServer>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -111,9 +111,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, urlParams, customHeaders);
+            var responseRaw = apiClient.Get(EndpointUrlListing, urlParams, customHeaders);
     
-            return FromJsonList<DeviceServer>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<DeviceServer>(responseRaw, ObjectType);
         }
     
     

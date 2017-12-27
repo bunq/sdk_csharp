@@ -1,11 +1,8 @@
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -18,13 +15,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/tab-result-response/{2}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/tab-result-response";
+        private const string EndpointUrlRead = "user/{0}/monetary-account/{1}/tab-result-response/{2}";
+        private const string EndpointUrlListing = "user/{0}/monetary-account/{1}/tab-result-response";
     
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TabResultResponse";
+        private const string ObjectType = "TabResultResponse";
     
         /// <summary>
         /// The Tab details.
@@ -46,9 +43,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, tabResultResponseId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlRead, userId, monetaryAccountId, tabResultResponseId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<TabResultResponse>(responseRaw, OBJECT_TYPE);
+            return FromJson<TabResultResponse>(responseRaw, ObjectType);
         }
     
         /// <summary>
@@ -60,9 +57,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(EndpointUrlListing, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<TabResultResponse>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<TabResultResponse>(responseRaw, ObjectType);
         }
     
     
