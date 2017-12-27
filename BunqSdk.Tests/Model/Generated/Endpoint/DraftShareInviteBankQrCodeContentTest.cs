@@ -18,17 +18,17 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string FILENAME_QR_CODE_IMAGE = "tmp/qrcode.png";
-        private const int TIME_UNIT_AMOUNT_ZERO = 0;
-        private const int TIME_UNIT_AMOUNT_ONE = 1;
-        private const string FORMAT_DATE = "yyyy-MM-dd HH:mm:ss";
+        private const string FilenameQrCodeImage = "tmp/qrcode.png";
+        private const int TimeUnitAmountZero = 0;
+        private const int TimeUnitAmountOne = 1;
+        private const string FormatDate = "yyyy-MM-dd HH:mm:ss";
 
-        private static readonly int USER_ID = Config.GetUserId();
+        private static readonly int UserId = Config.GetUserId();
 
         /// <summary>
         /// API context to use for the test API calls
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext ApiContext = GetApiContext();
 
         /// <summary>
         /// Tests the creation of a connect and getting the qr code related to this connect.
@@ -40,9 +40,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var draftId = GetShareInviteId();
 
-            var qrContent = DraftShareInviteBankQrCodeContent.List(API_CONTEXT, USER_ID, draftId).Value;
+            var qrContent = DraftShareInviteBankQrCodeContent.List(ApiContext, UserId, draftId).Value;
 
-            var fileOut = new FileInfo(FILENAME_QR_CODE_IMAGE);
+            var fileOut = new FileInfo(FilenameQrCodeImage);
             fileOut.Directory.Create();
             File.WriteAllBytes(fileOut.FullName, qrContent);
         }
@@ -50,8 +50,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         private static int GetShareInviteId()
         {
             var currentDate = DateTime.UtcNow.Date;
-            var addTime = new TimeSpan(TIME_UNIT_AMOUNT_ZERO, TIME_UNIT_AMOUNT_ONE, TIME_UNIT_AMOUNT_ZERO);
-            var expirationTime = currentDate.Add(addTime).ToString(FORMAT_DATE);
+            var addTime = new TimeSpan(TimeUnitAmountZero, TimeUnitAmountOne, TimeUnitAmountZero);
+            var expirationTime = currentDate.Add(addTime).ToString(FormatDate);
 
             var draftShareInviteBankEntry = new DraftShareInviteBankEntry(new ShareDetail
                 {Payment = new ShareDetailPayment(true, true, true, true)});
@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
                 {DraftShareInviteBank.FIELD_EXPIRATION, expirationTime}
             };
 
-            return DraftShareInviteBank.Create(API_CONTEXT, requestMap, USER_ID).Value;
+            return DraftShareInviteBank.Create(ApiContext, requestMap, UserId).Value;
         }
     }
 }

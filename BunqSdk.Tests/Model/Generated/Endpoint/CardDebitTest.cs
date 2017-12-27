@@ -17,19 +17,19 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string PIN_CODE = "4045";
-        private const int INDEX_FIRST = 0;
-        private const int NONNEGATIVE_INTEGER_MINIMUM = 0;
-        private const int BASE_DECIMAL = 10;
-        private const int CARD_SECOND_LINE_LENGTH_MAXIMUM = 20;
-        private const int NUMBER_ONE = 1;
+        private const string PinCode = "4045";
+        private const int IndexFirst = 0;
+        private const int NonNegativeIntegerMinimum = 0;
+        private const int BaseDecimal = 10;
+        private const int CardSecondLineLengthMaximum = 20;
+        private const int NumberOne = 1;
 
-        private static readonly int USER_ID = Config.GetUserId();
+        private static readonly int UserId = Config.GetUserId();
 
         /// <summary>
         /// API context used to for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext ApiContext = GetApiContext();
 
         /// <summary>
         /// Tests ordering a new card and checks if the fields we have entered are indeed correct by.
@@ -41,12 +41,12 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             {
                 {CardDebit.FIELD_ALIAS, GetAlias()},
                 {CardDebit.FIELD_NAME_ON_CARD, GetAnAllowedName()},
-                {CardDebit.FIELD_PIN_CODE, PIN_CODE},
+                {CardDebit.FIELD_PIN_CODE, PinCode},
                 {CardDebit.FIELD_SECOND_LINE, GenerateRandomSecondLine()}
             };
-            var cardDebit = CardDebit.Create(API_CONTEXT, cardDebitMap, USER_ID).Value;
+            var cardDebit = CardDebit.Create(ApiContext, cardDebitMap, UserId).Value;
 
-            var cardFromCardEndpoint = Card.Get(API_CONTEXT, USER_ID, cardDebit.Id.Value).Value;
+            var cardFromCardEndpoint = Card.Get(ApiContext, UserId, cardDebit.Id.Value).Value;
 
             Assert.Equal(cardDebit.SecondLine, cardFromCardEndpoint.SecondLine);
             Assert.Equal(cardDebit.Created, cardFromCardEndpoint.Created);
@@ -55,7 +55,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
         private static string GetAnAllowedName()
         {
-            return CardName.List(API_CONTEXT, USER_ID).Value[INDEX_FIRST].PossibleCardNameArray[INDEX_FIRST];
+            return CardName.List(ApiContext, UserId).Value[IndexFirst].PossibleCardNameArray[IndexFirst];
         }
 
         private static string GenerateRandomSecondLine()
@@ -63,14 +63,14 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             var random = new Random();
 
             return random.Next(
-                NONNEGATIVE_INTEGER_MINIMUM,
-                (int) Math.Pow(BASE_DECIMAL, CARD_SECOND_LINE_LENGTH_MAXIMUM + NUMBER_ONE) - NUMBER_ONE
+                NonNegativeIntegerMinimum,
+                (int) Math.Pow(BaseDecimal, CardSecondLineLengthMaximum + NumberOne) - NumberOne
             ).ToString();
         }
 
         private static Pointer GetAlias()
         {
-            return User.Get(API_CONTEXT, USER_ID).Value.UserCompany.Alias[INDEX_FIRST];
+            return User.Get(ApiContext, UserId).Value.UserCompany.Alias[IndexFirst];
         }
     }
 }
