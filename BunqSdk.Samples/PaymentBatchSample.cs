@@ -9,13 +9,13 @@ namespace Bunq.Sdk.Samples
 {
     public class PaymentBatchSample : ISample
     {
-        private const string PAYMENT_AMOUNT = "0.01";
-        private const string PAYMENT_CURRENCY = "EUR";
-        private const string COUNTERPARTY_POINTER_TYPE = "EMAIL";
-        private const string COUNTERPARTY_EMAIL = "bravo@bunq.com";
-        private const string PAYMENT_DESCRIPTION = "This is a generated payment batch!";
-        private const int USER_ITEM_ID = 0; // Put your user ID here
-        private const int MONETARY_ACCOUNT_ITEM_ID = 0; // Put your monetary account ID here
+        private const string PaymentAmount = "0.01";
+        private const string PaymentCurrency = "EUR";
+        private const string CounterpartyPointerType = "EMAIL";
+        private const string CounterpartyEmail = "bravo@bunq.com";
+        private const string PaymentDescription = "This is a generated payment batch!";
+        private const int UserItemId = 0; // Put your user ID here
+        private const int MonetaryAccountItemId = 0; // Put your monetary account ID here
 
         public void Run()
         {
@@ -28,21 +28,21 @@ namespace Bunq.Sdk.Samples
                     {
                         new Dictionary<string, object>
                         {
-                            {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT, PAYMENT_CURRENCY)},
+                            {Payment.FIELD_AMOUNT, new Amount(PaymentAmount, PaymentCurrency)},
                             {
                                 Payment.FIELD_COUNTERPARTY_ALIAS,
-                                new Pointer(COUNTERPARTY_POINTER_TYPE, COUNTERPARTY_EMAIL)
+                                new Pointer(CounterpartyPointerType, CounterpartyEmail)
                             },
-                            {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION}
+                            {Payment.FIELD_DESCRIPTION, PaymentDescription}
                         }
                     }
                 }
             };
 
-            var paymentBatchId = PaymentBatch.Create(apiContext, paymentBatchMap, USER_ITEM_ID,
-                MONETARY_ACCOUNT_ITEM_ID).Value;
+            var paymentBatchId = PaymentBatch.Create(apiContext, paymentBatchMap, UserItemId,
+                MonetaryAccountItemId).Value;
 
-            Console.WriteLine(PaymentBatch.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, paymentBatchId));
+            Console.WriteLine(PaymentBatch.Get(apiContext, UserItemId, MonetaryAccountItemId, paymentBatchId));
         }
     }
 }

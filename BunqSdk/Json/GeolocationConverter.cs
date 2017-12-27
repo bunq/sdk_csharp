@@ -10,10 +10,10 @@ namespace Bunq.Sdk.Json
     /// </summary>
     public class GeolocationConverter : JsonConverter
     {
-        private const string FIELD_LATITUDE = "latitude";
-        private const string FIELD_LONGITUDE = "longitude";
-        private const string FIELD_ALTITUDE = "altitude";
-        private const string FIELD_RADIUS = "radius";
+        private const string FieldLatitude = "latitude";
+        private const string FieldLongitude = "longitude";
+        private const string FieldAltitude = "altitude";
+        private const string FieldRadius = "radius";
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -21,16 +21,16 @@ namespace Bunq.Sdk.Json
 
             writer.WriteStartObject();
 
-            writer.WritePropertyName(FIELD_LATITUDE);
+            writer.WritePropertyName(FieldLatitude);
             writer.WriteValue(geolocation.Latitude.ToString());
 
-            writer.WritePropertyName(FIELD_LONGITUDE);
+            writer.WritePropertyName(FieldLongitude);
             writer.WriteValue(geolocation.Longitude.ToString());
 
-            writer.WritePropertyName(FIELD_ALTITUDE);
+            writer.WritePropertyName(FieldAltitude);
             writer.WriteValue(geolocation.Altitude.ToString());
 
-            writer.WritePropertyName(FIELD_RADIUS);
+            writer.WritePropertyName(FieldRadius);
             writer.WriteValue(geolocation.Radius.ToString());
 
             writer.WriteEndObject();

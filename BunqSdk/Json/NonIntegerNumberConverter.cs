@@ -10,7 +10,7 @@ namespace Bunq.Sdk.Json
     /// </summary>
     public class NonIntegerNumberConverter : JsonConverter
     {
-        private const string FORMAT_DECIMAL = "0.##";
+        private const string FormatDecimal = "0.##";
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -20,7 +20,7 @@ namespace Bunq.Sdk.Json
             }
             else
             {
-                writer.WriteValue(((decimal) value).ToString(FORMAT_DECIMAL));
+                writer.WriteValue(((decimal) value).ToString(FormatDecimal));
             }
         }
 

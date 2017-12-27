@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
-using Bunq.Sdk.Model.Generated.Endpoint;
 
 namespace Bunq.Sdk.Tests
 {
@@ -13,18 +12,18 @@ namespace Bunq.Sdk.Tests
         /// <summary>
         /// Name of the context configuration file.
         /// </summary>
-        private const string FILENAME_CONTEXT_CONF = "../../../bunq-test.conf";
+        private const string FilenameContextConf = "../../../bunq-test.conf";
 
         /// <summary>
         /// Device description used for tests.
         /// </summary>
-        private const string DEVICE_DESCRIPTION_TEST = "Csharp unit test";
+        private const string DeviceDescriptionTest = "Csharp unit test";
 
         /// <summary>
         /// Configuration items.
         /// </summary>
-        private static readonly string API_KEY = Config.GetApiKey();
-        private static readonly string[] FIELD_PERMITTED_IPS = Config.GetPermittedIps();
+        private static readonly string ApiKey = Config.GetApiKey();
+        private static readonly string[] FieldPermittedIps = Config.GetPermittedIps();
 
         /// <summary>
         /// Gets an Api Context, re-creates if needed and returns it.
@@ -35,7 +34,7 @@ namespace Bunq.Sdk.Tests
 
             try
             {
-                apiContext = ApiContext.Restore(FILENAME_CONTEXT_CONF);
+                apiContext = ApiContext.Restore(FilenameContextConf);
             }
             catch (BunqException)
             {
@@ -43,15 +42,15 @@ namespace Bunq.Sdk.Tests
             }
 
             apiContext.EnsureSessionActive();
-            apiContext.Save(FILENAME_CONTEXT_CONF);
+            apiContext.Save(FilenameContextConf);
 
             return apiContext;
         }
 
         private static ApiContext CreateApiContext()
         {
-            return ApiContext.Create(ApiEnvironmentType.SANDBOX, API_KEY, DEVICE_DESCRIPTION_TEST,
-                new List<string>(FIELD_PERMITTED_IPS));
+            return ApiContext.Create(ApiEnvironmentType.Sandbox, ApiKey, DeviceDescriptionTest,
+                new List<string>(FieldPermittedIps));
         }
     }
 }

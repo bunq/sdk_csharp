@@ -11,53 +11,53 @@ namespace Bunq.Sdk.Samples
         /// <summary>
         /// Constant to translate weeks to milliseconds.
         /// </summary>
-        private const int INDEX_FIRST = 0;
+        private const int IndexFirst = 0;
 
         /// <summary>
         /// Date format for Customer Statement Export endpoint.
         /// </summary>
-        private const string FORMAT_DATE_STATEMENT = "yyyy-MM-dd";
+        private const string FormatDateStatement = "yyyy-MM-dd";
 
         /// <summary>
         /// Format of the statement file requested.
         /// </summary>
-        private const string STATEMENT_FORMAT = "PDF";
+        private const string StatementFormat = "PDF";
 
         /// <summary>
         /// Measure of any time unit when none of it is needed.
         /// </summary>
-        private const int TIME_UNIT_COUNT_NONE = 0;
+        private const int TimeUnitCountNone = 0;
 
         /// <summary>
         /// Measure of any time unit when none of it is needed.
         /// </summary>
-        private const int DAYS_IN_WEEK = 7;
+        private const int DaysInWeek = 7;
 
         public void Run()
         {
             var apiContext = ApiContext.Restore();
             var timeSpanWeek = new TimeSpan(
-                DAYS_IN_WEEK,
-                TIME_UNIT_COUNT_NONE,
-                TIME_UNIT_COUNT_NONE,
-                TIME_UNIT_COUNT_NONE
+                DaysInWeek,
+                TimeUnitCountNone,
+                TimeUnitCountNone,
+                TimeUnitCountNone
             );
             var dateStart = DateTime.Now.Subtract(timeSpanWeek);
             var dateEnd = DateTime.Now;
 
             var customerStatementMap = new Dictionary<string, object>
             {
-                {CustomerStatementExport.FIELD_STATEMENT_FORMAT, STATEMENT_FORMAT},
-                {CustomerStatementExport.FIELD_DATE_START, dateStart.ToString(FORMAT_DATE_STATEMENT)},
-                {CustomerStatementExport.FIELD_DATE_END, dateEnd.ToString(FORMAT_DATE_STATEMENT)},
+                {CustomerStatementExport.FIELD_STATEMENT_FORMAT, StatementFormat},
+                {CustomerStatementExport.FIELD_DATE_START, dateStart.ToString(FormatDateStatement)},
+                {CustomerStatementExport.FIELD_DATE_END, dateEnd.ToString(FormatDateStatement)},
             };
 
-            var userId = User.List(apiContext).Value[INDEX_FIRST].UserCompany.Id;
+            var userId = User.List(apiContext).Value[IndexFirst].UserCompany.Id;
 
             if (userId != null)
             {
                 var userIdInt = (int) userId;
-                var monetaryAccountId = MonetaryAccountBank.List(apiContext, userIdInt).Value[INDEX_FIRST].Id;
+                var monetaryAccountId = MonetaryAccountBank.List(apiContext, userIdInt).Value[IndexFirst].Id;
 
                 if (monetaryAccountId != null)
                 {

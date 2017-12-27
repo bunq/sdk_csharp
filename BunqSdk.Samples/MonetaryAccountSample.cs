@@ -7,13 +7,13 @@ namespace Bunq.Sdk.Samples
 {
     public class MonetaryAccountSample : ISample
     {
-        private const int USER_ITEM_ID = 0; // Put your user ID here
-        private const int MONETARY_ACCOUNT_ITEM_ID = 0; // Put your monetary account ID here
+        private const int UserItemId = 0; // Put your user ID here
+        private const int MonetaryAccountItemId = 0; // Put your monetary account ID here
 
         public void Run()
         {
             var apiContext = ApiContext.Restore();
-            var monetaryAccount = MonetaryAccount.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
+            var monetaryAccount = MonetaryAccount.Get(apiContext, UserItemId, MonetaryAccountItemId).Value;
             Console.WriteLine(monetaryAccount.MonetaryAccountBank);
         }
     }

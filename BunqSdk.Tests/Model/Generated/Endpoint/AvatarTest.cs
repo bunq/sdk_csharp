@@ -58,8 +58,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var customHeaders = new Dictionary<string, string>
             {
-                {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, ATTACHMENT_DECSRIPTION},
-                {ApiClient.HEADER_CONTENT_TYPE, CONTEN_TYPE},
+                {ApiClient.HeaderAttachmentDescription, ATTACHMENT_DECSRIPTION},
+                {ApiClient.HeaderContentType, CONTEN_TYPE},
             };
 
             return AttachmentPublic.Create(API_CONTEXT, fileContentByte, customHeaders).Value;

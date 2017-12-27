@@ -5,12 +5,12 @@ namespace Bunq.Sdk.Samples
 {
     public class ApiContextSaveSample : ISample
     {
-        private const string API_KEY = "### YOUR API KEY ###"; // Put your API key here
-        private const string DEVICE_DESCRIPTION = "Device description.";
+        private const string ApiKey = "### YOUR API KEY ###"; // Put your API key here
+        private const string DeviceDescription = "Device description.";
 
         public void Run()
         {
-            var apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, API_KEY, DEVICE_DESCRIPTION);
+            var apiContext = ApiContext.Create(ApiEnvironmentType.Sandbox, ApiKey, DeviceDescription);
             apiContext.Save();
         }
     }
