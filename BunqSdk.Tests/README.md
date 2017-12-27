@@ -3,7 +3,7 @@
 ## Introduction
 Hi developers!
 
-Welcome to the bunq Java SDK integration tests. Currently we are not
+Welcome to the bunq C# SDK integration tests. Currently we are not
 targeting the 100% test coverage, but rather want to be certain that the most
 common scenarios can run without any errors.
 
@@ -34,4 +34,6 @@ same directory, fill in your sandbox user data and rename the copy to `config.js
 
 ## Execution
 To run tests via Rider, you can right click on the `BunqSdk.Tests` solution and should be able to run
-the tests cases form the IDE.
+the tests cases from the IDE.
+To run the tests via Visual Studio, you can use the Test Explorer window. Use default shortcut Ctrl+R, A
+to run all tests.
