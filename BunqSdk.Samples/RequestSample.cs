@@ -9,31 +9,31 @@ namespace Bunq.Sdk.Samples
 {
     public class RequestSample : ISample
     {
-        private const string REQUEST_AMOUNT = "12.30";
-        private const string REQUEST_CURRENCY = "EUR";
-        private const string COUNTERPARTY_POINTER_TYPE = "EMAIL";
-        private const string COUNTERPARTY_EMAIL = "bravo@bunq.com";
-        private const string REQUEST_DESCRIPTION = "This is a generated request!";
-        private const int USER_ITEM_ID = 0; // Put your user ID here
-        private const int MONETARY_ACCOUNT_ITEM_ID = 0; // Put your monetary account ID here
-        private const string STATUS_REVOKED = "REVOKED";
+        private const string RequestAmount = "12.30";
+        private const string RequestCurrency = "EUR";
+        private const string CounterpartyPointerType = "EMAIL";
+        private const string CounterpartyEmail = "bravo@bunq.com";
+        private const string RequestDescription = "This is a generated request!";
+        private const int UserItemId = 0; // Put your user ID here
+        private const int MonetaryAccountItemId = 0; // Put your monetary account ID here
+        private const string StatusRevoked = "REVOKED";
 
         public void Run()
         {
             var apiContext = ApiContext.Restore();
             var requestMap = new Dictionary<string, object>
             {
-                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(REQUEST_AMOUNT, REQUEST_CURRENCY)},
-                {RequestInquiry.FIELD_COUNTERPARTY_ALIAS, new Pointer(COUNTERPARTY_POINTER_TYPE, COUNTERPARTY_EMAIL)},
-                {RequestInquiry.FIELD_DESCRIPTION, REQUEST_DESCRIPTION},
+                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(RequestAmount, RequestCurrency)},
+                {RequestInquiry.FIELD_COUNTERPARTY_ALIAS, new Pointer(CounterpartyPointerType, CounterpartyEmail)},
+                {RequestInquiry.FIELD_DESCRIPTION, RequestDescription},
                 {RequestInquiry.FIELD_ALLOW_BUNQME, true}
             };
-            var requestId = RequestInquiry.Create(apiContext, requestMap, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
-            Console.WriteLine(RequestInquiry.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, requestId));
+            var requestId = RequestInquiry.Create(apiContext, requestMap, UserItemId, MonetaryAccountItemId).Value;
+            Console.WriteLine(RequestInquiry.Get(apiContext, UserItemId, MonetaryAccountItemId, requestId));
 
-            var requestUpdateMap = new Dictionary<string, object> {{RequestInquiry.FIELD_STATUS, STATUS_REVOKED}};
-            var requestUpdated = RequestInquiry.Update(apiContext, requestUpdateMap, USER_ITEM_ID,
-                MONETARY_ACCOUNT_ITEM_ID, requestId);
+            var requestUpdateMap = new Dictionary<string, object> {{RequestInquiry.FIELD_STATUS, StatusRevoked}};
+            var requestUpdated = RequestInquiry.Update(apiContext, requestUpdateMap, UserItemId,
+                MonetaryAccountItemId, requestId);
             Console.WriteLine(requestUpdated);
         }
     }

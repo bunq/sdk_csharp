@@ -23,33 +23,33 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Error constants.
         /// </summary>
-        private const string ERROR_COULD_NOT_SAVE_API_CONTEXT = "Could not save the API context.";
-        private const string ERROR_COULD_NOT_RESTORE_API_CONTEXT = "Could not restore the API context.";
+        private const string ErrorCouldNotSaveApiContext = "Could not save the API context.";
+        private const string ErrorCouldNotRestoreApiContext = "Could not restore the API context.";
 
         /// <summary>
         /// Measure of any time unit when none of it is needed.
         /// </summary>
-        private const int TIME_UNIT_COUNT_NONE = 0;
+        private const int TimeUnitCountNone = 0;
 
         /// <summary>
         /// Minimum time to session expiry not requiring session reset.
         /// </summary>
-        private const int TIME_TO_SESSION_EXPIRY_MINIMUM_SECONDS = 30;
+        private const int TimeToSessionExpiryMinimumSeconds = 30;
 
         /// <summary>
         /// Default path to store the serialized context.
         /// </summary>
-        private const string PATH_API_CONTEXT_DEFAULT = "bunq.conf";
+        private const string PathApiContextDefault = "bunq.conf";
 
         /// <summary>
         /// Dummy ID to pass to Session endpoint.
         /// </summary>
-        private const int SESSION_ID_DUMMY = 0;
+        private const int SessionIdDummy = 0;
 
         /// <summary>
         /// Encoding of the serialized context.
         /// </summary>
-        private static readonly Encoding ENCODING_BUNQ_CONF = Encoding.UTF8;
+        private static readonly Encoding EncodingBunqConf = Encoding.UTF8;
 
         [JsonProperty(PropertyName = "environment_type")]
         public ApiEnvironmentType EnvironmentType { get; private set; }
@@ -168,7 +168,7 @@ namespace Bunq.Sdk.Context
 
         private void DeleteSession()
         {
-            Session.Delete(this, SESSION_ID_DUMMY);
+            Session.Delete(this, SessionIdDummy);
         }
 
         /// <summary>
@@ -191,9 +191,9 @@ namespace Bunq.Sdk.Context
             
             var timeToExpiry = SessionContext.ExpiryTime.Subtract(DateTime.Now);
             var timeToExpiryMinimum = new TimeSpan(
-                TIME_UNIT_COUNT_NONE,
-                TIME_UNIT_COUNT_NONE,
-                TIME_TO_SESSION_EXPIRY_MINIMUM_SECONDS
+                TimeUnitCountNone,
+                TimeUnitCountNone,
+                TimeToSessionExpiryMinimumSeconds
             );
 
             return timeToExpiry > timeToExpiryMinimum;
@@ -204,7 +204,7 @@ namespace Bunq.Sdk.Context
         /// </summary>
         public void Save()
         {
-            Save(PATH_API_CONTEXT_DEFAULT);
+            Save(PathApiContextDefault);
         }
 
         /// <summary>
@@ -214,11 +214,11 @@ namespace Bunq.Sdk.Context
         {
             try
             {
-                File.WriteAllText(fileName, ToJson(), ENCODING_BUNQ_CONF);
+                File.WriteAllText(fileName, ToJson(), EncodingBunqConf);
             }
             catch (IOException exception)
             {
-                throw new BunqException(ERROR_COULD_NOT_SAVE_API_CONTEXT, exception);
+                throw new BunqException(ErrorCouldNotSaveApiContext, exception);
             }
         }
 
@@ -235,7 +235,7 @@ namespace Bunq.Sdk.Context
         /// </summary>
         public static ApiContext Restore()
         {
-            return Restore(PATH_API_CONTEXT_DEFAULT);
+            return Restore(PathApiContextDefault);
         }
 
         /// <summary>
@@ -245,11 +245,11 @@ namespace Bunq.Sdk.Context
         {
             try
             {
-                return FromJson(File.ReadAllText(fileName, ENCODING_BUNQ_CONF));
+                return FromJson(File.ReadAllText(fileName, EncodingBunqConf));
             }
             catch (IOException exception)
             {
-                throw new BunqException(ERROR_COULD_NOT_RESTORE_API_CONTEXT, exception);
+                throw new BunqException(ErrorCouldNotRestoreApiContext, exception);
             }
         }
 

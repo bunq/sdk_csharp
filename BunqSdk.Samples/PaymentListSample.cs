@@ -12,44 +12,44 @@ namespace Bunq.Sdk.Samples
         /// <summary>
         /// Message constants.
         /// </summary>
-        private const string MESSAGE_LATEST_PAGE_IDS = "Latest page IDs: ";
-        private const string MESSAGE_SECOND_LATEST_PAGE_IDS = "Second latest page IDs: ";
-        private const string MESSAGE_NO_PRIOR_PAYMENTS_FOUND = "No prior payments found!";
+        private const string MessageLatestPageIds = "Latest page IDs: ";
+        private const string MessageSecondLatestPageIds = "Second latest page IDs: ";
+        private const string MessageNoPriorPaymentsFound = "No prior payments found!";
 
         /// <summary>
         /// Size of each page of payment listing.
         /// </summary>
-        private const int PAGE_SIZE = 3;
+        private const int PageSize = 3;
 
         /// <summary>
         /// Constants to be changed to run the example.
         /// </summary>
-        private const int USER_ITEM_ID = 0; // Put your user ID here
-        private const int MONETARY_ACCOUNT_ITEM_ID = 0; // Put your monetary account ID here
+        private const int UserItemId = 0; // Put your user ID here
+        private const int MonetaryAccountItemId = 0; // Put your monetary account ID here
 
         public void Run()
         {
             var apiContext = ApiContext.Restore();
             var paginationCountOnly = new Pagination
             {
-                Count = PAGE_SIZE,
+                Count = PageSize,
             };
-            Console.WriteLine(MESSAGE_LATEST_PAGE_IDS);
-            var paymentResponse = Payment.List(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID,
+            Console.WriteLine(MessageLatestPageIds);
+            var paymentResponse = Payment.List(apiContext, UserItemId, MonetaryAccountItemId,
                 paginationCountOnly.UrlParamsCountOnly);
             PrintPayments(paymentResponse.Value);
             var pagination = paymentResponse.Pagination;
 
             if (pagination.HasPreviousPage())
             {
-                Console.WriteLine(MESSAGE_SECOND_LATEST_PAGE_IDS);
-                var previousPaymentResponse = Payment.List(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID,
+                Console.WriteLine(MessageSecondLatestPageIds);
+                var previousPaymentResponse = Payment.List(apiContext, UserItemId, MonetaryAccountItemId,
                     pagination.UrlParamsPreviousPage);
                 PrintPayments(previousPaymentResponse.Value);
             }
             else
             {
-                Console.WriteLine(MESSAGE_NO_PRIOR_PAYMENTS_FOUND);
+                Console.WriteLine(MessageNoPriorPaymentsFound);
             }
         }
 

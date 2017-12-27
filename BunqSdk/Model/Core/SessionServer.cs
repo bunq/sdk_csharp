@@ -12,12 +12,12 @@ namespace Bunq.Sdk.Model.Core
         /// <summary>
         /// Endpoint name.
         /// </summary>
-        private const string ENDPOINT_URL_POST = "session-server";
+        private const string EndpointUrlPost = "session-server";
 
         /// <summary>
         /// Field constants.
         /// </summary>
-        private const string FIELD_SECRET = "secret";
+        private const string FieldSecret = "secret";
 
         public Id Id { get; private set; }
         public SessionToken SessionToken { get; private set; }
@@ -50,14 +50,14 @@ namespace Bunq.Sdk.Model.Core
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = GenerateRequestBodyBytes(apiContext.ApiKey);
-            var responseRaw = apiClient.Post(ENDPOINT_URL_POST, requestBytes, new Dictionary<string, string>());
+            var responseRaw = apiClient.Post(EndpointUrlPost, requestBytes, new Dictionary<string, string>());
 
             return FromJsonArrayNested<SessionServer>(responseRaw);
         }
 
         private static byte[] GenerateRequestBodyBytes(string apiKey)
         {
-            var sessionServerRequestBody = new Dictionary<string, object> {{FIELD_SECRET, apiKey}};
+            var sessionServerRequestBody = new Dictionary<string, object> {{FieldSecret, apiKey}};
 
             return Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(sessionServerRequestBody));
         }

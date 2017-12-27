@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Security
 {
     internal class RsaParameterTraits
     {
-        private const double TOLERANCE = 0.000001;
+        private const double Tolerance = 0.000001;
         internal int SizeMod { get; private set; }
         internal int SizeExp { get; private set; }
         internal int SizeD { get; private set; }
@@ -51,7 +51,7 @@ namespace Bunq.Sdk.Security
             int assumedLength;
             var logbase = Math.Log(modulusLengthInBits, 2);
 
-            if (Math.Abs(logbase - (int) logbase) < TOLERANCE)
+            if (Math.Abs(logbase - (int) logbase) < Tolerance)
             {
                 assumedLength = modulusLengthInBits;
             }

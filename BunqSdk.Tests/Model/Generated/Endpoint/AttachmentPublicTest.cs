@@ -38,8 +38,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             var fileContentBytes = File.ReadAllBytes(PATH_ATTACHMENT + ATTACHMENT_PATH_IN);
             var customHeaders = new Dictionary<string, string>
             {
-                {ApiClient.HEADER_CONTENT_TYPE, CONTENT_TYPE},
-                {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, ATTACHMENT_DESCRIPTION}
+                {ApiClient.HeaderContentType, CONTENT_TYPE},
+                {ApiClient.HeaderAttachmentDescription, ATTACHMENT_DESCRIPTION}
             };
 
             var attachmentUuid = AttachmentPublic.Create(API_CONTEXT, fileContentBytes, customHeaders).Value;
