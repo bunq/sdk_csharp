@@ -9,14 +9,14 @@ namespace Bunq.Sdk.Json
     {
         private const string FormatDate = "yyyy-MM-dd HH:mm:ss.ffffff";
 
-        private static bool _isInitialized;
+        private static bool isInitialized;
 
         /// <summary>
         /// This method MUST be called before any (de)serialization with Newtonsoft JSON happens.
         /// </summary>
         private static void Initialize()
         {
-            if (_isInitialized)  
+            if (isInitialized)  
             {
                 return;
             }
@@ -30,7 +30,7 @@ namespace Bunq.Sdk.Json
                 NullValueHandling = NullValueHandling.Ignore,
             };
 
-            _isInitialized = true;
+            isInitialized = true;
         }
 
         /// <summary>Serializes the specified object to a JSON string.</summary>

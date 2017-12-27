@@ -19,14 +19,14 @@ namespace Bunq.Sdk.Model.Core
         private const string FieldClientPublicKey = "client_public_key";
 
         public SessionToken SessionToken { get; private set; }
-        private readonly Id _id;
-        private readonly PublicKeyServer _publicKeyServer;
+        private readonly Id id;
+        private readonly PublicKeyServer publicKeyServer;
 
         public Installation(Id id, SessionToken sessionToken, PublicKeyServer publicKeyServer)
         {
-            _id = id;
+            this.id = id;
             SessionToken = sessionToken;
-            _publicKeyServer = publicKeyServer;
+            this.publicKeyServer = publicKeyServer;
         }
 
         /// <summary>
@@ -58,12 +58,12 @@ namespace Bunq.Sdk.Model.Core
 
         public int GetIdInt()
         {
-            return _id.IdInt;
+            return id.IdInt;
         }
 
         public string GetPublicKeyServerString()
         {
-            return _publicKeyServer.ServerPublicKey;
+            return publicKeyServer.ServerPublicKey;
         }
 
         public override bool IsAllFieldNull()
@@ -73,12 +73,12 @@ namespace Bunq.Sdk.Model.Core
                 return false;
             }           
             
-            if (this._id != null)
+            if (this.id != null)
             {
                 return false;
             }
             
-            if (this._publicKeyServer != null)
+            if (this.publicKeyServer != null)
             {
                 return false;
             }

@@ -79,21 +79,21 @@ namespace Bunq.Sdk.Http
         /// </summary>
         public const char DelimiterUriParams = '&';
 
-        private readonly HttpClient _client;
+        private readonly HttpClient client;
 
-        private readonly ApiContext _apiContext;
+        private readonly ApiContext apiContext;
 
         public ApiClient(ApiContext apiContext)
         {
-            this._apiContext = apiContext;
-            _client = CreateHttpClient();
+            this.apiContext = apiContext;
+            client = CreateHttpClient();
         }
 
         private HttpClient CreateHttpClient()
         {
             return new HttpClient(CreateHttpClientHandler())
             {
-                BaseAddress = new Uri(_apiContext.GetBaseUri())
+                BaseAddress = new Uri(apiContext.GetBaseUri())
             };
         }
 
@@ -105,9 +105,9 @@ namespace Bunq.Sdk.Http
             // Simply put, we reduce the amount of certificates which are accepted in bunq API responses.
             var handler = new HttpClientHandler();
 
-            if (_apiContext.Proxy != null)
+            if (apiContext.Proxy != null)
             {
-                handler.Proxy = new BunqProxy(_apiContext.Proxy);
+                handler.Proxy = new BunqProxy(apiContext.Proxy);
                 handler.UseProxy = true;
             }
 
@@ -145,13 +145,13 @@ namespace Bunq.Sdk.Http
         {
             if (!UrisNotRequiringActiveSession.Contains(uriRelative))
             {
-                _apiContext.EnsureSessionActive();
+                apiContext.EnsureSessionActive();
             }
             
             SetDefaultHeaders(requestMessage);
             SetHeaders(requestMessage, customHeaders);
             SetSessionHeaders(requestMessage);
-            var responseMessage = _client.SendAsync(requestMessage).Result;
+            var responseMessage = client.SendAsync(requestMessage).Result;
             AssertResponseSuccess(responseMessage);
             ValidateResponse(responseMessage);
 
@@ -175,7 +175,7 @@ namespace Bunq.Sdk.Http
 
         private void ValidateResponse(HttpResponseMessage responseMessage)
         {
-            var installationContext = _apiContext.InstallationContext;
+            var installationContext = apiContext.InstallationContext;
 
             if (installationContext != null)
             {
@@ -262,7 +262,7 @@ namespace Bunq.Sdk.Http
 
         private void SetSessionHeaders(HttpRequestMessage requestMessage)
         {
-            var sessionToken = _apiContext.GetSessionToken();
+            var sessionToken = apiContext.GetSessionToken();
 
             if (sessionToken == null) return;
 
@@ -272,7 +272,7 @@ namespace Bunq.Sdk.Http
 
         private string GenerateSignature(HttpRequestMessage requestMessage)
         {
-            return SecurityUtils.GenerateSignature(requestMessage, _apiContext.InstallationContext.KeyPairClient);
+            return SecurityUtils.GenerateSignature(requestMessage, apiContext.InstallationContext.KeyPairClient);
         }
 
         private static void AssertResponseSuccess(HttpResponseMessage responseMessage)

@@ -14,11 +14,11 @@ namespace Bunq.Sdk.Tests.Context
         /// </summary>
         private const string ContextFilenameTest = "context-save-restore-test.conf";
 
-        private static ApiContext _apiContext;
+        private static ApiContext apiContext;
 
         public ApiContextTest()
         {
-            if (_apiContext == null) _apiContext = GetApiContext();
+            if (apiContext == null) apiContext = GetApiContext();
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Tests.Context
         [Fact]
         public void TestApiContextSerializeDeserialize()
         {
-            var apiContextJson = _apiContext.ToJson();
+            var apiContextJson = apiContext.ToJson();
             var apiContextDeSerialised = ApiContext.FromJson(apiContextJson);
 
             Assert.Equal(apiContextJson, apiContextDeSerialised.ToJson());
@@ -39,8 +39,8 @@ namespace Bunq.Sdk.Tests.Context
         [Fact]
         public void TestApiContextSaveRestore()
         {
-            var apiContextJson = _apiContext.ToJson();
-            _apiContext.Save(ContextFilenameTest);
+            var apiContextJson = apiContext.ToJson();
+            apiContext.Save(ContextFilenameTest);
             var apiContextRestored = ApiContext.Restore(ContextFilenameTest);
 
             Assert.Equal(apiContextJson, apiContextRestored.ToJson());
