@@ -16,16 +16,20 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values
         /// </summary>
+        private static readonly int UserId = Config.GetUserId();
+        private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
+        private static readonly int CashRegisterId = Config.GetCashRegisterId();
+
+        /// <summary>
+        /// Mixed value constants.
+        /// </summary>
         private const string ValueDescription = "Pay the tab for Java test please.";
         private const string ValueStatusOpen = "OPEN";
         private const string ValueAmountEur = "10.00";
         private const string ValueCurrencyEur = "EUR";
         private const string ValueOtherDescription = "Super expensive java tea";
         private const string ValueStatusWaiting = "WAITING_FOR_PAYMENT";
-        private static readonly int UserId = Config.GetUserId();
-        private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
-        private static readonly int CashRegisterId = Config.GetCashRegisterId();
-
+        
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>

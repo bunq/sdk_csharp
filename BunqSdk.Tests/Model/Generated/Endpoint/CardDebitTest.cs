@@ -17,14 +17,26 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string PinCode = "4045";
+        private static readonly int UserId = Config.GetUserId();
+        
+        /// <summary>
+        /// CardeDebit field value constatns.
+        /// </summary>
+        private const string CardDebitPinCode = "4045";
+        private const int CardDebitSecondLineLengthMaximum = 20;
+        
+        /// <summary>
+        /// The index of the first item in an array.
+        /// </summary>
         private const int IndexFirst = 0;
+
+        /// <summary>
+        /// Number constatns.
+        /// </summary>
+        private const int NumberOne = 1;
         private const int NonNegativeIntegerMinimum = 0;
         private const int BaseDecimal = 10;
-        private const int CardSecondLineLengthMaximum = 20;
-        private const int NumberOne = 1;
-        private static readonly int UserId = Config.GetUserId();
-
+        
         /// <summary>
         /// API context used to for the test API calls.
         /// </summary>
@@ -40,7 +52,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             {
                 {CardDebit.FIELD_ALIAS, GetAlias()},
                 {CardDebit.FIELD_NAME_ON_CARD, GetAnAllowedName()},
-                {CardDebit.FIELD_PIN_CODE, PinCode},
+                {CardDebit.FIELD_PIN_CODE, CardDebitPinCode},
                 {CardDebit.FIELD_SECOND_LINE, GenerateRandomSecondLine()}
             };
             var cardDebit = CardDebit.Create(ApiContext, cardDebitMap, UserId).Value;
@@ -63,7 +75,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
             return random.Next(
                 NonNegativeIntegerMinimum,
-                (int) Math.Pow(BaseDecimal, CardSecondLineLengthMaximum + NumberOne) - NumberOne
+                (int) Math.Pow(BaseDecimal, CardDebitSecondLineLengthMaximum + NumberOne) - NumberOne
             ).ToString();
         }
 

@@ -18,12 +18,20 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
+        private static readonly int UserId = Config.GetUserId();
+
+        /// <summary>
+        /// File name constants
+        /// </summary>
         private const string FileNameQrCodeImage = "tmp/qrcode.png";
+        
+        /// <summary>
+        /// Date and time constatns.
+        /// </summary>
         private const int TimeUnitAmountZero = 0;
         private const int TimeUnitAmountOne = 1;
         private const string FormatDate = "yyyy-MM-dd HH:mm:ss";
-        private static readonly int UserId = Config.GetUserId();
-
+        
         /// <summary>
         /// API context to use for the test API calls
         /// </summary>

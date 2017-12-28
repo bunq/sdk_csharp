@@ -17,11 +17,15 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string PathAttachment = "../../../Resources";
         private static readonly string ContentType = Config.GetAttachmentContentType();
         private static readonly string AttachmentDescription = Config.GetAttachmentDescription();
         private static readonly string AttachmentPathIn = Config.GetAttachmentPathIn();
-
+        
+        /// <summary>
+        /// File path constatns.
+        /// </summary>
+        private const string PathAttachment = "../../../Resources";
+        
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>

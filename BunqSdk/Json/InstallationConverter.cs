@@ -6,19 +6,25 @@ using Newtonsoft.Json.Linq;
 
 namespace Bunq.Sdk.Json
 {
+    /// <inheritdoc />
     /// <summary>
     /// Custom (de)serialization of Installation required due to the unconventional structure of the
     /// Installation POST response.
     /// </summary>
     public class InstallationConverter : JsonConverter
     {
+        /// <summary>
+        /// The indices of the attributes inside the json object.
+        /// </summary>
         private const int IndexId = 0;
-        private const string FieldId = "Id";
-
         private const int IndexToken = 1;
-        private const string FieldToken = "Token";
-
         private const int IndexServerPublicKey = 2;
+
+        /// <summary>
+        /// Field constatns.
+        /// </summary>
+        private const string FieldId = "Id";
+        private const string FieldToken = "Token";
         private const string FieldServerPublicKey = "ServerPublicKey";
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,

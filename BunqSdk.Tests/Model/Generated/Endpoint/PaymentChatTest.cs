@@ -17,14 +17,18 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string ValueAmountEur = "0.01";
-        private const string ValueCurrencyEur = "EUR";
-        private const string ValueDescription = "Payment from C# test";
-        private const string ValueText = "Test message sent from C# test";
         private static readonly int UserId = Config.GetUserId();
         private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
         private static readonly Pointer CounterPartyAliasSelf = Config.GetCounterPartyAliasSelf();
 
+        /// <summary>
+        /// Payment and PaymentChat field value constatns.
+        /// </summary>
+        private const string ValueAmountEur = "0.01";
+        private const string ValueCurrencyEur = "EUR";
+        private const string ValueDescription = "Payment from C# test";
+        private const string ValueText = "Test message sent from C# test";
+        
         /// <summary>
         /// API context used for the test API calls.
         /// </summary>

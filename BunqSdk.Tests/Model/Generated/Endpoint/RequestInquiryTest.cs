@@ -16,16 +16,24 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string ValueAmountEur = "0.01";
-        private const string ValueCurrencyEur = "EUR";
-        private const string ValueDescription = "C# test payment";
-        private const string ValueStatus = "ACCEPTED";
-        private const int IndexFirst = 0;
         private static readonly Pointer CounterPartyAliasSelf = Config.GetCounterPartyAliasSelf();
         private static readonly int UserId = Config.GetUserId();
         private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
         private static readonly int SecondMonetaryAccountId = Config.GetSecondMonetaryAccountId();
 
+        /// <summary>
+        /// RequestInquiry field value constatns.
+        /// </summary>
+        private const string ValueAmountEur = "0.01";
+        private const string ValueCurrencyEur = "EUR";
+        private const string ValueDescription = "C# test payment";
+        private const string ValueStatus = "ACCEPTED";
+        
+        /// <summary>
+        /// The index of the first item in an array.
+        /// </summary>
+        private const int IndexFirst = 0;
+        
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
