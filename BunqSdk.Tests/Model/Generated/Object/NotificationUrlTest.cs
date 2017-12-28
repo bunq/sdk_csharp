@@ -8,6 +8,10 @@ using Xunit;
 
 namespace Bunq.Sdk.Tests.Model.Generated.Object
 {
+    /// <summary>
+    /// Tests:
+    ///     NotificationUrl
+    /// </summary>
     public class NotificationUrlTest : BunqSdkTestBase
     {
         /// <summary>

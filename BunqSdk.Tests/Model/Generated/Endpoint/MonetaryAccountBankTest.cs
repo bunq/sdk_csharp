@@ -14,15 +14,18 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values
         /// </summary>
+        private static readonly int UserId = Config.GetUserId();
+
+        /// <summary>
+        /// MonetaryAccount field value constatns.
+        /// </summary>
         private const string ValueStatus = "CANCELLED";
         private const string ValueSubStatus = "REDEMPTION_VOLUNTARY";
         private const string ValueReason = "OTHER";
         private const string ValueReasonDescription = "Because this is a test";
         private const string ValueCurrencyEur = "EUR";
         private const string ValueDescription = "Test C# monetary account";
-
-        private static readonly int UserId = Config.GetUserId();
-
+        
         /// <summary>
         /// API context used for the test API calls.
         /// </summary>

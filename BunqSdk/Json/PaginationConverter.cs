@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Bunq.Sdk.Json
 {
+    /// <inheritdoc />
     /// <summary>
     /// Custom (de)serialization of SessionServer required due to the unconventional structure of the
     /// SessionServer POST response.

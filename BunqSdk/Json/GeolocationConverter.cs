@@ -10,6 +10,9 @@ namespace Bunq.Sdk.Json
     /// </summary>
     public class GeolocationConverter : JsonConverter
     {
+        /// <summary>
+        /// Field constants.
+        /// </summary>
         private const string FieldLatitude = "latitude";
         private const string FieldLongitude = "longitude";
         private const string FieldAltitude = "altitude";

@@ -12,6 +12,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace Bunq.Sdk.Json
 {
+    /// <inheritdoc />
     /// <summary>
     /// Custom mapping of types to JSON converters.
     /// </summary>

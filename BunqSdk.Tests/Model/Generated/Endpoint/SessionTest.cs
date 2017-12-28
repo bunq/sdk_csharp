@@ -17,7 +17,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         private const string FilenameContextConf = "../../../bunq-test.conf";
         
         /// <summary>
-        /// Config values.
+        /// A dummy id for the session, can be an arbitrary number
         /// </summary>
         private const int SessionIdDummy = 0;
 
