@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// </summary>
         private const string TabUsageSingleDescription = "Pay the tab for Java test please.";
         private const string TabUsageSingleStatusOpen = "OPEN";
-        private const string TabUsageSingleAmountEur = "42.00";
+        private const string TabUsageSingleAmountEur = "10.00";
         private const string TabUsageSingleCurrencyEur = "EUR";
         private const string TabItemShopDescription = "Super expensive java tea";
         private const string TabUsageSingleStatusWaiting = "WAITING_FOR_PAYMENT";
