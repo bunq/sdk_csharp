@@ -53,11 +53,11 @@ namespace Bunq.Sdk.Http
         /// <summary>
         /// Values for the default headers
         /// </summary>
-        private const string CacheControlNone = "no-cache";
-        private const string UserAgentBunq = "bunq-sdk-csharp/0.12.4.0-beta";
-        private const string LanguageEnUs = "en_US";
-        private const string RegionNlNl = "nl_NL";
-        private const string GeolocationZero = "0 0 0 0 NL";
+        private const string HeaderValueCacheControlNone = "no-cache";
+        private const string HeaderValueUserAgentBunq = "bunq-sdk-csharp/0.12.4.0-beta";
+        private const string HeaderValueLanguageEnUs = "en_US";
+        private const string HeaderValueRegionNlNl = "nl_NL";
+        private const string HeaderValueGeolocationZero = "0 0 0 0 NL";
 
         /// <summary>
         /// Delimiter between multiple header values.
@@ -246,12 +246,12 @@ namespace Bunq.Sdk.Http
         {
             return new SortedDictionary<string, string>
             {
-                {HeaderUserAgent, UserAgentBunq},
+                {HeaderUserAgent, HeaderValueUserAgentBunq},
                 {HeaderRequestId, GenerateRandomRequestId()},
-                {HeaderGeolocation, GeolocationZero},
-                {HeaderLanguage, LanguageEnUs},
-                {HeaderRegion, RegionNlNl},
-                {HeaderCacheControl, CacheControlNone}
+                {HeaderGeolocation, HeaderValueGeolocationZero},
+                {HeaderLanguage, HeaderValueLanguageEnUs},
+                {HeaderRegion, HeaderValueRegionNlNl},
+                {HeaderCacheControl, HeaderValueCacheControlNone}
             };
         }
 
