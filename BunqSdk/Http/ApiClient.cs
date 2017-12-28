@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Http
         private const string DeviceServerUrl = "device-server";
         private const string InstallationUrl = "installation";
         private const string SessionServerUrl = "session-server";
-        private static readonly string[] UrisNotRequiringActiveSession = new string[]
+        private static readonly string[] AllUriNotRequiringActiveSession = 
         {
             DeviceServerUrl,
             InstallationUrl,
@@ -143,7 +143,7 @@ namespace Bunq.Sdk.Http
         private BunqResponseRaw SendRequest(HttpRequestMessage requestMessage,
             IDictionary<string, string> customHeaders, string uriRelative)
         {
-            if (!UrisNotRequiringActiveSession.Contains(uriRelative))
+            if (!AllUriNotRequiringActiveSession.Contains(uriRelative))
             {
                 apiContext.EnsureSessionActive();
             }
