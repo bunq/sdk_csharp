@@ -77,7 +77,7 @@ namespace Bunq.Sdk.Http
         /// <summary>
         /// Delimiter between URI params.
         /// </summary>
-        public const char DelimiterUriParams = '&';
+        public const char DelimiterAllUriParameter = '&';
 
         private readonly HttpClient client;
 
@@ -215,7 +215,7 @@ namespace Bunq.Sdk.Http
         {
             return uriParams
                 .Select(entry => entry.Key + DelimiterUriParamKeyValue + entry.Value)
-                .Aggregate((current, next) => current + DelimiterUriParams + next);
+                .Aggregate((current, next) => current + DelimiterAllUriParameter + next);
         }
 
         private static void SetDefaultHeaders(HttpRequestMessage requestMessage)

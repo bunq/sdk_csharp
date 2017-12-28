@@ -107,7 +107,7 @@ namespace Bunq.Sdk.Json
 
             return new Uri(UriBaseDummy + uriToken).Query
                 .TrimStart(ApiClient.DelimiterUriQuery)
-                .Split(ApiClient.DelimiterUriParams)
+                .Split(ApiClient.DelimiterAllUriParameter)
                 .Select(param => param.Split(ApiClient.DelimiterUriParamKeyValue))
                 .ToDictionary(pair => pair[IndexParamKey], pair => pair[IndexParamValue]);
         }
