@@ -9,10 +9,10 @@ namespace Bunq.Sdk.Samples
 {
     public class RequestSample : ISample
     {
+        private const string CounterPartyEmail = "bravo@bunq.com";
+        private const string CounterPartyPointerType = "EMAIL";
         private const string ValueAmountEur = "12.30";
         private const string ValueCurrencyEur = "EUR";
-        private const string CounterPartyPointerType = "EMAIL";
-        private const string CounterPartyEmail = "bravo@bunq.com";
         private const string ValueDescription = "This is a generated request!";
         private const string ValueStatusRevoked = "REVOKED";
         private const int UserItemId = 0; // Put your user ID here
