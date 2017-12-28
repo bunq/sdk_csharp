@@ -18,9 +18,9 @@ namespace Bunq.Sdk.Model.Core
         /// </summary>
         private const string FieldClientPublicKey = "client_public_key";
 
-        public SessionToken SessionToken { get; private set; }
         private readonly Id id;
         private readonly PublicKeyServer publicKeyServer;
+        public SessionToken SessionToken { get; private set; }
 
         public Installation(Id id, SessionToken sessionToken, PublicKeyServer publicKeyServer)
         {

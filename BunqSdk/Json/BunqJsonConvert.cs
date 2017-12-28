@@ -16,7 +16,7 @@ namespace Bunq.Sdk.Json
         /// </summary>
         private static void Initialize()
         {
-            if (isInitialized)  
+            if (isInitialized)
             {
                 return;
             }
