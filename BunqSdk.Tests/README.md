@@ -36,4 +36,6 @@ same directory, fill in your sandbox user data and rename the copy to `config.js
 To run tests via Rider, you can right click on the `BunqSdk.Tests` solution and should be able to run
 the tests cases from the IDE.
 To run the tests via Visual Studio, you can use the Test Explorer window. Use default shortcut Ctrl+R, A
-for test cases execution.
+for test execution.
+To run the tests via Visual Studio Code, you can use this [extension](https://github.com/formulahendry/vscode-dotnet-test-explorer)
+for test execution.
