@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Json
     /// </summary>
     public class BunqContractResolver : DefaultContractResolver
     {
-        protected readonly Dictionary<Type, JsonConverter> converterRegistry = new Dictionary<Type, JsonConverter>();
+        private readonly Dictionary<Type, JsonConverter> converterRegistry = new Dictionary<Type, JsonConverter>();
 
         public BunqContractResolver(IReadOnlyCollection<Type> typesToExclude=null)
         {
