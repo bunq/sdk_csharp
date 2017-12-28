@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// Config values.
         /// </summary>
         private const string PaymentChatAmountEur = "0.01";
-        private const string PaymentChatCurrency = "EUR";
+        private const string PaymentChatCurrencyEur = "EUR";
         private const string PaymentChatDescription = "Payment From C# Test";
         private const string PaymentChatText = "test msg send from C# test";
 
@@ -52,7 +52,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(PaymentChatAmountEur, PaymentChatCurrency)},
+                {Payment.FIELD_AMOUNT, new Amount(PaymentChatAmountEur, PaymentChatCurrencyEur)},
                 {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartyAlias},
                 {Payment.FIELD_DESCRIPTION, PaymentChatDescription},
             };

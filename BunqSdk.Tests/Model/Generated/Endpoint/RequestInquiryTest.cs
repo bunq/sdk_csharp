@@ -17,7 +17,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// Config values.
         /// </summary>
         private const string RequestInquiryAmountEur = "0.01";
-        private const string RequestInquiryCurrency = "EUR";
+        private const string RequestInquiryCurrencyEur = "EUR";
         private const string RequestInquiryDescription = "C# test Payment";
         private const string RequestInquiryStatus = "ACCEPTED";
         private const int IndexFirst = 0;
@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(RequestInquiryAmountEur, RequestInquiryCurrency)},
+                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(RequestInquiryAmountEur, RequestInquiryCurrencyEur)},
                 {RequestInquiry.FIELD_COUNTERPARTY_ALIAS, CounterSelfParty},
                 {RequestInquiry.FIELD_DESCRIPTION, RequestInquiryDescription},
                 {RequestInquiry.FIELD_ALLOW_BUNQME, false}

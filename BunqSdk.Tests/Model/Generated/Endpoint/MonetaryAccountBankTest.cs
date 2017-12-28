@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         private const string MonetaryAccountBankSubStatus = "REDEMPTION_VOLUNTARY";
         private const string MonetaryAccountBankReason = "OTHER";
         private const string MonetaryAccountBankReasonDescription = "Because this is a test";
-        private const string MonetaryAccountBankCurrency = "EUR";
+        private const string MonetaryAccountBankCurrencyEur = "EUR";
         private const string MonetaryAccountBankDescription = "Test C# monetary account";
 
         private static readonly int UserId = Config.GetUserId();
@@ -36,7 +36,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {MonetaryAccountBank.FIELD_CURRENCY, MonetaryAccountBankCurrency},
+                {MonetaryAccountBank.FIELD_CURRENCY, MonetaryAccountBankCurrencyEur},
                 {MonetaryAccountBank.FIELD_DESCRIPTION, MonetaryAccountBankDescription}
             };
             var monetaryAccountToCloseId = MonetaryAccountBank.Create(ApiContext, requestMap, UserId).Value;
