@@ -18,11 +18,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string FilenameQrCodeImage = "tmp/qrcode.png";
+        private const string FileNameQrCodeImage = "tmp/qrcode.png";
         private const int TimeUnitAmountZero = 0;
         private const int TimeUnitAmountOne = 1;
         private const string FormatDate = "yyyy-MM-dd HH:mm:ss";
-
         private static readonly int UserId = Config.GetUserId();
 
         /// <summary>
@@ -42,7 +41,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
             var qrContent = DraftShareInviteBankQrCodeContent.List(ApiContext, UserId, draftId).Value;
 
-            var fileOut = new FileInfo(FilenameQrCodeImage);
+            var fileOut = new FileInfo(FileNameQrCodeImage);
             fileOut.Directory.Create();
             File.WriteAllBytes(fileOut.FullName, qrContent);
         }

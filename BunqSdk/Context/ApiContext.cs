@@ -34,7 +34,7 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Minimum time to session expiry not requiring session reset.
         /// </summary>
-        private const int TimeToSessionExpiryMinimumSeconds = 30;
+        private const int TimeToSessionExpiryAllMinimumSecond = 30;
 
         /// <summary>
         /// Default path to store the serialized context.
@@ -193,7 +193,7 @@ namespace Bunq.Sdk.Context
             var timeToExpiryMinimum = new TimeSpan(
                 TimeUnitCountNone,
                 TimeUnitCountNone,
-                TimeToSessionExpiryMinimumSeconds
+                TimeToSessionExpiryAllMinimumSecond
             );
 
             return timeToExpiry > timeToExpiryMinimum;
@@ -273,9 +273,7 @@ namespace Bunq.Sdk.Context
         /// is created either. </returns>
         public string GetSessionToken()
         {
-            if (SessionContext != null) return SessionContext.Token;
-
-            return InstallationContext == null ? null : InstallationContext.Token;
+            return SessionContext != null ? SessionContext.Token : InstallationContext?.Token;
         }
     }
 }

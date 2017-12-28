@@ -9,7 +9,7 @@ namespace Bunq.Sdk.Tests
         /// <summary>
         /// Delimiter between the IP addresses in the PERMITTED_IPS field.
         /// </summary>
-        private const char DelimiterIps = ',';
+        private const char DelimiterIp = ',';
 
         /// <summary>
         /// Length of an empty array.
@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Tests
         private const string FieldConfigFilePath = "../../../Resources/config.json";
         private const string FieldUserId = "USER_ID";
         private const string FieldApiKey = "API_KEY";
-        private const string FieldPermittedIps = "PERMITTED_IPS";
+        private const string FieldAllPermittedIp = "PERMITTED_IP";
         private const string FieldAttachmentPublicTest = "AttachmentPublicTest";
         private const string FieldAttachmentPathIn = "PATH_IN";
         private const string FieldAttachmentDescription = "DESCRIPTION";
@@ -72,7 +72,7 @@ namespace Bunq.Sdk.Tests
             return GetConfig()[FieldAttachmentPublicTest][FieldAttachmentPathIn].ToString();
         }
 
-        public static string GetAttachmentDescrpition()
+        public static string GetAttachmentDescription()
         {
             return GetConfig()[FieldAttachmentPublicTest][FieldAttachmentDescription].ToString();
         }
@@ -82,13 +82,13 @@ namespace Bunq.Sdk.Tests
             return GetConfig()[FieldAttachmentPublicTest][FieldAttachmentContentType].ToString();
         }
 
-        public static string[] GetPermittedIps()
+        public static string[] GetAllPermittedIp()
         {
-            var permittedIpsString = GetConfig()[FieldPermittedIps].ToString();
+            var allPermittedIp = GetConfig()[FieldAllPermittedIp].ToString();
 
-            return permittedIpsString.Length == LengthNone ?
-                new string[LengthNone] :
-                permittedIpsString.Split(DelimiterIps);
+            return allPermittedIp.Length == LengthNone
+                ? new string[LengthNone] 
+                : allPermittedIp.Split(DelimiterIp);
         }
 
         public static string GetApiKey()

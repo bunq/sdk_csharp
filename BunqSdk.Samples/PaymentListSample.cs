@@ -12,9 +12,9 @@ namespace Bunq.Sdk.Samples
         /// <summary>
         /// Message constants.
         /// </summary>
-        private const string MessageLatestPageIds = "Latest page IDs: ";
-        private const string MessageSecondLatestPageIds = "Second latest page IDs: ";
-        private const string MessageNoPriorPaymentsFound = "No prior payments found!";
+        private const string MessageLatestPageAllPaymentId = "Latest page IDs: ";
+        private const string MessageSecondLatestPageAllPaymentId = "Second latest page IDs: ";
+        private const string MessageNoPriorPaymentFound = "No prior payments found!";
 
         /// <summary>
         /// Size of each page of payment listing.
@@ -34,7 +34,7 @@ namespace Bunq.Sdk.Samples
             {
                 Count = PageSize,
             };
-            Console.WriteLine(MessageLatestPageIds);
+            Console.WriteLine(MessageLatestPageAllPaymentId);
             var paymentResponse = Payment.List(apiContext, UserItemId, MonetaryAccountItemId,
                 paginationCountOnly.UrlParamsCountOnly);
             PrintPayments(paymentResponse.Value);
@@ -42,14 +42,14 @@ namespace Bunq.Sdk.Samples
 
             if (pagination.HasPreviousPage())
             {
-                Console.WriteLine(MessageSecondLatestPageIds);
+                Console.WriteLine(MessageSecondLatestPageAllPaymentId);
                 var previousPaymentResponse = Payment.List(apiContext, UserItemId, MonetaryAccountItemId,
                     pagination.UrlParamsPreviousPage);
                 PrintPayments(previousPaymentResponse.Value);
             }
             else
             {
-                Console.WriteLine(MessageNoPriorPaymentsFound);
+                Console.WriteLine(MessageNoPriorPaymentFound);
             }
         }
 

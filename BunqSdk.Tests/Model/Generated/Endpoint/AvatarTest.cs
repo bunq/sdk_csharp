@@ -18,11 +18,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string PathToAttachment = "../../../Resources";
+        private const string PathAttachment = "../../../Resources";
         private const int IndexFirst = 0;
-
-        private static readonly string ContentType = Config.GetAttachmentContentType();
-        private static readonly string AttachmentDescription = Config.GetAttachmentDescrpition();
+        private static readonly string AttachmentContentType = Config.GetAttachmentContentType();
+        private static readonly string AttachmentDescription = Config.GetAttachmentDescription();
         private static readonly string AttachmentPathIn = Config.GetAttachmentPathIn();
 
         /// <summary>
@@ -37,7 +36,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestCreateAvatarAndRetrieval()
         {
-            var fileContentByte = File.ReadAllBytes(PathToAttachment + AttachmentPathIn);
+            var fileContentByte = File.ReadAllBytes(PathAttachment + AttachmentPathIn);
             var attachmentUuid = UploadAvatarAndGetUuid(fileContentByte);
 
             var avatarMap = new Dictionary<string, object>
@@ -59,7 +58,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             var customHeaders = new Dictionary<string, string>
             {
                 {ApiClient.HeaderAttachmentDescription, AttachmentDescription},
-                {ApiClient.HeaderContentType, ContentType},
+                {ApiClient.HeaderContentType, AttachmentContentType},
             };
 
             return AttachmentPublic.Create(ApiContext, fileContentByte, customHeaders).Value;

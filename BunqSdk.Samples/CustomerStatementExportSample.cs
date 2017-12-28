@@ -9,7 +9,7 @@ namespace Bunq.Sdk.Samples
     public class CustomerStatementExportSample : ISample
     {
         /// <summary>
-        /// Constant to translate weeks to milliseconds.
+        /// Constant value zero.
         /// </summary>
         private const int IndexFirst = 0;
 
@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Samples
         private const int TimeUnitCountNone = 0;
 
         /// <summary>
-        /// Measure of any time unit when none of it is needed.
+        /// Measure of days in week.
         /// </summary>
         private const int DaysInWeek = 7;
 

@@ -9,11 +9,11 @@ namespace Bunq.Sdk.Samples
 {
     public class PaymentBatchSample : ISample
     {
-        private const string PaymentAmount = "0.01";
-        private const string PaymentCurrency = "EUR";
-        private const string CounterpartyPointerType = "EMAIL";
-        private const string CounterpartyEmail = "bravo@bunq.com";
-        private const string PaymentDescription = "This is a generated payment batch!";
+        private const string ValueAmountEur = "0.01";
+        private const string ValueCurrencyEur = "EUR";
+        private const string CounterPartyPointerType = "EMAIL";
+        private const string CounterPartyEmail = "bravo@bunq.com";
+        private const string ValueDescription = "This is a generated payment batch!";
         private const int UserItemId = 0; // Put your user ID here
         private const int MonetaryAccountItemId = 0; // Put your monetary account ID here
 
@@ -28,12 +28,12 @@ namespace Bunq.Sdk.Samples
                     {
                         new Dictionary<string, object>
                         {
-                            {Payment.FIELD_AMOUNT, new Amount(PaymentAmount, PaymentCurrency)},
+                            {Payment.FIELD_AMOUNT, new Amount(ValueAmountEur, ValueCurrencyEur)},
                             {
                                 Payment.FIELD_COUNTERPARTY_ALIAS,
-                                new Pointer(CounterpartyPointerType, CounterpartyEmail)
+                                new Pointer(CounterPartyPointerType, CounterPartyEmail)
                             },
-                            {Payment.FIELD_DESCRIPTION, PaymentDescription}
+                            {Payment.FIELD_DESCRIPTION, ValueDescription}
                         }
                     }
                 }

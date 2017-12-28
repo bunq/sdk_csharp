@@ -17,14 +17,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string PaymentChatAmountEur = "0.01";
-        private const string PaymentChatCurrencyEur = "EUR";
-        private const string PaymentChatDescription = "Payment From C# Test";
-        private const string PaymentChatText = "test msg send from C# test";
-
+        private const string ValueAmountEur = "0.01";
+        private const string ValueCurrencyEur = "EUR";
+        private const string ValueDescription = "Payment from C# test";
+        private const string ValueText = "Test message sent from C# test";
         private static readonly int UserId = Config.GetUserId();
         private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
-        private static readonly Pointer CounterPartyAlias = Config.GetCounterPartyAliasSelf();
+        private static readonly Pointer CounterPartyAliasSelf = Config.GetCounterPartyAliasSelf();
 
         /// <summary>
         /// API context used for the test API calls.
@@ -43,7 +42,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
             var chatMessageMap = new Dictionary<string, object>
             {
-                {ChatMessageText.FIELD_TEXT, PaymentChatText}
+                {ChatMessageText.FIELD_TEXT, ValueText}
             };
             ChatMessageText.Create(ApiContext, chatMessageMap, UserId, chatId);
         }
@@ -52,9 +51,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(PaymentChatAmountEur, PaymentChatCurrencyEur)},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartyAlias},
-                {Payment.FIELD_DESCRIPTION, PaymentChatDescription},
+                {Payment.FIELD_AMOUNT, new Amount(ValueAmountEur, ValueCurrencyEur)},
+                {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartyAliasSelf},
+                {Payment.FIELD_DESCRIPTION, ValueDescription},
             };
 
             return Payment.Create(ApiContext, requestMap, UserId, MonetaryAccountId).Value;

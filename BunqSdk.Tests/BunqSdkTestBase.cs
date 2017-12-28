@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Tests
         /// Configuration items.
         /// </summary>
         private static readonly string ApiKey = Config.GetApiKey();
-        private static readonly string[] FieldPermittedIps = Config.GetPermittedIps();
+        private static readonly string[] FieldAllPermittedIp = Config.GetAllPermittedIp();
 
         /// <summary>
         /// Gets an Api Context, re-creates if needed and returns it.
@@ -50,7 +50,7 @@ namespace Bunq.Sdk.Tests
         private static ApiContext CreateApiContext()
         {
             return ApiContext.Create(ApiEnvironmentType.Sandbox, ApiKey, DeviceDescriptionTest,
-                new List<string>(FieldPermittedIps));
+                new List<string>(FieldAllPermittedIp));
         }
     }
 }

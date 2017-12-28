@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Exception
         /// <summary>
         /// Glue to concatenate the error messages.
         /// </summary>
-        private const string GlueErrorMessages = "\n";
+        private const string SeparatorAllMessage = "\n";
         
         /// <returns>The exception that belongs to this status code.</returns>
         public static ApiException CreateExceptionForResponse(int responseCode, IList<string> messages)
@@ -48,7 +48,7 @@ namespace Bunq.Sdk.Exception
         
         private static string ConcatenateMessages(IEnumerable<string> messages)
         {
-            return string.Join(GlueErrorMessages, messages);
+            return string.Join(SeparatorAllMessage, messages);
         }
     }
 }

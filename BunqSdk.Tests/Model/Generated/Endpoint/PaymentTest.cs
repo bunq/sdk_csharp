@@ -15,14 +15,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string PaymentAmountEur = "0.01";
-        private const string PaymentCurrencyEur = "EUR";
-        private const string PaymentDescription = "C# test Payment";
-
+        private const string ValueAmountEur = "0.01";
+        private const string ValueCurrencyEur = "EUR";
+        private const string ValueDescription = "C# test payment";
         private static readonly int UserId = Config.GetUserId();
         private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
-        private static readonly Pointer CounterPartySelf = Config.GetCounterPartyAliasSelf();
-        private static readonly Pointer CounterPartyOther = Config.GetCounterPartyAliasOther();
+        private static readonly Pointer CounterPartyAliasSelf = Config.GetCounterPartyAliasSelf();
+        private static readonly Pointer CounterPartyAliasOther = Config.GetCounterPartyAliasOther();
 
         /// <summary>
         /// API context to use for the test API calls.
@@ -39,9 +38,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(PaymentAmountEur, PaymentCurrencyEur)},
-                {Payment.FIELD_DESCRIPTION, PaymentDescription},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartyOther}
+                {Payment.FIELD_AMOUNT, new Amount(ValueAmountEur, ValueCurrencyEur)},
+                {Payment.FIELD_DESCRIPTION, ValueDescription},
+                {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartyAliasOther}
             };
 
             Payment.Create(ApiContext, requestMap, UserId, MonetaryAccountId);
@@ -57,9 +56,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(PaymentAmountEur, PaymentCurrencyEur)},
-                {Payment.FIELD_DESCRIPTION, PaymentDescription},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartySelf}
+                {Payment.FIELD_AMOUNT, new Amount(ValueAmountEur, ValueCurrencyEur)},
+                {Payment.FIELD_DESCRIPTION, ValueDescription},
+                {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartyAliasSelf}
             };
 
             Payment.Create(ApiContext, requestMap, UserId, MonetaryAccountId);

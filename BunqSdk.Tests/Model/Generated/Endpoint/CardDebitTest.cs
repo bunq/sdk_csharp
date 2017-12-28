@@ -23,7 +23,6 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         private const int BaseDecimal = 10;
         private const int CardSecondLineLengthMaximum = 20;
         private const int NumberOne = 1;
-
         private static readonly int UserId = Config.GetUserId();
 
         /// <summary>
