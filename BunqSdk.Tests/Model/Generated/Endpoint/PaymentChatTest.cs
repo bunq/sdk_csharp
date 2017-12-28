@@ -17,10 +17,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string Amount = "0.01";
-        private const string Currency = "EUR";
-        private const string Description = "Payment From C# Test";
-        private const string Text = "test msg send from C# test";
+        private const string PaymentChatAmountEur = "0.01";
+        private const string PaymentChatCurrency = "EUR";
+        private const string PaymentChatDescription = "Payment From C# Test";
+        private const string PaymentChatText = "test msg send from C# test";
 
         private static readonly int UserId = Config.GetUserId();
         private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
@@ -43,7 +43,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
             var chatMessageMap = new Dictionary<string, object>
             {
-                {ChatMessageText.FIELD_TEXT, Text}
+                {ChatMessageText.FIELD_TEXT, PaymentChatText}
             };
             ChatMessageText.Create(ApiContext, chatMessageMap, UserId, chatId);
         }
@@ -52,9 +52,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(Amount, Currency)},
+                {Payment.FIELD_AMOUNT, new Amount(PaymentChatAmountEur, PaymentChatCurrency)},
                 {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartyAlias},
-                {Payment.FIELD_DESCRIPTION, Description},
+                {Payment.FIELD_DESCRIPTION, PaymentChatDescription},
             };
 
             return Payment.Create(ApiContext, requestMap, UserId, MonetaryAccountId).Value;

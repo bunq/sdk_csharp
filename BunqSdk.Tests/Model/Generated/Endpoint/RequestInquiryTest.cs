@@ -16,10 +16,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string Amount = "0.01";
-        private const string Currency = "EUR";
-        private const string Description = "C# test Payment";
-        private const string Status = "ACCEPTED";
+        private const string RequestInquiryAmountEur = "0.01";
+        private const string RequestInquiryCurrency = "EUR";
+        private const string RequestInquiryDescription = "C# test Payment";
+        private const string RequestInquiryStatus = "ACCEPTED";
         private const int IndexFirst = 0;
 
         private static readonly int UserId = Config.GetUserId();
@@ -30,7 +30,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext ApiContext = GetApiContext();
 
         /// <summary>
         /// Tests sending a request from monetary account 1 to monetary account 2 and accepting this request.
@@ -40,28 +40,27 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(Amount, Currency)},
+                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(RequestInquiryAmountEur, RequestInquiryCurrency)},
                 {RequestInquiry.FIELD_COUNTERPARTY_ALIAS, CounterSelfParty},
-                {RequestInquiry.FIELD_DESCRIPTION, Description},
+                {RequestInquiry.FIELD_DESCRIPTION, RequestInquiryDescription},
                 {RequestInquiry.FIELD_ALLOW_BUNQME, false}
             };
 
-            RequestInquiry.Create(API_CONTEXT, requestMap, UserId, MonetaryAccountId);
+            RequestInquiry.Create(ApiContext, requestMap, UserId, MonetaryAccountId);
 
-            Assert.Equal(Status, AcceptRequest());
+            Assert.Equal(RequestInquiryStatus, AcceptRequest());
         }
 
         private static string AcceptRequest()
         {
-            var requestResponseId = RequestResponse
-                .List(API_CONTEXT, UserId, SecondMonetaryAccountId).Value[IndexFirst].Id.Value;
+            var requestResponseId = RequestResponse.List(ApiContext, UserId, SecondMonetaryAccountId).Value[IndexFirst].Id.Value;
 
             var requestMap = new Dictionary<string, object>
             {
-                {RequestResponse.FIELD_STATUS, Status}
+                {RequestResponse.FIELD_STATUS, RequestInquiryStatus}
             };
 
-            return RequestResponse.Update(API_CONTEXT, requestMap, UserId, SecondMonetaryAccountId,
+            return RequestResponse.Update(ApiContext, requestMap, UserId, SecondMonetaryAccountId,
                 requestResponseId).Value.Status;
         }
     }

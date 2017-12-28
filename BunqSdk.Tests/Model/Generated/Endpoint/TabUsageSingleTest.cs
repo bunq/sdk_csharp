@@ -16,12 +16,12 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values
         /// </summary>
-        private const string TabDescription = "Pay the tab for Java test please.";
-        private const string StatusOpen = "OPEN";
-        private const string Amount = "42.00";
-        private const string Currency = "EUR";
-        private const string TabItemDescription = "Super expensive java tea";
-        private const string StatusWaiting = "WAITING_FOR_PAYMENT";
+        private const string TabUsageSingleDescription = "Pay the tab for Java test please.";
+        private const string TabUsageSingleStatusOpen = "OPEN";
+        private const string TabAmountEur = "42.00";
+        private const string TabCurrency = "EUR";
+        private const string TabItemShopDescription = "Super expensive java tea";
+        private const string TabUsageSingleStatusWaiting = "WAITING_FOR_PAYMENT";
 
         private static readonly int UserId = Config.GetUserId();
         private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
@@ -46,7 +46,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
             var updateTabMap = new Dictionary<string, object>
             {
-                {TabUsageSingle.FIELD_STATUS, StatusWaiting}
+                {TabUsageSingle.FIELD_STATUS, TabUsageSingleStatusWaiting}
             };
             TabUsageSingle.Update(ApiContext, updateTabMap, UserId, MonetaryAccountId, CashRegisterId, tabUuid);
 
@@ -62,9 +62,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var createTabMap = new Dictionary<string, object>
             {
-                {TabUsageSingle.FIELD_DESCRIPTION, TabDescription},
-                {TabUsageSingle.FIELD_STATUS, StatusOpen},
-                {TabUsageSingle.FIELD_AMOUNT_TOTAL, new Amount(Amount, Currency)}
+                {TabUsageSingle.FIELD_DESCRIPTION, TabUsageSingleDescription},
+                {TabUsageSingle.FIELD_STATUS, TabUsageSingleStatusOpen},
+                {TabUsageSingle.FIELD_AMOUNT_TOTAL, new Amount(TabAmountEur, TabCurrency)}
             };
 
             return TabUsageSingle.Create(ApiContext, createTabMap, UserId, MonetaryAccountId,
@@ -75,8 +75,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var tabItemMap = new Dictionary<string, object>
             {
-                {TabItemShop.FIELD_AMOUNT, new Amount(Amount, Currency)},
-                {TabItemShop.FIELD_DESCRIPTION, TabItemDescription}
+                {TabItemShop.FIELD_AMOUNT, new Amount(TabAmountEur, TabCurrency)},
+                {TabItemShop.FIELD_DESCRIPTION, TabItemShopDescription}
             };
             TabItemShop.Create(ApiContext, tabItemMap, UserId, MonetaryAccountId, CashRegisterId, tabUuid);
         }

@@ -14,12 +14,12 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values
         /// </summary>
-        private const string Status = "CANCELLED";
-        private const string SubStatus = "REDEMPTION_VOLUNTARY";
-        private const string Reason = "OTHER";
-        private const string ReasonDescription = "Because this is a test";
-        private const string Currency = "EUR";
-        private const string Description = "Test C# monetary account";
+        private const string MonetaryAccountBankStatus = "CANCELLED";
+        private const string MonetaryAccountBankSubStatus = "REDEMPTION_VOLUNTARY";
+        private const string MonetaryAccountBankReason = "OTHER";
+        private const string MonetaryAccountBankReasonDescription = "Because this is a test";
+        private const string MonetaryAccountBankCurrency = "EUR";
+        private const string MonetaryAccountBankDescription = "Test C# monetary account";
 
         private static readonly int UserId = Config.GetUserId();
 
@@ -36,8 +36,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {MonetaryAccountBank.FIELD_CURRENCY, Currency},
-                {MonetaryAccountBank.FIELD_DESCRIPTION, Description}
+                {MonetaryAccountBank.FIELD_CURRENCY, MonetaryAccountBankCurrency},
+                {MonetaryAccountBank.FIELD_DESCRIPTION, MonetaryAccountBankDescription}
             };
             var monetaryAccountToCloseId = MonetaryAccountBank.Create(ApiContext, requestMap, UserId).Value;
 
@@ -48,10 +48,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {MonetaryAccountBank.FIELD_STATUS, Status},
-                {MonetaryAccountBank.FIELD_SUB_STATUS, SubStatus},
-                {MonetaryAccountBank.FIELD_REASON, Reason},
-                {MonetaryAccountBank.FIELD_REASON_DESCRIPTION, ReasonDescription}
+                {MonetaryAccountBank.FIELD_STATUS, MonetaryAccountBankStatus},
+                {MonetaryAccountBank.FIELD_SUB_STATUS, MonetaryAccountBankSubStatus},
+                {MonetaryAccountBank.FIELD_REASON, MonetaryAccountBankReason},
+                {MonetaryAccountBank.FIELD_REASON_DESCRIPTION, MonetaryAccountBankReasonDescription}
             };
             MonetaryAccountBank.Update(ApiContext, requestMap, UserId, idToClose);
         }
