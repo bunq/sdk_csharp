@@ -39,3 +39,4 @@ To run the tests via Visual Studio, you can use the Test Explorer window. Use de
 for test execution.
 To run the tests via Visual Studio Code, you can use this [extension](https://github.com/formulahendry/vscode-dotnet-test-explorer)
 for test execution.
+To run tests in the command line, you can use the command `dotnet xunit`. More information about xunit [here](https://xunit.github.io/docs/getting-started-dotnet-core.html).
