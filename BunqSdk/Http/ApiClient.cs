@@ -294,6 +294,18 @@ namespace Bunq.Sdk.Http
         }
 
         private static ApiException CreateApiExceptionRequestUnsuccessful(int responseCode, string responseBody)
+        private static string GetResponsId(HttpHeaders allHeader)
+        {
+            if (allHeader.Contains(HEADER_RESPONSE_ID_UPPER_CASE))
+            {
+                return allHeader.GetValues(HEADER_RESPONSE_ID_UPPER_CASE).First();
+            } else if (allHeader.Contains(HEADER_RESPONSE_ID_LOWER_CASE))
+            {
+                return allHeader.GetValues(HEADER_RESPONSE_ID_LOWER_CASE).First();
+            }
+            
+            throw new BunqException(ERROR_COULD_NOT_DETERMINE_RESPONSE_ID_HEADER);
+        }
         {
             try
             {
