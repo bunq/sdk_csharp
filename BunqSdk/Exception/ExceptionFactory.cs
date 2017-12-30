@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Exception
         /// <summary>
         /// String format constants.
         /// </summary>
-        private static string FORMAT_ERROR_MESSAGE = "Response id to help bunq debug: {0}. \n Error message: {1.}";
+        private static string FORMAT_ERROR_MESSAGE = "Response id to help bunq debug: {0}. \n Error message: {1}";
         
         /// <returns>The exception that belongs to this status code.</returns>
         public static ApiException CreateExceptionForResponse(
