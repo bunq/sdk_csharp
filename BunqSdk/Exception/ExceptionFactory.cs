@@ -18,37 +18,49 @@ namespace Bunq.Sdk.Exception
         /// <summary>
         /// Glue to concatenate the error messages.
         /// </summary>
-        private const string GLUE_ERROR_MESSAGES = "\n";
+        private const string SEPARATOR_ERROR_MESSAGES = "\n";
+        
+        /// <summary>
+        /// String format constants.
+        /// </summary>
+        private static string FORMAT_ERROR_MESSAGE = "Response id to help bunq debug: {0}. \n Error message: {1.}";
         
         /// <returns>The exception that belongs to this status code.</returns>
-        public static ApiException CreateExceptionForResponse(int responseCode, IList<string> messages)
+        public static ApiException CreateExceptionForResponse(
+            int responseCode,
+            IList<string> messages,
+            string responseId
+            )
         {
-            var errorMessage = ConcatenateMessages(messages);
+            var errorMessage = ConcatenateAllMessage(messages, responseId);
 
             switch (responseCode)
             {
                 case HTTP_RESPONSE_CODE_BAD_REQUEST:
-                    return new BadRequestException(responseCode, errorMessage);
+                    return new BadRequestException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_UNAUTHORIZED:
-                    return new UnauthorizedException(responseCode, errorMessage);
+                    return new UnauthorizedException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_FORBIDDEN:
-                    return new ForbiddenException(responseCode, errorMessage);
+                    return new ForbiddenException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_NOT_FOUND:
-                    return new NotFoundException(responseCode, errorMessage);
+                    return new NotFoundException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_METHOD_NOT_ALLOWED:
-                    return new MethodNotAllowedException(responseCode, errorMessage);
+                    return new MethodNotAllowedException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_TOO_MANY_REQUESTS:
-                    return new TooManyRequestsException(responseCode, errorMessage);
+                    return new TooManyRequestsException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_INTERNAL_SERVER_ERROR:
-                    return new PleaseContactBunqException(responseCode, errorMessage);
+                    return new PleaseContactBunqException(responseCode, errorMessage, responseId);
                 default:
-                     return new UnknownApiErrorException(responseCode, errorMessage);
+                     return new UnknownApiErrorException(responseCode, errorMessage, responseId);
             }
         }
         
-        private static string ConcatenateMessages(IEnumerable<string> messages)
+        private static string ConcatenateAllMessage(IEnumerable<string> messages, string responseId)
         {
-            return string.Join(GLUE_ERROR_MESSAGES, messages);
+            return string.Format(FORMAT_ERROR_MESSAGE,
+                responseId,
+                string.Join(SEPARATOR_ERROR_MESSAGES, messages)
+                );
         }
     }
 }
