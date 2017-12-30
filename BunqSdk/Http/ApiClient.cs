@@ -16,6 +16,12 @@ namespace Bunq.Sdk.Http
 {
     public class ApiClient
     {
+        
+        /// <summary>
+        /// Error constatns.
+        /// </summary>
+        private static string ERROR_COULD_NOT_DETERMINE_RESPONSE_ID_HEADER =
+        "The response header \"X-Bunq-Client-Response-Id\" or \"x-bunq-client-response-id\" could not be found.";
 
         /// <summary>
         /// Endpoints not requiring active session for the request to succeed.
@@ -43,6 +49,8 @@ namespace Bunq.Sdk.Http
         private const string HEADER_GEOLOCATION = "X-Bunq-Geolocation";
         private const string HEADER_SIGNATURE = "X-Bunq-Client-Signature";
         private const string HEADER_AUTHENTICATION = "X-Bunq-Client-Authentication";
+        private static string HEADER_RESPONSE_ID_LOWER_CASE = "x-bunq-client-response-id";
+        private static string HEADER_RESPONSE_ID_UPPER_CASE = "X-Bunq-Client-Response-Id";
 
         /// <summary>
         /// Field constants.
