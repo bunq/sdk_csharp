@@ -16,7 +16,7 @@ namespace Bunq.Sdk.Tests.Http
         /// <summary>
         /// Invalid user id to trigger BadRequestException
         /// </summary>
-        private static int INVALID_USER_PERSON_ID = 0;
+        private const int INVALID_USER_PERSON_ID = 0;
 
         [Fact]
         public void TestBadRequestWithResponseId()
