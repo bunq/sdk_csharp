@@ -290,10 +290,13 @@ namespace Bunq.Sdk.Http
             var responseCode = (int) responseMessage.StatusCode;
             var responseBody = responseMessage.Content.ReadAsStringAsync().Result;
 
-            throw CreateApiExceptionRequestUnsuccessful(responseCode, responseBody);
+            throw CreateApiExceptionRequestUnsuccessful(
+                responseCode,
+                responseBody,
+                GetResponsId(responseMessage.Headers)
+                );
         }
 
-        private static ApiException CreateApiExceptionRequestUnsuccessful(int responseCode, string responseBody)
         private static string GetResponsId(HttpHeaders allHeader)
         {
             if (allHeader.Contains(HEADER_RESPONSE_ID_UPPER_CASE))
@@ -306,14 +309,28 @@ namespace Bunq.Sdk.Http
             
             throw new BunqException(ERROR_COULD_NOT_DETERMINE_RESPONSE_ID_HEADER);
         }
+
+        private static ApiException CreateApiExceptionRequestUnsuccessful(
+            int responseCode,
+            string responseBody,
+            string responseId
+            )
         {
             try
             {
-                return ExceptionFactory.CreateExceptionForResponse(responseCode, FetchErrorDescriptions(responseBody));
+                return ExceptionFactory.CreateExceptionForResponse(
+                    responseCode,
+                    FetchErrorDescriptions(responseBody),
+                    responseId
+                    );
             }
             catch (JsonException)
             {
-                return ExceptionFactory.CreateExceptionForResponse(responseCode, new List<string> {responseBody});
+                return ExceptionFactory.CreateExceptionForResponse(
+                    responseCode,
+                    new List<string> {responseBody},
+                    responseId
+                    );
             }
         }
 
