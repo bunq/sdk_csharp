@@ -72,7 +72,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Status { get; private set; }
     
         /// <summary>
-        /// The share type: STANDARD.
+        /// The share type, either STANDARD or MUTUAL.
         /// </summary>
         [JsonProperty(PropertyName = "share_type")]
         public string ShareType { get; private set; }
