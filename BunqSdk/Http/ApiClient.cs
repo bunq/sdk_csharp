@@ -293,11 +293,11 @@ namespace Bunq.Sdk.Http
             throw CreateApiExceptionRequestUnsuccessful(
                 responseCode,
                 responseBody,
-                GetResponsId(responseMessage.Headers)
+                GetResponseId(responseMessage.Headers)
                 );
         }
 
-        private static string GetResponsId(HttpHeaders allHeader)
+        private static string GetResponseId(HttpHeaders allHeader)
         {
             if (allHeader.Contains(HEADER_RESPONSE_ID_UPPER_CASE))
             {
