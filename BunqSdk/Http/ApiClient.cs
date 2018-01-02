@@ -21,7 +21,7 @@ namespace Bunq.Sdk.Http
         /// Error constatns.
         /// </summary>
         private static string ERROR_COULD_NOT_DETERMINE_RESPONSE_ID_HEADER =
-        "The response header \"X-Bunq-Client-Response-Id\" or \"x-bunq-client-response-id\" could not be found.";
+            "The response header \"X-Bunq-Client-Response-Id\" or \"x-bunq-client-response-id\" could not be found.";
 
         /// <summary>
         /// Endpoints not requiring active session for the request to succeed.
@@ -314,7 +314,7 @@ namespace Bunq.Sdk.Http
             int responseCode,
             string responseBody,
             string responseId
-            )
+        )
         {
             try
             {
@@ -322,7 +322,7 @@ namespace Bunq.Sdk.Http
                     responseCode,
                     FetchErrorDescriptions(responseBody),
                     responseId
-                    );
+                );
             }
             catch (JsonException)
             {
@@ -330,7 +330,7 @@ namespace Bunq.Sdk.Http
                     responseCode,
                     new List<string> {responseBody},
                     responseId
-                    );
+                );
             }
         }
 
