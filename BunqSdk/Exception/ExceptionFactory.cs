@@ -25,9 +25,9 @@ namespace Bunq.Sdk.Exception
             int responseCode,
             IList<string> messages,
             string responseId
-            )
+        )
         {
-            var errorMessage = ConcatenateAllMessage(messages, responseId);
+            var errorMessage = FormatExceptionMessage(messages, responseId);
 
             switch (responseCode)
             {
@@ -50,7 +50,10 @@ namespace Bunq.Sdk.Exception
             }
         }
         
-        private static string ConcatenateAllMessage(IEnumerable<string> messages, string responseId)
+        /// <summary>
+        /// Formats the exception message accordingly.
+        /// </summary>
+        private static string FormatExceptionMessage(IEnumerable<string> messages, string responseId)
         {
             return string.Format(FORMAT_ERROR_MESSAGE,
                 responseId,
