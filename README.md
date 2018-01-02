@@ -22,7 +22,11 @@ This SDK is in **beta**. We cannot guarantee constant availability or stability.
 Thanks to your feedback we will make improvements on it.
 
 ## Installation
-TBA
+ The `sdk_csharp` is hosted on [nuget](https://www.nuget.org/packages/Bunq.Sdk).
+ 
+```Install-Package Bunq.Sdk```
+
+```dotnet add package Bunq.Sdk```
 
 ## Usage
 
