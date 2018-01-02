@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Exception
 {
+    /// <summary>
+    /// This class makes sure that the correct exception is thrown for the given response code.
+    /// </summary>
     public class ExceptionFactory
     {
         /// <summary>
