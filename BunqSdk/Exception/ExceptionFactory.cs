@@ -16,11 +16,6 @@ namespace Bunq.Sdk.Exception
         private const int HTTP_RESPONSE_CODE_INTERNAL_SERVER_ERROR = 500;
         
         /// <summary>
-        /// Glue to concatenate the error messages.
-        /// </summary>
-        private const string SEPARATOR_ERROR_MESSAGES = "\n";
-        
-        /// <summary>
         /// String format constants.
         /// </summary>
         private static string FORMAT_ERROR_MESSAGE = "Response id to help bunq debug: {0}. \n Error message: {1}";
@@ -59,8 +54,8 @@ namespace Bunq.Sdk.Exception
         {
             return string.Format(FORMAT_ERROR_MESSAGE,
                 responseId,
-                string.Join(SEPARATOR_ERROR_MESSAGES, messages)
-                );
+                string.Join(Environment.NewLine, messages)
+            );
         }
     }
 }
