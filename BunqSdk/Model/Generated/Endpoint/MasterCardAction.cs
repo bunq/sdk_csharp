@@ -27,6 +27,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE = "MasterCardAction";
     
         /// <summary>
+        /// The id of the MastercardAction.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; private set; }
+    
+        /// <summary>
         /// The id of the monetary account this action links to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
@@ -195,6 +201,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
             if (this.MonetaryAccountId != null)
             {
                 return false;
