@@ -21,19 +21,11 @@ namespace Bunq.Sdk.Tests.Http
         [Fact]
         public void TestBadRequestWithResponseId()
         {
-            ApiException caughtException = null;
-
-            try
-            {
-                UserPerson.Get(API_CONTEXT, INVALID_USER_PERSON_ID);
-            }
-            catch (ApiException e)
-            {
-                caughtException = e;
-            }
+            var caughtException = Assert.Throws<BadRequestException>(
+                () => UserPerson.Get(API_CONTEXT, INVALID_USER_PERSON_ID)
+            );
             
-            Assert.NotNull(caughtException);
-            Assert.NotNull(caughtException.ResponsId);
+            Assert.NotNull(caughtException.ResponseId);
         }
     }
 }
