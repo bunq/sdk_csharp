@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Bunq.Sdk.Json
 {
+    /// <inheritdoc />
     /// <summary>
     /// Custom (de)serialization of MonetaryAccountReference required to provide compatibility between the two types
     /// used to refer to Monetary Accounts: Pointers in requests and Monetary Account Labels in responses.

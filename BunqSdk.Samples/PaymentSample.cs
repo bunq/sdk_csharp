@@ -9,30 +9,30 @@ namespace Bunq.Sdk.Samples
 {
     public class PaymentSample : ISample
     {
-        private const int USER_ITEM_ID = 0; // Put your user ID here
-        private const int MONETARY_ACCOUNT_ITEM_ID = 0; // Put your monetary account ID here
-        private const string PAYMENT_AMOUNT = "0.01";
-        private const string PAYMENT_CURRENCY = "EUR";
-        private const string COUNTERPARTY_POINTER_TYPE = "EMAIL";
-        private const string COUNTERPARTY_EMAIL = "bravo@bunq.com";
-        private const string PAYMENT_DESCRIPTION = "This is a generated payment!";
+        private const int UserItemId = 0; // Put your user ID here
+        private const int MonetaryAccountItemId = 0; // Put your monetary account ID here
+        private const string ValueAmountEur = "0.01";
+        private const string ValueCurrencyEur = "EUR";
+        private const string CounterPartyPointerType = "EMAIL";
+        private const string CounterPartyEmail = "bravo@bunq.com";
+        private const string ValueDescription = "This is a generated payment!";
 
         public void Run()
         {
             var apiContext = ApiContext.Restore();
             var paymentMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT, PAYMENT_CURRENCY)},
+                {Payment.FIELD_AMOUNT, new Amount(ValueAmountEur, ValueCurrencyEur)},
                 {
                     Payment.FIELD_COUNTERPARTY_ALIAS,
-                    new Pointer(COUNTERPARTY_POINTER_TYPE, COUNTERPARTY_EMAIL)
+                    new Pointer(CounterPartyPointerType, CounterPartyEmail)
                 },
-                {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION}
+                {Payment.FIELD_DESCRIPTION, ValueDescription}
             };
 
-            var paymentId = Payment.Create(apiContext, paymentMap, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
+            var paymentId = Payment.Create(apiContext, paymentMap, UserItemId, MonetaryAccountItemId).Value;
 
-            Console.WriteLine(Payment.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, paymentId));
+            Console.WriteLine(Payment.Get(apiContext, UserItemId, MonetaryAccountItemId, paymentId));
             
             // Save the API context to account for all the changes that might have occurred to it
             // during the sample execution

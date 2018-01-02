@@ -17,16 +17,19 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string PATH_ATTACHMENT = "../../../Resources";
-
-        private static readonly string CONTENT_TYPE = Config.GetAttachmentContentType();
-        private static readonly string ATTACHMENT_DESCRIPTION = Config.GetAttachmentDescrpition();
-        private static readonly string ATTACHMENT_PATH_IN = Config.GetAttachmentPathIn();
-
+        private static readonly string ContentType = Config.GetAttachmentContentType();
+        private static readonly string AttachmentDescription = Config.GetAttachmentDescription();
+        private static readonly string AttachmentPathIn = Config.GetAttachmentPathIn();
+        
+        /// <summary>
+        /// File path constatns.
+        /// </summary>
+        private const string PathAttachment = "../../../Resources";
+        
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext ApiContext = GetApiContext();
 
         /// <summary>
         /// Tests if the file we upload is the file we are getting back once successfully uploaded does.
@@ -35,15 +38,15 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestAttachmentUploadAndRetrieval()
         {
-            var fileContentBytes = File.ReadAllBytes(PATH_ATTACHMENT + ATTACHMENT_PATH_IN);
+            var fileContentBytes = File.ReadAllBytes(PathAttachment + AttachmentPathIn);
             var customHeaders = new Dictionary<string, string>
             {
-                {ApiClient.HEADER_CONTENT_TYPE, CONTENT_TYPE},
-                {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, ATTACHMENT_DESCRIPTION}
+                {ApiClient.HeaderContentType, ContentType},
+                {ApiClient.HeaderAttachmentDescription, AttachmentDescription}
             };
 
-            var attachmentUuid = AttachmentPublic.Create(API_CONTEXT, fileContentBytes, customHeaders).Value;
-            var responseBytes = AttachmentPublicContent.List(API_CONTEXT, attachmentUuid).Value;
+            var attachmentUuid = AttachmentPublic.Create(ApiContext, fileContentBytes, customHeaders).Value;
+            var responseBytes = AttachmentPublicContent.List(ApiContext, attachmentUuid).Value;
 
             Assert.Equal(fileContentBytes, responseBytes);
         }

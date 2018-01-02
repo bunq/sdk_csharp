@@ -50,14 +50,14 @@ using Bunq.Sdk.Exception;
 
 public class BadRequest
 {
-    private const string API_KEY = "Some invalid API key"
-    private const string DESCRIPTION = "This will throw BadRequestException."
+    private const string Key = "Some invalid API key"
+    private const string Description = "This will throw BadRequestException."
     
     public void Run()
     {
         try
         {
-            ApiContext.Create(ApiEnvironmentType.SANDBOX, API_KEY, DEVICE_DESCRIPTION);
+            ApiContext.Create(ApiEnvironmentType.SandBox, Key, Description);
         }
         catch(BadRequestException error)
         {

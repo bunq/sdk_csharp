@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 {
@@ -16,17 +14,17 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Name of the context configuration file.
         /// </summary>
-        private const string FILENAME_CONTEXT_CONF = "../../../bunq-test.conf";
+        private const string FilenameContextConf = "../../../bunq-test.conf";
         
         /// <summary>
-        /// Config values.
+        /// A dummy id for the session, can be an arbitrary number
         /// </summary>
-        private const int SESSION_ID_DUMMY = 0;
+        private const int SessionIdDummy = 0;
 
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext ApiContext = GetApiContext();
 
         /// <summary>
         /// Tests the deleteion of the current session.
@@ -36,9 +34,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestSessionDeletion()
         {
-            Session.Delete(API_CONTEXT, SESSION_ID_DUMMY);
+            Session.Delete(ApiContext, SessionIdDummy);
 
-            File.Delete(FILENAME_CONTEXT_CONF);
+            File.Delete(FilenameContextConf);
         }
     }
 }

@@ -11,16 +11,16 @@ namespace Bunq.Sdk.Model.Core
         /// <summary>
         /// Endpoint name.
         /// </summary>
-        private const string ENDPOINT_URL_POST = "installation";
+        private const string EndpointUrlPost = "installation";
 
         /// <summary>
         /// Field constants.
         /// </summary>
-        private const string FIELD_CLIENT_PUBLIC_KEY = "client_public_key";
+        private const string FieldClientPublicKey = "client_public_key";
 
-        public SessionToken SessionToken { get; private set; }
         private readonly Id id;
         private readonly PublicKeyServer publicKeyServer;
+        public SessionToken SessionToken { get; private set; }
 
         public Installation(Id id, SessionToken sessionToken, PublicKeyServer publicKeyServer)
         {
@@ -43,7 +43,7 @@ namespace Bunq.Sdk.Model.Core
         {
             var requestBytes = GenerateRequestBodyBytes(publicKeyClientString);
             var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Post(ENDPOINT_URL_POST, requestBytes, new Dictionary<string, string>());
+            var responseRaw = apiClient.Post(EndpointUrlPost, requestBytes, new Dictionary<string, string>());
 
             return FromJsonArrayNested<Installation>(responseRaw);
         }
@@ -51,7 +51,7 @@ namespace Bunq.Sdk.Model.Core
         private static byte[] GenerateRequestBodyBytes(string publicKeyClientString)
         {
             var installationRequestBody =
-                new Dictionary<string, object> {{FIELD_CLIENT_PUBLIC_KEY, publicKeyClientString}};
+                new Dictionary<string, object> {{FieldClientPublicKey, publicKeyClientString}};
 
             return Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(installationRequestBody));
         }

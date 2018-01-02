@@ -14,19 +14,22 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values
         /// </summary>
-        private const string STATUS = "CANCELLED";
-        private const string SUBS_STATUS = "REDEMPTION_VOLUNTARY";
-        private const string REASON = "OTHER";
-        private const string REASON_DESCRIPTION = "Because this is a test";
-        private const string CURRENCY = "EUR";
-        private const string MONETARY_ACCOUNT_DESCRIPTION = "Test C# monetary account";
+        private static readonly int UserId = Config.GetUserId();
 
-        private static readonly int USER_ID = Config.GetUserId();
-
+        /// <summary>
+        /// MonetaryAccount field value constatns.
+        /// </summary>
+        private const string ValueStatus = "CANCELLED";
+        private const string ValueSubStatus = "REDEMPTION_VOLUNTARY";
+        private const string ValueReason = "OTHER";
+        private const string ValueReasonDescription = "Because this is a test";
+        private const string ValueCurrencyEur = "EUR";
+        private const string ValueDescription = "Test C# monetary account";
+        
         /// <summary>
         /// API context used for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext ApiContext = GetApiContext();
 
         /// <summary>
         /// Tests the creation of a new monetary account. This accoult will then be removed afterwards.
@@ -36,10 +39,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {MonetaryAccountBank.FIELD_CURRENCY, CURRENCY},
-                {MonetaryAccountBank.FIELD_DESCRIPTION, MONETARY_ACCOUNT_DESCRIPTION}
+                {MonetaryAccountBank.FIELD_CURRENCY, ValueCurrencyEur},
+                {MonetaryAccountBank.FIELD_DESCRIPTION, ValueDescription}
             };
-            var monetaryAccountToCloseId = MonetaryAccountBank.Create(API_CONTEXT, requestMap, USER_ID).Value;
+            var monetaryAccountToCloseId = MonetaryAccountBank.Create(ApiContext, requestMap, UserId).Value;
 
             DeleteMonetaryAccount(monetaryAccountToCloseId);
         }
@@ -48,12 +51,12 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {MonetaryAccountBank.FIELD_STATUS, STATUS},
-                {MonetaryAccountBank.FIELD_SUB_STATUS, SUBS_STATUS},
-                {MonetaryAccountBank.FIELD_REASON, REASON},
-                {MonetaryAccountBank.FIELD_REASON_DESCRIPTION, REASON_DESCRIPTION}
+                {MonetaryAccountBank.FIELD_STATUS, ValueStatus},
+                {MonetaryAccountBank.FIELD_SUB_STATUS, ValueSubStatus},
+                {MonetaryAccountBank.FIELD_REASON, ValueReason},
+                {MonetaryAccountBank.FIELD_REASON_DESCRIPTION, ValueReasonDescription}
             };
-            MonetaryAccountBank.Update(API_CONTEXT, requestMap, USER_ID, idToClose);
+            MonetaryAccountBank.Update(ApiContext, requestMap, UserId, idToClose);
         }
     }
 }

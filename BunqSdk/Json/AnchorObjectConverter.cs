@@ -9,7 +9,7 @@ namespace Bunq.Sdk.Json
 {
     public class AnchorObjectConverter: JsonConverter
     {
-        private const string FORMAT_DATE = "yyyy-MM-dd HH:mm:ss.ffffff";
+        private const string FormatDate = "yyyy-MM-dd HH:mm:ss.ffffff";
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Json
                 new JsonSerializerSettings
                 {
                     ContractResolver = new BunqContractResolver(new List<Type> {typeof(IAnchorObjectInterface)}),
-                    DateFormatString = FORMAT_DATE,
+                    DateFormatString = FormatDate,
                     FloatParseHandling = FloatParseHandling.Decimal,
                     Formatting = Formatting.Indented,
                     NullValueHandling = NullValueHandling.Ignore,

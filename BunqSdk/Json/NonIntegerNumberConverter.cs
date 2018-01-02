@@ -4,13 +4,17 @@ using Newtonsoft.Json.Linq;
 
 namespace Bunq.Sdk.Json
 {
+    /// <inheritdoc />
     /// <summary>
     /// Custom (de)serialization of InstallationContext required due to presence in it of the encryption
     /// keys which should be formatted when serialized in a special way.
     /// </summary>
     public class NonIntegerNumberConverter : JsonConverter
     {
-        private const string FORMAT_DECIMAL = "0.##";
+        /// <summary>
+        /// Format constatns.
+        /// </summary>
+        private const string FormatDecimal = "0.##";
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -20,7 +24,7 @@ namespace Bunq.Sdk.Json
             }
             else
             {
-                writer.WriteValue(((decimal) value).ToString(FORMAT_DECIMAL));
+                writer.WriteValue(((decimal) value).ToString(FormatDecimal));
             }
         }
 

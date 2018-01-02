@@ -17,19 +17,22 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string AMOUNT_EUR = "0.01";
-        private const string CURRENCY = "EUR";
-        private const string PAYMENT_DESCRIPTION = "Payment From C# Test";
-        private const string MESSAGE_TEXT = "test msg send from C# test";
+        private static readonly int UserId = Config.GetUserId();
+        private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
+        private static readonly Pointer CounterPartyAliasSelf = Config.GetCounterPartyAliasSelf();
 
-        private static readonly int USER_ID = Config.GetUserId();
-        private static readonly int MONETARTY_ACCOUNT_ID = Config.GetMonetarytAccountId();
-        private static readonly Pointer COUNTER_PARTY_ALIAS = Config.GetCounterPartyAliasSelf();
-
+        /// <summary>
+        /// Payment and PaymentChat field value constatns.
+        /// </summary>
+        private const string ValueAmountEur = "0.01";
+        private const string ValueCurrencyEur = "EUR";
+        private const string ValueDescription = "Payment from C# test";
+        private const string ValueText = "Test message sent from C# test";
+        
         /// <summary>
         /// API context used for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext ApiContext = GetApiContext();
 
         /// <summary>
         /// Tests sending a chat message in a newly created payment.
@@ -38,26 +41,26 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         public void TestSendPaymentChat()
         {
             var paymentChatMap = new Dictionary<string, object>();
-            var chatId = PaymentChat.Create(API_CONTEXT, paymentChatMap, USER_ID, MONETARTY_ACCOUNT_ID,
+            var chatId = PaymentChat.Create(ApiContext, paymentChatMap, UserId, MonetaryAccountId,
                 CreatePaymentAndGetId()).Value;
 
             var chatMessageMap = new Dictionary<string, object>
             {
-                {ChatMessageText.FIELD_TEXT, MESSAGE_TEXT}
+                {ChatMessageText.FIELD_TEXT, ValueText}
             };
-            ChatMessageText.Create(API_CONTEXT, chatMessageMap, USER_ID, chatId);
+            ChatMessageText.Create(ApiContext, chatMessageMap, UserId, chatId);
         }
 
         private static int CreatePaymentAndGetId()
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(AMOUNT_EUR, CURRENCY)},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_ALIAS},
-                {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
+                {Payment.FIELD_AMOUNT, new Amount(ValueAmountEur, ValueCurrencyEur)},
+                {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartyAliasSelf},
+                {Payment.FIELD_DESCRIPTION, ValueDescription},
             };
 
-            return Payment.Create(API_CONTEXT, requestMap, USER_ID, MONETARTY_ACCOUNT_ID).Value;
+            return Payment.Create(ApiContext, requestMap, UserId, MonetaryAccountId).Value;
         }
     }
 }

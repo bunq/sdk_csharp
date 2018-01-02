@@ -15,19 +15,22 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string PAYMENT_AMOUNT_EUR = "0.01";
-        private const string PAYMENT_CURRENCY = "EUR";
-        private const string PAYMENT_DESCRIPTION = "C# test Payment";
+        private static readonly int UserId = Config.GetUserId();
+        private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
+        private static readonly Pointer CounterPartyAliasSelf = Config.GetCounterPartyAliasSelf();
+        private static readonly Pointer CounterPartyAliasOther = Config.GetCounterPartyAliasOther();
 
-        private static readonly int USER_ID = Config.GetUserId();
-        private static readonly int MONETARY_ACCOUNT_ID = Config.GetMonetarytAccountId();
-        private static readonly Pointer COUNTER_PARTY_SELF = Config.GetCounterPartyAliasSelf();
-        private static readonly Pointer COUNTER_PARTY_OTHER = Config.GetCounterPartyAliasOther();
-
+        /// <summary>
+        /// Payment field value constants.
+        /// </summary>
+        private const string ValueAmountEur = "0.01";
+        private const string ValueCurrencyEur = "EUR";
+        private const string ValueDescription = "C# test payment";
+        
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext ApiContext = GetApiContext();
 
         /// <summary>
         /// Tests making a payment to another sanndbox user.
@@ -39,12 +42,12 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY)},
-                {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_OTHER}
+                {Payment.FIELD_AMOUNT, new Amount(ValueAmountEur, ValueCurrencyEur)},
+                {Payment.FIELD_DESCRIPTION, ValueDescription},
+                {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartyAliasOther}
             };
 
-            Payment.Create(API_CONTEXT, requestMap, USER_ID, MONETARY_ACCOUNT_ID);
+            Payment.Create(ApiContext, requestMap, UserId, MonetaryAccountId);
         }
 
         /// <summary>
@@ -57,12 +60,12 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY)},
-                {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_SELF}
+                {Payment.FIELD_AMOUNT, new Amount(ValueAmountEur, ValueCurrencyEur)},
+                {Payment.FIELD_DESCRIPTION, ValueDescription},
+                {Payment.FIELD_COUNTERPARTY_ALIAS, CounterPartyAliasSelf}
             };
 
-            Payment.Create(API_CONTEXT, requestMap, USER_ID, MONETARY_ACCOUNT_ID);
+            Payment.Create(ApiContext, requestMap, UserId, MonetaryAccountId);
         }
     }
 }

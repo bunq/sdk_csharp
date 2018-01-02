@@ -20,64 +20,64 @@ namespace Bunq.Sdk.Http
         /// <summary>
         /// Endpoints not requiring active session for the request to succeed.
         /// </summary>
-        private const string DEVICE_SERVER_URL = "device-server";
-        private const string INSTALLATION_URL = "installation";
-        private const string SESSION_SERVER_URL = "session-server";
-        private static readonly string[] URIS_NOT_REQUIRING_ACTIVE_SESSION = new string[]
+        private const string DeviceServerUrl = "device-server";
+        private const string InstallationUrl = "installation";
+        private const string SessionServerUrl = "session-server";
+        private static readonly string[] AllUriNotRequiringActiveSession = 
         {
-            DEVICE_SERVER_URL,
-            INSTALLATION_URL,
-            SESSION_SERVER_URL
+            DeviceServerUrl,
+            InstallationUrl,
+            SessionServerUrl
         };
 
         /// <summary>
         /// Header constants.
         /// </summary>
-        public const string HEADER_ATTACHMENT_DESCRIPTION = "X-Bunq-Attachment-Description";
-        public const string HEADER_CONTENT_TYPE = "Content-Type";
-        public const string HEADER_CACHE_CONTROL = "Cache-Control";
-        public const string HEADER_USER_AGENT = "User-Agent";
-        private const string HEADER_LANGUAGE = "X-Bunq-Language";
-        private const string HEADER_REGION = "X-Bunq-Region";
-        private const string HEADER_REQUEST_ID = "X-Bunq-Client-Request-Id";
-        private const string HEADER_GEOLOCATION = "X-Bunq-Geolocation";
-        private const string HEADER_SIGNATURE = "X-Bunq-Client-Signature";
-        private const string HEADER_AUTHENTICATION = "X-Bunq-Client-Authentication";
+        public const string HeaderAttachmentDescription = "X-Bunq-Attachment-Description";
+        public const string HeaderContentType = "Content-Type";
+        public const string HeaderCacheControl = "Cache-Control";
+        public const string HeaderUserAgent = "User-Agent";
+        private const string HeaderLanguage = "X-Bunq-Language";
+        private const string HeaderRegion = "X-Bunq-Region";
+        private const string HeaderRequestId = "X-Bunq-Client-Request-Id";
+        private const string HeaderGeolocation = "X-Bunq-Geolocation";
+        private const string HeaderSignature = "X-Bunq-Client-Signature";
+        private const string HeaderAuthentication = "X-Bunq-Client-Authentication";
 
         /// <summary>
         /// Field constants.
         /// </summary>
-        private const string FIELD_ERROR = "Error";
-        private const string FIELD_ERROR_DESCRIPTION = "error_description";
+        private const string FieldError = "Error";
+        private const string FieldErrorDescription = "error_description";
 
         /// <summary>
         /// Values for the default headers
         /// </summary>
-        private const string CACHE_CONTROL_NONE = "no-cache";
-        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/0.12.4.0-beta";
-        private const string LANGUAGE_EN_US = "en_US";
-        private const string REGION_NL_NL = "nl_NL";
-        private const string GEOLOCATION_ZERO = "0 0 0 0 NL";
+        private const string HeaderValueCacheControlNone = "no-cache";
+        private const string HeaderValueUserAgentBunq = "bunq-sdk-csharp/0.12.4.0-beta";
+        private const string HeaderValueLanguageEnUs = "en_US";
+        private const string HeaderValueRegionNlNl = "nl_NL";
+        private const string HeaderValueGeolocationZero = "0 0 0 0 NL";
 
         /// <summary>
         /// Delimiter between multiple header values.
         /// </summary>
-        private const string DELIMITER_HEADER_VALUE = ",";
+        private const string DelimiterHeaderValue = ",";
 
         /// <summary>
         /// Delimiter between path and params in URI.
         /// </summary>
-        public const char DELIMITER_URI_QUERY = '?';
+        public const char DelimiterUriQuery = '?';
 
         /// <summary>
         /// Delimiter between key and value of a URI param.
         /// </summary>
-        public const char DELIMITER_URI_PARAM_KEY_VALUE = '=';
+        public const char DelimiterUriParamKeyValue = '=';
 
         /// <summary>
         /// Delimiter between URI params.
         /// </summary>
-        public const char DELIMITER_URI_PARAMS = '&';
+        public const char DelimiterAllUriParameter = '&';
 
         private readonly HttpClient client;
 
@@ -143,7 +143,7 @@ namespace Bunq.Sdk.Http
         private BunqResponseRaw SendRequest(HttpRequestMessage requestMessage,
             IDictionary<string, string> customHeaders, string uriRelative)
         {
-            if (!URIS_NOT_REQUIRING_ACTIVE_SESSION.Contains(uriRelative))
+            if (!AllUriNotRequiringActiveSession.Contains(uriRelative))
             {
                 apiContext.EnsureSessionActive();
             }
@@ -169,7 +169,7 @@ namespace Bunq.Sdk.Http
         private static IDictionary<string, string> GetHeaders(HttpResponseMessage responseMessage)
         {
             return responseMessage.Headers
-                .Select(x => new KeyValuePair<string, string>(x.Key, string.Join(DELIMITER_HEADER_VALUE, x.Value)))
+                .Select(x => new KeyValuePair<string, string>(x.Key, string.Join(DelimiterHeaderValue, x.Value)))
                 .ToImmutableDictionary();
         }
 
@@ -205,7 +205,7 @@ namespace Bunq.Sdk.Http
             if (uriParams.Count <= 0) return uri;
 
             var uriWithParamsBuilder = new StringBuilder(uri);
-            uriWithParamsBuilder.Append(DELIMITER_URI_QUERY);
+            uriWithParamsBuilder.Append(DelimiterUriQuery);
             uriWithParamsBuilder.Append(GenerateUriParamsString(uriParams));
 
             return uriWithParamsBuilder.ToString();
@@ -214,8 +214,8 @@ namespace Bunq.Sdk.Http
         private static string GenerateUriParamsString(IDictionary<string, string> uriParams)
         {
             return uriParams
-                .Select(entry => entry.Key + DELIMITER_URI_PARAM_KEY_VALUE + entry.Value)
-                .Aggregate((current, next) => current + DELIMITER_URI_PARAMS + next);
+                .Select(entry => entry.Key + DelimiterUriParamKeyValue + entry.Value)
+                .Aggregate((current, next) => current + DelimiterAllUriParameter + next);
         }
 
         private static void SetDefaultHeaders(HttpRequestMessage requestMessage)
@@ -246,12 +246,12 @@ namespace Bunq.Sdk.Http
         {
             return new SortedDictionary<string, string>
             {
-                {HEADER_USER_AGENT, USER_AGENT_BUNQ},
-                {HEADER_REQUEST_ID, GenerateRandomRequestId()},
-                {HEADER_GEOLOCATION, GEOLOCATION_ZERO},
-                {HEADER_LANGUAGE, LANGUAGE_EN_US},
-                {HEADER_REGION, REGION_NL_NL},
-                {HEADER_CACHE_CONTROL, CACHE_CONTROL_NONE}
+                {HeaderUserAgent, HeaderValueUserAgentBunq},
+                {HeaderRequestId, GenerateRandomRequestId()},
+                {HeaderGeolocation, HeaderValueGeolocationZero},
+                {HeaderLanguage, HeaderValueLanguageEnUs},
+                {HeaderRegion, HeaderValueRegionNlNl},
+                {HeaderCacheControl, HeaderValueCacheControlNone}
             };
         }
 
@@ -266,8 +266,8 @@ namespace Bunq.Sdk.Http
 
             if (sessionToken == null) return;
 
-            requestMessage.Headers.Add(HEADER_AUTHENTICATION, sessionToken);
-            requestMessage.Headers.Add(HEADER_SIGNATURE, GenerateSignature(requestMessage));
+            requestMessage.Headers.Add(HeaderAuthentication, sessionToken);
+            requestMessage.Headers.Add(HeaderSignature, GenerateSignature(requestMessage));
         }
 
         private string GenerateSignature(HttpRequestMessage requestMessage)
@@ -301,7 +301,7 @@ namespace Bunq.Sdk.Http
         {
             var responseBodyObject = BunqJsonConvert.DeserializeObject<JObject>(responseBody);
 
-            return responseBodyObject[FIELD_ERROR] == null
+            return responseBodyObject[FieldError] == null
                 ? new List<string> {responseBody}
                 : FetchErrorDescriptions(responseBodyObject);
         }
@@ -309,9 +309,9 @@ namespace Bunq.Sdk.Http
         private static IList<string> FetchErrorDescriptions(JObject responseBodyObject)
         {
             return responseBodyObject
-                .GetValue(FIELD_ERROR).ToObject<JArray>()
+                .GetValue(FieldError).ToObject<JArray>()
                 .Select(exceptionBody => exceptionBody.ToObject<JObject>())
-                .Select(exceptionBodyJson => exceptionBodyJson.GetValue(FIELD_ERROR_DESCRIPTION).ToString())
+                .Select(exceptionBodyJson => exceptionBodyJson.GetValue(FieldErrorDescription).ToString())
                 .ToList();
         }
 

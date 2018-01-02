@@ -16,21 +16,28 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string AMOUNT_EUR = "0.01";
-        private const string FIELD_CURRENCY = "EUR";
-        private const string FIELD_PAYMENT_DESCRIPTION = "C# test Payment";
-        private const string FIELD_STATUS = "ACCEPTED";
-        private const int INDEX_FIRST = 0;
+        private static readonly Pointer CounterPartyAliasSelf = Config.GetCounterPartyAliasSelf();
+        private static readonly int UserId = Config.GetUserId();
+        private static readonly int MonetaryAccountId = Config.GetMonetarytAccountId();
+        private static readonly int SecondMonetaryAccountId = Config.GetSecondMonetaryAccountId();
 
-        private static readonly int USER_ID = Config.GetUserId();
-        private static readonly int MONETARY_ACCOUNT_ID = Config.GetMonetarytAccountId();
-        private static readonly int SECOND_MONETARY_ACCOUNT_ID = Config.GetSecondMonetaryAccountId();
-        private static readonly Pointer COUNTER_PARTY_SELF = Config.GetCounterPartyAliasSelf();
-
+        /// <summary>
+        /// RequestInquiry field value constatns.
+        /// </summary>
+        private const string ValueAmountEur = "0.01";
+        private const string ValueCurrencyEur = "EUR";
+        private const string ValueDescription = "C# test payment";
+        private const string ValueStatus = "ACCEPTED";
+        
+        /// <summary>
+        /// The index of the first item in an array.
+        /// </summary>
+        private const int IndexFirst = 0;
+        
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext ApiContext = GetApiContext();
 
         /// <summary>
         /// Tests sending a request from monetary account 1 to monetary account 2 and accepting this request.
@@ -40,28 +47,27 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var requestMap = new Dictionary<string, object>
             {
-                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(AMOUNT_EUR, FIELD_CURRENCY)},
-                {RequestInquiry.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_SELF},
-                {RequestInquiry.FIELD_DESCRIPTION, FIELD_PAYMENT_DESCRIPTION},
+                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(ValueAmountEur, ValueCurrencyEur)},
+                {RequestInquiry.FIELD_COUNTERPARTY_ALIAS, CounterPartyAliasSelf},
+                {RequestInquiry.FIELD_DESCRIPTION, ValueDescription},
                 {RequestInquiry.FIELD_ALLOW_BUNQME, false}
             };
 
-            RequestInquiry.Create(API_CONTEXT, requestMap, USER_ID, MONETARY_ACCOUNT_ID);
+            RequestInquiry.Create(ApiContext, requestMap, UserId, MonetaryAccountId);
 
-            Assert.Equal(FIELD_STATUS, AcceptRequest());
+            Assert.Equal(ValueStatus, AcceptRequest());
         }
 
         private static string AcceptRequest()
         {
-            var requestResponseId = RequestResponse
-                .List(API_CONTEXT, USER_ID, SECOND_MONETARY_ACCOUNT_ID).Value[INDEX_FIRST].Id.Value;
+            var requestResponseId = RequestResponse.List(ApiContext, UserId, SecondMonetaryAccountId).Value[IndexFirst].Id.Value;
 
             var requestMap = new Dictionary<string, object>
             {
-                {RequestResponse.FIELD_STATUS, FIELD_STATUS}
+                {RequestResponse.FIELD_STATUS, ValueStatus}
             };
 
-            return RequestResponse.Update(API_CONTEXT, requestMap, USER_ID, SECOND_MONETARY_ACCOUNT_ID,
+            return RequestResponse.Update(ApiContext, requestMap, UserId, SecondMonetaryAccountId,
                 requestResponseId).Value.Status;
         }
     }

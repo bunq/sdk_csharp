@@ -9,10 +9,10 @@ namespace Bunq.Sdk.Samples
 {
     public class AttachmentPublicSample : ISample
     {
-        private const string CONTENT_TYPE_IMAGE_JPEG = "image/jpeg";
-        private const string DESCRIPTION_TEST_JPG_ATTACHMENT = "A test JPG attachment.";
-        private const string PATH_ATTACHMENT_IN = "Assets/Attachment.jpg";
-        private const string PATH_ATTACHMENT_OUT = "Tmp/AttachmentOut.jpg";
+        private const string ContentTypeImageJpeg = "image/jpeg";
+        private const string DescriptionTestJpgAttachment = "A test JPG attachment.";
+        private const string PathAttachmentIn = "Assets/Attachment.jpg";
+        private const string PathAttachmentOut = "Tmp/AttachmentOut.jpg";
 
         public void Run()
         {
@@ -20,13 +20,13 @@ namespace Bunq.Sdk.Samples
             var customHeaders =
                 new Dictionary<string, string>
                 {
-                    {ApiClient.HEADER_CONTENT_TYPE, CONTENT_TYPE_IMAGE_JPEG},
-                    {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, DESCRIPTION_TEST_JPG_ATTACHMENT}
+                    {ApiClient.HeaderContentType, ContentTypeImageJpeg},
+                    {ApiClient.HeaderAttachmentDescription, DescriptionTestJpgAttachment}
                 };
-            var requestBytes = File.ReadAllBytes(PATH_ATTACHMENT_IN);
+            var requestBytes = File.ReadAllBytes(PathAttachmentIn);
             var uuid = AttachmentPublic.Create(apiContext, requestBytes, customHeaders).Value;
             var responseBytes = AttachmentPublicContent.List(apiContext, uuid).Value;
-            var fileOut = new FileInfo(PATH_ATTACHMENT_OUT);
+            var fileOut = new FileInfo(PathAttachmentOut);
             fileOut.Directory.Create();
             File.WriteAllBytes(fileOut.FullName, responseBytes);
         }

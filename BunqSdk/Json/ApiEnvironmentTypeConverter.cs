@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Bunq.Sdk.Json
 {
+    /// <inheritdoc />
     /// <summary>
     /// Custom (de)serialization of ApiEnvironmentType required due to the hakish nature of C# "Enum with string
     /// property" pattern.

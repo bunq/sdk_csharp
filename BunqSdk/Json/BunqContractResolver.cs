@@ -12,12 +12,13 @@ using Newtonsoft.Json.Serialization;
 
 namespace Bunq.Sdk.Json
 {
+    /// <inheritdoc />
     /// <summary>
     /// Custom mapping of types to JSON converters.
     /// </summary>
     public class BunqContractResolver : DefaultContractResolver
     {
-        protected readonly Dictionary<Type, JsonConverter> converterRegistry = new Dictionary<Type, JsonConverter>();
+        private readonly Dictionary<Type, JsonConverter> converterRegistry = new Dictionary<Type, JsonConverter>();
 
         public BunqContractResolver(IReadOnlyCollection<Type> typesToExclude=null)
         {
