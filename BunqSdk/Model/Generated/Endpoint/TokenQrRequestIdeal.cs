@@ -35,6 +35,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE = "TokenQrRequestIdeal";
     
         /// <summary>
+        /// The id of the RequestResponse.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; private set; }
+    
+        /// <summary>
         /// The timestamp of when the RequestResponse was responded to.
         /// </summary>
         [JsonProperty(PropertyName = "time_responded")]
@@ -175,6 +181,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
             if (this.TimeResponded != null)
             {
                 return false;
