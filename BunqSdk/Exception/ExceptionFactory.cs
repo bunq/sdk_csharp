@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Exception
 {
+    /// <summary>
+    /// This class makes sure that the correct exception is thrown for the given response code.
+    /// </summary>
     public class ExceptionFactory
     {
         /// <summary>
@@ -16,39 +20,49 @@ namespace Bunq.Sdk.Exception
         private const int HTTP_RESPONSE_CODE_INTERNAL_SERVER_ERROR = 500;
         
         /// <summary>
-        /// Glue to concatenate the error messages.
+        /// String format constants.
         /// </summary>
-        private const string GLUE_ERROR_MESSAGES = "\n";
+        private const string FORMAT_ERROR_MESSAGE = "Response id to help bunq debug: {0}. \n Error message: {1}";
         
         /// <returns>The exception that belongs to this status code.</returns>
-        public static ApiException CreateExceptionForResponse(int responseCode, IList<string> messages)
+        public static ApiException CreateExceptionForResponse(
+            int responseCode,
+            IEnumerable<string> messages,
+            string responseId
+        )
         {
-            var errorMessage = ConcatenateMessages(messages);
+            var errorMessage = FormatExceptionMessage(messages, responseId);
 
             switch (responseCode)
             {
                 case HTTP_RESPONSE_CODE_BAD_REQUEST:
-                    return new BadRequestException(responseCode, errorMessage);
+                    return new BadRequestException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_UNAUTHORIZED:
-                    return new UnauthorizedException(responseCode, errorMessage);
+                    return new UnauthorizedException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_FORBIDDEN:
-                    return new ForbiddenException(responseCode, errorMessage);
+                    return new ForbiddenException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_NOT_FOUND:
-                    return new NotFoundException(responseCode, errorMessage);
+                    return new NotFoundException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_METHOD_NOT_ALLOWED:
-                    return new MethodNotAllowedException(responseCode, errorMessage);
+                    return new MethodNotAllowedException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_TOO_MANY_REQUESTS:
-                    return new TooManyRequestsException(responseCode, errorMessage);
+                    return new TooManyRequestsException(responseCode, errorMessage, responseId);
                 case HTTP_RESPONSE_CODE_INTERNAL_SERVER_ERROR:
-                    return new PleaseContactBunqException(responseCode, errorMessage);
+                    return new PleaseContactBunqException(responseCode, errorMessage, responseId);
                 default:
-                     return new UnknownApiErrorException(responseCode, errorMessage);
+                     return new UnknownApiErrorException(responseCode, errorMessage, responseId);
             }
         }
         
-        private static string ConcatenateMessages(IEnumerable<string> messages)
+        /// <summary>
+        /// Formats the exception message accordingly.
+        /// </summary>
+        private static string FormatExceptionMessage(IEnumerable<string> messages, string responseId)
         {
-            return string.Join(GLUE_ERROR_MESSAGES, messages);
+            return string.Format(FORMAT_ERROR_MESSAGE,
+                responseId,
+                string.Join(Environment.NewLine, messages)
+            );
         }
     }
 }

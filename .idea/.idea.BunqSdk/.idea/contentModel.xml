@@ -270,6 +270,7 @@
         <e p="Http" t="Include">
           <e p="PaginationScenarioTest.cs" t="Include" />
           <e p="PaginationTest.cs" t="Include" />
+          <e p="ResponseIdOnBadRequestTest.cs" t="Include" />
         </e>
         <e p="Model" t="Include">
           <e p="Generated" t="Include">
