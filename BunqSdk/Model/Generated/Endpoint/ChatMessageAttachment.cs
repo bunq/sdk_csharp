@@ -28,7 +28,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Id";
     
         /// <summary>
         /// The id of the newly created chat message.

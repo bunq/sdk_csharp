@@ -28,7 +28,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "BillingContractSubscription";
+        private const string OBJECT_TYPE_GET = "BillingContractSubscription";
     
         /// <summary>
         /// The id of the billing contract.
@@ -75,7 +75,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<BillingContractSubscription> Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -83,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
     
-            return FromJson<BillingContractSubscription>(responseRaw, OBJECT_TYPE);
+            return ProcessForId(responseRaw);
         }
     
         /// <summary>
@@ -97,7 +97,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<BillingContractSubscription>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<BillingContractSubscription>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

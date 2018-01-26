@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CashRegister";
+        private const string OBJECT_TYPE_GET = "CashRegister";
     
         /// <summary>
         /// The id of the created CashRegister.
@@ -122,7 +122,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CashRegister>(responseRaw, OBJECT_TYPE);
+            return FromJson<CashRegister>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -151,7 +151,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<CashRegister>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CashRegister>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

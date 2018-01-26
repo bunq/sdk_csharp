@@ -32,7 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "DeviceServer";
+        private const string OBJECT_TYPE_GET = "DeviceServer";
     
         /// <summary>
         /// The id of the DeviceServer as created on the server.
@@ -99,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, deviceServerId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<DeviceServer>(responseRaw, OBJECT_TYPE);
+            return FromJson<DeviceServer>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -113,7 +113,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, urlParams, customHeaders);
     
-            return FromJsonList<DeviceServer>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<DeviceServer>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

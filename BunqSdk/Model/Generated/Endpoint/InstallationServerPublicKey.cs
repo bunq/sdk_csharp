@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ServerPublicKey";
+        private const string OBJECT_TYPE_GET = "ServerPublicKey";
     
         /// <summary>
         /// The server's public key for this Installation.
@@ -42,7 +42,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, installationId), urlParams, customHeaders);
     
-            return FromJsonList<InstallationServerPublicKey>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<InstallationServerPublicKey>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

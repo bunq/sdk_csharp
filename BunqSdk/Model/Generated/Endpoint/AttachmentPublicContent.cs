@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "AttachmentPublicContent";
+        private const string OBJECT_TYPE_GET = "AttachmentPublicContent";
     
         /// <summary>
         /// Get the raw content of a specific attachment.

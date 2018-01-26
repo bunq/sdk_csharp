@@ -32,7 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TokenQrCashRegister";
+        private const string OBJECT_TYPE_GET = "TokenQrCashRegister";
     
         /// <summary>
         /// The id of the created QR code. Use this id to get the RAW content of the QR code with:
@@ -110,7 +110,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, cashRegisterQrCodeId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CashRegisterQrCode>(responseRaw, OBJECT_TYPE);
+            return FromJson<CashRegisterQrCode>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -124,7 +124,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId), urlParams, customHeaders);
     
-            return FromJsonList<CashRegisterQrCode>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CashRegisterQrCode>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

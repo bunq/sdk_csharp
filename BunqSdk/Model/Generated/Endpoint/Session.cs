@@ -22,10 +22,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Session";
     
         /// <summary>
-        /// Deletes the current session. No response is returned for this request.
+        /// Deletes the current session.
         /// </summary>
         public static BunqResponse<object> Delete(ApiContext apiContext, int sessionId, IDictionary<string, string> customHeaders = null)
         {

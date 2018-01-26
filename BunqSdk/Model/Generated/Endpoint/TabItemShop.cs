@@ -41,7 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TabItem";
+        private const string OBJECT_TYPE_GET = "TabItem";
     
         /// <summary>
         /// The id of the created TabItem.
@@ -114,7 +114,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
     
         /// <summary>
-        /// Delete a specific TabItem from a Tab. This request returns an empty response.
+        /// Delete a specific TabItem from a Tab.
         /// </summary>
         public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId, string tabUuid, int tabItemShopId, IDictionary<string, string> customHeaders = null)
         {
@@ -137,7 +137,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId, tabUuid), urlParams, customHeaders);
     
-            return FromJsonList<TabItemShop>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<TabItemShop>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -150,7 +150,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUuid, tabItemShopId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<TabItemShop>(responseRaw, OBJECT_TYPE);
+            return FromJson<TabItemShop>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

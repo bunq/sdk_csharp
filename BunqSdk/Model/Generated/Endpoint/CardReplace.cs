@@ -32,7 +32,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CardReplace";
     
         /// <summary>
         /// The id of the new card.

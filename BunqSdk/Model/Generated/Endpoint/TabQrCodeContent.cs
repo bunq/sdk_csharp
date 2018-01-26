@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TabQrCodeContent";
+        private const string OBJECT_TYPE_GET = "TabQrCodeContent";
     
         /// <summary>
         /// Returns the raw content of the QR code that links to this Tab. The raw content is the binary representation

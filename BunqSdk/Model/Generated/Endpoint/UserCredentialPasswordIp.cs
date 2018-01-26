@@ -26,7 +26,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CredentialPasswordIp";
+        private const string OBJECT_TYPE_GET = "CredentialPasswordIp";
     
         /// <summary>
         /// The id of the credential.
@@ -79,7 +79,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, userCredentialPasswordIpId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<UserCredentialPasswordIp>(responseRaw, OBJECT_TYPE);
+            return FromJson<UserCredentialPasswordIp>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -92,7 +92,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<UserCredentialPasswordIp>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<UserCredentialPasswordIp>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

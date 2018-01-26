@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CertificatePinned";
+        private const string OBJECT_TYPE_GET = "CertificatePinned";
     
         /// <summary>
         /// The certificate chain in .PEM format. Certificates are glued with newline characters.
@@ -83,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<CertificatePinned>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CertificatePinned>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -96,7 +96,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, certificatePinnedId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CertificatePinned>(responseRaw, OBJECT_TYPE);
+            return FromJson<CertificatePinned>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

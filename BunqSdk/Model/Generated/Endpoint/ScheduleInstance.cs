@@ -30,7 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ScheduledInstance";
+        private const string OBJECT_TYPE_GET = "ScheduledInstance";
     
         /// <summary>
         /// The state of the scheduleInstance. (FINISHED_SUCCESSFULLY, RETRY, FAILED_USER_ERROR)
@@ -77,12 +77,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, scheduleId, scheduleInstanceId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<ScheduleInstance>(responseRaw, OBJECT_TYPE);
+            return FromJson<ScheduleInstance>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<ScheduleInstance> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int scheduleId, int scheduleInstanceId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int scheduleId, int scheduleInstanceId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -90,7 +90,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, scheduleId, scheduleInstanceId), requestBytes, customHeaders);
     
-            return FromJson<ScheduleInstance>(responseRaw, OBJECT_TYPE);
+            return ProcessForId(responseRaw);
         }
     
         /// <summary>
@@ -103,7 +103,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, scheduleId), urlParams, customHeaders);
     
-            return FromJsonList<ScheduleInstance>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<ScheduleInstance>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

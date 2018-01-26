@@ -33,7 +33,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ScheduledPayment";
+        private const string OBJECT_TYPE_GET = "ScheduledPayment";
     
         /// <summary>
         /// The payment details.
@@ -81,7 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, schedulePaymentId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<SchedulePayment>(responseRaw, OBJECT_TYPE);
+            return FromJson<SchedulePayment>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -94,12 +94,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<SchedulePayment>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<SchedulePayment>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<SchedulePayment> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int schedulePaymentId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int schedulePaymentId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -107,7 +107,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, schedulePaymentId), requestBytes, customHeaders);
     
-            return FromJson<SchedulePayment>(responseRaw, OBJECT_TYPE);
+            return ProcessForId(responseRaw);
         }
     
     

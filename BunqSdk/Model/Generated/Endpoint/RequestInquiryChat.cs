@@ -32,7 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "RequestInquiryChat";
+        private const string OBJECT_TYPE_GET = "RequestInquiryChat";
     
         /// <summary>
         /// The id of the newly created chat conversation.
@@ -75,7 +75,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Update the last read message in the chat of a specific request inquiry.
         /// </summary>
-        public static BunqResponse<RequestInquiryChat> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int requestInquiryId, int requestInquiryChatId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int requestInquiryId, int requestInquiryChatId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -83,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, requestInquiryId, requestInquiryChatId), requestBytes, customHeaders);
     
-            return FromJson<RequestInquiryChat>(responseRaw, OBJECT_TYPE);
+            return ProcessForId(responseRaw);
         }
     
         /// <summary>
@@ -97,7 +97,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, requestInquiryId), urlParams, customHeaders);
     
-            return FromJsonList<RequestInquiryChat>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<RequestInquiryChat>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

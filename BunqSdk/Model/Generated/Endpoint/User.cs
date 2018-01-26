@@ -30,7 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "User";
+        private const string OBJECT_TYPE_GET = "User";
     
         /// <summary>
         /// </summary>

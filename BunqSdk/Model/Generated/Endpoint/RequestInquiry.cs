@@ -46,7 +46,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "RequestInquiry";
+        private const string OBJECT_TYPE_PUT = "RequestInquiry";
+        private const string OBJECT_TYPE_GET = "RequestInquiry";
     
         /// <summary>
         /// The id of the created RequestInquiry.
@@ -223,7 +224,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, requestInquiryId), requestBytes, customHeaders);
     
-            return FromJson<RequestInquiry>(responseRaw, OBJECT_TYPE);
+            return FromJson<RequestInquiry>(responseRaw, OBJECT_TYPE_PUT);
         }
     
         /// <summary>
@@ -237,7 +238,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<RequestInquiry>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<RequestInquiry>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -250,7 +251,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, requestInquiryId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<RequestInquiry>(responseRaw, OBJECT_TYPE);
+            return FromJson<RequestInquiry>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

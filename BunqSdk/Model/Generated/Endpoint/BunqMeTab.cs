@@ -32,7 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "BunqMeTab";
+        private const string OBJECT_TYPE_GET = "BunqMeTab";
     
         /// <summary>
         /// The id of the created bunq.me.
@@ -103,7 +103,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<BunqMeTab> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int bunqMeTabId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int bunqMeTabId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -111,7 +111,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, bunqMeTabId), requestBytes, customHeaders);
     
-            return FromJson<BunqMeTab>(responseRaw, OBJECT_TYPE);
+            return ProcessForId(responseRaw);
         }
     
         /// <summary>
@@ -124,7 +124,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<BunqMeTab>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<BunqMeTab>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -136,7 +136,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, bunqMeTabId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<BunqMeTab>(responseRaw, OBJECT_TYPE);
+            return FromJson<BunqMeTab>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

@@ -32,7 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TokenQrRequestIdeal";
+        private const string OBJECT_TYPE_POST = "RequestResponse";
     
         /// <summary>
         /// The id of the RequestResponse.
@@ -173,7 +173,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
     
-            return FromJson<TokenQrRequestIdeal>(responseRaw, OBJECT_TYPE);
+            return FromJson<TokenQrRequestIdeal>(responseRaw, OBJECT_TYPE_POST);
         }
     
     

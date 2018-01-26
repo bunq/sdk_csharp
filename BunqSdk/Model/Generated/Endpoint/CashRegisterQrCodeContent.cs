@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CashRegisterQrCodeContent";
+        private const string OBJECT_TYPE_GET = "CashRegisterQrCodeContent";
     
         /// <summary>
         /// Show the raw contents of a QR code

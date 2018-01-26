@@ -39,7 +39,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ShareInviteBankInquiry";
+        private const string OBJECT_TYPE_GET = "ShareInviteBankInquiry";
     
         /// <summary>
         /// The label of the monetary account that's being shared.
@@ -140,14 +140,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, shareInviteBankInquiryId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE);
+            return FromJson<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
         /// Update the details of a share. This includes updating status (revoking or cancelling it), granted permission
         /// and validity period of this share.
         /// </summary>
-        public static BunqResponse<ShareInviteBankInquiry> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int shareInviteBankInquiryId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int shareInviteBankInquiryId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -155,7 +155,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, shareInviteBankInquiryId), requestBytes, customHeaders);
     
-            return FromJson<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE);
+            return ProcessForId(responseRaw);
         }
     
         /// <summary>
@@ -170,7 +170,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

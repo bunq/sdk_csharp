@@ -25,7 +25,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "AttachmentTab";
+        private const string OBJECT_TYPE_GET = "AttachmentTab";
     
         /// <summary>
         /// The id of the attachment.
@@ -77,7 +77,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, attachmentTabId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<AttachmentTab>(responseRaw, OBJECT_TYPE);
+            return FromJson<AttachmentTab>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

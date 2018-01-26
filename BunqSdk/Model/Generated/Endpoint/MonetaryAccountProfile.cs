@@ -19,7 +19,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "MonetaryAccountProfile";
     
         /// <summary>
         /// The profile settings for triggering the fill of a monetary account.

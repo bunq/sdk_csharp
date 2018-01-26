@@ -39,7 +39,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CardDebit";
+        private const string OBJECT_TYPE_GET = "CardDebit";
     
         /// <summary>
         /// The id of the card.
@@ -176,7 +176,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// account connected to the card. When the card has been received, it can be also activated through this
         /// endpoint.
         /// </summary>
-        public static BunqResponse<Card> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int cardId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int cardId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -185,7 +185,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             requestBytes = SecurityUtils.Encrypt(apiContext, requestBytes, customHeaders);
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, cardId), requestBytes, customHeaders);
     
-            return FromJson<Card>(responseRaw, OBJECT_TYPE);
+            return ProcessForId(responseRaw);
         }
     
         /// <summary>
@@ -198,7 +198,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, cardId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<Card>(responseRaw, OBJECT_TYPE);
+            return FromJson<Card>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -212,7 +212,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<Card>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<Card>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

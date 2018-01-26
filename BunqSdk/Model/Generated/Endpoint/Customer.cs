@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Customer";
+        private const string OBJECT_TYPE_GET = "Customer";
     
         /// <summary>
         /// The id of the customer.
@@ -65,7 +65,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<Customer>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<Customer>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -77,7 +77,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, customerId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<Customer>(responseRaw, OBJECT_TYPE);
+            return FromJson<Customer>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>

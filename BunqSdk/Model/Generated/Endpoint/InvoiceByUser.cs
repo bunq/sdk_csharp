@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Invoice";
+        private const string OBJECT_TYPE_GET = "Invoice";
     
         /// <summary>
         /// The id of the invoice object.
@@ -132,7 +132,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<InvoiceByUser>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<InvoiceByUser>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -144,7 +144,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, invoiceByUserId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<InvoiceByUser>(responseRaw, OBJECT_TYPE);
+            return FromJson<InvoiceByUser>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

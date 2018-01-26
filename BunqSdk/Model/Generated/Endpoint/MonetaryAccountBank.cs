@@ -47,7 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "MonetaryAccountBank";
+        private const string OBJECT_TYPE_GET = "MonetaryAccountBank";
     
         /// <summary>
         /// The id of the MonetaryAccountBank.
@@ -198,7 +198,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountBankId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<MonetaryAccountBank>(responseRaw, OBJECT_TYPE);
+            return FromJson<MonetaryAccountBank>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -226,7 +226,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<MonetaryAccountBank>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<MonetaryAccountBank>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

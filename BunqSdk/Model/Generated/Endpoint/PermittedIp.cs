@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "PermittedIp";
+        private const string OBJECT_TYPE_GET = "PermittedIp";
     
         /// <summary>
         /// The IP address.
@@ -55,7 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, credentialPasswordIpId, permittedIpId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<PermittedIp>(responseRaw, OBJECT_TYPE);
+            return FromJson<PermittedIp>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -81,7 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, credentialPasswordIpId), urlParams, customHeaders);
     
-            return FromJsonList<PermittedIp>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<PermittedIp>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>

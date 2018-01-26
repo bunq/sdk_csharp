@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ChatConversationPayment";
+        private const string OBJECT_TYPE_GET = "ChatConversationPayment";
     
         /// <summary>
         /// The id of the chat conversation.
@@ -72,7 +72,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Update the last read message in the chat of a specific payment.
         /// </summary>
-        public static BunqResponse<PaymentChat> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int paymentId, int paymentChatId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int monetaryAccountId, int paymentId, int paymentChatId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -80,7 +80,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, monetaryAccountId, paymentId, paymentChatId), requestBytes, customHeaders);
     
-            return FromJson<PaymentChat>(responseRaw, OBJECT_TYPE);
+            return ProcessForId(responseRaw);
         }
     
         /// <summary>
@@ -94,7 +94,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, paymentId), urlParams, customHeaders);
     
-            return FromJsonList<PaymentChat>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<PaymentChat>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

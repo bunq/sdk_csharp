@@ -25,7 +25,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CardGeneratedCvc2";
+        private const string OBJECT_TYPE_GET = "CardGeneratedCvc2";
     
         /// <summary>
         /// The id of the cvc code.
@@ -66,7 +66,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Generate a new CVC2 code for a card.
         /// </summary>
-        public static BunqResponse<CardGeneratedCvc2> Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int cardId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int cardId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -75,7 +75,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             requestBytes = SecurityUtils.Encrypt(apiContext, requestBytes, customHeaders);
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId, cardId), requestBytes, customHeaders);
     
-            return FromJson<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE);
+            return ProcessForId(responseRaw);
         }
     
         /// <summary>
@@ -88,7 +88,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, cardId, cardGeneratedCvc2Id), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE);
+            return FromJson<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -102,7 +102,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, cardId), urlParams, customHeaders);
     
-            return FromJsonList<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

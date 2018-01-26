@@ -33,7 +33,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "RequestInquiryBatch";
+        private const string OBJECT_TYPE_GET = "RequestInquiryBatch";
     
         /// <summary>
         /// The list of requests that were made.
@@ -85,7 +85,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, requestInquiryBatchId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<RequestInquiryBatch>(responseRaw, OBJECT_TYPE);
+            return FromJson<RequestInquiryBatch>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -99,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<RequestInquiryBatch>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<RequestInquiryBatch>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

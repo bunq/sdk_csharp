@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CardPinChange";
+        private const string OBJECT_TYPE_GET = "CardPinChange";
     
         /// <summary>
         /// The id of the pin change.
@@ -72,7 +72,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, cardId), urlParams, customHeaders);
     
-            return FromJsonList<CardPinChange>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CardPinChange>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -84,7 +84,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, cardId, cardPinChangeId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CardPinChange>(responseRaw, OBJECT_TYPE);
+            return FromJson<CardPinChange>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

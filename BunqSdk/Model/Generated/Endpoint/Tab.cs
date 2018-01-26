@@ -33,7 +33,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Tab";
+        private const string OBJECT_TYPE_GET = "Tab";
     
         /// <summary>
         /// </summary>

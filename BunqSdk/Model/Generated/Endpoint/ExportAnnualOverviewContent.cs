@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ExportAnnualOverviewContent";
+        private const string OBJECT_TYPE_GET = "ExportAnnualOverviewContent";
     
         /// <summary>
         /// Used to retrieve the raw content of an annual overview.

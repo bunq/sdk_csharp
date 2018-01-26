@@ -24,7 +24,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ShareInviteBankAmountUsed";
     
         /// <summary>
         /// Reset the available budget for a bank account share. To be called without any ID at the end of the path.

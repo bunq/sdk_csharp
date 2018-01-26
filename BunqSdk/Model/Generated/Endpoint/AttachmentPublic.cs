@@ -25,7 +25,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "AttachmentPublic";
+        private const string OBJECT_TYPE_POST = "Uuid";
+        private const string OBJECT_TYPE_GET = "AttachmentPublic";
     
         /// <summary>
         /// The UUID of the attachment.
@@ -78,7 +79,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, attachmentPublicUuid), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<AttachmentPublic>(responseRaw, OBJECT_TYPE);
+            return FromJson<AttachmentPublic>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

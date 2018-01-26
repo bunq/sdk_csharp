@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "MasterCardAction";
+        private const string OBJECT_TYPE_GET = "MasterCardAction";
     
         /// <summary>
         /// The id of the MastercardAction.
@@ -180,7 +180,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, masterCardActionId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<MasterCardAction>(responseRaw, OBJECT_TYPE);
+            return FromJson<MasterCardAction>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -193,7 +193,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<MasterCardAction>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<MasterCardAction>(responseRaw, OBJECT_TYPE_GET);
         }
     
     
