@@ -24,9 +24,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_TAB_ITEMS = "tab_items";
     
-        /// <summary>
-        /// Object type.
-        /// </summary>
     
         /// <summary>
         /// The list of tab items in the batch.

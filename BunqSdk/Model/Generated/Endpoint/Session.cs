@@ -19,9 +19,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         private const string ENDPOINT_URL_DELETE = "session/{0}";
     
-        /// <summary>
-        /// Object type.
-        /// </summary>
     
         /// <summary>
         /// Deletes the current session.

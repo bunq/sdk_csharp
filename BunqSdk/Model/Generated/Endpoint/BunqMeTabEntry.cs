@@ -18,9 +18,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DESCRIPTION = "description";
         public const string FIELD_REDIRECT_URL = "redirect_url";
     
-        /// <summary>
-        /// Object type.
-        /// </summary>
     
         /// <summary>
         /// The uuid of the bunq.me.

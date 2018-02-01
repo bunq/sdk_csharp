@@ -11,10 +11,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class BunqMeTabResultInquiry : BunqModel
     {
         /// <summary>
-        /// Object type.
-        /// </summary>
-    
-        /// <summary>
         /// The payment made for the Tab.
         /// </summary>
         [JsonProperty(PropertyName = "payment")]

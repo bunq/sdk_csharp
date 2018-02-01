@@ -11,10 +11,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ChatMessageAnnouncement : BunqModel
     {
         /// <summary>
-        /// Object type.
-        /// </summary>
-    
-        /// <summary>
         /// The id of the message.
         /// </summary>
         [JsonProperty(PropertyName = "id")]

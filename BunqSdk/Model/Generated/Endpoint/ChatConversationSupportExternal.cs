@@ -10,10 +10,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ChatConversationSupportExternal : BunqModel
     {
         /// <summary>
-        /// Object type.
-        /// </summary>
-    
-        /// <summary>
         /// The id of this conversation.
         /// </summary>
         [JsonProperty(PropertyName = "id")]

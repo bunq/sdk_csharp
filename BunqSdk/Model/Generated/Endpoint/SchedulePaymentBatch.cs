@@ -28,9 +28,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_PAYMENTS = "payments";
         public const string FIELD_SCHEDULE = "schedule";
     
-        /// <summary>
-        /// Object type.
-        /// </summary>
     
         /// <summary>
         /// The payment details.

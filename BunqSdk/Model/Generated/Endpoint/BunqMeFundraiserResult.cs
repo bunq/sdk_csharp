@@ -10,10 +10,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class BunqMeFundraiserResult : BunqModel
     {
         /// <summary>
-        /// Object type.
-        /// </summary>
-    
-        /// <summary>
         /// The id of the bunq.me.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
