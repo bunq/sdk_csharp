@@ -48,7 +48,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TabUsageMultiple";
+        private const string OBJECT_TYPE_POST = "Uuid";
+        private const string OBJECT_TYPE_PUT = "Uuid";
+        private const string OBJECT_TYPE_GET = "TabUsageMultiple";
     
         /// <summary>
         /// The uuid of the created TabUsageMultiple.
@@ -186,7 +188,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
     
         /// <summary>
-        /// Close a specific TabUsageMultiple. This request returns an empty response.
+        /// Close a specific TabUsageMultiple.
         /// </summary>
         public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId, string tabUsageMultipleUuid, IDictionary<string, string> customHeaders = null)
         {
@@ -208,7 +210,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUsageMultipleUuid), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<TabUsageMultiple>(responseRaw, OBJECT_TYPE);
+            return FromJson<TabUsageMultiple>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -222,7 +224,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId), urlParams, customHeaders);
     
-            return FromJsonList<TabUsageMultiple>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<TabUsageMultiple>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

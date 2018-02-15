@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "DraftShareInviteBankQrCodeContent";
+        private const string OBJECT_TYPE_GET = "DraftShareInviteBankQrCodeContent";
     
         /// <summary>
         /// Returns the raw content of the QR code that links to this draft share invite. The raw content is the binary

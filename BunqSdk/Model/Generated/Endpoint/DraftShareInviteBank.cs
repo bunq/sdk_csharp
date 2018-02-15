@@ -35,7 +35,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "DraftShareInviteBank";
+        private const string OBJECT_TYPE_GET = "DraftShareInviteBank";
     
         /// <summary>
         /// The user who created the draft share invite.
@@ -102,13 +102,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, draftShareInviteBankId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
+            return FromJson<DraftShareInviteBank>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
         /// Update a draft share invite. When sending status CANCELLED it is possible to cancel the draft share invite.
         /// </summary>
-        public static BunqResponse<DraftShareInviteBank> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int draftShareInviteBankId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, int draftShareInviteBankId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -116,7 +116,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, userId, draftShareInviteBankId), requestBytes, customHeaders);
     
-            return FromJson<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
+            return ProcessForId(responseRaw);
         }
     
         /// <summary>
@@ -129,7 +129,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<DraftShareInviteBank>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<DraftShareInviteBank>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

@@ -46,7 +46,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "UserCompany";
+        private const string OBJECT_TYPE_GET = "UserCompany";
     
         /// <summary>
         /// The id of the modified company.
@@ -235,7 +235,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userCompanyId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<UserCompany>(responseRaw, OBJECT_TYPE);
+            return FromJson<UserCompany>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>

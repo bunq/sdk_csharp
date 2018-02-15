@@ -24,10 +24,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_TAB_ITEMS = "tab_items";
     
-        /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "TabItemShopBatch";
     
         /// <summary>
         /// The list of tab items in the batch.

@@ -11,11 +11,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class TabItem : BunqModel
     {
         /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "TabItem";
-    
-        /// <summary>
         /// The id of the tab item.
         /// </summary>
         [JsonProperty(PropertyName = "id")]

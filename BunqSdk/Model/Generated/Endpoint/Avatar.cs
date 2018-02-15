@@ -32,7 +32,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Avatar";
+        private const string OBJECT_TYPE_POST = "Uuid";
+        private const string OBJECT_TYPE_GET = "Avatar";
     
         /// <summary>
         /// The UUID of the created avatar.
@@ -68,7 +69,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, avatarUuid), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<Avatar>(responseRaw, OBJECT_TYPE);
+            return FromJson<Avatar>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

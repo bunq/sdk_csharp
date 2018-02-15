@@ -21,10 +21,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         private const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry/{2}/amount-used/{3}";
     
-        /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "ShareInviteBankAmountUsed";
     
         /// <summary>
         /// Reset the available budget for a bank account share. To be called without any ID at the end of the path.

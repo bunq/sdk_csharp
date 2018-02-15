@@ -57,7 +57,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "UserPerson";
+        private const string OBJECT_TYPE_GET = "UserPerson";
     
         /// <summary>
         /// The id of the modified person object.
@@ -258,7 +258,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userPersonId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<UserPerson>(responseRaw, OBJECT_TYPE);
+            return FromJson<UserPerson>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>

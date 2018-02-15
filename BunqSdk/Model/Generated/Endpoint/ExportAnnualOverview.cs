@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ExportAnnualOverview";
+        private const string OBJECT_TYPE_GET = "ExportAnnualOverview";
     
         /// <summary>
         /// The id of the annual overview as created on the server.
@@ -87,7 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, exportAnnualOverviewId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<ExportAnnualOverview>(responseRaw, OBJECT_TYPE);
+            return FromJson<ExportAnnualOverview>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -101,7 +101,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<ExportAnnualOverview>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<ExportAnnualOverview>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

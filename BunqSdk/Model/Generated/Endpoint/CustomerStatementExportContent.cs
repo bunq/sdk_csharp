@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CustomerStatementExportContent";
+        private const string OBJECT_TYPE_GET = "CustomerStatementExportContent";
     
         /// <summary>
         /// </summary>

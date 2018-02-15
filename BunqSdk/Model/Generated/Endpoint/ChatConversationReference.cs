@@ -10,11 +10,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ChatConversationReference : BunqModel
     {
         /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "SupportConversationReference";
-    
-        /// <summary>
         /// The id of this conversation.
         /// </summary>
         [JsonProperty(PropertyName = "id")]

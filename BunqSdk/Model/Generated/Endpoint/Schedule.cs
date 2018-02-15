@@ -32,7 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Schedule";
+        private const string OBJECT_TYPE_GET = "Schedule";
     
         /// <summary>
         /// The schedule start time (UTC).
@@ -80,7 +80,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, scheduleId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<Schedule>(responseRaw, OBJECT_TYPE);
+            return FromJson<Schedule>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -96,7 +96,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<Schedule>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<Schedule>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

@@ -21,10 +21,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         private const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/attachment";
     
-        /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "AttachmentMonetaryAccount";
     
         /// <summary>
         /// The attachment.

@@ -25,10 +25,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_CLIENT_MESSAGE_UUID = "client_message_uuid";
         public const string FIELD_ATTACHMENT = "attachment";
     
-        /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "Id";
     
         /// <summary>
         /// The id of the newly created chat message.

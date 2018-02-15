@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "PaymentBatch";
+        private const string OBJECT_TYPE_GET = "PaymentBatch";
     
         /// <summary>
         /// The list of mutations that were made.
@@ -77,7 +77,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, paymentBatchId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<PaymentBatch>(responseRaw, OBJECT_TYPE);
+            return FromJson<PaymentBatch>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -91,7 +91,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<PaymentBatch>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<PaymentBatch>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

@@ -35,7 +35,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CustomerStatementExport";
+        private const string OBJECT_TYPE_GET = "CustomerStatementExport";
     
         /// <summary>
         /// The id of the customer statement model.
@@ -119,7 +119,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, customerStatementExportId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CustomerStatementExport>(responseRaw, OBJECT_TYPE);
+            return FromJson<CustomerStatementExport>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -132,7 +132,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<CustomerStatementExport>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CustomerStatementExport>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>

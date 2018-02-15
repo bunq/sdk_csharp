@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "ScheduleUser";
+        private const string OBJECT_TYPE_GET = "ScheduleUser";
     
         /// <summary>
         /// Get a collection of scheduled definition for all accessible monetary accounts of the user. You can add the
@@ -38,7 +38,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<ScheduleUser>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<ScheduleUser>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "PromotionDisplay";
+        private const string OBJECT_TYPE_GET = "PromotionDisplay";
     
         /// <summary>
         /// The id of the promotion.
@@ -64,7 +64,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, promotionDisplayId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<PromotionDisplay>(responseRaw, OBJECT_TYPE);
+            return FromJson<PromotionDisplay>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>

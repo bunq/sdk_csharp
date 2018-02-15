@@ -49,7 +49,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TabUsageSingle";
+        private const string OBJECT_TYPE_POST = "Uuid";
+        private const string OBJECT_TYPE_PUT = "Uuid";
+        private const string OBJECT_TYPE_GET = "TabUsageSingle";
     
         /// <summary>
         /// The uuid of the created TabUsageSingle.
@@ -198,7 +200,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
     
         /// <summary>
-        /// Cancel a specific TabUsageSingle. This request returns an empty response.
+        /// Cancel a specific TabUsageSingle.
         /// </summary>
         public static BunqResponse<object> Delete(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId, string tabUsageSingleUuid, IDictionary<string, string> customHeaders = null)
         {
@@ -220,7 +222,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUsageSingleUuid), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<TabUsageSingle>(responseRaw, OBJECT_TYPE);
+            return FromJson<TabUsageSingle>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -234,7 +236,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId), urlParams, customHeaders);
     
-            return FromJsonList<TabUsageSingle>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<TabUsageSingle>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

@@ -37,7 +37,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CardDebit";
+        private const string OBJECT_TYPE_POST = "CardDebit";
     
         /// <summary>
         /// The id of the card.
@@ -172,7 +172,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             requestBytes = SecurityUtils.Encrypt(apiContext, requestBytes, customHeaders);
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
     
-            return FromJson<CardDebit>(responseRaw, OBJECT_TYPE);
+            return FromJson<CardDebit>(responseRaw, OBJECT_TYPE_POST);
         }
     
     

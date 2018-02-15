@@ -15,10 +15,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_POINTER = "pointer";
     
-        /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "BunqMeFundraiserProfileModel";
     
         /// <summary>
         /// The color chosen for the bunq.me fundraiser profile in hexadecimal format.

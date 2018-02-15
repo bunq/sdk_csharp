@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "TabResultInquiry";
+        private const string OBJECT_TYPE_GET = "TabResultInquiry";
     
         /// <summary>
         /// The Tab details.
@@ -48,7 +48,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUuid, tabResultInquiryId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<TabResultInquiry>(responseRaw, OBJECT_TYPE);
+            return FromJson<TabResultInquiry>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId, tabUuid), urlParams, customHeaders);
     
-            return FromJsonList<TabResultInquiry>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<TabResultInquiry>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CardUserNameArray";
+        private const string OBJECT_TYPE_GET = "CardUserNameArray";
     
         /// <summary>
         /// All possible variations (of suitable length) of user's legal name for the debit card.
@@ -43,7 +43,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
     
-            return FromJsonList<CardName>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CardName>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

@@ -16,10 +16,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_PROFILE_FILL = "profile_fill";
         public const string FIELD_PROFILE_DRAIN = "profile_drain";
     
-        /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "MonetaryAccountProfile";
     
         /// <summary>
         /// The profile settings for triggering the fill of a monetary account.

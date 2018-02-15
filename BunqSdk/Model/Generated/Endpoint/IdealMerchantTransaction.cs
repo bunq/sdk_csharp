@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "IdealMerchantTransaction";
+        private const string OBJECT_TYPE_GET = "IdealMerchantTransaction";
     
         /// <summary>
         /// The id of the monetary account this ideal merchant transaction links to.
@@ -139,7 +139,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, idealMerchantTransactionId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<IdealMerchantTransaction>(responseRaw, OBJECT_TYPE);
+            return FromJson<IdealMerchantTransaction>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -152,7 +152,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<IdealMerchantTransaction>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<IdealMerchantTransaction>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "CardResult";
+        private const string OBJECT_TYPE_GET = "CardResult";
     
         /// <summary>
         /// The id of the monetary account this card result links to.
@@ -131,7 +131,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cardResultId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<CardResult>(responseRaw, OBJECT_TYPE);
+            return FromJson<CardResult>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
@@ -144,7 +144,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(apiContext);
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId), urlParams, customHeaders);
     
-            return FromJsonList<CardResult>(responseRaw, OBJECT_TYPE);
+            return FromJsonList<CardResult>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

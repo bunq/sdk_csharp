@@ -11,11 +11,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ChatMessageUser : BunqModel
     {
         /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "ChatMessageUser";
-    
-        /// <summary>
         /// The id of the message.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
