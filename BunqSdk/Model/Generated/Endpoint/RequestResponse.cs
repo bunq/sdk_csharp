@@ -138,7 +138,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Geolocation Geolocation { get; private set; }
     
         /// <summary>
-        /// The type of the RequestInquiry. Can be DIRECT_DEBIT, DIRECT_DEBIT_B2B, IDEAL or INTERNAL.
+        /// The type of the RequestInquiry. Can be DIRECT_DEBIT, DIRECT_DEBIT_B2B, IDEAL, SOFORT or INTERNAL.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
