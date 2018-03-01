@@ -17,6 +17,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
+        private const string CARD_PIN_ASSIGNMENT_TYPE_PRIMARY = "PRIMARY";
+
         private const string PIN_CODE = "4045";
         private const int INDEX_FIRST = 0;
         private const int NONNEGATIVE_INTEGER_MINIMUM = 0;
@@ -37,11 +39,16 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestOrderNewMaestroCard()
         {
+            var cardPinAssignment = new CardPinAssignment(
+                CARD_PIN_ASSIGNMENT_TYPE_PRIMARY, 
+                PIN_CODE,
+                Config.GetMonetarytAccountId());
+            var allCardPinAssignments = new List<CardPinAssignment> {cardPinAssignment};
             var cardDebitMap = new Dictionary<string, object>
             {
                 {CardDebit.FIELD_ALIAS, GetAlias()},
                 {CardDebit.FIELD_NAME_ON_CARD, GetAnAllowedName()},
-                {CardDebit.FIELD_PIN_CODE, PIN_CODE},
+                {CardDebit.FIELD_PIN_CODE_ASSIGNMENT, allCardPinAssignments},
                 {CardDebit.FIELD_SECOND_LINE, GenerateRandomSecondLine()}
             };
             var cardDebit = CardDebit.Create(API_CONTEXT, cardDebitMap, USER_ID).Value;
