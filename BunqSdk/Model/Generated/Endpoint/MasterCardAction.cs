@@ -172,6 +172,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? EligibleWhitelistId { get; private set; }
     
         /// <summary>
+        /// The secure code id for this mastercard action or null.
+        /// </summary>
+        [JsonProperty(PropertyName = "secure_code_id")]
+        public int? SecureCodeId { get; private set; }
+    
+        /// <summary>
         /// </summary>
         public static BunqResponse<MasterCardAction> Get(ApiContext apiContext, int userId, int monetaryAccountId, int masterCardActionId, IDictionary<string, string> customHeaders = null)
         {
@@ -317,6 +323,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.EligibleWhitelistId != null)
+            {
+                return false;
+            }
+    
+            if (this.SecureCodeId != null)
             {
                 return false;
             }

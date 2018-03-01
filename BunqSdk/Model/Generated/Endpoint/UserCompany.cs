@@ -196,6 +196,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? SessionTimeout { get; private set; }
     
         /// <summary>
+        /// Card ids used for centralized card limits.
+        /// </summary>
+        [JsonProperty(PropertyName = "card_ids")]
+        public List<BunqId> CardIds { get; private set; }
+    
+        /// <summary>
+        /// The centralized limits for user's cards.
+        /// </summary>
+        [JsonProperty(PropertyName = "card_limits")]
+        public List<CardLimit> CardLimits { get; private set; }
+    
+        /// <summary>
         /// The amount the company can pay in the session without asking for credentials.
         /// </summary>
         [JsonProperty(PropertyName = "daily_limit_without_confirmation_login")]
@@ -373,6 +385,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.SessionTimeout != null)
+            {
+                return false;
+            }
+    
+            if (this.CardIds != null)
+            {
+                return false;
+            }
+    
+            if (this.CardLimits != null)
             {
                 return false;
             }

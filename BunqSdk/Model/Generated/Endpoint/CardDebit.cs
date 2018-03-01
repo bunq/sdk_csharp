@@ -27,7 +27,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_SECOND_LINE = "second_line";
         public const string FIELD_NAME_ON_CARD = "name_on_card";
-        public const string FIELD_PIN_CODE = "pin_code";
         public const string FIELD_ALIAS = "alias";
         public const string FIELD_TYPE = "type";
         public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";

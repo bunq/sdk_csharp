@@ -50,6 +50,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SUB_STATUS = "sub_status";
         public const string FIELD_LEGAL_GUARDIAN_ALIAS = "legal_guardian_alias";
         public const string FIELD_SESSION_TIMEOUT = "session_timeout";
+        public const string FIELD_CARD_IDS = "card_ids";
+        public const string FIELD_CARD_LIMITS = "card_limits";
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
         public const string FIELD_COUNTER_BANK_IBAN = "counter_bank_iban";
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
