@@ -27,6 +27,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_AMOUNT_REQUESTED = "amount_requested";
         public const string FIELD_ISSUER = "issuer";
+        public const string FIELD_CALLBACK_TYPE = "callback_type";
     
         /// <summary>
         /// Object type.
