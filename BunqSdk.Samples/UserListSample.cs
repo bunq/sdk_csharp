@@ -9,15 +9,20 @@ namespace Bunq.Sdk.Samples
     {
         public void Run()
         {
-            var apiContext = ApiContext.Restore();
-            var users = User.List(apiContext).Value;
+            BunqContext.LoadApiContext(ApiContext.Restore());
+            var users = User.List().Value;
 
-            apiContext.Save();
+            BunqContext.ApiContext.Save();
 
             foreach (var oneUser in users)
             {
                 Console.WriteLine(oneUser.UserCompany);
             }
+            
+            // or
+            
+            Console.WriteLine(BunqContext.UserContext.UserCompany);
+            Console.WriteLine(BunqContext.UserContext.UserPerson);
         }
     }
 }

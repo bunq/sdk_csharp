@@ -13,19 +13,19 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
+
         /// <summary>
         /// The id of the MonetaryAccount this Attachment is attached from.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
-    
+
         public AttachmentMonetaryAccountPayment(int? id)
         {
             Id = id;
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -34,15 +34,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             if (this.MonetaryAccountId != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static AttachmentMonetaryAccountPayment CreateFromJsonString(string json)

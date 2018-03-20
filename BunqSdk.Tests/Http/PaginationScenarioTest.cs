@@ -38,7 +38,7 @@ namespace Bunq.Sdk.Tests.Http
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
 
         [Fact]
         public void TestApiScenarioPaymentListingWithPagination()
@@ -90,19 +90,12 @@ namespace Bunq.Sdk.Tests.Http
 
         private static BunqResponse<List<Payment>> ListPayments(IDictionary<string, string> urlParams)
         {
-            return Payment.List(API_CONTEXT, USER_ID, MONETARY_ACCOUNT_ID, urlParams);
+            return Payment.List(urlParams: urlParams);
         }
 
         private static void CreatePayment()
         {
-            var requestMap = new Dictionary<string, object>
-            {
-                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY)},
-                {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_OTHER}
-            };
-
-            Payment.Create(API_CONTEXT, requestMap, USER_ID, MONETARY_ACCOUNT_ID);
+            Payment.Create(new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY), COUNTER_PARTY_OTHER, PAYMENT_DESCRIPTION);
         }
     }
 }

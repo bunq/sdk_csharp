@@ -17,40 +17,49 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "user/{0}/token-qr-request-sofort";
-    
+        protected const string ENDPOINT_URL_CREATE = "user/{0}/token-qr-request-sofort";
+
         /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_TOKEN = "token";
-    
+
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_POST = "RequestResponse";
-    
+
         /// <summary>
         /// Create a request from an SOFORT transaction.
         /// </summary>
-        public static BunqResponse<TokenQrRequestSofort> Create(ApiContext apiContext, IDictionary<string, object> requestMap, int userId, IDictionary<string, string> customHeaders = null)
+        /// <param name="token">The token passed from a site or read from a QR code.</param>
+        public static BunqResponse<TokenQrRequestSofort> Create(string token,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(apiContext);
+
+            var apiClient = new ApiClient(GetApiContext());
+
+            var requestMap = new Dictionary<string, object>
+            {
+                {FIELD_TOKEN, token},
+            };
+
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, userId), requestBytes, customHeaders);
-    
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId()), requestBytes,
+                customHeaders);
+
             return FromJson<TokenQrRequestSofort>(responseRaw, OBJECT_TYPE_POST);
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static TokenQrRequestSofort CreateFromJsonString(string json)

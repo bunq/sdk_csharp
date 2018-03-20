@@ -20,25 +20,17 @@ namespace Bunq.Sdk.Samples
 
         public void Run()
         {
-            var apiContext = ApiContext.Restore();
+            BunqContext.LoadApiContext(ApiContext.Restore());
             var cardPinAssignment = new CardPinAssignment(
                 CARD_PIN_ASSIGNMENT_TYPE_PRIMARY,
                 PIN_CODE,
                 MONETARY_ACCOUNT_ID
             );
             var allCardPinAssignments = new List<CardPinAssignment> {cardPinAssignment};
-            var requestMap = new Dictionary<string, object>
-            {
-                {CardDebit.FIELD_NAME_ON_CARD, NAME_YOUR_COMPANY},
-                {CardDebit.FIELD_SECOND_LINE, GenerateRandomSecondLine()},
-                {CardDebit.FIELD_PIN_CODE_ASSIGNMENT, allCardPinAssignments},
-                {
-                    CardDebit.FIELD_ALIAS,
-                    new Pointer(POINTER_TYPE_EMAIL, EMAIL_YOUR_COMPANY) {Name = POINTER_NAME_TEST}
-                },
-            };
 
-            Console.WriteLine(CardDebit.Create(apiContext, requestMap, USER_ITEM_ID));
+            Console.WriteLine(CardDebit.Create(GenerateRandomSecondLine(), NAME_YOUR_COMPANY,
+                new Pointer(POINTER_TYPE_EMAIL, EMAIL_YOUR_COMPANY) {Name = POINTER_NAME_TEST},
+                pinCodeAssignment: allCardPinAssignments));
         }
 
         private static string GenerateRandomSecondLine()

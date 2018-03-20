@@ -22,51 +22,68 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
-    
+
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account";
-    
+        protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}";
+
+        protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account";
+
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "MonetaryAccount";
-    
+
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "MonetaryAccountBank")]
-        public MonetaryAccountBank MonetaryAccountBank { get; private set; }
-    
+        public MonetaryAccountBank MonetaryAccountBank { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "MonetaryAccountJoint")]
+        public MonetaryAccountJoint MonetaryAccountJoint { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "MonetaryAccountLight")]
+        public MonetaryAccountLight MonetaryAccountLight { get; set; }
+
         /// <summary>
         /// Get a specific MonetaryAccount.
         /// </summary>
-        public static BunqResponse<MonetaryAccount> Get(ApiContext apiContext, int userId, int monetaryAccountId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<MonetaryAccount> Get(int monetaryAccountId,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId), new Dictionary<string, string>(), customHeaders);
-    
+
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw =
+                apiClient.Get(
+                    string.Format(ENDPOINT_URL_READ, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId)),
+                    new Dictionary<string, string>(), customHeaders);
+
             return FromJson<MonetaryAccount>(responseRaw);
         }
-    
+
         /// <summary>
         /// Get a collection of all your MonetaryAccounts.
         /// </summary>
-        public static BunqResponse<List<MonetaryAccount>> List(ApiContext apiContext, int userId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<MonetaryAccount>> List(IDictionary<string, string> urlParams = null,
+            IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId), urlParams, customHeaders);
-    
+
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams,
+                customHeaders);
+
             return FromJsonList<MonetaryAccount>(responseRaw);
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public BunqModel GetReferencedObject()
@@ -75,10 +92,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return this.MonetaryAccountBank;
             }
-    
+
+            if (this.MonetaryAccountJoint != null)
+            {
+                return this.MonetaryAccountJoint;
+            }
+
+            if (this.MonetaryAccountLight != null)
+            {
+                return this.MonetaryAccountLight;
+            }
+
             throw new BunqException(ERROR_NULL_FIELDS);
         }
-    
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -87,10 +114,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
+            if (this.MonetaryAccountJoint != null)
+            {
+                return false;
+            }
+
+            if (this.MonetaryAccountLight != null)
+            {
+                return false;
+            }
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static MonetaryAccount CreateFromJsonString(string json)

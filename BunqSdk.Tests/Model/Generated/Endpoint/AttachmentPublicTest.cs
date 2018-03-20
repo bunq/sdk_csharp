@@ -26,7 +26,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
 
         /// <summary>
         /// Tests if the file we upload is the file we are getting back once successfully uploaded does.
@@ -42,8 +42,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
                 {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, ATTACHMENT_DESCRIPTION}
             };
 
-            var attachmentUuid = AttachmentPublic.Create(API_CONTEXT, fileContentBytes, customHeaders).Value;
-            var responseBytes = AttachmentPublicContent.List(API_CONTEXT, attachmentUuid).Value;
+            var attachmentUuid = AttachmentPublic.Create(fileContentBytes, customHeaders).Value;
+            var responseBytes = AttachmentPublicContent.List(attachmentUuid).Value;
 
             Assert.Equal(fileContentBytes, responseBytes);
         }

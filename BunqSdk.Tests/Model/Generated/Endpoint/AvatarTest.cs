@@ -28,7 +28,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
 
         /// <summary>
         /// Tests the creation of an avatar by uploading a picture via AttachmentPublic and setting it as avatar
@@ -44,11 +44,11 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             {
                 {Avatar.FIELD_ATTACHMENT_PUBLIC_UUID, attachmentUuid}
             };
-            var avatarUuid = Avatar.Create(API_CONTEXT, avatarMap).Value;
+            var avatarUuid = Avatar.Create(attachmentUuid).Value;
 
-            var attachmentUuidFromAvatar = Avatar.Get(API_CONTEXT, avatarUuid).Value
+            var attachmentUuidFromAvatar = Avatar.Get(avatarUuid).Value
                 .Image[INDEX_FIRST].AttachmentPublicUuid;
-            var revievedFileContentByte = AttachmentPublicContent.List(API_CONTEXT, attachmentUuidFromAvatar).Value;
+            var revievedFileContentByte = AttachmentPublicContent.List(attachmentUuidFromAvatar).Value;
 
             Assert.Equal(attachmentUuid, attachmentUuidFromAvatar);
             Assert.Equal(fileContentByte, revievedFileContentByte);
@@ -61,8 +61,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
                 {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, ATTACHMENT_DECSRIPTION},
                 {ApiClient.HEADER_CONTENT_TYPE, CONTEN_TYPE},
             };
-
-            return AttachmentPublic.Create(API_CONTEXT, fileContentByte, customHeaders).Value;
+ 
+            return AttachmentPublic.Create(fileContentByte, customHeaders).Value;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// API context used for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
 
         /// <summary>
         /// Tests sending a chat message in a newly created payment.
@@ -37,27 +37,14 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestSendPaymentChat()
         {
-            var paymentChatMap = new Dictionary<string, object>();
-            var chatId = PaymentChat.Create(API_CONTEXT, paymentChatMap, USER_ID, MONETARTY_ACCOUNT_ID,
-                CreatePaymentAndGetId()).Value;
+            var chatId = PaymentChat.Create(CreatePaymentAndGetId()).Value;
 
-            var chatMessageMap = new Dictionary<string, object>
-            {
-                {ChatMessageText.FIELD_TEXT, MESSAGE_TEXT}
-            };
-            ChatMessageText.Create(API_CONTEXT, chatMessageMap, USER_ID, chatId);
+            ChatMessageText.Create(chatId, MESSAGE_TEXT);
         }
 
         private static int CreatePaymentAndGetId()
         {
-            var requestMap = new Dictionary<string, object>
-            {
-                {Payment.FIELD_AMOUNT, new Amount(AMOUNT_EUR, CURRENCY)},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_ALIAS},
-                {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
-            };
-
-            return Payment.Create(API_CONTEXT, requestMap, USER_ID, MONETARTY_ACCOUNT_ID).Value;
+            return Payment.Create(new Amount(AMOUNT_EUR, CURRENCY), COUNTER_PARTY_ALIAS, PAYMENT_DESCRIPTION).Value;
         }
     }
 }

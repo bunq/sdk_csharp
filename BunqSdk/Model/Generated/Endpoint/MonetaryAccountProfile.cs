@@ -14,22 +14,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Field constants.
         /// </summary>
         public const string FIELD_PROFILE_FILL = "profile_fill";
+
         public const string FIELD_PROFILE_DRAIN = "profile_drain";
-    
-    
+
+
         /// <summary>
         /// The profile settings for triggering the fill of a monetary account.
         /// </summary>
         [JsonProperty(PropertyName = "profile_fill")]
-        public MonetaryAccountProfileFill ProfileFill { get; private set; }
-    
+        public MonetaryAccountProfileFill ProfileFill { get; set; }
+
         /// <summary>
         /// The profile settings for moving excesses to a savings account
         /// </summary>
         [JsonProperty(PropertyName = "profile_drain")]
-        public MonetaryAccountProfileDrain ProfileDrain { get; private set; }
-    
-    
+        public MonetaryAccountProfileDrain ProfileDrain { get; set; }
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -38,15 +39,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
             if (this.ProfileDrain != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static MonetaryAccountProfile CreateFromJsonString(string json)

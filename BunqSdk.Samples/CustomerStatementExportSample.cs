@@ -35,7 +35,7 @@ namespace Bunq.Sdk.Samples
 
         public void Run()
         {
-            var apiContext = ApiContext.Restore();
+            BunqContext.LoadApiContext(ApiContext.Restore());
             var timeSpanWeek = new TimeSpan(
                 DAYS_IN_WEEK,
                 TIME_UNIT_COUNT_NONE,
@@ -45,31 +45,18 @@ namespace Bunq.Sdk.Samples
             var dateStart = DateTime.Now.Subtract(timeSpanWeek);
             var dateEnd = DateTime.Now;
 
-            var customerStatementMap = new Dictionary<string, object>
-            {
-                {CustomerStatementExport.FIELD_STATEMENT_FORMAT, STATEMENT_FORMAT},
-                {CustomerStatementExport.FIELD_DATE_START, dateStart.ToString(FORMAT_DATE_STATEMENT)},
-                {CustomerStatementExport.FIELD_DATE_END, dateEnd.ToString(FORMAT_DATE_STATEMENT)},
-            };
+            var userId = BunqContext.UserContext.UserId;
 
-            var userId = User.List(apiContext).Value[INDEX_FIRST].UserCompany.Id;
+            var userIdInt = userId;
+            var monetaryAccountId = BunqContext.UserContext.PrimaryMonetaryAccountBank.Id.Value;
 
-            if (userId != null)
-            {
-                var userIdInt = (int) userId;
-                var monetaryAccountId = MonetaryAccountBank.List(apiContext, userIdInt).Value[INDEX_FIRST].Id;
+                var monetaryAccountIdInt = monetaryAccountId;
+                var customerStatementId = CustomerStatementExport.Create(STATEMENT_FORMAT,
+                    dateStart.ToString(FORMAT_DATE_STATEMENT), dateEnd.ToString(FORMAT_DATE_STATEMENT)).Value;
 
-                if (monetaryAccountId != null)
-                {
-                    var monetaryAccountIdInt = (int) monetaryAccountId;
-                    var customerStatementId = CustomerStatementExport.Create(apiContext, customerStatementMap,
-                        userIdInt, monetaryAccountIdInt).Value;
+                CustomerStatementExport.Delete(customerStatementId);
 
-                    CustomerStatementExport.Delete(apiContext, userIdInt, monetaryAccountIdInt, customerStatementId);
-                }
-            }
-
-            apiContext.Save();
+            BunqContext.ApiContext.Save();
         }
     }
 }

@@ -13,20 +13,20 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "language")]
         public string Language { get; set; }
-    
+
         /// <summary>
         /// Tab text
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-    
+
         public TabTextWaitingScreen(string language, string description)
         {
             Language = language;
             Description = description;
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -35,15 +35,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             if (this.Description != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static TabTextWaitingScreen CreateFromJsonString(string json)

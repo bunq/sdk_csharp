@@ -16,7 +16,7 @@ namespace Bunq.Sdk.Samples
 
         public void Run()
         {
-            var apiContext = ApiContext.Restore();
+            BunqContext.LoadApiContext(ApiContext.Restore());
             var customHeaders =
                 new Dictionary<string, string>
                 {
@@ -24,8 +24,8 @@ namespace Bunq.Sdk.Samples
                     {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, DESCRIPTION_TEST_JPG_ATTACHMENT}
                 };
             var requestBytes = File.ReadAllBytes(PATH_ATTACHMENT_IN);
-            var uuid = AttachmentPublic.Create(apiContext, requestBytes, customHeaders).Value;
-            var responseBytes = AttachmentPublicContent.List(apiContext, uuid).Value;
+            var uuid = AttachmentPublic.Create(requestBytes, customHeaders).Value;
+            var responseBytes = AttachmentPublicContent.List(uuid).Value;
             var fileOut = new FileInfo(PATH_ATTACHMENT_OUT);
             fileOut.Directory.Create();
             File.WriteAllBytes(fileOut.FullName, responseBytes);

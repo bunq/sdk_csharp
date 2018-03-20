@@ -13,27 +13,27 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
+
         /// <summary>
         /// The 4 digit PIN to be assigned to this account.
         /// </summary>
         [JsonProperty(PropertyName = "pin_code")]
         public string PinCode { get; set; }
-    
+
         /// <summary>
         /// The ID of the monetary account to assign to this pin for the card.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
-    
+
         public CardPinAssignment(string type, string pinCode, int? monetaryAccountId)
         {
             Type = type;
             PinCode = pinCode;
             MonetaryAccountId = monetaryAccountId;
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -42,15 +42,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             if (this.MonetaryAccountId != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static CardPinAssignment CreateFromJsonString(string json)

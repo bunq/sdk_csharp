@@ -19,24 +19,15 @@ namespace Bunq.Sdk.Samples
 
         public void Run()
         {
-            var apiContext = ApiContext.Restore();
-            var paymentMap = new Dictionary<string, object>
-            {
-                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT, PAYMENT_CURRENCY)},
-                {
-                    Payment.FIELD_COUNTERPARTY_ALIAS,
-                    new Pointer(COUNTERPARTY_POINTER_TYPE, COUNTERPARTY_EMAIL)
-                },
-                {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION}
-            };
+            BunqContext.LoadApiContext(ApiContext.Restore());
+            var paymentId = Payment.Create(new Amount(PAYMENT_AMOUNT, PAYMENT_CURRENCY),
+                new Pointer(COUNTERPARTY_POINTER_TYPE, COUNTERPARTY_EMAIL), PAYMENT_DESCRIPTION).Value;
 
-            var paymentId = Payment.Create(apiContext, paymentMap, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
+            Console.WriteLine(Payment.Get(paymentId));
 
-            Console.WriteLine(Payment.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, paymentId));
-            
             // Save the API context to account for all the changes that might have occurred to it
             // during the sample execution
-            apiContext.Save();
+            BunqContext.ApiContext.Save();
         }
     }
 }
