@@ -2,7 +2,8 @@
 {
     public class PleaseContactBunqException : ApiException
     {
-        public PleaseContactBunqException(int responseCode, string message) : base(responseCode, message)
+        public PleaseContactBunqException(int responseCode, string message, string responseId)
+            : base(responseCode, message, responseId)
         {
         }
     }

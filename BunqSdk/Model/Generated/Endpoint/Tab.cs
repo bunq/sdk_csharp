@@ -1,8 +1,8 @@
 using Bunq.Sdk.Context;
-using Bunq.Sdk.Exception;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
+using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
@@ -11,102 +11,130 @@ using System;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Once your CashRegister has been activated you can use it to create Tabs. A Tab is a template for a payment. In
-    /// contrast to requests a Tab is not pointed towards a specific user. Any user can pay the Tab as long as it is
-    /// made visible by you. The creation of a Tab happens with /tab-usage-single or /tab-usage-multiple. A
-    /// TabUsageSingle is a Tab that can be paid once. A TabUsageMultiple is a Tab that can be paid multiple times by
-    /// different users.
+    /// Used to read a single publicly visible tab.
     /// </summary>
-    public class Tab : BunqModel, IAnchorObjectInterface
+    public class Tab : BunqModel
     {
-        /// <summary>
-        /// Error constants.
-        /// </summary>
-        private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
-    
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}";
-        private const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register/{2}/tab";
-    
+        protected const string ENDPOINT_URL_READ = "tab/{0}";
+
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Tab";
-    
+        private const string OBJECT_TYPE_GET = "Tab";
+
         /// <summary>
+        /// The uuid of the tab.
         /// </summary>
-        [JsonProperty(PropertyName = "TabUsageSingle")]
-        public TabUsageSingle TabUsageSingle { get; private set; }
-    
+        [JsonProperty(PropertyName = "uuid")]
+        public string Uuid { get; set; }
+
         /// <summary>
+        /// The label of the party that owns this tab.
         /// </summary>
-        [JsonProperty(PropertyName = "TabUsageMultiple")]
-        public TabUsageMultiple TabUsageMultiple { get; private set; }
-    
+        [JsonProperty(PropertyName = "alias")]
+        public MonetaryAccountReference Alias { get; set; }
+
         /// <summary>
-        /// Get a specific tab. This returns a TabUsageSingle or TabUsageMultiple.
+        /// The avatar of this tab.
         /// </summary>
-        public static BunqResponse<Tab> Get(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId, string tabUuid, IDictionary<string, string> customHeaders = null)
+        [JsonProperty(PropertyName = "avatar")]
+        public string Avatar { get; set; }
+
+        /// <summary>
+        /// The reference of the tab, as defined by the owner.
+        /// </summary>
+        [JsonProperty(PropertyName = "reference")]
+        public string Reference { get; set; }
+
+        /// <summary>
+        /// The short description of the tab.
+        /// </summary>
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The status of the tab.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The moment when this tab expires.
+        /// </summary>
+        [JsonProperty(PropertyName = "expiration")]
+        public string Expiration { get; set; }
+
+        /// <summary>
+        /// The total amount of the tab.
+        /// </summary>
+        [JsonProperty(PropertyName = "amount_total")]
+        public Amount AmountTotal { get; set; }
+
+        /// <summary>
+        /// Get a publicly visible tab.
+        /// </summary>
+        public static BunqResponse<Tab> Get(string tabUuid, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userId, monetaryAccountId, cashRegisterId, tabUuid), new Dictionary<string, string>(), customHeaders);
-    
-            return FromJson<Tab>(responseRaw);
+
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, tabUuid), new Dictionary<string, string>(),
+                customHeaders);
+
+            return FromJson<Tab>(responseRaw, OBJECT_TYPE_GET);
         }
-    
-        /// <summary>
-        /// Get a collection of tabs.
-        /// </summary>
-        public static BunqResponse<List<Tab>> List(ApiContext apiContext, int userId, int monetaryAccountId, int cashRegisterId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
-        {
-            if (urlParams == null) urlParams = new Dictionary<string, string>();
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, monetaryAccountId, cashRegisterId), urlParams, customHeaders);
-    
-            return FromJsonList<Tab>(responseRaw);
-        }
-    
-    
-        /// <summary>
-        /// </summary>
-        public BunqModel GetReferencedObject()
-        {
-            if (this.TabUsageSingle != null)
-            {
-                return this.TabUsageSingle;
-            }
-    
-            if (this.TabUsageMultiple != null)
-            {
-                return this.TabUsageMultiple;
-            }
-    
-            throw new BunqException(ERROR_NULL_FIELDS);
-        }
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.TabUsageSingle != null)
+            if (this.Uuid != null)
             {
                 return false;
             }
-    
-            if (this.TabUsageMultiple != null)
+
+            if (this.Alias != null)
             {
                 return false;
             }
-    
+
+            if (this.Avatar != null)
+            {
+                return false;
+            }
+
+            if (this.Reference != null)
+            {
+                return false;
+            }
+
+            if (this.Description != null)
+            {
+                return false;
+            }
+
+            if (this.Status != null)
+            {
+                return false;
+            }
+
+            if (this.Expiration != null)
+            {
+                return false;
+            }
+
+            if (this.AmountTotal != null)
+            {
+                return false;
+            }
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static Tab CreateFromJsonString(string json)

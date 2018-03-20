@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bunq.Sdk.Context;
+using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
 using Bunq.Sdk.Samples.Utils;
@@ -14,8 +15,6 @@ namespace Bunq.Sdk.Samples
         private const string COUNTERPARTY_POINTER_TYPE = "EMAIL";
         private const string COUNTERPARTY_EMAIL = "bravo@bunq.com";
         private const string PAYMENT_DESCRIPTION = "This is a generated payment batch!";
-        private const int USER_ITEM_ID = 0; // Put your user ID here
-        private const int MONETARY_ACCOUNT_ITEM_ID = 0; // Put your monetary account ID here
 
         public void Run()
         {
@@ -38,11 +37,18 @@ namespace Bunq.Sdk.Samples
                     }
                 }
             };
+            var allPayment = new List<Payment>();
+            var payment = new Payment
+            {
+                Amount = new Amount(PAYMENT_AMOUNT, PAYMENT_CURRENCY),
+                CounterpartyAlias =
+                    new MonetaryAccountReference(new Pointer(COUNTERPARTY_POINTER_TYPE, COUNTERPARTY_EMAIL)),
+                Description = PAYMENT_DESCRIPTION
+            };
 
-            var paymentBatchId = PaymentBatch.Create(apiContext, paymentBatchMap, USER_ITEM_ID,
-                MONETARY_ACCOUNT_ITEM_ID).Value;
+            var paymentBatchId = PaymentBatch.Create(allPayment).Value;
 
-            Console.WriteLine(PaymentBatch.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, paymentBatchId));
+            Console.WriteLine(PaymentBatch.Get(paymentBatchId));
         }
     }
 }

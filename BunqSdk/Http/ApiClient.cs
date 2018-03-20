@@ -16,6 +16,12 @@ namespace Bunq.Sdk.Http
 {
     public class ApiClient
     {
+        
+        /// <summary>
+        /// Error constatns.
+        /// </summary>
+        private static string ERROR_COULD_NOT_DETERMINE_RESPONSE_ID_HEADER =
+            "The response header \"X-Bunq-Client-Response-Id\" or \"x-bunq-client-response-id\" could not be found.";
 
         /// <summary>
         /// Endpoints not requiring active session for the request to succeed.
@@ -43,6 +49,8 @@ namespace Bunq.Sdk.Http
         private const string HEADER_GEOLOCATION = "X-Bunq-Geolocation";
         private const string HEADER_SIGNATURE = "X-Bunq-Client-Signature";
         private const string HEADER_AUTHENTICATION = "X-Bunq-Client-Authentication";
+        private static string HEADER_RESPONSE_ID_LOWER_CASE = "x-bunq-client-response-id";
+        private static string HEADER_RESPONSE_ID_UPPER_CASE = "X-Bunq-Client-Response-Id";
 
         /// <summary>
         /// Field constants.
@@ -54,7 +62,7 @@ namespace Bunq.Sdk.Http
         /// Values for the default headers
         /// </summary>
         private const string CACHE_CONTROL_NONE = "no-cache";
-        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/0.12.4.0-beta";
+        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/0.13.0.0-beta";
         private const string LANGUAGE_EN_US = "en_US";
         private const string REGION_NL_NL = "nl_NL";
         private const string GEOLOCATION_ZERO = "0 0 0 0 NL";
@@ -282,18 +290,50 @@ namespace Bunq.Sdk.Http
             var responseCode = (int) responseMessage.StatusCode;
             var responseBody = responseMessage.Content.ReadAsStringAsync().Result;
 
-            throw CreateApiExceptionRequestUnsuccessful(responseCode, responseBody);
+            throw CreateApiExceptionRequestUnsuccessful(
+                responseCode,
+                responseBody,
+                DetermineResponseIdByAllHeader(responseMessage.Headers)
+            );
         }
 
-        private static ApiException CreateApiExceptionRequestUnsuccessful(int responseCode, string responseBody)
+        private static string DetermineResponseIdByAllHeader(HttpHeaders allHeader)
+        {
+            if (allHeader.Contains(HEADER_RESPONSE_ID_UPPER_CASE))
+            {
+                return allHeader.GetValues(HEADER_RESPONSE_ID_UPPER_CASE).First();
+            }
+            else if (allHeader.Contains(HEADER_RESPONSE_ID_LOWER_CASE))
+            {
+                return allHeader.GetValues(HEADER_RESPONSE_ID_LOWER_CASE).First();
+            }
+            else
+            {
+                return ERROR_COULD_NOT_DETERMINE_RESPONSE_ID_HEADER;
+            }
+        }
+
+        private static ApiException CreateApiExceptionRequestUnsuccessful(
+            int responseCode,
+            string responseBody,
+            string responseId
+        )
         {
             try
             {
-                return ExceptionFactory.CreateExceptionForResponse(responseCode, FetchErrorDescriptions(responseBody));
+                return ExceptionFactory.CreateExceptionForResponse(
+                    responseCode,
+                    FetchErrorDescriptions(responseBody),
+                    responseId
+                );
             }
             catch (JsonException)
             {
-                return ExceptionFactory.CreateExceptionForResponse(responseCode, new List<string> {responseBody});
+                return ExceptionFactory.CreateExceptionForResponse(
+                    responseCode,
+                    new List<string> {responseBody},
+                    responseId
+                );
             }
         }
 

@@ -12,8 +12,10 @@
         <e p="Context" t="Include">
           <e p="ApiContext.cs" t="Include" />
           <e p="ApiEnvironmentType.cs" t="Include" />
+          <e p="BunqContext.cs" t="Include" />
           <e p="InstallationContext.cs" t="Include" />
           <e p="SessionContext.cs" t="Include" />
+          <e p="UserContext.cs" t="Include" />
         </e>
         <e p="Exception" t="Include">
           <e p="ApiException.cs" t="Include" />
@@ -53,6 +55,7 @@
           <e p="Core" t="Include">
             <e p="AnchorObjectInterface.cs" t="Include" />
             <e p="BunqModel.cs" t="Include" />
+            <e p="DeviceServerInternal.cs" t="Include" />
             <e p="Id.cs" t="Include" />
             <e p="Installation.cs" t="Include" />
             <e p="MonetaryAccountReference.cs" t="Include" />
@@ -104,6 +107,8 @@
               <e p="Device.cs" t="Include" />
               <e p="DeviceServer.cs" t="Include" />
               <e p="DraftPayment.cs" t="Include" />
+              <e p="DraftShareInviteApiKey.cs" t="Include" />
+              <e p="DraftShareInviteApiKeyQrCodeContent.cs" t="Include" />
               <e p="DraftShareInviteBank.cs" t="Include" />
               <e p="DraftShareInviteBankQrCodeContent.cs" t="Include" />
               <e p="ExportAnnualOverview.cs" t="Include" />
@@ -115,6 +120,8 @@
               <e p="MasterCardAction.cs" t="Include" />
               <e p="MonetaryAccount.cs" t="Include" />
               <e p="MonetaryAccountBank.cs" t="Include" />
+              <e p="MonetaryAccountJoint.cs" t="Include" />
+              <e p="MonetaryAccountLight.cs" t="Include" />
               <e p="MonetaryAccountProfile.cs" t="Include" />
               <e p="Payment.cs" t="Include" />
               <e p="PaymentBatch.cs" t="Include" />
@@ -126,6 +133,7 @@
               <e p="RequestInquiryChat.cs" t="Include" />
               <e p="RequestResponse.cs" t="Include" />
               <e p="RequestResponseChat.cs" t="Include" />
+              <e p="SandboxUser.cs" t="Include" />
               <e p="Schedule.cs" t="Include" />
               <e p="ScheduleInstance.cs" t="Include" />
               <e p="SchedulePayment.cs" t="Include" />
@@ -147,11 +155,14 @@
               <e p="TabUsageMultiple.cs" t="Include" />
               <e p="TabUsageSingle.cs" t="Include" />
               <e p="TokenQrRequestIdeal.cs" t="Include" />
+              <e p="TokenQrRequestSofort.cs" t="Include" />
               <e p="User.cs" t="Include" />
               <e p="UserCompany.cs" t="Include" />
               <e p="UserCredentialPasswordIp.cs" t="Include" />
               <e p="UserLight.cs" t="Include" />
               <e p="UserPerson.cs" t="Include" />
+              <e p="Whitelist.cs" t="Include" />
+              <e p="WhitelistResult.cs" t="Include" />
             </e>
             <e p="Object" t="Include">
               <e p="Address.cs" t="Include" />
@@ -178,10 +189,12 @@
               <e p="ChatMessageContentStatusConversationTitle.cs" t="Include" />
               <e p="ChatMessageContentStatusMembership.cs" t="Include" />
               <e p="ChatMessageContentText.cs" t="Include" />
+              <e p="CoOwner.cs" t="Include" />
               <e p="DraftPaymentAnchorObject.cs" t="Include" />
               <e p="DraftPaymentEntry.cs" t="Include" />
               <e p="DraftPaymentResponse.cs" t="Include" />
               <e p="DraftShareInviteBankEntry.cs" t="Include" />
+              <e p="DraftShareInviteEntry.cs" t="Include" />
               <e p="Error.cs" t="Include" />
               <e p="Geolocation.cs" t="Include" />
               <e p="Image.cs" t="Include" />
@@ -199,6 +212,8 @@
               <e p="NotificationUrl.cs" t="Include" />
               <e p="PermittedDevice.cs" t="Include" />
               <e p="Pointer.cs" t="Include" />
+              <e p="RequestInquiryReference.cs" t="Include" />
+              <e p="RequestReferenceSplitTheBillAnchorObject.cs" t="Include" />
               <e p="ScheduleAnchorObject.cs" t="Include" />
               <e p="ScheduleInstanceAnchorObject.cs" t="Include" />
               <e p="SchedulePaymentEntry.cs" t="Include" />
@@ -270,6 +285,7 @@
         <e p="Http" t="Include">
           <e p="PaginationScenarioTest.cs" t="Include" />
           <e p="PaginationTest.cs" t="Include" />
+          <e p="ResponseIdOnBadRequestTest.cs" t="Include" />
         </e>
         <e p="Model" t="Include">
           <e p="Generated" t="Include">

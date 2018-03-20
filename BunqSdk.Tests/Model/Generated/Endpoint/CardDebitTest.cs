@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
@@ -17,19 +18,22 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
+        private const string CARD_PIN_ASSIGNMENT_TYPE_PRIMARY = "PRIMARY";
+
         private const string PIN_CODE = "4045";
         private const int INDEX_FIRST = 0;
         private const int NONNEGATIVE_INTEGER_MINIMUM = 0;
         private const int BASE_DECIMAL = 10;
         private const int CARD_SECOND_LINE_LENGTH_MAXIMUM = 20;
         private const int NUMBER_ONE = 1;
+        private const string CardTypeMaestro = "MAESTRO";
 
         private static readonly int USER_ID = Config.GetUserId();
 
         /// <summary>
         /// API context used to for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
 
         /// <summary>
         /// Tests ordering a new card and checks if the fields we have entered are indeed correct by.
@@ -37,16 +41,17 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestOrderNewMaestroCard()
         {
-            var cardDebitMap = new Dictionary<string, object>
-            {
-                {CardDebit.FIELD_ALIAS, GetAlias()},
-                {CardDebit.FIELD_NAME_ON_CARD, GetAnAllowedName()},
-                {CardDebit.FIELD_PIN_CODE, PIN_CODE},
-                {CardDebit.FIELD_SECOND_LINE, GenerateRandomSecondLine()}
-            };
-            var cardDebit = CardDebit.Create(API_CONTEXT, cardDebitMap, USER_ID).Value;
+            var cardPinAssignment = new CardPinAssignment(
+                CARD_PIN_ASSIGNMENT_TYPE_PRIMARY,
+                PIN_CODE,
+                Config.GetMonetarytAccountId());
+            var allCardPinAssignments = new List<CardPinAssignment> {cardPinAssignment};
+            var cardDebit = CardDebit.Create(GenerateRandomSecondLine(), GetAnAllowedName(), GetAlias(), CardTypeMaestro,
+                allCardPinAssignments).Value;
 
-            var cardFromCardEndpoint = Card.Get(API_CONTEXT, USER_ID, cardDebit.Id.Value).Value;
+            Assert.True(cardDebit.Id != null);
+            
+            var cardFromCardEndpoint = Card.Get(cardDebit.Id.Value).Value;
 
             Assert.Equal(cardDebit.SecondLine, cardFromCardEndpoint.SecondLine);
             Assert.Equal(cardDebit.Created, cardFromCardEndpoint.Created);
@@ -55,7 +60,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
         private static string GetAnAllowedName()
         {
-            return CardName.List(API_CONTEXT, USER_ID).Value[INDEX_FIRST].PossibleCardNameArray[INDEX_FIRST];
+            return CardName.List().Value[INDEX_FIRST].PossibleCardNameArray[INDEX_FIRST];
         }
 
         private static string GenerateRandomSecondLine()
@@ -70,7 +75,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
         private static Pointer GetAlias()
         {
-            return User.Get(API_CONTEXT, USER_ID).Value.UserCompany.Alias[INDEX_FIRST];
+            return User.Get().Value.UserCompany.Alias[INDEX_FIRST];
         }
     }
 }

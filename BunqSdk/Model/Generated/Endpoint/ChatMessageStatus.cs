@@ -11,47 +11,42 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class ChatMessageStatus : BunqModel
     {
         /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "ChatMessageUser";
-    
-        /// <summary>
         /// The id of the message.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; private set; }
-    
+        public int? Id { get; set; }
+
         /// <summary>
         /// The timestamp when the message was created.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
-        public string Created { get; private set; }
-    
+        public string Created { get; set; }
+
         /// <summary>
         /// The timestamp when the message was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
-        public string Updated { get; private set; }
-    
+        public string Updated { get; set; }
+
         /// <summary>
         /// The id of the conversation this message belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "conversation_id")]
-        public int? ConversationId { get; private set; }
-    
+        public int? ConversationId { get; set; }
+
         /// <summary>
         /// The user who initiated the action that caused this message to appear.
         /// </summary>
         [JsonProperty(PropertyName = "creator")]
-        public LabelUser Creator { get; private set; }
-    
+        public LabelUser Creator { get; set; }
+
         /// <summary>
         /// The content of this message.
         /// </summary>
         [JsonProperty(PropertyName = "content")]
-        public ChatMessageContent Content { get; private set; }
-    
-    
+        public ChatMessageContent Content { get; set; }
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -60,35 +55,35 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
             if (this.Created != null)
             {
                 return false;
             }
-    
+
             if (this.Updated != null)
             {
                 return false;
             }
-    
+
             if (this.ConversationId != null)
             {
                 return false;
             }
-    
+
             if (this.Creator != null)
             {
                 return false;
             }
-    
+
             if (this.Content != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static ChatMessageStatus CreateFromJsonString(string json)

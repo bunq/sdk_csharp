@@ -10,41 +10,36 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class BunqMeFundraiserResult : BunqModel
     {
         /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "BunqMeFundraiserResult";
-    
-        /// <summary>
         /// The id of the bunq.me.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; private set; }
-    
+        public int? Id { get; set; }
+
         /// <summary>
         /// The timestamp when the bunq.me was created.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
-        public string Created { get; private set; }
-    
+        public string Created { get; set; }
+
         /// <summary>
         /// The timestamp when the bunq.me was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
-        public string Updated { get; private set; }
-    
+        public string Updated { get; set; }
+
         /// <summary>
         /// The bunq.me fundraiser profile.
         /// </summary>
         [JsonProperty(PropertyName = "bunqme_fundraiser_profile")]
-        public BunqMeFundraiserProfile BunqmeFundraiserProfile { get; private set; }
-    
+        public BunqMeFundraiserProfile BunqmeFundraiserProfile { get; set; }
+
         /// <summary>
         /// The list of payments, paid to the bunq.me fundraiser profile.
         /// </summary>
         [JsonProperty(PropertyName = "payments")]
-        public List<Payment> Payments { get; private set; }
-    
-    
+        public List<Payment> Payments { get; set; }
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -53,30 +48,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
             if (this.Created != null)
             {
                 return false;
             }
-    
+
             if (this.Updated != null)
             {
                 return false;
             }
-    
+
             if (this.BunqmeFundraiserProfile != null)
             {
                 return false;
             }
-    
+
             if (this.Payments != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static BunqMeFundraiserResult CreateFromJsonString(string json)

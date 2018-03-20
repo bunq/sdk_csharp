@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Newtonsoft.Json.Linq;
@@ -13,6 +14,7 @@ namespace Bunq.Sdk.Model.Core
         /// Field constants.
         /// </summary>
         private const string FIELD_RESPONSE = "Response";
+
         private const string FIELD_ID = "Id";
         private const string FIELD_UUID = "Uuid";
         private const string FIELD_PAGINATION = "Pagination";
@@ -95,7 +97,7 @@ namespace Bunq.Sdk.Model.Core
         public static T CreateFromJsonString<T>(string json)
         {
             var modelValue = BunqJsonConvert.DeserializeObject<T>(json);
-            
+
             return modelValue;
         }
 
@@ -148,5 +150,20 @@ namespace Bunq.Sdk.Model.Core
         }
 
         public abstract bool IsAllFieldNull();
+
+        protected static ApiContext GetApiContext()
+        {
+            return BunqContext.ApiContext;
+        }
+
+        protected static int DetermineUserId()
+        {
+            return BunqContext.UserContext.UserId;
+        }
+
+        protected static int DetermineMonetaryAccountId(int? monetaryAccountId = null)
+        {
+            return monetaryAccountId ?? BunqContext.UserContext.PrimaryMonetaryAccountBank.Id.Value;
+        }
     }
 }

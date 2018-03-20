@@ -21,57 +21,69 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_CREATE = "avatar";
-        private const string ENDPOINT_URL_READ = "avatar/{0}";
-    
+        protected const string ENDPOINT_URL_CREATE = "avatar";
+
+        protected const string ENDPOINT_URL_READ = "avatar/{0}";
+
         /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_ATTACHMENT_PUBLIC_UUID = "attachment_public_uuid";
-    
+
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE = "Avatar";
-    
+        private const string OBJECT_TYPE_POST = "Uuid";
+
+        private const string OBJECT_TYPE_GET = "Avatar";
+
         /// <summary>
         /// The UUID of the created avatar.
         /// </summary>
         [JsonProperty(PropertyName = "uuid")]
-        public string Uuid { get; private set; }
-    
+        public string Uuid { get; set; }
+
         /// <summary>
         /// The content type of the image.
         /// </summary>
         [JsonProperty(PropertyName = "image")]
-        public List<Image> Image { get; private set; }
-    
+        public List<Image> Image { get; set; }
+
         /// <summary>
         /// </summary>
-        public static BunqResponse<string> Create(ApiContext apiContext, IDictionary<string, object> requestMap, IDictionary<string, string> customHeaders = null)
+        /// <param name="attachmentPublicUuid">The public UUID of the public attachment from which an avatar image must be created.</param>
+        public static BunqResponse<string> Create(string attachmentPublicUuid,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(apiContext);
+
+            var apiClient = new ApiClient(GetApiContext());
+
+            var requestMap = new Dictionary<string, object>
+            {
+                {FIELD_ATTACHMENT_PUBLIC_UUID, attachmentPublicUuid},
+            };
+
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
-    
+
             return ProcessForUuid(responseRaw);
         }
-    
+
         /// <summary>
         /// </summary>
-        public static BunqResponse<Avatar> Get(ApiContext apiContext, string avatarUuid, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<Avatar> Get(string avatarUuid, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, avatarUuid), new Dictionary<string, string>(), customHeaders);
-    
-            return FromJson<Avatar>(responseRaw, OBJECT_TYPE);
+
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, avatarUuid),
+                new Dictionary<string, string>(), customHeaders);
+
+            return FromJson<Avatar>(responseRaw, OBJECT_TYPE_GET);
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -80,15 +92,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
             if (this.Image != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static Avatar CreateFromJsonString(string json)

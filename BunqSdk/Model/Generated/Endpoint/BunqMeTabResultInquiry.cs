@@ -11,17 +11,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class BunqMeTabResultInquiry : BunqModel
     {
         /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE = "BunqMeTabResultInquiry";
-    
-        /// <summary>
         /// The payment made for the Tab.
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
-        public Payment Payment { get; private set; }
-    
-    
+        public Payment Payment { get; set; }
+
+        /// <summary>
+        /// The Id of the bunq.me tab that this BunqMeTabResultInquiry belongs to.
+        /// </summary>
+        [JsonProperty(PropertyName = "bunq_me_tab_id")]
+        public int? BunqMeTabId { get; set; }
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -30,10 +31,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
+            if (this.BunqMeTabId != null)
+            {
+                return false;
+            }
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static BunqMeTabResultInquiry CreateFromJsonString(string json)
