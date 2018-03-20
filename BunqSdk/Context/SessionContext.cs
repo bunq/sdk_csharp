@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
 
@@ -9,6 +11,13 @@ namespace Bunq.Sdk.Context
     /// </summary>
     public class SessionContext
     {
+        /// <summary>
+        /// Error constatns.
+        /// </summary>
+        private const string ErrorCouldNotDetermineUserId = "Could not determine user id.";
+        private const string ErrorSessionserverUsercompanyIdNull = "sessionServer.UserCompany.Id != null";
+        private const string ErrorsessionserverUserpersonIdNull = "sessionServer.UserPerson.Id != null";
+
         /// <summary>
         /// Default assumed value for session timeout.
         /// </summary>
@@ -25,6 +34,9 @@ namespace Bunq.Sdk.Context
         /// </summary>
         [JsonProperty(PropertyName = "expiry_time")]
         public DateTime ExpiryTime { get; private set; }
+        
+        [JsonProperty(PropertyName = "user_id")]
+        public int UserId { get; private set; }
 
         [JsonConstructor]
         private SessionContext()
@@ -35,6 +47,25 @@ namespace Bunq.Sdk.Context
         {
             Token = sessionServer.SessionToken.Token;
             ExpiryTime = DateTime.Now.AddSeconds(GetSessionTimeout(sessionServer));
+            UserId = GetUserId(sessionServer);
+        }
+
+        private static int GetUserId(SessionServer sessionServer)
+        {
+            if (sessionServer.UserCompany != null && sessionServer.UserPerson == null)
+            {
+                Debug.Assert(sessionServer.UserCompany.Id != null, ErrorSessionserverUsercompanyIdNull);
+                return sessionServer.UserCompany.Id.Value;
+            }
+            else if (sessionServer.UserPerson != null && sessionServer.UserCompany == null)
+            {
+                Debug.Assert(sessionServer.UserPerson.Id != null, ErrorsessionserverUserpersonIdNull);
+                return sessionServer.UserPerson.Id.Value;
+            }
+            else
+            {
+                throw new BunqException(ErrorCouldNotDetermineUserId);
+            }
         }
 
         private static double GetSessionTimeout(SessionServer sessionServer)

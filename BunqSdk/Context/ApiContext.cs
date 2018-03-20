@@ -84,7 +84,7 @@ namespace Bunq.Sdk.Context
         /// Create and initialize an API Context.
         /// </summary>
         public static ApiContext Create(ApiEnvironmentType environmentType, string apiKey, string deviceDescription,
-            IList<string> permittedIps, string proxy = null)
+            List<string> permittedIps, string proxy = null)
         {
             var apiContext = new ApiContext
             {
@@ -100,7 +100,7 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Initializes an API context with Installation, DeviceServer and a SessionServer.
         /// </summary>
-        private void Initialize(string deviceDescription, IList<string> permittedIps)
+        private void Initialize(string deviceDescription, List<string> permittedIps)
         {
             /* The calls below are order-sensitive: to initialize a Device Registration, we need an
              * Installation, and to initialize a Session we need a Device Registration. */
@@ -120,9 +120,9 @@ namespace Bunq.Sdk.Context
             InstallationContext = new InstallationContext(installationResponse.Value, keyPairClient);
         }
 
-        private void RegisterDevice(string deviceDescription, IList<string> permittedIps)
+        private void RegisterDevice(string deviceDescription, List<string> permittedIps)
         {
-            DeviceServer.Create(this, GenerateRequestBodyBytes(deviceDescription, permittedIps));
+            DeviceServerInternal.Create(this, deviceDescription, ApiKey, permittedIps);
         }
 
         private IDictionary<string, object> GenerateRequestBodyBytes(string description, IList<string> permittedIps)
@@ -168,7 +168,7 @@ namespace Bunq.Sdk.Context
 
         private void DeleteSession()
         {
-            Session.Delete(this, SESSION_ID_DUMMY);
+            Session.Delete(SESSION_ID_DUMMY);
         }
 
         /// <summary>
