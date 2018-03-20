@@ -309,7 +309,7 @@ namespace Bunq.Sdk.Http
             }
             else
             {
-                throw new BunqException(ERROR_COULD_NOT_DETERMINE_RESPONSE_ID_HEADER);
+                return ERROR_COULD_NOT_DETERMINE_RESPONSE_ID_HEADER;
             }
         }
 
