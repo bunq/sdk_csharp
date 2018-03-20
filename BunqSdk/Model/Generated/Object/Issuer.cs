@@ -13,19 +13,19 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "bic")]
         public string Bic { get; set; }
-    
+
         /// <summary>
         /// The name of the bank.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-    
+
         public Issuer(string bic)
         {
             Bic = bic;
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -34,15 +34,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             if (this.Name != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static Issuer CreateFromJsonString(string json)

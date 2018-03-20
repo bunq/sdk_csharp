@@ -18,34 +18,36 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_LISTING = "tab/{0}/attachment/{1}/content";
-    
+        protected const string ENDPOINT_URL_LISTING = "tab/{0}/attachment/{1}/content";
+
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "TabAttachmentTabContent";
-    
+
         /// <summary>
         /// Get the raw content of a specific attachment.
         /// </summary>
-        public static BunqResponse<byte[]> List(ApiContext apiContext, string tabUuid, int attachmentId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<byte[]> List(string tabUuid, int attachmentId,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, tabUuid, attachmentId), new Dictionary<string, string>(), customHeaders);
-    
+
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, tabUuid, attachmentId),
+                new Dictionary<string, string>(), customHeaders);
+
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static TabAttachmentTabContent CreateFromJsonString(string json)

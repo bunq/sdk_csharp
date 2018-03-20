@@ -14,9 +14,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The payment made for the bunq.me tab.
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
-        public Payment Payment { get; private set; }
-    
-    
+        public Payment Payment { get; set; }
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -25,10 +25,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static BunqMeTabResultResponse CreateFromJsonString(string json)

@@ -19,47 +19,49 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
-    
+
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        private const string ENDPOINT_URL_LISTING = "user/{0}/chat-conversation/{1}/message";
-    
+        protected const string ENDPOINT_URL_LISTING = "user/{0}/chat-conversation/{1}/message";
+
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "ChatMessage";
-    
+
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ChatMessageAnnouncement")]
-        public ChatMessageAnnouncement ChatMessageAnnouncement { get; private set; }
-    
+        public ChatMessageAnnouncement ChatMessageAnnouncement { get; set; }
+
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ChatMessageStatus")]
-        public ChatMessageStatus ChatMessageStatus { get; private set; }
-    
+        public ChatMessageStatus ChatMessageStatus { get; set; }
+
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ChatMessageUser")]
-        public ChatMessageUser ChatMessageUser { get; private set; }
-    
+        public ChatMessageUser ChatMessageUser { get; set; }
+
         /// <summary>
         /// Get all the messages that are part of a specific conversation.
         /// </summary>
-        public static BunqResponse<List<ChatMessage>> List(ApiContext apiContext, int userId, int chatConversationId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<ChatMessage>> List(int chatConversationId,
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(apiContext);
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, userId, chatConversationId), urlParams, customHeaders);
-    
+
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId(), chatConversationId),
+                urlParams, customHeaders);
+
             return FromJsonList<ChatMessage>(responseRaw);
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public BunqModel GetReferencedObject()
@@ -68,20 +70,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return this.ChatMessageAnnouncement;
             }
-    
+
             if (this.ChatMessageStatus != null)
             {
                 return this.ChatMessageStatus;
             }
-    
+
             if (this.ChatMessageUser != null)
             {
                 return this.ChatMessageUser;
             }
-    
+
             throw new BunqException(ERROR_NULL_FIELDS);
         }
-    
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -90,20 +92,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
             if (this.ChatMessageStatus != null)
             {
                 return false;
             }
-    
+
             if (this.ChatMessageUser != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static ChatMessage CreateFromJsonString(string json)

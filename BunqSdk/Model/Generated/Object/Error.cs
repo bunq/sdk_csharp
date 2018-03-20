@@ -13,14 +13,14 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "error_description")]
         public string ErrorDescription { get; set; }
-    
+
         /// <summary>
         /// The error description (in the user language).
         /// </summary>
         [JsonProperty(PropertyName = "error_description_translated")]
         public string ErrorDescriptionTranslated { get; set; }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -29,15 +29,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             if (this.ErrorDescriptionTranslated != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static Error CreateFromJsonString(string json)

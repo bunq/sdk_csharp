@@ -13,8 +13,8 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; set; }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -23,10 +23,10 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static ChatMessageContentAttachment CreateFromJsonString(string json)
