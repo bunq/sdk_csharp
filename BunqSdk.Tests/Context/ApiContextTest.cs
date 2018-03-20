@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Tests.Context
 
         public ApiContextTest()
         {
-            if (apiContext == null) apiContext = GetApiContext();
+            if (apiContext == null) apiContext = SetUpApiContext();
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Tests.Context
         [Fact]
         public void TestApiContextSerializeDeserialize()
         {
-            var apiContextJson = apiContext.ToJson();
+            var apiContextJson = BunqContext.ApiContext.ToJson();
             var apiContextDeSerialised = ApiContext.FromJson(apiContextJson);
 
             Assert.Equal(apiContextJson, apiContextDeSerialised.ToJson());

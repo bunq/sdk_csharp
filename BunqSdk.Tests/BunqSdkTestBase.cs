@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Tests
         /// <summary>
         /// Gets an Api Context, re-creates if needed and returns it.
         /// </summary>
-        protected static ApiContext GetApiContext()
+        protected static ApiContext SetUpApiContext()
         {
             ApiContext apiContext;
 
@@ -44,6 +44,8 @@ namespace Bunq.Sdk.Tests
 
             apiContext.EnsureSessionActive();
             apiContext.Save(FILENAME_CONTEXT_CONF);
+            
+            BunqContext.LoadApiContext(apiContext);
 
             return apiContext;
         }

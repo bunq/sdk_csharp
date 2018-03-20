@@ -16,12 +16,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values
         /// </summary>
-        private const string TAB_FIELD_DESCRIPTION = "Pay the tab for Java test please.";
-        private const string FIELD_STATUS_OPEN = "OPEN";
+        private const string TAB_DESCRIPTION = "Pay the tab for Java test please.";
+
+        private const string STATUS_OPEN = "OPEN";
         private const string AMOUNT_EUR = "10.00";
         private const string FIELD_CURRENCY = "EUR";
-        private const string TAB_ITEM_FIELD_DESCRIPTION = "Super expensive java tea";
-        private const string FIELD_STATUS_WAITING = "WAITING_FOR_PAYMENT";
+        private const string TAB_ITEM_DESCRIPTION = "Super expensive java tea";
+        private const string STATUS_WAITING = "WAITING_FOR_PAYMENT";
 
         private static readonly int USER_ID = Config.GetUserId();
         private static readonly int MONETARY_ACCOUNT_ID = Config.GetMonetarytAccountId();
@@ -30,7 +31,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
 
         /// <summary>
         /// Tests opening a new tab, adding a tab item to it and update this tab to awaiting payment.
@@ -44,41 +45,25 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             var tabUuid = CreateTabAndGetUuid();
             AddTabItem(tabUuid);
 
-            var updateTabMap = new Dictionary<string, object>
-            {
-                {TabUsageSingle.FIELD_STATUS, FIELD_STATUS_WAITING}
-            };
-            TabUsageSingle.Update(API_CONTEXT, updateTabMap, USER_ID, MONETARY_ACCOUNT_ID, CASH_REGISTER_ID, tabUuid);
+            TabUsageSingle.Update(CASH_REGISTER_ID, tabUuid, status: STATUS_WAITING);
 
             DeleteTab(tabUuid);
         }
 
-        private static void DeleteTab(string tabId)
+        private static void DeleteTab(string tabUuid)
         {
-            TabUsageSingle.Delete(API_CONTEXT, USER_ID, MONETARY_ACCOUNT_ID, CASH_REGISTER_ID, tabId);
+            TabUsageSingle.Delete(CASH_REGISTER_ID, tabUuid);
         }
 
         private static string CreateTabAndGetUuid()
         {
-            var createTabMap = new Dictionary<string, object>
-            {
-                {TabUsageSingle.FIELD_DESCRIPTION, TAB_FIELD_DESCRIPTION},
-                {TabUsageSingle.FIELD_STATUS, FIELD_STATUS_OPEN},
-                {TabUsageSingle.FIELD_AMOUNT_TOTAL, new Amount(AMOUNT_EUR, FIELD_CURRENCY)}
-            };
-
-            return TabUsageSingle.Create(API_CONTEXT, createTabMap, USER_ID, MONETARY_ACCOUNT_ID,
-                CASH_REGISTER_ID).Value;
+            return TabUsageSingle.Create(CASH_REGISTER_ID, TAB_DESCRIPTION, STATUS_OPEN,
+                new Amount(AMOUNT_EUR, FIELD_CURRENCY)).Value;
         }
 
         private static void AddTabItem(string tabUuid)
         {
-            var tabItemMap = new Dictionary<string, object>
-            {
-                {TabItemShop.FIELD_AMOUNT, new Amount(AMOUNT_EUR, FIELD_CURRENCY)},
-                {TabItemShop.FIELD_DESCRIPTION, TAB_ITEM_FIELD_DESCRIPTION}
-            };
-            TabItemShop.Create(API_CONTEXT, tabItemMap, USER_ID, MONETARY_ACCOUNT_ID, CASH_REGISTER_ID, tabUuid);
+            TabItemShop.Create(CASH_REGISTER_ID, tabUuid, TAB_ITEM_DESCRIPTION);
         }
     }
 }

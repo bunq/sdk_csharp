@@ -16,6 +16,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// Config values.
         /// </summary>
         private const string PAYMENT_AMOUNT_EUR = "0.01";
+
         private const string PAYMENT_CURRENCY = "EUR";
         private const string PAYMENT_DESCRIPTION = "C# test Payment";
 
@@ -27,7 +28,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
 
         /// <summary>
         /// Tests making a payment to another sanndbox user.
@@ -37,14 +38,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestMakePaymentToOtherUser()
         {
-            var requestMap = new Dictionary<string, object>
-            {
-                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY)},
-                {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_OTHER}
-            };
-
-            Payment.Create(API_CONTEXT, requestMap, USER_ID, MONETARY_ACCOUNT_ID);
+            Payment.Create(new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY), COUNTER_PARTY_OTHER, PAYMENT_DESCRIPTION);
         }
 
         /// <summary>
@@ -55,14 +49,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestMakePaymentToOtherAccount()
         {
-            var requestMap = new Dictionary<string, object>
-            {
-                {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY)},
-                {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION},
-                {Payment.FIELD_COUNTERPARTY_ALIAS, COUNTER_PARTY_SELF}
-            };
-
-            Payment.Create(API_CONTEXT, requestMap, USER_ID, MONETARY_ACCOUNT_ID);
+            Payment.Create(new Amount(PAYMENT_AMOUNT_EUR, PAYMENT_CURRENCY), COUNTER_PARTY_SELF, PAYMENT_DESCRIPTION);
         }
     }
 }

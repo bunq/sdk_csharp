@@ -11,7 +11,7 @@ namespace Bunq.Sdk.Tests.Http
         /// <summary>
         /// API context to use for the test API calls.
         /// </summary>
-        private static readonly ApiContext API_CONTEXT = GetApiContext();
+        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
         
         /// <summary>
         /// Invalid user id to trigger BadRequestException
@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Tests.Http
         public void TestBadRequestWithResponseId()
         {
             var caughtException = Assert.Throws<BadRequestException>(
-                () => UserPerson.Get(API_CONTEXT, INVALID_USER_PERSON_ID)
+                () => UserPerson.Get()
             );
             
             Assert.NotNull(caughtException.ResponseId);
