@@ -1,5 +1,38 @@
 # Change Log
 
+## [0.13.0](https://github.com/bunq/sdk_csharp/tree/0.13.0) (2018-03-20)
+
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.4...0.13.0)
+
+**Implemented enhancements:**
+
+- Add zappr integration for better quality control  [\#66](https://github.com/bunq/sdk_csharp/issues/66)
+- Add more information to templates. [\#64](https://github.com/bunq/sdk_csharp/issues/64)
+- Add response id to error messages from failed requests  [\#63](https://github.com/bunq/sdk_csharp/issues/63)
+- Add installation instructions to README.md [\#61](https://github.com/bunq/sdk_csharp/issues/61)
+
+**Fixed bugs:**
+
+- Token request ideal is missing id attribute in response. [\#76](https://github.com/bunq/sdk_csharp/issues/76)
+- Field ID is missing from MasterCardAction [\#52](https://github.com/bunq/sdk_csharp/issues/52)
+- TokenQrRequestIdeal returns the wrong type [\#51](https://github.com/bunq/sdk_csharp/issues/51)
+
+**Closed issues:**
+
+- Bunq update 7  [\#83](https://github.com/bunq/sdk_csharp/issues/83)
+
+**Merged pull requests:**
+
+- Bunq update 7  [\#84](https://github.com/bunq/sdk_csharp/pull/84) ([OGKevin](https://github.com/OGKevin))
+- Regenerate code for release [\#82](https://github.com/bunq/sdk_csharp/pull/82) ([OGKevin](https://github.com/OGKevin))
+- Regenerated code with correct object types. \(bunq/sdk\_csharp\#51\) [\#79](https://github.com/bunq/sdk_csharp/pull/79) ([OGKevin](https://github.com/OGKevin))
+- Added missing field id for TokenQrRequestIdeal. \(bunq/sdk\_csharp\#76\) [\#78](https://github.com/bunq/sdk_csharp/pull/78) ([OGKevin](https://github.com/OGKevin))
+- Added missing id field from mastercard action. \(bunq/sdk\_csharp\#52\) [\#74](https://github.com/bunq/sdk_csharp/pull/74) ([OGKevin](https://github.com/OGKevin))
+- \(bunq/sdk\_csharp\#63\) add response id to failed request [\#73](https://github.com/bunq/sdk_csharp/pull/73) ([OGKevin](https://github.com/OGKevin))
+- Configure Zappr [\#67](https://github.com/bunq/sdk_csharp/pull/67) ([OGKevin](https://github.com/OGKevin))
+- Improve issue and pr template. \(bunq/sdk\_csharp\#64\) [\#65](https://github.com/bunq/sdk_csharp/pull/65) ([OGKevin](https://github.com/OGKevin))
+- Added installation instructions to README.md. \(bunq/sdk\_csharp\#61\) [\#62](https://github.com/bunq/sdk_csharp/pull/62) ([OGKevin](https://github.com/OGKevin))
+
 ## [0.12.4](https://github.com/bunq/sdk_csharp/tree/0.12.4) (2017-12-21)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.3...0.12.4)
 
@@ -10,6 +43,7 @@
 - Return base class from createFromJsonString [\#48](https://github.com/bunq/sdk_csharp/issues/48)
 - CHANGELOG.md is empty [\#46](https://github.com/bunq/sdk_csharp/issues/46)
 - Improve decoder to recognise child objects [\#43](https://github.com/bunq/sdk_csharp/issues/43)
+- Generated CHANGELOG.md :clap:. \(bunq/sdk\_csharp\#46\) [\#47](https://github.com/bunq/sdk_csharp/pull/47) ([OGKevin](https://github.com/OGKevin))
 
 **Closed issues:**
 
@@ -17,9 +51,8 @@
 
 **Merged pull requests:**
 
-- Insure that headers are correctly cased before signature verification… [\#59](https://github.com/bunq/sdk_csharp/pull/59) ([OGKevin](https://github.com/OGKevin))
+- Ensure that headers are correctly cased before signature verification… [\#59](https://github.com/bunq/sdk_csharp/pull/59) ([OGKevin](https://github.com/OGKevin))
 - Improve decoder bunq/sdk csharp\#43 [\#57](https://github.com/bunq/sdk_csharp/pull/57) ([OGKevin](https://github.com/OGKevin))
-- Generated CHANGELOG.md :clap:. \(bunq/sdk\_csharp\#46\) [\#47](https://github.com/bunq/sdk_csharp/pull/47) ([OGKevin](https://github.com/OGKevin))
 
 ## [0.12.3](https://github.com/bunq/sdk_csharp/tree/0.12.3) (2017-11-15)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.2...0.12.3)
