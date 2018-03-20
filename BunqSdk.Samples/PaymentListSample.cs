@@ -21,30 +21,22 @@ namespace Bunq.Sdk.Samples
         /// </summary>
         private const int PAGE_SIZE = 3;
 
-        /// <summary>
-        /// Constants to be changed to run the example.
-        /// </summary>
-        private const int USER_ITEM_ID = 0; // Put your user ID here
-        private const int MONETARY_ACCOUNT_ITEM_ID = 0; // Put your monetary account ID here
-
         public void Run()
         {
-            var apiContext = ApiContext.Restore();
+            BunqContext.LoadApiContext(ApiContext.Restore());
             var paginationCountOnly = new Pagination
             {
                 Count = PAGE_SIZE,
             };
             Console.WriteLine(MESSAGE_LATEST_PAGE_IDS);
-            var paymentResponse = Payment.List(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID,
-                paginationCountOnly.UrlParamsCountOnly);
+            var paymentResponse = Payment.List(urlParams: paginationCountOnly.UrlParamsCountOnly);
             PrintPayments(paymentResponse.Value);
             var pagination = paymentResponse.Pagination;
 
             if (pagination.HasPreviousPage())
             {
                 Console.WriteLine(MESSAGE_SECOND_LATEST_PAGE_IDS);
-                var previousPaymentResponse = Payment.List(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID,
-                    pagination.UrlParamsPreviousPage);
+                var previousPaymentResponse = Payment.List(urlParams: pagination.UrlParamsPreviousPage);
                 PrintPayments(previousPaymentResponse.Value);
             }
             else

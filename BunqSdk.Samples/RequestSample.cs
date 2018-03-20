@@ -14,26 +14,18 @@ namespace Bunq.Sdk.Samples
         private const string COUNTERPARTY_POINTER_TYPE = "EMAIL";
         private const string COUNTERPARTY_EMAIL = "bravo@bunq.com";
         private const string REQUEST_DESCRIPTION = "This is a generated request!";
-        private const int USER_ITEM_ID = 0; // Put your user ID here
-        private const int MONETARY_ACCOUNT_ITEM_ID = 0; // Put your monetary account ID here
         private const string STATUS_REVOKED = "REVOKED";
 
         public void Run()
         {
             var apiContext = ApiContext.Restore();
-            var requestMap = new Dictionary<string, object>
-            {
-                {RequestInquiry.FIELD_AMOUNT_INQUIRED, new Amount(REQUEST_AMOUNT, REQUEST_CURRENCY)},
-                {RequestInquiry.FIELD_COUNTERPARTY_ALIAS, new Pointer(COUNTERPARTY_POINTER_TYPE, COUNTERPARTY_EMAIL)},
-                {RequestInquiry.FIELD_DESCRIPTION, REQUEST_DESCRIPTION},
-                {RequestInquiry.FIELD_ALLOW_BUNQME, true}
-            };
-            var requestId = RequestInquiry.Create(apiContext, requestMap, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID).Value;
-            Console.WriteLine(RequestInquiry.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID, requestId));
+            var requestId = RequestInquiry.Create(new Amount(REQUEST_AMOUNT, REQUEST_CURRENCY),
+                new Pointer(COUNTERPARTY_POINTER_TYPE, COUNTERPARTY_EMAIL), REQUEST_DESCRIPTION, false).Value;
+            
+            Console.WriteLine(RequestInquiry.Get(requestId));
 
             var requestUpdateMap = new Dictionary<string, object> {{RequestInquiry.FIELD_STATUS, STATUS_REVOKED}};
-            var requestUpdated = RequestInquiry.Update(apiContext, requestUpdateMap, USER_ITEM_ID,
-                MONETARY_ACCOUNT_ITEM_ID, requestId);
+            var requestUpdated = RequestInquiry.Update(requestId, status: STATUS_REVOKED);
             Console.WriteLine(requestUpdated);
         }
     }
