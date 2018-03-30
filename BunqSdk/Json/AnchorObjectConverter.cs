@@ -34,13 +34,13 @@ namespace Bunq.Sdk.Json
 
             if (!model.IsAllFieldNull()) return model;
             
-            var fields = objectType.GetProperties();
+            var fields = objectType.GetTypeInfo().GetProperties();
 
             foreach (var field in fields)
             {
                 var fieldType = field.PropertyType;
                     
-                if (!typeof(BunqModel).IsAssignableFrom(fieldType))
+                if (!typeof(BunqModel).GetTypeInfo().IsAssignableFrom(fieldType))
                 {
                     continue;
                 }
@@ -55,7 +55,7 @@ namespace Bunq.Sdk.Json
 
         public override bool CanConvert(Type objectType)
         {
-            return typeof(IAnchorObjectInterface).IsAssignableFrom(objectType);
+            return typeof(IAnchorObjectInterface).GetTypeInfo().IsAssignableFrom(objectType);
         }
     }
 }
