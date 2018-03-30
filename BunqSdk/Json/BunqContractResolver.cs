@@ -64,7 +64,7 @@ namespace Bunq.Sdk.Json
 
         private JsonConverter GetCustomConverterOrNull(Type objectType)
         {
-            if (typeof(IAnchorObjectInterface).IsAssignableFrom(objectType))
+            if (typeof(IAnchorObjectInterface).GetTypeInfo().IsAssignableFrom(objectType))
             {
                 return converterRegistry.ContainsKey(typeof(IAnchorObjectInterface))
                     ? converterRegistry[typeof(IAnchorObjectInterface)]
