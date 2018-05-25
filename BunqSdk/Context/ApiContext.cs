@@ -188,7 +188,7 @@ namespace Bunq.Sdk.Context
             {
                 return false;
             }
-            
+
             var timeToExpiry = SessionContext.ExpiryTime.Subtract(DateTime.Now);
             var timeToExpiryMinimum = new TimeSpan(
                 TIME_UNIT_COUNT_NONE,
@@ -223,6 +223,22 @@ namespace Bunq.Sdk.Context
         }
 
         /// <summary>
+        /// Save a JSON representation of the API Context to a given writer.
+        /// </summary>
+        public void Save(Stream stream)
+        {
+            try
+            {
+                var writer = new StreamWriter(stream, ENCODING_BUNQ_CONF);
+                writer.Write(ToJson());
+            }
+            catch (IOException exception)
+            {
+                throw new BunqException(ERROR_COULD_NOT_SAVE_API_CONTEXT, exception);
+            }
+        }
+
+        /// <summary>
         /// Serialize the API Context to JSON.
         /// </summary>
         public string ToJson()
@@ -246,6 +262,22 @@ namespace Bunq.Sdk.Context
             try
             {
                 return FromJson(File.ReadAllText(fileName, ENCODING_BUNQ_CONF));
+            }
+            catch (IOException exception)
+            {
+                throw new BunqException(ERROR_COULD_NOT_RESTORE_API_CONTEXT, exception);
+            }
+        }
+
+        /// <summary>
+        /// Restores a context from a given reader.
+        /// </summary>
+        public static ApiContext Restore(Stream stream)
+        {
+            try
+            {
+                var reader = new StreamReader(stream);
+                return FromJson(reader.ReadToEnd());
             }
             catch (IOException exception)
             {
