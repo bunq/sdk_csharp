@@ -3,7 +3,7 @@
 ## Introduction
 Hi developers!
 
-Welcome to the bunq Java SDK integration tests. Currently we are not
+Welcome to the bunq C# SDK integration tests. Currently we are not
 targeting the 100% test coverage, but rather want to be certain that the most
 common scenarios can run without any errors.
 
