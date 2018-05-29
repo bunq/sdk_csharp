@@ -28,7 +28,7 @@ namespace Bunq.Sdk.Context
         /// </summary>
         public static readonly ApiEnvironmentType SANDBOX = new ApiEnvironmentType(ENVIRONMENT_TYPE_SANDBOX);
         private const string ENVIRONMENT_TYPE_SANDBOX = "SANDBOX";
-        private const string BASE_URI_SANDBOX = "https://sandbox.public.api.bunq.com/v1/";
+        private const string BASE_URI_SANDBOX = "https://public-api.sandbox.bunq.com/v1/";
 
         public string TypeString { get; private set; }
         public string BaseUri { get; private set; }
