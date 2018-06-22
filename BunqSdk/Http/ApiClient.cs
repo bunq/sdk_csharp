@@ -99,7 +99,7 @@ namespace Bunq.Sdk.Http
 
         private HttpClient CreateHttpClient()
         {
-            return new HttpClient(CreateHttpClientHandler())
+            return new HttpClient(new RetryHandler(CreateHttpClientHandler()))
             {
                 BaseAddress = new Uri(apiContext.GetBaseUri())
             };
