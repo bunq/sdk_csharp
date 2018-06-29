@@ -15,8 +15,7 @@ namespace Bunq.Sdk.Http
             CancellationToken cancellationToken) =>
             Policy
                 .Handle<HttpRequestException>()
-                .Or<TaskCanceledException>()
-                .OrResult<HttpResponseMessage>(x => !x.IsSuccessStatusCode)
+                .OrResult<HttpResponseMessage>(x => x.StatusCode == (System.Net.HttpStatusCode)429)
                 .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(3, retryAttempt)))
                 .ExecuteAsync(() => base.SendAsync(request, cancellationToken));
     }
