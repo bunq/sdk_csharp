@@ -80,8 +80,7 @@ namespace Bunq.Sdk.Tests
         {
             ApiContext apiContext;
 
-//            if (File.Exists(FilenameContextConf))
-            if (false)
+            if (File.Exists(FilenameContextConf))
             {
                 apiContext = ApiContext.Restore(FilenameContextConf);
                 apiContext.EnsureSessionActive();
@@ -105,7 +104,7 @@ namespace Bunq.Sdk.Tests
             httpClient.DefaultRequestHeaders.Add("X-Bunq-Geolocation", "0 0 0 0 NL");
             httpClient.DefaultRequestHeaders.Add("X-Bunq-Language", "en_US");
             httpClient.DefaultRequestHeaders.Add("X-Bunq-Region", "en_US");
-            httpClient.DefaultRequestHeaders.Add("User-Agent", "hoi");
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "sdk_csharp_test_case");
 
             var requestTask = httpClient.PostAsync(ApiEnvironmentType.SANDBOX.BaseUri + "sandbox-user", null);
             requestTask.Wait();
