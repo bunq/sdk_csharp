@@ -65,7 +65,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
         private static string GetAnAllowedName()
         {
-            return CardName.List().Value[IndexFirst].PossibleCardNameArray[IndexFirst];
+            return CardName.List().Value.First().PossibleCardNameArray.First();
         }
 
         private static string GenerateRandomSecondLine()

@@ -28,6 +28,11 @@ namespace Bunq.Sdk.Tests
         protected const string PaymentDescription = "C# test Payment";
 
         /// <summary>
+        /// Constants for monetary account.
+        /// </summary>
+        protected const string MonetaryAccountDescription = "Test C# monetary account";
+        
+        /// <summary>
         /// Image constants.
         /// </summary>
         protected const string PathAttachment = "../../../Resources";
@@ -35,10 +40,28 @@ namespace Bunq.Sdk.Tests
         protected const string AttachmentDescription = "C# sdk image test.";
         protected const string AttachmentPathIn = "/bunq_App_Icon_Square@4x.png";
         
-        protected const string MonetaryAccountDescription = "Test C# monetary account";
-
-        protected const int IndexFirst = 0;
+        /// <summary>
+        /// Device registration constants.
+        /// </summary>
+        private const string DeviceDescription = "Csharp test device";
         
+        /// <summary>
+        /// Pointer type constants.
+        /// </summary>
+        private const string PointerTypeEmail = "EMAIL";
+        
+        /// <summary>
+        /// Email constants.
+        /// </summary>
+        private const string EmailBravo = "bravo@bunq.com";
+        private const string EmailSuggarDaddy = "sugardaddy@bunq.com";
+        
+        /// <summary>
+        /// Spending money constants.
+        /// </summary>
+        private const string SpendingMoneyAmount = "50.00";
+        private const string SpendingMoneyRequestDescription = "sdk c# test, thanks daddy.";
+
         protected static MonetaryAccountBank SecondMonetaryAccountBank;
         
         /// <summary>
@@ -66,7 +89,7 @@ namespace Bunq.Sdk.Tests
             else
             {
                 var sandboxUser = GenerateNewSandboxUser();
-                apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, sandboxUser.ApiKey, "Csharp test device");
+                apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, sandboxUser.ApiKey, DeviceDescription);
             }
             
             BunqContext.LoadApiContext(apiContext);
@@ -96,7 +119,7 @@ namespace Bunq.Sdk.Tests
 
         private static MonetaryAccountBank SetUpSecondMonetaryAccount()
         {
-            var createdMonetaryAccountId = MonetaryAccountBank.Create("EUR", MonetaryAccountDescription);
+            var createdMonetaryAccountId = MonetaryAccountBank.Create(PaymentCurrency, MonetaryAccountDescription);
 
             return MonetaryAccountBank.Get(createdMonetaryAccountId.Value).Value;
         }
@@ -104,24 +127,24 @@ namespace Bunq.Sdk.Tests
         private static void RequestSpendingMoney()
         {
             RequestInquiry.Create(
-                new Amount("50.00", "EUR"),
-                new Pointer("EMAIL", "sugardaddy@bunq.com"),
-                "sdk c# test, thanks daddy.",
+                new Amount(SpendingMoneyAmount, PaymentCurrency),
+                new Pointer(PointerTypeEmail, EmailSuggarDaddy),
+                SpendingMoneyRequestDescription,
                 false
                 );
             
             RequestInquiry.Create(
-                new Amount("50.00", "EUR"),
-                new Pointer("EMAIL", "sugardaddy@bunq.com"),
-                "sdk c# test, thanks daddy.",
+                new Amount(SpendingMoneyAmount, PaymentCurrency),
+                new Pointer(PointerTypeEmail, EmailSuggarDaddy),
+                SpendingMoneyRequestDescription,
                 false,
                 SecondMonetaryAccountBank.Id
                 );
         }
 
-        protected Pointer GetPointerBravo()
+        protected static Pointer GetPointerBravo()
         {
-            return new Pointer("EMAIL", "bravo@bunq.com");
+            return new Pointer(PointerTypeEmail, EmailBravo);
         }
     }
 }
