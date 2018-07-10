@@ -14,19 +14,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
     public class SessionTest : BunqSdkTestBase
     {
         /// <summary>
-        /// Name of the context configuration file.
-        /// </summary>
-        private const string FILENAME_CONTEXT_CONF = "../../../bunq-test.conf";
-        
-        /// <summary>
         /// Config values.
         /// </summary>
-        private const int SESSION_ID_DUMMY = 0;
-
-        /// <summary>
-        /// API context to use for the test API calls.
-        /// </summary>
-        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
+        private const int SessionIdDummy = 0;
 
         /// <summary>
         /// Tests the deleteion of the current session.
@@ -36,9 +26,11 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestSessionDeletion()
         {
-            Session.Delete(SESSION_ID_DUMMY);
+            SetUpTestCase();
 
-            File.Delete(FILENAME_CONTEXT_CONF);
+            Session.Delete(SessionIdDummy);
+
+            File.Delete(FilenameContextConf);
         }
     }
 }

@@ -17,19 +17,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string AMOUNT_EUR = "0.01";
-        private const string CURRENCY = "EUR";
-        private const string PAYMENT_DESCRIPTION = "Payment From C# Test";
-        private const string MESSAGE_TEXT = "test msg send from C# test";
-
-        private static readonly int USER_ID = Config.GetUserId();
-        private static readonly int MONETARTY_ACCOUNT_ID = Config.GetMonetarytAccountId();
-        private static readonly Pointer COUNTER_PARTY_ALIAS = Config.GetCounterPartyAliasSelf();
-
-        /// <summary>
-        /// API context used for the test API calls.
-        /// </summary>
-        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
+        private const string MessageText = "test msg send from C# test";
 
         /// <summary>
         /// Tests sending a chat message in a newly created payment.
@@ -37,14 +25,20 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestSendPaymentChat()
         {
+            SetUpTestCase();
+
             var chatId = PaymentChat.Create(CreatePaymentAndGetId()).Value;
 
-            ChatMessageText.Create(chatId, MESSAGE_TEXT);
+            ChatMessageText.Create(chatId, MessageText);
         }
 
-        private static int CreatePaymentAndGetId()
+        private int CreatePaymentAndGetId()
         {
-            return Payment.Create(new Amount(AMOUNT_EUR, CURRENCY), COUNTER_PARTY_ALIAS, PAYMENT_DESCRIPTION).Value;
+            return Payment.Create(
+                new Amount(PaymentAmountEur, PaymentCurrency),
+                GetPointerBravo(),
+                PaymentDescription
+                ).Value;
         }
     }
 }

@@ -32,8 +32,12 @@ namespace Bunq.Sdk.Context
         {
             UserId = userId;
 
-            var userObject = User.List().Value[0].GetReferencedObject();
-            this.SetUser(userObject);
+            this.SetUser(GetUserObject());
+        }
+
+        private BunqModel GetUserObject()
+        {
+            return User.List().Value[0].GetReferencedObject();
         }
 
         private void SetUser(BunqModel user)
@@ -72,9 +76,15 @@ namespace Bunq.Sdk.Context
             return UserCompany == null && UserPerson != null;
         }
 
-        public bool isOnlyUserCompanySet()
+        public bool IsOnlyUserCompanySet()
         {
             return UserPerson == null && UserCompany != null;
+        }
+        
+        public void RefreshUserContext()
+        {
+            SetUser(GetUserObject());
+            InitPrimaryMonetaryAccount();
         }
     }
 }
