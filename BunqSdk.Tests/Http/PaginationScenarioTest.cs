@@ -48,7 +48,7 @@ namespace Bunq.Sdk.Tests.Http
             Assert.Equal(paymentsExpectedSerialized, paymentsActualSerialized);
         }
 
-        private void EnsureEnoughPayments()
+        private static void EnsureEnoughPayments()
         {
             for (var i = NumberZero; i < GetPaymentsMissingCount(); ++i)
             {
