@@ -76,7 +76,7 @@ namespace Bunq.Sdk.Tests.Http
             return Payment.List(urlParams: urlParams);
         }
 
-        private void CreatePayment()
+        private static void CreatePayment()
         {
             Payment.Create(new Amount(PaymentAmountEur, PaymentCurrency), GetPointerBravo(), PaymentDescription);
         }

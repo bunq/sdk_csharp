@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
@@ -35,9 +36,9 @@ namespace Bunq.Sdk.Context
             this.SetUser(GetUserObject());
         }
 
-        private BunqModel GetUserObject()
+        private static BunqModel GetUserObject()
         {
-            return User.List().Value[0].GetReferencedObject();
+            return User.List().Value.First().GetReferencedObject();
         }
 
         private void SetUser(BunqModel user)

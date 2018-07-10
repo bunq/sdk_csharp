@@ -32,7 +32,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             ChatMessageText.Create(chatId, MessageText);
         }
 
-        private int CreatePaymentAndGetId()
+        private static int CreatePaymentAndGetId()
         {
             return Payment.Create(
                 new Amount(PaymentAmountEur, PaymentCurrency),
