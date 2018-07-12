@@ -38,23 +38,24 @@ context can be created by using the following code snippet:
 ```
 var apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, API_KEY, DEVICE_DESCRIPTION);
 apiContext.Save();
+BunqContext.LoadApiContext(apiContext)
 ```
 
-**Please note:** initializing your application is a heavy task and it is recommended to do it only once per device.  
+**Please note:** initializing your application is a heavy task, therefore, all calls in the example above except for
+`LoadApiContext` should be proformed once.   
 
 After saving the context, you can restore it at any time:
 
 ```
 var apiContext = ApiContext.Restore(API_CONTEXT_FILE_PATH);
+BunqContext.LoadApiContext(apiContext)
 ```
 
 **Tip:** both saving and restoring the context can be done without any arguments. In this case the context will be saved
 to/restored from the `bunq.conf` file in the same folder with your executable.
 
 #### Example
-See [`ApiContextSaveSample.cs`](./BunqSdk.Samples/ApiContextSaveSample.cs)
-
-The API context can then be saved with:
+For an example, see this [tinker snippet](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/Lib/BunqLib.cs#L59-L82)
 
 #### Safety considerations
 The file storing the context details (i.e. `bunq.conf`) is a key to your account. Anyone having
@@ -70,112 +71,41 @@ account always also needs a reference to a `User`. These dependencies are requir
 performing API calls. Take a look at [doc.bunq.com](https://doc.bunq.com) for the full
 documentation.
 
+The user dependecy, will always be determined for you by the SDK, for the monetary account, the sdk will use
+your primary account(the one used for billing) if no monetary account id is provided. 
+
 #### Creating objects
-Creating objects through the API requires an `ApiContext`, a `requestMap` and identifiers of all
-dependencies (such as User ID required for accessing a Monetary Account). Optionally, custom headers
-can be passed to requests.
-
-
-```
-var apiContext = ApiContext.Restore();
-var paymentMap = new Dictionary<string, object>
-{
-    {Payment.FIELD_AMOUNT, new Amount(PAYMENT_AMOUNT, PAYMENT_CURRENCY)},
-    {
-        Payment.FIELD_COUNTERPARTY_ALIAS,
-        new Pointer(COUNTERPARTY_POINTER_TYPE, COUNTERPARTY_EMAIL)
-    },
-    {Payment.FIELD_DESCRIPTION, PAYMENT_DESCRIPTION}
-};
-
-var paymentId = Payment.Create(apiContext, paymentMap, USER_ITEM_ID,
-    MONETARY_ACCOUNT_ITEM_ID);
-```
+When creating an object, the default response will be the id of the newly created object.
 
 ##### Example
+For an example, see this [tinker snippet](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/MakePayment.cs#L31)
+
 See [`PaymentSample.cs`](./BunqSdk.Samples/PaymentSample.cs)
 
 #### Reading objects
-Reading objects through the API requires an `ApiContext`, identifiers of all dependencies (such as
-User ID required for accessing a Monetary Account), and the identifier of the object to read (ID or
-UUID) Optionally, custom headers can be passed to requests.
-
-This type of calls always returns a model.
-
-```
-var monetaryAccount = MonetaryAccount.Get(apiContext, USER_ITEM_ID, MONETARY_ACCOUNT_ITEM_ID);
-```
+Reading objects can be done via get and list methods. For get a specific object id is needed while for list will return a list of objects.
 
 ##### Example
-See [`MonetaryAccountSample.cs`](./BunqSdk.Samples/MonetaryAccountSample.cs)
+For an example, see this [tinker snippet](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/Lib/BunqLib.cs#L172-L177)
 
 #### Updating objects
 Updating objects through the API goes the same way as creating objects, except that also the object to update identifier
 (ID or UUID) is needed.
 
-```
-var requestUpdateMap = new Dictionary<string, object> {{RequestInquiry.FIELD_STATUS, STATUS_REVOKED}};
-var requestUpdated = RequestInquiry.Update(apiContext, requestUpdateMap, USER_ITEM_ID,
-    MONETARY_ACCOUNT_ITEM_ID, requestId);
-```
-
 ##### Example
-See [`RequestSample.cs`](./BunqSdk.Samples/RequestSample.cs)
+For an example, see this [tinker snippet](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/UpdateAccount.cs#L28)
 
 #### Deleting objects
-Deleting objects through the API requires an `ApiContext`, identifiers of all dependencies (such as User ID required for
-accessing a Monetary Account), and the identifier of the object to delete (ID or UUID) Optionally, custom headers can be
-passed to requests.
+When an object has been deleted, the common respinse is an empty response.
 
+#### Example
 ```
-CustomerStatementExport.Delete(apiContext, userId, monetaryAccountId, customerStatementId);
+CustomerStatementExport.Delete(customerStatementId);
 ```
-
-##### Example
-See [`CustomerStatementExportSample.cs`](./BunqSdk.Samples/CustomerStatementExportSample.cs)
-
-#### Listing objects
-Listing objects through the API requires an `ApiContext` and identifiers of all dependencies (such as User ID required
-for accessing a Monetary Account). Optionally, custom headers can be passed to requests.
-
-```
-var users = User.List(apiContext);
-```
-
-##### Example
-See [`UserListSample.cs`](./BunqSdk.Samples/UserListSample.cs)
 
 ## Running Samples
-In order to make the experience of getting into bunq C# SDK smoother, we have bundled it with `BunqSdk.Samples`, a
-separate project containing sample use cases of the SDK.
-
-To run a sample, please do the following:
-1. In your IDE, open the sample you are interested in and adjust the constants, such as `API_KEY` or `USER_ID`, to
-hold your data.
-
-2. In your terminal, go to the directory of `BunqSdk.Samples`:
-
-```shell
-$ cd /path/to/bunq/sdk/solution/BunqSdk.Samples/
-```
-
-3. In the terminal, run:
-
-```shell
-$ dotnet run <SomethingSample.cs>
-```
-   Replace `<SomethingSample.cs>` with the name of the sample you would like to run.
-
-In order for samples to run, you would need a valid context file (`bunq.conf`) to be present in the `BunqSdk.Samples`
-directory. The file can either copied from somewhere else (e.g. tests) or created by running the following command
-in your `BunqSdk.Samples` directory:
-
-```shell
-$ dotnet run ApiContextSaveSample.cs
-```
-
-Please do not forget to set the `API_KEY` constant in `ApiContextSaveSample.cs` to your actual API key before running the
-sample!
+If you want to play around with the SDK before you actually start implementing something awesome you can use the tinker
+project and adjust the code in the scripts as you please.
 
 ## Running tests
 Information regarding the test cases can be found in the [README.md](./BunqSdk.Tests/README.md)
