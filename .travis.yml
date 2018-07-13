@@ -1,0 +1,10 @@
+language: csharp
+solution: BunqSdk.sln
+dotnet: 2.1.301
+
+git:
+  submodules: false
+
+script:
+  - cd BunqSdk.Tests
+  - dotnet test
