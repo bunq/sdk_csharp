@@ -176,7 +176,10 @@ namespace Bunq.Sdk.Context
         /// </summary>
         public bool EnsureSessionActive()
         {
-            if (IsSessionActive()) return false;
+            if (IsSessionActive())
+            {
+                return false;
+            }
             
             ResetSession();
 

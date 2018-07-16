@@ -57,7 +57,6 @@ namespace Bunq.Sdk.Tests.Context
         [Fact]
         public void TestAutoApiContextReLoad()
         {
-            var apiContext = SetUpApiContext();
             var contextJson = JObject.Parse(apiContext.ToJson());
             var expiredTime = DateTime.Now.Subtract(TimeSpan.FromDays(20));
             contextJson.SelectToken(FieldSessionContext)[FieldExpiryTime] = expiredTime.ToString();
