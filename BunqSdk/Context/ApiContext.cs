@@ -174,12 +174,14 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Check if current time is too close to the saved session expiry time and reset session if needed.
         /// </summary>
-        public void EnsureSessionActive()
+        public bool EnsureSessionActive()
         {
-            if (!IsSessionActive())
-            {
-                ResetSession();
-            }
+            if (IsSessionActive()) return false;
+            
+            ResetSession();
+
+            return true;
+
         }
 
         public bool IsSessionActive()
@@ -196,7 +198,9 @@ namespace Bunq.Sdk.Context
                 TIME_TO_SESSION_EXPIRY_MINIMUM_SECONDS
             );
 
-            return timeToExpiry > timeToExpiryMinimum;
+            var comparison = timeToExpiry.CompareTo(timeToExpiryMinimum);
+
+            return comparison <= 0;
         }
 
         /// <summary>
