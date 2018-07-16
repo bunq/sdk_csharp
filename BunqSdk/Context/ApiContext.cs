@@ -198,9 +198,7 @@ namespace Bunq.Sdk.Context
                 TIME_TO_SESSION_EXPIRY_MINIMUM_SECONDS
             );
 
-            var comparison = timeToExpiry.CompareTo(timeToExpiryMinimum);
-
-            return comparison <= 0;
+            return timeToExpiry > timeToExpiryMinimum;
         }
 
         /// <summary>
