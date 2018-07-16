@@ -7,4 +7,4 @@ git:
 
 script:
   - cd BunqSdk.Tests
-  - dotnet testd
+  - dotnet test
