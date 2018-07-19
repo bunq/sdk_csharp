@@ -20,6 +20,7 @@ namespace Bunq.Sdk.Context
 
         public UserPerson UserPerson { get; private set; }
         public UserCompany UserCompany { get; private set; }
+        public UserApiKey UserApiKey { get; private set; }
 
         public MonetaryAccountBank PrimaryMonetaryAccountBank
         {
@@ -51,6 +52,10 @@ namespace Bunq.Sdk.Context
             {
                 this.UserCompany = (UserCompany) user;
             }
+            else if (user.GetType() == typeof(UserApiKey))
+            {
+                this.UserApiKey = (UserApiKey) user;
+            }
             else
             {
                 throw new BunqException(string.Format(ErrorUnexpectedUser, user.GetType()));
@@ -74,12 +79,17 @@ namespace Bunq.Sdk.Context
 
         public bool IsOnlyUserPersonSet()
         {
-            return UserCompany == null && UserPerson != null;
+            return UserCompany == null && UserApiKey == null && UserPerson != null;
         }
 
         public bool IsOnlyUserCompanySet()
         {
-            return UserPerson == null && UserCompany != null;
+            return UserPerson == null && UserApiKey == null && UserCompany != null;
+        }
+
+        public bool IsOnlyUserApiKeySet()
+        {
+            return UserApiKey == null && UserCompany != null && UserPerson != null;
         }
         
         public void RefreshUserContext()

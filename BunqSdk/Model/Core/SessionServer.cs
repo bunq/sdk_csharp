@@ -21,6 +21,7 @@ namespace Bunq.Sdk.Model.Core
 
         public Id Id { get; private set; }
         public SessionToken SessionToken { get; private set; }
+        public UserApiKey UserApiKey { get; private set; }
         public UserCompany UserCompany { get; private set; }
         public UserPerson UserPerson { get; private set; }
 
@@ -36,6 +37,13 @@ namespace Bunq.Sdk.Model.Core
             Id = id;
             SessionToken = sessionToken;
             UserPerson = userPerson;
+        }
+        
+        public SessionServer(Id id, SessionToken sessionToken, UserApiKey userApiKey)
+        {
+            Id = id;
+            SessionToken = sessionToken;
+            UserApiKey = userApiKey;
         }
 
         /// <summary>
