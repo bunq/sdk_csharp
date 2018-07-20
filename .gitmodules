@@ -1,0 +1,3 @@
+[submodule "BunqSdk.Samples"]
+	path = BunqSdk.Samples
+	url = https://github.com/bunq/tinker_csharp.git
