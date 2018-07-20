@@ -9,23 +9,25 @@ namespace Bunq.Sdk.Tests.Http
     /// Tests:
     ///     Pagination
     /// </summary>
-    public class PaginationTest
+    public class PaginationTest : BunqSdkTestBase
     {
         /// <summary>
         /// Values of pagination properties for testing.
         /// </summary>
-        private const int PAGINATION_OLDER_ID_CUSTOM = 1;
-        private const int PAGINATION_NEWER_ID_CUSTOM = 2;
-        private const int PAGINATION_FUTURE_ID_CUSTOM = 3;
-        private const int PAGINATION_COUNT_CUSTOM = 5;
+        private const int PaginationOlderIdCustom = 1;
+        private const int PaginationNewerIdCustom = 2;
+        private const int PaginationFutureIdCustom = 3;
+        private const int PaginationCountCustom = 5;
 
         [Fact]
         public void TestGetUrlParamsCountOnly()
         {
+            SetUpTestCase();
+
             var pagination = CreatePaginationWithAllPropertiesSet();
             var urlParamsCountOnlyExpected = new Dictionary<string, string>
             {
-                {Pagination.PARAM_COUNT, PAGINATION_COUNT_CUSTOM.ToString()}
+                {Pagination.PARAM_COUNT, PaginationCountCustom.ToString()}
             };
 
             Assert.Equal(urlParamsCountOnlyExpected, pagination.UrlParamsCountOnly);
@@ -35,21 +37,23 @@ namespace Bunq.Sdk.Tests.Http
         {
             return new Pagination
             {
-                OlderId = PAGINATION_OLDER_ID_CUSTOM,
-                NewerId = PAGINATION_NEWER_ID_CUSTOM,
-                FutureId = PAGINATION_FUTURE_ID_CUSTOM,
-                Count = PAGINATION_COUNT_CUSTOM
+                OlderId = PaginationOlderIdCustom,
+                NewerId = PaginationNewerIdCustom,
+                FutureId = PaginationFutureIdCustom,
+                Count = PaginationCountCustom
             };
         }
 
         [Fact]
         public void TestGetUrlParamsPreviousPage()
         {
+            SetUpTestCase();
+
             var pagination = CreatePaginationWithAllPropertiesSet();
             var urlParamsPreviousPageExpected = new Dictionary<string, string>
             {
-                {Pagination.PARAM_COUNT, PAGINATION_COUNT_CUSTOM.ToString()},
-                {Pagination.PARAM_OLDER_ID, PAGINATION_OLDER_ID_CUSTOM.ToString()}
+                {Pagination.PARAM_COUNT, PaginationCountCustom.ToString()},
+                {Pagination.PARAM_OLDER_ID, PaginationOlderIdCustom.ToString()}
             };
 
             Assert.True(pagination.HasPreviousPage());
@@ -59,11 +63,13 @@ namespace Bunq.Sdk.Tests.Http
         [Fact]
         public void TestGetUrlParamsPreviousPageNoCount()
         {
+            SetUpTestCase();
+
             var pagination = CreatePaginationWithAllPropertiesSet();
             pagination.Count = null;
             var urlParamsPreviousPageExpected = new Dictionary<string, string>
             {
-                {Pagination.PARAM_OLDER_ID, PAGINATION_OLDER_ID_CUSTOM.ToString()}
+                {Pagination.PARAM_OLDER_ID, PaginationOlderIdCustom.ToString()}
             };
 
             Assert.True(pagination.HasPreviousPage());
@@ -73,11 +79,13 @@ namespace Bunq.Sdk.Tests.Http
         [Fact]
         public void TestGetUrlParamsNextPageNewer()
         {
+            SetUpTestCase();
+
             var pagination = CreatePaginationWithAllPropertiesSet();
             var urlParamsNextPageExpected = new Dictionary<string, string>
             {
-                {Pagination.PARAM_COUNT, PAGINATION_COUNT_CUSTOM.ToString()},
-                {Pagination.PARAM_NEWER_ID, PAGINATION_NEWER_ID_CUSTOM.ToString()}
+                {Pagination.PARAM_COUNT, PaginationCountCustom.ToString()},
+                {Pagination.PARAM_NEWER_ID, PaginationNewerIdCustom.ToString()}
             };
 
             Assert.True(pagination.HasNextPageAssured());
@@ -87,11 +95,13 @@ namespace Bunq.Sdk.Tests.Http
         [Fact]
         public void TestGetUrlParamsNextPageNewerNoCount()
         {
+            SetUpTestCase();
+
             var pagination = CreatePaginationWithAllPropertiesSet();
             pagination.Count = null;
             var urlParamsNextPageExpected = new Dictionary<string, string>
             {
-                {Pagination.PARAM_NEWER_ID, PAGINATION_NEWER_ID_CUSTOM.ToString()}
+                {Pagination.PARAM_NEWER_ID, PaginationNewerIdCustom.ToString()}
             };
 
             Assert.True(pagination.HasNextPageAssured());
@@ -101,12 +111,14 @@ namespace Bunq.Sdk.Tests.Http
         [Fact]
         public void TestGetUrlParamsNextPageFuture()
         {
+            SetUpTestCase();
+
             var pagination = CreatePaginationWithAllPropertiesSet();
             pagination.NewerId = null;
             var urlParamsNextPageExpected = new Dictionary<string, string>
             {
-                {Pagination.PARAM_COUNT, PAGINATION_COUNT_CUSTOM.ToString()},
-                {Pagination.PARAM_NEWER_ID, PAGINATION_FUTURE_ID_CUSTOM.ToString()}
+                {Pagination.PARAM_COUNT, PaginationCountCustom.ToString()},
+                {Pagination.PARAM_NEWER_ID, PaginationFutureIdCustom.ToString()}
             };
 
             Assert.False(pagination.HasNextPageAssured());
@@ -116,12 +128,14 @@ namespace Bunq.Sdk.Tests.Http
         [Fact]
         public void TestGetUrlParamsNextPageFutureNoCount()
         {
+            SetUpTestCase();
+
             var pagination = CreatePaginationWithAllPropertiesSet();
             pagination.NewerId = null;
             var urlParamsNextPageExpected = new Dictionary<string, string>
             {
-                {Pagination.PARAM_COUNT, PAGINATION_COUNT_CUSTOM.ToString()},
-                {Pagination.PARAM_NEWER_ID, PAGINATION_FUTURE_ID_CUSTOM.ToString()}
+                {Pagination.PARAM_COUNT, PaginationCountCustom.ToString()},
+                {Pagination.PARAM_NEWER_ID, PaginationFutureIdCustom.ToString()}
             };
 
             Assert.False(pagination.HasNextPageAssured());
@@ -131,6 +145,8 @@ namespace Bunq.Sdk.Tests.Http
         [Fact]
         public void TestGetUrlParamsPreviousPageFromPaginationWithNoPreviousPage()
         {
+            SetUpTestCase();
+
             var pagination = CreatePaginationWithAllPropertiesSet();
             pagination.OlderId = null;
 
@@ -141,6 +157,8 @@ namespace Bunq.Sdk.Tests.Http
         [Fact]
         public void TestGetUrlParamsNextPageFromPaginationWithNoNextPage()
         {
+            SetUpTestCase();
+
             var pagination = CreatePaginationWithAllPropertiesSet();
             pagination.NewerId = null;
             pagination.FutureId = null;

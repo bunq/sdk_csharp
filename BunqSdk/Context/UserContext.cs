@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
@@ -32,8 +33,12 @@ namespace Bunq.Sdk.Context
         {
             UserId = userId;
 
-            var userObject = User.List().Value[0].GetReferencedObject();
-            this.SetUser(userObject);
+            this.SetUser(GetUserObject());
+        }
+
+        private static BunqModel GetUserObject()
+        {
+            return User.List().Value.First().GetReferencedObject();
         }
 
         private void SetUser(BunqModel user)
@@ -72,9 +77,15 @@ namespace Bunq.Sdk.Context
             return UserCompany == null && UserPerson != null;
         }
 
-        public bool isOnlyUserCompanySet()
+        public bool IsOnlyUserCompanySet()
         {
             return UserPerson == null && UserCompany != null;
+        }
+        
+        public void RefreshUserContext()
+        {
+            SetUser(GetUserObject());
+            InitPrimaryMonetaryAccount();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Model.Generated.Endpoint;
@@ -16,28 +17,15 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
     public class AvatarTest : BunqSdkTestBase
     {
         /// <summary>
-        /// Config values.
-        /// </summary>
-        private const string PATH_TO_ATTACHMENT = "../../../Resources";
-        private const int INDEX_FIRST = 0;
-
-        private static readonly string CONTEN_TYPE = Config.GetAttachmentContentType();
-        private static readonly string ATTACHMENT_DECSRIPTION = Config.GetAttachmentDescrpition();
-        private static readonly string ATTACHMENT_PATH_IN = Config.GetAttachmentPathIn();
-
-        /// <summary>
-        /// API context to use for the test API calls.
-        /// </summary>
-        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
-
-        /// <summary>
         /// Tests the creation of an avatar by uploading a picture via AttachmentPublic and setting it as avatar
         /// via the uuid.
         /// </summary>
         [Fact]
         public void TestCreateAvatarAndRetrieval()
         {
-            var fileContentByte = File.ReadAllBytes(PATH_TO_ATTACHMENT + ATTACHMENT_PATH_IN);
+            SetUpTestCase();
+            
+            var fileContentByte = File.ReadAllBytes(PathAttachment + AttachmentPathIn);
             var attachmentUuid = UploadAvatarAndGetUuid(fileContentByte);
 
             var avatarMap = new Dictionary<string, object>
@@ -47,7 +35,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             var avatarUuid = Avatar.Create(attachmentUuid).Value;
 
             var attachmentUuidFromAvatar = Avatar.Get(avatarUuid).Value
-                .Image[INDEX_FIRST].AttachmentPublicUuid;
+                .Image.First().AttachmentPublicUuid;
             var revievedFileContentByte = AttachmentPublicContent.List(attachmentUuidFromAvatar).Value;
 
             Assert.Equal(attachmentUuid, attachmentUuidFromAvatar);
@@ -58,8 +46,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         {
             var customHeaders = new Dictionary<string, string>
             {
-                {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, ATTACHMENT_DECSRIPTION},
-                {ApiClient.HEADER_CONTENT_TYPE, CONTEN_TYPE},
+                {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, AttachmentDescription},
+                {ApiClient.HEADER_CONTENT_TYPE, ContentType},
             };
  
             return AttachmentPublic.Create(fileContentByte, customHeaders).Value;

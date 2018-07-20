@@ -14,20 +14,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values
         /// </summary>
-        private const string STATUS = "CANCELLED";
-
-        private const string SUBS_STATUS = "REDEMPTION_VOLUNTARY";
-        private const string REASON = "OTHER";
-        private const string REASON_DESCRIPTION = "Because this is a test";
-        private const string CURRENCY = "EUR";
-        private const string MONETARY_ACCOUNT_DESCRIPTION = "Test C# monetary account";
-
-        private static readonly int USER_ID = Config.GetUserId();
-
-        /// <summary>
-        /// API context used for the test API calls.
-        /// </summary>
-        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
+        private const string Status = "CANCELLED";
+        private const string SubStatus = "REDEMPTION_VOLUNTARY";
+        private const string Reason = "OTHER";
+        private const string ReasonDescription = "Because this is a test";
 
         /// <summary>
         /// Tests the creation of a new monetary account. This accoult will then be removed afterwards.
@@ -35,15 +25,17 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestCreationNewMonetaryAccount()
         {
-            var monetaryAccountToCloseId = MonetaryAccountBank.Create(CURRENCY, MONETARY_ACCOUNT_DESCRIPTION).Value;
+            SetUpTestCase();
+
+            var monetaryAccountToCloseId = MonetaryAccountBank.Create(PaymentCurrency, MonetaryAccountDescription).Value;
 
             DeleteMonetaryAccount(monetaryAccountToCloseId);
         }
 
         private static void DeleteMonetaryAccount(int idToClose)
         {
-            MonetaryAccountBank.Update(idToClose, status: STATUS, subStatus: SUBS_STATUS, reason: REASON,
-                reasonDescription: REASON_DESCRIPTION);
+            MonetaryAccountBank.Update(idToClose, status: Status, subStatus: SubStatus, reason: Reason,
+                reasonDescription: ReasonDescription);
         }
     }
 }

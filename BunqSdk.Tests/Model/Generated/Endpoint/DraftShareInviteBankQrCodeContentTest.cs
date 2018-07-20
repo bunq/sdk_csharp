@@ -18,17 +18,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// <summary>
         /// Config values.
         /// </summary>
-        private const string FILENAME_QR_CODE_IMAGE = "tmp/qrcode.png";
-        private const int TIME_UNIT_AMOUNT_ZERO = 0;
-        private const int TIME_UNIT_AMOUNT_ONE = 1;
-        private const string FORMAT_DATE = "yyyy-MM-dd HH:mm:ss";
-
-        private static readonly int USER_ID = Config.GetUserId();
-
-        /// <summary>
-        /// API context to use for the test API calls
-        /// </summary>
-        private static readonly ApiContext API_CONTEXT = SetUpApiContext();
+        private const string FilenameQrCodeImage = "tmp/qrcode.png";
+        private const int TimeUnitAmountZero = 0;
+        private const int TimeUnitAmountOne = 1;
+        private const string FormatDate = "yyyy-MM-dd HH:mm:ss";
 
         /// <summary>
         /// Tests the creation of a connect and getting the qr code related to this connect.
@@ -38,11 +31,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         [Fact]
         public void TestCreateInviteBankAndGetQrCode()
         {
+            SetUpTestCase();
+
             var draftId = GetShareInviteId();
 
             var qrContent = DraftShareInviteBankQrCodeContent.List(draftId).Value;
 
-            var fileOut = new FileInfo(FILENAME_QR_CODE_IMAGE);
+            var fileOut = new FileInfo(FilenameQrCodeImage);
             fileOut.Directory.Create();
             File.WriteAllBytes(fileOut.FullName, qrContent);
         }
@@ -50,11 +45,12 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         private static int GetShareInviteId()
         {
             var currentDate = DateTime.UtcNow.Date;
-            var addTime = new TimeSpan(TIME_UNIT_AMOUNT_ZERO, TIME_UNIT_AMOUNT_ONE, TIME_UNIT_AMOUNT_ZERO);
-            var expirationTime = currentDate.Add(addTime).ToString(FORMAT_DATE);
+            var addTime = new TimeSpan(TimeUnitAmountZero, TimeUnitAmountOne, TimeUnitAmountZero);
+            var expirationTime = currentDate.Add(addTime).ToString(FormatDate);
 
-            var draftShareInviteEntry = new DraftShareInviteEntry(new ShareDetail
-                {Payment = new ShareDetailPayment(true, true, true, true)});
+            var draftShareInviteEntry = new DraftShareInviteEntry(
+                new ShareDetail{Payment = new ShareDetailPayment(true, true, true, true)}
+                );
 
             return DraftShareInviteBank.Create(expirationTime, draftShareInviteEntry).Value;
         }
