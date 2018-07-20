@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
     public class CardDebitTest : BunqSdkTestBase
     {
         /// <summary>
-        /// Card constatns.
+        /// Card constants.
         /// </summary>
         private const string CardPinAssignmentTypePrimary = "PRIMARY";
         private const string PinCode = "4045";
@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         private const string CardTypeMaestro = "MAESTRO";
         
         /// <summary>
-        /// Numbder constants.
+        /// Number constants.
         /// </summary>
         private const int BaseDecimal = 10;
         private const int NumberOne = 1;
@@ -76,24 +76,6 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
                 NonnegativeIntegerMinimum,
                 (int) Math.Pow(BaseDecimal, CardSecondLineLengthMaximum + NumberOne) - NumberOne
             ).ToString();
-        }
-
-        private static Pointer GetAlias()
-        {
-            var userContex = BunqContext.UserContext;
-
-            if (userContex.IsOnlyUserPersonSet())
-            {
-                return userContex.UserPerson.Alias.First();
-            }
-            else if (userContex.IsOnlyUserCompanySet())
-            {
-                return userContex.UserCompany.Alias.First();
-            }
-            else
-            {
-                throw new BunqException("");
-            }
         }
     }
 }
