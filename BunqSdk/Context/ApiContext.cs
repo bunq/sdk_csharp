@@ -174,12 +174,17 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Check if current time is too close to the saved session expiry time and reset session if needed.
         /// </summary>
-        public void EnsureSessionActive()
+        public bool EnsureSessionActive()
         {
-            if (!IsSessionActive())
+            if (IsSessionActive())
             {
-                ResetSession();
+                return false;
             }
+            
+            ResetSession();
+
+            return true;
+
         }
 
         public bool IsSessionActive()

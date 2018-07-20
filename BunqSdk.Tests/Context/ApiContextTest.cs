@@ -1,4 +1,6 @@
-﻿using Bunq.Sdk.Context;
+﻿using System;
+using Bunq.Sdk.Context;
+using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace Bunq.Sdk.Tests.Context
@@ -13,6 +15,12 @@ namespace Bunq.Sdk.Tests.Context
         /// Path to a temporary context file.
         /// </summary>
         private const string ContextFilenameTest = "context-save-restore-test.conf";
+
+        /// <summary>
+        /// Field constatns.
+        /// </summary>
+        private const string FieldSessionContext = "session_context";
+        private const string FieldExpiryTime = "expiry_time";
 
         private static ApiContext apiContext;
 
@@ -44,6 +52,26 @@ namespace Bunq.Sdk.Tests.Context
             var apiContextRestored = ApiContext.Restore(ContextFilenameTest);
 
             Assert.Equal(apiContextJson, apiContextRestored.ToJson());
+        }
+
+        [Fact]
+        public void TestAutoApiContextReLoad()
+        {
+            var contextJson = JObject.Parse(apiContext.ToJson());
+            var expiredTime = DateTime.Now.Subtract(TimeSpan.FromDays(20));
+            contextJson.SelectToken(FieldSessionContext)[FieldExpiryTime] = expiredTime.ToString();
+
+            var expiredApiContext = ApiContext.FromJson(contextJson.ToString());
+         
+            Assert.NotEqual(apiContext, expiredApiContext);
+            
+            BunqContext.UpdateApiContext(expiredApiContext);
+            
+            Assert.Equal(expiredApiContext, BunqContext.ApiContext);
+            
+            BunqContext.UserContext.RefreshUserContext();
+            
+            Assert.True(BunqContext.ApiContext.IsSessionActive());
         }
     }
 }
