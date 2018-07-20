@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
@@ -15,6 +16,11 @@ namespace Bunq.Sdk.Tests
     /// </summary>
     public class BunqSdkTestBase
     {
+        /// <summary>
+        /// Error constants.
+        /// </summary>
+        private const string ErrorCouldNotDetermineUserAlias = "Could not determine user alias.";
+
         /// <summary>
         /// Name of the context configuration file.
         /// </summary>
@@ -144,6 +150,24 @@ namespace Bunq.Sdk.Tests
         protected static Pointer GetPointerBravo()
         {
             return new Pointer(PointerTypeEmail, EmailBravo);
+        }
+        
+        protected static Pointer GetAlias()
+        {
+            var userContex = BunqContext.UserContext;
+
+            if (userContex.IsOnlyUserPersonSet())
+            {
+                return userContex.UserPerson.Alias.First();
+            }
+            else if (userContex.IsOnlyUserCompanySet())
+            {
+                return userContex.UserCompany.Alias.First();
+            }
+            else
+            {
+                throw new BunqException(ErrorCouldNotDetermineUserAlias);
+            }
         }
     }
 }

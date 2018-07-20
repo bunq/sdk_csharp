@@ -15,7 +15,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// Config values
         /// </summary>
         private const string Status = "CANCELLED";
-        private const string SubsStatus = "REDEMPTION_VOLUNTARY";
+        private const string SubStatus = "REDEMPTION_VOLUNTARY";
         private const string Reason = "OTHER";
         private const string ReasonDescription = "Because this is a test";
 
@@ -34,7 +34,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
         private static void DeleteMonetaryAccount(int idToClose)
         {
-            MonetaryAccountBank.Update(idToClose, status: Status, subStatus: SubsStatus, reason: Reason,
+            MonetaryAccountBank.Update(idToClose, status: Status, subStatus: SubStatus, reason: Reason,
                 reasonDescription: ReasonDescription);
         }
     }
