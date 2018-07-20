@@ -42,7 +42,7 @@ BunqContext.LoadApiContext(apiContext)
 ```
 
 **Please note:** initializing your application is a heavy task, therefore, all calls in the example above except for
-`LoadApiContext` should be proformed once.   
+`LoadApiContext` should be executed once.   
 
 After saving the context, you can restore it at any time:
 
@@ -71,8 +71,8 @@ account always also needs a reference to a `User`. These dependencies are requir
 performing API calls. Take a look at [doc.bunq.com](https://doc.bunq.com) for the full
 documentation.
 
-The user dependecy, will always be determined for you by the SDK, for the monetary account, the sdk will use
-your primary account(the one used for billing) if no monetary account id is provided. 
+The user dependency will always be determined for you by the SDK. For the monetary account,
+the SDK will use your primary account (the one used for billing) if no monetary account id is provided.
 
 #### Creating objects
 When creating an object, the default response will be the id of the newly created object.
