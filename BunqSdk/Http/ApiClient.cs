@@ -151,9 +151,9 @@ namespace Bunq.Sdk.Http
         private BunqResponseRaw SendRequest(HttpRequestMessage requestMessage,
             IDictionary<string, string> customHeaders, string uriRelative)
         {
-            if (!URIS_NOT_REQUIRING_ACTIVE_SESSION.Contains(uriRelative))
+            if (!URIS_NOT_REQUIRING_ACTIVE_SESSION.Contains(uriRelative) && apiContext.EnsureSessionActive())
             {
-                apiContext.EnsureSessionActive();
+                BunqContext.UpdateApiContext(apiContext);
             }
             
             SetDefaultHeaders(requestMessage);

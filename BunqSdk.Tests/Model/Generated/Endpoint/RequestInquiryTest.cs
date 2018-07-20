@@ -15,7 +15,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
     public class RequestInquiryTest : BunqSdkTestBase
     {
         /// <summary>
-        /// The status for accepting a requst. 
+        /// The status for accepting a request. 
         /// </summary>
         private const string Status = "ACCEPTED";
         

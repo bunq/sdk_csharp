@@ -13,16 +13,19 @@ namespace Bunq.Sdk.Context
         public static ApiContext ApiContext {
             get
             {
-                if (apiContext == null)
-                {
-                    throw new BunqException(ErrorApicontextHasNotBeenLoaded);
-                }
-                else
-                {
-                    return apiContext;
-                }
+                AssertApiContextIsLoaded();
+                
+                return apiContext;
             }
             private set => apiContext = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        private static void AssertApiContextIsLoaded()
+        {
+            if (apiContext == null)
+            {
+                throw new BunqException(ErrorApicontextHasNotBeenLoaded);
+            }
         }
 
         public static UserContext UserContext
@@ -46,6 +49,13 @@ namespace Bunq.Sdk.Context
             ApiContext = apiContextToLoad;
             UserContext = new UserContext(apiContextToLoad.SessionContext.UserId);
             UserContext.InitPrimaryMonetaryAccount();
+        }
+
+        public static void UpdateApiContext(ApiContext apiContext)
+        {
+            AssertApiContextIsLoaded();
+
+            BunqContext.apiContext = apiContext;
         }
     }
 }
