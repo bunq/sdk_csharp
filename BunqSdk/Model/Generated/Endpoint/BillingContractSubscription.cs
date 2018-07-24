@@ -75,6 +75,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string SubscriptionType { get; set; }
 
         /// <summary>
+        /// The subscription status.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The subscription substatus.
+        /// </summary>
+        [JsonProperty(PropertyName = "sub_status")]
+        public string SubStatus { get; set; }
+
+        /// <summary>
         /// </summary>
         /// <param name="subscriptionType">The subscription type of the user. Can be one of PERSON_LIGHT_V1, PERSON_MORE_V1, PERSON_FREE_V1, PERSON_PREMIUM_V1, COMPANY_V1, or COMPANY_V2.</param>
         public static BunqResponse<int> Create(string subscriptionType,
@@ -148,6 +160,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.SubscriptionType != null)
+            {
+                return false;
+            }
+
+            if (this.Status != null)
+            {
+                return false;
+            }
+
+            if (this.SubStatus != null)
             {
                 return false;
             }

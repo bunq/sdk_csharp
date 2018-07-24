@@ -1,31 +1,31 @@
 using Bunq.Sdk.Model.Core;
+using Bunq.Sdk.Model.Generated.Endpoint;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Bunq.Sdk.Model.Generated.Endpoint
+namespace Bunq.Sdk.Model.Generated.Object
 {
     /// <summary>
-    /// Represents conversation references.
     /// </summary>
-    public class ChatConversationReference : BunqModel
+    public class WhitelistResultViewAnchoredObject : BunqModel
     {
         /// <summary>
-        /// The id of this conversation.
+        /// The ID of the whitelist entry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp the conversation reference was created.
+        /// The RequestResponse object
         /// </summary>
-        [JsonProperty(PropertyName = "created")]
-        public string Created { get; set; }
+        [JsonProperty(PropertyName = "requestResponse")]
+        public RequestResponse RequestResponse { get; set; }
 
         /// <summary>
-        /// The timestamp the conversation reference was last updated.
+        /// The DraftPayment object
         /// </summary>
-        [JsonProperty(PropertyName = "updated")]
-        public string Updated { get; set; }
+        [JsonProperty(PropertyName = "draftPayment")]
+        public DraftPayment DraftPayment { get; set; }
 
 
         /// <summary>
@@ -37,12 +37,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
-            if (this.Created != null)
+            if (this.RequestResponse != null)
             {
                 return false;
             }
 
-            if (this.Updated != null)
+            if (this.DraftPayment != null)
             {
                 return false;
             }
@@ -52,9 +52,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         /// <summary>
         /// </summary>
-        public static ChatConversationReference CreateFromJsonString(string json)
+        public static WhitelistResultViewAnchoredObject CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<ChatConversationReference>(json);
+            return BunqModel.CreateFromJsonString<WhitelistResultViewAnchoredObject>(json);
         }
     }
 }
