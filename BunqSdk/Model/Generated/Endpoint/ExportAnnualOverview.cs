@@ -22,6 +22,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_CREATE = "user/{0}/export-annual-overview";
 
         protected const string ENDPOINT_URL_READ = "user/{0}/export-annual-overview/{1}";
+        protected const string ENDPOINT_URL_DELETE = "user/{0}/export-annual-overview/{1}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/export-annual-overview";
 
         /// <summary>
@@ -99,6 +100,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 new Dictionary<string, string>(), customHeaders);
 
             return FromJson<ExportAnnualOverview>(responseRaw, OBJECT_TYPE_GET);
+        }
+
+        /// <summary>
+        /// </summary>
+        public static BunqResponse<object> Delete(int exportAnnualOverviewId,
+            IDictionary<string, string> customHeaders = null)
+        {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw =
+                apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, DetermineUserId(), exportAnnualOverviewId),
+                    customHeaders);
+
+            return new BunqResponse<object>(null, responseRaw.Headers);
         }
 
         /// <summary>

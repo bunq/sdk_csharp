@@ -12,19 +12,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The Alias of the co-owner.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
-        public List<LabelUser> Alias { get; set; }
+        public LabelUser Alias { get; set; }
 
         /// <summary>
         /// Can be: ACCEPTED, REJECTED, PENDING or REVOKED
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-
-        public CoOwner(List<LabelUser> alias)
-        {
-            Alias = alias;
-        }
-
 
         /// <summary>
         /// </summary>

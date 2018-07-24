@@ -1,4 +1,5 @@
 ﻿using System;
+using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Newtonsoft.Json;
@@ -12,27 +13,43 @@ namespace Bunq.Sdk.Json
     /// </summary>
     public class SessionServerConverter : JsonConverter
     {
-        private const int INDEX_ID = 0;
-        private const string FIELD_ID = "Id";
+        private const string ErrorCouldNotDetermineUser = "Could not determine user.";
 
-        private const int INDEX_TOKEN = 1;
-        private const string FIELD_TOKEN = "Token";
+        private const int IndexId = 0;
+        private const string FieldId = "Id";
 
-        private const int INDEX_USER = 2;
-        private const string FIELD_USER_COMPANY = "UserCompany";
-        private const string FIELD_USER_PERSON = "UserPerson";
+        private const int IndexToken = 1;
+        private const string FieldToken = "Token";
+
+        private const int IndexUser = 2;
+        private const string FieldUserApiKey = "UserApiKey";
+        private const string FieldUserCompany = "UserCompany";
+        private const string FieldUserPerson = "UserPerson";
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
         {
             var jObjects = JArray.Load(reader);
-            var id = FetchObject<Id>(jObjects[INDEX_ID], FIELD_ID);
-            var token = FetchObject<SessionToken>(jObjects[INDEX_TOKEN], FIELD_TOKEN);
-            var userBody = jObjects[INDEX_USER];
+            var id = FetchObject<Id>(jObjects[IndexId], FieldId);
+            var token = FetchObject<SessionToken>(jObjects[IndexToken], FieldToken);
+            var userBody = jObjects[IndexUser];
 
-            return userBody[FIELD_USER_COMPANY] == null
-                ? new SessionServer(id, token, FetchObject<UserPerson>(userBody, FIELD_USER_PERSON))
-                : new SessionServer(id, token, FetchObject<UserCompany>(userBody, FIELD_USER_COMPANY));
+            if (userBody[FieldUserApiKey] != null)
+            {
+                return new SessionServer(id, token, FetchObject<UserApiKey>(userBody, FieldUserApiKey));
+            }
+            else if (userBody[FieldUserCompany] != null)
+            {
+                return new SessionServer(id, token, FetchObject<UserCompany>(userBody, FieldUserCompany));
+            }
+            else if (userBody[FieldUserPerson] != null)
+            {
+                return new SessionServer(id, token, FetchObject<UserPerson>(userBody, FieldUserPerson));
+            }
+            else
+            {
+                throw new BunqException(ErrorCouldNotDetermineUser);
+            }
         }
 
         private static T FetchObject<T>(JToken jToken, string fieldName)

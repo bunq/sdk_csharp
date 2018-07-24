@@ -179,6 +179,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? SecureCodeId { get; set; }
 
         /// <summary>
+        /// The ID of the wallet provider as defined by MasterCard. 420 = bunq Android app with Tap&Pay; 103 = Apple
+        /// Pay.
+        /// </summary>
+        [JsonProperty(PropertyName = "wallet_provider_id")]
+        public string WalletProviderId { get; set; }
+
+        /// <summary>
         /// The reference to the object used for split the bill. Can be RequestInquiry or RequestInquiryBatch
         /// </summary>
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
@@ -343,6 +350,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.SecureCodeId != null)
+            {
+                return false;
+            }
+
+            if (this.WalletProviderId != null)
             {
                 return false;
             }

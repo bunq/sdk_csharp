@@ -21,7 +21,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_CREATE = "user/{0}/card/{1}/generated-cvc2";
 
         protected const string ENDPOINT_URL_READ = "user/{0}/card/{1}/generated-cvc2/{2}";
+        protected const string ENDPOINT_URL_UPDATE = "user/{0}/card/{1}/generated-cvc2/{2}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/card/{1}/generated-cvc2";
+
+        /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_TYPE = "type";
 
         /// <summary>
         /// Object type.
@@ -47,6 +53,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Updated { get; set; }
 
         /// <summary>
+        /// The type of generated cvc2. Can be STATIC or GENERATED.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
+
+        /// <summary>
         /// The cvc2 code.
         /// </summary>
         [JsonProperty(PropertyName = "cvc2")]
@@ -67,7 +79,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Generate a new CVC2 code for a card.
         /// </summary>
-        public static BunqResponse<int> Create(int cardId, IDictionary<string, string> customHeaders = null)
+        /// <param name="type">The type of generated cvc2. Can be STATIC or GENERATED.</param>
+        public static BunqResponse<int> Create(int cardId, string type = null,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -75,6 +89,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
+                {FIELD_TYPE, type},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -99,6 +114,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                     new Dictionary<string, string>(), customHeaders);
 
             return FromJson<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE_GET);
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="type">The type of generated cvc2. Can be STATIC or GENERATED.</param>
+        public static BunqResponse<int> Update(int cardId, int cardGeneratedCvc2Id, string type = null,
+            IDictionary<string, string> customHeaders = null)
+        {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
+            var apiClient = new ApiClient(GetApiContext());
+
+            var requestMap = new Dictionary<string, object>
+            {
+                {FIELD_TYPE, type},
+            };
+
+            var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
+            requestBytes = SecurityUtils.Encrypt(GetApiContext(), requestBytes, customHeaders);
+            var responseRaw =
+                apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, DetermineUserId(), cardId, cardGeneratedCvc2Id),
+                    requestBytes, customHeaders);
+
+            return ProcessForId(responseRaw);
         }
 
         /// <summary>
@@ -133,6 +172,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.Updated != null)
+            {
+                return false;
+            }
+
+            if (this.Type != null)
             {
                 return false;
             }

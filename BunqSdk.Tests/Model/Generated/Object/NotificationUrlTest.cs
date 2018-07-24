@@ -119,18 +119,6 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         }   
         
         [Fact]
-        public void TestChatMessageAnnouncementModel()
-        {
-            ExecuteNotificationUrlTest(
-                JsonPathChatMessageAnnouncementModel,
-                typeof(ChatMessage),
-                GetChatMessage,
-                GetChatMessageAnnouncement,
-                typeof(ChatMessageAnnouncement)
-            );
-        }        
-        
-        [Fact]
         public void TestDraftPaymentModel()
         {
             ExecuteNotificationUrlTest(

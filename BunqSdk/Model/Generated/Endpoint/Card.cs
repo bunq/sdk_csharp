@@ -34,7 +34,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_LIMIT = "limit";
         public const string FIELD_MAG_STRIPE_PERMISSION = "mag_stripe_permission";
         public const string FIELD_COUNTRY_PERMISSION = "country_permission";
-        public const string FIELD_MONETARY_ACCOUNT_CURRENT_ID = "monetary_account_current_id";
         public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
         public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
 
@@ -186,14 +185,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="limit">The limits to define for the card, among CARD_LIMIT_CONTACTLESS, CARD_LIMIT_ATM, CARD_LIMIT_DIPPING and CARD_LIMIT_POS_ICC (e.g. 25 EUR for CARD_LIMIT_CONTACTLESS). All the limits must be provided on update.</param>
         /// <param name="magStripePermission">Whether or not it is allowed to use the mag stripe for the card.</param>
         /// <param name="countryPermission">The countries for which to grant (temporary) permissions to use the card.</param>
-        /// <param name="monetaryAccountCurrentId">The ID of the monetary account that card transactions will use.</param>
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
         public static BunqResponse<Card> Update(int cardId, string pinCode = null, string activationCode = null,
             string status = null, List<CardLimit> limit = null, CardMagStripePermission magStripePermission = null,
-            List<CardCountryPermission> countryPermission = null, int? monetaryAccountCurrentId = null,
-            List<CardPinAssignment> pinCodeAssignment = null, int? monetaryAccountIdFallback = null,
-            IDictionary<string, string> customHeaders = null)
+            List<CardCountryPermission> countryPermission = null, List<CardPinAssignment> pinCodeAssignment = null,
+            int? monetaryAccountIdFallback = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -207,7 +204,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_LIMIT, limit},
                 {FIELD_MAG_STRIPE_PERMISSION, magStripePermission},
                 {FIELD_COUNTRY_PERMISSION, countryPermission},
-                {FIELD_MONETARY_ACCOUNT_CURRENT_ID, monetaryAccountCurrentId},
                 {FIELD_PIN_CODE_ASSIGNMENT, pinCodeAssignment},
                 {FIELD_MONETARY_ACCOUNT_ID_FALLBACK, monetaryAccountIdFallback},
             };

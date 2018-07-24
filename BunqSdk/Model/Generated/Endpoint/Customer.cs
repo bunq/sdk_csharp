@@ -27,6 +27,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_BILLING_ACCOUNT_ID = "billing_account_id";
 
+        public const string FIELD_INVOICE_NOTIFICATION_PREFERENCE = "invoice_notification_preference";
+
         /// <summary>
         /// Object type.
         /// </summary>
@@ -87,8 +89,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="billingAccountId">The primary billing account account's id.</param>
+        /// <param name="invoiceNotificationPreference">The preferred notification type for invoices</param>
         public static BunqResponse<int> Update(int customerId, string billingAccountId = null,
-            IDictionary<string, string> customHeaders = null)
+            string invoiceNotificationPreference = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -97,6 +100,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
             {
                 {FIELD_BILLING_ACCOUNT_ID, billingAccountId},
+                {FIELD_INVOICE_NOTIFICATION_PREFERENCE, invoiceNotificationPreference},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));

@@ -1,7 +1,12 @@
+using Bunq.Sdk.Context;
+using Bunq.Sdk.Http;
+using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -10,6 +15,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// </summary>
     public class MonetaryAccountJoint : BunqModel
     {
+        /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account-joint";
+
+        protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account-joint/{1}";
+        protected const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account-joint/{1}";
+        protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account-joint";
+
         /// <summary>
         /// Field constants.
         /// </summary>
@@ -28,6 +42,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
         public const string FIELD_SETTING = "setting";
 
+        /// <summary>
+        /// Object type.
+        /// </summary>
+        private const string OBJECT_TYPE_GET = "MonetaryAccountJoint";
 
         /// <summary>
         /// The id of the MonetaryAccountJoint.
@@ -159,6 +177,125 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "setting")]
         public MonetaryAccountSetting Setting { get; set; }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="currency">The currency of the MonetaryAccountJoint as an ISO 4217 formatted currency code.</param>
+        /// <param name="allCoOwner">The users the account will be joint with.</param>
+        /// <param name="description">The description of the MonetaryAccountJoint. Defaults to 'bunq account'.</param>
+        /// <param name="dailyLimit">The daily spending limit Amount of the MonetaryAccountJoint. Defaults to 1000 EUR. Currency must match the MonetaryAccountJoint's currency. Limited to 10000 EUR.</param>
+        /// <param name="overdraftLimit">The maximum Amount the MonetaryAccountJoint can be 'in the red'. Must be 0 EUR or omitted.</param>
+        /// <param name="alias">The Aliases to add to MonetaryAccountJoint. Must all be confirmed first. Can mostly be ignored.</param>
+        /// <param name="avatarUuid">The UUID of the Avatar of the MonetaryAccountJoint.</param>
+        /// <param name="status">The status of the MonetaryAccountJoint. Ignored in POST requests (always set to ACTIVE) can be CANCELLED or PENDING_REOPEN in PUT requests to cancel (close) or reopen the MonetaryAccountJoint. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
+        /// <param name="subStatus">The sub-status of the MonetaryAccountJoint providing extra information regarding the status. Should be ignored for POST requests. In case of PUT requests with status CANCELLED it can only be REDEMPTION_VOLUNTARY, while with status PENDING_REOPEN it can only be NONE. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
+        /// <param name="reason">The reason for voluntarily cancelling (closing) the MonetaryAccountJoint, can only be OTHER. Should only be specified if updating the status to CANCELLED.</param>
+        /// <param name="reasonDescription">The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountJoint. Can be any user provided message. Should only be specified if updating the status to CANCELLED.</param>
+        /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this MonetaryAccountJoint.</param>
+        /// <param name="setting">The settings of the MonetaryAccountJoint.</param>
+        public static BunqResponse<int> Create(string currency, List<CoOwner> allCoOwner, string description = null,
+            Amount dailyLimit = null, Amount overdraftLimit = null, List<Pointer> alias = null,
+            string avatarUuid = null, string status = null, string subStatus = null, string reason = null,
+            string reasonDescription = null, List<NotificationFilter> notificationFilters = null,
+            MonetaryAccountSetting setting = null, IDictionary<string, string> customHeaders = null)
+        {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
+            var apiClient = new ApiClient(GetApiContext());
+
+            var requestMap = new Dictionary<string, object>
+            {
+                {FIELD_CURRENCY, currency},
+                {FIELD_DESCRIPTION, description},
+                {FIELD_DAILY_LIMIT, dailyLimit},
+                {FIELD_OVERDRAFT_LIMIT, overdraftLimit},
+                {FIELD_ALIAS, alias},
+                {FIELD_AVATAR_UUID, avatarUuid},
+                {FIELD_STATUS, status},
+                {FIELD_SUB_STATUS, subStatus},
+                {FIELD_REASON, reason},
+                {FIELD_REASON_DESCRIPTION, reasonDescription},
+                {FIELD_ALL_CO_OWNER, allCoOwner},
+                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
+                {FIELD_SETTING, setting},
+            };
+
+            var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId()), requestBytes,
+                customHeaders);
+
+            return ProcessForId(responseRaw);
+        }
+
+        /// <summary>
+        /// </summary>
+        public static BunqResponse<MonetaryAccountJoint> Get(int monetaryAccountJointId,
+            IDictionary<string, string> customHeaders = null)
+        {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId(), monetaryAccountJointId),
+                new Dictionary<string, string>(), customHeaders);
+
+            return FromJson<MonetaryAccountJoint>(responseRaw, OBJECT_TYPE_GET);
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="description">The description of the MonetaryAccountJoint. Defaults to 'bunq account'.</param>
+        /// <param name="dailyLimit">The daily spending limit Amount of the MonetaryAccountJoint. Defaults to 1000 EUR. Currency must match the MonetaryAccountJoint's currency. Limited to 10000 EUR.</param>
+        /// <param name="avatarUuid">The UUID of the Avatar of the MonetaryAccountJoint.</param>
+        /// <param name="status">The status of the MonetaryAccountJoint. Ignored in POST requests (always set to ACTIVE) can be CANCELLED or PENDING_REOPEN in PUT requests to cancel (close) or reopen the MonetaryAccountJoint. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
+        /// <param name="subStatus">The sub-status of the MonetaryAccountJoint providing extra information regarding the status. Should be ignored for POST requests. In case of PUT requests with status CANCELLED it can only be REDEMPTION_VOLUNTARY, while with status PENDING_REOPEN it can only be NONE. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
+        /// <param name="reason">The reason for voluntarily cancelling (closing) the MonetaryAccountJoint, can only be OTHER. Should only be specified if updating the status to CANCELLED.</param>
+        /// <param name="reasonDescription">The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountJoint. Can be any user provided message. Should only be specified if updating the status to CANCELLED.</param>
+        /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this MonetaryAccountJoint.</param>
+        /// <param name="setting">The settings of the MonetaryAccountJoint.</param>
+        public static BunqResponse<int> Update(int monetaryAccountJointId, string description = null,
+            Amount dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null,
+            string reason = null, string reasonDescription = null, List<NotificationFilter> notificationFilters = null,
+            MonetaryAccountSetting setting = null, IDictionary<string, string> customHeaders = null)
+        {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
+            var apiClient = new ApiClient(GetApiContext());
+
+            var requestMap = new Dictionary<string, object>
+            {
+                {FIELD_DESCRIPTION, description},
+                {FIELD_DAILY_LIMIT, dailyLimit},
+                {FIELD_AVATAR_UUID, avatarUuid},
+                {FIELD_STATUS, status},
+                {FIELD_SUB_STATUS, subStatus},
+                {FIELD_REASON, reason},
+                {FIELD_REASON_DESCRIPTION, reasonDescription},
+                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
+                {FIELD_SETTING, setting},
+            };
+
+            var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
+            var responseRaw =
+                apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, DetermineUserId(), monetaryAccountJointId),
+                    requestBytes, customHeaders);
+
+            return ProcessForId(responseRaw);
+        }
+
+        /// <summary>
+        /// </summary>
+        public static BunqResponse<List<MonetaryAccountJoint>> List(IDictionary<string, string> urlParams = null,
+            IDictionary<string, string> customHeaders = null)
+        {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams,
+                customHeaders);
+
+            return FromJsonList<MonetaryAccountJoint>(responseRaw, OBJECT_TYPE_GET);
+        }
 
 
         /// <summary>

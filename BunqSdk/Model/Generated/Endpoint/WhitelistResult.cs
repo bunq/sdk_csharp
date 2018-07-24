@@ -29,6 +29,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Status { get; set; }
 
         /// <summary>
+        /// The message when the whitelist result has failed due to user error.
+        /// </summary>
+        [JsonProperty(PropertyName = "error_message")]
+        public List<Error> ErrorMessage { get; set; }
+
+        /// <summary>
         /// The corresponding whitelist.
         /// </summary>
         [JsonProperty(PropertyName = "whitelist")]
@@ -38,7 +44,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The details of the external object the event was created for.
         /// </summary>
         [JsonProperty(PropertyName = "object")]
-        public BunqModel Object { get; set; }
+        public WhitelistResultViewAnchoredObject Object { get; set; }
 
         /// <summary>
         /// The reference to the object used for split the bill. Can be RequestInquiry or RequestInquiryBatch
@@ -62,6 +68,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.Status != null)
+            {
+                return false;
+            }
+
+            if (this.ErrorMessage != null)
             {
                 return false;
             }

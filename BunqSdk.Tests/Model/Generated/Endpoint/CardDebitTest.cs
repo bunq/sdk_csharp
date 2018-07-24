@@ -39,12 +39,14 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         public void TestOrderNewMaestroCard()
         {
             SetUpTestCase();
-            
+
             var cardPinAssignment = new CardPinAssignment(
-                CardPinAssignmentTypePrimary,
-                PinCode,
-                BunqContext.UserContext.PrimaryMonetaryAccountBank.Id
-                );
+                CardPinAssignmentTypePrimary
+            )
+            {
+                PinCode = PinCode,
+                MonetaryAccountId = BunqContext.UserContext.PrimaryMonetaryAccountBank.Id
+            };
             var allCardPinAssignments = new List<CardPinAssignment> {cardPinAssignment};
             var cardDebit = CardDebit.Create(
                 GenerateRandomSecondLine(),

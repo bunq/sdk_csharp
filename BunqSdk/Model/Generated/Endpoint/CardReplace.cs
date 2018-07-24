@@ -26,8 +26,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_PIN_CODE = "pin_code";
+        public const string FIELD_NAME_ON_CARD = "name_on_card";
 
+        public const string FIELD_PIN_CODE = "pin_code";
         public const string FIELD_SECOND_LINE = "second_line";
 
 
@@ -40,10 +41,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Request a card replacement.
         /// </summary>
+        /// <param name="nameOnCard">The user's name as it will be on the card. Check 'card-name' for the available card names for a user.</param>
         /// <param name="pinCode">The plaintext pin code. Requests require encryption to be enabled.</param>
         /// <param name="secondLine">The second line on the card.</param>
-        public static BunqResponse<int> Create(int cardId, string pinCode = null, string secondLine = null,
-            IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Create(int cardId, string nameOnCard = null, string pinCode = null,
+            string secondLine = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -51,6 +53,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
+                {FIELD_NAME_ON_CARD, nameOnCard},
                 {FIELD_PIN_CODE, pinCode},
                 {FIELD_SECOND_LINE, secondLine},
             };

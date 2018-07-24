@@ -37,7 +37,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE_GET = "CustomerStatementExport";
+        private const string OBJECT_TYPE_GET = "CustomerStatement";
 
         /// <summary>
         /// The id of the customer statement model.

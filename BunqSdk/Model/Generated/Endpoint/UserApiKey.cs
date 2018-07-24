@@ -6,45 +6,39 @@ using System.Collections.Generic;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Endpoint for retrieving the messages that are part of a conversation.
+    /// Used to view OAuth request detais in events.
     /// </summary>
-    public class ChatMessageAnnouncement : BunqModel
+    public class UserApiKey : BunqModel
     {
         /// <summary>
-        /// The id of the message.
+        /// The id of the user.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp when the message was created.
+        /// The timestamp of the user object's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp when the message was last updated.
+        /// The timestamp of the user object's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        /// The id of the conversation this message belongs to.
+        /// The user who requested access.
         /// </summary>
-        [JsonProperty(PropertyName = "conversation_id")]
-        public int? ConversationId { get; set; }
+        [JsonProperty(PropertyName = "requested_by_user")]
+        public UserApiKeyAnchoredUser RequestedByUser { get; set; }
 
         /// <summary>
-        /// The user who initiated the action that caused this message to appear.
+        /// The user who granted access.
         /// </summary>
-        [JsonProperty(PropertyName = "creator")]
-        public LabelUser Creator { get; set; }
-
-        /// <summary>
-        /// The content of this message.
-        /// </summary>
-        [JsonProperty(PropertyName = "content")]
-        public ChatMessageContent Content { get; set; }
+        [JsonProperty(PropertyName = "granted_by_user")]
+        public UserApiKeyAnchoredUser GrantedByUser { get; set; }
 
 
         /// <summary>
@@ -66,17 +60,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
-            if (this.ConversationId != null)
+            if (this.RequestedByUser != null)
             {
                 return false;
             }
 
-            if (this.Creator != null)
-            {
-                return false;
-            }
-
-            if (this.Content != null)
+            if (this.GrantedByUser != null)
             {
                 return false;
             }
@@ -86,9 +75,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         /// <summary>
         /// </summary>
-        public static ChatMessageAnnouncement CreateFromJsonString(string json)
+        public static UserApiKey CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<ChatMessageAnnouncement>(json);
+            return BunqModel.CreateFromJsonString<UserApiKey>(json);
         }
     }
 }
