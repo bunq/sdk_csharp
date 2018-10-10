@@ -32,6 +32,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "BillingContractSubscription";
 
         /// <summary>
+        /// The subscription type of the user. Can be one of PERSON_SUPER_LIGHT_V1, PERSON_LIGHT_V1, PERSON_MORE_V1,
+        /// PERSON_FREE_V1, PERSON_PREMIUM_V1, COMPANY_V1, or COMPANY_V2.
+        /// </summary>
+        [JsonProperty(PropertyName = "subscription_type")]
+        public string SubscriptionType { get; set; }
+
+        /// <summary>
         /// The id of the billing contract.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -68,11 +75,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? ContractVersion { get; set; }
 
         /// <summary>
-        /// The subscription type of the user. Can be one of PERSON_SUPER_LIGHT_V1, PERSON_LIGHT_V1, PERSON_MORE_V1,
-        /// PERSON_FREE_V1, PERSON_PREMIUM_V1, COMPANY_V1, or COMPANY_V2.
+        /// The subscription type the user will have after a subscription downgrade. Will be null if downgrading is not
+        /// possible.
         /// </summary>
-        [JsonProperty(PropertyName = "subscription_type")]
-        public string SubscriptionType { get; set; }
+        [JsonProperty(PropertyName = "subscription_type_downgrade")]
+        public string SubscriptionTypeDowngrade { get; set; }
 
         /// <summary>
         /// The subscription status.
@@ -124,7 +131,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJsonList<BillingContractSubscription>(responseRaw, OBJECT_TYPE_GET);
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -160,6 +166,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.SubscriptionType != null)
+            {
+                return false;
+            }
+
+            if (this.SubscriptionTypeDowngrade != null)
             {
                 return false;
             }

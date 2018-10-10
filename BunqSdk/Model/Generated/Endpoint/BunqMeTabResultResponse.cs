@@ -16,7 +16,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; set; }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

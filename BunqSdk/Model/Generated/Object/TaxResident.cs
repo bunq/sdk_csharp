@@ -20,12 +20,17 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "tax_number")]
         public string TaxNumber { get; set; }
 
+        /// <summary>
+        /// The status of the tax number. Either CONFIRMED or UNCONFIRMED.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
         public TaxResident(string country, string taxNumber)
         {
             Country = country;
             TaxNumber = taxNumber;
         }
-
 
         /// <summary>
         /// </summary>
@@ -37,6 +42,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
 
             if (this.TaxNumber != null)
+            {
+                return false;
+            }
+
+            if (this.Status != null)
             {
                 return false;
             }

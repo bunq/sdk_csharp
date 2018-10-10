@@ -117,7 +117,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJson<CertificatePinned>(responseRaw, OBJECT_TYPE_GET);
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

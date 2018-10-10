@@ -19,7 +19,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             CertificateString = certificateString;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

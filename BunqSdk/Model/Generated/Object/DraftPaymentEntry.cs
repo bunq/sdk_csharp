@@ -65,7 +65,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             Description = description;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

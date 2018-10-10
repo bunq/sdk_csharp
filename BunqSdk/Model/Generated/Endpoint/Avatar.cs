@@ -38,6 +38,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "Avatar";
 
         /// <summary>
+        /// The public UUID of the public attachment from which an avatar image must be created.
+        /// </summary>
+        [JsonProperty(PropertyName = "attachment_public_uuid")]
+        public string AttachmentPublicUuid { get; set; }
+
+        /// <summary>
         /// The UUID of the created avatar.
         /// </summary>
         [JsonProperty(PropertyName = "uuid")]
@@ -82,7 +88,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<Avatar>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

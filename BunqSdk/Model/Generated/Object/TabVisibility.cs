@@ -33,7 +33,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             TabQrCode = tabQrCode;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
