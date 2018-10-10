@@ -40,12 +40,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "DraftShareInviteBank";
 
         /// <summary>
-        /// The user who created the draft share invite.
-        /// </summary>
-        [JsonProperty(PropertyName = "user_alias_created")]
-        public LabelUser UserAliasCreated { get; set; }
-
-        /// <summary>
         /// The status of the draft share invite. Can be USED, CANCELLED and PENDING.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
@@ -58,6 +52,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Expiration { get; set; }
 
         /// <summary>
+        /// The draft share invite details.
+        /// </summary>
+        [JsonProperty(PropertyName = "draft_share_settings")]
+        public DraftShareInviteEntry DraftShareSettings { get; set; }
+
+        /// <summary>
+        /// The user who created the draft share invite.
+        /// </summary>
+        [JsonProperty(PropertyName = "user_alias_created")]
+        public LabelUser UserAliasCreated { get; set; }
+
+        /// <summary>
         /// The id of the share invite bank response this draft share belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "share_invite_bank_response_id")]
@@ -68,12 +74,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "draft_share_url")]
         public string DraftShareUrl { get; set; }
-
-        /// <summary>
-        /// The draft share invite details.
-        /// </summary>
-        [JsonProperty(PropertyName = "draft_share_settings")]
-        public DraftShareInviteEntry DraftShareSettings { get; set; }
 
         /// <summary>
         /// The id of the newly created draft share invite.
@@ -165,7 +165,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<DraftShareInviteBank>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

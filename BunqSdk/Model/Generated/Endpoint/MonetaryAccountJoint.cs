@@ -48,30 +48,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "MonetaryAccountJoint";
 
         /// <summary>
-        /// The id of the MonetaryAccountJoint.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
-
-        /// <summary>
-        /// The timestamp of the MonetaryAccountJoint's creation.
-        /// </summary>
-        [JsonProperty(PropertyName = "created")]
-        public string Created { get; set; }
-
-        /// <summary>
-        /// The timestamp of the MonetaryAccountJoint's last update.
-        /// </summary>
-        [JsonProperty(PropertyName = "updated")]
-        public string Updated { get; set; }
-
-        /// <summary>
-        /// The Avatar of the MonetaryAccountJoint.
-        /// </summary>
-        [JsonProperty(PropertyName = "avatar")]
-        public Avatar Avatar { get; set; }
-
-        /// <summary>
         /// The currency of the MonetaryAccountJoint as an ISO 4217 formatted currency code.
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
@@ -91,22 +67,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount DailyLimit { get; set; }
 
         /// <summary>
-        /// Total Amount of money spent today. Timezone aware.
-        /// </summary>
-        [JsonProperty(PropertyName = "daily_spent")]
-        public Amount DailySpent { get; set; }
-
-        /// <summary>
         /// The maximum Amount the MonetaryAccountJoint can be 'in the red'.
         /// </summary>
         [JsonProperty(PropertyName = "overdraft_limit")]
         public Amount OverdraftLimit { get; set; }
-
-        /// <summary>
-        /// The current balance Amount of the MonetaryAccountJoint.
-        /// </summary>
-        [JsonProperty(PropertyName = "balance")]
-        public Amount Balance { get; set; }
 
         /// <summary>
         /// The Aliases for the MonetaryAccountJoint.
@@ -115,10 +79,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public List<Pointer> Alias { get; set; }
 
         /// <summary>
-        /// The MonetaryAccountJoint's public UUID.
+        /// The UUID of the Avatar of the MonetaryAccountJoint.
         /// </summary>
-        [JsonProperty(PropertyName = "public_uuid")]
-        public string PublicUuid { get; set; }
+        [JsonProperty(PropertyName = "avatar_uuid")]
+        public string AvatarUuid { get; set; }
 
         /// <summary>
         /// The status of the MonetaryAccountJoint. Can be: ACTIVE, BLOCKED, CANCELLED or PENDING_REOPEN
@@ -154,18 +118,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public List<CoOwner> AllCoOwner { get; set; }
 
         /// <summary>
-        /// The id of the User who owns the MonetaryAccountJoint.
-        /// </summary>
-        [JsonProperty(PropertyName = "user_id")]
-        public int? UserId { get; set; }
-
-        /// <summary>
-        /// The profile of the account.
-        /// </summary>
-        [JsonProperty(PropertyName = "monetary_account_profile")]
-        public MonetaryAccountProfile MonetaryAccountProfile { get; set; }
-
-        /// <summary>
         /// The types of notifications that will result in a push notification or URL callback for this
         /// MonetaryAccountJoint.
         /// </summary>
@@ -177,6 +129,60 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "setting")]
         public MonetaryAccountSetting Setting { get; set; }
+
+        /// <summary>
+        /// The id of the MonetaryAccountJoint.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
+
+        /// <summary>
+        /// The timestamp of the MonetaryAccountJoint's creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "created")]
+        public string Created { get; set; }
+
+        /// <summary>
+        /// The timestamp of the MonetaryAccountJoint's last update.
+        /// </summary>
+        [JsonProperty(PropertyName = "updated")]
+        public string Updated { get; set; }
+
+        /// <summary>
+        /// The Avatar of the MonetaryAccountJoint.
+        /// </summary>
+        [JsonProperty(PropertyName = "avatar")]
+        public Avatar Avatar { get; set; }
+
+        /// <summary>
+        /// Total Amount of money spent today. Timezone aware.
+        /// </summary>
+        [JsonProperty(PropertyName = "daily_spent")]
+        public Amount DailySpent { get; set; }
+
+        /// <summary>
+        /// The current balance Amount of the MonetaryAccountJoint.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance")]
+        public Amount Balance { get; set; }
+
+        /// <summary>
+        /// The MonetaryAccountJoint's public UUID.
+        /// </summary>
+        [JsonProperty(PropertyName = "public_uuid")]
+        public string PublicUuid { get; set; }
+
+        /// <summary>
+        /// The id of the User who owns the MonetaryAccountJoint.
+        /// </summary>
+        [JsonProperty(PropertyName = "user_id")]
+        public int? UserId { get; set; }
+
+        /// <summary>
+        /// The profile of the account.
+        /// </summary>
+        [JsonProperty(PropertyName = "monetary_account_profile")]
+        public MonetaryAccountProfile MonetaryAccountProfile { get; set; }
 
         /// <summary>
         /// </summary>
@@ -296,7 +302,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<MonetaryAccountJoint>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

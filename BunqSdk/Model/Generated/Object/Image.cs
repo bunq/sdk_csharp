@@ -32,7 +32,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "width")]
         public int? Width { get; set; }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

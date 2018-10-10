@@ -31,7 +31,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             Uuid = uuid;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

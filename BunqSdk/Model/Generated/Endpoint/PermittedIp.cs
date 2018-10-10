@@ -129,7 +129,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return ProcessForId(responseRaw);
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

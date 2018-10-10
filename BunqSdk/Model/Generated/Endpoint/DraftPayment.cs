@@ -40,6 +40,32 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "DraftPayment";
 
         /// <summary>
+        /// The status of the DraftPayment.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The entries in the DraftPayment.
+        /// </summary>
+        [JsonProperty(PropertyName = "entries")]
+        public List<DraftPaymentEntry> Entries { get; set; }
+
+        /// <summary>
+        /// The last updated_timestamp that you received for this DraftPayment. This needs to be provided to prevent
+        /// race conditions.
+        /// </summary>
+        [JsonProperty(PropertyName = "previous_updated_timestamp")]
+        public string PreviousUpdatedTimestamp { get; set; }
+
+        /// <summary>
+        /// The number of accepts that are required for the draft payment to receive status ACCEPTED. Currently only 1
+        /// is valid.
+        /// </summary>
+        [JsonProperty(PropertyName = "number_of_required_accepts")]
+        public int? NumberOfRequiredAccepts { get; set; }
+
+        /// <summary>
         /// The id of the created DrafPayment.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -64,22 +90,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public List<DraftPaymentResponse> Responses { get; set; }
 
         /// <summary>
-        /// The status of the DraftPayment.
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
-
-        /// <summary>
         /// The type of the DraftPayment.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-
-        /// <summary>
-        /// The entries in the DraftPayment.
-        /// </summary>
-        [JsonProperty(PropertyName = "entries")]
-        public List<DraftPaymentEntry> Entries { get; set; }
 
         /// <summary>
         /// The Payment or PaymentBatch. This will only be present after the DraftPayment has been accepted.
@@ -189,7 +203,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<DraftPayment>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

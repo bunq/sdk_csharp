@@ -19,7 +19,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             Id = id;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

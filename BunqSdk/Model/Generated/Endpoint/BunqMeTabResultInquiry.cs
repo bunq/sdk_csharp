@@ -22,7 +22,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "bunq_me_tab_id")]
         public int? BunqMeTabId { get; set; }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

@@ -50,6 +50,99 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "UserCompany";
 
         /// <summary>
+        /// The company name.
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The company's public nick name.
+        /// </summary>
+        [JsonProperty(PropertyName = "public_nick_name")]
+        public string PublicNickName { get; set; }
+
+        /// <summary>
+        /// The public UUID of the company's avatar.
+        /// </summary>
+        [JsonProperty(PropertyName = "avatar_uuid")]
+        public string AvatarUuid { get; set; }
+
+        /// <summary>
+        /// The company's main address.
+        /// </summary>
+        [JsonProperty(PropertyName = "address_main")]
+        public Address AddressMain { get; set; }
+
+        /// <summary>
+        /// The company's postal address.
+        /// </summary>
+        [JsonProperty(PropertyName = "address_postal")]
+        public Address AddressPostal { get; set; }
+
+        /// <summary>
+        /// The person's preferred language. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
+        /// code, seperated by an underscore.
+        /// </summary>
+        [JsonProperty(PropertyName = "language")]
+        public string Language { get; set; }
+
+        /// <summary>
+        /// The person's preferred region. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
+        /// code, seperated by an underscore.
+        /// </summary>
+        [JsonProperty(PropertyName = "region")]
+        public string Region { get; set; }
+
+        /// <summary>
+        /// The country as an ISO 3166-1 alpha-2 country code..
+        /// </summary>
+        [JsonProperty(PropertyName = "country")]
+        public string Country { get; set; }
+
+        /// <summary>
+        /// The names of the company's ultimate beneficiary owners. Minimum zero, maximum four.
+        /// </summary>
+        [JsonProperty(PropertyName = "ubo")]
+        public List<Ubo> Ubo { get; set; }
+
+        /// <summary>
+        /// The company's chamber of commerce number.
+        /// </summary>
+        [JsonProperty(PropertyName = "chamber_of_commerce_number")]
+        public string ChamberOfCommerceNumber { get; set; }
+
+        /// <summary>
+        /// The user status. Can be: ACTIVE, SIGNUP, RECOVERY.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The user sub-status. Can be: NONE, FACE_RESET, APPROVAL, APPROVAL_DIRECTOR, APPROVAL_PARENT,
+        /// APPROVAL_SUPPORT, COUNTER_IBAN, IDEAL or SUBMIT.
+        /// </summary>
+        [JsonProperty(PropertyName = "sub_status")]
+        public string SubStatus { get; set; }
+
+        /// <summary>
+        /// The setting for the session timeout of the company in seconds.
+        /// </summary>
+        [JsonProperty(PropertyName = "session_timeout")]
+        public int? SessionTimeout { get; set; }
+
+        /// <summary>
+        /// The amount the company can pay in the session without asking for credentials.
+        /// </summary>
+        [JsonProperty(PropertyName = "daily_limit_without_confirmation_login")]
+        public Amount DailyLimitWithoutConfirmationLogin { get; set; }
+
+        /// <summary>
+        /// The types of notifications that will result in a push notification or URL callback for this UserCompany.
+        /// </summary>
+        [JsonProperty(PropertyName = "notification_filters")]
+        public List<NotificationFilter> NotificationFilters { get; set; }
+
+        /// <summary>
         /// The id of the modified company.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -74,34 +167,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string PublicUuid { get; set; }
 
         /// <summary>
-        /// The company name.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
         /// The company's display name.
         /// </summary>
         [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// The company's public nick name.
-        /// </summary>
-        [JsonProperty(PropertyName = "public_nick_name")]
-        public string PublicNickName { get; set; }
-
-        /// <summary>
         /// The aliases of the account.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public List<Pointer> Alias { get; set; }
-
-        /// <summary>
-        /// The company's chamber of commerce number.
-        /// </summary>
-        [JsonProperty(PropertyName = "chamber_of_commerce_number")]
-        public string ChamberOfCommerceNumber { get; set; }
 
         /// <summary>
         /// The type of business entity.
@@ -128,18 +203,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Avatar Avatar { get; set; }
 
         /// <summary>
-        /// The company's main address.
-        /// </summary>
-        [JsonProperty(PropertyName = "address_main")]
-        public Address AddressMain { get; set; }
-
-        /// <summary>
-        /// The company's postal address.
-        /// </summary>
-        [JsonProperty(PropertyName = "address_postal")]
-        public Address AddressPostal { get; set; }
-
-        /// <summary>
         /// The version of the terms of service accepted by the user.
         /// </summary>
         [JsonProperty(PropertyName = "version_terms_of_service")]
@@ -152,51 +215,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public LabelUser DirectorAlias { get; set; }
 
         /// <summary>
-        /// The person's preferred language. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
-        /// code, seperated by an underscore.
-        /// </summary>
-        [JsonProperty(PropertyName = "language")]
-        public string Language { get; set; }
-
-        /// <summary>
-        /// The country as an ISO 3166-1 alpha-2 country code..
-        /// </summary>
-        [JsonProperty(PropertyName = "country")]
-        public string Country { get; set; }
-
-        /// <summary>
-        /// The person's preferred region. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
-        /// code, seperated by an underscore.
-        /// </summary>
-        [JsonProperty(PropertyName = "region")]
-        public string Region { get; set; }
-
-        /// <summary>
-        /// The names of the company's ultimate beneficiary owners. Minimum zero, maximum four.
-        /// </summary>
-        [JsonProperty(PropertyName = "ubo")]
-        public List<Ubo> Ubo { get; set; }
-
-        /// <summary>
-        /// The user status. Can be: ACTIVE, SIGNUP, RECOVERY.
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// The user sub-status. Can be: NONE, FACE_RESET, APPROVAL, APPROVAL_DIRECTOR, APPROVAL_PARENT,
-        /// APPROVAL_SUPPORT, COUNTER_IBAN, IDEAL or SUBMIT.
-        /// </summary>
-        [JsonProperty(PropertyName = "sub_status")]
-        public string SubStatus { get; set; }
-
-        /// <summary>
-        /// The setting for the session timeout of the company in seconds.
-        /// </summary>
-        [JsonProperty(PropertyName = "session_timeout")]
-        public int? SessionTimeout { get; set; }
-
-        /// <summary>
         /// Card ids used for centralized card limits.
         /// </summary>
         [JsonProperty(PropertyName = "card_ids")]
@@ -207,18 +225,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "card_limits")]
         public List<CardLimit> CardLimits { get; set; }
-
-        /// <summary>
-        /// The amount the company can pay in the session without asking for credentials.
-        /// </summary>
-        [JsonProperty(PropertyName = "daily_limit_without_confirmation_login")]
-        public Amount DailyLimitWithoutConfirmationLogin { get; set; }
-
-        /// <summary>
-        /// The types of notifications that will result in a push notification or URL callback for this UserCompany.
-        /// </summary>
-        [JsonProperty(PropertyName = "notification_filters")]
-        public List<NotificationFilter> NotificationFilters { get; set; }
 
         /// <summary>
         /// The customer profile of the company.
@@ -306,7 +312,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
-
 
         /// <summary>
         /// </summary>

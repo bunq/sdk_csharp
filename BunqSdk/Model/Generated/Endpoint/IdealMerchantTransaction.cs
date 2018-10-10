@@ -36,6 +36,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "IdealMerchantTransaction";
 
         /// <summary>
+        /// The requested amount of money to add.
+        /// </summary>
+        [JsonProperty(PropertyName = "amount_requested")]
+        public Amount AmountRequested { get; set; }
+
+        /// <summary>
+        /// The BIC of the issuer.
+        /// </summary>
+        [JsonProperty(PropertyName = "issuer")]
+        public string Issuer { get; set; }
+
+        /// <summary>
         /// The id of the monetary account this ideal merchant transaction links to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
@@ -60,22 +72,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount AmountGuaranteed { get; set; }
 
         /// <summary>
-        /// The requested amount of money to add.
-        /// </summary>
-        [JsonProperty(PropertyName = "amount_requested")]
-        public Amount AmountRequested { get; set; }
-
-        /// <summary>
         /// When the transaction will expire.
         /// </summary>
         [JsonProperty(PropertyName = "expiration")]
         public string Expiration { get; set; }
-
-        /// <summary>
-        /// The BIC of the issuer.
-        /// </summary>
-        [JsonProperty(PropertyName = "issuer")]
-        public string Issuer { get; set; }
 
         /// <summary>
         /// The Name of the issuer.
@@ -177,7 +177,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<IdealMerchantTransaction>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

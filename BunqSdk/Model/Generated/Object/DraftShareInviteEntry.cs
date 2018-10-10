@@ -31,7 +31,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             ShareDetail = shareDetail;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

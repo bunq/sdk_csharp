@@ -32,7 +32,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             Value = value;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

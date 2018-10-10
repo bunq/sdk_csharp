@@ -26,7 +26,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "restriction_chat")]
         public string RestrictionChat { get; set; }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

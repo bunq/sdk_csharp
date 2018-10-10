@@ -37,6 +37,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "BunqMeTab";
 
         /// <summary>
+        /// The bunq.me entry containing the payment information.
+        /// </summary>
+        [JsonProperty(PropertyName = "bunqme_tab_entry")]
+        public BunqMeTabEntry BunqmeTabEntry { get; set; }
+
+        /// <summary>
+        /// The status of the bunq.me. Can be WAITING_FOR_PAYMENT, CANCELLED or EXPIRED.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
         /// The id of the created bunq.me.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -67,22 +79,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? MonetaryAccountId { get; set; }
 
         /// <summary>
-        /// The status of the bunq.me. Can be WAITING_FOR_PAYMENT, CANCELLED or EXPIRED.
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
-
-        /// <summary>
         /// The url that points to the bunq.me page.
         /// </summary>
         [JsonProperty(PropertyName = "bunqme_tab_share_url")]
         public string BunqmeTabShareUrl { get; set; }
-
-        /// <summary>
-        /// The bunq.me entry containing the payment information.
-        /// </summary>
-        [JsonProperty(PropertyName = "bunqme_tab_entry")]
-        public BunqMeTabEntry BunqmeTabEntry { get; set; }
 
         /// <summary>
         /// The list of bunq.me result Inquiries successfully made and paid.
@@ -172,7 +172,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<BunqMeTab>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

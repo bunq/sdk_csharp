@@ -39,6 +39,43 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_POST = "CardDebit";
 
         /// <summary>
+        /// The second line of text on the card
+        /// </summary>
+        [JsonProperty(PropertyName = "second_line")]
+        public string SecondLine { get; set; }
+
+        /// <summary>
+        /// The user's name as will be on the card
+        /// </summary>
+        [JsonProperty(PropertyName = "name_on_card")]
+        public string NameOnCard { get; set; }
+
+        /// <summary>
+        /// The label for the user who requested the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "alias")]
+        public LabelUser Alias { get; set; }
+
+        /// <summary>
+        /// The type of the card. Can be MAESTRO, MASTERCARD.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Array of Types, PINs, account IDs assigned to the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "pin_code_assignment")]
+        public List<CardPinAssignment> PinCodeAssignment { get; set; }
+
+        /// <summary>
+        /// ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
+        /// not supplied.
+        /// </summary>
+        [JsonProperty(PropertyName = "monetary_account_id_fallback")]
+        public int? MonetaryAccountIdFallback { get; set; }
+
+        /// <summary>
         /// The id of the card.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -63,28 +100,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string PublicUuid { get; set; }
 
         /// <summary>
-        /// The type of the card. Can be MAESTRO, MASTERCARD.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// The sub_type of card.
         /// </summary>
         [JsonProperty(PropertyName = "sub_type")]
         public string SubType { get; set; }
-
-        /// <summary>
-        /// The second line of text on the card
-        /// </summary>
-        [JsonProperty(PropertyName = "second_line")]
-        public string SecondLine { get; set; }
-
-        /// <summary>
-        /// The user's name as will be on the card
-        /// </summary>
-        [JsonProperty(PropertyName = "name_on_card")]
-        public string NameOnCard { get; set; }
 
         /// <summary>
         /// The last 4 digits of the PAN of the card.
@@ -135,25 +154,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public MonetaryAccountReference LabelMonetaryAccountCurrent { get; set; }
 
         /// <summary>
-        /// The label for the user who requested the card.
-        /// </summary>
-        [JsonProperty(PropertyName = "alias")]
-        public LabelUser Alias { get; set; }
-
-        /// <summary>
-        /// Array of Types, PINs, account IDs assigned to the card.
-        /// </summary>
-        [JsonProperty(PropertyName = "pin_code_assignment")]
-        public List<CardPinAssignment> PinCodeAssignment { get; set; }
-
-        /// <summary>
-        /// ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
-        /// not supplied.
-        /// </summary>
-        [JsonProperty(PropertyName = "monetary_account_id_fallback")]
-        public int? MonetaryAccountIdFallback { get; set; }
-
-        /// <summary>
         /// The country that is domestic to the card. Defaults to country of residence of user.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
@@ -193,7 +193,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<CardDebit>(responseRaw, OBJECT_TYPE_POST);
         }
-
 
         /// <summary>
         /// </summary>

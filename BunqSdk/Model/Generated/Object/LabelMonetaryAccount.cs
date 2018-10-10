@@ -62,7 +62,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "swift_account_number")]
         public string SwiftAccountNumber { get; set; }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

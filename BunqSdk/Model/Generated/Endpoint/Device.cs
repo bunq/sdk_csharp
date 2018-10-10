@@ -66,7 +66,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJsonList<Device>(responseRaw);
         }
 
-
         /// <summary>
         /// </summary>
         public BunqModel GetReferencedObject()

@@ -43,6 +43,31 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "RequestResponse";
 
         /// <summary>
+        /// The Amount the RequestResponse was accepted with.
+        /// </summary>
+        [JsonProperty(PropertyName = "amount_responded")]
+        public Amount AmountResponded { get; set; }
+
+        /// <summary>
+        /// The status of the RequestResponse. Can be ACCEPTED, PENDING, REJECTED, REFUND_REQUESTED, REFUNDED or
+        /// REVOKED.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The shipping address provided by the accepting user if an address was requested.
+        /// </summary>
+        [JsonProperty(PropertyName = "address_shipping")]
+        public Address AddressShipping { get; set; }
+
+        /// <summary>
+        /// The billing address provided by the accepting user if an address was requested.
+        /// </summary>
+        [JsonProperty(PropertyName = "address_billing")]
+        public Address AddressBilling { get; set; }
+
+        /// <summary>
         /// The id of the Request Response.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -73,6 +98,24 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string TimeExpiry { get; set; }
 
         /// <summary>
+        /// The timestamp of when a refund request for the RequestResponse was claimed.
+        /// </summary>
+        [JsonProperty(PropertyName = "time_refund_requested")]
+        public string TimeRefundRequested { get; set; }
+
+        /// <summary>
+        /// The timestamp of when the RequestResponse was refunded.
+        /// </summary>
+        [JsonProperty(PropertyName = "time_refunded")]
+        public string TimeRefunded { get; set; }
+
+        /// <summary>
+        /// The label of the user that requested the refund.
+        /// </summary>
+        [JsonProperty(PropertyName = "user_refund_requested")]
+        public LabelUser UserRefundRequested { get; set; }
+
+        /// <summary>
         /// The id of the MonetaryAccount the RequestResponse was received on.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
@@ -83,18 +126,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "amount_inquired")]
         public Amount AmountInquired { get; set; }
-
-        /// <summary>
-        /// The Amount the RequestResponse was accepted with.
-        /// </summary>
-        [JsonProperty(PropertyName = "amount_responded")]
-        public Amount AmountResponded { get; set; }
-
-        /// <summary>
-        /// The status of the RequestResponse. Can be ACCEPTED, PENDING, REJECTED or REVOKED.
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
 
         /// <summary>
         /// The description for the RequestResponse provided by the requesting party. Maximum 9000 characters.
@@ -158,18 +189,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "redirect_url")]
         public string RedirectUrl { get; set; }
-
-        /// <summary>
-        /// The billing address provided by the accepting user if an address was requested.
-        /// </summary>
-        [JsonProperty(PropertyName = "address_billing")]
-        public Address AddressBilling { get; set; }
-
-        /// <summary>
-        /// The shipping address provided by the accepting user if an address was requested.
-        /// </summary>
-        [JsonProperty(PropertyName = "address_shipping")]
-        public Address AddressShipping { get; set; }
 
         /// <summary>
         /// Whether or not chat messages are allowed.
@@ -268,7 +287,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJson<RequestResponse>(responseRaw, OBJECT_TYPE_GET);
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -294,6 +312,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.TimeExpiry != null)
+            {
+                return false;
+            }
+
+            if (this.TimeRefundRequested != null)
+            {
+                return false;
+            }
+
+            if (this.TimeRefunded != null)
+            {
+                return false;
+            }
+
+            if (this.UserRefundRequested != null)
             {
                 return false;
             }

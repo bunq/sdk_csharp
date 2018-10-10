@@ -15,6 +15,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_POINTER = "pointer";
 
+        /// <summary>
+        /// The pointer (url) which will be used to access the bunq.me fundraiser profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "pointer")]
+        public MonetaryAccountReference Pointer { get; set; }
 
         /// <summary>
         /// The color chosen for the bunq.me fundraiser profile in hexadecimal format.
@@ -42,12 +47,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public List<AttachmentPublic> Attachment { get; set; }
 
         /// <summary>
-        /// The pointer (url) which will be used to access the bunq.me fundraiser profile.
-        /// </summary>
-        [JsonProperty(PropertyName = "pointer")]
-        public MonetaryAccountReference Pointer { get; set; }
-
-        /// <summary>
         /// The status of the bunq.me fundraiser profile, can be ACTIVE or DEACTIVATED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
@@ -58,7 +57,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "redirect_url")]
         public string RedirectUrl { get; set; }
-
 
         /// <summary>
         /// </summary>

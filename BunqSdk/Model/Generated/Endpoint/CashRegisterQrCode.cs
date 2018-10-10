@@ -36,6 +36,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "TokenQrCashRegister";
 
         /// <summary>
+        /// The status of this QR code. If the status is "ACTIVE" the QR code can be scanned to see the linked
+        /// CashRegister and tab. If the status is "INACTIVE" the QR code does not link to a anything.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
         /// The id of the created QR code. Use this id to get the RAW content of the QR code with:
         /// ../qr-code/{id}/content
         /// </summary>
@@ -53,13 +60,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-
-        /// <summary>
-        /// The status of this QR code. If the status is "ACTIVE" the QR code can be scanned to see the linked
-        /// CashRegister and tab. If the status is "INACTIVE" the QR code does not link to a anything.
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
 
         /// <summary>
         /// The CashRegister that is linked to the token.
@@ -157,7 +157,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<CashRegisterQrCode>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

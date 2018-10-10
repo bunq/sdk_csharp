@@ -35,6 +35,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "Customer";
 
         /// <summary>
+        /// The primary billing account account's id.
+        /// </summary>
+        [JsonProperty(PropertyName = "billing_account_id")]
+        public string BillingAccountId { get; set; }
+
+        /// <summary>
+        /// The preferred notification type for invoices.
+        /// </summary>
+        [JsonProperty(PropertyName = "invoice_notification_preference")]
+        public string InvoiceNotificationPreference { get; set; }
+
+        /// <summary>
         /// The id of the customer.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -51,12 +63,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-
-        /// <summary>
-        /// The primary billing account account's id.
-        /// </summary>
-        [JsonProperty(PropertyName = "billing_account_id")]
-        public string BillingAccountId { get; set; }
 
         /// <summary>
         /// </summary>
@@ -110,7 +116,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return ProcessForId(responseRaw);
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -131,6 +136,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.BillingAccountId != null)
+            {
+                return false;
+            }
+
+            if (this.InvoiceNotificationPreference != null)
             {
                 return false;
             }

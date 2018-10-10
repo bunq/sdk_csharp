@@ -26,7 +26,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "nationality")]
         public string Nationality { get; set; }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
