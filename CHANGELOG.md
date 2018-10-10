@@ -1,51 +1,65 @@
 # Change Log
 
-## [Unreleased](https://github.com/bunq/sdk_csharp/tree/1.0.0)
+## [Unreleased](https://github.com/bunq/sdk_csharp/tree/1.1.0)
 
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.0.0...1.1.0)
+
+**Fixed bugs:**
+
+- Provided client public key has an incorrect modulus length. Modulus length must be "2048", got "1024" [\#92](https://github.com/bunq/sdk_csharp/issues/92)
+
+**Closed issues:**
+
+- Unable to Authenticate with Bunq [\#114](https://github.com/bunq/sdk_csharp/issues/114)
+
+**Merged pull requests:**
+
+- Fix key generation on .NET Framework. \(bunq/sdk\_csharp\#92\) [\#116](https://github.com/bunq/sdk_csharp/pull/116) ([kojoru](https://github.com/kojoru))
+
+## [1.0.0](https://github.com/bunq/sdk_csharp/tree/1.0.0) (2018-07-24)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.13.1...1.0.0)
 
 **Implemented enhancements:**
 
+- Monetary account joint cannot be retrieved. [\#50](https://github.com/bunq/sdk_csharp/issues/50)
 - \[csharp\] Update examples in readme [\#91](https://github.com/bunq/sdk_csharp/issues/91)
 - Add test CI  [\#90](https://github.com/bunq/sdk_csharp/issues/90)
 - It is not possible to refresh userContext data [\#89](https://github.com/bunq/sdk_csharp/issues/89)
 - Optimise test framework.  [\#87](https://github.com/bunq/sdk_csharp/issues/87)
 - Add more example scripts [\#77](https://github.com/bunq/sdk_csharp/issues/77)
 - Auto save the session after automatic session reset has been executed  [\#72](https://github.com/bunq/sdk_csharp/issues/72)
+- Added support for netstandard15. \(bunq/sdk\_csharp\#26\) [\#88](https://github.com/bunq/sdk_csharp/pull/88) ([OGKevin](https://github.com/OGKevin))
+
+**Fixed bugs:**
+
+- NullReferenceException when calling CustomerStatementExport.List [\#96](https://github.com/bunq/sdk_csharp/issues/96)
 
 **Closed issues:**
 
-- Add oauth support.  [\#112](https://github.com/bunq/sdk_csharp/issues/112)
 - Singleton ApiContext with multi-thread code [\#103](https://github.com/bunq/sdk_csharp/issues/103)
+- Add oauth support.  [\#112](https://github.com/bunq/sdk_csharp/issues/112)
 - Update Sandbox API key procedure [\#101](https://github.com/bunq/sdk_csharp/issues/101)
+- Move to new sandbox.  [\#99](https://github.com/bunq/sdk_csharp/issues/99)
+- BunqSdk.Tests mention Java instead of C\# [\#97](https://github.com/bunq/sdk_csharp/issues/97)
 - .net standard 2.0 support [\#93](https://github.com/bunq/sdk_csharp/issues/93)
 
 **Merged pull requests:**
 
+- Added travis config.  \(bunq/sdk\_csharp\#90\) [\#110](https://github.com/bunq/sdk_csharp/pull/110) ([OGKevin](https://github.com/OGKevin))
 - Oauth bunq/sdk\_csharp\#112 [\#113](https://github.com/bunq/sdk_csharp/pull/113) ([OGKevin](https://github.com/OGKevin))
 - Auto reload context bunq/sdk\_csharp\#72 [\#111](https://github.com/bunq/sdk_csharp/pull/111) ([OGKevin](https://github.com/OGKevin))
-- Added travis config.  \(bunq/sdk\_csharp\#90\) [\#110](https://github.com/bunq/sdk_csharp/pull/110) ([OGKevin](https://github.com/OGKevin))
 -  Updated the examples on readme. \(bunq/sdk\_csharp\#91\) [\#109](https://github.com/bunq/sdk_csharp/pull/109) ([OGKevin](https://github.com/OGKevin))
 - Use tinker as examples bunq/sdk\_csharp\#77 [\#108](https://github.com/bunq/sdk_csharp/pull/108) ([OGKevin](https://github.com/OGKevin))
 - Optimise test framework bunq/sdk\_csharp\#87 [\#107](https://github.com/bunq/sdk_csharp/pull/107) ([OGKevin](https://github.com/OGKevin))
 - Added net standard 2 support. \(bunq/sdk\_csharp\#93\) [\#105](https://github.com/bunq/sdk_csharp/pull/105) ([nduijvelshoff](https://github.com/nduijvelshoff))
 - Update Sandbox API key procedure \(bunq/sdk\_csharp\#101\) [\#102](https://github.com/bunq/sdk_csharp/pull/102) ([sandervdo](https://github.com/sandervdo))
+- Changed sandbox url to the new one. \(bunq/sdk\_csharp\#99\) [\#100](https://github.com/bunq/sdk_csharp/pull/100) ([OGKevin](https://github.com/OGKevin))
 
 ## [0.13.1](https://github.com/bunq/sdk_csharp/tree/0.13.1) (2018-05-30)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.13.0...0.13.1)
 
-**Implemented enhancements:**
-
-- Added support for netstandard15. \(bunq/sdk\_csharp\#26\) [\#88](https://github.com/bunq/sdk_csharp/pull/88) ([OGKevin](https://github.com/OGKevin))
-
-**Closed issues:**
-
-- Move to new sandbox.  [\#99](https://github.com/bunq/sdk_csharp/issues/99)
-- BunqSdk.Tests mention Java instead of C\# [\#97](https://github.com/bunq/sdk_csharp/issues/97)
-
 **Merged pull requests:**
 
-- Changed sandbox url to the new one. \(bunq/sdk\_csharp\#99\) [\#100](https://github.com/bunq/sdk_csharp/pull/100) ([OGKevin](https://github.com/OGKevin))
 - Change Java to Csharp in readme. \(bunq/sdk\_csharp\#97\) [\#98](https://github.com/bunq/sdk_csharp/pull/98) ([robinvanpoppel](https://github.com/robinvanpoppel))
 
 ## [0.13.0](https://github.com/bunq/sdk_csharp/tree/0.13.0) (2018-03-20)
