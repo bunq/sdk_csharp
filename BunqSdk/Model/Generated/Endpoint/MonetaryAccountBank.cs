@@ -49,6 +49,71 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "MonetaryAccountBank";
 
         /// <summary>
+        /// The currency of the MonetaryAccountBank as an ISO 4217 formatted currency code.
+        /// </summary>
+        [JsonProperty(PropertyName = "currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// The description of the MonetaryAccountBank. Defaults to 'bunq account'.
+        /// </summary>
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The daily spending limit Amount of the MonetaryAccountBank. Defaults to 1000 EUR. Currency must match the
+        /// MonetaryAccountBank's currency. Limited to 10000 EUR.
+        /// </summary>
+        [JsonProperty(PropertyName = "daily_limit")]
+        public Amount DailyLimit { get; set; }
+
+        /// <summary>
+        /// The UUID of the Avatar of the MonetaryAccountBank.
+        /// </summary>
+        [JsonProperty(PropertyName = "avatar_uuid")]
+        public string AvatarUuid { get; set; }
+
+        /// <summary>
+        /// The status of the MonetaryAccountBank. Can be: ACTIVE, BLOCKED, CANCELLED or PENDING_REOPEN
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The sub-status of the MonetaryAccountBank providing extra information regarding the status. Will be NONE for
+        /// ACTIVE or PENDING_REOPEN, COMPLETELY or ONLY_ACCEPTING_INCOMING for BLOCKED and REDEMPTION_INVOLUNTARY,
+        /// REDEMPTION_VOLUNTARY or PERMANENT for CANCELLED.
+        /// </summary>
+        [JsonProperty(PropertyName = "sub_status")]
+        public string SubStatus { get; set; }
+
+        /// <summary>
+        /// The reason for voluntarily cancelling (closing) the MonetaryAccountBank, can only be OTHER.
+        /// </summary>
+        [JsonProperty(PropertyName = "reason")]
+        public string Reason { get; set; }
+
+        /// <summary>
+        /// The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountBank. Can be any user
+        /// provided message.
+        /// </summary>
+        [JsonProperty(PropertyName = "reason_description")]
+        public string ReasonDescription { get; set; }
+
+        /// <summary>
+        /// The types of notifications that will result in a push notification or URL callback for this
+        /// MonetaryAccountBank.
+        /// </summary>
+        [JsonProperty(PropertyName = "notification_filters")]
+        public List<NotificationFilter> NotificationFilters { get; set; }
+
+        /// <summary>
+        /// The settings of the MonetaryAccountBank.
+        /// </summary>
+        [JsonProperty(PropertyName = "setting")]
+        public MonetaryAccountSetting Setting { get; set; }
+
+        /// <summary>
         /// The id of the MonetaryAccountBank.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -71,25 +136,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "avatar")]
         public Avatar Avatar { get; set; }
-
-        /// <summary>
-        /// The currency of the MonetaryAccountBank as an ISO 4217 formatted currency code.
-        /// </summary>
-        [JsonProperty(PropertyName = "currency")]
-        public string Currency { get; set; }
-
-        /// <summary>
-        /// The description of the MonetaryAccountBank. Defaults to 'bunq account'.
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// The daily spending limit Amount of the MonetaryAccountBank. Defaults to 1000 EUR. Currency must match the
-        /// MonetaryAccountBank's currency. Limited to 10000 EUR.
-        /// </summary>
-        [JsonProperty(PropertyName = "daily_limit")]
-        public Amount DailyLimit { get; set; }
 
         /// <summary>
         /// Total Amount of money spent today. Timezone aware.
@@ -122,33 +168,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string PublicUuid { get; set; }
 
         /// <summary>
-        /// The status of the MonetaryAccountBank. Can be: ACTIVE, BLOCKED, CANCELLED or PENDING_REOPEN
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// The sub-status of the MonetaryAccountBank providing extra information regarding the status. Will be NONE for
-        /// ACTIVE or PENDING_REOPEN, COMPLETELY or ONLY_ACCEPTING_INCOMING for BLOCKED and REDEMPTION_INVOLUNTARY,
-        /// REDEMPTION_VOLUNTARY or PERMANENT for CANCELLED.
-        /// </summary>
-        [JsonProperty(PropertyName = "sub_status")]
-        public string SubStatus { get; set; }
-
-        /// <summary>
-        /// The reason for voluntarily cancelling (closing) the MonetaryAccountBank, can only be OTHER.
-        /// </summary>
-        [JsonProperty(PropertyName = "reason")]
-        public string Reason { get; set; }
-
-        /// <summary>
-        /// The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountBank. Can be any user
-        /// provided message.
-        /// </summary>
-        [JsonProperty(PropertyName = "reason_description")]
-        public string ReasonDescription { get; set; }
-
-        /// <summary>
         /// The id of the User who owns the MonetaryAccountBank.
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
@@ -159,19 +178,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_profile")]
         public MonetaryAccountProfile MonetaryAccountProfile { get; set; }
-
-        /// <summary>
-        /// The types of notifications that will result in a push notification or URL callback for this
-        /// MonetaryAccountBank.
-        /// </summary>
-        [JsonProperty(PropertyName = "notification_filters")]
-        public List<NotificationFilter> NotificationFilters { get; set; }
-
-        /// <summary>
-        /// The settings of the MonetaryAccountBank.
-        /// </summary>
-        [JsonProperty(PropertyName = "setting")]
-        public MonetaryAccountSetting Setting { get; set; }
 
         /// <summary>
         /// Create new MonetaryAccountBank.
@@ -288,7 +294,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<MonetaryAccountBank>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

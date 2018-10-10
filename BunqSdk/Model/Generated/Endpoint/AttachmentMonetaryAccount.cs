@@ -21,7 +21,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/attachment";
 
-
         /// <summary>
         /// The attachment.
         /// </summary>
@@ -53,7 +52,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
-
 
         /// <summary>
         /// </summary>

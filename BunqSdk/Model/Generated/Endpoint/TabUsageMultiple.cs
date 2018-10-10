@@ -64,24 +64,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "TabUsageMultiple";
 
         /// <summary>
-        /// The uuid of the created TabUsageMultiple.
-        /// </summary>
-        [JsonProperty(PropertyName = "uuid")]
-        public string Uuid { get; set; }
-
-        /// <summary>
-        /// The timestamp of the Tab's creation.
-        /// </summary>
-        [JsonProperty(PropertyName = "created")]
-        public string Created { get; set; }
-
-        /// <summary>
-        /// The timestamp of the Tab's last update.
-        /// </summary>
-        [JsonProperty(PropertyName = "updated")]
-        public string Updated { get; set; }
-
-        /// <summary>
         /// The description of the TabUsageMultiple. Maximum 9000 characters.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
@@ -100,23 +82,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount AmountTotal { get; set; }
 
         /// <summary>
-        /// The token used to redirect mobile devices directly to the bunq app. Because they can't scan a QR code.
+        /// [DEPRECATED] Whether or not a higher amount can be paid.
         /// </summary>
-        [JsonProperty(PropertyName = "qr_code_token")]
-        public string QrCodeToken { get; set; }
+        [JsonProperty(PropertyName = "allow_amount_higher")]
+        public bool? AllowAmountHigher { get; set; }
 
         /// <summary>
-        /// The URL redirecting user to the tab payment in the bunq app. Only works on mobile devices.
+        /// [DEPRECATED] Whether or not a lower amount can be paid.
         /// </summary>
-        [JsonProperty(PropertyName = "tab_url")]
-        public string TabUrl { get; set; }
+        [JsonProperty(PropertyName = "allow_amount_lower")]
+        public bool? AllowAmountLower { get; set; }
 
         /// <summary>
-        /// The visibility of a Tab. A Tab can be visible trough NearPay, the QR code of the CashRegister and its own QR
-        /// code.
+        /// [DEPRECATED] Whether or not the user paying the Tab should be asked if he wants to give a tip. When want_tip
+        /// is set to true, allow_amount_higher must also be set to true and allow_amount_lower must be false.
         /// </summary>
-        [JsonProperty(PropertyName = "visibility")]
-        public TabVisibility Visibility { get; set; }
+        [JsonProperty(PropertyName = "want_tip")]
+        public bool? WantTip { get; set; }
 
         /// <summary>
         /// The minimum age of the user paying the Tab.
@@ -137,10 +119,54 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string RedirectUrl { get; set; }
 
         /// <summary>
+        /// The visibility of a Tab. A Tab can be visible trough NearPay, the QR code of the CashRegister and its own QR
+        /// code.
+        /// </summary>
+        [JsonProperty(PropertyName = "visibility")]
+        public TabVisibility Visibility { get; set; }
+
+        /// <summary>
         /// The moment when this Tab expires.
         /// </summary>
         [JsonProperty(PropertyName = "expiration")]
         public string Expiration { get; set; }
+
+        /// <summary>
+        /// An array of attachments that describe the tab. Viewable through the GET
+        /// /tab/{tabid}/attachment/{attachmentid}/content endpoint.
+        /// </summary>
+        [JsonProperty(PropertyName = "tab_attachment")]
+        public List<BunqId> TabAttachment { get; set; }
+
+        /// <summary>
+        /// The uuid of the created TabUsageMultiple.
+        /// </summary>
+        [JsonProperty(PropertyName = "uuid")]
+        public string Uuid { get; set; }
+
+        /// <summary>
+        /// The timestamp of the Tab's creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "created")]
+        public string Created { get; set; }
+
+        /// <summary>
+        /// The timestamp of the Tab's last update.
+        /// </summary>
+        [JsonProperty(PropertyName = "updated")]
+        public string Updated { get; set; }
+
+        /// <summary>
+        /// The token used to redirect mobile devices directly to the bunq app. Because they can't scan a QR code.
+        /// </summary>
+        [JsonProperty(PropertyName = "qr_code_token")]
+        public string QrCodeToken { get; set; }
+
+        /// <summary>
+        /// The URL redirecting user to the tab payment in the bunq app. Only works on mobile devices.
+        /// </summary>
+        [JsonProperty(PropertyName = "tab_url")]
+        public string TabUrl { get; set; }
 
         /// <summary>
         /// The alias of the party that owns this tab.
@@ -159,13 +185,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "tab_item")]
         public List<TabItem> TabItem { get; set; }
-
-        /// <summary>
-        /// An array of attachments that describe the tab. Viewable through the GET
-        /// /tab/{tabid}/attachment/{attachmentid}/content endpoint.
-        /// </summary>
-        [JsonProperty(PropertyName = "tab_attachment")]
-        public List<BunqId> TabAttachment { get; set; }
 
         /// <summary>
         /// Create a TabUsageMultiple. On creation the status must be set to OPEN
@@ -306,7 +325,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<TabUsageMultiple>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

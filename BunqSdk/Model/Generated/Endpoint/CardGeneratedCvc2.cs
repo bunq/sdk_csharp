@@ -35,6 +35,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "CardGeneratedCvc2";
 
         /// <summary>
+        /// The type of generated cvc2. Can be STATIC or GENERATED.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
+
+        /// <summary>
         /// The id of the cvc code.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -51,12 +57,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-
-        /// <summary>
-        /// The type of generated cvc2. Can be STATIC or GENERATED.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
 
         /// <summary>
         /// The cvc2 code.
@@ -155,7 +155,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

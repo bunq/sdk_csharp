@@ -36,6 +36,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "ExportAnnualOverview";
 
         /// <summary>
+        /// The year for which the overview is.
+        /// </summary>
+        [JsonProperty(PropertyName = "year")]
+        public int? Year { get; set; }
+
+        /// <summary>
         /// The id of the annual overview as created on the server.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -52,12 +58,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-
-        /// <summary>
-        /// The year for which the overview is.
-        /// </summary>
-        [JsonProperty(PropertyName = "year")]
-        public int? Year { get; set; }
 
         /// <summary>
         /// The user to which this annual overview belongs.
@@ -132,7 +132,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<ExportAnnualOverview>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

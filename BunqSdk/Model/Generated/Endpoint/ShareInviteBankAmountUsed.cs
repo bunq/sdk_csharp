@@ -22,7 +22,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_DELETE =
             "user/{0}/monetary-account/{1}/share-invite-bank-inquiry/{2}/amount-used/{3}";
 
-
         /// <summary>
         /// Reset the available budget for a bank account share. To be called without any ID at the end of the path.
         /// </summary>
@@ -39,7 +38,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
-
 
         /// <summary>
         /// </summary>

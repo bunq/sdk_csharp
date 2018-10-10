@@ -17,7 +17,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         public const string FIELD_PROFILE_DRAIN = "profile_drain";
 
-
         /// <summary>
         /// The profile settings for triggering the fill of a monetary account.
         /// </summary>
@@ -29,7 +28,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "profile_drain")]
         public MonetaryAccountProfileDrain ProfileDrain { get; set; }
-
 
         /// <summary>
         /// </summary>

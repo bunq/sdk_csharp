@@ -25,7 +25,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             Bic = bic;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

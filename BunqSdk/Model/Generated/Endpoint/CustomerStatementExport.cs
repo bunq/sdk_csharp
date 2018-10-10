@@ -40,6 +40,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "CustomerStatement";
 
         /// <summary>
+        /// The format of statement.
+        /// </summary>
+        [JsonProperty(PropertyName = "statement_format")]
+        public string StatementFormat { get; set; }
+
+        /// <summary>
+        /// The date from when this statement shows transactions.
+        /// </summary>
+        [JsonProperty(PropertyName = "date_start")]
+        public string DateStart { get; set; }
+
+        /// <summary>
+        /// The date until which statement shows transactions.
+        /// </summary>
+        [JsonProperty(PropertyName = "date_end")]
+        public string DateEnd { get; set; }
+
+        /// <summary>
+        /// The regional format of a CSV statement.
+        /// </summary>
+        [JsonProperty(PropertyName = "regional_format")]
+        public string RegionalFormat { get; set; }
+
+        /// <summary>
         /// The id of the customer statement model.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -58,18 +82,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Updated { get; set; }
 
         /// <summary>
-        /// The date from when this statement shows transactions.
-        /// </summary>
-        [JsonProperty(PropertyName = "date_start")]
-        public string DateStart { get; set; }
-
-        /// <summary>
-        /// The date until which statement shows transactions.
-        /// </summary>
-        [JsonProperty(PropertyName = "date_end")]
-        public string DateEnd { get; set; }
-
-        /// <summary>
         /// The status of the export.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
@@ -80,18 +92,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "statement_number")]
         public int? StatementNumber { get; set; }
-
-        /// <summary>
-        /// The format of statement.
-        /// </summary>
-        [JsonProperty(PropertyName = "statement_format")]
-        public string StatementFormat { get; set; }
-
-        /// <summary>
-        /// The regional format of a CSV statement.
-        /// </summary>
-        [JsonProperty(PropertyName = "regional_format")]
-        public string RegionalFormat { get; set; }
 
         /// <summary>
         /// The monetary account for which this statement was created.
@@ -178,7 +178,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
-
 
         /// <summary>
         /// </summary>

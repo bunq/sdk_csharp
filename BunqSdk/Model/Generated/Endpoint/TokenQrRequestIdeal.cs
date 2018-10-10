@@ -34,6 +34,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_POST = "RequestResponse";
 
         /// <summary>
+        /// The token passed from a site or read from a QR code.
+        /// </summary>
+        [JsonProperty(PropertyName = "token")]
+        public string Token { get; set; }
+
+        /// <summary>
         /// The id of the RequestResponse.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -183,7 +189,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<TokenQrRequestIdeal>(responseRaw, OBJECT_TYPE_POST);
         }
-
 
         /// <summary>
         /// </summary>

@@ -35,6 +35,32 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "ShareInviteBankResponse";
 
         /// <summary>
+        /// The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted),
+        /// ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED,
+        /// CANCELLATION_REJECTED (for canceling mutual connects)
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The id of the ShareInviteBankResponse.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
+
+        /// <summary>
+        /// The timestamp of the ShareInviteBankResponse creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "created")]
+        public string Created { get; set; }
+
+        /// <summary>
+        /// The timestamp of the ShareInviteBankResponse last update.
+        /// </summary>
+        [JsonProperty(PropertyName = "updated")]
+        public string Updated { get; set; }
+
+        /// <summary>
         /// The monetary account and user who created the share.
         /// </summary>
         [JsonProperty(PropertyName = "counter_alias")]
@@ -63,14 +89,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "share_detail")]
         public ShareDetail ShareDetail { get; set; }
-
-        /// <summary>
-        /// The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted),
-        /// ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED,
-        /// CANCELLATION_REJECTED (for canceling mutual connects)
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
 
         /// <summary>
         /// The share type, either STANDARD or MUTUAL.
@@ -152,11 +170,25 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJsonList<ShareInviteBankResponse>(responseRaw, OBJECT_TYPE_GET);
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
+            if (this.Id != null)
+            {
+                return false;
+            }
+
+            if (this.Created != null)
+            {
+                return false;
+            }
+
+            if (this.Updated != null)
+            {
+                return false;
+            }
+
             if (this.CounterAlias != null)
             {
                 return false;

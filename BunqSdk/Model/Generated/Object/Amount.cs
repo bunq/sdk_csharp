@@ -26,7 +26,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             Currency = currency;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

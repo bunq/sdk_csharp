@@ -45,7 +45,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             Country = country;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

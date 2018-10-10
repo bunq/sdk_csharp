@@ -44,7 +44,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "label_user")]
         public LabelUser LabelUser { get; set; }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

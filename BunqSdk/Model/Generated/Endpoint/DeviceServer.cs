@@ -37,6 +37,25 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "DeviceServer";
 
         /// <summary>
+        /// The description of the DeviceServer.
+        /// </summary>
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The API key. You can request an API key in the bunq app.
+        /// </summary>
+        [JsonProperty(PropertyName = "secret")]
+        public string Secret { get; set; }
+
+        /// <summary>
+        /// An array of IPs (v4 or v6) this DeviceServer will be able to do calls from. These will be linked to the API
+        /// key.
+        /// </summary>
+        [JsonProperty(PropertyName = "permitted_ips")]
+        public List<string> PermittedIps { get; set; }
+
+        /// <summary>
         /// The id of the DeviceServer as created on the server.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -53,12 +72,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-
-        /// <summary>
-        /// The description of the DeviceServer.
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
 
         /// <summary>
         /// The ip address which was used to create the DeviceServer.
@@ -132,7 +145,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<DeviceServer>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

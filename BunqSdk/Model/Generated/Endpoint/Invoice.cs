@@ -36,6 +36,24 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "Invoice";
 
         /// <summary>
+        /// The invoice status.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The description provided by the admin.
+        /// </summary>
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The external url provided by the admin.
+        /// </summary>
+        [JsonProperty(PropertyName = "external_url")]
+        public string ExternalUrl { get; set; }
+
+        /// <summary>
         /// The id of the invoice object.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -64,12 +82,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "invoice_number")]
         public string InvoiceNumber { get; set; }
-
-        /// <summary>
-        /// The invoice status.
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
 
         /// <summary>
         /// The invoice item groups.
@@ -169,7 +181,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<Invoice>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

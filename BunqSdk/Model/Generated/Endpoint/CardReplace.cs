@@ -31,6 +31,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_PIN_CODE = "pin_code";
         public const string FIELD_SECOND_LINE = "second_line";
 
+        /// <summary>
+        /// The user's name as it will be on the card. Check 'card-name' for the available card names for a user.
+        /// </summary>
+        [JsonProperty(PropertyName = "name_on_card")]
+        public string NameOnCard { get; set; }
+
+        /// <summary>
+        /// The plaintext pin code. Requests require encryption to be enabled.
+        /// </summary>
+        [JsonProperty(PropertyName = "pin_code")]
+        public string PinCode { get; set; }
+
+        /// <summary>
+        /// The second line on the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "second_line")]
+        public string SecondLine { get; set; }
 
         /// <summary>
         /// The id of the new card.
@@ -65,7 +82,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
-
 
         /// <summary>
         /// </summary>

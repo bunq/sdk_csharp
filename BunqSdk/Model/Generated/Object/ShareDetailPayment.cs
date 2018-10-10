@@ -52,7 +52,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             ViewNewEvents = viewNewEvents;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
