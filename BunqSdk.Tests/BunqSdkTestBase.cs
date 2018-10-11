@@ -97,7 +97,8 @@ namespace Bunq.Sdk.Tests
             {
                 var sandboxUser = GenerateNewSandboxUser();
                 var allowedIps = GetAllowedIps();
-                apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, sandboxUser.ApiKey, DeviceDescription);
+                apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, sandboxUser.ApiKey, DeviceDescription,
+                    allowedIps);
             }
             
             BunqContext.LoadApiContext(apiContext);
