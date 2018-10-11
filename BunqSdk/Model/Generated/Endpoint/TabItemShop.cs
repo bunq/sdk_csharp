@@ -53,12 +53,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "TabItem";
 
         /// <summary>
-        /// The id of the created TabItem.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
-
-        /// <summary>
         /// The TabItem's brief description.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
@@ -71,10 +65,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string EanCode { get; set; }
 
         /// <summary>
-        /// A struct with an AttachmentPublic UUID that used as an avatar for the TabItem.
+        /// An AttachmentPublic UUID that used as an avatar for the TabItem.
         /// </summary>
-        [JsonProperty(PropertyName = "avatar_attachment")]
-        public AttachmentPublic AvatarAttachment { get; set; }
+        [JsonProperty(PropertyName = "avatar_attachment_uuid")]
+        public string AvatarAttachmentUuid { get; set; }
 
         /// <summary>
         /// A list of AttachmentTab attached to the TabItem.
@@ -93,6 +87,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
+
+        /// <summary>
+        /// The id of the created TabItem.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
+
+        /// <summary>
+        /// A struct with an AttachmentPublic UUID that used as an avatar for the TabItem.
+        /// </summary>
+        [JsonProperty(PropertyName = "avatar_attachment")]
+        public AttachmentPublic AvatarAttachment { get; set; }
 
         /// <summary>
         /// Create a new TabItem for a given Tab.
@@ -221,7 +227,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<TabItemShop>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

@@ -2,6 +2,7 @@ using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
+using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
@@ -55,6 +56,24 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? LimitCardDebitReplacement { get; set; }
 
         /// <summary>
+        /// The number of "PREMIUM_LIMITED" invites the user has remaining.
+        /// </summary>
+        [JsonProperty(PropertyName = "limit_invite_user_premium_limited")]
+        public int? LimitInviteUserPremiumLimited { get; set; }
+
+        /// <summary>
+        /// The maximum amount a user is allowed to spend in a month.
+        /// </summary>
+        [JsonProperty(PropertyName = "limit_amount_monthly")]
+        public Amount LimitAmountMonthly { get; set; }
+
+        /// <summary>
+        /// The amount the user has spent in the last month.
+        /// </summary>
+        [JsonProperty(PropertyName = "spent_amount_monthly")]
+        public Amount SpentAmountMonthly { get; set; }
+
+        /// <summary>
         /// Get all limits for the authenticated user.
         /// </summary>
         public static BunqResponse<List<CustomerLimit>> List(IDictionary<string, string> urlParams = null,
@@ -69,7 +88,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<CustomerLimit>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>
@@ -96,6 +114,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.LimitCardDebitReplacement != null)
+            {
+                return false;
+            }
+
+            if (this.LimitInviteUserPremiumLimited != null)
+            {
+                return false;
+            }
+
+            if (this.LimitAmountMonthly != null)
+            {
+                return false;
+            }
+
+            if (this.SpentAmountMonthly != null)
             {
                 return false;
             }

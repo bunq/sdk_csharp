@@ -15,7 +15,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
-
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "Payment")]
@@ -25,7 +24,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "PaymentBatch")]
         public PaymentBatch PaymentBatch { get; set; }
-
 
         /// <summary>
         /// </summary>

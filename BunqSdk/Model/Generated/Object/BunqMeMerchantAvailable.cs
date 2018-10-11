@@ -20,7 +20,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "available")]
         public bool? Available { get; set; }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

@@ -47,7 +47,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             MethodFill = methodFill;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

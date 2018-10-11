@@ -41,7 +41,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

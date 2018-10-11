@@ -30,7 +30,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         public const string FIELD_SCHEDULE = "schedule";
 
-
         /// <summary>
         /// The payment details.
         /// </summary>
@@ -111,7 +110,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
-
 
         /// <summary>
         /// </summary>

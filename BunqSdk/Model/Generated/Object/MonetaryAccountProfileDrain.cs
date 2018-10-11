@@ -41,7 +41,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             SavingsAccountAlias = savingsAccountAlias;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

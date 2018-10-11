@@ -41,12 +41,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_PUT = "DraftShareInviteApiKey";
 
         /// <summary>
-        /// The user who created the draft share invite.
-        /// </summary>
-        [JsonProperty(PropertyName = "user_alias_created")]
-        public LabelUser UserAliasCreated { get; set; }
-
-        /// <summary>
         /// The status of the draft share invite. Can be USED, CANCELLED and PENDING.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
@@ -63,6 +57,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "expiration")]
         public string Expiration { get; set; }
+
+        /// <summary>
+        /// The user who created the draft share invite.
+        /// </summary>
+        [JsonProperty(PropertyName = "user_alias_created")]
+        public LabelUser UserAliasCreated { get; set; }
 
         /// <summary>
         /// The URL redirecting user to the draft share invite in the app. Only works on mobile devices.
@@ -166,7 +166,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<DraftShareInviteApiKey>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

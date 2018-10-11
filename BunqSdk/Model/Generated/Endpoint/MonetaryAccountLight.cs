@@ -48,30 +48,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "MonetaryAccountLight";
 
         /// <summary>
-        /// The id of the MonetaryAccountLight.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
-
-        /// <summary>
-        /// The timestamp of the MonetaryAccountLight's creation.
-        /// </summary>
-        [JsonProperty(PropertyName = "created")]
-        public string Created { get; set; }
-
-        /// <summary>
-        /// The timestamp of the MonetaryAccountLight's last update.
-        /// </summary>
-        [JsonProperty(PropertyName = "updated")]
-        public string Updated { get; set; }
-
-        /// <summary>
-        /// The Avatar of the MonetaryAccountLight.
-        /// </summary>
-        [JsonProperty(PropertyName = "avatar")]
-        public Avatar Avatar { get; set; }
-
-        /// <summary>
         /// The currency of the MonetaryAccountLight as an ISO 4217 formatted currency code.
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
@@ -91,28 +67,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount DailyLimit { get; set; }
 
         /// <summary>
-        /// Total Amount of money spent today. Timezone aware.
+        /// The UUID of the Avatar of the MonetaryAccountLight.
         /// </summary>
-        [JsonProperty(PropertyName = "daily_spent")]
-        public Amount DailySpent { get; set; }
-
-        /// <summary>
-        /// The current balance Amount of the MonetaryAccountLight.
-        /// </summary>
-        [JsonProperty(PropertyName = "balance")]
-        public Amount Balance { get; set; }
-
-        /// <summary>
-        /// The Aliases for the MonetaryAccountLight.
-        /// </summary>
-        [JsonProperty(PropertyName = "alias")]
-        public List<Pointer> Alias { get; set; }
-
-        /// <summary>
-        /// The MonetaryAccountLight's public UUID.
-        /// </summary>
-        [JsonProperty(PropertyName = "public_uuid")]
-        public string PublicUuid { get; set; }
+        [JsonProperty(PropertyName = "avatar_uuid")]
+        public string AvatarUuid { get; set; }
 
         /// <summary>
         /// The status of the MonetaryAccountLight. Can be: ACTIVE, BLOCKED, CANCELLED or PENDING_REOPEN
@@ -140,6 +98,67 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "reason_description")]
         public string ReasonDescription { get; set; }
+
+        /// <summary>
+        /// The types of notifications that will result in a push notification or URL callback for this
+        /// MonetaryAccountLight.
+        /// </summary>
+        [JsonProperty(PropertyName = "notification_filters")]
+        public List<NotificationFilter> NotificationFilters { get; set; }
+
+        /// <summary>
+        /// The settings of the MonetaryAccountLight.
+        /// </summary>
+        [JsonProperty(PropertyName = "setting")]
+        public MonetaryAccountSetting Setting { get; set; }
+
+        /// <summary>
+        /// The id of the MonetaryAccountLight.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
+
+        /// <summary>
+        /// The timestamp of the MonetaryAccountLight's creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "created")]
+        public string Created { get; set; }
+
+        /// <summary>
+        /// The timestamp of the MonetaryAccountLight's last update.
+        /// </summary>
+        [JsonProperty(PropertyName = "updated")]
+        public string Updated { get; set; }
+
+        /// <summary>
+        /// The Avatar of the MonetaryAccountLight.
+        /// </summary>
+        [JsonProperty(PropertyName = "avatar")]
+        public Avatar Avatar { get; set; }
+
+        /// <summary>
+        /// Total Amount of money spent today. Timezone aware.
+        /// </summary>
+        [JsonProperty(PropertyName = "daily_spent")]
+        public Amount DailySpent { get; set; }
+
+        /// <summary>
+        /// The current balance Amount of the MonetaryAccountLight.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance")]
+        public Amount Balance { get; set; }
+
+        /// <summary>
+        /// The Aliases for the MonetaryAccountLight.
+        /// </summary>
+        [JsonProperty(PropertyName = "alias")]
+        public List<Pointer> Alias { get; set; }
+
+        /// <summary>
+        /// The MonetaryAccountLight's public UUID.
+        /// </summary>
+        [JsonProperty(PropertyName = "public_uuid")]
+        public string PublicUuid { get; set; }
 
         /// <summary>
         /// The id of the User who owns the MonetaryAccountLight.
@@ -188,19 +207,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "budget_withdrawal_year_maximum")]
         public Amount BudgetWithdrawalYearMaximum { get; set; }
-
-        /// <summary>
-        /// The types of notifications that will result in a push notification or URL callback for this
-        /// MonetaryAccountLight.
-        /// </summary>
-        [JsonProperty(PropertyName = "notification_filters")]
-        public List<NotificationFilter> NotificationFilters { get; set; }
-
-        /// <summary>
-        /// The settings of the MonetaryAccountLight.
-        /// </summary>
-        [JsonProperty(PropertyName = "setting")]
-        public MonetaryAccountSetting Setting { get; set; }
 
         /// <summary>
         /// Create new MonetaryAccountLight.
@@ -317,7 +323,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<MonetaryAccountLight>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

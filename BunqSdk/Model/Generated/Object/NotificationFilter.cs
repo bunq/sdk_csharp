@@ -38,7 +38,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             Category = category;
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

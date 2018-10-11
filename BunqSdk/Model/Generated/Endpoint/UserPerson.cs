@@ -63,30 +63,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "UserPerson";
 
         /// <summary>
-        /// The id of the modified person object.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
-
-        /// <summary>
-        /// The timestamp of the person object's creation.
-        /// </summary>
-        [JsonProperty(PropertyName = "created")]
-        public string Created { get; set; }
-
-        /// <summary>
-        /// The timestamp of the person object's last update.
-        /// </summary>
-        [JsonProperty(PropertyName = "updated")]
-        public string Updated { get; set; }
-
-        /// <summary>
-        /// The person's public UUID.
-        /// </summary>
-        [JsonProperty(PropertyName = "public_uuid")]
-        public string PublicUuid { get; set; }
-
-        /// <summary>
         /// The person's first name.
         /// </summary>
         [JsonProperty(PropertyName = "first_name")]
@@ -105,28 +81,28 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string LastName { get; set; }
 
         /// <summary>
-        /// The person's legal name.
-        /// </summary>
-        [JsonProperty(PropertyName = "legal_name")]
-        public string LegalName { get; set; }
-
-        /// <summary>
-        /// The display name for the person.
-        /// </summary>
-        [JsonProperty(PropertyName = "display_name")]
-        public string DisplayName { get; set; }
-
-        /// <summary>
         /// The public nick name for the person.
         /// </summary>
         [JsonProperty(PropertyName = "public_nick_name")]
         public string PublicNickName { get; set; }
 
         /// <summary>
-        /// The aliases of the user.
+        /// The person's main address.
         /// </summary>
-        [JsonProperty(PropertyName = "alias")]
-        public List<Pointer> Alias { get; set; }
+        [JsonProperty(PropertyName = "address_main")]
+        public Address AddressMain { get; set; }
+
+        /// <summary>
+        /// The person's postal address.
+        /// </summary>
+        [JsonProperty(PropertyName = "address_postal")]
+        public Address AddressPostal { get; set; }
+
+        /// <summary>
+        /// The public UUID of the user's avatar.
+        /// </summary>
+        [JsonProperty(PropertyName = "avatar_uuid")]
+        public string AvatarUuid { get; set; }
 
         /// <summary>
         /// The user's tax residence numbers for different countries.
@@ -153,16 +129,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string DocumentCountryOfIssuance { get; set; }
 
         /// <summary>
-        /// The person's main address.
+        /// The reference to the uploaded picture/scan of the front side of the identification document.
         /// </summary>
-        [JsonProperty(PropertyName = "address_main")]
-        public Address AddressMain { get; set; }
+        [JsonProperty(PropertyName = "document_front_attachment_id")]
+        public int? DocumentFrontAttachmentId { get; set; }
 
         /// <summary>
-        /// The person's postal address.
+        /// The reference to the uploaded picture/scan of the back side of the identification document.
         /// </summary>
-        [JsonProperty(PropertyName = "address_postal")]
-        public Address AddressPostal { get; set; }
+        [JsonProperty(PropertyName = "document_back_attachment_id")]
+        public int? DocumentBackAttachmentId { get; set; }
 
         /// <summary>
         /// The person's date of birth. Accepts ISO8601 date formats.
@@ -209,18 +185,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Gender { get; set; }
 
         /// <summary>
-        /// The user's avatar.
-        /// </summary>
-        [JsonProperty(PropertyName = "avatar")]
-        public Avatar Avatar { get; set; }
-
-        /// <summary>
-        /// The version of the terms of service accepted by the user.
-        /// </summary>
-        [JsonProperty(PropertyName = "version_terms_of_service")]
-        public string VersionTermsOfService { get; set; }
-
-        /// <summary>
         /// The user status. The user status. Can be: ACTIVE, BLOCKED, SIGNUP, RECOVERY, DENIED or ABORTED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
@@ -234,10 +198,28 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string SubStatus { get; set; }
 
         /// <summary>
+        /// The legal guardian of the user. Required for minors.
+        /// </summary>
+        [JsonProperty(PropertyName = "legal_guardian_alias")]
+        public MonetaryAccountReference LegalGuardianAlias { get; set; }
+
+        /// <summary>
         /// The setting for the session timeout of the user in seconds.
         /// </summary>
         [JsonProperty(PropertyName = "session_timeout")]
         public int? SessionTimeout { get; set; }
+
+        /// <summary>
+        /// Card ids used for centralized card limits.
+        /// </summary>
+        [JsonProperty(PropertyName = "card_ids")]
+        public List<BunqId> CardIds { get; set; }
+
+        /// <summary>
+        /// The centralized limits for user's cards.
+        /// </summary>
+        [JsonProperty(PropertyName = "card_limits")]
+        public List<CardLimit> CardLimits { get; set; }
 
         /// <summary>
         /// The amount the user can pay in the session without asking for credentials.
@@ -250,6 +232,60 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "notification_filters")]
         public List<NotificationFilter> NotificationFilters { get; set; }
+
+        /// <summary>
+        /// The id of the modified person object.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
+
+        /// <summary>
+        /// The timestamp of the person object's creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "created")]
+        public string Created { get; set; }
+
+        /// <summary>
+        /// The timestamp of the person object's last update.
+        /// </summary>
+        [JsonProperty(PropertyName = "updated")]
+        public string Updated { get; set; }
+
+        /// <summary>
+        /// The person's public UUID.
+        /// </summary>
+        [JsonProperty(PropertyName = "public_uuid")]
+        public string PublicUuid { get; set; }
+
+        /// <summary>
+        /// The person's legal name.
+        /// </summary>
+        [JsonProperty(PropertyName = "legal_name")]
+        public string LegalName { get; set; }
+
+        /// <summary>
+        /// The display name for the person.
+        /// </summary>
+        [JsonProperty(PropertyName = "display_name")]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// The aliases of the user.
+        /// </summary>
+        [JsonProperty(PropertyName = "alias")]
+        public List<Pointer> Alias { get; set; }
+
+        /// <summary>
+        /// The user's avatar.
+        /// </summary>
+        [JsonProperty(PropertyName = "avatar")]
+        public Avatar Avatar { get; set; }
+
+        /// <summary>
+        /// The version of the terms of service accepted by the user.
+        /// </summary>
+        [JsonProperty(PropertyName = "version_terms_of_service")]
+        public string VersionTermsOfService { get; set; }
 
         /// <summary>
         /// Get a specific person.
@@ -349,7 +385,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
-
 
         /// <summary>
         /// </summary>

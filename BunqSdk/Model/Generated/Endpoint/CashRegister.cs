@@ -45,24 +45,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "CashRegister";
 
         /// <summary>
-        /// The id of the created CashRegister.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
-
-        /// <summary>
-        /// The timestamp of the CashRegister's creation.
-        /// </summary>
-        [JsonProperty(PropertyName = "created")]
-        public string Created { get; set; }
-
-        /// <summary>
-        /// The timestamp of the CashRegister's last update.
-        /// </summary>
-        [JsonProperty(PropertyName = "updated")]
-        public string Updated { get; set; }
-
-        /// <summary>
         /// The name of the CashRegister.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
@@ -75,10 +57,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Status { get; set; }
 
         /// <summary>
-        /// The Avatar of the CashRegister.
+        /// The UUID of the avatar of the CashRegister. Use the calls /attachment-public and /avatar to create a new
+        /// Avatar and get its UUID.
         /// </summary>
-        [JsonProperty(PropertyName = "avatar")]
-        public Avatar Avatar { get; set; }
+        [JsonProperty(PropertyName = "avatar_uuid")]
+        public string AvatarUuid { get; set; }
 
         /// <summary>
         /// The geolocation of the CashRegister. Can be null.
@@ -97,6 +80,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "tab_text_waiting_screen")]
         public List<TabTextWaitingScreen> TabTextWaitingScreen { get; set; }
+
+        /// <summary>
+        /// The id of the created CashRegister.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
+
+        /// <summary>
+        /// The timestamp of the CashRegister's creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "created")]
+        public string Created { get; set; }
+
+        /// <summary>
+        /// The timestamp of the CashRegister's last update.
+        /// </summary>
+        [JsonProperty(PropertyName = "updated")]
+        public string Updated { get; set; }
+
+        /// <summary>
+        /// The Avatar of the CashRegister.
+        /// </summary>
+        [JsonProperty(PropertyName = "avatar")]
+        public Avatar Avatar { get; set; }
 
         /// <summary>
         /// Create a new CashRegister. Only an UserCompany can create a CashRegisters. They need to be created with
@@ -209,7 +216,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<CashRegister>(responseRaw, OBJECT_TYPE_GET);
         }
-
 
         /// <summary>
         /// </summary>

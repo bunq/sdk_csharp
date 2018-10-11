@@ -20,7 +20,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "error_description_translated")]
         public string ErrorDescriptionTranslated { get; set; }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

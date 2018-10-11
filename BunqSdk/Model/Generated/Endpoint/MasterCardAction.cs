@@ -76,6 +76,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount AmountFee { get; set; }
 
         /// <summary>
+        /// The response code by which authorised transaction can be identified as authorised by bunq.
+        /// </summary>
+        [JsonProperty(PropertyName = "card_authorisation_id_response")]
+        public string CardAuthorisationIdResponse { get; set; }
+
+        /// <summary>
         /// Why the transaction was denied, if it was denied, or just ALLOWED.
         /// </summary>
         [JsonProperty(PropertyName = "decision")]
@@ -116,6 +122,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "pan_entry_mode_user")]
         public string PanEntryModeUser { get; set; }
+
+        /// <summary>
+        /// The setlement status in the authorisation process.
+        /// </summary>
+        [JsonProperty(PropertyName = "settlement_status")]
+        public string SettlementStatus { get; set; }
 
         /// <summary>
         /// The city where the message originates from as announced by the terminal.
@@ -224,7 +236,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJsonList<MasterCardAction>(responseRaw, OBJECT_TYPE_GET);
         }
 
-
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -269,6 +280,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
+            if (this.CardAuthorisationIdResponse != null)
+            {
+                return false;
+            }
+
             if (this.Decision != null)
             {
                 return false;
@@ -300,6 +316,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.PanEntryModeUser != null)
+            {
+                return false;
+            }
+
+            if (this.SettlementStatus != null)
             {
                 return false;
             }

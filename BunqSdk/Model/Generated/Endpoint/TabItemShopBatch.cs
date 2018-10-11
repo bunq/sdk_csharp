@@ -25,7 +25,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_TAB_ITEMS = "tab_items";
 
-
         /// <summary>
         /// The list of tab items in the batch.
         /// </summary>
@@ -56,7 +55,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
-
 
         /// <summary>
         /// </summary>
