@@ -38,7 +38,7 @@ context can be created by using the following code snippet:
 ```
 var apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, API_KEY, DEVICE_DESCRIPTION);
 apiContext.Save();
-BunqContext.LoadApiContext(apiContext)
+BunqContext.LoadApiContext(apiContext);
 ```
 
 **Please note:** initializing your application is a heavy task, therefore, all calls in the example above except for
@@ -48,7 +48,7 @@ After saving the context, you can restore it at any time:
 
 ```
 var apiContext = ApiContext.Restore(API_CONTEXT_FILE_PATH);
-BunqContext.LoadApiContext(apiContext)
+BunqContext.LoadApiContext(apiContext);
 ```
 
 **Tip:** both saving and restoring the context can be done without any arguments. In this case the context will be saved
