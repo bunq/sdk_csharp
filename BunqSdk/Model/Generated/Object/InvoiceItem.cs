@@ -42,13 +42,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The VAT tax fraction.
         /// </summary>
         [JsonProperty(PropertyName = "vat")]
-        public double? Vat { get; set; }
+        public decimal? Vat { get; set; }
 
         /// <summary>
         /// The number of items priced.
         /// </summary>
         [JsonProperty(PropertyName = "quantity")]
-        public double? Quantity { get; set; }
+        public decimal? Quantity { get; set; }
 
         /// <summary>
         /// The item price excluding VAT.

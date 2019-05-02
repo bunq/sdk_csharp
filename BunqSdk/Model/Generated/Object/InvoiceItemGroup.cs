@@ -48,7 +48,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The invoice items in the group.
         /// </summary>
         [JsonProperty(PropertyName = "item")]
-        public InvoiceItem Item { get; set; }
+        public List<InvoiceItem> Item { get; set; }
 
         /// <summary>
         /// </summary>
