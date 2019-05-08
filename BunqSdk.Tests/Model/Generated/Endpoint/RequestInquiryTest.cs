@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// The status for accepting a request. 
         /// </summary>
         private const string Status = "ACCEPTED";
-        
+
         /// <summary>
         /// Tests sending a request from monetary account 1 to monetary account 2 and accepting this request.
         /// </summary>
@@ -30,9 +30,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             RequestInquiry.Create(
                 new Amount(PaymentAmountEur, PaymentCurrency),
                 SecondMonetaryAccountBank.Alias.First(),
-                PaymentDescription, 
+                PaymentDescription,
                 false
-                );
+            );
 
             Assert.Equal(Status, AcceptRequest());
         }
@@ -45,7 +45,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
                 requestResponseId,
                 status: Status,
                 monetaryAccountId: SecondMonetaryAccountBank.Id.Value
-                ).Value.Status;
+            ).Value.Status;
         }
     }
 }

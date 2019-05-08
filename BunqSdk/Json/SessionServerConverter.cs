@@ -25,6 +25,7 @@ namespace Bunq.Sdk.Json
         private const string FieldUserApiKey = "UserApiKey";
         private const string FieldUserCompany = "UserCompany";
         private const string FieldUserPerson = "UserPerson";
+        private const string FieldUserPaymentServiceProvider = "UserPaymentServiceProvider";
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
@@ -45,6 +46,13 @@ namespace Bunq.Sdk.Json
             else if (userBody[FieldUserPerson] != null)
             {
                 return new SessionServer(id, token, FetchObject<UserPerson>(userBody, FieldUserPerson));
+            }
+            else if (userBody[FieldUserPaymentServiceProvider] != null)
+            {
+                return new SessionServer(id, token, FetchObject<UserPaymentServiceProvider>(
+                    userBody,
+                    FieldUserPaymentServiceProvider
+                ));
             }
             else
             {

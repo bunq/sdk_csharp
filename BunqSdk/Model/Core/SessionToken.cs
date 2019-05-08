@@ -4,8 +4,7 @@ namespace Bunq.Sdk.Model.Core
 {
     public class SessionToken
     {
-        [JsonProperty(PropertyName = "token")]
-        public string Token { get; private set; }
+        [JsonProperty(PropertyName = "token")] public string Token { get; private set; }
 
         public SessionToken(string token)
         {

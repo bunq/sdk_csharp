@@ -21,6 +21,7 @@ namespace Bunq.Sdk.Context
         public UserPerson UserPerson { get; private set; }
         public UserCompany UserCompany { get; private set; }
         public UserApiKey UserApiKey { get; private set; }
+        public UserPaymentServiceProvider UserPaymentServiceProvider { get; private set; }
 
         public MonetaryAccountBank PrimaryMonetaryAccountBank
         {
@@ -56,6 +57,10 @@ namespace Bunq.Sdk.Context
             {
                 this.UserApiKey = (UserApiKey) user;
             }
+            else if (user.GetType() == typeof(UserPaymentServiceProvider))
+            {
+                this.UserPaymentServiceProvider = (UserPaymentServiceProvider) user;
+            }
             else
             {
                 throw new BunqException(string.Format(ErrorUnexpectedUser, user.GetType()));
@@ -64,6 +69,10 @@ namespace Bunq.Sdk.Context
 
         public void InitPrimaryMonetaryAccount()
         {
+            if (this.UserPaymentServiceProvider != null)
+            {
+                return;
+            }
             var allMonetaryAccount = MonetaryAccountBank.List().Value;
 
             foreach (var accountBank in allMonetaryAccount)

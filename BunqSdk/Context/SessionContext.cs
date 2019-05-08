@@ -17,6 +17,8 @@ namespace Bunq.Sdk.Context
         /// </summary>
         private const string ErrorCouldNotDetermineUserId = "Could not determine user id.";
         private const string ErrorSessionserverUserapikeyIdNull = "sessionServer.UserApiKey.Id != null";
+        private const string ErrorSessionserverUserpaymentserviceproviderkeyIdNull =
+            "sessionServer.UserPaymentServiceProvider.Id != null";
         private const string ErrorSessionserverUsercompanyIdNull = "sessionServer.UserCompany.Id != null";
         private const string ErrorsessionserverUserpersonIdNull = "sessionServer.UserPerson.Id != null";
         private const string ErrorCouldNotDetermineSessionTimeout = "Could not determine session timeout.";
@@ -51,23 +53,32 @@ namespace Bunq.Sdk.Context
 
         private static int GetUserId(SessionServer sessionServer)
         {
-            if (sessionServer.UserCompany != null && sessionServer.UserApiKey == null &&sessionServer.UserPerson == null)
+            if (sessionServer.UserCompany != null)
             {
                 Debug.Assert(sessionServer.UserCompany.Id != null, ErrorSessionserverUsercompanyIdNull);
                 
                 return sessionServer.UserCompany.Id.Value;
             }
-            else if (sessionServer.UserPerson != null && sessionServer.UserApiKey == null && sessionServer.UserCompany == null)
+            else if (sessionServer.UserPerson != null)
             {
                 Debug.Assert(sessionServer.UserPerson.Id != null, ErrorsessionserverUserpersonIdNull);
                 
                 return sessionServer.UserPerson.Id.Value;
             }
-            else if (sessionServer.UserApiKey != null && sessionServer.UserCompany == null && sessionServer.UserPerson == null)
+            else if (sessionServer.UserApiKey != null)
             {
                 Debug.Assert(sessionServer.UserApiKey.Id != null, ErrorSessionserverUserapikeyIdNull);
                 
                 return sessionServer.UserApiKey.Id.Value;
+            }
+            else if (sessionServer.UserPaymentServiceProvider != null)
+            {
+                Debug.Assert(
+                    sessionServer.UserPaymentServiceProvider.Id != null,
+                    ErrorSessionserverUserpaymentserviceproviderkeyIdNull
+                );
+                
+                return sessionServer.UserPaymentServiceProvider.Id.Value;
             }
             else
             {
@@ -77,17 +88,21 @@ namespace Bunq.Sdk.Context
 
         private static double GetSessionTimeout(SessionServer sessionServer)
         {
-            if (sessionServer.UserApiKey != null && sessionServer.UserCompany == null && sessionServer.UserPerson == null)
+            if (sessionServer.UserApiKey != null)
             {
                 return GetSesisonTimeOutForUser(sessionServer.UserApiKey.RequestedByUser.GetReferencedObject());
             }
-            else if (sessionServer.UserCompany != null && sessionServer.UserApiKey == null && sessionServer.UserPerson == null)
+            else if (sessionServer.UserCompany != null)
             {
                 return GetSesisonTimeOutForUser(sessionServer.UserCompany);
             }
-            else if (sessionServer.UserPerson != null && sessionServer.UserApiKey == null && sessionServer.UserCompany == null)
+            else if (sessionServer.UserPerson != null)
             {
                 return GetSesisonTimeOutForUser(sessionServer.UserPerson);
+            }
+            else if (sessionServer.UserPaymentServiceProvider != null)
+            {
+                return GetSesisonTimeOutForUser(sessionServer.UserPaymentServiceProvider);
             }
             else
             {
@@ -106,6 +121,10 @@ namespace Bunq.Sdk.Context
             else if (user.GetType() == typeof(UserCompany))
             {
                 sessionTimeout = ((UserCompany) user).SessionTimeout;
+            }
+            else if (user.GetType() == typeof(UserPaymentServiceProvider))
+            {
+                sessionTimeout = ((UserPaymentServiceProvider) user).SessionTimeout;
             }
             else
             {
