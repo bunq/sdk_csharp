@@ -11,20 +11,26 @@ using System;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Used to share a monetary account with another bunq
+    /// [DEPRECATED - use /share-invite-monetary-account-response] Used to share a monetary account with another bunq
     /// user, as in the 'Connect' feature in the bunq app. Allow the creation of share inquiries that, in the same way
     /// as request inquiries, can be revoked by the user creating them or accepted/rejected by the other party.
     /// </summary>
-    public class ShareInviteBankInquiry : BunqModel
+    public class ShareInviteMonetaryAccountInquiry : BunqModel
     {
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry";
+        protected const string ENDPOINT_URL_CREATE =
+            "user/{0}/monetary-account/{1}/share-invite-monetary-account-inquiry";
 
-        protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry/{2}";
-        protected const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry/{2}";
-        protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/share-invite-bank-inquiry";
+        protected const string ENDPOINT_URL_READ =
+            "user/{0}/monetary-account/{1}/share-invite-monetary-account-inquiry/{2}";
+
+        protected const string ENDPOINT_URL_UPDATE =
+            "user/{0}/monetary-account/{1}/share-invite-monetary-account-inquiry/{2}";
+
+        protected const string ENDPOINT_URL_LISTING =
+            "user/{0}/monetary-account/{1}/share-invite-monetary-account-inquiry";
 
         /// <summary>
         /// Field constants.
@@ -41,7 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE_GET = "ShareInviteBankInquiry";
+        private const string OBJECT_TYPE_GET = "ShareInviteMonetaryAccountInquiry";
 
         /// <summary>
         /// The label of the user to share with.
@@ -118,8 +124,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? Id { get; set; }
 
         /// <summary>
-        /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Create a new share inquiry for a monetary account,
-        /// specifying the permission the other bunq user will have on it.
+        /// [DEPRECATED - use /share-invite-monetary-account-response] Create a new share inquiry for a monetary
+        /// account, specifying the permission the other bunq user will have on it.
         /// </summary>
         /// <param name="counterUserAlias">The pointer of the user to share with.</param>
         /// <param name="shareDetail">The share details. Only one of these objects may be passed.</param>
@@ -157,9 +163,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Get the details of a specific share inquiry.
+        /// [DEPRECATED - use /share-invite-monetary-account-response] Get the details of a specific share inquiry.
         /// </summary>
-        public static BunqResponse<ShareInviteBankInquiry> Get(int shareInviteBankInquiryId,
+        public static BunqResponse<ShareInviteMonetaryAccountInquiry> Get(int shareInviteMonetaryAccountInquiryId,
             int? monetaryAccountId = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -168,20 +174,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw =
                 apiClient.Get(
                     string.Format(ENDPOINT_URL_READ, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId),
-                        shareInviteBankInquiryId), new Dictionary<string, string>(), customHeaders);
+                        shareInviteMonetaryAccountInquiryId), new Dictionary<string, string>(), customHeaders);
 
-            return FromJson<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE_GET);
+            return FromJson<ShareInviteMonetaryAccountInquiry>(responseRaw, OBJECT_TYPE_GET);
         }
 
         /// <summary>
-        /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Update the details of a share. This includes
+        /// [DEPRECATED - use /share-invite-monetary-account-response] Update the details of a share. This includes
         /// updating status (revoking or cancelling it), granted permission and validity period of this share.
         /// </summary>
         /// <param name="shareDetail">The share details. Only one of these objects may be passed.</param>
         /// <param name="status">The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted), ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED, CANCELLATION_REJECTED (for canceling mutual connects).</param>
         /// <param name="startDate">The start date of this share.</param>
         /// <param name="endDate">The expiration date of this share.</param>
-        public static BunqResponse<int> Update(int shareInviteBankInquiryId, int? monetaryAccountId = null,
+        public static BunqResponse<int> Update(int shareInviteMonetaryAccountInquiryId, int? monetaryAccountId = null,
             ShareDetail shareDetail = null, string status = null, string startDate = null, string endDate = null,
             IDictionary<string, string> customHeaders = null)
         {
@@ -201,16 +207,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw =
                 apiClient.Put(
                     string.Format(ENDPOINT_URL_UPDATE, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId),
-                        shareInviteBankInquiryId), requestBytes, customHeaders);
+                        shareInviteMonetaryAccountInquiryId), requestBytes, customHeaders);
 
             return ProcessForId(responseRaw);
         }
 
         /// <summary>
-        /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Get a list with all the share inquiries for a
+        /// [DEPRECATED - use /share-invite-monetary-account-response] Get a list with all the share inquiries for a
         /// monetary account, only if the requesting user has permission to change the details of the various ones.
         /// </summary>
-        public static BunqResponse<List<ShareInviteBankInquiry>> List(int? monetaryAccountId = null,
+        public static BunqResponse<List<ShareInviteMonetaryAccountInquiry>> List(int? monetaryAccountId = null,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
@@ -222,7 +228,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                     string.Format(ENDPOINT_URL_LISTING, DetermineUserId(),
                         DetermineMonetaryAccountId(monetaryAccountId)), urlParams, customHeaders);
 
-            return FromJsonList<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE_GET);
+            return FromJsonList<ShareInviteMonetaryAccountInquiry>(responseRaw, OBJECT_TYPE_GET);
         }
 
         /// <summary>
@@ -294,9 +300,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         /// <summary>
         /// </summary>
-        public static ShareInviteBankInquiry CreateFromJsonString(string json)
+        public static ShareInviteMonetaryAccountInquiry CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<ShareInviteBankInquiry>(json);
+            return BunqModel.CreateFromJsonString<ShareInviteMonetaryAccountInquiry>(json);
         }
     }
 }

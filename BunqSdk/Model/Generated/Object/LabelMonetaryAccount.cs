@@ -63,6 +63,18 @@ namespace Bunq.Sdk.Model.Generated.Object
         public string SwiftAccountNumber { get; set; }
 
         /// <summary>
+        /// The account number used for a Transferwise payment. May or may not be an IBAN.
+        /// </summary>
+        [JsonProperty(PropertyName = "transferwise_account_number")]
+        public string TransferwiseAccountNumber { get; set; }
+
+        /// <summary>
+        /// The bank code used for a Transferwise payment. May or may not be a BIC.
+        /// </summary>
+        [JsonProperty(PropertyName = "transferwise_bank_code")]
+        public string TransferwiseBankCode { get; set; }
+
+        /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
@@ -107,6 +119,16 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
 
             if (this.SwiftAccountNumber != null)
+            {
+                return false;
+            }
+
+            if (this.TransferwiseAccountNumber != null)
+            {
+                return false;
+            }
+
+            if (this.TransferwiseBankCode != null)
             {
                 return false;
             }

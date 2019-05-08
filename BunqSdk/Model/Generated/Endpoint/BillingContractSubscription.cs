@@ -17,8 +17,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        protected const string ENDPOINT_URL_CREATE = "user/{0}/billing-contract-subscription";
-
         protected const string ENDPOINT_URL_LISTING = "user/{0}/billing-contract-subscription";
 
         /// <summary>
@@ -92,28 +90,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "sub_status")]
         public string SubStatus { get; set; }
-
-        /// <summary>
-        /// </summary>
-        /// <param name="subscriptionType">The subscription type of the user. Can be one of PERSON_LIGHT_V1, PERSON_MORE_V1, PERSON_FREE_V1, PERSON_PREMIUM_V1, COMPANY_V1, or COMPANY_V2.</param>
-        public static BunqResponse<int> Create(string subscriptionType,
-            IDictionary<string, string> customHeaders = null)
-        {
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-
-            var apiClient = new ApiClient(GetApiContext());
-
-            var requestMap = new Dictionary<string, object>
-            {
-                {FIELD_SUBSCRIPTION_TYPE, subscriptionType},
-            };
-
-            var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId()), requestBytes,
-                customHeaders);
-
-            return ProcessForId(responseRaw);
-        }
 
         /// <summary>
         /// Get all subscription billing contract for the authenticated user.

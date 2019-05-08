@@ -32,10 +32,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_ACTIVATION_CODE = "activation_code";
         public const string FIELD_STATUS = "status";
         public const string FIELD_CARD_LIMIT = "card_limit";
-        public const string FIELD_LIMIT = "limit";
+        public const string FIELD_CARD_LIMIT_ATM = "card_limit_atm";
         public const string FIELD_MAG_STRIPE_PERMISSION = "mag_stripe_permission";
         public const string FIELD_COUNTRY_PERMISSION = "country_permission";
         public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
+        public const string FIELD_PRIMARY_ACCOUNT_NUMBERS_VIRTUAL = "primary_account_numbers_virtual";
         public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
 
         /// <summary>
@@ -52,8 +53,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string PinCode { get; set; }
 
         /// <summary>
-        /// The activation code required to set status to ACTIVE initially. Can only set status to ACTIVE using
-        /// activation code when order_status is ACCEPTED_FOR_PRODUCTION and status is DEACTIVATED.
+        /// DEPRECATED: Activate a card by setting status to ACTIVE when the order_status is ACCEPTED_FOR_PRODUCTION.
         /// </summary>
         [JsonProperty(PropertyName = "activation_code")]
         public string ActivationCode { get; set; }
@@ -66,20 +66,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Status { get; set; }
 
         /// <summary>
-        /// The spending limit for the cards
+        /// The spending limit for the card.
         /// </summary>
         [JsonProperty(PropertyName = "card_limit")]
         public Amount CardLimit { get; set; }
 
         /// <summary>
-        /// DEPRECATED: The limits to define for the card, among CARD_LIMIT_CONTACTLESS, CARD_LIMIT_ATM,
-        /// CARD_LIMIT_DIPPING and CARD_LIMIT_POS_ICC (e.g. 25 EUR for CARD_LIMIT_CONTACTLESS)
+        /// The ATM spending limit for the card.
         /// </summary>
-        [JsonProperty(PropertyName = "limit")]
-        public List<CardLimit> Limit { get; set; }
+        [JsonProperty(PropertyName = "card_limit_atm")]
+        public Amount CardLimitAtm { get; set; }
 
         /// <summary>
-        /// The countries for which to grant (temporary) permissions to use the card.
+        /// DEPRECATED: Whether or not it is allowed to use the mag stripe for the card.
         /// </summary>
         [JsonProperty(PropertyName = "mag_stripe_permission")]
         public CardMagStripePermission MagStripePermission { get; set; }
@@ -95,6 +94,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "pin_code_assignment")]
         public List<CardPinAssignment> PinCodeAssignment { get; set; }
+
+        /// <summary>
+        /// Array of PANs, status, description and account id for online cards.
+        /// </summary>
+        [JsonProperty(PropertyName = "primary_account_numbers_virtual")]
+        public List<CardVirtualPrimaryAccountNumber> PrimaryAccountNumbersVirtual { get; set; }
 
         /// <summary>
         /// ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
@@ -200,19 +205,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// endpoint.
         /// </summary>
         /// <param name="pinCode">The plaintext pin code. Requests require encryption to be enabled.</param>
-        /// <param name="activationCode">The activation code required to set status to ACTIVE initially. Can only set status to ACTIVE using activation code when order_status is ACCEPTED_FOR_PRODUCTION and status is DEACTIVATED.</param>
+        /// <param name="activationCode">DEPRECATED: Activate a card by setting status to ACTIVE when the order_status is ACCEPTED_FOR_PRODUCTION.</param>
         /// <param name="status">The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN or CANCELLED, and can only be set to LOST/STOLEN/CANCELLED when order status is ACCEPTED_FOR_PRODUCTION/DELIVERED_TO_CUSTOMER/CARD_UPDATE_REQUESTED/CARD_UPDATE_SENT/CARD_UPDATE_ACCEPTED. Can only be set to DEACTIVATED after initial activation, i.e. order_status is DELIVERED_TO_CUSTOMER/CARD_UPDATE_REQUESTED/CARD_UPDATE_SENT/CARD_UPDATE_ACCEPTED. Mind that all the possible choices (apart from ACTIVE and DEACTIVATED) are permanent and cannot be changed after.</param>
         /// <param name="cardLimit">The spending limit for the card.</param>
-        /// <param name="limit">DEPRECATED: The limits to define for the card, among CARD_LIMIT_CONTACTLESS, CARD_LIMIT_ATM, CARD_LIMIT_DIPPING and CARD_LIMIT_POS_ICC (e.g. 25 EUR for CARD_LIMIT_CONTACTLESS). All the limits must be provided on update.</param>
-        /// <param name="magStripePermission">Whether or not it is allowed to use the mag stripe for the card.</param>
+        /// <param name="cardLimitAtm">The ATM spending limit for the card.</param>
+        /// <param name="magStripePermission">DEPRECATED: Whether or not it is allowed to use the mag stripe for the card.</param>
         /// <param name="countryPermission">The countries for which to grant (temporary) permissions to use the card.</param>
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
+        /// <param name="primaryAccountNumbersVirtual">Array of PANs, status, description and account id for online cards.</param>
         /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
         public static BunqResponse<Card> Update(int cardId, string pinCode = null, string activationCode = null,
-            string status = null, Amount cardLimit = null, List<CardLimit> limit = null,
+            string status = null, Amount cardLimit = null, Amount cardLimitAtm = null,
             CardMagStripePermission magStripePermission = null, List<CardCountryPermission> countryPermission = null,
-            List<CardPinAssignment> pinCodeAssignment = null, int? monetaryAccountIdFallback = null,
-            IDictionary<string, string> customHeaders = null)
+            List<CardPinAssignment> pinCodeAssignment = null,
+            List<CardVirtualPrimaryAccountNumber> primaryAccountNumbersVirtual = null,
+            int? monetaryAccountIdFallback = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -224,10 +231,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_ACTIVATION_CODE, activationCode},
                 {FIELD_STATUS, status},
                 {FIELD_CARD_LIMIT, cardLimit},
-                {FIELD_LIMIT, limit},
+                {FIELD_CARD_LIMIT_ATM, cardLimitAtm},
                 {FIELD_MAG_STRIPE_PERMISSION, magStripePermission},
                 {FIELD_COUNTRY_PERMISSION, countryPermission},
                 {FIELD_PIN_CODE_ASSIGNMENT, pinCodeAssignment},
+                {FIELD_PRIMARY_ACCOUNT_NUMBERS_VIRTUAL, primaryAccountNumbersVirtual},
                 {FIELD_MONETARY_ACCOUNT_ID_FALLBACK, monetaryAccountIdFallback},
             };
 
@@ -338,17 +346,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
+            if (this.PrimaryAccountNumbersVirtual != null)
+            {
+                return false;
+            }
+
             if (this.CardLimit != null)
             {
                 return false;
             }
 
-            if (this.Limit != null)
-            {
-                return false;
-            }
-
-            if (this.MagStripePermission != null)
+            if (this.CardLimitAtm != null)
             {
                 return false;
             }

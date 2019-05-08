@@ -52,10 +52,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SUB_STATUS = "sub_status";
         public const string FIELD_LEGAL_GUARDIAN_ALIAS = "legal_guardian_alias";
         public const string FIELD_SESSION_TIMEOUT = "session_timeout";
-        public const string FIELD_CARD_IDS = "card_ids";
-        public const string FIELD_CARD_LIMITS = "card_limits";
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
+        public const string FIELD_DISPLAY_NAME = "display_name";
 
         /// <summary>
         /// Object type.
@@ -210,18 +209,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? SessionTimeout { get; set; }
 
         /// <summary>
-        /// Card ids used for centralized card limits.
-        /// </summary>
-        [JsonProperty(PropertyName = "card_ids")]
-        public List<BunqId> CardIds { get; set; }
-
-        /// <summary>
-        /// The centralized limits for user's cards.
-        /// </summary>
-        [JsonProperty(PropertyName = "card_limits")]
-        public List<CardLimit> CardLimits { get; set; }
-
-        /// <summary>
         /// The amount the user can pay in the session without asking for credentials.
         /// </summary>
         [JsonProperty(PropertyName = "daily_limit_without_confirmation_login")]
@@ -232,6 +219,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "notification_filters")]
         public List<NotificationFilter> NotificationFilters { get; set; }
+
+        /// <summary>
+        /// The display name for the person.
+        /// </summary>
+        [JsonProperty(PropertyName = "display_name")]
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// The id of the modified person object.
@@ -262,12 +255,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "legal_name")]
         public string LegalName { get; set; }
-
-        /// <summary>
-        /// The display name for the person.
-        /// </summary>
-        [JsonProperty(PropertyName = "display_name")]
-        public string DisplayName { get; set; }
 
         /// <summary>
         /// The aliases of the user.
@@ -328,10 +315,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="subStatus">The user sub-status. Can be updated to SUBMIT if status is RECOVERY.</param>
         /// <param name="legalGuardianAlias">The legal guardian of the user. Required for minors.</param>
         /// <param name="sessionTimeout">The setting for the session timeout of the user in seconds.</param>
-        /// <param name="cardIds">Card ids used for centralized card limits.</param>
-        /// <param name="cardLimits">The centralized limits for user's cards.</param>
         /// <param name="dailyLimitWithoutConfirmationLogin">The amount the user can pay in the session without asking for credentials.</param>
         /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this UserPerson.</param>
+        /// <param name="displayName">The person's legal name. Available legal names can be listed via the 'user/{user_id}/legal-name' endpoint.</param>
         public static BunqResponse<int> Update(string firstName = null, string middleName = null,
             string lastName = null, string publicNickName = null, Address addressMain = null,
             Address addressPostal = null, string avatarUuid = null, List<TaxResident> taxResident = null,
@@ -339,9 +325,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             int? documentFrontAttachmentId = null, int? documentBackAttachmentId = null, string dateOfBirth = null,
             string placeOfBirth = null, string countryOfBirth = null, string nationality = null, string language = null,
             string region = null, string gender = null, string status = null, string subStatus = null,
-            Pointer legalGuardianAlias = null, int? sessionTimeout = null, List<BunqId> cardIds = null,
-            List<CardLimit> cardLimits = null, Amount dailyLimitWithoutConfirmationLogin = null,
-            List<NotificationFilter> notificationFilters = null, IDictionary<string, string> customHeaders = null)
+            Pointer legalGuardianAlias = null, int? sessionTimeout = null,
+            Amount dailyLimitWithoutConfirmationLogin = null, List<NotificationFilter> notificationFilters = null,
+            string displayName = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -373,10 +359,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_SUB_STATUS, subStatus},
                 {FIELD_LEGAL_GUARDIAN_ALIAS, legalGuardianAlias},
                 {FIELD_SESSION_TIMEOUT, sessionTimeout},
-                {FIELD_CARD_IDS, cardIds},
-                {FIELD_CARD_LIMITS, cardLimits},
                 {FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN, dailyLimitWithoutConfirmationLogin},
                 {FIELD_NOTIFICATION_FILTERS, notificationFilters},
+                {FIELD_DISPLAY_NAME, displayName},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));

@@ -38,6 +38,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_COUNTRY = "country";
         public const string FIELD_UBO = "ubo";
         public const string FIELD_CHAMBER_OF_COMMERCE_NUMBER = "chamber_of_commerce_number";
+        public const string FIELD_LEGAL_FORM = "legal_form";
         public const string FIELD_STATUS = "status";
         public const string FIELD_SUB_STATUS = "sub_status";
         public const string FIELD_SESSION_TIMEOUT = "session_timeout";
@@ -110,6 +111,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "chamber_of_commerce_number")]
         public string ChamberOfCommerceNumber { get; set; }
+
+        /// <summary>
+        /// The company's legal form.
+        /// </summary>
+        [JsonProperty(PropertyName = "legal_form")]
+        public string LegalForm { get; set; }
 
         /// <summary>
         /// The user status. Can be: ACTIVE, SIGNUP, RECOVERY.
@@ -215,18 +222,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public LabelUser DirectorAlias { get; set; }
 
         /// <summary>
-        /// Card ids used for centralized card limits.
-        /// </summary>
-        [JsonProperty(PropertyName = "card_ids")]
-        public List<BunqId> CardIds { get; set; }
-
-        /// <summary>
-        /// The centralized limits for user's cards.
-        /// </summary>
-        [JsonProperty(PropertyName = "card_limits")]
-        public List<CardLimit> CardLimits { get; set; }
-
-        /// <summary>
         /// The customer profile of the company.
         /// </summary>
         [JsonProperty(PropertyName = "customer")]
@@ -271,6 +266,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="country">The country where the company is registered.</param>
         /// <param name="ubo">The names and birth dates of the company's ultimate beneficiary owners. Minimum zero, maximum four.</param>
         /// <param name="chamberOfCommerceNumber">The company's chamber of commerce number.</param>
+        /// <param name="legalForm">The company's legal form.</param>
         /// <param name="status">The user status. Can be: ACTIVE, SIGNUP, RECOVERY.</param>
         /// <param name="subStatus">The user sub-status. Can be: NONE, FACE_RESET, APPROVAL, APPROVAL_DIRECTOR, APPROVAL_PARENT, APPROVAL_SUPPORT, COUNTER_IBAN, IDEAL or SUBMIT.</param>
         /// <param name="sessionTimeout">The setting for the session timeout of the company in seconds.</param>
@@ -279,7 +275,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public static BunqResponse<int> Update(string name = null, string publicNickName = null,
             string avatarUuid = null, Address addressMain = null, Address addressPostal = null, string language = null,
             string region = null, string country = null, List<Ubo> ubo = null, string chamberOfCommerceNumber = null,
-            string status = null, string subStatus = null, int? sessionTimeout = null,
+            string legalForm = null, string status = null, string subStatus = null, int? sessionTimeout = null,
             Amount dailyLimitWithoutConfirmationLogin = null, List<NotificationFilter> notificationFilters = null,
             IDictionary<string, string> customHeaders = null)
         {
@@ -299,6 +295,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_COUNTRY, country},
                 {FIELD_UBO, ubo},
                 {FIELD_CHAMBER_OF_COMMERCE_NUMBER, chamberOfCommerceNumber},
+                {FIELD_LEGAL_FORM, legalForm},
                 {FIELD_STATUS, status},
                 {FIELD_SUB_STATUS, subStatus},
                 {FIELD_SESSION_TIMEOUT, sessionTimeout},
@@ -358,6 +355,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.ChamberOfCommerceNumber != null)
+            {
+                return false;
+            }
+
+            if (this.LegalForm != null)
             {
                 return false;
             }
@@ -433,16 +435,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.SessionTimeout != null)
-            {
-                return false;
-            }
-
-            if (this.CardIds != null)
-            {
-                return false;
-            }
-
-            if (this.CardLimits != null)
             {
                 return false;
             }

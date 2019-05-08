@@ -15,13 +15,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         public int? Id { get; set; }
 
         /// <summary>
-        /// The activation code required to set status to ACTIVE initially. Can only set status to ACTIVE using
-        /// activation code when order_status is ACCEPTED_FOR_PRODUCTION and status is DEACTIVATED.
-        /// </summary>
-        [JsonProperty(PropertyName = "activation_code")]
-        public string ActivationCode { get; set; }
-
-        /// <summary>
         /// The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN or CANCELLED, and can only be set
         /// to LOST/STOLEN/CANCELLED when order status is
         /// ACCEPTED_FOR_PRODUCTION/DELIVERED_TO_CUSTOMER/CARD_UPDATE_REQUESTED/CARD_UPDATE_SENT/CARD_UPDATE_ACCEPTED.
@@ -33,17 +26,16 @@ namespace Bunq.Sdk.Model.Generated.Object
         public string Status { get; set; }
 
         /// <summary>
-        /// The limits to define for the card, among CARD_LIMIT_ATM and CARD_LIMIT_POS_ICC. All the limits must be
-        /// provided on update.
+        /// The spending limit for the card.
         /// </summary>
-        [JsonProperty(PropertyName = "limit")]
-        public List<CardLimit> Limit { get; set; }
+        [JsonProperty(PropertyName = "card_limit")]
+        public Amount CardLimit { get; set; }
 
         /// <summary>
-        /// Whether or not it is allowed to use the mag stripe for the card.
+        /// The ATM spending limit for the card.
         /// </summary>
-        [JsonProperty(PropertyName = "mag_stripe_permission")]
-        public CardMagStripePermission MagStripePermission { get; set; }
+        [JsonProperty(PropertyName = "card_limit_atm")]
+        public Amount CardLimitAtm { get; set; }
 
         /// <summary>
         /// The countries for which to grant (temporary) permissions to use the card.
