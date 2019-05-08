@@ -1,7 +1,20 @@
 # Change Log
 
-## [Unreleased](https://github.com/bunq/sdk_csharp/tree/1.1.0)
+## [1.10.0](https://github.com/bunq/sdk_csharp/tree/1.10.0)
 
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.1.0...1.10.0)
+
+**Closed issues:**
+
+- PSD2 Support [\#124](https://github.com/bunq/sdk_csharp/issues/124)
+
+**Merged pull requests:**
+
+- Implement psd2 [\#125](https://github.com/bunq/sdk_csharp/pull/125) ([kojoru](https://github.com/kojoru))
+- Add missing semicolons in README.md [\#123](https://github.com/bunq/sdk_csharp/pull/123) ([WouterJanson](https://github.com/WouterJanson))
+- fix broken link in readme [\#120](https://github.com/bunq/sdk_csharp/pull/120) ([Niggggggo](https://github.com/Niggggggo))
+
+## [1.1.0](https://github.com/bunq/sdk_csharp/tree/1.1.0) (2018-10-10)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.0.0...1.1.0)
 
 **Fixed bugs:**
@@ -180,8 +193,6 @@
 **Implemented enhancements:**
 
 - Ignore generated code for reviews [\#19](https://github.com/bunq/sdk_csharp/issues/19)
-- Add proxy support  [\#15](https://github.com/bunq/sdk_csharp/issues/15)
-- Response is missing response headers and pagination [\#5](https://github.com/bunq/sdk_csharp/issues/5)
 - Added git attributes. [\#20](https://github.com/bunq/sdk_csharp/pull/20) ([OGKevin](https://github.com/OGKevin))
 - Add pagination; add missing fields and objects \[\#17\] [\#18](https://github.com/bunq/sdk_csharp/pull/18) ([dnl-blkv](https://github.com/dnl-blkv))
 
@@ -190,14 +201,12 @@
 
 **Implemented enhancements:**
 
+- Add proxy support  [\#15](https://github.com/bunq/sdk_csharp/issues/15)
 - Allow saving context to JSON and restoring from it [\#13](https://github.com/bunq/sdk_csharp/issues/13)
 - Bunq SDK needs two minor refactors [\#11](https://github.com/bunq/sdk_csharp/issues/11)
+- Response is missing response headers and pagination [\#5](https://github.com/bunq/sdk_csharp/issues/5)
 - add proxy support, make httpClient instance variable \[\#15\] [\#16](https://github.com/bunq/sdk_csharp/pull/16) ([dnl-blkv](https://github.com/dnl-blkv))
 - add methods to serialize and de-serialize ApiContext, fix Card \[\#13\] [\#14](https://github.com/bunq/sdk_csharp/pull/14) ([dnl-blkv](https://github.com/dnl-blkv))
-
-**Fixed bugs:**
-
-- ArgumentException in SessionServerConverter [\#7](https://github.com/bunq/sdk_csharp/issues/7)
 
 **Merged pull requests:**
 
@@ -213,6 +222,7 @@
 
 **Fixed bugs:**
 
+- ArgumentException in SessionServerConverter [\#7](https://github.com/bunq/sdk_csharp/issues/7)
 - Fix SessionServerConverter, bump up to 0.9.2.0-beta \[\#7\] [\#8](https://github.com/bunq/sdk_csharp/pull/8) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.9.1](https://github.com/bunq/sdk_csharp/tree/0.9.1) (2017-08-07)
