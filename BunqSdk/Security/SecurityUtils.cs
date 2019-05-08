@@ -364,6 +364,10 @@ namespace Bunq.Sdk.Security
             );
         }
         
+        /// <summary>
+        /// Creates a PEM-formatted certificate string from a given X509Certificate object
+        /// string.
+        /// </summary>
         public static string ExportCertificateToPEM(X509Certificate cert)
         {
             StringBuilder builder = new StringBuilder();            
@@ -375,7 +379,12 @@ namespace Bunq.Sdk.Security
 
             return builder.ToString();
         }
-
+        
+        /// <summary>
+        /// Wraps a base64 string to 64-character wide lines according to typical certificate/key export rules.
+        /// </summary>
+        /// <param name="base64">base64 string without line breaks</param>
+        /// <returns>base64-string formatted with line breaks</returns>
         private static string WrapBase64(string base64)
         {
             var builder = new StringBuilder();
