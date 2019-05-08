@@ -251,7 +251,7 @@ namespace Bunq.Sdk.Security
 
         #endregion
 
-        private static RSA DecodeRsaPrivateKey(byte[] rsaPrivateKeyBytes)
+        public static RSA DecodeRsaPrivateKey(byte[] rsaPrivateKeyBytes)
         {
             try
             {

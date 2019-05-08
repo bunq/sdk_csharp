@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         public void TestCreateAvatarAndRetrieval()
         {
             SetUpTestCase();
-            
+
             var fileContentByte = File.ReadAllBytes(PathAttachment + AttachmentPathIn);
             var attachmentUuid = UploadAvatarAndGetUuid(fileContentByte);
 
@@ -49,7 +49,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
                 {ApiClient.HEADER_ATTACHMENT_DESCRIPTION, AttachmentDescription},
                 {ApiClient.HEADER_CONTENT_TYPE, ContentType},
             };
- 
+
             return AttachmentPublic.Create(fileContentByte, customHeaders).Value;
         }
     }

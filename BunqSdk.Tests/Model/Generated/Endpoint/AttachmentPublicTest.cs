@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         public void TestAttachmentUploadAndRetrieval()
         {
             SetUpTestCase();
-            
+
             var fileContentBytes = File.ReadAllBytes(PathAttachment + AttachmentPathIn);
             var customHeaders = new Dictionary<string, string>
             {

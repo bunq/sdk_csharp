@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Model.Core
         /// <summary>
         /// Endpoint name.
         /// </summary>
-        private const string ENDPOINT_URL_POST = "session-server";
+        protected const string ENDPOINT_URL_POST = "session-server";
 
         /// <summary>
         /// Field constants.
@@ -24,6 +24,7 @@ namespace Bunq.Sdk.Model.Core
         public UserApiKey UserApiKey { get; private set; }
         public UserCompany UserCompany { get; private set; }
         public UserPerson UserPerson { get; private set; }
+        public UserPaymentServiceProvider UserPaymentServiceProvider { get; private set; }
 
         public SessionServer(Id id, SessionToken sessionToken, UserCompany userCompany)
         {
@@ -38,12 +39,19 @@ namespace Bunq.Sdk.Model.Core
             SessionToken = sessionToken;
             UserPerson = userPerson;
         }
-        
+
         public SessionServer(Id id, SessionToken sessionToken, UserApiKey userApiKey)
         {
             Id = id;
             SessionToken = sessionToken;
             UserApiKey = userApiKey;
+        }
+
+        public SessionServer(Id id, SessionToken sessionToken, UserPaymentServiceProvider userPaymentServiceProvider)
+        {
+            Id = id;
+            SessionToken = sessionToken;
+            UserPaymentServiceProvider = userPaymentServiceProvider;
         }
 
         /// <summary>
@@ -63,7 +71,7 @@ namespace Bunq.Sdk.Model.Core
             return FromJsonArrayNested<SessionServer>(responseRaw);
         }
 
-        private static byte[] GenerateRequestBodyBytes(string apiKey)
+        protected static byte[] GenerateRequestBodyBytes(string apiKey)
         {
             var sessionServerRequestBody = new Dictionary<string, object> {{FIELD_SECRET, apiKey}};
 

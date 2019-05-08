@@ -1,12 +1,7 @@
-using Bunq.Sdk.Context;
-using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -15,11 +10,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// </summary>
     public class UserLight : BunqModel
     {
-        /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        protected const string ENDPOINT_URL_READ = "user-light/{0}";
-
         /// <summary>
         /// Field constants.
         /// </summary>
@@ -51,11 +41,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SESSION_TIMEOUT = "session_timeout";
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
-
-        /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE_GET = "UserPerson";
 
         /// <summary>
         /// The user's first name.
@@ -275,20 +260,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "version_terms_of_service")]
         public string VersionTermsOfService { get; set; }
-
-        /// <summary>
-        /// Get a specific bunq light user.
-        /// </summary>
-        public static BunqResponse<UserLight> Get(int userLightId, IDictionary<string, string> customHeaders = null)
-        {
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-
-            var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, userLightId),
-                new Dictionary<string, string>(), customHeaders);
-
-            return FromJson<UserLight>(responseRaw, OBJECT_TYPE_GET);
-        }
 
         /// <summary>
         /// </summary>

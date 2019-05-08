@@ -35,6 +35,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DESCRIPTION = "description";
         public const string FIELD_ATTACHMENT = "attachment";
         public const string FIELD_MERCHANT_REFERENCE = "merchant_reference";
+        public const string FIELD_ALLOW_BUNQTO = "allow_bunqto";
 
         /// <summary>
         /// Object type.
@@ -72,6 +73,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "merchant_reference")]
         public string MerchantReference { get; set; }
+
+        /// <summary>
+        /// Whether or not sending a bunq.to payment is allowed.
+        /// </summary>
+        [JsonProperty(PropertyName = "allow_bunqto")]
+        public bool? AllowBunqto { get; set; }
 
         /// <summary>
         /// The id of the created Payment.
@@ -189,6 +196,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
 
         /// <summary>
+        /// The new balance of the monetary account after the mutation.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance_after_mutation")]
+        public Amount BalanceAfterMutation { get; set; }
+
+        /// <summary>
         /// Create a new Payment.
         /// </summary>
         /// <param name="amount">The Amount to transfer with the Payment. Must be bigger than 0 and smaller than the MonetaryAccount's balance.</param>
@@ -196,9 +209,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="description">The description for the Payment. Maximum 140 characters for Payments to external IBANs, 9000 characters for Payments to only other bunq MonetaryAccounts. Field is required but can be an empty string.</param>
         /// <param name="attachment">The Attachments to attach to the Payment.</param>
         /// <param name="merchantReference">Optional data to be included with the Payment specific to the merchant.</param>
+        /// <param name="allowBunqto">Whether or not sending a bunq.to payment is allowed.</param>
         public static BunqResponse<int> Create(Amount amount, Pointer counterpartyAlias, string description,
             int? monetaryAccountId = null, List<AttachmentMonetaryAccountPayment> attachment = null,
-            string merchantReference = null, IDictionary<string, string> customHeaders = null)
+            string merchantReference = null, bool? allowBunqto = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -211,6 +225,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_DESCRIPTION, description},
                 {FIELD_ATTACHMENT, attachment},
                 {FIELD_MERCHANT_REFERENCE, merchantReference},
+                {FIELD_ALLOW_BUNQTO, allowBunqto},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -377,6 +392,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.RequestReferenceSplitTheBill != null)
+            {
+                return false;
+            }
+
+            if (this.BalanceAfterMutation != null)
             {
                 return false;
             }

@@ -52,6 +52,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount AmountLocal { get; set; }
 
         /// <summary>
+        /// The amount of the transaction in local currency.
+        /// </summary>
+        [JsonProperty(PropertyName = "amount_converted")]
+        public Amount AmountConverted { get; set; }
+
+        /// <summary>
         /// The amount of the transaction in the monetary account's currency.
         /// </summary>
         [JsonProperty(PropertyName = "amount_billing")]
@@ -179,12 +185,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public bool? AllowChat { get; set; }
 
         /// <summary>
-        /// The whitelist id for this mastercard action or null.
-        /// </summary>
-        [JsonProperty(PropertyName = "eligible_whitelist_id")]
-        public int? EligibleWhitelistId { get; set; }
-
-        /// <summary>
         /// The secure code id for this mastercard action or null.
         /// </summary>
         [JsonProperty(PropertyName = "secure_code_id")]
@@ -256,6 +256,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.AmountLocal != null)
+            {
+                return false;
+            }
+
+            if (this.AmountConverted != null)
             {
                 return false;
             }
@@ -361,11 +366,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.AllowChat != null)
-            {
-                return false;
-            }
-
-            if (this.EligibleWhitelistId != null)
             {
                 return false;
             }

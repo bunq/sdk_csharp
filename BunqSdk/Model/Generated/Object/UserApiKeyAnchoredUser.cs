@@ -27,6 +27,11 @@ namespace Bunq.Sdk.Model.Generated.Object
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "UserPaymentServiceProvider")]
+        public UserPaymentServiceProvider UserPaymentServiceProvider { get; set; }
+
+        /// <summary>
+        /// </summary>
         public BunqModel GetReferencedObject()
         {
             if (this.UserPerson != null)
@@ -37,6 +42,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             if (this.UserCompany != null)
             {
                 return this.UserCompany;
+            }
+
+            if (this.UserPaymentServiceProvider != null)
+            {
+                return this.UserPaymentServiceProvider;
             }
 
             throw new BunqException(ERROR_NULL_FIELDS);
@@ -52,6 +62,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
 
             if (this.UserCompany != null)
+            {
+                return false;
+            }
+
+            if (this.UserPaymentServiceProvider != null)
             {
                 return false;
             }

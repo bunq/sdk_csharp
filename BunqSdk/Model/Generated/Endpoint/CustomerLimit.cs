@@ -32,6 +32,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? LimitMonetaryAccount { get; set; }
 
         /// <summary>
+        /// The amount of additional monetary accounts you can create.
+        /// </summary>
+        [JsonProperty(PropertyName = "limit_monetary_account_remaining")]
+        public int? LimitMonetaryAccountRemaining { get; set; }
+
+        /// <summary>
         /// The limit of Maestro cards.
         /// </summary>
         [JsonProperty(PropertyName = "limit_card_debit_maestro")]
@@ -54,12 +60,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "limit_card_debit_replacement")]
         public int? LimitCardDebitReplacement { get; set; }
-
-        /// <summary>
-        /// The number of "PREMIUM_LIMITED" invites the user has remaining.
-        /// </summary>
-        [JsonProperty(PropertyName = "limit_invite_user_premium_limited")]
-        public int? LimitInviteUserPremiumLimited { get; set; }
 
         /// <summary>
         /// The maximum amount a user is allowed to spend in a month.
@@ -98,6 +98,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
+            if (this.LimitMonetaryAccountRemaining != null)
+            {
+                return false;
+            }
+
             if (this.LimitCardDebitMaestro != null)
             {
                 return false;
@@ -114,11 +119,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.LimitCardDebitReplacement != null)
-            {
-                return false;
-            }
-
-            if (this.LimitInviteUserPremiumLimited != null)
             {
                 return false;
             }

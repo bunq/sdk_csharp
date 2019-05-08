@@ -130,12 +130,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string ExpiryDate { get; set; }
 
         /// <summary>
-        /// The limits to define for the card (e.g. 25 EUR for CARD_LIMIT_CONTACTLESS).
-        /// </summary>
-        [JsonProperty(PropertyName = "limit")]
-        public List<CardLimit> Limit { get; set; }
-
-        /// <summary>
         /// The countries for which to grant (temporary) permissions to use the card.
         /// </summary>
         [JsonProperty(PropertyName = "country_permission")]
@@ -254,11 +248,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.ExpiryDate != null)
-            {
-                return false;
-            }
-
-            if (this.Limit != null)
             {
                 return false;
             }

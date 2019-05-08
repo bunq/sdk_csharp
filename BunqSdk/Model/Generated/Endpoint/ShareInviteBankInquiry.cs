@@ -11,9 +11,9 @@ using System;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Used to share a monetary account with another bunq user, as in the 'Connect' feature in the bunq app. Allow the
-    /// creation of share inquiries that, in the same way as request inquiries, can be revoked by the user creating them
-    /// or accepted/rejected by the other party.
+    /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Used to share a monetary account with another bunq
+    /// user, as in the 'Connect' feature in the bunq app. Allow the creation of share inquiries that, in the same way
+    /// as request inquiries, can be revoked by the user creating them or accepted/rejected by the other party.
     /// </summary>
     public class ShareInviteBankInquiry : BunqModel
     {
@@ -118,8 +118,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? Id { get; set; }
 
         /// <summary>
-        /// Create a new share inquiry for a monetary account, specifying the permission the other bunq user will have
-        /// on it.
+        /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Create a new share inquiry for a monetary account,
+        /// specifying the permission the other bunq user will have on it.
         /// </summary>
         /// <param name="counterUserAlias">The pointer of the user to share with.</param>
         /// <param name="shareDetail">The share details. Only one of these objects may be passed.</param>
@@ -157,7 +157,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get the details of a specific share inquiry.
+        /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Get the details of a specific share inquiry.
         /// </summary>
         public static BunqResponse<ShareInviteBankInquiry> Get(int shareInviteBankInquiryId,
             int? monetaryAccountId = null, IDictionary<string, string> customHeaders = null)
@@ -174,8 +174,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Update the details of a share. This includes updating status (revoking or cancelling it), granted permission
-        /// and validity period of this share.
+        /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Update the details of a share. This includes
+        /// updating status (revoking or cancelling it), granted permission and validity period of this share.
         /// </summary>
         /// <param name="shareDetail">The share details. Only one of these objects may be passed.</param>
         /// <param name="status">The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted), ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED, CANCELLATION_REJECTED (for canceling mutual connects).</param>
@@ -207,8 +207,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get a list with all the share inquiries for a monetary account, only if the requesting user has permission
-        /// to change the details of the various ones.
+        /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Get a list with all the share inquiries for a
+        /// monetary account, only if the requesting user has permission to change the details of the various ones.
         /// </summary>
         public static BunqResponse<List<ShareInviteBankInquiry>> List(int? monetaryAccountId = null,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)

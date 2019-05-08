@@ -41,7 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         public string MerchantReference { get; set; }
 
         /// <summary>
-        /// Whether or not sending a bunq.to payment is allowed. Mandatory for publicApi.
+        /// Whether or not sending a bunq.to payment is allowed.
         /// </summary>
         [JsonProperty(PropertyName = "allow_bunqto")]
         public bool? AllowBunqto { get; set; }

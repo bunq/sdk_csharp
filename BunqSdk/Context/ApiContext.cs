@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Bunq.Sdk.Exception;
 using Bunq.Sdk.Json;
@@ -95,6 +97,48 @@ namespace Bunq.Sdk.Context
             apiContext.Initialize(deviceDescription, permittedIps);
 
             return apiContext;
+        }
+
+        /// <summary>
+        /// Create and initialize an API Context.
+        /// </summary>
+        public static ApiContext CreateForPsd2(ApiEnvironmentType environmentType, X509Certificate2 publicCertificate, 
+            X509CertificateCollection certificateChain, string deviceDescription, List<string> permittedIps,
+            string proxy = null)
+        {
+            var apiContext = new ApiContext
+            {
+                EnvironmentType = environmentType,
+                Proxy = proxy,
+            };
+            apiContext.InitializeInstallationContext();
+            apiContext.ApiKey = apiContext.InitializePsd2Credential(publicCertificate, certificateChain);
+            apiContext.RegisterDevice(deviceDescription, permittedIps);
+            apiContext.InitializeSessionContext();
+            
+            return apiContext;
+        }
+
+        private string InitializePsd2Credential(X509Certificate2 publicCertificate,
+            X509CertificateCollection certificateChain)
+        {
+            var sessionToken = InstallationContext.Token;
+            var sessionKeyPair = InstallationContext.KeyPairClient;
+            var stringToSign = SecurityUtils.GetPublicKeyFormattedString(sessionKeyPair) + sessionToken;
+            var bytesToSign = Encoding.UTF8.GetBytes(stringToSign);
+
+            var signature = Convert.ToBase64String(publicCertificate.GetRSAPrivateKey().SignData(bytesToSign, 0, 
+                bytesToSign.Length, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1));
+
+            var paymentServiceProviderCredential = PaymentServiceProviderCredentialInternal.CreateWithApiContext(
+                SecurityUtils.ExportCertificateToPEM(publicCertificate),
+                SecurityUtils.ExportCertificateCollectionToPEM(certificateChain),
+                signature,
+                null,
+                this
+            );
+
+            return paymentServiceProviderCredential.Value.TokenValue;
         }
 
         /// <summary>

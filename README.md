@@ -1,5 +1,5 @@
 # bunq C# SDK
-Version 1.1.0
+Version 1.10.0
 
 ## Introduction
 Hi developers!
@@ -38,7 +38,7 @@ context can be created by using the following code snippet:
 ```
 var apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, API_KEY, DEVICE_DESCRIPTION);
 apiContext.Save();
-BunqContext.LoadApiContext(apiContext)
+BunqContext.LoadApiContext(apiContext);
 ```
 
 **Please note:** initializing your application is a heavy task, therefore, all calls in the example above except for
@@ -48,7 +48,7 @@ After saving the context, you can restore it at any time:
 
 ```
 var apiContext = ApiContext.Restore(API_CONTEXT_FILE_PATH);
-BunqContext.LoadApiContext(apiContext)
+BunqContext.LoadApiContext(apiContext);
 ```
 
 **Tip:** both saving and restoring the context can be done without any arguments. In this case the context will be saved
@@ -80,7 +80,7 @@ When creating an object, the default response will be the id of the newly create
 ##### Example
 For an example, see this [tinker snippet](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/MakePayment.cs#L31)
 
-See [`PaymentSample.cs`](./BunqSdk.Samples/PaymentSample.cs)
+See [`PaymentSample.cs`](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/MakePayment.cs)
 
 #### Reading objects
 Reading objects can be done via get and list methods. For get a specific object id is needed while for list will return a list of objects.

@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
                 new Amount(PaymentAmountEur, PaymentCurrency),
                 SecondMonetaryAccountBank.Alias.First(),
                 PaymentDescription
-                );
+            );
         }
     }
 }

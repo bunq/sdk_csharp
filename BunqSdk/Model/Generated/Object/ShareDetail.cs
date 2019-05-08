@@ -21,8 +21,8 @@ namespace Bunq.Sdk.Model.Generated.Object
         public ShareDetailReadOnly ReadOnly { get; set; }
 
         /// <summary>
-        /// The share details for a draft payment share. Remember to replace 'draft_payment' with
-        /// 'ShareDetailDraftPayment' before sending a request.
+        /// The share details for a draft payment share. In the response 'draft_payment' is replaced by
+        /// 'ShareDetailDraftPayment'.
         /// </summary>
         [JsonProperty(PropertyName = "ShareDetailDraftPayment")]
         public ShareDetailDraftPayment DraftPayment { get; set; }

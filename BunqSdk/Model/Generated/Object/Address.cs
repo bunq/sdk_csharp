@@ -45,6 +45,18 @@ namespace Bunq.Sdk.Model.Generated.Object
         public string Country { get; set; }
 
         /// <summary>
+        /// The appartment, building or other extra information for addresses.
+        /// </summary>
+        [JsonProperty(PropertyName = "extra")]
+        public string Extra { get; set; }
+
+        /// <summary>
+        /// The name on the mailbox (only used for Postal addresses).
+        /// </summary>
+        [JsonProperty(PropertyName = "mailbox_name")]
+        public string MailboxName { get; set; }
+
+        /// <summary>
         /// The province according to local standard.
         /// </summary>
         [JsonProperty(PropertyName = "province")]
@@ -94,6 +106,16 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
 
             if (this.Province != null)
+            {
+                return false;
+            }
+
+            if (this.Extra != null)
+            {
+                return false;
+            }
+
+            if (this.MailboxName != null)
             {
                 return false;
             }
