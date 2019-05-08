@@ -21,15 +21,17 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// Card constants.
         /// </summary>
         private const string CardPinAssignmentTypePrimary = "PRIMARY";
+
         private const string PinCode = "4045";
         private const int NonnegativeIntegerMinimum = 0;
         private const int CardSecondLineLengthMaximum = 20;
         private const string CardTypeMaestro = "MAESTRO";
-        
+
         /// <summary>
         /// Number constants.
         /// </summary>
         private const int BaseDecimal = 10;
+
         private const int NumberOne = 1;
 
         /// <summary>
@@ -54,10 +56,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
                 GetAlias(),
                 CardTypeMaestro,
                 allCardPinAssignments
-                ).Value;
+            ).Value;
 
             Assert.True(cardDebit.Id != null);
-            
+
             var cardFromCardEndpoint = Card.Get(cardDebit.Id.Value).Value;
 
             Assert.Equal(cardDebit.SecondLine, cardFromCardEndpoint.SecondLine);

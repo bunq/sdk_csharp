@@ -16,6 +16,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         /// Getter constans.
         /// </summary>
         private const string GetPayment = "Payment";
+
         private const string GetBunqMeTab = "BunqMeTab";
         private const string GetChatMessageAnnouncement = "ChatMessageAnnouncement";
         private const string GetChatMessage = "ChatMessage";
@@ -30,15 +31,18 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         private const string GetScheduleInstance = "ScheduledInstance";
         private const string GetShareInviteBankInquiry = "ShareInviteBankInquiry";
         private const string GetShareInviteBankResponse = "ShareInviteBankResponse";
-        
+
         /// <summary>
         /// Model json paths constants.
         /// </summary>
         private const string BasePathJsonModel = "../../../Resources/NotificationUrlJsons";
+
         private const string JsonPathMutationModel = BasePathJsonModel + "/Mutation.json";
         private const string JsonPathBunqMeTabModel = BasePathJsonModel + "/BunqMeTab.json";
-        private const string JsonPathChatMessageAnnouncementModel = BasePathJsonModel + 
-                                                                         "/ChatMessageAnnouncement.json";
+
+        private const string JsonPathChatMessageAnnouncementModel = BasePathJsonModel +
+                                                                    "/ChatMessageAnnouncement.json";
+
         private const string JsonPathDraftPaymentModel = BasePathJsonModel + "/DraftPayment.json";
         private const string JsonPathMasterCardActionModel = BasePathJsonModel + "/MasterCardAction.json";
         private const string JsonPathMonetaryAccountBankModel = BasePathJsonModel + "/MonetaryAccountBank.json";
@@ -47,10 +51,13 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         private const string JsonPathRequestResponseModel = BasePathJsonModel + "/RequestResponse.json";
         private const string JsonPathSchedulePaymentModel = BasePathJsonModel + "/ScheduledPayment.json";
         private const string JsonPathScheduleInstanceModel = BasePathJsonModel + "/ScheduledInstance.json";
-        private const string JsonPathShareInviteBankInquiryModel = BasePathJsonModel + 
-                                                                         "/ShareInviteBankInquiry.json";
+
+        private const string JsonPathShareInviteBankInquiryModel = BasePathJsonModel +
+                                                                   "/ShareInviteBankInquiry.json";
+
         private const string JsonPathShareInviteBankResponseModel = BasePathJsonModel +
-                                                                          "/ShareInviteBankResponse.json";
+                                                                    "/ShareInviteBankResponse.json";
+
         /// <summary>
         /// Model root key.
         /// </summary>
@@ -61,11 +68,11 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
             Type classTypeExpected,
             string referencedObjectPropertyName,
             string subClassObjectPropertyName = null,
-            Type subClassTypeExpected = null) 
+            Type subClassTypeExpected = null)
         {
             var jsonString = ReadJsonFromFile(expectedJsonFileName);
             var notificationUrl = NotificationUrl.CreateFromJsonString(jsonString);
-            
+
             Assert.NotNull(notificationUrl);
             Assert.NotNull(notificationUrl.Object);
 
@@ -73,7 +80,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 .GetProperty(referencedObjectPropertyName)
                 .GetValue(notificationUrl.Object);
             var referencedModel = notificationUrl.Object.GetReferencedObject();
-            
+
             Assert.NotNull(model);
             Assert.NotNull(referencedModel);
             Assert.IsType(classTypeExpected, referencedModel);
@@ -82,7 +89,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
             var subClass = referencedModel.GetType()
                 .GetProperty(subClassObjectPropertyName)
                 .GetValue(referencedModel);
-                
+
             Assert.NotNull(subClass);
             Assert.IsType(subClassTypeExpected, subClass);
         }
@@ -92,7 +99,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
             var fileContentString = File.ReadAllText(fileName);
             var jsonObj = JObject.Parse(fileContentString);
             var notificationUrlObject = jsonObj[KeyNotificationUrlModel];
-            
+
             Assert.NotNull(notificationUrlObject);
 
             return notificationUrlObject.ToString();
@@ -107,7 +114,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GetPayment
             );
         }
-        
+
         [Fact]
         public void TestBunqMeTabModel()
         {
@@ -116,8 +123,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 typeof(BunqMeTab),
                 GetBunqMeTab
             );
-        }   
-        
+        }
+
         [Fact]
         public void TestDraftPaymentModel()
         {
@@ -126,8 +133,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 typeof(DraftPayment),
                 GetDraftPayment
             );
-        }      
-        
+        }
+
         [Fact]
         public void TestMasterCardActionModel()
         {
@@ -136,8 +143,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 typeof(MasterCardAction),
                 GetMasterCardAction
             );
-        }  
-        
+        }
+
         [Fact]
         public void TestMonetaryAccountBankModel()
         {
@@ -148,8 +155,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 GetMonetaryAccountBank,
                 typeof(MonetaryAccountBank)
             );
-        }    
-        
+        }
+
         [Fact]
         public void TestPaymentBatchModel()
         {
@@ -158,8 +165,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 typeof(PaymentBatch),
                 GetPaymentBatch
             );
-        }     
-        
+        }
+
         [Fact]
         public void TestRequestInquiryModel()
         {
@@ -168,8 +175,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 typeof(RequestInquiry),
                 GetRequestInquiry
             );
-        }     
-        
+        }
+
         [Fact]
         public void TestRequestResponseModel()
         {
@@ -178,8 +185,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 typeof(RequestResponse),
                 GetRequestResponse
             );
-        }  
-        
+        }
+
         [Fact]
         public void TestScheduledInstanceModel()
         {
@@ -188,8 +195,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 typeof(ScheduleInstance),
                 GetScheduleInstance
             );
-        }     
-        
+        }
+
         [Fact]
         public void TestScheduledPaymentModel()
         {
@@ -198,8 +205,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 typeof(SchedulePayment),
                 GetSchedulePayment
             );
-        }       
-        
+        }
+
         [Fact]
         public void TestShareInviteBankModel()
         {
@@ -208,8 +215,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
                 typeof(ShareInviteBankInquiry),
                 GetShareInviteBankInquiry
             );
-        }       
-        
+        }
+
         [Fact]
         public void TestShareInviteBankResponse()
         {

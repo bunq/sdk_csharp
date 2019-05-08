@@ -54,6 +54,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public UserApiKey UserApiKey { get; set; }
 
         /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "UserPaymentServiceProvider")]
+        public UserPaymentServiceProvider UserPaymentServiceProvider { get; set; }
+
+        /// <summary>
         /// Get a specific user.
         /// </summary>
         public static BunqResponse<User> Get(IDictionary<string, string> customHeaders = null)
@@ -106,6 +111,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return this.UserApiKey;
             }
 
+            if (this.UserPaymentServiceProvider != null)
+            {
+                return this.UserPaymentServiceProvider;
+            }
+
             throw new BunqException(ERROR_NULL_FIELDS);
         }
 
@@ -129,6 +139,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.UserApiKey != null)
+            {
+                return false;
+            }
+
+            if (this.UserPaymentServiceProvider != null)
             {
                 return false;
             }

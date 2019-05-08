@@ -29,11 +29,13 @@ namespace Bunq.Sdk.Http
         private const string DEVICE_SERVER_URL = "device-server";
         private const string INSTALLATION_URL = "installation";
         private const string SESSION_SERVER_URL = "session-server";
+        private const string PAYMENT_SERVER_PROVIDER_CREDENTIAL = "payment-service-provider-credential";
         private static readonly string[] URIS_NOT_REQUIRING_ACTIVE_SESSION = new string[]
         {
             DEVICE_SERVER_URL,
             INSTALLATION_URL,
-            SESSION_SERVER_URL
+            SESSION_SERVER_URL,
+            PAYMENT_SERVER_PROVIDER_CREDENTIAL
         };
 
         /// <summary>

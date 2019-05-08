@@ -71,13 +71,13 @@ namespace Bunq.Sdk.Model.Core
             if (this.SessionToken != null)
             {
                 return false;
-            }           
-            
+            }
+
             if (this.id != null)
             {
                 return false;
             }
-            
+
             if (this.publicKeyServer != null)
             {
                 return false;

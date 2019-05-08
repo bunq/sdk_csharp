@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Security;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using Bunq.Sdk.Context;
@@ -177,9 +178,10 @@ namespace Bunq.Sdk.Security
         public static string GetPublicKeyFormattedString(RSA keyPair)
         {
             var publicKey = keyPair.ExportParameters(false);
+            
             var publicKeyBytes = RsaKeyUtils.PublicKeyToX509(publicKey);
 
-            return string.Format(FORMAT_PUBLIC_KEY, Convert.ToBase64String(publicKeyBytes));
+            return string.Format(FORMAT_PUBLIC_KEY, WrapBase64(Convert.ToBase64String(publicKeyBytes)));
         }
 
         /// <summary>
@@ -193,7 +195,7 @@ namespace Bunq.Sdk.Security
                 var privateKey = keyPair.ExportParameters(true);
                 var privateKeyBytes = RsaKeyUtils.PrivateKeyToPkcs8(privateKey);
 
-                return string.Format(FORMAT_PRIVATE_KEY, Convert.ToBase64String(privateKeyBytes));
+                return string.Format(FORMAT_PRIVATE_KEY, WrapBase64(Convert.ToBase64String(privateKeyBytes)));
             }
             catch (SecurityException)
             {
@@ -211,6 +213,18 @@ namespace Bunq.Sdk.Security
                 .Replace(PRIVATE_KEY_END, string.Empty);
 
             return RsaKeyUtils.DecodePrivateKeyInfo(Convert.FromBase64String(privateKeyStringTrimmed));
+        }
+
+        /// <summary>
+        /// Creates an RSA key pair from PKCS8-formatted RSA private key string.
+        /// </summary>
+        public static RSA CreateKeyPairFromRsaPrivateKeyFormattedString(string privateKeyString)
+        {
+            var privateKeyStringTrimmed = privateKeyString
+                .Replace("-----BEGIN RSA PRIVATE KEY-----\n", "")
+                .Replace("\n-----END RSA PRIVATE KEY-----\n", "");
+
+            return RsaKeyUtils.DecodeRsaPrivateKey(Convert.FromBase64String(privateKeyStringTrimmed));
         }
 
         /// <summary>
@@ -339,6 +353,44 @@ namespace Bunq.Sdk.Security
                     !GetHeaderNameCorrectlyCased(x.Key).Equals(HEADER_SERVER_SIGNATURE)
                 )
             );
+        }
+        
+        public static string ExportCertificateToPEM(X509Certificate cert)
+        {
+            StringBuilder builder = new StringBuilder();            
+
+            builder.AppendLine("-----BEGIN CERTIFICATE-----");
+            var base64 = Convert.ToBase64String(cert.Export(X509ContentType.Cert));
+            builder.AppendLine(WrapBase64(base64));
+            builder.AppendLine("-----END CERTIFICATE-----");
+
+            return builder.ToString();
+        }
+
+        private static string WrapBase64(string base64)
+        {
+            StringBuilder builder = new StringBuilder();
+            for (var ctr = 0; ctr <= base64.Length / 64; ctr++)
+            {
+                builder.AppendLine(base64.Substring(ctr * 64,
+                    ctr * 64 + 64 <= base64.Length
+                        ? 64
+                        : base64.Length - ctr * 64));
+            }
+
+            return builder.ToString().Trim();
+        }
+        
+        public static string ExportCertificateCollectionToPEM(X509CertificateCollection certChain)
+        {
+            var builder = new StringBuilder();
+            
+            foreach (var chainElement in certChain)
+            {
+                builder.AppendLine(ExportCertificateToPEM(chainElement));
+            }
+
+            return builder.ToString();
         }
     }
 }

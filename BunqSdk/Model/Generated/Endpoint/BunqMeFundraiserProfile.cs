@@ -59,6 +59,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string RedirectUrl { get; set; }
 
         /// <summary>
+        /// Provided if the user has enabled their invite link.
+        /// </summary>
+        [JsonProperty(PropertyName = "invite_profile_name")]
+        public string InviteProfileName { get; set; }
+
+        /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
@@ -93,6 +99,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.RedirectUrl != null)
+            {
+                return false;
+            }
+
+            if (this.InviteProfileName != null)
             {
                 return false;
             }

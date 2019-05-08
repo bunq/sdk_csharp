@@ -19,6 +19,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// Config values.
         /// </summary>
         private const string FilenameQrCodeImage = "tmp/qrcode.png";
+
         private const int TimeUnitAmountZero = 0;
         private const int TimeUnitAmountOne = 1;
         private const string FormatDate = "yyyy-MM-dd HH:mm:ss";
@@ -49,8 +50,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             var expirationTime = currentDate.Add(addTime).ToString(FormatDate);
 
             var draftShareInviteEntry = new DraftShareInviteEntry(
-                new ShareDetail{Payment = new ShareDetailPayment(true, true, true, true)}
-                );
+                new ShareDetail {Payment = new ShareDetailPayment(true, true, true, true)}
+            );
 
             return DraftShareInviteBank.Create(expirationTime, draftShareInviteEntry).Value;
         }
