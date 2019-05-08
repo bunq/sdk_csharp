@@ -80,7 +80,7 @@ When creating an object, the default response will be the id of the newly create
 ##### Example
 For an example, see this [tinker snippet](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/MakePayment.cs#L31)
 
-See [`PaymentSample.cs`](./BunqSdk.Samples/PaymentSample.cs)
+See [`PaymentSample.cs`](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/MakePayment.cs)
 
 #### Reading objects
 Reading objects can be done via get and list methods. For get a specific object id is needed while for list will return a list of objects.
