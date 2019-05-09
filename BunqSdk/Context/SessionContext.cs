@@ -90,19 +90,19 @@ namespace Bunq.Sdk.Context
         {
             if (sessionServer.UserApiKey != null)
             {
-                return GetSesisonTimeOutForUser(sessionServer.UserApiKey.RequestedByUser.GetReferencedObject());
+                return GetSessionTimeOutForUser(sessionServer.UserApiKey.RequestedByUser.GetReferencedObject());
             }
             else if (sessionServer.UserCompany != null)
             {
-                return GetSesisonTimeOutForUser(sessionServer.UserCompany);
+                return GetSessionTimeOutForUser(sessionServer.UserCompany);
             }
             else if (sessionServer.UserPerson != null)
             {
-                return GetSesisonTimeOutForUser(sessionServer.UserPerson);
+                return GetSessionTimeOutForUser(sessionServer.UserPerson);
             }
             else if (sessionServer.UserPaymentServiceProvider != null)
             {
-                return GetSesisonTimeOutForUser(sessionServer.UserPaymentServiceProvider);
+                return GetSessionTimeOutForUser(sessionServer.UserPaymentServiceProvider);
             }
             else
             {
@@ -110,7 +110,7 @@ namespace Bunq.Sdk.Context
             }
         }
 
-        private static double GetSesisonTimeOutForUser(BunqModel user)
+        private static double GetSessionTimeOutForUser(BunqModel user)
         {
             int? sessionTimeout;
 
