@@ -39,14 +39,17 @@ namespace Bunq.Sdk.Security
         /// <summary>
         /// Constants for formatting RSA keys.
         /// </summary>
-        private const string PUBLIC_KEY_START = "-----BEGIN PUBLIC KEY-----\n";
-        private const string PUBLIC_KEY_END = "\n-----END PUBLIC KEY-----";
-        private const string FORMAT_PUBLIC_KEY = PUBLIC_KEY_START + "{0}" + PUBLIC_KEY_END + "\n";
-        private const string PRIVATE_KEY_START = "-----BEGIN PRIVATE KEY-----\n";
-        private const string PRIVATE_KEY_END = "\n-----END PRIVATE KEY-----";
-        private const string FORMAT_PRIVATE_KEY = PRIVATE_KEY_START + "{0}" + PRIVATE_KEY_END + "\n";
-        private const string RSA_PRIVATE_KEY_START = "-----BEGIN RSA PRIVATE KEY-----\n";
-        private const string RSA_PRIVATE_KEY_END = "\n-----END RSA PRIVATE KEY-----";
+        private const string PUBLIC_KEY_START = "-----BEGIN PUBLIC KEY-----" + NEWLINE;
+        private const string PUBLIC_KEY_END = NEWLINE + "-----END PUBLIC KEY-----";
+        private const string FORMAT_PUBLIC_KEY = PUBLIC_KEY_START + "{0}" + PUBLIC_KEY_END + NEWLINE;
+        private const string PRIVATE_KEY_START = "-----BEGIN PRIVATE KEY-----" + NEWLINE;
+        private const string PRIVATE_KEY_END = NEWLINE + "-----END PRIVATE KEY-----";
+        private const string FORMAT_PRIVATE_KEY = PRIVATE_KEY_START + "{0}" + PRIVATE_KEY_END + NEWLINE;
+        private const string RSA_PRIVATE_KEY_START = "-----BEGIN RSA PRIVATE KEY-----" + NEWLINE;
+        private const string RSA_PRIVATE_KEY_END = NEWLINE + "-----END RSA PRIVATE KEY-----";
+        private const string CERTIFICATE_START = "-----BEGIN CERTIFICATE-----" + NEWLINE;
+        private const string CERTIFICATE_END = NEWLINE + "-----END CERTIFICATE-----";
+        private const string FORMAT_CERTIFICATE = CERTIFICATE_START + "{0}" + CERTIFICATE_END + NEWLINE;
 
         /// <summary>
         /// Size of the encryption key.
@@ -370,14 +373,9 @@ namespace Bunq.Sdk.Security
         /// </summary>
         public static string ExportCertificateToPEM(X509Certificate cert)
         {
-            StringBuilder builder = new StringBuilder();            
+            var certificateBytes = cert.Export(X509ContentType.Cert);
 
-            builder.Append("-----BEGIN CERTIFICATE-----").Append(NEWLINE);
-            var base64 = Convert.ToBase64String(cert.Export(X509ContentType.Cert));
-            builder.Append(WrapBase64(base64)).Append(NEWLINE);
-            builder.Append("-----END CERTIFICATE-----").Append(NEWLINE);
-
-            return builder.ToString();
+            return string.Format(FORMAT_CERTIFICATE, WrapBase64(Convert.ToBase64String(certificateBytes)));
         }
         
         /// <summary>
