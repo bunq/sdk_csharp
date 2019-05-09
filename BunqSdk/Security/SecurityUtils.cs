@@ -25,6 +25,7 @@ namespace Bunq.Sdk.Security
         /// Constants for formatting the request textual representation for signing.
         /// </summary>
         private const string NEWLINE = "\n";
+        private const string WINDOWS_NEWLINE = "\r\n";
         private const string FORMAT_METHOD_AND_ENDPOINT_STRING = "{0} /v1/{1}";
         private const string HEADER_NAME_PREFIX_X_BUNQ = "X-Bunq-";
         private const string DELIMITER_HEADER_VALUE = ",";
@@ -38,12 +39,17 @@ namespace Bunq.Sdk.Security
         /// <summary>
         /// Constants for formatting RSA keys.
         /// </summary>
-        private const string PUBLIC_KEY_START = "-----BEGIN PUBLIC KEY-----\n";
-        private const string PUBLIC_KEY_END = "\n-----END PUBLIC KEY-----\n";
-        private const string FORMAT_PUBLIC_KEY = PUBLIC_KEY_START + "{0}" + PUBLIC_KEY_END;
-        private const string PRIVATE_KEY_START = "-----BEGIN PRIVATE KEY-----\n";
-        private const string PRIVATE_KEY_END = "\n-----END PRIVATE KEY-----\n";
-        private const string FORMAT_PRIVATE_KEY = PRIVATE_KEY_START + "{0}" + PRIVATE_KEY_END;
+        private const string PUBLIC_KEY_START = "-----BEGIN PUBLIC KEY-----" + NEWLINE;
+        private const string PUBLIC_KEY_END = NEWLINE + "-----END PUBLIC KEY-----";
+        private const string FORMAT_PUBLIC_KEY = PUBLIC_KEY_START + "{0}" + PUBLIC_KEY_END + NEWLINE;
+        private const string PRIVATE_KEY_START = "-----BEGIN PRIVATE KEY-----" + NEWLINE;
+        private const string PRIVATE_KEY_END = NEWLINE + "-----END PRIVATE KEY-----";
+        private const string FORMAT_PRIVATE_KEY = PRIVATE_KEY_START + "{0}" + PRIVATE_KEY_END + NEWLINE;
+        private const string RSA_PRIVATE_KEY_START = "-----BEGIN RSA PRIVATE KEY-----" + NEWLINE;
+        private const string RSA_PRIVATE_KEY_END = NEWLINE + "-----END RSA PRIVATE KEY-----";
+        private const string CERTIFICATE_START = "-----BEGIN CERTIFICATE-----" + NEWLINE;
+        private const string CERTIFICATE_END = NEWLINE + "-----END CERTIFICATE-----";
+        private const string FORMAT_CERTIFICATE = CERTIFICATE_START + "{0}" + CERTIFICATE_END + NEWLINE;
 
         /// <summary>
         /// Size of the encryption key.
@@ -209,8 +215,10 @@ namespace Bunq.Sdk.Security
         public static RSA CreateKeyPairFromPrivateKeyFormattedString(string privateKeyString)
         {
             var privateKeyStringTrimmed = privateKeyString
+                .Replace(WINDOWS_NEWLINE, NEWLINE)
                 .Replace(PRIVATE_KEY_START, string.Empty)
-                .Replace(PRIVATE_KEY_END, string.Empty);
+                .Replace(PRIVATE_KEY_END, string.Empty)
+                .Trim();
 
             return RsaKeyUtils.DecodePrivateKeyInfo(Convert.FromBase64String(privateKeyStringTrimmed));
         }
@@ -221,8 +229,10 @@ namespace Bunq.Sdk.Security
         public static RSA CreateKeyPairFromRsaPrivateKeyFormattedString(string privateKeyString)
         {
             var privateKeyStringTrimmed = privateKeyString
-                .Replace("-----BEGIN RSA PRIVATE KEY-----\n", "")
-                .Replace("\n-----END RSA PRIVATE KEY-----\n", "");
+                .Replace(WINDOWS_NEWLINE, NEWLINE)
+                .Replace(RSA_PRIVATE_KEY_START, String.Empty)
+                .Replace(RSA_PRIVATE_KEY_END, String.Empty)
+                .Trim();
 
             return RsaKeyUtils.DecodeRsaPrivateKey(Convert.FromBase64String(privateKeyStringTrimmed));
         }
@@ -233,8 +243,10 @@ namespace Bunq.Sdk.Security
         public static RSA CreatePublicKeyFromPublicKeyFormattedString(string publicKeyString)
         {
             var publicKeyStringTrimmed = publicKeyString
+                .Replace(WINDOWS_NEWLINE, NEWLINE)
                 .Replace(PUBLIC_KEY_START, string.Empty)
-                .Replace(PUBLIC_KEY_END, string.Empty);
+                .Replace(PUBLIC_KEY_END, string.Empty)
+                .Trim();
 
             return RsaKeyUtils.DecodePublicKey(Convert.FromBase64String(publicKeyStringTrimmed));
         }
@@ -355,27 +367,32 @@ namespace Bunq.Sdk.Security
             );
         }
         
+        /// <summary>
+        /// Creates a PEM-formatted certificate string from a given X509Certificate object
+        /// string.
+        /// </summary>
         public static string ExportCertificateToPEM(X509Certificate cert)
         {
-            StringBuilder builder = new StringBuilder();            
+            var certificateBytes = cert.Export(X509ContentType.Cert);
 
-            builder.AppendLine("-----BEGIN CERTIFICATE-----");
-            var base64 = Convert.ToBase64String(cert.Export(X509ContentType.Cert));
-            builder.AppendLine(WrapBase64(base64));
-            builder.AppendLine("-----END CERTIFICATE-----");
-
-            return builder.ToString();
+            return string.Format(FORMAT_CERTIFICATE, WrapBase64(Convert.ToBase64String(certificateBytes)));
         }
-
+        
+        /// <summary>
+        /// Wraps a base64 string to 64-character wide lines according to typical certificate/key export rules.
+        /// </summary>
+        /// <param name="base64">base64 string without line breaks</param>
+        /// <returns>base64-string formatted with line breaks</returns>
         private static string WrapBase64(string base64)
         {
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
             for (var ctr = 0; ctr <= base64.Length / 64; ctr++)
             {
-                builder.AppendLine(base64.Substring(ctr * 64,
+                builder.Append(base64.Substring(ctr * 64,
                     ctr * 64 + 64 <= base64.Length
                         ? 64
-                        : base64.Length - ctr * 64));
+                        : base64.Length - ctr * 64))
+                    .Append(NEWLINE);
             }
 
             return builder.ToString().Trim();
@@ -387,7 +404,7 @@ namespace Bunq.Sdk.Security
             
             foreach (var chainElement in certChain)
             {
-                builder.AppendLine(ExportCertificateToPEM(chainElement));
+                builder.Append(ExportCertificateToPEM(chainElement)).Append(NEWLINE);
             }
 
             return builder.ToString();
