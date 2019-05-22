@@ -1,7 +1,6 @@
 # Change Log
 
 ## [1.10.2](https://github.com/bunq/sdk_csharp/tree/1.10.2) (2019-05-09)
-
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.1...1.10.2)
 
 **Merged pull requests:**

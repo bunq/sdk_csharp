@@ -1,5 +1,5 @@
 # bunq C# SDK
-Version 1.10.2
+Version 1.10.3
 
 ## Introduction
 Hi developers!

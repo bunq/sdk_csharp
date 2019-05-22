@@ -37,6 +37,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_COUNTRY_PERMISSION = "country_permission";
         public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
         public const string FIELD_PRIMARY_ACCOUNT_NUMBERS_VIRTUAL = "primary_account_numbers_virtual";
+        public const string FIELD_PRIMARY_ACCOUNT_NUMBERS = "primary_account_numbers";
         public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
 
         /// <summary>
@@ -100,6 +101,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "primary_account_numbers_virtual")]
         public List<CardVirtualPrimaryAccountNumber> PrimaryAccountNumbersVirtual { get; set; }
+
+        /// <summary>
+        /// Array of PANs and their attributes.
+        /// </summary>
+        [JsonProperty(PropertyName = "primary_account_numbers")]
+        public List<CardPrimaryAccountNumber> PrimaryAccountNumbers { get; set; }
 
         /// <summary>
         /// ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
@@ -213,13 +220,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="countryPermission">The countries for which to grant (temporary) permissions to use the card.</param>
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="primaryAccountNumbersVirtual">Array of PANs, status, description and account id for online cards.</param>
+        /// <param name="primaryAccountNumbers">Array of PANs and their attributes.</param>
         /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
         public static BunqResponse<Card> Update(int cardId, string pinCode = null, string activationCode = null,
             string status = null, Amount cardLimit = null, Amount cardLimitAtm = null,
             CardMagStripePermission magStripePermission = null, List<CardCountryPermission> countryPermission = null,
             List<CardPinAssignment> pinCodeAssignment = null,
             List<CardVirtualPrimaryAccountNumber> primaryAccountNumbersVirtual = null,
-            int? monetaryAccountIdFallback = null, IDictionary<string, string> customHeaders = null)
+            List<CardPrimaryAccountNumber> primaryAccountNumbers = null, int? monetaryAccountIdFallback = null,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -236,6 +245,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_COUNTRY_PERMISSION, countryPermission},
                 {FIELD_PIN_CODE_ASSIGNMENT, pinCodeAssignment},
                 {FIELD_PRIMARY_ACCOUNT_NUMBERS_VIRTUAL, primaryAccountNumbersVirtual},
+                {FIELD_PRIMARY_ACCOUNT_NUMBERS, primaryAccountNumbers},
                 {FIELD_MONETARY_ACCOUNT_ID_FALLBACK, monetaryAccountIdFallback},
             };
 
@@ -347,6 +357,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.PrimaryAccountNumbersVirtual != null)
+            {
+                return false;
+            }
+
+            if (this.PrimaryAccountNumbers != null)
             {
                 return false;
             }
