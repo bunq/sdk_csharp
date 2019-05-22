@@ -160,6 +160,9 @@
               <e p="NoteTextSchedulePaymentBatch.cs" t="Include" />
               <e p="NoteTextSofortMerchantTransaction.cs" t="Include" />
               <e p="NoteTextWhitelistResult.cs" t="Include" />
+              <e p="NotificationFilterPushUser.cs" t="Include" />
+              <e p="NotificationFilterUrlMonetaryAccount.cs" t="Include" />
+              <e p="NotificationFilterUrlUser.cs" t="Include" />
               <e p="OauthCallbackUrl.cs" t="Include" />
               <e p="OauthClient.cs" t="Include" />
               <e p="Payment.cs" t="Include" />
@@ -230,6 +233,7 @@
               <e p="CardCountryPermission.cs" t="Include" />
               <e p="CardMagStripePermission.cs" t="Include" />
               <e p="CardPinAssignment.cs" t="Include" />
+              <e p="CardPrimaryAccountNumber.cs" t="Include" />
               <e p="CardVirtualPrimaryAccountNumber.cs" t="Include" />
               <e p="Certificate.cs" t="Include" />
               <e p="CoOwner.cs" t="Include" />
@@ -252,6 +256,8 @@
               <e p="MonetaryAccountSetting.cs" t="Include" />
               <e p="NotificationAnchorObject.cs" t="Include" />
               <e p="NotificationFilter.cs" t="Include" />
+              <e p="NotificationFilterPush.cs" t="Include" />
+              <e p="NotificationFilterUrl.cs" t="Include" />
               <e p="NotificationUrl.cs" t="Include" />
               <e p="OauthCallbackUrl.cs" t="Include" />
               <e p="PermittedDevice.cs" t="Include" />
