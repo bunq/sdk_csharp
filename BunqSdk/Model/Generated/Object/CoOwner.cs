@@ -20,6 +20,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
+        public CoOwner(MonetaryAccountReference alias)
+        {
+            Alias = alias;
+        }
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

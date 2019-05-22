@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE_GET = "Id";
+        private const string OBJECT_TYPE_GET = "ExportStatementPayment";
 
         /// <summary>
         /// The id of the single payment statement model.
