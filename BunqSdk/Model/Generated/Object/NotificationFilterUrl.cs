@@ -20,11 +20,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "notification_target")]
         public string NotificationTarget { get; set; }
 
+
         public NotificationFilterUrl(string category, string notificationTarget)
         {
             Category = category;
             NotificationTarget = notificationTarget;
         }
+
 
         /// <summary>
         /// </summary>

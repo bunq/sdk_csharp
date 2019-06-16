@@ -239,6 +239,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "billing_contract")]
         public List<BillingContractSubscription> BillingContract { get; set; }
 
+
         /// <summary>
         /// Get a specific company.
         /// </summary>
@@ -309,6 +310,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
+
 
         /// <summary>
         /// </summary>

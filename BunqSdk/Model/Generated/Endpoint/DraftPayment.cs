@@ -107,6 +107,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
 
+
         /// <summary>
         /// Create a new DraftPayment.
         /// </summary>
@@ -203,6 +204,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<DraftPayment>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

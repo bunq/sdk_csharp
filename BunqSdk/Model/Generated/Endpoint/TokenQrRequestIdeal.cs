@@ -167,6 +167,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
         public int? EligibleWhitelistId { get; set; }
 
+
         /// <summary>
         /// Create a request from an ideal transaction.
         /// </summary>
@@ -189,6 +190,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<TokenQrRequestIdeal>(responseRaw, OBJECT_TYPE_POST);
         }
+
 
         /// <summary>
         /// </summary>

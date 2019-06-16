@@ -28,6 +28,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
         public const string FIELD_SETTING = "setting";
 
+
         /// <summary>
         /// The currency of the MonetaryAccountLight as an ISO 4217 formatted currency code.
         /// </summary>
@@ -124,10 +125,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount DailySpent { get; set; }
 
         /// <summary>
-        /// The current balance Amount of the MonetaryAccountLight.
+        /// The current available balance Amount of the MonetaryAccountLight.
         /// </summary>
         [JsonProperty(PropertyName = "balance")]
         public Amount Balance { get; set; }
+
+        /// <summary>
+        /// The current real balance Amount of the MonetaryAccountLight.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance_real")]
+        public Amount BalanceReal { get; set; }
 
         /// <summary>
         /// The Aliases for the MonetaryAccountLight.
@@ -189,6 +196,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "budget_withdrawal_year_maximum")]
         public Amount BudgetWithdrawalYearMaximum { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -234,6 +242,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.Balance != null)
+            {
+                return false;
+            }
+
+            if (this.BalanceReal != null)
             {
                 return false;
             }

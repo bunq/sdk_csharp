@@ -87,6 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "attachment")]
         public List<AttachmentMonetaryAccountPayment> Attachment { get; set; }
 
+
         /// <summary>
         /// </summary>
         /// <param name="attachmentId">The reference to the uploaded file to attach to this note.</param>
@@ -191,6 +192,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<NoteAttachmentWhitelistResult>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

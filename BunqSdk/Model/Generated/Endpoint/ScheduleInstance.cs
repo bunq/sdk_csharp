@@ -75,6 +75,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<ScheduleInstance> Get(int scheduleId, int scheduleInstanceId,
@@ -131,6 +132,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<ScheduleInstance>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

@@ -26,10 +26,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
 
+
         public CardPinAssignment(string type)
         {
             Type = type;
         }
+
 
         /// <summary>
         /// </summary>

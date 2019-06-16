@@ -26,11 +26,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
+
         public TaxResident(string country, string taxNumber)
         {
             Country = country;
             TaxNumber = taxNumber;
         }
+
 
         /// <summary>
         /// </summary>

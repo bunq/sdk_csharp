@@ -46,6 +46,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
 
+
         /// <summary>
         /// Used to view a single TabResultResponse belonging to a tab.
         /// </summary>
@@ -80,6 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<TabResultResponse>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

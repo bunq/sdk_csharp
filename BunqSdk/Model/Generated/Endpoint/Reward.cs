@@ -75,6 +75,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "amount_reward")]
         public Amount AmountReward { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<Reward> Get(int rewardId, IDictionary<string, string> customHeaders = null)
@@ -102,6 +103,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<Reward>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

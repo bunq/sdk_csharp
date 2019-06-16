@@ -48,6 +48,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJson<SandboxUser>(responseRaw, OBJECT_TYPE_POST);
         }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

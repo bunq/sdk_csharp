@@ -161,7 +161,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount DailySpent { get; set; }
 
         /// <summary>
-        /// The current balance Amount of the MonetaryAccountJoint.
+        /// The current available balance Amount of the MonetaryAccountJoint.
         /// </summary>
         [JsonProperty(PropertyName = "balance")]
         public Amount Balance { get; set; }
@@ -183,6 +183,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_profile")]
         public MonetaryAccountProfile MonetaryAccountProfile { get; set; }
+
 
         /// <summary>
         /// </summary>
@@ -302,6 +303,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<MonetaryAccountJoint>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

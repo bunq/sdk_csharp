@@ -50,16 +50,28 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? LimitCardDebitMastercard { get; set; }
 
         /// <summary>
-        /// The limit of wildcards, e.g. Maestro or MasterCard cards.
+        /// DEPRECTATED: The limit of wildcards, e.g. Maestro or MasterCard cards.
         /// </summary>
         [JsonProperty(PropertyName = "limit_card_debit_wildcard")]
         public int? LimitCardDebitWildcard { get; set; }
 
         /// <summary>
-        /// The limit of free replacement cards.
+        /// The limit of wildcards, e.g. Maestro or MasterCard cards.
+        /// </summary>
+        [JsonProperty(PropertyName = "limit_card_wildcard")]
+        public int? LimitCardWildcard { get; set; }
+
+        /// <summary>
+        /// DEPRECTATED: The limit of free replacement debit cards, replaced by: limit_card_replacement
         /// </summary>
         [JsonProperty(PropertyName = "limit_card_debit_replacement")]
         public int? LimitCardDebitReplacement { get; set; }
+
+        /// <summary>
+        /// The limit of free replacement cards.
+        /// </summary>
+        [JsonProperty(PropertyName = "limit_card_replacement")]
+        public int? LimitCardReplacement { get; set; }
 
         /// <summary>
         /// The maximum amount a user is allowed to spend in a month.
@@ -72,6 +84,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "spent_amount_monthly")]
         public Amount SpentAmountMonthly { get; set; }
+
 
         /// <summary>
         /// Get all limits for the authenticated user.
@@ -88,6 +101,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<CustomerLimit>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>
@@ -118,7 +132,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
+            if (this.LimitCardWildcard != null)
+            {
+                return false;
+            }
+
             if (this.LimitCardDebitReplacement != null)
+            {
+                return false;
+            }
+
+            if (this.LimitCardReplacement != null)
             {
                 return false;
             }

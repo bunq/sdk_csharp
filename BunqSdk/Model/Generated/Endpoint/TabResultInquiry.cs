@@ -41,6 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; set; }
 
+
         /// <summary>
         /// Used to view a single TabResultInquiry belonging to a tab.
         /// </summary>
@@ -77,6 +78,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<TabResultInquiry>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

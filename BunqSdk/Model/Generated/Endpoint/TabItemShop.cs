@@ -100,6 +100,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "avatar_attachment")]
         public AttachmentPublic AvatarAttachment { get; set; }
 
+
         /// <summary>
         /// Create a new TabItem for a given Tab.
         /// </summary>
@@ -227,6 +228,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<TabItemShop>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

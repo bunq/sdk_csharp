@@ -52,6 +52,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; set; }
 
+
         /// <summary>
         /// Upload a new attachment to use with a tab, and to read its metadata. Create a POST request with a payload
         /// that contains the binary representation of the file, without any JSON wrapping. Make sure you define the
@@ -88,6 +89,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<AttachmentTab>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

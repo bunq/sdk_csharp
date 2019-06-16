@@ -15,6 +15,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         public string Color { get; set; }
 
         /// <summary>
+        /// The icon chosen for the MonetaryAccount.
+        /// </summary>
+        [JsonProperty(PropertyName = "icon")]
+        public string Icon { get; set; }
+
+        /// <summary>
         /// The status of the avatar. Can be either AVATAR_DEFAULT, AVATAR_CUSTOM or AVATAR_UNDETERMINED.
         /// </summary>
         [JsonProperty(PropertyName = "default_avatar_status")]
@@ -26,11 +32,17 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "restriction_chat")]
         public string RestrictionChat { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
             if (this.Color != null)
+            {
+                return false;
+            }
+
+            if (this.Icon != null)
             {
                 return false;
             }

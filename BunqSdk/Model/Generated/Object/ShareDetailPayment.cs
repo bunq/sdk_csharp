@@ -44,6 +44,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "budget")]
         public BudgetRestriction Budget { get; set; }
 
+
         public ShareDetailPayment(bool? makePayments, bool? viewBalance, bool? viewOldEvents, bool? viewNewEvents)
         {
             MakePayments = makePayments;
@@ -51,6 +52,7 @@ namespace Bunq.Sdk.Model.Generated.Object
             ViewOldEvents = viewOldEvents;
             ViewNewEvents = viewNewEvents;
         }
+
 
         /// <summary>
         /// </summary>

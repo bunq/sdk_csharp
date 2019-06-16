@@ -105,6 +105,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "avatar")]
         public Avatar Avatar { get; set; }
 
+
         /// <summary>
         /// Create a new CashRegister. Only an UserCompany can create a CashRegisters. They need to be created with
         /// status PENDING_APPROVAL, an bunq admin has to approve your CashRegister before you can use it. In the
@@ -216,6 +217,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<CashRegister>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

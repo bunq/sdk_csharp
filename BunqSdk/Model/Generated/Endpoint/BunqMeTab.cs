@@ -90,6 +90,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "result_inquiries")]
         public List<BunqMeTabResultInquiry> ResultInquiries { get; set; }
 
+
         /// <summary>
         /// </summary>
         /// <param name="bunqmeTabEntry">The bunq.me entry containing the payment information.</param>
@@ -172,6 +173,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<BunqMeTab>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

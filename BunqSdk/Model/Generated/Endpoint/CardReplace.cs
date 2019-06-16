@@ -31,6 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_PIN_CODE = "pin_code";
         public const string FIELD_SECOND_LINE = "second_line";
 
+
         /// <summary>
         /// The user's name as it will be on the card. Check 'card-name' for the available card names for a user.
         /// </summary>
@@ -54,6 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
+
 
         /// <summary>
         /// Request a card replacement.
@@ -82,6 +84,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
+
 
         /// <summary>
         /// </summary>

@@ -52,12 +52,14 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "alias")]
         public MonetaryAccountReference Alias { get; set; }
 
+
         public SchedulePaymentEntry(Amount amount, MonetaryAccountReference counterpartyAlias, string description)
         {
             Amount = amount;
             CounterpartyAlias = counterpartyAlias;
             Description = description;
         }
+
 
         /// <summary>
         /// </summary>

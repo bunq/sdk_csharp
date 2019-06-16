@@ -16,6 +16,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         public const string FIELD_INVOICE_NOTIFICATION_PREFERENCE = "invoice_notification_preference";
 
+
         /// <summary>
         /// The primary billing account account's id.
         /// </summary>
@@ -45,6 +46,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
+
 
         /// <summary>
         /// </summary>

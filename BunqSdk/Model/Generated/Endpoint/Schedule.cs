@@ -72,6 +72,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "object")]
         public ScheduleAnchorObject Object { get; set; }
 
+
         /// <summary>
         /// Get a specific schedule definition for a given monetary account.
         /// </summary>
@@ -108,6 +109,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<Schedule>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

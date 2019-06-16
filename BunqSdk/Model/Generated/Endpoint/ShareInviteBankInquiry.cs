@@ -117,6 +117,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
+
         /// <summary>
         /// [DEPRECATED - use /share-invite-monetary-account-inquiry] Create a new share inquiry for a monetary account,
         /// specifying the permission the other bunq user will have on it.
@@ -224,6 +225,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<ShareInviteBankInquiry>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

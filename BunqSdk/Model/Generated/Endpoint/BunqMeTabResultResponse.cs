@@ -47,6 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJson<BunqMeTabResultResponse>(responseRaw, OBJECT_TYPE_GET);
         }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

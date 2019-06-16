@@ -58,6 +58,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJson<TokenQrRequestSofort>(responseRaw, OBJECT_TYPE_POST);
         }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.10.3](https://github.com/bunq/sdk_csharp/tree/1.10.3) (2019-05-22)
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.2...1.10.3)
+
 ## [1.10.2](https://github.com/bunq/sdk_csharp/tree/1.10.2) (2019-05-09)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.1...1.10.2)
 
@@ -107,7 +110,6 @@
 **Merged pull requests:**
 
 - Regenerate code for release [\#82](https://github.com/bunq/sdk_csharp/pull/82) ([OGKevin](https://github.com/OGKevin))
-- Regenerated code with correct object types. \(bunq/sdk\_csharp\#51\) [\#79](https://github.com/bunq/sdk_csharp/pull/79) ([OGKevin](https://github.com/OGKevin))
 - Added missing field id for TokenQrRequestIdeal. \(bunq/sdk\_csharp\#76\) [\#78](https://github.com/bunq/sdk_csharp/pull/78) ([OGKevin](https://github.com/OGKevin))
 - Added missing id field from mastercard action. \(bunq/sdk\_csharp\#52\) [\#74](https://github.com/bunq/sdk_csharp/pull/74) ([OGKevin](https://github.com/OGKevin))
 - \(bunq/sdk\_csharp\#63\) add response id to failed request [\#73](https://github.com/bunq/sdk_csharp/pull/73) ([OGKevin](https://github.com/OGKevin))
@@ -134,6 +136,7 @@
 
 **Merged pull requests:**
 
+- Regenerated code with correct object types. \(bunq/sdk\_csharp\#51\) [\#79](https://github.com/bunq/sdk_csharp/pull/79) ([OGKevin](https://github.com/OGKevin))
 - Ensure that headers are correctly cased before signature verification… [\#59](https://github.com/bunq/sdk_csharp/pull/59) ([OGKevin](https://github.com/OGKevin))
 - Improve decoder bunq/sdk csharp\#43 [\#57](https://github.com/bunq/sdk_csharp/pull/57) ([OGKevin](https://github.com/OGKevin))
 

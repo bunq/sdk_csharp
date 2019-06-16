@@ -73,6 +73,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "tab_object")]
         public Tab TabObject { get; set; }
 
+
         /// <summary>
         /// Create a new QR code for this CashRegister. You can only have one ACTIVE CashRegister QR code at the time.
         /// </summary>
@@ -157,6 +158,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<CashRegisterQrCode>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

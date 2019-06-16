@@ -104,6 +104,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "user_alias_created")]
         public LabelUser UserAliasCreated { get; set; }
 
+
         /// <summary>
         /// Get a specific SDD whitelist entry.
         /// </summary>
@@ -198,6 +199,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<WhitelistSdd>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

@@ -65,6 +65,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "label_user_creator")]
         public LabelUser LabelUserCreator { get; set; }
 
+
         /// <summary>
         /// </summary>
         /// <param name="content">The content of the note.</param>
@@ -162,6 +163,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<NoteTextPaymentBatch>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

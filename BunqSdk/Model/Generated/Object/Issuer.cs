@@ -20,10 +20,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
+
         public Issuer(string bic)
         {
             Bic = bic;
         }
+
 
         /// <summary>
         /// </summary>

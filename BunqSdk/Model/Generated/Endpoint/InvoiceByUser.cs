@@ -123,6 +123,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "vat_number")]
         public string VatNumber { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<List<InvoiceByUser>> List(IDictionary<string, string> urlParams = null,
@@ -151,6 +152,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<InvoiceByUser>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

@@ -186,6 +186,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "tab_item")]
         public List<TabItem> TabItem { get; set; }
 
+
         /// <summary>
         /// Create a TabUsageMultiple. On creation the status must be set to OPEN
         /// </summary>
@@ -325,6 +326,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<TabUsageMultiple>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

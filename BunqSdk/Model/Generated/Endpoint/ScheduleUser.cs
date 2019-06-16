@@ -43,6 +43,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJsonList<ScheduleUser>(responseRaw, OBJECT_TYPE_GET);
         }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

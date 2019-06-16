@@ -43,6 +43,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "sub_title")]
         public string SubTitle { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<FeatureAnnouncement> Get(int featureAnnouncementId,
@@ -56,6 +57,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<FeatureAnnouncement>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>
