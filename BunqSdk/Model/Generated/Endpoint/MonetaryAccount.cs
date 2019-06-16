@@ -55,6 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "MonetaryAccountSavings")]
         public MonetaryAccountSavings MonetaryAccountSavings { get; set; }
 
+
         /// <summary>
         /// Get a specific MonetaryAccount.
         /// </summary>
@@ -87,6 +88,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<MonetaryAccount>(responseRaw);
         }
+
 
         /// <summary>
         /// </summary>

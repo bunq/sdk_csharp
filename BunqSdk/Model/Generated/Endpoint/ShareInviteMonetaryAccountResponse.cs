@@ -122,6 +122,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
+
         /// <summary>
         /// Return the details of a specific share a user was invited to.
         /// </summary>
@@ -180,6 +181,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<ShareInviteMonetaryAccountResponse>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

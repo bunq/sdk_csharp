@@ -20,11 +20,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
+
         public TabTextWaitingScreen(string language, string description)
         {
             Language = language;
             Description = description;
         }
+
 
         /// <summary>
         /// </summary>

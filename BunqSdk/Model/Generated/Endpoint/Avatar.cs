@@ -55,6 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "image")]
         public List<Image> Image { get; set; }
 
+
         /// <summary>
         /// </summary>
         /// <param name="attachmentPublicUuid">The public UUID of the public attachment from which an avatar image must be created.</param>
@@ -88,6 +89,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<Avatar>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

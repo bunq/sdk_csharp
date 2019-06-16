@@ -26,10 +26,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "image")]
         public List<Image> Image { get; set; }
 
+
         public Avatar(string uuid)
         {
             Uuid = uuid;
         }
+
 
         /// <summary>
         /// </summary>

@@ -24,6 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "alias")]
         public MonetaryAccountReference Alias { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

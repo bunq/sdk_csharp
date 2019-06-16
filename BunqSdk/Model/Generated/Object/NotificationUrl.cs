@@ -28,6 +28,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "object")]
         public NotificationAnchorObject Object { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

@@ -50,10 +50,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
         public int? MonetaryAccountIdFallback { get; set; }
 
+
         public CardBatchEntry(int? id)
         {
             Id = id;
         }
+
 
         /// <summary>
         /// </summary>

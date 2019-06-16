@@ -49,6 +49,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; set; }
 
+
         /// <summary>
         /// Get a specific attachment. The header of the response contains the content-type of the attachment.
         /// </summary>
@@ -63,6 +64,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<TabAttachmentTab>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

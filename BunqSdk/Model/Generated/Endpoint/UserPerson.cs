@@ -274,6 +274,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "version_terms_of_service")]
         public string VersionTermsOfService { get; set; }
 
+
         /// <summary>
         /// Get a specific person.
         /// </summary>
@@ -370,6 +371,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
+
 
         /// <summary>
         /// </summary>

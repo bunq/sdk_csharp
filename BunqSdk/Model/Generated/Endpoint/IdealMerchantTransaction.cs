@@ -119,6 +119,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "allow_chat")]
         public bool? AllowChat { get; set; }
 
+
         /// <summary>
         /// </summary>
         /// <param name="amountRequested">The requested amount of money to add.</param>
@@ -177,6 +178,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<IdealMerchantTransaction>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

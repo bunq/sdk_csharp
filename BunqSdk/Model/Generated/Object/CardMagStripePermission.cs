@@ -14,6 +14,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "expiry_time")]
         public string ExpiryTime { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

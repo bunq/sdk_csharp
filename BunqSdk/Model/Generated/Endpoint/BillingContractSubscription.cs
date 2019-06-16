@@ -91,6 +91,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "sub_status")]
         public string SubStatus { get; set; }
 
+
         /// <summary>
         /// Get all subscription billing contract for the authenticated user.
         /// </summary>
@@ -106,6 +107,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<BillingContractSubscription>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

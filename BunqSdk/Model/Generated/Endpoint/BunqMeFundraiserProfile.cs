@@ -15,6 +15,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_POINTER = "pointer";
 
+
         /// <summary>
         /// The pointer (url) which will be used to access the bunq.me fundraiser profile.
         /// </summary>
@@ -63,6 +64,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "invite_profile_name")]
         public string InviteProfileName { get; set; }
+
 
         /// <summary>
         /// </summary>

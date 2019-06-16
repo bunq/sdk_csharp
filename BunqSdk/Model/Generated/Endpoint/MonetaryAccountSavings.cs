@@ -160,7 +160,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount OverdraftLimit { get; set; }
 
         /// <summary>
-        /// The current balance Amount of the MonetaryAccountSavings.
+        /// The current available balance Amount of the MonetaryAccountSavings.
         /// </summary>
         [JsonProperty(PropertyName = "balance")]
         public Amount Balance { get; set; }
@@ -194,6 +194,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "savings_goal_progress")]
         public double? SavingsGoalProgress { get; set; }
+
 
         /// <summary>
         /// Create new MonetaryAccountSavings.
@@ -319,6 +320,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<MonetaryAccountSavings>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

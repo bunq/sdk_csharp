@@ -136,6 +136,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string SettlementStatus { get; set; }
 
         /// <summary>
+        /// The maturity date.
+        /// </summary>
+        [JsonProperty(PropertyName = "maturity_date")]
+        public string MaturityDate { get; set; }
+
+        /// <summary>
         /// The city where the message originates from as announced by the terminal.
         /// </summary>
         [JsonProperty(PropertyName = "city")]
@@ -203,6 +209,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<MasterCardAction> Get(int masterCardActionId, int? monetaryAccountId = null,
@@ -235,6 +242,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<MasterCardAction>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>
@@ -326,6 +334,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.SettlementStatus != null)
+            {
+                return false;
+            }
+
+            if (this.MaturityDate != null)
             {
                 return false;
             }

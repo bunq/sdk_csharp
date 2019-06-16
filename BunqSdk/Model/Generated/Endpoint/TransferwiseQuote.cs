@@ -19,6 +19,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_AMOUNT_SOURCE = "amount_source";
         public const string FIELD_AMOUNT_TARGET = "amount_target";
 
+
         /// <summary>
         /// The source currency.
         /// </summary>
@@ -90,6 +91,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "time_delivery_estimate")]
         public string TimeDeliveryEstimate { get; set; }
+
 
         /// <summary>
         /// </summary>

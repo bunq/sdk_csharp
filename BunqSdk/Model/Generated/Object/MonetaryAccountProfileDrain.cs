@@ -32,6 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "savings_account_alias")]
         public MonetaryAccountReference SavingsAccountAlias { get; set; }
 
+
         public MonetaryAccountProfileDrain(string status, Amount balancePreferred, Amount balanceThresholdHigh,
             MonetaryAccountReference savingsAccountAlias)
         {
@@ -40,6 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Object
             BalanceThresholdHigh = balanceThresholdHigh;
             SavingsAccountAlias = savingsAccountAlias;
         }
+
 
         /// <summary>
         /// </summary>

@@ -201,6 +201,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "balance_after_mutation")]
         public Amount BalanceAfterMutation { get; set; }
 
+
         /// <summary>
         /// Create a new Payment.
         /// </summary>
@@ -271,6 +272,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<Payment>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

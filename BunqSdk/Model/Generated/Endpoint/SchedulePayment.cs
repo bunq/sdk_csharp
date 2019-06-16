@@ -49,6 +49,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "schedule")]
         public Schedule Schedule { get; set; }
 
+
         /// <summary>
         /// </summary>
         /// <param name="payment">The payment details.</param>
@@ -150,6 +151,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
+
 
         /// <summary>
         /// </summary>

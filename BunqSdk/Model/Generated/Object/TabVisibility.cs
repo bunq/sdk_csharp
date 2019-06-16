@@ -27,11 +27,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "location")]
         public Geolocation Location { get; set; }
 
+
         public TabVisibility(bool? cashRegisterQrCode, bool? tabQrCode)
         {
             CashRegisterQrCode = cashRegisterQrCode;
             TabQrCode = tabQrCode;
         }
+
 
         /// <summary>
         /// </summary>

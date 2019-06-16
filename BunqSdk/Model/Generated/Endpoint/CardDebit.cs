@@ -153,6 +153,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
 
+
         /// <summary>
         /// Create a new debit card request.
         /// </summary>
@@ -187,6 +188,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<CardDebit>(responseRaw, OBJECT_TYPE_POST);
         }
+
 
         /// <summary>
         /// </summary>

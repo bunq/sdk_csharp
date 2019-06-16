@@ -220,6 +220,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
 
+
         /// <summary>
         /// Update the status to accept or reject the RequestResponse.
         /// </summary>
@@ -286,6 +287,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<RequestResponse>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

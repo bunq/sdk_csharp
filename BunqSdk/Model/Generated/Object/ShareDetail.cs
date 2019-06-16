@@ -27,6 +27,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "ShareDetailDraftPayment")]
         public ShareDetailDraftPayment DraftPayment { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

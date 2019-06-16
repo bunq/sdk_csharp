@@ -20,10 +20,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
 
+
         public AttachmentMonetaryAccountPayment(int? id)
         {
             Id = id;
         }
+
 
         /// <summary>
         /// </summary>

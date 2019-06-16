@@ -50,6 +50,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<int> Create(int eventId, int? monetaryAccountId = null,
@@ -87,6 +88,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<ExportStatementPayment>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

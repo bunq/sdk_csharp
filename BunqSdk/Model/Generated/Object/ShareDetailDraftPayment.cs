@@ -32,6 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "view_new_events")]
         public bool? ViewNewEvents { get; set; }
 
+
         public ShareDetailDraftPayment(bool? makeDraftPayments, bool? viewBalance, bool? viewOldEvents,
             bool? viewNewEvents)
         {
@@ -40,6 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Object
             ViewOldEvents = viewOldEvents;
             ViewNewEvents = viewNewEvents;
         }
+
 
         /// <summary>
         /// </summary>

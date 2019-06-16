@@ -9,12 +9,6 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class OauthCallbackUrl : BunqModel
     {
         /// <summary>
-        /// The Callback URL.
-        /// </summary>
-        [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
-
-        /// <summary>
         /// The id of the callback URL.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -33,14 +27,16 @@ namespace Bunq.Sdk.Model.Generated.Object
         public string Updated { get; set; }
 
         /// <summary>
+        /// The Callback URL.
+        /// </summary>
+        [JsonProperty(PropertyName = "url")]
+        public string Url { get; set; }
+
+
+        /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Url != null)
-            {
-                return false;
-            }
-
             if (this.Id != null)
             {
                 return false;
@@ -52,6 +48,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
 
             if (this.Updated != null)
+            {
+                return false;
+            }
+
+            if (this.Url != null)
             {
                 return false;
             }

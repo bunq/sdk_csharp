@@ -78,6 +78,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
+
         /// <summary>
         /// Get a specific event for a given user.
         /// </summary>
@@ -113,6 +114,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<Event>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

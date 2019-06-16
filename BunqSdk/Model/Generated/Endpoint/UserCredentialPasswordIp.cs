@@ -71,6 +71,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "permitted_device")]
         public PermittedDevice PermittedDevice { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<UserCredentialPasswordIp> Get(int userCredentialPasswordIpId,
@@ -100,6 +101,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<UserCredentialPasswordIp>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

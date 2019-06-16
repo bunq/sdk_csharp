@@ -131,6 +131,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

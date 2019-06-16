@@ -44,10 +44,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "four_digit")]
         public string FourDigit { get; set; }
 
+
         public CardPrimaryAccountNumber(int? id)
         {
             Id = id;
         }
+
 
         /// <summary>
         /// </summary>

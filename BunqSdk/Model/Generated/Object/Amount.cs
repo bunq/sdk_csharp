@@ -20,11 +20,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; set; }
 
+
         public Amount(string value, string currency)
         {
             Value = value;
             Currency = currency;
         }
+
 
         /// <summary>
         /// </summary>

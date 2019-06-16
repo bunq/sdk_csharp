@@ -99,6 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "permitted_device")]
         public PermittedDevice PermittedDevice { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<PaymentServiceProviderCredential> Get(int paymentServiceProviderCredentialId,
@@ -138,6 +139,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
+
 
         /// <summary>
         /// </summary>

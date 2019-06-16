@@ -46,6 +46,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "TabUsageMultiple")]
         public TabUsageMultiple TabUsageMultiple { get; set; }
 
+
         /// <summary>
         /// Get a specific tab. This returns a TabUsageSingle or TabUsageMultiple.
         /// </summary>
@@ -80,6 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<Tab>(responseRaw);
         }
+
 
         /// <summary>
         /// </summary>

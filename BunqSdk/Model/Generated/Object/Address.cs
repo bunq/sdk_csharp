@@ -62,6 +62,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "province")]
         public string Province { get; set; }
 
+
         public Address(string street, string houseNumber, string postalCode, string city, string country)
         {
             Street = street;
@@ -70,6 +71,7 @@ namespace Bunq.Sdk.Model.Generated.Object
             City = city;
             Country = country;
         }
+
 
         /// <summary>
         /// </summary>

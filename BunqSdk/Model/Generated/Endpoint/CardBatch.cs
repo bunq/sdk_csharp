@@ -42,6 +42,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "updated_card_ids")]
         public List<BunqId> UpdatedCardIds { get; set; }
 
+
         /// <summary>
         /// </summary>
         /// <param name="cards">The cards that need to be updated.</param>
@@ -63,6 +64,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<CardBatch>(responseRaw, OBJECT_TYPE_POST);
         }
+
 
         /// <summary>
         /// </summary>

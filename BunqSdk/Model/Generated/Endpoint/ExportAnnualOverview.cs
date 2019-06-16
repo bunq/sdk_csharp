@@ -65,6 +65,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "alias_user")]
         public LabelUser AliasUser { get; set; }
 
+
         /// <summary>
         /// Create a new annual overview for a specific year. An overview can be generated only for a past year.
         /// </summary>
@@ -132,6 +133,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<ExportAnnualOverview>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>
