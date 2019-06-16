@@ -198,6 +198,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "tab_item")]
         public List<TabItem> TabItem { get; set; }
 
+
         /// <summary>
         /// Create a TabUsageSingle. The initial status must be OPEN
         /// </summary>
@@ -339,6 +340,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<TabUsageSingle>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

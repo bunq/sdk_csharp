@@ -50,6 +50,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "has_sufficient_funds")]
         public bool? HasSufficientFunds { get; set; }
 
+
         /// <summary>
         /// </summary>
         /// <param name="pointerIban">The pointer (IBAN) of the account we're querying.</param>
@@ -73,6 +74,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<ConfirmationOfFunds>(responseRaw, OBJECT_TYPE_POST);
         }
+
 
         /// <summary>
         /// </summary>

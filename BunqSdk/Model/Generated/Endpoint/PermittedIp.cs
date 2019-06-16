@@ -48,6 +48,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<PermittedIp> Get(int credentialPasswordIpId, int permittedIpId,
@@ -128,6 +129,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return ProcessForId(responseRaw);
         }
+
 
         /// <summary>
         /// </summary>

@@ -150,7 +150,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount OverdraftLimit { get; set; }
 
         /// <summary>
-        /// The current balance Amount of the MonetaryAccountBank.
+        /// The current available balance Amount of the MonetaryAccountBank.
         /// </summary>
         [JsonProperty(PropertyName = "balance")]
         public Amount Balance { get; set; }
@@ -178,6 +178,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_profile")]
         public MonetaryAccountProfile MonetaryAccountProfile { get; set; }
+
 
         /// <summary>
         /// Create new MonetaryAccountBank.
@@ -294,6 +295,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<MonetaryAccountBank>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

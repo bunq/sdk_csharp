@@ -94,6 +94,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "attachment")]
         public AttachmentPublic Attachment { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<BunqMeFundraiserProfileUser> Get(int bunqMeFundraiserProfileUserId,
@@ -123,6 +124,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<BunqMeFundraiserProfileUser>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

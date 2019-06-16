@@ -76,6 +76,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "expiry_time")]
         public string ExpiryTime { get; set; }
 
+
         /// <summary>
         /// Generate a new CVC2 code for a card.
         /// </summary>
@@ -155,6 +156,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<CardGeneratedCvc2>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

@@ -19,6 +19,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DESCRIPTION = "description";
         public const string FIELD_REDIRECT_URL = "redirect_url";
 
+
         /// <summary>
         /// The requested Amount.
         /// </summary>
@@ -61,6 +62,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "merchant_available")]
         public List<BunqMeMerchantAvailable> MerchantAvailable { get; set; }
+
 
         /// <summary>
         /// </summary>

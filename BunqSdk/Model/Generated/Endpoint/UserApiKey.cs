@@ -40,6 +40,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "granted_by_user")]
         public UserApiKeyAnchoredUser GrantedByUser { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

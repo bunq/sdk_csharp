@@ -99,6 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "alias_monetary_account")]
         public MonetaryAccountReference AliasMonetaryAccount { get; set; }
 
+
         /// <summary>
         /// </summary>
         /// <param name="statementFormat">The format type of statement. Allowed values: MT940, CSV, PDF.</param>
@@ -178,6 +179,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
+
 
         /// <summary>
         /// </summary>

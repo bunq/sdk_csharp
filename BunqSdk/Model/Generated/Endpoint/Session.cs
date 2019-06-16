@@ -19,6 +19,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         protected const string ENDPOINT_URL_DELETE = "session/{0}";
 
+
         /// <summary>
         /// Deletes the current session.
         /// </summary>
@@ -31,6 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
+
 
         /// <summary>
         /// </summary>

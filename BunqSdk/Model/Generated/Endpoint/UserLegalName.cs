@@ -45,6 +45,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJsonList<UserLegalName>(responseRaw, OBJECT_TYPE_GET);
         }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

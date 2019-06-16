@@ -69,6 +69,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "reference_split_the_bill")]
         public RequestReferenceSplitTheBillAnchorObject ReferenceSplitTheBill { get; set; }
 
+
         /// <summary>
         /// Create a request batch by sending an array of single request objects, that will become part of the batch.
         /// </summary>
@@ -160,6 +161,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<RequestInquiryBatch>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

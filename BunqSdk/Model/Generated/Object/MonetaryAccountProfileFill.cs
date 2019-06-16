@@ -38,6 +38,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "issuer")]
         public Issuer Issuer { get; set; }
 
+
         public MonetaryAccountProfileFill(string status, Amount balancePreferred, Amount balanceThresholdLow,
             string methodFill)
         {
@@ -46,6 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Object
             BalanceThresholdLow = balanceThresholdLow;
             MethodFill = methodFill;
         }
+
 
         /// <summary>
         /// </summary>

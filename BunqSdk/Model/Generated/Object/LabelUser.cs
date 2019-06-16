@@ -38,12 +38,14 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "public_nick_name")]
         public string PublicNickName { get; set; }
 
+
         public LabelUser(string uuid, string displayName, string country)
         {
             Uuid = uuid;
             DisplayName = displayName;
             Country = country;
         }
+
 
         /// <summary>
         /// </summary>

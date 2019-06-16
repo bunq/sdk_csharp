@@ -20,6 +20,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "frequency")]
         public string Frequency { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

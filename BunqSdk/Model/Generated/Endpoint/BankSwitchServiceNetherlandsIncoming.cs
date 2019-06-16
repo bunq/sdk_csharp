@@ -20,6 +20,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SUB_STATUS = "sub_status";
         public const string FIELD_TIME_START_ACTUAL = "time_start_actual";
 
+
         /// <summary>
         /// The label of the monetary of this switch service.
         /// </summary>
@@ -73,6 +74,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; set; }
+
 
         /// <summary>
         /// </summary>

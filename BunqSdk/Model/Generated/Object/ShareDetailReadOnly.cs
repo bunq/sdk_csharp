@@ -26,12 +26,14 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "view_new_events")]
         public bool? ViewNewEvents { get; set; }
 
+
         public ShareDetailReadOnly(bool? viewBalance, bool? viewOldEvents, bool? viewNewEvents)
         {
             ViewBalance = viewBalance;
             ViewOldEvents = viewOldEvents;
             ViewNewEvents = viewNewEvents;
         }
+
 
         /// <summary>
         /// </summary>

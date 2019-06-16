@@ -58,6 +58,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "UserPaymentServiceProvider")]
         public UserPaymentServiceProvider UserPaymentServiceProvider { get; set; }
 
+
         /// <summary>
         /// Get a specific user.
         /// </summary>
@@ -86,6 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<User>(responseRaw);
         }
+
 
         /// <summary>
         /// </summary>

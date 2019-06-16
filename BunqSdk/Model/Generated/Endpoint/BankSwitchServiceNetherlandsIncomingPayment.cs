@@ -37,6 +37,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<BankSwitchServiceNetherlandsIncomingPayment> Get(
@@ -54,6 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<BankSwitchServiceNetherlandsIncomingPayment>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

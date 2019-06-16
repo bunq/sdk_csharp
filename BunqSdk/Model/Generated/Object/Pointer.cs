@@ -26,11 +26,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
+
         public Pointer(string type, string value)
         {
             Type = type;
             Value = value;
         }
+
 
         /// <summary>
         /// </summary>

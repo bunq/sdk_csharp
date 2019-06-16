@@ -82,6 +82,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
+
         /// <summary>
         /// </summary>
         /// <param name="expiration">The moment when this draft share invite expires.</param>
@@ -166,6 +167,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<DraftShareInviteApiKey>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

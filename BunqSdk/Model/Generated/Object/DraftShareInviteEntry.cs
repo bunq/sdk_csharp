@@ -26,10 +26,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "end_date")]
         public string EndDate { get; set; }
 
+
         public DraftShareInviteEntry(ShareDetail shareDetail)
         {
             ShareDetail = shareDetail;
         }
+
 
         /// <summary>
         /// </summary>

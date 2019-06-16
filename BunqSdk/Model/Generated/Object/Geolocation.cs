@@ -32,6 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "radius")]
         public double? Radius { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

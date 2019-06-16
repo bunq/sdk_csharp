@@ -42,6 +42,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
 
+
         /// <summary>
         /// The user's first name.
         /// </summary>
@@ -260,6 +261,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "version_terms_of_service")]
         public string VersionTermsOfService { get; set; }
+
 
         /// <summary>
         /// </summary>

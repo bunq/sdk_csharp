@@ -54,6 +54,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "payments")]
         public List<Payment> Payments { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<BunqMeFundraiserResult> Get(int bunqMeFundraiserResultId,
@@ -69,6 +70,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<BunqMeFundraiserResult>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

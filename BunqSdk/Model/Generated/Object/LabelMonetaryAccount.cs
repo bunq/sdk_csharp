@@ -74,6 +74,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "transferwise_bank_code")]
         public string TransferwiseBankCode { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

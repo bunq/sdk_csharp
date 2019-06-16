@@ -122,6 +122,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "quote")]
         public TransferwiseQuote Quote { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<TransferwiseTransfer> Get(int transferwiseQuoteId, int transferwiseTransferId,
@@ -137,6 +138,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<TransferwiseTransfer>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

@@ -94,6 +94,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "transaction_identifier")]
         public string TransactionIdentifier { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<SofortMerchantTransaction> Get(int sofortMerchantTransactionId,
@@ -126,6 +127,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<SofortMerchantTransaction>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

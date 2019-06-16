@@ -206,6 +206,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
 
+
         /// <summary>
         /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary
         /// account connected to the card. When the card has been received, it can be also activated through this
@@ -286,6 +287,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<Card>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

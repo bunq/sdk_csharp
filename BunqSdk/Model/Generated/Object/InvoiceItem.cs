@@ -62,6 +62,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "total_vat_inclusive")]
         public Amount TotalVatInclusive { get; set; }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

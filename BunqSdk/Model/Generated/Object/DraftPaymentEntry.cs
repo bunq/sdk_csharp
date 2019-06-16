@@ -58,12 +58,14 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
+
         public DraftPaymentEntry(Amount amount, MonetaryAccountReference counterpartyAlias, string description)
         {
             Amount = amount;
             CounterpartyAlias = counterpartyAlias;
             Description = description;
         }
+
 
         /// <summary>
         /// </summary>

@@ -46,6 +46,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
+
         /// <summary>
         /// Create a new RIB.
         /// </summary>
@@ -119,6 +120,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<ExportRib>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

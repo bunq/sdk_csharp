@@ -75,6 +75,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJsonList<NotificationFilterUrlUser>(responseRaw, OBJECT_TYPE_GET);
         }
 
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()

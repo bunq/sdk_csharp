@@ -85,6 +85,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
+
         /// <summary>
         /// Create a new DeviceServer providing the installation token in the header and signing the request with the
         /// private part of the key you used to create the installation. The API Key that you are using will be bound to
@@ -145,6 +146,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJsonList<DeviceServer>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

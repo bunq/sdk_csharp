@@ -111,6 +111,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "session_timeout")]
         public int? SessionTimeout { get; set; }
 
+
         /// <summary>
         /// </summary>
         public static BunqResponse<UserPaymentServiceProvider> Get(int userPaymentServiceProviderId,
@@ -124,6 +125,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<UserPaymentServiceProvider>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

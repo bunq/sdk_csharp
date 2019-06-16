@@ -54,6 +54,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; set; }
 
+
         /// <summary>
         /// Create a new public attachment. Create a POST request with a payload that contains a binary representation
         /// of the file, without any JSON wrapping. Make sure you define the MIME type (i.e. image/jpeg, or image/png)
@@ -85,6 +86,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<AttachmentPublic>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>

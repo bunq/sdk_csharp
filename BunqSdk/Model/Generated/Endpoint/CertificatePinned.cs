@@ -47,6 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
+
         /// <summary>
         /// Pin the certificate chain.
         /// </summary>
@@ -116,6 +117,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             return FromJson<CertificatePinned>(responseRaw, OBJECT_TYPE_GET);
         }
+
 
         /// <summary>
         /// </summary>
