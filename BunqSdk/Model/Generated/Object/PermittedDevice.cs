@@ -13,14 +13,15 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-
+    
         /// <summary>
         /// The IP address of the device that may use the credential.
         /// </summary>
         [JsonProperty(PropertyName = "ip")]
         public string Ip { get; set; }
-
-
+    
+    
+    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -29,15 +30,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-
+    
             if (this.Ip != null)
             {
                 return false;
             }
-
+    
             return true;
         }
-
+    
         /// <summary>
         /// </summary>
         public static PermittedDevice CreateFromJsonString(string json)

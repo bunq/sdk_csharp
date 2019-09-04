@@ -18,39 +18,37 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/schedule";
-
+    
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "ScheduleUser";
-
+    
         /// <summary>
         /// Get a collection of scheduled definition for all accessible monetary accounts of the user. You can add the
         /// parameter type to filter the response. When
         /// type={SCHEDULE_DEFINITION_PAYMENT,SCHEDULE_DEFINITION_PAYMENT_BATCH} is provided only schedule definition
         /// object that relate to these definitions are returned.
         /// </summary>
-        public static BunqResponse<List<ScheduleUser>> List(IDictionary<string, string> urlParams = null,
-            IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<ScheduleUser>> List( IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-
+    
             var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams,
-                customHeaders);
-
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams, customHeaders);
+    
             return FromJsonList<ScheduleUser>(responseRaw, OBJECT_TYPE_GET);
         }
-
-
+    
+    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
             return true;
         }
-
+    
         /// <summary>
         /// </summary>
         public static ScheduleUser CreateFromJsonString(string json)

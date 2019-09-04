@@ -13,13 +13,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
-
+    
         public NotificationFilterPush(string category)
         {
             Category = category;
         }
-
-
+    
+    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -28,10 +28,10 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-
+    
             return true;
         }
-
+    
         /// <summary>
         /// </summary>
         public static NotificationFilterPush CreateFromJsonString(string json)

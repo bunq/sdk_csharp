@@ -38,5 +38,17 @@ namespace Bunq.Sdk.Context
             TypeString = typeString;
             BaseUri = NAME_TO_BASE_URI_MAP[typeString];
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is ApiEnvironmentType)
+            {
+                return (obj as ApiEnvironmentType).TypeString.Equals(TypeString);
+            }
+            else
+            {
+                return base.Equals(obj);
+            }
+        }
     }
 }

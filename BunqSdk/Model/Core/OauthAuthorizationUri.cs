@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Bunq.Sdk.Context;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Utils;
 
@@ -7,11 +8,20 @@ namespace Bunq.Sdk.Model.Core
 {
     public class OauthAuthorizationUri : BunqModel
     {
-      
         /// <summary>
-        /// The Authorization base-URI
+        /// URI map
         /// </summary>
-        protected const string AUTH_URI_BASE = "https://oauth.bunq.com/auth?";
+        protected static Dictionary<string, string> AUTH_URI_FORMAT_MAP = new Dictionary<string, string>()
+        {
+            {ApiEnvironmentType.SANDBOX.TypeString, AUTH_URI_FORMAT_SANDBOX},
+            {ApiEnvironmentType.PRODUCTION.TypeString, AUTH_URI_FORMAT_PRODUCTION},
+        };
+        
+        /// <summary>
+        /// Auth constants.
+        /// </summary>
+        protected const String AUTH_URI_FORMAT_SANDBOX = "https://oauth.sandbox.bunq.com/auth?{0}";
+        protected const String AUTH_URI_FORMAT_PRODUCTION = "https://oauth.bunq.com/auth?{0}";
 
         /// <summary>
         /// Field constants.
@@ -45,7 +55,7 @@ namespace Bunq.Sdk.Model.Core
          * @return OauthAuthorizationUri
          */
         public static OauthAuthorizationUri Create(
-            string responseType,
+            OauthResponseType responseType,
             string redirectUri,
             OauthClient client,
             string state = null
@@ -54,7 +64,7 @@ namespace Bunq.Sdk.Model.Core
             Dictionary<string, string> allRequestParameter = new Dictionary<string, string>()
             {
                 {FIELD_REDIRECT_URI, redirectUri},
-                {FIELD_RESPONSE_TYPE, responseType},
+                {FIELD_RESPONSE_TYPE, responseType.TypeString},
                 {FIELD_CLIENT_ID, client.ClientId},
             };
 
@@ -63,7 +73,7 @@ namespace Bunq.Sdk.Model.Core
             }
             
             return new OauthAuthorizationUri(
-                AUTH_URI_BASE + HttpUtils.CreateQueryString(allRequestParameter)
+                String.Format(DetermineTokenUriFormat(), HttpUtils.CreateQueryString(allRequestParameter))
             );
         }
 
@@ -75,6 +85,11 @@ namespace Bunq.Sdk.Model.Core
             }
 
             return true;
+        }
+        
+        private static String DetermineTokenUriFormat()
+        {
+            return AUTH_URI_FORMAT_MAP[BunqContext.ApiContext.EnvironmentType.TypeString];
         }
     }
 }

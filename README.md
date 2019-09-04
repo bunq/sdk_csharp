@@ -82,6 +82,18 @@ For an example, see this [tinker snippet](https://github.com/bunq/tinker_csharp/
 
 See [`PaymentSample.cs`](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/MakePayment.cs)
 
+##### NotificationFilters / Callbacks
+**Note!** Due to an in internal change in the way we handle `NotificationFilters` (Callbacks), you should not use the default classes included in this SDK. 
+Please make sure you make use of the associated `Internal`-classes. For example when you need `NotificationFilterUrlUser`, make use of `NotificationFilterUrlUserInternal`.
+You can use every method of these classes, except for the `create()` method. **Always use `createWithListResponse()` instead.**
+
+##### Example
+```java
+NotificationFilterPushUserInternal.CreateWithListResponse(...)
+NotificationFilterUrlUserInternal.CreateWithListResponse(...)
+NotificationFilterUrlMonetaryAccountInternal.CreateWithListResponse(...)
+```
+
 #### Reading objects
 Reading objects can be done via get and list methods. For get a specific object id is needed while for list will return a list of objects.
 

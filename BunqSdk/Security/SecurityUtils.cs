@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Security;
@@ -20,6 +21,7 @@ namespace Bunq.Sdk.Security
         /// Error constants.
         /// </summary>
         private const string ERROR_COULD_NOT_VERIFY_RESPONSE = "Could not verify server response.";
+        private const string ERROR_FILE_NOT_FOUND = "Could not find the specified file.";
 
         /// <summary>
         /// Constants for formatting the request textual representation for signing.
@@ -408,6 +410,36 @@ namespace Bunq.Sdk.Security
             }
 
             return builder.ToString();
+        }
+
+        public static X509Certificate2 GetCertificateFromFile(string path, string passphrase = null)
+        {
+            if (File.Exists(path))
+            {
+                if (passphrase != null)
+                {
+                    return new X509Certificate2(path, passphrase);
+                }
+                else
+                {
+                    return new X509Certificate2(path);
+                }
+            }
+            else
+            {
+                throw new BunqException(ERROR_FILE_NOT_FOUND);
+            }
+        }
+
+        public static X509CertificateCollection GetCertificateCollectionFromAllPath(string[] allPath)
+        {
+            X509CertificateCollection collection = new X509CertificateCollection();
+            foreach (string path in allPath)
+            {
+                collection.Add(GetCertificateFromFile(path));
+            }
+
+            return collection;
         }
     }
 }

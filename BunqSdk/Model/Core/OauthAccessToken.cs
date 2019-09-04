@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
-using Bunq.Sdk.Http;
+using Bunq.Sdk.Context;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Utils;
@@ -12,6 +11,14 @@ namespace Bunq.Sdk.Model.Core
 {
     public class OauthAccessToken : BunqModel
     {
+        /// <summary>
+        /// URI map
+        /// </summary>
+        protected static Dictionary<string, string> TOKEN_URI_FORMAT_MAP = new Dictionary<string, string>()
+        {
+            {ApiEnvironmentType.SANDBOX.TypeString, TOKEN_URI_FORMAT_SANDBOX},
+            {ApiEnvironmentType.PRODUCTION.TypeString, TOKEN_URI_FORMAT_PRODUCTION},
+        };
         
         /// <summary>
         /// Field constants.
@@ -25,7 +32,8 @@ namespace Bunq.Sdk.Model.Core
         /// <summary>
         /// Token constants.
         /// </summary>
-        protected const String TOKEN_URI_BASE = "https://api.oauth.bunq.com/v1/token?";
+        protected const String TOKEN_URI_FORMAT_SANDBOX = "https://api.oauth.sandbox.bunq.com/v1/token?{0}";
+        protected const String TOKEN_URI_FORMAT_PRODUCTION = "https://api.oauth.bunq.com/v1/token?{0}";
         
         [JsonProperty(PropertyName = "access_token")]
         protected string token;
@@ -65,7 +73,7 @@ namespace Bunq.Sdk.Model.Core
         /// Create access token
         /// </summary>
         public static OauthAccessToken Create(
-            string grantType,
+            OauthGrantType grantType,
             string authCode,
             string redirectUri,
             OauthClient client
@@ -84,21 +92,21 @@ namespace Bunq.Sdk.Model.Core
         /// Create token URI string.
         /// </summary>
         protected static string CreateTokenUri(
-            string grantType,
+            OauthGrantType grantType,
             string authCode,
             string redirectUri,
             OauthClient client
         ) {
             Dictionary<string, string> allTokenParameter = new Dictionary<string, string>()
             {
-                { FIELD_GRANT_TYPE, grantType },
+                { FIELD_GRANT_TYPE, grantType.TypeString },
                 { FIELD_CODE, authCode },
                 { FIELD_REDIRECT_URI, redirectUri },
                 { FIELD_CLIENT_ID, client.ClientId },
                 { FIELD_CLIENT_SECRET, client.Secret },
             };
             
-            return TOKEN_URI_BASE + HttpUtils.CreateQueryString(allTokenParameter);
+            return String.Format(DetermineTokenUriFormat(), HttpUtils.CreateQueryString(allTokenParameter));
         }
 
         public override bool IsAllFieldNull()
@@ -117,6 +125,11 @@ namespace Bunq.Sdk.Model.Core
             }
 
             return true;
+        }
+
+        private static String DetermineTokenUriFormat()
+        {
+            return TOKEN_URI_FORMAT_MAP[BunqContext.ApiContext.EnvironmentType.TypeString];
         }
     }
 }

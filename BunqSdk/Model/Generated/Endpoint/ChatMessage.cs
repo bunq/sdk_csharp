@@ -9,13 +9,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// </summary>
     public class ChatMessage : BunqModel
     {
+    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
             return true;
         }
-
+    
         /// <summary>
         /// </summary>
         public static ChatMessage CreateFromJsonString(string json)
