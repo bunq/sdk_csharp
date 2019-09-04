@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BunqSdk", "BunqSdk\BunqSdk.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BunqSdk.Tests", "BunqSdk.Tests\BunqSdk.Tests.csproj", "{93E5887C-49FF-4D00-AD2E-660365B78E6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BunqSdk.Examples", "BunqSdk.Examples\BunqSdk.Examples.csproj", "{69BA2686-6742-458F-81E4-4DF63ECB87CA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{93E5887C-49FF-4D00-AD2E-660365B78E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93E5887C-49FF-4D00-AD2E-660365B78E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93E5887C-49FF-4D00-AD2E-660365B78E6F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69BA2686-6742-458F-81E4-4DF63ECB87CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69BA2686-6742-458F-81E4-4DF63ECB87CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69BA2686-6742-458F-81E4-4DF63ECB87CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69BA2686-6742-458F-81E4-4DF63ECB87CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
