@@ -3,7 +3,6 @@ using Bunq.Sdk.Context;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
-using Bunq.Sdk.Tests.Util;
 using Xunit;
 
 namespace Bunq.Sdk.Tests.Model.Core
@@ -39,9 +38,9 @@ namespace Bunq.Sdk.Tests.Model.Core
             Assert.True(allCreatedNotificationFilter.Count == 1);
         }
 
-        /**
-         * Test NotificationFilterUrlUser creation.
-         */
+        /// <summary>
+        /// Test NotificationFilterUrlUser creation.
+        /// </summary>
         [Fact]
         public void TestNotificationFilterUrlUser()
         {
@@ -54,9 +53,9 @@ namespace Bunq.Sdk.Tests.Model.Core
 
             Assert.True(allCreatedNotificationFilter.Count == 1);
         }
-        /**
-         * Test NotificationFilterPushUser creation.
-         */
+        /// <summary>
+        /// Test NotificationFilterPushUser creation.
+        /// </summary>
         [Fact]
         public void TestNotificationFilterPushUser()
         {
@@ -70,9 +69,9 @@ namespace Bunq.Sdk.Tests.Model.Core
             Assert.True(allCreatedNotificationFilter.Count == 1);
         }
 
-        /**
-         * Test clear all filters.
-         */
+        /// <summary>
+        /// Test clear all filters.
+        /// </summary>
         [Fact]
         public void TestNotificationFilterClear()
         {
@@ -93,26 +92,17 @@ namespace Bunq.Sdk.Tests.Model.Core
             Assert.StrictEqual(0, NotificationFilterUrlUserInternal.List().Value.Count);
             Assert.StrictEqual(0, NotificationFilterUrlMonetaryAccountInternal.List().Value.Count);
         }
-
-        /**
-         * @return NotificationFilterUrl
-         */
+        
         private NotificationFilterUrl GetNotificationFilterUrl()
         {
             return new NotificationFilterUrl(FILTER_CATEGORY_MUTATION, FILTER_CALLBACK_URL);
         }
-
-        /**
-         * @return NotificationFilterPush
-         */
+        
         private NotificationFilterPush GetNotificationFilterPush()
         {
             return new NotificationFilterPush(FILTER_CATEGORY_MUTATION);
         }
-
-        /**
-         * @return MonetaryAccountBank
-         */
+        
         private MonetaryAccountBank GetPrimaryMonetaryAccount()
         {
             return BunqContext.UserContext.PrimaryMonetaryAccountBank;

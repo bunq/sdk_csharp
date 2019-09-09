@@ -49,13 +49,6 @@ namespace Bunq.Sdk.Model.Core
         /// </summary>
         public string Token => token;
         
-        /**
-         * OauthAccessToken constructor.
-         *
-         * @param string $accessToken
-         * @param string $tokenType
-         * @param string $state
-         */
         protected OauthAccessToken(
             string token,
             string type,

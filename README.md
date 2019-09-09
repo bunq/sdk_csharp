@@ -59,7 +59,6 @@ For an example, see this [tinker snippet](https://github.com/bunq/tinker_csharp/
 
 
 ##### PSD2
-
 It is possible to create an ApiContext as PSD2 Service Provider. Although this might seem a complex task, we wrote some helper implementations to get you started.
 You need to create a certificate and private key to get you started. Our sandbox environment currently accepts all certificates, if these criteria are met:
 - Up to 64 characters

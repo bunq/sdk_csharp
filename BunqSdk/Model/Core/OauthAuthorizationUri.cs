@@ -46,14 +46,6 @@ namespace Bunq.Sdk.Model.Core
             this.authorizationUri = authorizationUri;
         }
 
-        /**
-         * @param BunqEnumOauthResponseType $responseType
-         * @param string $redirectUri
-         * @param OauthClient $client
-         * @param string|null $state
-         *
-         * @return OauthAuthorizationUri
-         */
         public static OauthAuthorizationUri Create(
             OauthResponseType responseType,
             string redirectUri,
