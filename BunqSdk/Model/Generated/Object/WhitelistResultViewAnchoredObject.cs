@@ -14,21 +14,20 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
+
         /// <summary>
         /// The RequestResponse object
         /// </summary>
         [JsonProperty(PropertyName = "requestResponse")]
         public RequestResponse RequestResponse { get; set; }
-    
+
         /// <summary>
         /// The DraftPayment object
         /// </summary>
         [JsonProperty(PropertyName = "draftPayment")]
         public DraftPayment DraftPayment { get; set; }
-    
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -37,20 +36,20 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             if (this.RequestResponse != null)
             {
                 return false;
             }
-    
+
             if (this.DraftPayment != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static WhitelistResultViewAnchoredObject CreateFromJsonString(string json)

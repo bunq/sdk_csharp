@@ -18,29 +18,29 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_DELETE = "session/{0}";
-    
-    
+
+
         /// <summary>
         /// Deletes the current session.
         /// </summary>
         public static BunqResponse<object> Delete(int sessionId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
+
             var apiClient = new ApiClient(GetApiContext());
             var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, sessionId), customHeaders);
-    
+
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static Session CreateFromJsonString(string json)

@@ -12,24 +12,23 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "target_url")]
         public string TargetUrl { get; set; }
-    
+
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
-    
+
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "event_type")]
         public string EventType { get; set; }
-    
+
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "object")]
         public NotificationAnchorObject Object { get; set; }
-    
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -38,25 +37,25 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             if (this.Category != null)
             {
                 return false;
             }
-    
+
             if (this.EventType != null)
             {
                 return false;
             }
-    
+
             if (this.Object != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static NotificationUrl CreateFromJsonString(string json)

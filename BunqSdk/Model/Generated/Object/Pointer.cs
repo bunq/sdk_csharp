@@ -13,27 +13,27 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
+
         /// <summary>
         /// The alias value.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
-    
+
         /// <summary>
         /// The alias name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-    
-    
+
+
         public Pointer(string type, string value)
         {
             Type = type;
             Value = value;
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -42,20 +42,20 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             if (this.Value != null)
             {
                 return false;
             }
-    
+
             if (this.Name != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static Pointer CreateFromJsonString(string json)

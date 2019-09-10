@@ -15,33 +15,32 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
+
         /// <summary>
         /// The timestamp of the user object's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
+
         /// <summary>
         /// The timestamp of the user object's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
+
         /// <summary>
         /// The user who requested access.
         /// </summary>
         [JsonProperty(PropertyName = "requested_by_user")]
         public UserApiKeyAnchoredUser RequestedByUser { get; set; }
-    
+
         /// <summary>
         /// The user who granted access.
         /// </summary>
         [JsonProperty(PropertyName = "granted_by_user")]
         public UserApiKeyAnchoredUser GrantedByUser { get; set; }
-    
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -50,30 +49,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
             if (this.Created != null)
             {
                 return false;
             }
-    
+
             if (this.Updated != null)
             {
                 return false;
             }
-    
+
             if (this.RequestedByUser != null)
             {
                 return false;
             }
-    
+
             if (this.GrantedByUser != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static UserApiKey CreateFromJsonString(string json)

@@ -19,33 +19,35 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user-company/{0}/name";
-    
+
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "UserCompanyNameArray";
-    
+
         /// <summary>
         /// All known (trade) names for a user company.
         /// </summary>
         [JsonProperty(PropertyName = "name_array")]
         public List<string> NameArray { get; set; }
-    
+
         /// <summary>
         /// Return all the known (trade) names for a specific user company.
         /// </summary>
-        public static BunqResponse<List<UserCompanyName>> List(int userCompanyId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<UserCompanyName>> List(int userCompanyId,
+            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
+
             var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams, customHeaders);
-    
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams,
+                customHeaders);
+
             return FromJsonList<UserCompanyName>(responseRaw, OBJECT_TYPE_GET);
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -54,10 +56,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static UserCompanyName CreateFromJsonString(string json)

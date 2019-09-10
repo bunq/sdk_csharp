@@ -13,21 +13,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public LabelUser Alias { get; set; }
-    
+
         /// <summary>
         /// Can be: ACCEPTED, REJECTED, PENDING or REVOKED
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
-    
-        public CoOwner(Pointer alias)
-        {
-            // TODO: Fix this.
-//            Alias = alias;
-        }
-    
-    
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -36,15 +28,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             if (this.Status != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static CoOwner CreateFromJsonString(string json)
