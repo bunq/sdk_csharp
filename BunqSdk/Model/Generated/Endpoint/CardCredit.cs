@@ -12,15 +12,15 @@ using System;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// With bunq it is possible to order debit cards that can then be connected with each one of the monetary accounts
+    /// With bunq it is possible to order credit cards that can then be connected with each one of the monetary accounts
     /// the user has access to (including connected accounts).
     /// </summary>
-    public class CardDebit : BunqModel
+    public class CardCredit : BunqModel
     {
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        protected const string ENDPOINT_URL_CREATE = "user/{0}/card-debit";
+        protected const string ENDPOINT_URL_CREATE = "user/{0}/card-credit";
 
         /// <summary>
         /// Field constants.
@@ -36,7 +36,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE_POST = "CardDebit";
+        private const string OBJECT_TYPE_POST = "CardCredit";
 
         /// <summary>
         /// The second line of text on the card
@@ -45,19 +45,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string SecondLine { get; set; }
 
         /// <summary>
-        /// The user's name as will be on the card
+        /// The user's name on the card.
         /// </summary>
         [JsonProperty(PropertyName = "name_on_card")]
         public string NameOnCard { get; set; }
 
         /// <summary>
-        /// The label for the user who requested the card.
+        /// The pointer to the monetary account that will be connected at first with the card. Its IBAN code is also the
+        /// one that will be printed on the card itself. The pointer must be of type IBAN.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
-        public LabelUser Alias { get; set; }
+        public MonetaryAccountReference Alias { get; set; }
 
         /// <summary>
-        /// The type of the card. Can be MAESTRO, MASTERCARD.
+        /// The type of the card. Can is MASTERCARD.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
@@ -82,13 +83,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp when the card was crated.
+        /// The timestamp of the card's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp when the card was last updated.
+        /// The timestamp of the card's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
@@ -100,10 +101,36 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string PublicUuid { get; set; }
 
         /// <summary>
-        /// The sub_type of card.
+        /// The sub-type of the card.
         /// </summary>
         [JsonProperty(PropertyName = "sub_type")]
         public string SubType { get; set; }
+
+        /// <summary>
+        /// The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN, CANCELLED, EXPIRED or
+        /// PIN_TRIES_EXCEEDED.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The sub-status of the card. Can be NONE or REPLACED.
+        /// </summary>
+        [JsonProperty(PropertyName = "sub_status")]
+        public string SubStatus { get; set; }
+
+        /// <summary>
+        /// The order status of the card. Can be CARD_UPDATE_REQUESTED, CARD_UPDATE_SENT, CARD_UPDATE_ACCEPTED,
+        /// ACCEPTED_FOR_PRODUCTION or DELIVERED_TO_CUSTOMER.
+        /// </summary>
+        [JsonProperty(PropertyName = "order_status")]
+        public string OrderStatus { get; set; }
+
+        /// <summary>
+        /// Expiry date of the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "expiry_date")]
+        public string ExpiryDate { get; set; }
 
         /// <summary>
         /// The last 4 digits of the PAN of the card.
@@ -112,22 +139,22 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string PrimaryAccountNumberFourDigit { get; set; }
 
         /// <summary>
-        /// The status to set for the card. After ordering the card it will be DEACTIVATED.
+        /// Array of PANs, status, description and account id for online cards.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
+        [JsonProperty(PropertyName = "primary_account_numbers_virtual")]
+        public List<CardVirtualPrimaryAccountNumber> PrimaryAccountNumbersVirtual { get; set; }
 
         /// <summary>
-        /// The order status of the card. After ordering the card it will be NEW_CARD_REQUEST_RECEIVED.
+        /// The spending limit for the card.
         /// </summary>
-        [JsonProperty(PropertyName = "order_status")]
-        public string OrderStatus { get; set; }
+        [JsonProperty(PropertyName = "card_limit")]
+        public Amount CardLimit { get; set; }
 
         /// <summary>
-        /// The expiry date of the card.
+        /// The ATM spending limit for the card.
         /// </summary>
-        [JsonProperty(PropertyName = "expiry_date")]
-        public string ExpiryDate { get; set; }
+        [JsonProperty(PropertyName = "card_limit_atm")]
+        public Amount CardLimitAtm { get; set; }
 
         /// <summary>
         /// The countries for which to grant (temporary) permissions to use the card.
@@ -155,15 +182,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
 
         /// <summary>
-        /// Create a new debit card request.
+        /// Create a new credit card request.
         /// </summary>
         /// <param name="secondLine">The second line of text on the card, used as name/description for it. It can contain at most 17 characters and it can be empty.</param>
         /// <param name="nameOnCard">The user's name as it will be on the card. Check 'card-name' for the available card names for a user.</param>
-        /// <param name="type">The type of card to order. Can be MAESTRO or MASTERCARD.</param>
+        /// <param name="type">The type of card to order. Can be MASTERCARD.</param>
         /// <param name="alias">The pointer to the monetary account that will be connected at first with the card. Its IBAN code is also the one that will be printed on the card itself. The pointer must be of type IBAN.</param>
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
-        public static BunqResponse<CardDebit> Create(string secondLine, string nameOnCard, string type,
+        public static BunqResponse<CardCredit> Create(string secondLine, string nameOnCard, string type,
             Pointer alias = null, List<CardPinAssignment> pinCodeAssignment = null,
             int? monetaryAccountIdFallback = null, IDictionary<string, string> customHeaders = null)
         {
@@ -186,7 +213,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId()), requestBytes,
                 customHeaders);
 
-            return FromJson<CardDebit>(responseRaw, OBJECT_TYPE_POST);
+            return FromJson<CardCredit>(responseRaw, OBJECT_TYPE_POST);
         }
 
 
@@ -229,17 +256,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
-            if (this.NameOnCard != null)
-            {
-                return false;
-            }
-
-            if (this.PrimaryAccountNumberFourDigit != null)
-            {
-                return false;
-            }
-
             if (this.Status != null)
+            {
+                return false;
+            }
+
+            if (this.SubStatus != null)
             {
                 return false;
             }
@@ -250,6 +272,31 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.ExpiryDate != null)
+            {
+                return false;
+            }
+
+            if (this.NameOnCard != null)
+            {
+                return false;
+            }
+
+            if (this.PrimaryAccountNumberFourDigit != null)
+            {
+                return false;
+            }
+
+            if (this.PrimaryAccountNumbersVirtual != null)
+            {
+                return false;
+            }
+
+            if (this.CardLimit != null)
+            {
+                return false;
+            }
+
+            if (this.CardLimitAtm != null)
             {
                 return false;
             }
@@ -265,11 +312,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.LabelMonetaryAccountCurrent != null)
-            {
-                return false;
-            }
-
-            if (this.Alias != null)
             {
                 return false;
             }
@@ -294,9 +336,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         /// <summary>
         /// </summary>
-        public static CardDebit CreateFromJsonString(string json)
+        public static CardCredit CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<CardDebit>(json);
+            return BunqModel.CreateFromJsonString<CardCredit>(json);
         }
     }
 }

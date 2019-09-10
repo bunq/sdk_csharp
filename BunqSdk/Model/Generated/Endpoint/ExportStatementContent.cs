@@ -14,7 +14,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// the statement format specified during the statement creation. The doc won't display the response of a request to
     /// get the content of a statement export.
     /// </summary>
-    public class CustomerStatementExportContent : BunqModel
+    public class ExportStatementContent : BunqModel
     {
         /// <summary>
         /// Endpoint constants.
@@ -24,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE_GET = "CustomerStatementExportContent";
+        private const string OBJECT_TYPE_GET = "ExportStatementContent";
 
         /// <summary>
         /// </summary>
@@ -53,9 +53,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         /// <summary>
         /// </summary>
-        public static CustomerStatementExportContent CreateFromJsonString(string json)
+        public static ExportStatementContent CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<CustomerStatementExportContent>(json);
+            return BunqModel.CreateFromJsonString<ExportStatementContent>(json);
         }
     }
 }

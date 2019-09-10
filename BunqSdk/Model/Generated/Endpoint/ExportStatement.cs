@@ -14,7 +14,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// Used to create new and read existing statement exports. Statement exports can be created in either CSV, MT940 or
     /// PDF file format.
     /// </summary>
-    public class CustomerStatementExport : BunqModel
+    public class ExportStatement : BunqModel
     {
         /// <summary>
         /// Endpoint constants.
@@ -33,6 +33,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DATE_START = "date_start";
         public const string FIELD_DATE_END = "date_end";
         public const string FIELD_REGIONAL_FORMAT = "regional_format";
+        public const string FIELD_INCLUDE_ATTACHMENT = "include_attachment";
 
         /// <summary>
         /// Object type.
@@ -62,6 +63,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "regional_format")]
         public string RegionalFormat { get; set; }
+
+        /// <summary>
+        /// Only for PDF exports. Includes attachments to mutations in the export, such as scanned receipts.
+        /// </summary>
+        [JsonProperty(PropertyName = "include_attachment")]
+        public bool? IncludeAttachment { get; set; }
 
         /// <summary>
         /// The id of the customer statement model.
@@ -106,8 +113,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="dateStart">The start date for making statements.</param>
         /// <param name="dateEnd">The end date for making statements.</param>
         /// <param name="regionalFormat">Required for CSV exports. The regional format of the statement, can be UK_US (comma-separated) or EUROPEAN (semicolon-separated).</param>
+        /// <param name="includeAttachment">Only for PDF exports. Includes attachments to mutations in the export, such as scanned receipts.</param>
         public static BunqResponse<int> Create(string statementFormat, string dateStart, string dateEnd,
-            int? monetaryAccountId = null, string regionalFormat = null,
+            int? monetaryAccountId = null, string regionalFormat = null, bool? includeAttachment = null,
             IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -120,6 +128,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_DATE_START, dateStart},
                 {FIELD_DATE_END, dateEnd},
                 {FIELD_REGIONAL_FORMAT, regionalFormat},
+                {FIELD_INCLUDE_ATTACHMENT, includeAttachment},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -133,8 +142,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         /// <summary>
         /// </summary>
-        public static BunqResponse<CustomerStatementExport> Get(int customerStatementExportId,
-            int? monetaryAccountId = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ExportStatement> Get(int exportStatementId, int? monetaryAccountId = null,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -142,14 +151,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw =
                 apiClient.Get(
                     string.Format(ENDPOINT_URL_READ, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId),
-                        customerStatementExportId), new Dictionary<string, string>(), customHeaders);
+                        exportStatementId), new Dictionary<string, string>(), customHeaders);
 
-            return FromJson<CustomerStatementExport>(responseRaw, OBJECT_TYPE_GET);
+            return FromJson<ExportStatement>(responseRaw, OBJECT_TYPE_GET);
         }
 
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<CustomerStatementExport>> List(int? monetaryAccountId = null,
+        public static BunqResponse<List<ExportStatement>> List(int? monetaryAccountId = null,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
@@ -161,12 +170,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                     string.Format(ENDPOINT_URL_LISTING, DetermineUserId(),
                         DetermineMonetaryAccountId(monetaryAccountId)), urlParams, customHeaders);
 
-            return FromJsonList<CustomerStatementExport>(responseRaw, OBJECT_TYPE_GET);
+            return FromJsonList<ExportStatement>(responseRaw, OBJECT_TYPE_GET);
         }
 
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int customerStatementExportId, int? monetaryAccountId = null,
+        public static BunqResponse<object> Delete(int exportStatementId, int? monetaryAccountId = null,
             IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -175,7 +184,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw =
                 apiClient.Delete(
                     string.Format(ENDPOINT_URL_DELETE, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId),
-                        customerStatementExportId), customHeaders);
+                        exportStatementId), customHeaders);
 
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
@@ -240,9 +249,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         /// <summary>
         /// </summary>
-        public static CustomerStatementExport CreateFromJsonString(string json)
+        public static ExportStatement CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<CustomerStatementExport>(json);
+            return BunqModel.CreateFromJsonString<ExportStatement>(json);
         }
     }
 }

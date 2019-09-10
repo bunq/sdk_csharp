@@ -153,8 +153,8 @@ namespace Bunq.Sdk.Model.Generated.Object
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "TransferwiseTransfer")]
-        public TransferwiseTransfer TransferwiseTransfer { get; set; }
+        [JsonProperty(PropertyName = "TransferwisePayment")]
+        public TransferwiseTransfer TransferwisePayment { get; set; }
 
 
         /// <summary>
@@ -296,9 +296,9 @@ namespace Bunq.Sdk.Model.Generated.Object
                 return this.TabResultResponse;
             }
 
-            if (this.TransferwiseTransfer != null)
+            if (this.TransferwisePayment != null)
             {
-                return this.TransferwiseTransfer;
+                return this.TransferwisePayment;
             }
 
             throw new BunqException(ERROR_NULL_FIELDS);
@@ -443,7 +443,7 @@ namespace Bunq.Sdk.Model.Generated.Object
                 return false;
             }
 
-            if (this.TransferwiseTransfer != null)
+            if (this.TransferwisePayment != null)
             {
                 return false;
             }

@@ -1,5 +1,23 @@
 # Change Log
 
+## [Unreleased](https://github.com/bunq/sdk_csharp/tree/HEAD)
+
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.16...HEAD)
+
+**Closed issues:**
+
+- Installing the nuget package adds root files that you can't remove [\#127](https://github.com/bunq/sdk_csharp/issues/127)
+- Event missing from endpoints [\#121](https://github.com/bunq/sdk_csharp/issues/121)
+- broken PaymentsSample.cs link in README [\#119](https://github.com/bunq/sdk_csharp/issues/119)
+- MonetaryAccountSavings missing from endpoints [\#118](https://github.com/bunq/sdk_csharp/issues/118)
+
+**Merged pull requests:**
+
+- Fix NotificationFilter, Serialization issues and implement PSD2  [\#128](https://github.com/bunq/sdk_csharp/pull/128) ([NickvandeGroes](https://github.com/NickvandeGroes))
+
+## [1.10.16](https://github.com/bunq/sdk_csharp/tree/1.10.16) (2019-06-16)
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.3...1.10.16)
+
 ## [1.10.3](https://github.com/bunq/sdk_csharp/tree/1.10.3) (2019-05-22)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.2...1.10.3)
 
@@ -71,6 +89,7 @@
 **Merged pull requests:**
 
 - Added travis config.  \(bunq/sdk\_csharp\#90\) [\#110](https://github.com/bunq/sdk_csharp/pull/110) ([OGKevin](https://github.com/OGKevin))
+- Change Java to Csharp in readme. \(bunq/sdk\_csharp\#97\) [\#98](https://github.com/bunq/sdk_csharp/pull/98) ([robinvanpoppel](https://github.com/robinvanpoppel))
 - Oauth bunq/sdk\_csharp\#112 [\#113](https://github.com/bunq/sdk_csharp/pull/113) ([OGKevin](https://github.com/OGKevin))
 - Auto reload context bunq/sdk\_csharp\#72 [\#111](https://github.com/bunq/sdk_csharp/pull/111) ([OGKevin](https://github.com/OGKevin))
 -  Updated the examples on readme. \(bunq/sdk\_csharp\#91\) [\#109](https://github.com/bunq/sdk_csharp/pull/109) ([OGKevin](https://github.com/OGKevin))
@@ -82,10 +101,6 @@
 
 ## [0.13.1](https://github.com/bunq/sdk_csharp/tree/0.13.1) (2018-05-30)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.13.0...0.13.1)
-
-**Merged pull requests:**
-
-- Change Java to Csharp in readme. \(bunq/sdk\_csharp\#97\) [\#98](https://github.com/bunq/sdk_csharp/pull/98) ([robinvanpoppel](https://github.com/robinvanpoppel))
 
 ## [0.13.0](https://github.com/bunq/sdk_csharp/tree/0.13.0) (2018-03-20)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.4...0.13.0)
@@ -110,6 +125,7 @@
 **Merged pull requests:**
 
 - Regenerate code for release [\#82](https://github.com/bunq/sdk_csharp/pull/82) ([OGKevin](https://github.com/OGKevin))
+- Regenerated code with correct object types. \(bunq/sdk\_csharp\#51\) [\#79](https://github.com/bunq/sdk_csharp/pull/79) ([OGKevin](https://github.com/OGKevin))
 - Added missing field id for TokenQrRequestIdeal. \(bunq/sdk\_csharp\#76\) [\#78](https://github.com/bunq/sdk_csharp/pull/78) ([OGKevin](https://github.com/OGKevin))
 - Added missing id field from mastercard action. \(bunq/sdk\_csharp\#52\) [\#74](https://github.com/bunq/sdk_csharp/pull/74) ([OGKevin](https://github.com/OGKevin))
 - \(bunq/sdk\_csharp\#63\) add response id to failed request [\#73](https://github.com/bunq/sdk_csharp/pull/73) ([OGKevin](https://github.com/OGKevin))
@@ -136,7 +152,6 @@
 
 **Merged pull requests:**
 
-- Regenerated code with correct object types. \(bunq/sdk\_csharp\#51\) [\#79](https://github.com/bunq/sdk_csharp/pull/79) ([OGKevin](https://github.com/OGKevin))
 - Ensure that headers are correctly cased before signature verification… [\#59](https://github.com/bunq/sdk_csharp/pull/59) ([OGKevin](https://github.com/OGKevin))
 - Improve decoder bunq/sdk csharp\#43 [\#57](https://github.com/bunq/sdk_csharp/pull/57) ([OGKevin](https://github.com/OGKevin))
 

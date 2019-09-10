@@ -61,6 +61,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "WhitelistResult")]
         public WhitelistResult WhitelistResult { get; set; }
 
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "TransferwisePayment")]
+        public TransferwiseTransfer TransferwisePayment { get; set; }
+
 
         /// <summary>
         /// </summary>
@@ -111,6 +116,11 @@ namespace Bunq.Sdk.Model.Generated.Object
                 return this.WhitelistResult;
             }
 
+            if (this.TransferwisePayment != null)
+            {
+                return this.TransferwisePayment;
+            }
+
             throw new BunqException(ERROR_NULL_FIELDS);
         }
 
@@ -159,6 +169,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
 
             if (this.WhitelistResult != null)
+            {
+                return false;
+            }
+
+            if (this.TransferwisePayment != null)
             {
                 return false;
             }

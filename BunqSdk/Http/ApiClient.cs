@@ -64,7 +64,7 @@ namespace Bunq.Sdk.Http
         /// Values for the default headers
         /// </summary>
         private const string CACHE_CONTROL_NONE = "no-cache";
-        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/1.10.16";
+        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/1.12.0";
         private const string LANGUAGE_EN_US = "en_US";
         private const string REGION_NL_NL = "nl_NL";
         private const string GEOLOCATION_ZERO = "0 0 0 0 NL";

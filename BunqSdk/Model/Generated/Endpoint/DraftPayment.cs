@@ -33,6 +33,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_ENTRIES = "entries";
         public const string FIELD_PREVIOUS_UPDATED_TIMESTAMP = "previous_updated_timestamp";
         public const string FIELD_NUMBER_OF_REQUIRED_ACCEPTS = "number_of_required_accepts";
+        public const string FIELD_SCHEDULE = "schedule";
 
         /// <summary>
         /// Object type.
@@ -64,6 +65,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "number_of_required_accepts")]
         public int? NumberOfRequiredAccepts { get; set; }
+
+        /// <summary>
+        /// The schedule details.
+        /// </summary>
+        [JsonProperty(PropertyName = "schedule")]
+        public Schedule Schedule { get; set; }
 
         /// <summary>
         /// The id of the created DrafPayment.
@@ -115,9 +122,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="numberOfRequiredAccepts">The number of accepts that are required for the draft payment to receive status ACCEPTED. Currently only 1 is valid.</param>
         /// <param name="status">The status of the DraftPayment.</param>
         /// <param name="previousUpdatedTimestamp">The last updated_timestamp that you received for this DraftPayment. This needs to be provided to prevent race conditions.</param>
+        /// <param name="schedule">The schedule details when creating or updating a scheduled payment.</param>
         public static BunqResponse<int> Create(List<DraftPaymentEntry> entries, int? numberOfRequiredAccepts,
             int? monetaryAccountId = null, string status = null, string previousUpdatedTimestamp = null,
-            IDictionary<string, string> customHeaders = null)
+            Schedule schedule = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -129,6 +137,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_ENTRIES, entries},
                 {FIELD_PREVIOUS_UPDATED_TIMESTAMP, previousUpdatedTimestamp},
                 {FIELD_NUMBER_OF_REQUIRED_ACCEPTS, numberOfRequiredAccepts},
+                {FIELD_SCHEDULE, schedule},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -146,8 +155,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="status">The status of the DraftPayment.</param>
         /// <param name="entries">The list of entries in the DraftPayment. Each entry will result in a payment when the DraftPayment is accepted.</param>
         /// <param name="previousUpdatedTimestamp">The last updated_timestamp that you received for this DraftPayment. This needs to be provided to prevent race conditions.</param>
+        /// <param name="schedule">The schedule details when creating or updating a scheduled payment.</param>
         public static BunqResponse<int> Update(int draftPaymentId, int? monetaryAccountId = null, string status = null,
-            List<DraftPaymentEntry> entries = null, string previousUpdatedTimestamp = null,
+            List<DraftPaymentEntry> entries = null, string previousUpdatedTimestamp = null, Schedule schedule = null,
             IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -159,6 +169,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_STATUS, status},
                 {FIELD_ENTRIES, entries},
                 {FIELD_PREVIOUS_UPDATED_TIMESTAMP, previousUpdatedTimestamp},
+                {FIELD_SCHEDULE, schedule},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -251,6 +262,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.RequestReferenceSplitTheBill != null)
+            {
+                return false;
+            }
+
+            if (this.Schedule != null)
             {
                 return false;
             }

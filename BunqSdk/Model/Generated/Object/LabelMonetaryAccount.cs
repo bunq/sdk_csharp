@@ -74,6 +74,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "transferwise_bank_code")]
         public string TransferwiseBankCode { get; set; }
 
+        /// <summary>
+        /// The merchant category code.
+        /// </summary>
+        [JsonProperty(PropertyName = "merchant_category_code")]
+        public string MerchantCategoryCode { get; set; }
+
 
         /// <summary>
         /// </summary>
@@ -130,6 +136,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
 
             if (this.TransferwiseBankCode != null)
+            {
+                return false;
+            }
+
+            if (this.MerchantCategoryCode != null)
             {
                 return false;
             }

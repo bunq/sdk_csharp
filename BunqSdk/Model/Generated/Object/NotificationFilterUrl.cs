@@ -20,6 +20,24 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "notification_target")]
         public string NotificationTarget { get; set; }
 
+        /// <summary>
+        /// The id of the NotificationFilterUrl.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
+
+        /// <summary>
+        /// The timestamp of the NotificationFilterUrl's creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "created")]
+        public string Created { get; set; }
+
+        /// <summary>
+        /// The timestamp of the NotificationFilterUrl's last update.
+        /// </summary>
+        [JsonProperty(PropertyName = "updated")]
+        public string Updated { get; set; }
+
 
         public NotificationFilterUrl(string category, string notificationTarget)
         {
@@ -32,6 +50,21 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
+            if (this.Id != null)
+            {
+                return false;
+            }
+
+            if (this.Created != null)
+            {
+                return false;
+            }
+
+            if (this.Updated != null)
+            {
+                return false;
+            }
+
             if (this.Category != null)
             {
                 return false;

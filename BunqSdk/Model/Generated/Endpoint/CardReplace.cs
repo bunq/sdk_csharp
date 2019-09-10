@@ -2,6 +2,7 @@ using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
+using Bunq.Sdk.Model.Generated.Object;
 using Bunq.Sdk.Security;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_NAME_ON_CARD = "name_on_card";
 
-        public const string FIELD_PIN_CODE = "pin_code";
+        public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
         public const string FIELD_SECOND_LINE = "second_line";
 
 
@@ -39,10 +40,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string NameOnCard { get; set; }
 
         /// <summary>
-        /// The plaintext pin code. Requests require encryption to be enabled.
+        /// Array of Types, PINs, account IDs assigned to the card.
         /// </summary>
-        [JsonProperty(PropertyName = "pin_code")]
-        public string PinCode { get; set; }
+        [JsonProperty(PropertyName = "pin_code_assignment")]
+        public List<CardPinAssignment> PinCodeAssignment { get; set; }
 
         /// <summary>
         /// The second line on the card.
@@ -61,10 +62,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Request a card replacement.
         /// </summary>
         /// <param name="nameOnCard">The user's name as it will be on the card. Check 'card-name' for the available card names for a user.</param>
-        /// <param name="pinCode">The plaintext pin code. Requests require encryption to be enabled.</param>
+        /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="secondLine">The second line on the card.</param>
-        public static BunqResponse<int> Create(int cardId, string nameOnCard = null, string pinCode = null,
-            string secondLine = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Create(int cardId, string nameOnCard = null,
+            List<CardPinAssignment> pinCodeAssignment = null, string secondLine = null,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -73,7 +75,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
             {
                 {FIELD_NAME_ON_CARD, nameOnCard},
-                {FIELD_PIN_CODE, pinCode},
+                {FIELD_PIN_CODE_ASSIGNMENT, pinCodeAssignment},
                 {FIELD_SECOND_LINE, secondLine},
             };
 

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.2.0/build/netcoreapp1.0/xunit.runner.reporters.netstandard15.dll" t="Include" />
-    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.2.0/build/netcoreapp1.0/xunit.runner.utility.netstandard15.dll" t="Include" />
-    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.2.0/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/mstest.testadapter/1.4.0/build/_common/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/mstest.testadapter/1.4.0/build/_common/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/mstest.testadapter/1.4.0/build/netcoreapp1.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
-      <e p=".gitignore" t="Include" />
       <e p="BunqSdk" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="BunqSdk.csproj" t="IncludeRecursive" />
@@ -59,6 +61,13 @@
             <e p="Id.cs" t="Include" />
             <e p="Installation.cs" t="Include" />
             <e p="MonetaryAccountReference.cs" t="Include" />
+            <e p="NotificationFilterPushUserInternal.cs" t="Include" />
+            <e p="NotificationFilterUrlMonetaryAccountInternal.cs" t="Include" />
+            <e p="NotificationFilterUrlUserInternal.cs" t="Include" />
+            <e p="OauthAccessToken.cs" t="Include" />
+            <e p="OauthAuthorizationUri.cs" t="Include" />
+            <e p="OauthGrantType.cs" t="Include" />
+            <e p="OauthResponseType.cs" t="Include" />
             <e p="PaymentServiceProviderCredentialInternal.cs" t="Include" />
             <e p="PublicKeyServer.cs" t="Include" />
             <e p="SessionServer.cs" t="Include" />
@@ -89,6 +98,7 @@
               <e p="BunqMeTabResultResponse.cs" t="Include" />
               <e p="Card.cs" t="Include" />
               <e p="CardBatch.cs" t="Include" />
+              <e p="CardCredit.cs" t="Include" />
               <e p="CardDebit.cs" t="Include" />
               <e p="CardGeneratedCvc2.cs" t="Include" />
               <e p="CardName.cs" t="Include" />
@@ -101,8 +111,6 @@
               <e p="ConfirmationOfFunds.cs" t="Include" />
               <e p="Customer.cs" t="Include" />
               <e p="CustomerLimit.cs" t="Include" />
-              <e p="CustomerStatementExport.cs" t="Include" />
-              <e p="CustomerStatementExportContent.cs" t="Include" />
               <e p="Device.cs" t="Include" />
               <e p="DeviceServer.cs" t="Include" />
               <e p="DraftPayment.cs" t="Include" />
@@ -115,6 +123,8 @@
               <e p="ExportAnnualOverviewContent.cs" t="Include" />
               <e p="ExportRib.cs" t="Include" />
               <e p="ExportRibContent.cs" t="Include" />
+              <e p="ExportStatement.cs" t="Include" />
+              <e p="ExportStatementContent.cs" t="Include" />
               <e p="ExportStatementPayment.cs" t="Include" />
               <e p="ExportStatementPaymentContent.cs" t="Include" />
               <e p="FeatureAnnouncement.cs" t="Include" />
@@ -301,15 +311,20 @@
           <e p="RsaParameterTraits.cs" t="Include" />
           <e p="SecurityUtils.cs" t="Include" />
         </e>
+        <e p="Utils" t="Include">
+          <e p="HttpUtils.cs" t="Include" />
+        </e>
       </e>
       <e p="BunqSdk.sln" t="IncludeFlat" />
       <e p="BunqSdk.Tests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="bunq-test.conf" t="Include" />
         <e p="BunqSdk.Tests.csproj" t="IncludeRecursive" />
         <e p="BunqSdkTestBase.cs" t="Include" />
         <e p="Config.cs" t="Include" />
         <e p="Context" t="Include">
           <e p="ApiContextTest.cs" t="Include" />
+          <e p="Psd2ApiContextTest.cs" t="Include" />
         </e>
         <e p="Http" t="Include">
           <e p="PaginationScenarioTest.cs" t="Include" />
@@ -317,6 +332,9 @@
           <e p="ResponseIdOnNotFoundRequestTest.cs" t="Include" />
         </e>
         <e p="Model" t="Include">
+          <e p="Core" t="Include">
+            <e p="NotificationFilterTest.cs" t="Include" />
+          </e>
           <e p="Generated" t="Include">
             <e p="Endpoint" t="Include">
               <e p="AttachmentPublicTest.cs" t="Include" />
@@ -335,7 +353,7 @@
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp1.1" t="Include">
+            <e p="netcoreapp2.2" t="Include">
               <e p="BunqSdk.Tests.AssemblyInfo.cs" t="Include" />
               <e p="BunqSdk.Tests.Program.cs" t="Include" />
             </e>
@@ -344,7 +362,9 @@
         <e p="README.md" t="Include" />
         <e p="Resources" t="Include">
           <e p="bunq_App_Icon_Square@4x.png" t="Include" />
+          <e p="chain.cert" t="Include" />
           <e p="config.example.json" t="Include" />
+          <e p="credentials.pfx" t="Include" />
           <e p="NotificationUrlJsons" t="Include">
             <e p="BunqMeTab.json" t="Include" />
             <e p="ChatMessageAnnouncement.json" t="Include" />
@@ -361,16 +381,16 @@
             <e p="ShareInviteBankResponse.json" t="Include" />
           </e>
         </e>
+        <e p="Util" t="Include">
+          <e p="TestPriorityAttribute.cs" t="Include" />
+          <e p="TestPriorityOrderer.cs" t="Include" />
+        </e>
         <e p="xunit.runner.json" t="Include" />
       </e>
-      <e p="CHANGELOG.md" t="Include" />
-      <e p="CONTRIBUTING.md" t="Include" />
-      <e p="LICENSE.md" t="Include" />
       <e p="packages" t="ExcludeRecursive" />
-      <e p="README.md" t="Include" />
     </e>
-    <e p="$USER_HOME$/Library/Caches/Rider2019.1/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.1/resharper-host/local/Transient/ReSharperHost/v191/SolutionCaches/_BunqSdk.-1311289566.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_BunqSdk.-793722045.00" t="ExcludeRecursive" />
   </component>
   <component name="RiderRiderContentModelStore">
     <excludedPaths />

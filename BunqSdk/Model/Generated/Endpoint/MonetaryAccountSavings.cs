@@ -195,12 +195,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "savings_goal_progress")]
         public double? SavingsGoalProgress { get; set; }
 
+        /// <summary>
+        /// The id of the AutoSave.
+        /// </summary>
+        [JsonProperty(PropertyName = "auto_save_id")]
+        public int? AutoSaveId { get; set; }
+
+        /// <summary>
+        /// The ids of the AutoSave.
+        /// </summary>
+        [JsonProperty(PropertyName = "all_auto_save_id")]
+        public List<BunqId> AllAutoSaveId { get; set; }
+
 
         /// <summary>
         /// Create new MonetaryAccountSavings.
         /// </summary>
         /// <param name="currency">The currency of the MonetaryAccountSavings as an ISO 4217 formatted currency code.</param>
-        /// <param name="savingsGoal">The Savings Goal set for this MonetaryAccountSavings.</param>
         /// <param name="description">The description of the MonetaryAccountSavings. Defaults to 'bunq account'.</param>
         /// <param name="dailyLimit">The daily spending limit Amount of the MonetaryAccountSavings. Defaults to 1000 EUR. Currency must match the MonetaryAccountSavings's currency. Limited to 10000 EUR.</param>
         /// <param name="avatarUuid">The UUID of the Avatar of the MonetaryAccountSavings.</param>
@@ -211,11 +222,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="allCoOwner">The users the account will be joint with.</param>
         /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this MonetaryAccountSavings.</param>
         /// <param name="setting">The settings of the MonetaryAccountSavings.</param>
-        public static BunqResponse<int> Create(string currency, Amount savingsGoal, string description = null,
-            Amount dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null,
-            string reason = null, string reasonDescription = null, List<CoOwner> allCoOwner = null,
+        /// <param name="savingsGoal">The Savings Goal set for this MonetaryAccountSavings.</param>
+        public static BunqResponse<int> Create(string currency, string description = null, Amount dailyLimit = null,
+            string avatarUuid = null, string status = null, string subStatus = null, string reason = null,
+            string reasonDescription = null, List<CoOwner> allCoOwner = null,
             List<NotificationFilter> notificationFilters = null, MonetaryAccountSetting setting = null,
-            IDictionary<string, string> customHeaders = null)
+            Amount savingsGoal = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -437,6 +449,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.SavingsGoalProgress != null)
+            {
+                return false;
+            }
+
+            if (this.AutoSaveId != null)
+            {
+                return false;
+            }
+
+            if (this.AllAutoSaveId != null)
             {
                 return false;
             }

@@ -53,8 +53,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             var cardDebit = CardDebit.Create(
                 GenerateRandomSecondLine(),
                 GetAnAllowedName(),
-                GetAlias(),
                 CardTypeMaestro,
+                GetAlias(),
                 allCardPinAssignments
             ).Value;
 

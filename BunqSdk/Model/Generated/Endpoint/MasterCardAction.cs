@@ -136,6 +136,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string SettlementStatus { get; set; }
 
         /// <summary>
+        /// The clearing status of the authorisation. Can be 'PENDING', 'FIRST_PRESENTMENT_COMPLETE' or
+        /// 'REFUND_LENIENCY'.
+        /// </summary>
+        [JsonProperty(PropertyName = "clearing_status")]
+        public string ClearingStatus { get; set; }
+
+        /// <summary>
         /// The maturity date.
         /// </summary>
         [JsonProperty(PropertyName = "maturity_date")]
@@ -176,6 +183,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "reservation_expiry_time")]
         public string ReservationExpiryTime { get; set; }
+
+        /// <summary>
+        /// The time when the processing of the clearing is expired, refunding the authorisation.
+        /// </summary>
+        [JsonProperty(PropertyName = "clearing_expiry_time")]
+        public string ClearingExpiryTime { get; set; }
 
         /// <summary>
         /// The type of the limit applied to validate if this MasterCardAction was within the spending limits. The
@@ -338,6 +351,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
+            if (this.ClearingStatus != null)
+            {
+                return false;
+            }
+
             if (this.MaturityDate != null)
             {
                 return false;
@@ -369,6 +387,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.ReservationExpiryTime != null)
+            {
+                return false;
+            }
+
+            if (this.ClearingExpiryTime != null)
             {
                 return false;
             }

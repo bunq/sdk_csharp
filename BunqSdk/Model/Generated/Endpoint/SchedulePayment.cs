@@ -37,6 +37,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         private const string OBJECT_TYPE_GET = "ScheduledPayment";
 
+        private const string OBJECT_TYPE_PUT = "ScheduledPayment";
+
         /// <summary>
         /// The payment details.
         /// </summary>
@@ -48,6 +50,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "schedule")]
         public Schedule Schedule { get; set; }
+
+        /// <summary>
+        /// The schedule status, options: ACTIVE, FINISHED, CANCELLED.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
 
 
         /// <summary>
@@ -129,7 +137,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="payment">The payment details.</param>
         /// <param name="schedule">The schedule details when creating or updating a scheduled payment.</param>
-        public static BunqResponse<int> Update(int schedulePaymentId, int? monetaryAccountId = null,
+        public static BunqResponse<SchedulePayment> Update(int schedulePaymentId, int? monetaryAccountId = null,
             SchedulePaymentEntry payment = null, Schedule schedule = null,
             IDictionary<string, string> customHeaders = null)
         {
@@ -149,7 +157,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                     string.Format(ENDPOINT_URL_UPDATE, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId),
                         schedulePaymentId), requestBytes, customHeaders);
 
-            return ProcessForId(responseRaw);
+            return FromJson<SchedulePayment>(responseRaw, OBJECT_TYPE_PUT);
         }
 
 
@@ -163,6 +171,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.Schedule != null)
+            {
+                return false;
+            }
+
+            if (this.Status != null)
             {
                 return false;
             }

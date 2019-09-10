@@ -179,6 +179,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "monetary_account_profile")]
         public MonetaryAccountProfile MonetaryAccountProfile { get; set; }
 
+        /// <summary>
+        /// The id of the AutoSave.
+        /// </summary>
+        [JsonProperty(PropertyName = "auto_save_id")]
+        public int? AutoSaveId { get; set; }
+
+        /// <summary>
+        /// The ids of the AutoSave.
+        /// </summary>
+        [JsonProperty(PropertyName = "all_auto_save_id")]
+        public List<BunqId> AllAutoSaveId { get; set; }
+
 
         /// <summary>
         /// Create new MonetaryAccountBank.
@@ -397,6 +409,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.Setting != null)
+            {
+                return false;
+            }
+
+            if (this.AutoSaveId != null)
+            {
+                return false;
+            }
+
+            if (this.AllAutoSaveId != null)
             {
                 return false;
             }
