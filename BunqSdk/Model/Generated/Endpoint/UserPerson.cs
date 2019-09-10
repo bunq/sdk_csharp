@@ -21,12 +21,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user-person/{0}";
+
         protected const string ENDPOINT_URL_UPDATE = "user-person/{0}";
-    
+
         /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_FIRST_NAME = "first_name";
+
         public const string FIELD_MIDDLE_NAME = "middle_name";
         public const string FIELD_LAST_NAME = "last_name";
         public const string FIELD_PUBLIC_NICK_NAME = "public_nick_name";
@@ -53,239 +55,240 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
         public const string FIELD_DISPLAY_NAME = "display_name";
-    
+
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "UserPerson";
-    
+
         /// <summary>
         /// The person's first name.
         /// </summary>
         [JsonProperty(PropertyName = "first_name")]
         public string FirstName { get; set; }
-    
+
         /// <summary>
         /// The person's middle name.
         /// </summary>
         [JsonProperty(PropertyName = "middle_name")]
         public string MiddleName { get; set; }
-    
+
         /// <summary>
         /// The person's last name.
         /// </summary>
         [JsonProperty(PropertyName = "last_name")]
         public string LastName { get; set; }
-    
+
         /// <summary>
         /// The public nick name for the person.
         /// </summary>
         [JsonProperty(PropertyName = "public_nick_name")]
         public string PublicNickName { get; set; }
-    
+
         /// <summary>
         /// The person's main address.
         /// </summary>
         [JsonProperty(PropertyName = "address_main")]
         public Address AddressMain { get; set; }
-    
+
         /// <summary>
         /// The person's postal address.
         /// </summary>
         [JsonProperty(PropertyName = "address_postal")]
         public Address AddressPostal { get; set; }
-    
+
         /// <summary>
         /// The public UUID of the user's avatar.
         /// </summary>
         [JsonProperty(PropertyName = "avatar_uuid")]
         public string AvatarUuid { get; set; }
-    
+
         /// <summary>
         /// The user's tax residence numbers for different countries.
         /// </summary>
         [JsonProperty(PropertyName = "tax_resident")]
         public List<TaxResident> TaxResident { get; set; }
-    
+
         /// <summary>
         /// The type of identification document the person registered with.
         /// </summary>
         [JsonProperty(PropertyName = "document_type")]
         public string DocumentType { get; set; }
-    
+
         /// <summary>
         /// The identification document number the person registered with.
         /// </summary>
         [JsonProperty(PropertyName = "document_number")]
         public string DocumentNumber { get; set; }
-    
+
         /// <summary>
         /// The country which issued the identification document the person registered with.
         /// </summary>
         [JsonProperty(PropertyName = "document_country_of_issuance")]
         public string DocumentCountryOfIssuance { get; set; }
-    
+
         /// <summary>
         /// The reference to the uploaded picture/scan of the front side of the identification document.
         /// </summary>
         [JsonProperty(PropertyName = "document_front_attachment_id")]
         public int? DocumentFrontAttachmentId { get; set; }
-    
+
         /// <summary>
         /// The reference to the uploaded picture/scan of the back side of the identification document.
         /// </summary>
         [JsonProperty(PropertyName = "document_back_attachment_id")]
         public int? DocumentBackAttachmentId { get; set; }
-    
+
         /// <summary>
         /// The person's date of birth. Accepts ISO8601 date formats.
         /// </summary>
         [JsonProperty(PropertyName = "date_of_birth")]
         public string DateOfBirth { get; set; }
-    
+
         /// <summary>
         /// The person's place of birth.
         /// </summary>
         [JsonProperty(PropertyName = "place_of_birth")]
         public string PlaceOfBirth { get; set; }
-    
+
         /// <summary>
         /// The person's country of birth. Formatted as a SO 3166-1 alpha-2 country code.
         /// </summary>
         [JsonProperty(PropertyName = "country_of_birth")]
         public string CountryOfBirth { get; set; }
-    
+
         /// <summary>
         /// The person's nationality. Formatted as a SO 3166-1 alpha-2 country code.
         /// </summary>
         [JsonProperty(PropertyName = "nationality")]
         public string Nationality { get; set; }
-    
+
         /// <summary>
         /// The person's preferred language. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
         /// code, seperated by an underscore.
         /// </summary>
         [JsonProperty(PropertyName = "language")]
         public string Language { get; set; }
-    
+
         /// <summary>
         /// The person's preferred region. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
         /// code, seperated by an underscore.
         /// </summary>
         [JsonProperty(PropertyName = "region")]
         public string Region { get; set; }
-    
+
         /// <summary>
         /// The person's gender. Can be MALE, FEMALE or UNKNOWN.
         /// </summary>
         [JsonProperty(PropertyName = "gender")]
         public string Gender { get; set; }
-    
+
         /// <summary>
         /// The user status. The user status. Can be: ACTIVE, BLOCKED, SIGNUP, RECOVERY, DENIED or ABORTED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
+
         /// <summary>
         /// The user sub-status. Can be: NONE, FACE_RESET, APPROVAL, APPROVAL_DIRECTOR, APPROVAL_PARENT,
         /// APPROVAL_SUPPORT, COUNTER_IBAN, IDEAL or SUBMIT.
         /// </summary>
         [JsonProperty(PropertyName = "sub_status")]
         public string SubStatus { get; set; }
-    
+
         /// <summary>
         /// The legal guardian of the user. Required for minors.
         /// </summary>
         [JsonProperty(PropertyName = "legal_guardian_alias")]
         public MonetaryAccountReference LegalGuardianAlias { get; set; }
-    
+
         /// <summary>
         /// The setting for the session timeout of the user in seconds.
         /// </summary>
         [JsonProperty(PropertyName = "session_timeout")]
         public int? SessionTimeout { get; set; }
-    
+
         /// <summary>
         /// The amount the user can pay in the session without asking for credentials.
         /// </summary>
         [JsonProperty(PropertyName = "daily_limit_without_confirmation_login")]
         public Amount DailyLimitWithoutConfirmationLogin { get; set; }
-    
+
         /// <summary>
         /// The types of notifications that will result in a push notification or URL callback for this UserPerson.
         /// </summary>
         [JsonProperty(PropertyName = "notification_filters")]
         public List<NotificationFilter> NotificationFilters { get; set; }
-    
+
         /// <summary>
         /// The display name for the person.
         /// </summary>
         [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
-    
+
         /// <summary>
         /// The id of the modified person object.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
+
         /// <summary>
         /// The timestamp of the person object's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
+
         /// <summary>
         /// The timestamp of the person object's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
+
         /// <summary>
         /// The person's public UUID.
         /// </summary>
         [JsonProperty(PropertyName = "public_uuid")]
         public string PublicUuid { get; set; }
-    
+
         /// <summary>
         /// The person's legal name.
         /// </summary>
         [JsonProperty(PropertyName = "legal_name")]
         public string LegalName { get; set; }
-    
+
         /// <summary>
         /// The aliases of the user.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public List<Pointer> Alias { get; set; }
-    
+
         /// <summary>
         /// The user's avatar.
         /// </summary>
         [JsonProperty(PropertyName = "avatar")]
         public Avatar Avatar { get; set; }
-    
+
         /// <summary>
         /// The version of the terms of service accepted by the user.
         /// </summary>
         [JsonProperty(PropertyName = "version_terms_of_service")]
         public string VersionTermsOfService { get; set; }
-    
-    
+
+
         /// <summary>
         /// Get a specific person.
         /// </summary>
-        public static BunqResponse<UserPerson> Get( IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<UserPerson> Get(IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
+
             var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId()), new Dictionary<string, string>(), customHeaders);
-    
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId()),
+                new Dictionary<string, string>(), customHeaders);
+
             return FromJson<UserPerson>(responseRaw, OBJECT_TYPE_GET);
         }
-    
+
         /// <summary>
         /// Modify a specific person object's data.
         /// </summary>
@@ -316,50 +319,60 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="dailyLimitWithoutConfirmationLogin">The amount the user can pay in the session without asking for credentials.</param>
         /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this UserPerson.</param>
         /// <param name="displayName">The person's legal name. Available legal names can be listed via the 'user/{user_id}/legal-name' endpoint.</param>
-        public static BunqResponse<int> Update(string firstName = null, string middleName = null, string lastName = null, string publicNickName = null, Address addressMain = null, Address addressPostal = null, string avatarUuid = null, List<TaxResident> taxResident = null, string documentType = null, string documentNumber = null, string documentCountryOfIssuance = null, int? documentFrontAttachmentId = null, int? documentBackAttachmentId = null, string dateOfBirth = null, string placeOfBirth = null, string countryOfBirth = null, string nationality = null, string language = null, string region = null, string gender = null, string status = null, string subStatus = null, Pointer legalGuardianAlias = null, int? sessionTimeout = null, Amount dailyLimitWithoutConfirmationLogin = null, List<NotificationFilter> notificationFilters = null, string displayName = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(string firstName = null, string middleName = null,
+            string lastName = null, string publicNickName = null, Address addressMain = null,
+            Address addressPostal = null, string avatarUuid = null, List<TaxResident> taxResident = null,
+            string documentType = null, string documentNumber = null, string documentCountryOfIssuance = null,
+            int? documentFrontAttachmentId = null, int? documentBackAttachmentId = null, string dateOfBirth = null,
+            string placeOfBirth = null, string countryOfBirth = null, string nationality = null, string language = null,
+            string region = null, string gender = null, string status = null, string subStatus = null,
+            Pointer legalGuardianAlias = null, int? sessionTimeout = null,
+            Amount dailyLimitWithoutConfirmationLogin = null, List<NotificationFilter> notificationFilters = null,
+            string displayName = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
+
             var apiClient = new ApiClient(GetApiContext());
-    
+
             var requestMap = new Dictionary<string, object>
-    {
-    {FIELD_FIRST_NAME, firstName},
-    {FIELD_MIDDLE_NAME, middleName},
-    {FIELD_LAST_NAME, lastName},
-    {FIELD_PUBLIC_NICK_NAME, publicNickName},
-    {FIELD_ADDRESS_MAIN, addressMain},
-    {FIELD_ADDRESS_POSTAL, addressPostal},
-    {FIELD_AVATAR_UUID, avatarUuid},
-    {FIELD_TAX_RESIDENT, taxResident},
-    {FIELD_DOCUMENT_TYPE, documentType},
-    {FIELD_DOCUMENT_NUMBER, documentNumber},
-    {FIELD_DOCUMENT_COUNTRY_OF_ISSUANCE, documentCountryOfIssuance},
-    {FIELD_DOCUMENT_FRONT_ATTACHMENT_ID, documentFrontAttachmentId},
-    {FIELD_DOCUMENT_BACK_ATTACHMENT_ID, documentBackAttachmentId},
-    {FIELD_DATE_OF_BIRTH, dateOfBirth},
-    {FIELD_PLACE_OF_BIRTH, placeOfBirth},
-    {FIELD_COUNTRY_OF_BIRTH, countryOfBirth},
-    {FIELD_NATIONALITY, nationality},
-    {FIELD_LANGUAGE, language},
-    {FIELD_REGION, region},
-    {FIELD_GENDER, gender},
-    {FIELD_STATUS, status},
-    {FIELD_SUB_STATUS, subStatus},
-    {FIELD_LEGAL_GUARDIAN_ALIAS, legalGuardianAlias},
-    {FIELD_SESSION_TIMEOUT, sessionTimeout},
-    {FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN, dailyLimitWithoutConfirmationLogin},
-    {FIELD_NOTIFICATION_FILTERS, notificationFilters},
-    {FIELD_DISPLAY_NAME, displayName},
-    };
-    
+            {
+                {FIELD_FIRST_NAME, firstName},
+                {FIELD_MIDDLE_NAME, middleName},
+                {FIELD_LAST_NAME, lastName},
+                {FIELD_PUBLIC_NICK_NAME, publicNickName},
+                {FIELD_ADDRESS_MAIN, addressMain},
+                {FIELD_ADDRESS_POSTAL, addressPostal},
+                {FIELD_AVATAR_UUID, avatarUuid},
+                {FIELD_TAX_RESIDENT, taxResident},
+                {FIELD_DOCUMENT_TYPE, documentType},
+                {FIELD_DOCUMENT_NUMBER, documentNumber},
+                {FIELD_DOCUMENT_COUNTRY_OF_ISSUANCE, documentCountryOfIssuance},
+                {FIELD_DOCUMENT_FRONT_ATTACHMENT_ID, documentFrontAttachmentId},
+                {FIELD_DOCUMENT_BACK_ATTACHMENT_ID, documentBackAttachmentId},
+                {FIELD_DATE_OF_BIRTH, dateOfBirth},
+                {FIELD_PLACE_OF_BIRTH, placeOfBirth},
+                {FIELD_COUNTRY_OF_BIRTH, countryOfBirth},
+                {FIELD_NATIONALITY, nationality},
+                {FIELD_LANGUAGE, language},
+                {FIELD_REGION, region},
+                {FIELD_GENDER, gender},
+                {FIELD_STATUS, status},
+                {FIELD_SUB_STATUS, subStatus},
+                {FIELD_LEGAL_GUARDIAN_ALIAS, legalGuardianAlias},
+                {FIELD_SESSION_TIMEOUT, sessionTimeout},
+                {FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN, dailyLimitWithoutConfirmationLogin},
+                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
+                {FIELD_DISPLAY_NAME, displayName},
+            };
+
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, DetermineUserId()), requestBytes, customHeaders);
-    
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, DetermineUserId()), requestBytes,
+                customHeaders);
+
             return ProcessForId(responseRaw);
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -368,160 +381,160 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
             if (this.Created != null)
             {
                 return false;
             }
-    
+
             if (this.Updated != null)
             {
                 return false;
             }
-    
+
             if (this.PublicUuid != null)
             {
                 return false;
             }
-    
+
             if (this.FirstName != null)
             {
                 return false;
             }
-    
+
             if (this.MiddleName != null)
             {
                 return false;
             }
-    
+
             if (this.LastName != null)
             {
                 return false;
             }
-    
+
             if (this.LegalName != null)
             {
                 return false;
             }
-    
+
             if (this.DisplayName != null)
             {
                 return false;
             }
-    
+
             if (this.PublicNickName != null)
             {
                 return false;
             }
-    
+
             if (this.Alias != null)
             {
                 return false;
             }
-    
+
             if (this.TaxResident != null)
             {
                 return false;
             }
-    
+
             if (this.DocumentType != null)
             {
                 return false;
             }
-    
+
             if (this.DocumentNumber != null)
             {
                 return false;
             }
-    
+
             if (this.DocumentCountryOfIssuance != null)
             {
                 return false;
             }
-    
+
             if (this.AddressMain != null)
             {
                 return false;
             }
-    
+
             if (this.AddressPostal != null)
             {
                 return false;
             }
-    
+
             if (this.DateOfBirth != null)
             {
                 return false;
             }
-    
+
             if (this.PlaceOfBirth != null)
             {
                 return false;
             }
-    
+
             if (this.CountryOfBirth != null)
             {
                 return false;
             }
-    
+
             if (this.Nationality != null)
             {
                 return false;
             }
-    
+
             if (this.Language != null)
             {
                 return false;
             }
-    
+
             if (this.Region != null)
             {
                 return false;
             }
-    
+
             if (this.Gender != null)
             {
                 return false;
             }
-    
+
             if (this.Avatar != null)
             {
                 return false;
             }
-    
+
             if (this.VersionTermsOfService != null)
             {
                 return false;
             }
-    
+
             if (this.Status != null)
             {
                 return false;
             }
-    
+
             if (this.SubStatus != null)
             {
                 return false;
             }
-    
+
             if (this.SessionTimeout != null)
             {
                 return false;
             }
-    
+
             if (this.DailyLimitWithoutConfirmationLogin != null)
             {
                 return false;
             }
-    
+
             if (this.NotificationFilters != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static UserPerson CreateFromJsonString(string json)

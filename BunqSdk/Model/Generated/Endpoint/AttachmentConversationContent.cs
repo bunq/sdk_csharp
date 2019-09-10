@@ -19,33 +19,36 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/chat-conversation/{1}/attachment/{2}/content";
-    
+
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "AttachmentConversationContent";
-    
+
         /// <summary>
         /// Get the raw content of a specific attachment.
         /// </summary>
-        public static BunqResponse<byte[]> List(int chatConversationId, int attachmentId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<byte[]> List(int chatConversationId, int attachmentId,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
+
             var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId(), chatConversationId, attachmentId), new Dictionary<string, string>(), customHeaders);
-    
+            var responseRaw =
+                apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId(), chatConversationId, attachmentId),
+                    new Dictionary<string, string>(), customHeaders);
+
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static AttachmentConversationContent CreateFromJsonString(string json)

@@ -9,14 +9,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// </summary>
     public class Whitelist : BunqModel
     {
-    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static Whitelist CreateFromJsonString(string json)

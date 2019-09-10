@@ -14,20 +14,19 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
-    
-    
+
+
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "Payment")]
         public Payment Payment { get; set; }
-    
+
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "PaymentBatch")]
         public PaymentBatch PaymentBatch { get; set; }
-    
-    
-    
+
+
         /// <summary>
         /// </summary>
         public BunqModel GetReferencedObject()
@@ -36,15 +35,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return this.Payment;
             }
-    
+
             if (this.PaymentBatch != null)
             {
                 return this.PaymentBatch;
             }
-    
+
             throw new BunqException(ERROR_NULL_FIELDS);
         }
-    
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -53,15 +52,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-    
+
             if (this.PaymentBatch != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static ScheduleInstanceAnchorObject CreateFromJsonString(string json)

@@ -17,15 +17,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "share_invite_bank_inquiries")]
         public List<ShareInviteBankInquiry> ShareInviteBankInquiries { get; set; }
-    
+
         /// <summary>
         /// The LabelMonetaryAccount containing the public information of this share invite inquiry batch.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public MonetaryAccountReference Alias { get; set; }
-    
-    
-    
+
+
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -34,15 +33,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-    
+
             if (this.Alias != null)
             {
                 return false;
             }
-    
+
             return true;
         }
-    
+
         /// <summary>
         /// </summary>
         public static ShareInviteBankInquiryBatch CreateFromJsonString(string json)
