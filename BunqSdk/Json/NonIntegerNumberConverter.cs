@@ -20,7 +20,7 @@ namespace Bunq.Sdk.Json
             }
             else
             {
-                writer.WriteValue(((decimal) value).ToString(FORMAT_DECIMAL));
+                writer.WriteValue(((double) value).ToString(FORMAT_DECIMAL));
             }
         }
 
@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Json
 
             if (jToken.Type == JTokenType.String)
             {
-                return jToken.ToObject<decimal>();
+                return jToken.ToObject<double>();
             }
 
             return null;

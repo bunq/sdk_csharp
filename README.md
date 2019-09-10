@@ -57,6 +57,34 @@ to/restored from the `bunq.conf` file in the same folder with your executable.
 #### Example
 For an example, see this [tinker snippet](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/Lib/BunqLib.cs#L59-L82)
 
+
+##### PSD2
+It is possible to create an ApiContext as PSD2 Service Provider. Although this might seem a complex task, we wrote some helper implementations to get you started.
+You need to create a certificate and private key to get you started. Our sandbox environment currently accepts all certificates, if these criteria are met:
+- Up to 64 characters
+- PISP and/or AISP used in the end.
+ 
+Make sure you have your unique eIDAS certificate number and certificates ready when you want to perform these tasks on our production environment. 
+Due to the implementation used in this SDK, you should create a .pfx credentials file containing your certificate and private key.
+Creating a pfx file can be done with the following command: `openssl pkcs12 -inkey private.pem -in cert.cert -export -out credentials.pfx
+`
+
+Creating a PSD2 context is very easy:
+```c#
+ApiContext apiContext = ApiContext.CreateForPsd2(
+    ApiEnvironmentType.SANDBOX, // Could be ApiEnvironmentType.PRODUCTION as well
+    SecurityUtils.GetCertificateFromFile(FILE_TEST_CREDENTIALS, TEST_PASSPHRASE_CREDENTIALS),
+    SecurityUtils.GetCertificateCollectionFromAllPath(
+        new[] { FILE_TEST_CERTIFICATE_CHAIN }
+    ),
+    TEST_DEVICE_DESCRIPTION,
+    new List<string>()
+)
+```
+
+This context can be saved the same way as a normal ApiContext. After creating this context, create an OAuth client to get your users to grant you access.
+For a more detailed example, check the [tinker_csharp](https://github.com/bunq/tinker_csharp/) repository.
+
 #### Safety considerations
 The file storing the context details (i.e. `bunq.conf`) is a key to your account. Anyone having
 access to it is able to perform any Public API actions with your account. Therefore, we recommend
@@ -81,6 +109,18 @@ When creating an object, the default response will be the id of the newly create
 For an example, see this [tinker snippet](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/MakePayment.cs#L31)
 
 See [`PaymentSample.cs`](https://github.com/bunq/tinker_csharp/blob/4f57a3c598480788f01c955ae46311283409d130/TinkerSrc/MakePayment.cs)
+
+##### NotificationFilters / Callbacks
+**Note!** Due to an in internal change in the way we handle `NotificationFilters` (Callbacks), you should not use the default classes included in this SDK. 
+Please make sure you make use of the associated `Internal`-classes. For example when you need `NotificationFilterUrlUser`, make use of `NotificationFilterUrlUserInternal`.
+You can use every method of these classes, except for the `create()` method. **Always use `createWithListResponse()` instead.**
+
+##### Example
+```java
+NotificationFilterPushUserInternal.CreateWithListResponse(...)
+NotificationFilterUrlUserInternal.CreateWithListResponse(...)
+NotificationFilterUrlMonetaryAccountInternal.CreateWithListResponse(...)
+```
 
 #### Reading objects
 Reading objects can be done via get and list methods. For get a specific object id is needed while for list will return a list of objects.

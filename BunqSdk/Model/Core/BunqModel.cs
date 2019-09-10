@@ -132,9 +132,12 @@ namespace Bunq.Sdk.Model.Core
 
         private static Pagination DeserializePagination(JObject responseObject)
         {
-            var paginationBody = responseObject.GetValue(FIELD_PAGINATION).ToString();
+            if (responseObject.TryGetValue(FIELD_PAGINATION, out var paginationBodyToken))
+            {
+                return BunqJsonConvert.DeserializeObject<Pagination>(paginationBodyToken.ToString());
+            }
 
-            return BunqJsonConvert.DeserializeObject<Pagination>(paginationBody);
+            return null;
         }
 
         private static JObject DeserializeResponseObject(BunqResponseRaw responseRaw)

@@ -14,24 +14,25 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
-
-
+    
+    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "UserPerson")]
         public UserPerson UserPerson { get; set; }
-
+    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "UserCompany")]
         public UserCompany UserCompany { get; set; }
-
+    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "UserPaymentServiceProvider")]
         public UserPaymentServiceProvider UserPaymentServiceProvider { get; set; }
-
-
+    
+    
+    
         /// <summary>
         /// </summary>
         public BunqModel GetReferencedObject()
@@ -40,20 +41,20 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return this.UserPerson;
             }
-
+    
             if (this.UserCompany != null)
             {
                 return this.UserCompany;
             }
-
+    
             if (this.UserPaymentServiceProvider != null)
             {
                 return this.UserPaymentServiceProvider;
             }
-
+    
             throw new BunqException(ERROR_NULL_FIELDS);
         }
-
+    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -62,20 +63,20 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-
+    
             if (this.UserCompany != null)
             {
                 return false;
             }
-
+    
             if (this.UserPaymentServiceProvider != null)
             {
                 return false;
             }
-
+    
             return true;
         }
-
+    
         /// <summary>
         /// </summary>
         public static UserApiKeyAnchoredUser CreateFromJsonString(string json)

@@ -19,37 +19,34 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/draft-share-invite-bank/{1}/qr-code-content";
-
+    
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "DraftShareInviteBankQrCodeContent";
-
+    
         /// <summary>
         /// Returns the raw content of the QR code that links to this draft share invite. The raw content is the binary
         /// representation of a file, without any JSON wrapping.
         /// </summary>
-        public static BunqResponse<byte[]> List(int draftShareInviteBankId,
-            IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<byte[]> List(int draftShareInviteBankId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-
+    
             var apiClient = new ApiClient(GetApiContext());
-            var responseRaw =
-                apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId(), draftShareInviteBankId),
-                    new Dictionary<string, string>(), customHeaders);
-
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId(), draftShareInviteBankId), new Dictionary<string, string>(), customHeaders);
+    
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
-
-
+    
+    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
             return true;
         }
-
+    
         /// <summary>
         /// </summary>
         public static DraftShareInviteBankQrCodeContent CreateFromJsonString(string json)

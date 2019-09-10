@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Json
                 {
                     ContractResolver = new BunqContractResolver(new List<Type> {typeof(IAnchorObjectInterface)}),
                     DateFormatString = FORMAT_DATE,
-                    FloatParseHandling = FloatParseHandling.Decimal,
+                    FloatParseHandling = FloatParseHandling.Double,
                     Formatting = Formatting.Indented,
                     NullValueHandling = NullValueHandling.Ignore,
                 }
