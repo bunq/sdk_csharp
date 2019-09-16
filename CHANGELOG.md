@@ -2,7 +2,18 @@
 
 ## [Unreleased](https://github.com/bunq/sdk_csharp/tree/HEAD)
 
-[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.16...HEAD)
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.12.0...HEAD)
+
+**Closed issues:**
+
+- BunqMeTab result\_inquiries empty [\#129](https://github.com/bunq/sdk_csharp/issues/129)
+
+**Merged pull requests:**
+
+- Added custom object deserializer for BunqMeTabResultInquiry [\#130](https://github.com/bunq/sdk_csharp/pull/130) ([NickvandeGroes](https://github.com/NickvandeGroes))
+
+## [1.12.0](https://github.com/bunq/sdk_csharp/tree/1.12.0) (2019-09-10)
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.16...1.12.0)
 
 **Closed issues:**
 
@@ -89,7 +100,6 @@
 **Merged pull requests:**
 
 - Added travis config.  \(bunq/sdk\_csharp\#90\) [\#110](https://github.com/bunq/sdk_csharp/pull/110) ([OGKevin](https://github.com/OGKevin))
-- Change Java to Csharp in readme. \(bunq/sdk\_csharp\#97\) [\#98](https://github.com/bunq/sdk_csharp/pull/98) ([robinvanpoppel](https://github.com/robinvanpoppel))
 - Oauth bunq/sdk\_csharp\#112 [\#113](https://github.com/bunq/sdk_csharp/pull/113) ([OGKevin](https://github.com/OGKevin))
 - Auto reload context bunq/sdk\_csharp\#72 [\#111](https://github.com/bunq/sdk_csharp/pull/111) ([OGKevin](https://github.com/OGKevin))
 -  Updated the examples on readme. \(bunq/sdk\_csharp\#91\) [\#109](https://github.com/bunq/sdk_csharp/pull/109) ([OGKevin](https://github.com/OGKevin))
@@ -101,6 +111,10 @@
 
 ## [0.13.1](https://github.com/bunq/sdk_csharp/tree/0.13.1) (2018-05-30)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.13.0...0.13.1)
+
+**Merged pull requests:**
+
+- Change Java to Csharp in readme. \(bunq/sdk\_csharp\#97\) [\#98](https://github.com/bunq/sdk_csharp/pull/98) ([robinvanpoppel](https://github.com/robinvanpoppel))
 
 ## [0.13.0](https://github.com/bunq/sdk_csharp/tree/0.13.0) (2018-03-20)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.4...0.13.0)
@@ -117,6 +131,7 @@
 - Token request ideal is missing id attribute in response. [\#76](https://github.com/bunq/sdk_csharp/issues/76)
 - Field ID is missing from MasterCardAction [\#52](https://github.com/bunq/sdk_csharp/issues/52)
 - TokenQrRequestIdeal returns the wrong type [\#51](https://github.com/bunq/sdk_csharp/issues/51)
+- Fix SessionServerConverter, bump up to 0.9.2.0-beta \[\#7\] [\#8](https://github.com/bunq/sdk_csharp/pull/8) ([dnl-blkv](https://github.com/dnl-blkv))
 
 **Closed issues:**
 
@@ -250,10 +265,6 @@
 **Implemented enhancements:**
 
 - \#5 Introduce BunqResponse [\#6](https://github.com/bunq/sdk_csharp/pull/6) ([dnl-blkv](https://github.com/dnl-blkv))
-
-**Fixed bugs:**
-
-- Fix SessionServerConverter, bump up to 0.9.2.0-beta \[\#7\] [\#8](https://github.com/bunq/sdk_csharp/pull/8) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.9.1](https://github.com/bunq/sdk_csharp/tree/0.9.1) (2017-08-07)
 **Implemented enhancements:**

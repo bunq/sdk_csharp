@@ -32,6 +32,7 @@ namespace Bunq.Sdk.Json
             RegisterConverter(typeof(float?), new NonIntegerNumberConverter());
             RegisterConverter(typeof(Pagination), new PaginationConverter());
             RegisterConverter(typeof(IAnchorObjectInterface), new AnchorObjectConverter());
+            RegisterConverter(typeof(BunqMeTabResultInquiry), new BunqMeTabResultInquiryConverter());
 
             if (typesToExclude == null)
             {
