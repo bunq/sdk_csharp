@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/bunq/sdk_csharp/tree/HEAD)
-
-[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.12.0...HEAD)
+## [1.12.1](https://github.com/bunq/sdk_csharp/tree/1.12.1) (2019-09-16)
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.12.0...1.12.1)
 
 **Closed issues:**
 
@@ -131,7 +130,6 @@
 - Token request ideal is missing id attribute in response. [\#76](https://github.com/bunq/sdk_csharp/issues/76)
 - Field ID is missing from MasterCardAction [\#52](https://github.com/bunq/sdk_csharp/issues/52)
 - TokenQrRequestIdeal returns the wrong type [\#51](https://github.com/bunq/sdk_csharp/issues/51)
-- Fix SessionServerConverter, bump up to 0.9.2.0-beta \[\#7\] [\#8](https://github.com/bunq/sdk_csharp/pull/8) ([dnl-blkv](https://github.com/dnl-blkv))
 
 **Closed issues:**
 
@@ -228,6 +226,7 @@
 
 - cleanup after 24-improve-namespaces [\#27](https://github.com/bunq/sdk_csharp/pull/27) ([dnl-blkv](https://github.com/dnl-blkv))
 - Improve namespaces; cleanup \[\#24\] [\#25](https://github.com/bunq/sdk_csharp/pull/25) ([dnl-blkv](https://github.com/dnl-blkv))
+- cleanup C\# SDK \[\#11\] [\#12](https://github.com/bunq/sdk_csharp/pull/12) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.11.0](https://github.com/bunq/sdk_csharp/tree/0.11.0) (2017-09-06)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.10.0...0.11.0)
@@ -256,7 +255,6 @@
 
 **Merged pull requests:**
 
-- cleanup C\# SDK \[\#11\] [\#12](https://github.com/bunq/sdk_csharp/pull/12) ([dnl-blkv](https://github.com/dnl-blkv))
 - Merge hotfixed master back to develop [\#10](https://github.com/bunq/sdk_csharp/pull/10) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.9.2](https://github.com/bunq/sdk_csharp/tree/0.9.2) (2017-08-18)
@@ -265,6 +263,10 @@
 **Implemented enhancements:**
 
 - \#5 Introduce BunqResponse [\#6](https://github.com/bunq/sdk_csharp/pull/6) ([dnl-blkv](https://github.com/dnl-blkv))
+
+**Fixed bugs:**
+
+- Fix SessionServerConverter, bump up to 0.9.2.0-beta \[\#7\] [\#8](https://github.com/bunq/sdk_csharp/pull/8) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.9.1](https://github.com/bunq/sdk_csharp/tree/0.9.1) (2017-08-07)
 **Implemented enhancements:**
