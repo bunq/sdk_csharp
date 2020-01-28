@@ -53,7 +53,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_LEGAL_GUARDIAN_ALIAS = "legal_guardian_alias";
         public const string FIELD_SESSION_TIMEOUT = "session_timeout";
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
-        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
         public const string FIELD_DISPLAY_NAME = "display_name";
 
         /// <summary>
@@ -215,12 +214,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount DailyLimitWithoutConfirmationLogin { get; set; }
 
         /// <summary>
-        /// The types of notifications that will result in a push notification or URL callback for this UserPerson.
-        /// </summary>
-        [JsonProperty(PropertyName = "notification_filters")]
-        public List<NotificationFilter> NotificationFilters { get; set; }
-
-        /// <summary>
         /// The display name for the person.
         /// </summary>
         [JsonProperty(PropertyName = "display_name")]
@@ -274,6 +267,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "version_terms_of_service")]
         public string VersionTermsOfService { get; set; }
 
+        /// <summary>
+        /// The types of notifications that will result in a push notification or URL callback for this UserPerson.
+        /// </summary>
+        [JsonProperty(PropertyName = "notification_filters")]
+        public List<NotificationFilter> NotificationFilters { get; set; }
+
 
         /// <summary>
         /// Get a specific person.
@@ -317,7 +316,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="legalGuardianAlias">The legal guardian of the user. Required for minors.</param>
         /// <param name="sessionTimeout">The setting for the session timeout of the user in seconds.</param>
         /// <param name="dailyLimitWithoutConfirmationLogin">The amount the user can pay in the session without asking for credentials.</param>
-        /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this UserPerson.</param>
         /// <param name="displayName">The person's legal name. Available legal names can be listed via the 'user/{user_id}/legal-name' endpoint.</param>
         public static BunqResponse<int> Update(string firstName = null, string middleName = null,
             string lastName = null, string publicNickName = null, Address addressMain = null,
@@ -327,8 +325,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             string placeOfBirth = null, string countryOfBirth = null, string nationality = null, string language = null,
             string region = null, string gender = null, string status = null, string subStatus = null,
             Pointer legalGuardianAlias = null, int? sessionTimeout = null,
-            Amount dailyLimitWithoutConfirmationLogin = null, List<NotificationFilter> notificationFilters = null,
-            string displayName = null, IDictionary<string, string> customHeaders = null)
+            Amount dailyLimitWithoutConfirmationLogin = null, string displayName = null,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -361,7 +359,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_LEGAL_GUARDIAN_ALIAS, legalGuardianAlias},
                 {FIELD_SESSION_TIMEOUT, sessionTimeout},
                 {FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN, dailyLimitWithoutConfirmationLogin},
-                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
                 {FIELD_DISPLAY_NAME, displayName},
             };
 

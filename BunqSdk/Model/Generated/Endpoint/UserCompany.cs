@@ -43,7 +43,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SUB_STATUS = "sub_status";
         public const string FIELD_SESSION_TIMEOUT = "session_timeout";
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
-        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
 
         /// <summary>
         /// Object type.
@@ -144,12 +143,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount DailyLimitWithoutConfirmationLogin { get; set; }
 
         /// <summary>
-        /// The types of notifications that will result in a push notification or URL callback for this UserCompany.
-        /// </summary>
-        [JsonProperty(PropertyName = "notification_filters")]
-        public List<NotificationFilter> NotificationFilters { get; set; }
-
-        /// <summary>
         /// The id of the modified company.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -222,6 +215,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public LabelUser DirectorAlias { get; set; }
 
         /// <summary>
+        /// The types of notifications that will result in a push notification or URL callback for this UserCompany.
+        /// </summary>
+        [JsonProperty(PropertyName = "notification_filters")]
+        public List<NotificationFilter> NotificationFilters { get; set; }
+
+        /// <summary>
         /// The customer profile of the company.
         /// </summary>
         [JsonProperty(PropertyName = "customer")]
@@ -238,6 +237,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "billing_contract")]
         public List<BillingContractSubscription> BillingContract { get; set; }
+
+        /// <summary>
+        /// The user deny reason.
+        /// </summary>
+        [JsonProperty(PropertyName = "deny_reason")]
+        public string DenyReason { get; set; }
 
 
         /// <summary>
@@ -272,13 +277,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="subStatus">The user sub-status. Can be: NONE, FACE_RESET, APPROVAL, APPROVAL_DIRECTOR, APPROVAL_PARENT, APPROVAL_SUPPORT, COUNTER_IBAN, IDEAL or SUBMIT.</param>
         /// <param name="sessionTimeout">The setting for the session timeout of the company in seconds.</param>
         /// <param name="dailyLimitWithoutConfirmationLogin">The amount the company can pay in the session without asking for credentials.</param>
-        /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this UserCompany.</param>
         public static BunqResponse<int> Update(string name = null, string publicNickName = null,
             string avatarUuid = null, Address addressMain = null, Address addressPostal = null, string language = null,
             string region = null, string country = null, List<Ubo> ubo = null, string chamberOfCommerceNumber = null,
             string legalForm = null, string status = null, string subStatus = null, int? sessionTimeout = null,
-            Amount dailyLimitWithoutConfirmationLogin = null, List<NotificationFilter> notificationFilters = null,
-            IDictionary<string, string> customHeaders = null)
+            Amount dailyLimitWithoutConfirmationLogin = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -301,7 +304,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_SUB_STATUS, subStatus},
                 {FIELD_SESSION_TIMEOUT, sessionTimeout},
                 {FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN, dailyLimitWithoutConfirmationLogin},
-                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -462,6 +464,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.BillingContract != null)
+            {
+                return false;
+            }
+
+            if (this.DenyReason != null)
             {
                 return false;
             }

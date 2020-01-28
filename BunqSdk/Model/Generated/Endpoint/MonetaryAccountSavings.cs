@@ -37,7 +37,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_REASON = "reason";
         public const string FIELD_REASON_DESCRIPTION = "reason_description";
         public const string FIELD_ALL_CO_OWNER = "all_co_owner";
-        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
         public const string FIELD_SETTING = "setting";
         public const string FIELD_SAVINGS_GOAL = "savings_goal";
 
@@ -105,13 +104,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public List<CoOwner> AllCoOwner { get; set; }
 
         /// <summary>
-        /// The types of notifications that will result in a push notification or URL callback for this
-        /// MonetaryAccountSavings.
-        /// </summary>
-        [JsonProperty(PropertyName = "notification_filters")]
-        public List<NotificationFilter> NotificationFilters { get; set; }
-
-        /// <summary>
         /// The settings of the MonetaryAccountSavings.
         /// </summary>
         [JsonProperty(PropertyName = "setting")]
@@ -146,12 +138,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "avatar")]
         public Avatar Avatar { get; set; }
-
-        /// <summary>
-        /// Total Amount of money spent today. Timezone aware.
-        /// </summary>
-        [JsonProperty(PropertyName = "daily_spent")]
-        public Amount DailySpent { get; set; }
 
         /// <summary>
         /// The maximum Amount the MonetaryAccountSavings can be 'in the red'. Must be 0 EUR or omitted.
@@ -220,13 +206,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="reason">The reason for voluntarily cancelling (closing) the MonetaryAccountSavings, can only be OTHER. Should only be specified if updating the status to CANCELLED.</param>
         /// <param name="reasonDescription">The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountSavings. Can be any user provided message. Should only be specified if updating the status to CANCELLED.</param>
         /// <param name="allCoOwner">The users the account will be joint with.</param>
-        /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this MonetaryAccountSavings.</param>
         /// <param name="setting">The settings of the MonetaryAccountSavings.</param>
         /// <param name="savingsGoal">The Savings Goal set for this MonetaryAccountSavings.</param>
         public static BunqResponse<int> Create(string currency, string description = null, Amount dailyLimit = null,
             string avatarUuid = null, string status = null, string subStatus = null, string reason = null,
-            string reasonDescription = null, List<CoOwner> allCoOwner = null,
-            List<NotificationFilter> notificationFilters = null, MonetaryAccountSetting setting = null,
+            string reasonDescription = null, List<CoOwner> allCoOwner = null, MonetaryAccountSetting setting = null,
             Amount savingsGoal = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -244,7 +228,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_REASON, reason},
                 {FIELD_REASON_DESCRIPTION, reasonDescription},
                 {FIELD_ALL_CO_OWNER, allCoOwner},
-                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
                 {FIELD_SETTING, setting},
                 {FIELD_SAVINGS_GOAL, savingsGoal},
             };
@@ -282,14 +265,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="subStatus">The sub-status of the MonetaryAccountSavings providing extra information regarding the status. Should be ignored for POST requests. In case of PUT requests with status CANCELLED it can only be REDEMPTION_VOLUNTARY, while with status PENDING_REOPEN it can only be NONE. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
         /// <param name="reason">The reason for voluntarily cancelling (closing) the MonetaryAccountSavings, can only be OTHER. Should only be specified if updating the status to CANCELLED.</param>
         /// <param name="reasonDescription">The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountSavings. Can be any user provided message. Should only be specified if updating the status to CANCELLED.</param>
-        /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this MonetaryAccountSavings.</param>
         /// <param name="setting">The settings of the MonetaryAccountSavings.</param>
         /// <param name="savingsGoal">The Savings Goal set for this MonetaryAccountSavings.</param>
         public static BunqResponse<int> Update(int monetaryAccountSavingsId, string description = null,
             Amount dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null,
-            string reason = null, string reasonDescription = null, List<NotificationFilter> notificationFilters = null,
-            MonetaryAccountSetting setting = null, Amount savingsGoal = null,
-            IDictionary<string, string> customHeaders = null)
+            string reason = null, string reasonDescription = null, MonetaryAccountSetting setting = null,
+            Amount savingsGoal = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -304,7 +285,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_SUB_STATUS, subStatus},
                 {FIELD_REASON, reason},
                 {FIELD_REASON_DESCRIPTION, reasonDescription},
-                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
                 {FIELD_SETTING, setting},
                 {FIELD_SAVINGS_GOAL, savingsGoal},
             };
@@ -373,11 +353,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
-            if (this.DailySpent != null)
-            {
-                return false;
-            }
-
             if (this.OverdraftLimit != null)
             {
                 return false;
@@ -429,11 +404,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.MonetaryAccountProfile != null)
-            {
-                return false;
-            }
-
-            if (this.NotificationFilters != null)
             {
                 return false;
             }

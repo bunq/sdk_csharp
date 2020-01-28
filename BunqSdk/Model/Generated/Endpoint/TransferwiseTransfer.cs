@@ -1,12 +1,7 @@
-using Bunq.Sdk.Context;
-using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -16,21 +11,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     public class TransferwiseTransfer : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
-        /// </summary>
-        protected const string ENDPOINT_URL_READ = "user/{0}/transferwise-quote/{1}/transferwise-transfer/{2}";
-
-        /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_MONETARY_ACCOUNT_ID = "monetary_account_id";
 
         public const string FIELD_RECIPIENT_ID = "recipient_id";
 
-        /// <summary>
-        /// Object type.
-        /// </summary>
-        private const string OBJECT_TYPE_GET = "TransferwisePayment";
 
         /// <summary>
         /// The id of the monetary account the payment should be made from.
@@ -121,23 +107,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "quote")]
         public TransferwiseQuote Quote { get; set; }
-
-
-        /// <summary>
-        /// </summary>
-        public static BunqResponse<TransferwiseTransfer> Get(int transferwiseQuoteId, int transferwiseTransferId,
-            IDictionary<string, string> customHeaders = null)
-        {
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-
-            var apiClient = new ApiClient(GetApiContext());
-            var responseRaw =
-                apiClient.Get(
-                    string.Format(ENDPOINT_URL_READ, DetermineUserId(), transferwiseQuoteId, transferwiseTransferId),
-                    new Dictionary<string, string>(), customHeaders);
-
-            return FromJson<TransferwiseTransfer>(responseRaw, OBJECT_TYPE_GET);
-        }
 
 
         /// <summary>

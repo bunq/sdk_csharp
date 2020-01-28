@@ -33,10 +33,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_STATUS = "status";
         public const string FIELD_CARD_LIMIT = "card_limit";
         public const string FIELD_CARD_LIMIT_ATM = "card_limit_atm";
-        public const string FIELD_MAG_STRIPE_PERMISSION = "mag_stripe_permission";
         public const string FIELD_COUNTRY_PERMISSION = "country_permission";
         public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
-        public const string FIELD_PRIMARY_ACCOUNT_NUMBERS_VIRTUAL = "primary_account_numbers_virtual";
         public const string FIELD_PRIMARY_ACCOUNT_NUMBERS = "primary_account_numbers";
         public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
 
@@ -79,12 +77,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount CardLimitAtm { get; set; }
 
         /// <summary>
-        /// DEPRECATED: Whether or not it is allowed to use the mag stripe for the card.
-        /// </summary>
-        [JsonProperty(PropertyName = "mag_stripe_permission")]
-        public CardMagStripePermission MagStripePermission { get; set; }
-
-        /// <summary>
         /// The countries for which to grant (temporary) permissions to use the card.
         /// </summary>
         [JsonProperty(PropertyName = "country_permission")]
@@ -95,12 +87,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "pin_code_assignment")]
         public List<CardPinAssignment> PinCodeAssignment { get; set; }
-
-        /// <summary>
-        /// Array of PANs, status, description and account id for online cards.
-        /// </summary>
-        [JsonProperty(PropertyName = "primary_account_numbers_virtual")]
-        public List<CardVirtualPrimaryAccountNumber> PrimaryAccountNumbersVirtual { get; set; }
 
         /// <summary>
         /// Array of PANs and their attributes.
@@ -183,12 +169,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string NameOnCard { get; set; }
 
         /// <summary>
-        /// The last 4 digits of the PAN of the card.
-        /// </summary>
-        [JsonProperty(PropertyName = "primary_account_number_four_digit")]
-        public string PrimaryAccountNumberFourDigit { get; set; }
-
-        /// <summary>
         /// The monetary account this card was ordered on and the label user that owns the card.
         /// </summary>
         [JsonProperty(PropertyName = "label_monetary_account_ordered")]
@@ -217,17 +197,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="status">The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN or CANCELLED, and can only be set to LOST/STOLEN/CANCELLED when order status is ACCEPTED_FOR_PRODUCTION/DELIVERED_TO_CUSTOMER/CARD_UPDATE_REQUESTED/CARD_UPDATE_SENT/CARD_UPDATE_ACCEPTED. Can only be set to DEACTIVATED after initial activation, i.e. order_status is DELIVERED_TO_CUSTOMER/CARD_UPDATE_REQUESTED/CARD_UPDATE_SENT/CARD_UPDATE_ACCEPTED. Mind that all the possible choices (apart from ACTIVE and DEACTIVATED) are permanent and cannot be changed after.</param>
         /// <param name="cardLimit">The spending limit for the card.</param>
         /// <param name="cardLimitAtm">The ATM spending limit for the card.</param>
-        /// <param name="magStripePermission">DEPRECATED: Whether or not it is allowed to use the mag stripe for the card.</param>
         /// <param name="countryPermission">The countries for which to grant (temporary) permissions to use the card.</param>
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
-        /// <param name="primaryAccountNumbersVirtual">Array of PANs, status, description and account id for online cards.</param>
         /// <param name="primaryAccountNumbers">Array of PANs and their attributes.</param>
         /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
         public static BunqResponse<Card> Update(int cardId, string pinCode = null, string activationCode = null,
             string status = null, Amount cardLimit = null, Amount cardLimitAtm = null,
-            CardMagStripePermission magStripePermission = null, List<CardCountryPermission> countryPermission = null,
-            List<CardPinAssignment> pinCodeAssignment = null,
-            List<CardVirtualPrimaryAccountNumber> primaryAccountNumbersVirtual = null,
+            List<CardCountryPermission> countryPermission = null, List<CardPinAssignment> pinCodeAssignment = null,
             List<CardPrimaryAccountNumber> primaryAccountNumbers = null, int? monetaryAccountIdFallback = null,
             IDictionary<string, string> customHeaders = null)
         {
@@ -242,10 +218,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_STATUS, status},
                 {FIELD_CARD_LIMIT, cardLimit},
                 {FIELD_CARD_LIMIT_ATM, cardLimitAtm},
-                {FIELD_MAG_STRIPE_PERMISSION, magStripePermission},
                 {FIELD_COUNTRY_PERMISSION, countryPermission},
                 {FIELD_PIN_CODE_ASSIGNMENT, pinCodeAssignment},
-                {FIELD_PRIMARY_ACCOUNT_NUMBERS_VIRTUAL, primaryAccountNumbersVirtual},
                 {FIELD_PRIMARY_ACCOUNT_NUMBERS, primaryAccountNumbers},
                 {FIELD_MONETARY_ACCOUNT_ID_FALLBACK, monetaryAccountIdFallback},
             };
@@ -349,16 +323,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.NameOnCard != null)
-            {
-                return false;
-            }
-
-            if (this.PrimaryAccountNumberFourDigit != null)
-            {
-                return false;
-            }
-
-            if (this.PrimaryAccountNumbersVirtual != null)
             {
                 return false;
             }
