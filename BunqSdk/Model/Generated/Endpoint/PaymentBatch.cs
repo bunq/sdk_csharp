@@ -2,6 +2,7 @@ using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
+using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
@@ -37,7 +38,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The list of mutations that were made.
         /// </summary>
         [JsonProperty(PropertyName = "payments")]
-        public List<Payment> Payments { get; set; }
+        public PaymentBatchAnchoredPayment Payments { get; set; }
 
         /// <summary>
         /// Create a payment batch by sending an array of single payment objects, that will become part of the batch.

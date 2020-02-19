@@ -25,7 +25,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SUB_STATUS = "sub_status";
         public const string FIELD_REASON = "reason";
         public const string FIELD_REASON_DESCRIPTION = "reason_description";
-        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
         public const string FIELD_SETTING = "setting";
 
 
@@ -82,13 +81,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string ReasonDescription { get; set; }
 
         /// <summary>
-        /// The types of notifications that will result in a push notification or URL callback for this
-        /// MonetaryAccountLight.
-        /// </summary>
-        [JsonProperty(PropertyName = "notification_filters")]
-        public List<NotificationFilter> NotificationFilters { get; set; }
-
-        /// <summary>
         /// The settings of the MonetaryAccountLight.
         /// </summary>
         [JsonProperty(PropertyName = "setting")]
@@ -117,12 +109,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "avatar")]
         public Avatar Avatar { get; set; }
-
-        /// <summary>
-        /// Total Amount of money spent today. Timezone aware.
-        /// </summary>
-        [JsonProperty(PropertyName = "daily_spent")]
-        public Amount DailySpent { get; set; }
 
         /// <summary>
         /// The current available balance Amount of the MonetaryAccountLight.
@@ -236,11 +222,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
-            if (this.DailySpent != null)
-            {
-                return false;
-            }
-
             if (this.Balance != null)
             {
                 return false;
@@ -317,11 +298,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.BudgetWithdrawalYearMaximum != null)
-            {
-                return false;
-            }
-
-            if (this.NotificationFilters != null)
             {
                 return false;
             }

@@ -29,6 +29,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Status { get; set; }
 
         /// <summary>
+        /// The subStatus of the WhitelistResult.
+        /// </summary>
+        [JsonProperty(PropertyName = "sub_status")]
+        public string SubStatus { get; set; }
+
+        /// <summary>
         /// The message when the whitelist result has failed due to user error.
         /// </summary>
         [JsonProperty(PropertyName = "error_message")]
@@ -68,6 +74,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.Status != null)
+            {
+                return false;
+            }
+
+            if (this.SubStatus != null)
             {
                 return false;
             }

@@ -103,10 +103,8 @@ namespace Bunq.Sdk.Security
         /// </summary>
         public static string GenerateSignature(HttpRequestMessage requestMessage, RSA keyPair)
         {
-            var headBytes = GenerateRequestHeadBytes(requestMessage);
             var bodyBytes = GetRequestBodyBytes(requestMessage);
-            var bytesToSign = ConcatenateByteArrays(headBytes, bodyBytes);
-            var signature = keyPair.SignData(bytesToSign, 0, bytesToSign.Length, HashAlgorithmName.SHA256,
+            var signature = keyPair.SignData(bodyBytes, 0, bodyBytes.Length, HashAlgorithmName.SHA256,
                 RSASignaturePadding.Pkcs1);
 
             return Convert.ToBase64String(signature);
@@ -118,35 +116,7 @@ namespace Bunq.Sdk.Security
 
             return requestContent == null ? new byte[ARRAY_LENGTH_EMPTY] : requestContent.ReadAsByteArrayAsync().Result;
         }
-
-        private static byte[] GenerateRequestHeadBytes(HttpRequestMessage requestMessage)
-        {
-            var requestHeadString = GenerateMethodAndEndpointString(requestMessage) + NEWLINE +
-                GenerateRequestHeadersSortedString(requestMessage) + NEWLINE +
-                NEWLINE;
-
-            return Encoding.UTF8.GetBytes(requestHeadString);
-        }
-
-        private static string GenerateMethodAndEndpointString(HttpRequestMessage requestMessage)
-        {
-            var method = requestMessage.Method.ToString();
-            var endpoint = requestMessage.RequestUri.ToString();
-
-            return string.Format(FORMAT_METHOD_AND_ENDPOINT_STRING, method, endpoint);
-        }
-
-        private static string GenerateRequestHeadersSortedString(HttpRequestMessage requestMessage)
-        {
-            return GenerateHeadersSortedString(
-                requestMessage.Headers.Where(x =>
-                    x.Key.StartsWith(HEADER_NAME_PREFIX_X_BUNQ) ||
-                    x.Key.Equals(ApiClient.HEADER_CACHE_CONTROL) ||
-                    x.Key.Equals(ApiClient.HEADER_USER_AGENT)
-                )
-            );
-        }
-
+        
         private static string GetHeaderNameCorrectlyCased(string headerName)
         {
             headerName = headerName.ToLower();
@@ -343,8 +313,24 @@ namespace Bunq.Sdk.Security
             var serverSignatureHeader = string.Join(",", responseMessage.Headers.GetValues(HEADER_SERVER_SIGNATURE));
             var serverSignature = Convert.FromBase64String(serverSignatureHeader);
 
-            if (!serverPublicKey.VerifyData(responseBytes, serverSignature, HashAlgorithmName.SHA256,
-                RSASignaturePadding.Pkcs1))
+            if (serverPublicKey.VerifyData(
+                responseBytes,
+                serverSignature,
+                HashAlgorithmName.SHA256,
+                RSASignaturePadding.Pkcs1
+            ))
+            {
+                // Validated signature with headers. (Deprecated, but implemented for backwards compatibility.)
+            } else if (serverPublicKey.VerifyData(
+                bodyBytes,
+                serverSignature,
+                HashAlgorithmName.SHA256,
+                RSASignaturePadding.Pkcs1
+            ))
+            {
+                // Validated body signature.
+            }
+            else
             {
                 throw new BunqException(ERROR_COULD_NOT_VERIFY_RESPONSE);
             }

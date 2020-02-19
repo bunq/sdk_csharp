@@ -2,7 +2,6 @@ using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
-using Bunq.Sdk.Security;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
@@ -94,7 +93,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            requestBytes = SecurityUtils.Encrypt(GetApiContext(), requestBytes, customHeaders);
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId(), cardId),
                 requestBytes, customHeaders);
 
@@ -133,7 +131,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            requestBytes = SecurityUtils.Encrypt(GetApiContext(), requestBytes, customHeaders);
             var responseRaw =
                 apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, DetermineUserId(), cardId, cardGeneratedCvc2Id),
                     requestBytes, customHeaders);

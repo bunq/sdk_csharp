@@ -226,7 +226,6 @@
 
 - cleanup after 24-improve-namespaces [\#27](https://github.com/bunq/sdk_csharp/pull/27) ([dnl-blkv](https://github.com/dnl-blkv))
 - Improve namespaces; cleanup \[\#24\] [\#25](https://github.com/bunq/sdk_csharp/pull/25) ([dnl-blkv](https://github.com/dnl-blkv))
-- cleanup C\# SDK \[\#11\] [\#12](https://github.com/bunq/sdk_csharp/pull/12) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.11.0](https://github.com/bunq/sdk_csharp/tree/0.11.0) (2017-09-06)
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.10.0...0.11.0)
@@ -255,6 +254,7 @@
 
 **Merged pull requests:**
 
+- cleanup C\# SDK \[\#11\] [\#12](https://github.com/bunq/sdk_csharp/pull/12) ([dnl-blkv](https://github.com/dnl-blkv))
 - Merge hotfixed master back to develop [\#10](https://github.com/bunq/sdk_csharp/pull/10) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.9.2](https://github.com/bunq/sdk_csharp/tree/0.9.2) (2017-08-18)

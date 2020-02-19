@@ -40,7 +40,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_LEGAL_GUARDIAN_ALIAS = "legal_guardian_alias";
         public const string FIELD_SESSION_TIMEOUT = "session_timeout";
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
-        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
 
 
         /// <summary>
@@ -203,12 +202,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Amount DailyLimitWithoutConfirmationLogin { get; set; }
 
         /// <summary>
-        /// The types of notifications that will result in a push notification or URL callback for this UserLight.
-        /// </summary>
-        [JsonProperty(PropertyName = "notification_filters")]
-        public List<NotificationFilter> NotificationFilters { get; set; }
-
-        /// <summary>
         /// The id of the user.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
@@ -261,6 +254,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "version_terms_of_service")]
         public string VersionTermsOfService { get; set; }
+
+        /// <summary>
+        /// The types of notifications that will result in a push notification or URL callback for this UserLight.
+        /// </summary>
+        [JsonProperty(PropertyName = "notification_filters")]
+        public List<NotificationFilter> NotificationFilters { get; set; }
+
+        /// <summary>
+        /// The user deny reason.
+        /// </summary>
+        [JsonProperty(PropertyName = "deny_reason")]
+        public string DenyReason { get; set; }
 
 
         /// <summary>
@@ -423,6 +428,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.NotificationFilters != null)
+            {
+                return false;
+            }
+
+            if (this.DenyReason != null)
             {
                 return false;
             }
