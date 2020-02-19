@@ -3,7 +3,6 @@ using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
-using Bunq.Sdk.Security;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
