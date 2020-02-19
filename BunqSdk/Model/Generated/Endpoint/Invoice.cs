@@ -84,6 +84,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string InvoiceNumber { get; set; }
 
         /// <summary>
+        /// The category to display to the user.
+        /// </summary>
+        [JsonProperty(PropertyName = "category")]
+        public string Category { get; set; }
+
+        /// <summary>
         /// The invoice item groups.
         /// </summary>
         [JsonProperty(PropertyName = "group")]
@@ -214,6 +220,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.Status != null)
+            {
+                return false;
+            }
+
+            if (this.Category != null)
             {
                 return false;
             }

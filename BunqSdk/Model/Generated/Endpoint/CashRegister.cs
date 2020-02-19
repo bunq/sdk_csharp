@@ -36,7 +36,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_STATUS = "status";
         public const string FIELD_AVATAR_UUID = "avatar_uuid";
         public const string FIELD_LOCATION = "location";
-        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
         public const string FIELD_TAB_TEXT_WAITING_SCREEN = "tab_text_waiting_screen";
 
         /// <summary>
@@ -68,12 +67,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public Geolocation Location { get; set; }
-
-        /// <summary>
-        /// The types of notifications that will result in a push notification or URL callback for this CashRegister.
-        /// </summary>
-        [JsonProperty(PropertyName = "notification_filters")]
-        public List<NotificationFilter> NotificationFilters { get; set; }
 
         /// <summary>
         /// The tab text for waiting screen of CashRegister.
@@ -115,12 +108,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="status">The status of the CashRegister. Can only be created or updated with PENDING_APPROVAL or CLOSED.</param>
         /// <param name="avatarUuid">The UUID of the avatar of the CashRegister. Use the calls /attachment-public and /avatar to create a new Avatar and get its UUID.</param>
         /// <param name="location">The geolocation of the CashRegister.</param>
-        /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this CashRegister.</param>
         /// <param name="tabTextWaitingScreen">The tab text for waiting screen of CashRegister.</param>
         public static BunqResponse<int> Create(string name, string status, string avatarUuid,
             int? monetaryAccountId = null, Geolocation location = null,
-            List<NotificationFilter> notificationFilters = null, List<TabTextWaitingScreen> tabTextWaitingScreen = null,
-            IDictionary<string, string> customHeaders = null)
+            List<TabTextWaitingScreen> tabTextWaitingScreen = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -132,7 +123,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_STATUS, status},
                 {FIELD_AVATAR_UUID, avatarUuid},
                 {FIELD_LOCATION, location},
-                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
                 {FIELD_TAB_TEXT_WAITING_SCREEN, tabTextWaitingScreen},
             };
 
@@ -170,12 +160,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="status">The status of the CashRegister. Can only be created or updated with PENDING_APPROVAL or CLOSED.</param>
         /// <param name="avatarUuid">The UUID of the avatar of the CashRegister. Use the calls /attachment-public and /avatar to create a new Avatar and get its UUID.</param>
         /// <param name="location">The geolocation of the CashRegister.</param>
-        /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this CashRegister.</param>
         /// <param name="tabTextWaitingScreen">The tab text for waiting screen of CashRegister.</param>
         public static BunqResponse<int> Update(int cashRegisterId, int? monetaryAccountId = null, string name = null,
             string status = null, string avatarUuid = null, Geolocation location = null,
-            List<NotificationFilter> notificationFilters = null, List<TabTextWaitingScreen> tabTextWaitingScreen = null,
-            IDictionary<string, string> customHeaders = null)
+            List<TabTextWaitingScreen> tabTextWaitingScreen = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -187,7 +175,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_STATUS, status},
                 {FIELD_AVATAR_UUID, avatarUuid},
                 {FIELD_LOCATION, location},
-                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
                 {FIELD_TAB_TEXT_WAITING_SCREEN, tabTextWaitingScreen},
             };
 
@@ -254,11 +241,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.Location != null)
-            {
-                return false;
-            }
-
-            if (this.NotificationFilters != null)
             {
                 return false;
             }

@@ -129,12 +129,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ShareInviteBankInquiry")]
-        public ShareInviteBankInquiry ShareInviteBankInquiry { get; set; }
+        public ShareInviteMonetaryAccountInquiry ShareInviteBankInquiry { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ShareInviteBankResponse")]
-        public ShareInviteBankResponse ShareInviteBankResponse { get; set; }
+        public ShareInviteMonetaryAccountResponse ShareInviteBankResponse { get; set; }
 
         /// <summary>
         /// </summary>

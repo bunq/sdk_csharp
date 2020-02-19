@@ -3,7 +3,6 @@ using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
-using Bunq.Sdk.Security;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
@@ -30,6 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_NAME_ON_CARD = "name_on_card";
         public const string FIELD_ALIAS = "alias";
         public const string FIELD_TYPE = "type";
+        public const string FIELD_PRODUCT_TYPE = "product_type";
         public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
         public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
 
@@ -61,6 +61,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// The product type of the card to order.
+        /// </summary>
+        [JsonProperty(PropertyName = "product_type")]
+        public string ProductType { get; set; }
 
         /// <summary>
         /// Array of Types, PINs, account IDs assigned to the card.
@@ -104,12 +110,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "sub_type")]
         public string SubType { get; set; }
-
-        /// <summary>
-        /// The last 4 digits of the PAN of the card.
-        /// </summary>
-        [JsonProperty(PropertyName = "primary_account_number_four_digit")]
-        public string PrimaryAccountNumberFourDigit { get; set; }
 
         /// <summary>
         /// The status to set for the card. After ordering the card it will be DEACTIVATED.
@@ -161,10 +161,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="nameOnCard">The user's name as it will be on the card. Check 'card-name' for the available card names for a user.</param>
         /// <param name="type">The type of card to order. Can be MAESTRO or MASTERCARD.</param>
         /// <param name="alias">The pointer to the monetary account that will be connected at first with the card. Its IBAN code is also the one that will be printed on the card itself. The pointer must be of type IBAN.</param>
+        /// <param name="productType">The product type of the card to order.</param>
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
         public static BunqResponse<CardDebit> Create(string secondLine, string nameOnCard, string type,
-            Pointer alias = null, List<CardPinAssignment> pinCodeAssignment = null,
+            Pointer alias = null, string productType = null, List<CardPinAssignment> pinCodeAssignment = null,
             int? monetaryAccountIdFallback = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -177,12 +178,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_NAME_ON_CARD, nameOnCard},
                 {FIELD_ALIAS, alias},
                 {FIELD_TYPE, type},
+                {FIELD_PRODUCT_TYPE, productType},
                 {FIELD_PIN_CODE_ASSIGNMENT, pinCodeAssignment},
                 {FIELD_MONETARY_ACCOUNT_ID_FALLBACK, monetaryAccountIdFallback},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            requestBytes = SecurityUtils.Encrypt(GetApiContext(), requestBytes, customHeaders);
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId()), requestBytes,
                 customHeaders);
 
@@ -230,11 +231,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.NameOnCard != null)
-            {
-                return false;
-            }
-
-            if (this.PrimaryAccountNumberFourDigit != null)
             {
                 return false;
             }

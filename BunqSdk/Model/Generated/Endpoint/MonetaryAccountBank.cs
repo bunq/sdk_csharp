@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SUB_STATUS = "sub_status";
         public const string FIELD_REASON = "reason";
         public const string FIELD_REASON_DESCRIPTION = "reason_description";
-        public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
+        public const string FIELD_DISPLAY_NAME = "display_name";
         public const string FIELD_SETTING = "setting";
 
         /// <summary>
@@ -101,11 +101,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string ReasonDescription { get; set; }
 
         /// <summary>
-        /// The types of notifications that will result in a push notification or URL callback for this
-        /// MonetaryAccountBank.
+        /// The legal name of the user / company using this monetary account.
         /// </summary>
-        [JsonProperty(PropertyName = "notification_filters")]
-        public List<NotificationFilter> NotificationFilters { get; set; }
+        [JsonProperty(PropertyName = "display_name")]
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// The settings of the MonetaryAccountBank.
@@ -136,12 +135,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "avatar")]
         public Avatar Avatar { get; set; }
-
-        /// <summary>
-        /// Total Amount of money spent today. Timezone aware.
-        /// </summary>
-        [JsonProperty(PropertyName = "daily_spent")]
-        public Amount DailySpent { get; set; }
 
         /// <summary>
         /// The maximum Amount the MonetaryAccountBank can be 'in the red'.
@@ -203,12 +196,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="subStatus">The sub-status of the MonetaryAccountBank providing extra information regarding the status. Should be ignored for POST requests. In case of PUT requests with status CANCELLED it can only be REDEMPTION_VOLUNTARY, while with status PENDING_REOPEN it can only be NONE. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
         /// <param name="reason">The reason for voluntarily cancelling (closing) the MonetaryAccountBank, can only be OTHER. Should only be specified if updating the status to CANCELLED.</param>
         /// <param name="reasonDescription">The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountBank. Can be any user provided message. Should only be specified if updating the status to CANCELLED.</param>
-        /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this MonetaryAccountBank.</param>
+        /// <param name="displayName">The legal name of the user / company using this monetary account.</param>
         /// <param name="setting">The settings of the MonetaryAccountBank.</param>
         public static BunqResponse<int> Create(string currency, string description = null, Amount dailyLimit = null,
             string avatarUuid = null, string status = null, string subStatus = null, string reason = null,
-            string reasonDescription = null, List<NotificationFilter> notificationFilters = null,
-            MonetaryAccountSetting setting = null, IDictionary<string, string> customHeaders = null)
+            string reasonDescription = null, string displayName = null, MonetaryAccountSetting setting = null,
+            IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -224,7 +217,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_SUB_STATUS, subStatus},
                 {FIELD_REASON, reason},
                 {FIELD_REASON_DESCRIPTION, reasonDescription},
-                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
+                {FIELD_DISPLAY_NAME, displayName},
                 {FIELD_SETTING, setting},
             };
 
@@ -260,11 +253,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="subStatus">The sub-status of the MonetaryAccountBank providing extra information regarding the status. Should be ignored for POST requests. In case of PUT requests with status CANCELLED it can only be REDEMPTION_VOLUNTARY, while with status PENDING_REOPEN it can only be NONE. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
         /// <param name="reason">The reason for voluntarily cancelling (closing) the MonetaryAccountBank, can only be OTHER. Should only be specified if updating the status to CANCELLED.</param>
         /// <param name="reasonDescription">The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountBank. Can be any user provided message. Should only be specified if updating the status to CANCELLED.</param>
-        /// <param name="notificationFilters">The types of notifications that will result in a push notification or URL callback for this MonetaryAccountBank.</param>
+        /// <param name="displayName">The legal name of the user / company using this monetary account.</param>
         /// <param name="setting">The settings of the MonetaryAccountBank.</param>
         public static BunqResponse<int> Update(int monetaryAccountBankId, string description = null,
             Amount dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null,
-            string reason = null, string reasonDescription = null, List<NotificationFilter> notificationFilters = null,
+            string reason = null, string reasonDescription = null, string displayName = null,
             MonetaryAccountSetting setting = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -280,7 +273,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_SUB_STATUS, subStatus},
                 {FIELD_REASON, reason},
                 {FIELD_REASON_DESCRIPTION, reasonDescription},
-                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
+                {FIELD_DISPLAY_NAME, displayName},
                 {FIELD_SETTING, setting},
             };
 
@@ -348,11 +341,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
-            if (this.DailySpent != null)
-            {
-                return false;
-            }
-
             if (this.OverdraftLimit != null)
             {
                 return false;
@@ -403,7 +391,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
 
-            if (this.NotificationFilters != null)
+            if (this.DisplayName != null)
             {
                 return false;
             }

@@ -201,6 +201,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "balance_after_mutation")]
         public Amount BalanceAfterMutation { get; set; }
 
+        /// <summary>
+        /// A reference to the PaymentAutoAllocateInstance if it exists.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_auto_allocate_instance")]
+        public PaymentAutoAllocateInstance PaymentAutoAllocateInstance { get; set; }
+
 
         /// <summary>
         /// Create a new Payment.
@@ -399,6 +405,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.BalanceAfterMutation != null)
+            {
+                return false;
+            }
+
+            if (this.PaymentAutoAllocateInstance != null)
             {
                 return false;
             }

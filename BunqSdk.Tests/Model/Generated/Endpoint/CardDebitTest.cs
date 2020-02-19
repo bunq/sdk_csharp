@@ -26,6 +26,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         private const int NonnegativeIntegerMinimum = 0;
         private const int CardSecondLineLengthMaximum = 20;
         private const string CardTypeMaestro = "MAESTRO";
+        private const string ProductTypeMaestroDebit = "MAESTRO_DEBIT";
 
         /// <summary>
         /// Number constants.
@@ -55,6 +56,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
                 GetAnAllowedName(),
                 CardTypeMaestro,
                 GetAlias(),
+                ProductTypeMaestroDebit,
                 allCardPinAssignments
             ).Value;
 

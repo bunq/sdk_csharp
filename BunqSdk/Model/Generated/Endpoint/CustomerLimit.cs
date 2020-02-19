@@ -62,12 +62,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? LimitCardWildcard { get; set; }
 
         /// <summary>
-        /// DEPRECTATED: The limit of free replacement debit cards, replaced by: limit_card_replacement
-        /// </summary>
-        [JsonProperty(PropertyName = "limit_card_debit_replacement")]
-        public int? LimitCardDebitReplacement { get; set; }
-
-        /// <summary>
         /// The limit of free replacement cards.
         /// </summary>
         [JsonProperty(PropertyName = "limit_card_replacement")]
@@ -133,11 +127,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.LimitCardWildcard != null)
-            {
-                return false;
-            }
-
-            if (this.LimitCardDebitReplacement != null)
             {
                 return false;
             }

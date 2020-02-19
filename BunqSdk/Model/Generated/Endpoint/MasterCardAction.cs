@@ -94,6 +94,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Decision { get; set; }
 
         /// <summary>
+        /// The payment status of the transaction. For example PAYMENT_SUCCESSFUL, for a successful payment.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_status")]
+        public string PaymentStatus { get; set; }
+
+        /// <summary>
         /// Empty if allowed, otherwise a textual explanation of why it was denied.
         /// </summary>
         [JsonProperty(PropertyName = "decision_description")]
@@ -312,6 +318,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
 
             if (this.Decision != null)
+            {
+                return false;
+            }
+
+            if (this.PaymentStatus != null)
             {
                 return false;
             }

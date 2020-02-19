@@ -212,7 +212,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         {
             ExecuteNotificationUrlTest(
                 JsonPathShareInviteBankInquiryModel,
-                typeof(ShareInviteBankInquiry),
+                typeof(ShareInviteMonetaryAccountInquiry),
                 GetShareInviteBankInquiry
             );
         }
@@ -222,7 +222,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         {
             ExecuteNotificationUrlTest(
                 JsonPathShareInviteBankResponseModel,
-                typeof(ShareInviteBankResponse),
+                typeof(ShareInviteMonetaryAccountResponse),
                 GetShareInviteBankResponse
             );
         }
