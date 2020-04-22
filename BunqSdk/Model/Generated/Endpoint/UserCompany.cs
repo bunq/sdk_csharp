@@ -212,7 +212,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The existing bunq user alias for the company's director.
         /// </summary>
         [JsonProperty(PropertyName = "director_alias")]
-        public LabelUser DirectorAlias { get; set; }
+        public List<LabelUser> DirectorAlias { get; set; }
 
         /// <summary>
         /// The types of notifications that will result in a push notification or URL callback for this UserCompany.
