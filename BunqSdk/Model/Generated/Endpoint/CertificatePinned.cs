@@ -1,23 +1,21 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// This endpoint allow you to pin the certificate chains to your account. These certificate chains are used for SSL
-    /// validation whenever a callback is initiated to one of your https callback urls.
+    ///     This endpoint allow you to pin the certificate chains to your account. These certificate chains are used for SSL
+    ///     validation whenever a callback is initiated to one of your https callback urls.
     /// </summary>
     public class CertificatePinned : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/certificate-pinned";
 
@@ -26,30 +24,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_READ = "user/{0}/certificate-pinned/{1}";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_CERTIFICATE_CHAIN = "certificate_chain";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "CertificatePinned";
 
         /// <summary>
-        /// The certificate chain in .PEM format. Certificates are glued with newline characters.
+        ///     The certificate chain in .PEM format. Certificates are glued with newline characters.
         /// </summary>
         [JsonProperty(PropertyName = "certificate_chain")]
         public string CertificateChain { get; set; }
 
         /// <summary>
-        /// The id generated for the pinned certificate chain.
+        ///     The id generated for the pinned certificate chain.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
 
         /// <summary>
-        /// Pin the certificate chain.
+        ///     Pin the certificate chain.
         /// </summary>
         /// <param name="certificateChain">The certificate chain in .PEM format.</param>
         public static BunqResponse<int> Create(List<Certificate> certificateChain,
@@ -61,7 +59,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_CERTIFICATE_CHAIN, certificateChain},
+                {FIELD_CERTIFICATE_CHAIN, certificateChain}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -72,7 +70,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Remove the pinned certificate chain with the specific ID.
+        ///     Remove the pinned certificate chain with the specific ID.
         /// </summary>
         public static BunqResponse<object> Delete(int certificatePinnedId,
             IDictionary<string, string> customHeaders = null)
@@ -88,7 +86,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// List all the pinned certificate chain for the given user.
+        ///     List all the pinned certificate chain for the given user.
         /// </summary>
         public static BunqResponse<List<CertificatePinned>> List(IDictionary<string, string> urlParams = null,
             IDictionary<string, string> customHeaders = null)
@@ -104,7 +102,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get the pinned certificate chain with the specified ID.
+        ///     Get the pinned certificate chain with the specified ID.
         /// </summary>
         public static BunqResponse<CertificatePinned> Get(int certificatePinnedId,
             IDictionary<string, string> customHeaders = null)
@@ -123,15 +121,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.CertificateChain != null)
-            {
-                return false;
-            }
+            if (CertificateChain != null) return false;
 
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
             return true;
         }
@@ -140,7 +132,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static CertificatePinned CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<CertificatePinned>(json);
+            return CreateFromJsonString<CertificatePinned>(json);
         }
     }
 }

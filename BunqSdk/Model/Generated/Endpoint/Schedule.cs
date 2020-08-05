@@ -1,29 +1,25 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// view for reading the scheduled definitions.
+    ///     view for reading the scheduled definitions.
     /// </summary>
     public class Schedule : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/schedule/{2}";
 
         protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/schedule";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_TIME_START = "time_start";
 
@@ -32,49 +28,49 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_RECURRENCE_SIZE = "recurrence_size";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "Schedule";
 
         /// <summary>
-        /// The schedule start time (UTC).
+        ///     The schedule start time (UTC).
         /// </summary>
         [JsonProperty(PropertyName = "time_start")]
         public string TimeStart { get; set; }
 
         /// <summary>
-        /// The schedule end time (UTC).
+        ///     The schedule end time (UTC).
         /// </summary>
         [JsonProperty(PropertyName = "time_end")]
         public string TimeEnd { get; set; }
 
         /// <summary>
-        /// The schedule recurrence unit, options: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY, YEARLY
+        ///     The schedule recurrence unit, options: ONCE, HOURLY, DAILY, WEEKLY, MONTHLY, YEARLY
         /// </summary>
         [JsonProperty(PropertyName = "recurrence_unit")]
         public string RecurrenceUnit { get; set; }
 
         /// <summary>
-        /// The schedule recurrence size. For example size 4 and unit WEEKLY means the recurrence is every 4 weeks.
+        ///     The schedule recurrence size. For example size 4 and unit WEEKLY means the recurrence is every 4 weeks.
         /// </summary>
         [JsonProperty(PropertyName = "recurrence_size")]
         public int? RecurrenceSize { get; set; }
 
         /// <summary>
-        /// The schedule status, options: ACTIVE, FINISHED, CANCELLED.
+        ///     The schedule status, options: ACTIVE, FINISHED, CANCELLED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// The scheduled object. (Payment, PaymentBatch)
+        ///     The scheduled object. (Payment, PaymentBatch)
         /// </summary>
         [JsonProperty(PropertyName = "object")]
         public ScheduleAnchorObject Object { get; set; }
 
 
         /// <summary>
-        /// Get a specific schedule definition for a given monetary account.
+        ///     Get a specific schedule definition for a given monetary account.
         /// </summary>
         public static BunqResponse<Schedule> Get(int scheduleId, int? monetaryAccountId = null,
             IDictionary<string, string> customHeaders = null)
@@ -91,9 +87,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get a collection of scheduled definition for a given monetary account. You can add the parameter type to
-        /// filter the response. When type={SCHEDULE_DEFINITION_PAYMENT,SCHEDULE_DEFINITION_PAYMENT_BATCH} is provided
-        /// only schedule definition object that relate to these definitions are returned.
+        ///     Get a collection of scheduled definition for a given monetary account. You can add the parameter type to
+        ///     filter the response. When type={SCHEDULE_DEFINITION_PAYMENT,SCHEDULE_DEFINITION_PAYMENT_BATCH} is provided
+        ///     only schedule definition object that relate to these definitions are returned.
         /// </summary>
         public static BunqResponse<List<Schedule>> List(int? monetaryAccountId = null,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
@@ -115,35 +111,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.TimeStart != null)
-            {
-                return false;
-            }
+            if (TimeStart != null) return false;
 
-            if (this.TimeEnd != null)
-            {
-                return false;
-            }
+            if (TimeEnd != null) return false;
 
-            if (this.RecurrenceUnit != null)
-            {
-                return false;
-            }
+            if (RecurrenceUnit != null) return false;
 
-            if (this.RecurrenceSize != null)
-            {
-                return false;
-            }
+            if (RecurrenceSize != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
-            if (this.Object != null)
-            {
-                return false;
-            }
+            if (Object != null) return false;
 
             return true;
         }
@@ -152,7 +130,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static Schedule CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<Schedule>(json);
+            return CreateFromJsonString<Schedule>(json);
         }
     }
 }

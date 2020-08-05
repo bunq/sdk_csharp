@@ -44,7 +44,7 @@ namespace Bunq.Sdk.Tests
         protected const string PathAttachment = "../../../Resources";
         protected const string ContentType = "image/png";
         protected const string AttachmentDescription = "C# sdk image test.";
-        protected const string AttachmentPathIn = "/bunq_App_Icon_Square@4x.png";
+        protected const string AttachmentPathIn = "/vader.png";
         
         /// <summary>
         /// Device registration constants.

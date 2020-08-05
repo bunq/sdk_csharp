@@ -1,22 +1,20 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// bunq.me tabs allows you to create a payment request and share the link through e-mail, chat, etc. Multiple
-    /// persons are able to respond to the payment request and pay through bunq, iDeal or SOFORT.
+    ///     bunq.me tabs allows you to create a payment request and share the link through e-mail, chat, etc. Multiple
+    ///     persons are able to respond to the payment request and pay through bunq, iDeal or SOFORT.
     /// </summary>
     public class BunqMeTab : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/bunqme-tab";
 
@@ -25,67 +23,67 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/bunqme-tab/{2}";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_BUNQME_TAB_ENTRY = "bunqme_tab_entry";
 
         public const string FIELD_STATUS = "status";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "BunqMeTab";
 
         /// <summary>
-        /// The bunq.me entry containing the payment information.
+        ///     The bunq.me entry containing the payment information.
         /// </summary>
         [JsonProperty(PropertyName = "bunqme_tab_entry")]
         public BunqMeTabEntry BunqmeTabEntry { get; set; }
 
         /// <summary>
-        /// The status of the bunq.me. Can be WAITING_FOR_PAYMENT, CANCELLED or EXPIRED.
+        ///     The status of the bunq.me. Can be WAITING_FOR_PAYMENT, CANCELLED or EXPIRED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// The id of the created bunq.me.
+        ///     The id of the created bunq.me.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp when the bunq.me was created.
+        ///     The timestamp when the bunq.me was created.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp when the bunq.me was last updated.
+        ///     The timestamp when the bunq.me was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        /// The timestamp of when the bunq.me expired or will expire.
+        ///     The timestamp of when the bunq.me expired or will expire.
         /// </summary>
         [JsonProperty(PropertyName = "time_expiry")]
         public string TimeExpiry { get; set; }
 
         /// <summary>
-        /// The id of the MonetaryAccount the bunq.me was sent from.
+        ///     The id of the MonetaryAccount the bunq.me was sent from.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
 
         /// <summary>
-        /// The url that points to the bunq.me page.
+        ///     The url that points to the bunq.me page.
         /// </summary>
         [JsonProperty(PropertyName = "bunqme_tab_share_url")]
         public string BunqmeTabShareUrl { get; set; }
 
         /// <summary>
-        /// The list of bunq.me result Inquiries successfully made and paid.
+        ///     The list of bunq.me result Inquiries successfully made and paid.
         /// </summary>
         [JsonProperty(PropertyName = "result_inquiries")]
         public List<BunqMeTabResultInquiry> ResultInquiries { get; set; }
@@ -94,7 +92,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="bunqmeTabEntry">The bunq.me entry containing the payment information.</param>
-        /// <param name="status">The status of the bunq.me. Ignored in POST requests but can be used for cancelling the bunq.me by setting status as CANCELLED with a PUT request.</param>
+        /// <param name="status">
+        ///     The status of the bunq.me. Ignored in POST requests but can be used for cancelling the bunq.me by
+        ///     setting status as CANCELLED with a PUT request.
+        /// </param>
         public static BunqResponse<int> Create(BunqMeTabEntry bunqmeTabEntry, int? monetaryAccountId = null,
             string status = null, IDictionary<string, string> customHeaders = null)
         {
@@ -105,7 +106,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
             {
                 {FIELD_BUNQME_TAB_ENTRY, bunqmeTabEntry},
-                {FIELD_STATUS, status},
+                {FIELD_STATUS, status}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -119,7 +120,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         /// <summary>
         /// </summary>
-        /// <param name="status">The status of the bunq.me. Ignored in POST requests but can be used for cancelling the bunq.me by setting status as CANCELLED with a PUT request.</param>
+        /// <param name="status">
+        ///     The status of the bunq.me. Ignored in POST requests but can be used for cancelling the bunq.me by
+        ///     setting status as CANCELLED with a PUT request.
+        /// </param>
         public static BunqResponse<int> Update(int bunqMeTabId, int? monetaryAccountId = null, string status = null,
             IDictionary<string, string> customHeaders = null)
         {
@@ -129,7 +133,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_STATUS, status},
+                {FIELD_STATUS, status}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -179,50 +183,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
-            if (this.Created != null)
-            {
-                return false;
-            }
+            if (Created != null) return false;
 
-            if (this.Updated != null)
-            {
-                return false;
-            }
+            if (Updated != null) return false;
 
-            if (this.TimeExpiry != null)
-            {
-                return false;
-            }
+            if (TimeExpiry != null) return false;
 
-            if (this.MonetaryAccountId != null)
-            {
-                return false;
-            }
+            if (MonetaryAccountId != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
-            if (this.BunqmeTabShareUrl != null)
-            {
-                return false;
-            }
+            if (BunqmeTabShareUrl != null) return false;
 
-            if (this.BunqmeTabEntry != null)
-            {
-                return false;
-            }
+            if (BunqmeTabEntry != null) return false;
 
-            if (this.ResultInquiries != null)
-            {
-                return false;
-            }
+            if (ResultInquiries != null) return false;
 
             return true;
         }
@@ -231,7 +208,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static BunqMeTab CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<BunqMeTab>(json);
+            return CreateFromJsonString<BunqMeTab>(json);
         }
     }
 }

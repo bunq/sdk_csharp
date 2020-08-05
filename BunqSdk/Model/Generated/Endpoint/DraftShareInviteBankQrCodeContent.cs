@@ -1,33 +1,28 @@
-using Bunq.Sdk.Context;
-using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
-using Bunq.Sdk.Model.Core;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using System;
+using Bunq.Sdk.Http;
+using Bunq.Sdk.Model.Core;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// This call returns the raw content of the QR code that links to this draft share invite. When a bunq user scans
-    /// this QR code with the bunq app the draft share invite will be shown on his/her device.
+    ///     This call returns the raw content of the QR code that links to this draft share invite. When a bunq user scans
+    ///     this QR code with the bunq app the draft share invite will be shown on his/her device.
     /// </summary>
     public class DraftShareInviteBankQrCodeContent : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/draft-share-invite-bank/{1}/qr-code-content";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "DraftShareInviteBankQrCodeContent";
 
         /// <summary>
-        /// Returns the raw content of the QR code that links to this draft share invite. The raw content is the binary
-        /// representation of a file, without any JSON wrapping.
+        ///     Returns the raw content of the QR code that links to this draft share invite. The raw content is the binary
+        ///     representation of a file, without any JSON wrapping.
         /// </summary>
         public static BunqResponse<byte[]> List(int draftShareInviteBankId,
             IDictionary<string, string> customHeaders = null)
@@ -54,7 +49,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static DraftShareInviteBankQrCodeContent CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<DraftShareInviteBankQrCodeContent>(json);
+            return CreateFromJsonString<DraftShareInviteBankQrCodeContent>(json);
         }
     }
 }

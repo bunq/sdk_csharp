@@ -1,86 +1,82 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Used to view events. Events are automatically created and contain information about everything that happens to
-    /// your bunq account. In the bunq app events are shown in your 'overview'. Examples of when events are created or
-    /// modified: payment sent, payment received, request for payment received or connect invite received.
+    ///     Used to view events. Events are automatically created and contain information about everything that happens to
+    ///     your bunq account. In the bunq app events are shown in your 'overview'. Examples of when events are created or
+    ///     modified: payment sent, payment received, request for payment received or connect invite received.
     /// </summary>
     public class Event : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user/{0}/event/{1}";
 
         protected const string ENDPOINT_URL_LISTING = "user/{0}/event";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "Event";
 
         /// <summary>
-        /// The id of the event.
+        ///     The id of the event.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp of the event's creation.
+        ///     The timestamp of the event's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp of the event's last update.
+        ///     The timestamp of the event's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        /// The performed action. Can be: CREATE or UPDATE.
+        ///     The performed action. Can be: CREATE or UPDATE.
         /// </summary>
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }
 
         /// <summary>
-        /// The id of the user the event applied to (if it was a user event).
+        ///     The id of the user the event applied to (if it was a user event).
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
         public string UserId { get; set; }
 
         /// <summary>
-        /// The id of the monetary account the event applied to (if it was a monetary account event).
+        ///     The id of the monetary account the event applied to (if it was a monetary account event).
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public string MonetaryAccountId { get; set; }
 
         /// <summary>
-        /// The details of the external object the event was created for.
+        ///     The details of the external object the event was created for.
         /// </summary>
         [JsonProperty(PropertyName = "object")]
         public EventObject Object { get; set; }
 
         /// <summary>
-        /// The event status. Can be: FINALIZED or AWAITING_REPLY. An example of FINALIZED event is a payment received
-        /// event, while an AWAITING_REPLY event is a request received event.
+        ///     The event status. Can be: FINALIZED or AWAITING_REPLY. An example of FINALIZED event is a payment received
+        ///     event, while an AWAITING_REPLY event is a request received event.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
 
         /// <summary>
-        /// Get a specific event for a given user.
+        ///     Get a specific event for a given user.
         /// </summary>
         public static BunqResponse<Event> Get(int eventId, IDictionary<string, string> customHeaders = null)
         {
@@ -94,13 +90,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get a collection of events for a given user. You can add query the parameters monetary_account_id, status
-        /// and/or display_user_event to filter the response. When monetary_account_id={id,id} is provided only events
-        /// that relate to these monetary account ids are returned. When status={AWAITING_REPLY/FINALIZED} is provided
-        /// the response only contains events with the status AWAITING_REPLY or FINALIZED. When
-        /// display_user_event={true/false} is set to false user events are excluded from the response, when not
-        /// provided user events are displayed. User events are events that are not related to a monetary account (for
-        /// example: connect invites).
+        ///     Get a collection of events for a given user. You can add query the parameters monetary_account_id, status
+        ///     and/or display_user_event to filter the response. When monetary_account_id={id,id} is provided only events
+        ///     that relate to these monetary account ids are returned. When status={AWAITING_REPLY/FINALIZED} is provided
+        ///     the response only contains events with the status AWAITING_REPLY or FINALIZED. When
+        ///     display_user_event={true/false} is set to false user events are excluded from the response, when not
+        ///     provided user events are displayed. User events are events that are not related to a monetary account (for
+        ///     example: connect invites).
         /// </summary>
         public static BunqResponse<List<Event>> List(IDictionary<string, string> urlParams = null,
             IDictionary<string, string> customHeaders = null)
@@ -120,45 +116,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
-            if (this.Created != null)
-            {
-                return false;
-            }
+            if (Created != null) return false;
 
-            if (this.Updated != null)
-            {
-                return false;
-            }
+            if (Updated != null) return false;
 
-            if (this.Action != null)
-            {
-                return false;
-            }
+            if (Action != null) return false;
 
-            if (this.UserId != null)
-            {
-                return false;
-            }
+            if (UserId != null) return false;
 
-            if (this.MonetaryAccountId != null)
-            {
-                return false;
-            }
+            if (MonetaryAccountId != null) return false;
 
-            if (this.Object != null)
-            {
-                return false;
-            }
+            if (Object != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
             return true;
         }
@@ -167,7 +139,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static Event CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<Event>(json);
+            return CreateFromJsonString<Event>(json);
         }
     }
 }
