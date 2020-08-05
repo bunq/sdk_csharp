@@ -8,7 +8,7 @@
     <PackageId>Bunq.Sdk</PackageId>
   </PropertyGroup>
   <PropertyGroup>
-    <VersionPrefix>1.13.0</VersionPrefix>
+    <VersionPrefix>1.14.0</VersionPrefix>
   </PropertyGroup>
   <PropertyGroup>
     <RootNamespace>Bunq.Sdk</RootNamespace>
@@ -19,7 +19,7 @@
     <RepositoryUrl>https://github.com/bunq/sdk_csharp</RepositoryUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
     <AssemblyTitle>bunq SDK</AssemblyTitle>
-    <Copyright>bunq 2017</Copyright>
+    <Copyright>bunq 2020</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3-*" />

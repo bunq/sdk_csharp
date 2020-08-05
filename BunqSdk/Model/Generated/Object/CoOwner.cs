@@ -1,6 +1,5 @@
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -9,13 +8,13 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class CoOwner : BunqModel
     {
         /// <summary>
-        /// The Alias of the co-owner.
+        ///     The Alias of the co-owner.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public LabelUser Alias { get; set; }
 
         /// <summary>
-        /// Can be: ACCEPTED, REJECTED, PENDING or REVOKED
+        ///     Can be: ACCEPTED, REJECTED, PENDING or REVOKED
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
@@ -24,15 +23,9 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Alias != null)
-            {
-                return false;
-            }
+            if (Alias != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
             return true;
         }
@@ -41,7 +34,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public static CoOwner CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<CoOwner>(json);
+            return CreateFromJsonString<CoOwner>(json);
         }
     }
 }

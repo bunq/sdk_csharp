@@ -1,6 +1,5 @@
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -33,25 +32,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.TargetUrl != null)
-            {
-                return false;
-            }
+            if (TargetUrl != null) return false;
 
-            if (this.Category != null)
-            {
-                return false;
-            }
+            if (Category != null) return false;
 
-            if (this.EventType != null)
-            {
-                return false;
-            }
+            if (EventType != null) return false;
 
-            if (this.Object != null)
-            {
-                return false;
-            }
+            if (Object != null) return false;
 
             return true;
         }
@@ -60,7 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public static NotificationUrl CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<NotificationUrl>(json);
+            return CreateFromJsonString<NotificationUrl>(json);
         }
     }
 }

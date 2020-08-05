@@ -2,7 +2,6 @@ using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,7 +10,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class RequestReferenceSplitTheBillAnchorObject : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        /// Error constants.
+        ///     Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
@@ -71,55 +70,25 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public BunqModel GetReferencedObject()
         {
-            if (this.BillingInvoice != null)
-            {
-                return this.BillingInvoice;
-            }
+            if (BillingInvoice != null) return BillingInvoice;
 
-            if (this.DraftPayment != null)
-            {
-                return this.DraftPayment;
-            }
+            if (DraftPayment != null) return DraftPayment;
 
-            if (this.MasterCardAction != null)
-            {
-                return this.MasterCardAction;
-            }
+            if (MasterCardAction != null) return MasterCardAction;
 
-            if (this.Payment != null)
-            {
-                return this.Payment;
-            }
+            if (Payment != null) return Payment;
 
-            if (this.PaymentBatch != null)
-            {
-                return this.PaymentBatch;
-            }
+            if (PaymentBatch != null) return PaymentBatch;
 
-            if (this.RequestResponse != null)
-            {
-                return this.RequestResponse;
-            }
+            if (RequestResponse != null) return RequestResponse;
 
-            if (this.ScheduleInstance != null)
-            {
-                return this.ScheduleInstance;
-            }
+            if (ScheduleInstance != null) return ScheduleInstance;
 
-            if (this.TabResultResponse != null)
-            {
-                return this.TabResultResponse;
-            }
+            if (TabResultResponse != null) return TabResultResponse;
 
-            if (this.WhitelistResult != null)
-            {
-                return this.WhitelistResult;
-            }
+            if (WhitelistResult != null) return WhitelistResult;
 
-            if (this.TransferwisePayment != null)
-            {
-                return this.TransferwisePayment;
-            }
+            if (TransferwisePayment != null) return TransferwisePayment;
 
             throw new BunqException(ERROR_NULL_FIELDS);
         }
@@ -128,55 +97,25 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.BillingInvoice != null)
-            {
-                return false;
-            }
+            if (BillingInvoice != null) return false;
 
-            if (this.DraftPayment != null)
-            {
-                return false;
-            }
+            if (DraftPayment != null) return false;
 
-            if (this.MasterCardAction != null)
-            {
-                return false;
-            }
+            if (MasterCardAction != null) return false;
 
-            if (this.Payment != null)
-            {
-                return false;
-            }
+            if (Payment != null) return false;
 
-            if (this.PaymentBatch != null)
-            {
-                return false;
-            }
+            if (PaymentBatch != null) return false;
 
-            if (this.RequestResponse != null)
-            {
-                return false;
-            }
+            if (RequestResponse != null) return false;
 
-            if (this.ScheduleInstance != null)
-            {
-                return false;
-            }
+            if (ScheduleInstance != null) return false;
 
-            if (this.TabResultResponse != null)
-            {
-                return false;
-            }
+            if (TabResultResponse != null) return false;
 
-            if (this.WhitelistResult != null)
-            {
-                return false;
-            }
+            if (WhitelistResult != null) return false;
 
-            if (this.TransferwisePayment != null)
-            {
-                return false;
-            }
+            if (TransferwisePayment != null) return false;
 
             return true;
         }
@@ -185,7 +124,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public static RequestReferenceSplitTheBillAnchorObject CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<RequestReferenceSplitTheBillAnchorObject>(json);
+            return CreateFromJsonString<RequestReferenceSplitTheBillAnchorObject>(json);
         }
     }
 }

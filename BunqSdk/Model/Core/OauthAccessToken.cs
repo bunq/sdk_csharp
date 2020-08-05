@@ -32,7 +32,7 @@ namespace Bunq.Sdk.Model.Core
         /// <summary>
         /// Token constants.
         /// </summary>
-        protected const String TOKEN_URI_FORMAT_SANDBOX = "https://api.oauth.sandbox.bunq.com/v1/token?{0}";
+        protected const String TOKEN_URI_FORMAT_SANDBOX = "https://api-oauth.sandbox.bunq.com/v1/token?{0}";
         protected const String TOKEN_URI_FORMAT_PRODUCTION = "https://api.oauth.bunq.com/v1/token?{0}";
         
         [JsonProperty(PropertyName = "access_token")]

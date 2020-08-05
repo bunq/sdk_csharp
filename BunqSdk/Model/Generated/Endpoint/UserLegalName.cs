@@ -1,31 +1,27 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Endpoint for getting available legal names that can be used by the user.
+    ///     Endpoint for getting available legal names that can be used by the user.
     /// </summary>
     public class UserLegalName : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/legal-name";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "UserLegalNameArray";
 
         /// <summary>
-        /// All legal names that can be used by the user
+        ///     All legal names that can be used by the user
         /// </summary>
         [JsonProperty(PropertyName = "legal_names")]
         public List<string> LegalNames { get; set; }
@@ -50,10 +46,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.LegalNames != null)
-            {
-                return false;
-            }
+            if (LegalNames != null) return false;
 
             return true;
         }
@@ -62,7 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static UserLegalName CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<UserLegalName>(json);
+            return CreateFromJsonString<UserLegalName>(json);
         }
     }
 }

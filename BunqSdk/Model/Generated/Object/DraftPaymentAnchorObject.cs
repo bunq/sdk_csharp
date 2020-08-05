@@ -2,7 +2,6 @@ using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,7 +10,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class DraftPaymentAnchorObject : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        /// Error constants.
+        ///     Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
@@ -31,15 +30,9 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public BunqModel GetReferencedObject()
         {
-            if (this.Payment != null)
-            {
-                return this.Payment;
-            }
+            if (Payment != null) return Payment;
 
-            if (this.PaymentBatch != null)
-            {
-                return this.PaymentBatch;
-            }
+            if (PaymentBatch != null) return PaymentBatch;
 
             throw new BunqException(ERROR_NULL_FIELDS);
         }
@@ -48,15 +41,9 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Payment != null)
-            {
-                return false;
-            }
+            if (Payment != null) return false;
 
-            if (this.PaymentBatch != null)
-            {
-                return false;
-            }
+            if (PaymentBatch != null) return false;
 
             return true;
         }
@@ -65,7 +52,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public static DraftPaymentAnchorObject CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<DraftPaymentAnchorObject>(json);
+            return CreateFromJsonString<DraftPaymentAnchorObject>(json);
         }
     }
 }

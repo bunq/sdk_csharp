@@ -1,40 +1,42 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// See how many trees this user has planted.
+    ///     See how many trees this user has planted.
     /// </summary>
     public class TreeProgress : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/tree-progress";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "TreeProgress";
 
         /// <summary>
-        /// The number of trees this user and all users have planted.
+        ///     The number of trees this user and all users have planted.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_tree")]
         public double? NumberOfTree { get; set; }
 
         /// <summary>
-        /// The progress towards the next tree.
+        ///     The progress towards the next tree.
         /// </summary>
         [JsonProperty(PropertyName = "progress_tree_next")]
         public double? ProgressTreeNext { get; set; }
+
+        /// <summary>
+        ///     The label of the user the progress belongs to.
+        /// </summary>
+        [JsonProperty(PropertyName = "label_user")]
+        public BunqModel LabelUser { get; set; }
 
 
         /// <summary>
@@ -57,15 +59,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.NumberOfTree != null)
-            {
-                return false;
-            }
+            if (NumberOfTree != null) return false;
 
-            if (this.ProgressTreeNext != null)
-            {
-                return false;
-            }
+            if (ProgressTreeNext != null) return false;
+
+            if (LabelUser != null) return false;
 
             return true;
         }
@@ -74,7 +72,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static TreeProgress CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<TreeProgress>(json);
+            return CreateFromJsonString<TreeProgress>(json);
         }
     }
 }

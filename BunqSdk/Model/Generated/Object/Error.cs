@@ -1,6 +1,5 @@
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -9,13 +8,13 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class Error : BunqModel
     {
         /// <summary>
-        /// The error description (in English).
+        ///     The error description (in English).
         /// </summary>
         [JsonProperty(PropertyName = "error_description")]
         public string ErrorDescription { get; set; }
 
         /// <summary>
-        /// The error description (in the user language).
+        ///     The error description (in the user language).
         /// </summary>
         [JsonProperty(PropertyName = "error_description_translated")]
         public string ErrorDescriptionTranslated { get; set; }
@@ -25,15 +24,9 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.ErrorDescription != null)
-            {
-                return false;
-            }
+            if (ErrorDescription != null) return false;
 
-            if (this.ErrorDescriptionTranslated != null)
-            {
-                return false;
-            }
+            if (ErrorDescriptionTranslated != null) return false;
 
             return true;
         }
@@ -42,7 +35,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public static Error CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<Error>(json);
+            return CreateFromJsonString<Error>(json);
         }
     }
 }

@@ -1,22 +1,20 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Endpoint for schedule payments.
+    ///     Endpoint for schedule payments.
     /// </summary>
     public class SchedulePayment : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/schedule-payment";
 
@@ -26,33 +24,33 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/schedule-payment/{2}";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_PAYMENT = "payment";
 
         public const string FIELD_SCHEDULE = "schedule";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "ScheduledPayment";
 
         private const string OBJECT_TYPE_PUT = "ScheduledPayment";
 
         /// <summary>
-        /// The payment details.
+        ///     The payment details.
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
         public SchedulePaymentEntry Payment { get; set; }
 
         /// <summary>
-        /// The schedule details.
+        ///     The schedule details.
         /// </summary>
         [JsonProperty(PropertyName = "schedule")]
         public Schedule Schedule { get; set; }
 
         /// <summary>
-        /// The schedule status, options: ACTIVE, FINISHED, CANCELLED.
+        ///     The schedule status, options: ACTIVE, FINISHED, CANCELLED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
@@ -72,7 +70,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
             {
                 {FIELD_PAYMENT, payment},
-                {FIELD_SCHEDULE, schedule},
+                {FIELD_SCHEDULE, schedule}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -148,7 +146,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
             {
                 {FIELD_PAYMENT, payment},
-                {FIELD_SCHEDULE, schedule},
+                {FIELD_SCHEDULE, schedule}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -165,20 +163,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Payment != null)
-            {
-                return false;
-            }
+            if (Payment != null) return false;
 
-            if (this.Schedule != null)
-            {
-                return false;
-            }
+            if (Schedule != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
             return true;
         }
@@ -187,7 +176,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static SchedulePayment CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<SchedulePayment>(json);
+            return CreateFromJsonString<SchedulePayment>(json);
         }
     }
 }

@@ -1,21 +1,19 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Endpoint for generating and retrieving a new CVC2 code.
+    ///     Endpoint for generating and retrieving a new CVC2 code.
     /// </summary>
     public class CardGeneratedCvc2 : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/card/{1}/generated-cvc2";
 
@@ -24,60 +22,60 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_LISTING = "user/{0}/card/{1}/generated-cvc2";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_TYPE = "type";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "CardGeneratedCvc2";
 
         /// <summary>
-        /// The type of generated cvc2. Can be STATIC or GENERATED.
+        ///     The type of generated cvc2. Can be STATIC or GENERATED.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// The id of the cvc code.
+        ///     The id of the cvc code.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp of the cvc code's creation.
+        ///     The timestamp of the cvc code's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp of the cvc code's last update.
+        ///     The timestamp of the cvc code's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        /// The cvc2 code.
+        ///     The cvc2 code.
         /// </summary>
         [JsonProperty(PropertyName = "cvc2")]
         public string Cvc2 { get; set; }
 
         /// <summary>
-        /// The status of the cvc2. Can be AVAILABLE, USED, EXPIRED, BLOCKED.
+        ///     The status of the cvc2. Can be AVAILABLE, USED, EXPIRED, BLOCKED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// Expiry time of the cvc2.
+        ///     Expiry time of the cvc2.
         /// </summary>
         [JsonProperty(PropertyName = "expiry_time")]
         public string ExpiryTime { get; set; }
 
 
         /// <summary>
-        /// Generate a new CVC2 code for a card.
+        ///     Generate a new CVC2 code for a card.
         /// </summary>
         /// <param name="type">The type of generated cvc2. Can be STATIC or GENERATED.</param>
         public static BunqResponse<int> Create(int cardId, string type = null,
@@ -89,7 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_TYPE, type},
+                {FIELD_TYPE, type}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -100,7 +98,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get the details for a specific generated CVC2 code.
+        ///     Get the details for a specific generated CVC2 code.
         /// </summary>
         public static BunqResponse<CardGeneratedCvc2> Get(int cardId, int cardGeneratedCvc2Id,
             IDictionary<string, string> customHeaders = null)
@@ -127,7 +125,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_TYPE, type},
+                {FIELD_TYPE, type}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -139,7 +137,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get all generated CVC2 codes for a card.
+        ///     Get all generated CVC2 codes for a card.
         /// </summary>
         public static BunqResponse<List<CardGeneratedCvc2>> List(int cardId,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
@@ -159,40 +157,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
-            if (this.Created != null)
-            {
-                return false;
-            }
+            if (Created != null) return false;
 
-            if (this.Updated != null)
-            {
-                return false;
-            }
+            if (Updated != null) return false;
 
-            if (this.Type != null)
-            {
-                return false;
-            }
+            if (Type != null) return false;
 
-            if (this.Cvc2 != null)
-            {
-                return false;
-            }
+            if (Cvc2 != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
-            if (this.ExpiryTime != null)
-            {
-                return false;
-            }
+            if (ExpiryTime != null) return false;
 
             return true;
         }
@@ -201,7 +178,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static CardGeneratedCvc2 CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<CardGeneratedCvc2>(json);
+            return CreateFromJsonString<CardGeneratedCvc2>(json);
         }
     }
 }

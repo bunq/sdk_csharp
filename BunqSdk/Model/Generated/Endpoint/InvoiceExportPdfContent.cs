@@ -1,26 +1,21 @@
-using Bunq.Sdk.Context;
-using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
-using Bunq.Sdk.Model.Core;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using System;
+using Bunq.Sdk.Http;
+using Bunq.Sdk.Model.Core;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Get a PDF export of an invoice.
+    ///     Get a PDF export of an invoice.
     /// </summary>
     public class InvoiceExportPdfContent : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/invoice/{1}/pdf-content";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "InvoiceExportPdfContent";
 
@@ -49,7 +44,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static InvoiceExportPdfContent CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<InvoiceExportPdfContent>(json);
+            return CreateFromJsonString<InvoiceExportPdfContent>(json);
         }
     }
 }

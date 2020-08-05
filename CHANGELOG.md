@@ -1,6 +1,25 @@
-# Change Log
+# Changelog
+
+## [Unreleased](https://github.com/bunq/sdk_csharp/tree/HEAD)
+
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.13.0...HEAD)
+
+**Closed issues:**
+
+- Session-server bad request 400 [\#139](https://github.com/bunq/sdk_csharp/issues/139)
+- DirectorAlias model has changed in production from a single object to array of objects [\#137](https://github.com/bunq/sdk_csharp/issues/137)
+- JsonSerializationException when logging in \(ApiContext.Create\) [\#135](https://github.com/bunq/sdk_csharp/issues/135)
+
+**Merged pull requests:**
+
+- Use correct oauth url for sandbox [\#134](https://github.com/bunq/sdk_csharp/pull/134) ([thijsdejong](https://github.com/thijsdejong))
+
+## [1.13.0](https://github.com/bunq/sdk_csharp/tree/1.13.0) (2020-02-19)
+
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.12.1...1.13.0)
 
 ## [1.12.1](https://github.com/bunq/sdk_csharp/tree/1.12.1) (2019-09-16)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.12.0...1.12.1)
 
 **Closed issues:**
@@ -12,6 +31,7 @@
 - Added custom object deserializer for BunqMeTabResultInquiry [\#130](https://github.com/bunq/sdk_csharp/pull/130) ([NickvandeGroes](https://github.com/NickvandeGroes))
 
 ## [1.12.0](https://github.com/bunq/sdk_csharp/tree/1.12.0) (2019-09-10)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.16...1.12.0)
 
 **Closed issues:**
@@ -26,12 +46,15 @@
 - Fix NotificationFilter, Serialization issues and implement PSD2  [\#128](https://github.com/bunq/sdk_csharp/pull/128) ([NickvandeGroes](https://github.com/NickvandeGroes))
 
 ## [1.10.16](https://github.com/bunq/sdk_csharp/tree/1.10.16) (2019-06-16)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.3...1.10.16)
 
 ## [1.10.3](https://github.com/bunq/sdk_csharp/tree/1.10.3) (2019-05-22)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.2...1.10.3)
 
 ## [1.10.2](https://github.com/bunq/sdk_csharp/tree/1.10.2) (2019-05-09)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.1...1.10.2)
 
 **Merged pull requests:**
@@ -39,9 +62,11 @@
 - Fix Windows issues. \(bunq/sdk\_csharp\#124\) [\#126](https://github.com/bunq/sdk_csharp/pull/126) ([kojoru](https://github.com/kojoru))
 
 ## [1.10.1](https://github.com/bunq/sdk_csharp/tree/1.10.1) (2019-05-08)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.10.0...1.10.1)
 
 ## [1.10.0](https://github.com/bunq/sdk_csharp/tree/1.10.0) (2019-05-08)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.1.0...1.10.0)
 
 **Closed issues:**
@@ -55,6 +80,7 @@
 - fix broken link in readme [\#120](https://github.com/bunq/sdk_csharp/pull/120) ([Niggggggo](https://github.com/Niggggggo))
 
 ## [1.1.0](https://github.com/bunq/sdk_csharp/tree/1.1.0) (2018-10-10)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.0.0...1.1.0)
 
 **Fixed bugs:**
@@ -64,12 +90,14 @@
 **Closed issues:**
 
 - Unable to Authenticate with Bunq [\#114](https://github.com/bunq/sdk_csharp/issues/114)
+- Can not construct a BunqMeTabEntry to create a BunqMeTab [\#85](https://github.com/bunq/sdk_csharp/issues/85)
 
 **Merged pull requests:**
 
 - Fix key generation on .NET Framework. \(bunq/sdk\_csharp\#92\) [\#116](https://github.com/bunq/sdk_csharp/pull/116) ([kojoru](https://github.com/kojoru))
 
 ## [1.0.0](https://github.com/bunq/sdk_csharp/tree/1.0.0) (2018-07-24)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.13.1...1.0.0)
 
 **Implemented enhancements:**
@@ -99,6 +127,7 @@
 **Merged pull requests:**
 
 - Added travis config.  \(bunq/sdk\_csharp\#90\) [\#110](https://github.com/bunq/sdk_csharp/pull/110) ([OGKevin](https://github.com/OGKevin))
+- Change Java to Csharp in readme. \(bunq/sdk\_csharp\#97\) [\#98](https://github.com/bunq/sdk_csharp/pull/98) ([robinvanpoppel](https://github.com/robinvanpoppel))
 - Oauth bunq/sdk\_csharp\#112 [\#113](https://github.com/bunq/sdk_csharp/pull/113) ([OGKevin](https://github.com/OGKevin))
 - Auto reload context bunq/sdk\_csharp\#72 [\#111](https://github.com/bunq/sdk_csharp/pull/111) ([OGKevin](https://github.com/OGKevin))
 -  Updated the examples on readme. \(bunq/sdk\_csharp\#91\) [\#109](https://github.com/bunq/sdk_csharp/pull/109) ([OGKevin](https://github.com/OGKevin))
@@ -109,13 +138,11 @@
 - Changed sandbox url to the new one. \(bunq/sdk\_csharp\#99\) [\#100](https://github.com/bunq/sdk_csharp/pull/100) ([OGKevin](https://github.com/OGKevin))
 
 ## [0.13.1](https://github.com/bunq/sdk_csharp/tree/0.13.1) (2018-05-30)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.13.0...0.13.1)
 
-**Merged pull requests:**
-
-- Change Java to Csharp in readme. \(bunq/sdk\_csharp\#97\) [\#98](https://github.com/bunq/sdk_csharp/pull/98) ([robinvanpoppel](https://github.com/robinvanpoppel))
-
 ## [0.13.0](https://github.com/bunq/sdk_csharp/tree/0.13.0) (2018-03-20)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.4...0.13.0)
 
 **Implemented enhancements:**
@@ -148,6 +175,7 @@
 - Bunq update 7  [\#84](https://github.com/bunq/sdk_csharp/pull/84) ([OGKevin](https://github.com/OGKevin))
 
 ## [0.12.4](https://github.com/bunq/sdk_csharp/tree/0.12.4) (2017-12-21)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.3...0.12.4)
 
 **Implemented enhancements:**
@@ -169,6 +197,7 @@
 - Improve decoder bunq/sdk csharp\#43 [\#57](https://github.com/bunq/sdk_csharp/pull/57) ([OGKevin](https://github.com/OGKevin))
 
 ## [0.12.3](https://github.com/bunq/sdk_csharp/tree/0.12.3) (2017-11-15)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.2...0.12.3)
 
 **Implemented enhancements:**
@@ -184,6 +213,7 @@
 - Feature/callback models bunq/sdk csharp\#41 [\#44](https://github.com/bunq/sdk_csharp/pull/44) ([OGKevin](https://github.com/OGKevin))
 
 ## [0.12.2](https://github.com/bunq/sdk_csharp/tree/0.12.2) (2017-11-08)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.12.0...0.12.2)
 
 **Implemented enhancements:**
@@ -209,6 +239,7 @@
 - Feature/add missing cvc fields \#38 [\#39](https://github.com/bunq/sdk_csharp/pull/39) ([OGKevin](https://github.com/OGKevin))
 
 ## [0.12.0](https://github.com/bunq/sdk_csharp/tree/0.12.0) (2017-10-11)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.11.0...0.12.0)
 
 **Implemented enhancements:**
@@ -226,9 +257,9 @@
 
 - cleanup after 24-improve-namespaces [\#27](https://github.com/bunq/sdk_csharp/pull/27) ([dnl-blkv](https://github.com/dnl-blkv))
 - Improve namespaces; cleanup \[\#24\] [\#25](https://github.com/bunq/sdk_csharp/pull/25) ([dnl-blkv](https://github.com/dnl-blkv))
-- cleanup C\# SDK \[\#11\] [\#12](https://github.com/bunq/sdk_csharp/pull/12) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.11.0](https://github.com/bunq/sdk_csharp/tree/0.11.0) (2017-09-06)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.10.0...0.11.0)
 
 **Implemented enhancements:**
@@ -240,6 +271,7 @@
 - Add pagination; add missing fields and objects \[\#17\] [\#18](https://github.com/bunq/sdk_csharp/pull/18) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.10.0](https://github.com/bunq/sdk_csharp/tree/0.10.0) (2017-08-23)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.9.2...0.10.0)
 
 **Implemented enhancements:**
@@ -255,23 +287,25 @@
 
 **Merged pull requests:**
 
+- cleanup C\# SDK \[\#11\] [\#12](https://github.com/bunq/sdk_csharp/pull/12) ([dnl-blkv](https://github.com/dnl-blkv))
 - Merge hotfixed master back to develop [\#10](https://github.com/bunq/sdk_csharp/pull/10) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.9.2](https://github.com/bunq/sdk_csharp/tree/0.9.2) (2017-08-18)
+
 [Full Changelog](https://github.com/bunq/sdk_csharp/compare/0.9.1...0.9.2)
-
-**Implemented enhancements:**
-
-- \#5 Introduce BunqResponse [\#6](https://github.com/bunq/sdk_csharp/pull/6) ([dnl-blkv](https://github.com/dnl-blkv))
 
 **Fixed bugs:**
 
 - Fix SessionServerConverter, bump up to 0.9.2.0-beta \[\#7\] [\#8](https://github.com/bunq/sdk_csharp/pull/8) ([dnl-blkv](https://github.com/dnl-blkv))
 
 ## [0.9.1](https://github.com/bunq/sdk_csharp/tree/0.9.1) (2017-08-07)
+
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/ea83e52ed5d0ef31c26e2c2a019f21b9f9aaeea8...0.9.1)
+
 **Implemented enhancements:**
 
 - Complete project info [\#3](https://github.com/bunq/sdk_csharp/issues/3)
+- \#5 Introduce BunqResponse [\#6](https://github.com/bunq/sdk_csharp/pull/6) ([dnl-blkv](https://github.com/dnl-blkv))
 - Added readme for tests  [\#2](https://github.com/bunq/sdk_csharp/pull/2) ([OGKevin](https://github.com/OGKevin))
 - Add first wave unit-tests [\#1](https://github.com/bunq/sdk_csharp/pull/1) ([OGKevin](https://github.com/OGKevin))
 
@@ -281,4 +315,4 @@
 
 
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*

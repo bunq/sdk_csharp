@@ -1,28 +1,24 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// List all the definitions in a payment auto allocate.
+    ///     List all the definitions in a payment auto allocate.
     /// </summary>
     public class PaymentAutoAllocateDefinition : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING =
             "user/{0}/monetary-account/{1}/payment-auto-allocate/{2}/definition";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_TYPE = "type";
 
@@ -32,54 +28,54 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_FRACTION = "fraction";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "PaymentAutoAllocateDefinition";
 
         /// <summary>
-        /// The type of definition.
+        ///     The type of definition.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// The alias of the party we are allocating the money to.
+        ///     The alias of the party we are allocating the money to.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_alias")]
         public MonetaryAccountReference CounterpartyAlias { get; set; }
 
         /// <summary>
-        /// The description for the payment.
+        ///     The description for the payment.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
-        /// The amount to allocate.
+        ///     The amount to allocate.
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
 
         /// <summary>
-        /// The percentage of the triggering payment's amount to allocate.
+        ///     The percentage of the triggering payment's amount to allocate.
         /// </summary>
         [JsonProperty(PropertyName = "fraction")]
         public double? Fraction { get; set; }
 
         /// <summary>
-        /// The id of the PaymentAutoAllocateDefinition.
+        ///     The id of the PaymentAutoAllocateDefinition.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp when the PaymentAutoAllocateDefinition was created.
+        ///     The timestamp when the PaymentAutoAllocateDefinition was created.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp when the PaymentAutoAllocateDefinition was last updated.
+        ///     The timestamp when the PaymentAutoAllocateDefinition was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
@@ -109,40 +105,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
-            if (this.Created != null)
-            {
-                return false;
-            }
+            if (Created != null) return false;
 
-            if (this.Updated != null)
-            {
-                return false;
-            }
+            if (Updated != null) return false;
 
-            if (this.CounterpartyAlias != null)
-            {
-                return false;
-            }
+            if (CounterpartyAlias != null) return false;
 
-            if (this.Description != null)
-            {
-                return false;
-            }
+            if (Description != null) return false;
 
-            if (this.Amount != null)
-            {
-                return false;
-            }
+            if (Amount != null) return false;
 
-            if (this.Fraction != null)
-            {
-                return false;
-            }
+            if (Fraction != null) return false;
 
             return true;
         }
@@ -151,7 +126,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static PaymentAutoAllocateDefinition CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<PaymentAutoAllocateDefinition>(json);
+            return CreateFromJsonString<PaymentAutoAllocateDefinition>(json);
         }
     }
 }

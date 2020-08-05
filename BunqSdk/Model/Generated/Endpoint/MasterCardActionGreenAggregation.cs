@@ -1,37 +1,33 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Aggregation of how many card payments have been done with a Green Card in the current calendar month.
+    ///     Aggregation of how many card payments have been done with a Green Card in the current calendar month.
     /// </summary>
     public class MasterCardActionGreenAggregation : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/mastercard-action-green-aggregation";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "MasterCardActionGreenAggregation";
 
         /// <summary>
-        /// The date of the aggregation.
+        ///     The date of the aggregation.
         /// </summary>
         [JsonProperty(PropertyName = "date")]
         public string Date { get; set; }
 
         /// <summary>
-        /// The percentage of card payments that were done with a Green Card.
+        ///     The percentage of card payments that were done with a Green Card.
         /// </summary>
         [JsonProperty(PropertyName = "percentage")]
         public string Percentage { get; set; }
@@ -57,15 +53,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Date != null)
-            {
-                return false;
-            }
+            if (Date != null) return false;
 
-            if (this.Percentage != null)
-            {
-                return false;
-            }
+            if (Percentage != null) return false;
 
             return true;
         }
@@ -74,7 +64,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static MasterCardActionGreenAggregation CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<MasterCardActionGreenAggregation>(json);
+            return CreateFromJsonString<MasterCardActionGreenAggregation>(json);
         }
     }
 }

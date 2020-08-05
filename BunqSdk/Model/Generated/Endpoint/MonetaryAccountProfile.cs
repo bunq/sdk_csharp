@@ -1,17 +1,16 @@
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Used to update and read up monetary account profiles, to keep the balance between specific thresholds.
+    ///     Used to update and read up monetary account profiles, to keep the balance between specific thresholds.
     /// </summary>
     public class MonetaryAccountProfile : BunqModel
     {
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_PROFILE_FILL = "profile_fill";
 
@@ -19,13 +18,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
 
         /// <summary>
-        /// The profile settings for triggering the fill of a monetary account.
+        ///     The profile settings for triggering the fill of a monetary account.
         /// </summary>
         [JsonProperty(PropertyName = "profile_fill")]
         public MonetaryAccountProfileFill ProfileFill { get; set; }
 
         /// <summary>
-        /// The profile settings for moving excesses to a savings account
+        ///     The profile settings for moving excesses to a savings account
         /// </summary>
         [JsonProperty(PropertyName = "profile_drain")]
         public MonetaryAccountProfileDrain ProfileDrain { get; set; }
@@ -35,15 +34,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.ProfileFill != null)
-            {
-                return false;
-            }
+            if (ProfileFill != null) return false;
 
-            if (this.ProfileDrain != null)
-            {
-                return false;
-            }
+            if (ProfileDrain != null) return false;
 
             return true;
         }
@@ -52,7 +45,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static MonetaryAccountProfile CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<MonetaryAccountProfile>(json);
+            return CreateFromJsonString<MonetaryAccountProfile>(json);
         }
     }
 }
