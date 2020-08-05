@@ -1,42 +1,40 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Using this call you can create a SOFORT Request assigned to your User by providing the Token of the request.
+    ///     Using this call you can create a SOFORT Request assigned to your User by providing the Token of the request.
     /// </summary>
     public class TokenQrRequestSofort : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/token-qr-request-sofort";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_TOKEN = "token";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_POST = "RequestResponse";
 
         /// <summary>
-        /// The token passed from a site or read from a QR code.
+        ///     The token passed from a site or read from a QR code.
         /// </summary>
         [JsonProperty(PropertyName = "token")]
         public string Token { get; set; }
 
         /// <summary>
-        /// Create a request from an SOFORT transaction.
+        ///     Create a request from an SOFORT transaction.
         /// </summary>
         /// <param name="token">The token passed from a site or read from a QR code.</param>
         public static BunqResponse<TokenQrRequestSofort> Create(string token,
@@ -48,7 +46,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_TOKEN, token},
+                {FIELD_TOKEN, token}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -70,7 +68,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static TokenQrRequestSofort CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<TokenQrRequestSofort>(json);
+            return CreateFromJsonString<TokenQrRequestSofort>(json);
         }
     }
 }

@@ -1,50 +1,46 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Used to get insights about transactions between given time range.
+    ///     Used to get insights about transactions between given time range.
     /// </summary>
     public class Insight : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/insights";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "InsightCategory";
 
         /// <summary>
-        /// The category.
+        ///     The category.
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
 
         /// <summary>
-        /// The translated category.
+        ///     The translated category.
         /// </summary>
         [JsonProperty(PropertyName = "category_translated")]
         public string CategoryTranslated { get; set; }
 
         /// <summary>
-        /// The total amount of the transactions in the category.
+        ///     The total amount of the transactions in the category.
         /// </summary>
         [JsonProperty(PropertyName = "amount_total")]
         public Amount AmountTotal { get; set; }
 
         /// <summary>
-        /// The number of the transactions in the category.
+        ///     The number of the transactions in the category.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_transactions")]
         public double? NumberOfTransactions { get; set; }
@@ -70,25 +66,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Category != null)
-            {
-                return false;
-            }
+            if (Category != null) return false;
 
-            if (this.CategoryTranslated != null)
-            {
-                return false;
-            }
+            if (CategoryTranslated != null) return false;
 
-            if (this.AmountTotal != null)
-            {
-                return false;
-            }
+            if (AmountTotal != null) return false;
 
-            if (this.NumberOfTransactions != null)
-            {
-                return false;
-            }
+            if (NumberOfTransactions != null) return false;
 
             return true;
         }
@@ -97,7 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static Insight CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<Insight>(json);
+            return CreateFromJsonString<Insight>(json);
         }
     }
 }

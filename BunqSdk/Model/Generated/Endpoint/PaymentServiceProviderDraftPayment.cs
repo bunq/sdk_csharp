@@ -1,22 +1,20 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Manage the PaymentServiceProviderDraftPayment's for a PISP.
+    ///     Manage the PaymentServiceProviderDraftPayment's for a PISP.
     /// </summary>
     public class PaymentServiceProviderDraftPayment : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/payment-service-provider-draft-payment";
 
@@ -25,7 +23,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_READ = "user/{0}/payment-service-provider-draft-payment/{1}";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_SENDER_IBAN = "sender_iban";
 
@@ -37,54 +35,54 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_STATUS = "status";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "PaymentServiceProviderDraftPayment";
 
         /// <summary>
-        /// The sender IBAN.
+        ///     The sender IBAN.
         /// </summary>
         [JsonProperty(PropertyName = "sender_iban")]
         public string SenderIban { get; set; }
 
         /// <summary>
-        /// The name of the sender.
+        ///     The name of the sender.
         /// </summary>
         [JsonProperty(PropertyName = "sender_name")]
         public string SenderName { get; set; }
 
         /// <summary>
-        /// The IBAN of the counterparty.
+        ///     The IBAN of the counterparty.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_iban")]
         public string CounterpartyIban { get; set; }
 
         /// <summary>
-        /// The name of the counterparty.
+        ///     The name of the counterparty.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_name")]
         public string CounterpartyName { get; set; }
 
         /// <summary>
-        /// Description of the payment.
+        ///     Description of the payment.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
-        /// The amount of the draft payment
+        ///     The amount of the draft payment
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
 
         /// <summary>
-        /// The status of the draft payment
+        ///     The status of the draft payment
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// The sender IBAN.
+        ///     The sender IBAN.
         /// </summary>
         [JsonProperty(PropertyName = "receiver_iban")]
         public string ReceiverIban { get; set; }
@@ -115,7 +113,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_COUNTERPARTY_NAME, counterpartyName},
                 {FIELD_DESCRIPTION, description},
                 {FIELD_AMOUNT, amount},
-                {FIELD_STATUS, status},
+                {FIELD_STATUS, status}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -137,7 +135,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_STATUS, status},
+                {FIELD_STATUS, status}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -184,25 +182,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.SenderIban != null)
-            {
-                return false;
-            }
+            if (SenderIban != null) return false;
 
-            if (this.ReceiverIban != null)
-            {
-                return false;
-            }
+            if (ReceiverIban != null) return false;
 
-            if (this.Amount != null)
-            {
-                return false;
-            }
+            if (Amount != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
             return true;
         }
@@ -211,7 +197,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static PaymentServiceProviderDraftPayment CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<PaymentServiceProviderDraftPayment>(json);
+            return CreateFromJsonString<PaymentServiceProviderDraftPayment>(json);
         }
     }
 }

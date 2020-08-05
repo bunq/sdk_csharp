@@ -1,22 +1,20 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Create a payment batch, or show the payment batches of a monetary account.
+    ///     Create a payment batch, or show the payment batches of a monetary account.
     /// </summary>
     public class PaymentBatch : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/payment-batch";
 
@@ -25,23 +23,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/payment-batch";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_PAYMENTS = "payments";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "PaymentBatch";
 
         /// <summary>
-        /// The list of mutations that were made.
+        ///     The list of mutations that were made.
         /// </summary>
         [JsonProperty(PropertyName = "payments")]
         public PaymentBatchAnchoredPayment Payments { get; set; }
 
         /// <summary>
-        /// Create a payment batch by sending an array of single payment objects, that will become part of the batch.
+        ///     Create a payment batch by sending an array of single payment objects, that will become part of the batch.
         /// </summary>
         /// <param name="payments">The list of payments we want to send in a single batch.</param>
         public static BunqResponse<int> Create(List<Payment> payments, int? monetaryAccountId = null,
@@ -53,7 +51,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_PAYMENTS, payments},
+                {FIELD_PAYMENTS, payments}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -66,7 +64,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Revoke a bunq.to payment batch. The status of all the payments will be set to REVOKED.
+        ///     Revoke a bunq.to payment batch. The status of all the payments will be set to REVOKED.
         /// </summary>
         public static BunqResponse<int> Update(int paymentBatchId, int? monetaryAccountId = null,
             IDictionary<string, string> customHeaders = null)
@@ -75,9 +73,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var apiClient = new ApiClient(GetApiContext());
 
-            var requestMap = new Dictionary<string, object>
-            {
-            };
+            var requestMap = new Dictionary<string, object>();
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw =
@@ -89,7 +85,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Return the details of a specific payment batch.
+        ///     Return the details of a specific payment batch.
         /// </summary>
         public static BunqResponse<PaymentBatch> Get(int paymentBatchId, int? monetaryAccountId = null,
             IDictionary<string, string> customHeaders = null)
@@ -106,7 +102,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Return all the payment batches for a monetary account.
+        ///     Return all the payment batches for a monetary account.
         /// </summary>
         public static BunqResponse<List<PaymentBatch>> List(int? monetaryAccountId = null,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
@@ -128,10 +124,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Payments != null)
-            {
-                return false;
-            }
+            if (Payments != null) return false;
 
             return true;
         }
@@ -140,7 +133,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static PaymentBatch CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<PaymentBatch>(json);
+            return CreateFromJsonString<PaymentBatch>(json);
         }
     }
 }

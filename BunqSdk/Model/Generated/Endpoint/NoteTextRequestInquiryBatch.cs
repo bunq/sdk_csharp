@@ -1,22 +1,20 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Used to manage text notes.
+    ///     Used to manage text notes.
     /// </summary>
     public class NoteTextRequestInquiryBatch : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE =
             "user/{0}/monetary-account/{1}/request-inquiry-batch/{2}/note-text";
@@ -34,41 +32,41 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             "user/{0}/monetary-account/{1}/request-inquiry-batch/{2}/note-text/{3}";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_CONTENT = "content";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "NoteText";
 
         /// <summary>
-        /// The content of the note.
+        ///     The content of the note.
         /// </summary>
         [JsonProperty(PropertyName = "content")]
         public string Content { get; set; }
 
         /// <summary>
-        /// The id of the note.
+        ///     The id of the note.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp of the note's creation.
+        ///     The timestamp of the note's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp of the note's last update.
+        ///     The timestamp of the note's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        /// The label of the user who created this note.
+        ///     The label of the user who created this note.
         /// </summary>
         [JsonProperty(PropertyName = "label_user_creator")]
         public LabelUser LabelUserCreator { get; set; }
@@ -86,7 +84,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_CONTENT, content},
+                {FIELD_CONTENT, content}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -110,7 +108,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_CONTENT, content},
+                {FIELD_CONTENT, content}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -139,7 +137,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Manage the notes for a given user.
+        ///     Manage the notes for a given user.
         /// </summary>
         public static BunqResponse<List<NoteTextRequestInquiryBatch>> List(int requestInquiryBatchId,
             int? monetaryAccountId = null, IDictionary<string, string> urlParams = null,
@@ -181,30 +179,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
-            if (this.Created != null)
-            {
-                return false;
-            }
+            if (Created != null) return false;
 
-            if (this.Updated != null)
-            {
-                return false;
-            }
+            if (Updated != null) return false;
 
-            if (this.LabelUserCreator != null)
-            {
-                return false;
-            }
+            if (LabelUserCreator != null) return false;
 
-            if (this.Content != null)
-            {
-                return false;
-            }
+            if (Content != null) return false;
 
             return true;
         }
@@ -213,7 +196,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static NoteTextRequestInquiryBatch CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<NoteTextRequestInquiryBatch>(json);
+            return CreateFromJsonString<NoteTextRequestInquiryBatch>(json);
         }
     }
 }

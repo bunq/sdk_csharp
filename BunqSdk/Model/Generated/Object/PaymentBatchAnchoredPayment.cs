@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -19,10 +19,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Payment != null)
-            {
-                return false;
-            }
+            if (Payment != null) return false;
 
             return true;
         }
@@ -31,7 +28,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public static PaymentBatchAnchoredPayment CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<PaymentBatchAnchoredPayment>(json);
+            return CreateFromJsonString<PaymentBatchAnchoredPayment>(json);
         }
     }
 }

@@ -2,7 +2,6 @@ using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,7 +10,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class UserApiKeyAnchoredUser : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        /// Error constants.
+        ///     Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
@@ -36,20 +35,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public BunqModel GetReferencedObject()
         {
-            if (this.UserPerson != null)
-            {
-                return this.UserPerson;
-            }
+            if (UserPerson != null) return UserPerson;
 
-            if (this.UserCompany != null)
-            {
-                return this.UserCompany;
-            }
+            if (UserCompany != null) return UserCompany;
 
-            if (this.UserPaymentServiceProvider != null)
-            {
-                return this.UserPaymentServiceProvider;
-            }
+            if (UserPaymentServiceProvider != null) return UserPaymentServiceProvider;
 
             throw new BunqException(ERROR_NULL_FIELDS);
         }
@@ -58,20 +48,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.UserPerson != null)
-            {
-                return false;
-            }
+            if (UserPerson != null) return false;
 
-            if (this.UserCompany != null)
-            {
-                return false;
-            }
+            if (UserCompany != null) return false;
 
-            if (this.UserPaymentServiceProvider != null)
-            {
-                return false;
-            }
+            if (UserPaymentServiceProvider != null) return false;
 
             return true;
         }
@@ -80,7 +61,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public static UserApiKeyAnchoredUser CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<UserApiKeyAnchoredUser>(json);
+            return CreateFromJsonString<UserApiKeyAnchoredUser>(json);
         }
     }
 }

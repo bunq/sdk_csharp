@@ -1,24 +1,22 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Used to create a draft share invite for a monetary account with another bunq user, as in the 'Connect' feature
-    /// in the bunq app. The user that accepts the invite can share one of their MonetaryAccounts with the user that
-    /// created the invite.
+    ///     Used to create a draft share invite for a monetary account with another bunq user, as in the 'Connect' feature
+    ///     in the bunq app. The user that accepts the invite can share one of their MonetaryAccounts with the user that
+    ///     created the invite.
     /// </summary>
     public class DraftShareInviteBank : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/draft-share-invite-bank";
 
@@ -27,7 +25,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_LISTING = "user/{0}/draft-share-invite-bank";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_STATUS = "status";
 
@@ -35,48 +33,48 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DRAFT_SHARE_SETTINGS = "draft_share_settings";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "DraftShareInviteBank";
 
         /// <summary>
-        /// The status of the draft share invite. Can be USED, CANCELLED and PENDING.
+        ///     The status of the draft share invite. Can be USED, CANCELLED and PENDING.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// The moment when this draft share invite expires.
+        ///     The moment when this draft share invite expires.
         /// </summary>
         [JsonProperty(PropertyName = "expiration")]
         public string Expiration { get; set; }
 
         /// <summary>
-        /// The draft share invite details.
+        ///     The draft share invite details.
         /// </summary>
         [JsonProperty(PropertyName = "draft_share_settings")]
         public DraftShareInviteEntry DraftShareSettings { get; set; }
 
         /// <summary>
-        /// The user who created the draft share invite.
+        ///     The user who created the draft share invite.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
         public LabelUser UserAliasCreated { get; set; }
 
         /// <summary>
-        /// The id of the share invite bank response this draft share belongs to.
+        ///     The id of the share invite bank response this draft share belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "share_invite_bank_response_id")]
         public int? ShareInviteBankResponseId { get; set; }
 
         /// <summary>
-        /// The URL redirecting user to the draft share invite in the app. Only works on mobile devices.
+        ///     The URL redirecting user to the draft share invite in the app. Only works on mobile devices.
         /// </summary>
         [JsonProperty(PropertyName = "draft_share_url")]
         public string DraftShareUrl { get; set; }
 
         /// <summary>
-        /// The id of the newly created draft share invite.
+        ///     The id of the newly created draft share invite.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
@@ -86,7 +84,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="expiration">The moment when this draft share invite expires.</param>
         /// <param name="draftShareSettings">The draft share invite details.</param>
-        /// <param name="status">The status of the draft share invite. Can be CANCELLED (the user cancels the draft share before it's used).</param>
+        /// <param name="status">
+        ///     The status of the draft share invite. Can be CANCELLED (the user cancels the draft share before
+        ///     it's used).
+        /// </param>
         public static BunqResponse<int> Create(string expiration, DraftShareInviteEntry draftShareSettings,
             string status = null, IDictionary<string, string> customHeaders = null)
         {
@@ -98,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 {FIELD_STATUS, status},
                 {FIELD_EXPIRATION, expiration},
-                {FIELD_DRAFT_SHARE_SETTINGS, draftShareSettings},
+                {FIELD_DRAFT_SHARE_SETTINGS, draftShareSettings}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -109,7 +110,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get the details of a specific draft of a share invite.
+        ///     Get the details of a specific draft of a share invite.
         /// </summary>
         public static BunqResponse<DraftShareInviteBank> Get(int draftShareInviteBankId,
             IDictionary<string, string> customHeaders = null)
@@ -124,9 +125,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Update a draft share invite. When sending status CANCELLED it is possible to cancel the draft share invite.
+        ///     Update a draft share invite. When sending status CANCELLED it is possible to cancel the draft share invite.
         /// </summary>
-        /// <param name="status">The status of the draft share invite. Can be CANCELLED (the user cancels the draft share before it's used).</param>
+        /// <param name="status">
+        ///     The status of the draft share invite. Can be CANCELLED (the user cancels the draft share before
+        ///     it's used).
+        /// </param>
         /// <param name="expiration">The moment when this draft share invite expires.</param>
         /// <param name="draftShareSettings">The draft share invite details.</param>
         public static BunqResponse<int> Update(int draftShareInviteBankId, string status = null,
@@ -141,7 +145,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 {FIELD_STATUS, status},
                 {FIELD_EXPIRATION, expiration},
-                {FIELD_DRAFT_SHARE_SETTINGS, draftShareSettings},
+                {FIELD_DRAFT_SHARE_SETTINGS, draftShareSettings}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -172,40 +176,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.UserAliasCreated != null)
-            {
-                return false;
-            }
+            if (UserAliasCreated != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
-            if (this.Expiration != null)
-            {
-                return false;
-            }
+            if (Expiration != null) return false;
 
-            if (this.ShareInviteBankResponseId != null)
-            {
-                return false;
-            }
+            if (ShareInviteBankResponseId != null) return false;
 
-            if (this.DraftShareUrl != null)
-            {
-                return false;
-            }
+            if (DraftShareUrl != null) return false;
 
-            if (this.DraftShareSettings != null)
-            {
-                return false;
-            }
+            if (DraftShareSettings != null) return false;
 
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
             return true;
         }
@@ -214,7 +197,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static DraftShareInviteBank CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<DraftShareInviteBank>(json);
+            return CreateFromJsonString<DraftShareInviteBank>(json);
         }
     }
 }

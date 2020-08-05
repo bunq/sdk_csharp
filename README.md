@@ -1,6 +1,4 @@
 # bunq C# SDK
-Version 1.13.0
-
 ## Introduction
 Hi developers!
 
@@ -68,7 +66,7 @@ You need to create a certificate and private key to get you started. Our sandbox
  
 Make sure you have your unique eIDAS certificate number and certificates ready when you want to perform these tasks on our production environment. 
 Due to the implementation used in this SDK, you should create a .pfx credentials file containing your certificate and private key.
-Creating a pfx file can be done with the following command: `openssl pkcs12 -inkey private.pem -in cert.cert -export -out credentials.pfx
+Creating a pfx file can be done with the following command: `openssl pkcs12 -inkey private.pem -in chain.cert -export -out credentials.pfx
 `
 
 Creating a PSD2 context is very easy:

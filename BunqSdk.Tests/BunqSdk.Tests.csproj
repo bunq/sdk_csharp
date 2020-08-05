@@ -25,4 +25,8 @@
   <ItemGroup>
     <Folder Include="Resources\NotificationUrlJsons" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\chain.cert" />
+    <None Remove="Resources\bunq-psd2-test.conf" />
+  </ItemGroup>
 </Project>

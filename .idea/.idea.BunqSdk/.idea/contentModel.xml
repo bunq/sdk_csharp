@@ -11,6 +11,7 @@
       <e p="BunqSdk" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="BunqSdk.csproj" t="IncludeRecursive" />
+        <e p="CHANGELOG.md" t="Include" />
         <e p="Context" t="Include">
           <e p="ApiContext.cs" t="Include" />
           <e p="ApiEnvironmentType.cs" t="Include" />
@@ -45,6 +46,7 @@
           <e p="ApiEnvironmentTypeConverter.cs" t="Include" />
           <e p="BunqContractResolver.cs" t="Include" />
           <e p="BunqJsonConvert.cs" t="Include" />
+          <e p="BunqMeTabResultInquiryConverter.cs" t="Include" />
           <e p="GeolocationConverter.cs" t="Include" />
           <e p="InstallationContextConverter.cs" t="Include" />
           <e p="InstallationConverter.cs" t="Include" />
@@ -108,14 +110,13 @@
               <e p="CashRegisterQrCodeContent.cs" t="Include" />
               <e p="CertificatePinned.cs" t="Include" />
               <e p="ChatMessage.cs" t="Include" />
+              <e p="Company.cs" t="Include" />
               <e p="ConfirmationOfFunds.cs" t="Include" />
               <e p="Customer.cs" t="Include" />
               <e p="CustomerLimit.cs" t="Include" />
               <e p="Device.cs" t="Include" />
               <e p="DeviceServer.cs" t="Include" />
               <e p="DraftPayment.cs" t="Include" />
-              <e p="DraftShareInviteApiKey.cs" t="Include" />
-              <e p="DraftShareInviteApiKeyQrCodeContent.cs" t="Include" />
               <e p="DraftShareInviteBank.cs" t="Include" />
               <e p="DraftShareInviteBankQrCodeContent.cs" t="Include" />
               <e p="Event.cs" t="Include" />
@@ -129,11 +130,14 @@
               <e p="ExportStatementPaymentContent.cs" t="Include" />
               <e p="FeatureAnnouncement.cs" t="Include" />
               <e p="IdealMerchantTransaction.cs" t="Include" />
+              <e p="Insight.cs" t="Include" />
+              <e p="InsightEvent.cs" t="Include" />
               <e p="InstallationServerPublicKey.cs" t="Include" />
               <e p="Invoice.cs" t="Include" />
               <e p="InvoiceByUser.cs" t="Include" />
               <e p="InvoiceExportPdfContent.cs" t="Include" />
               <e p="MasterCardAction.cs" t="Include" />
+              <e p="MasterCardActionGreenAggregation.cs" t="Include" />
               <e p="MonetaryAccount.cs" t="Include" />
               <e p="MonetaryAccountBank.cs" t="Include" />
               <e p="MonetaryAccountJoint.cs" t="Include" />
@@ -176,9 +180,21 @@
               <e p="OauthCallbackUrl.cs" t="Include" />
               <e p="OauthClient.cs" t="Include" />
               <e p="Payment.cs" t="Include" />
+              <e p="PaymentAutoAllocate.cs" t="Include" />
+              <e p="PaymentAutoAllocateDefinition.cs" t="Include" />
+              <e p="PaymentAutoAllocateInstance.cs" t="Include" />
+              <e p="PaymentAutoAllocateUser.cs" t="Include" />
               <e p="PaymentBatch.cs" t="Include" />
               <e p="PaymentServiceProviderCredential.cs" t="Include" />
+              <e p="PaymentServiceProviderDraftPayment.cs" t="Include" />
               <e p="PermittedIp.cs" t="Include" />
+              <e p="Registry.cs" t="Include" />
+              <e p="RegistryEntry.cs" t="Include" />
+              <e p="RegistryMembership.cs" t="Include" />
+              <e p="RegistrySetting.cs" t="Include" />
+              <e p="RegistrySettlement.cs" t="Include" />
+              <e p="RegistrySettlementPending.cs" t="Include" />
+              <e p="RelationUser.cs" t="Include" />
               <e p="RequestInquiry.cs" t="Include" />
               <e p="RequestInquiryBatch.cs" t="Include" />
               <e p="RequestResponse.cs" t="Include" />
@@ -186,16 +202,15 @@
               <e p="RewardRecipient.cs" t="Include" />
               <e p="RewardSender.cs" t="Include" />
               <e p="SandboxUser.cs" t="Include" />
+              <e p="SandboxUserCompany.cs" t="Include" />
+              <e p="SandboxUserPerson.cs" t="Include" />
               <e p="Schedule.cs" t="Include" />
               <e p="ScheduleInstance.cs" t="Include" />
               <e p="SchedulePayment.cs" t="Include" />
               <e p="SchedulePaymentBatch.cs" t="Include" />
               <e p="ScheduleUser.cs" t="Include" />
               <e p="Session.cs" t="Include" />
-              <e p="ShareInviteBankAmountUsed.cs" t="Include" />
-              <e p="ShareInviteBankInquiry.cs" t="Include" />
               <e p="ShareInviteBankInquiryBatch.cs" t="Include" />
-              <e p="ShareInviteBankResponse.cs" t="Include" />
               <e p="ShareInviteMonetaryAccountAmountUsed.cs" t="Include" />
               <e p="ShareInviteMonetaryAccountInquiry.cs" t="Include" />
               <e p="ShareInviteMonetaryAccountResponse.cs" t="Include" />
@@ -213,8 +228,15 @@
               <e p="TabUsageSingle.cs" t="Include" />
               <e p="TokenQrRequestIdeal.cs" t="Include" />
               <e p="TokenQrRequestSofort.cs" t="Include" />
+              <e p="TransferwiseAccountQuote.cs" t="Include" />
+              <e p="TransferwiseAccountRequirement.cs" t="Include" />
+              <e p="TransferwiseCurrency.cs" t="Include" />
               <e p="TransferwiseQuote.cs" t="Include" />
+              <e p="TransferwiseQuoteTemporary.cs" t="Include" />
               <e p="TransferwiseTransfer.cs" t="Include" />
+              <e p="TransferwiseTransferRequirement.cs" t="Include" />
+              <e p="TransferwiseUser.cs" t="Include" />
+              <e p="TreeProgress.cs" t="Include" />
               <e p="User.cs" t="Include" />
               <e p="UserApiKey.cs" t="Include" />
               <e p="UserCompany.cs" t="Include" />
@@ -230,6 +252,7 @@
             </e>
             <e p="Object" t="Include">
               <e p="Address.cs" t="Include" />
+              <e p="AllocationItem.cs" t="Include" />
               <e p="Amount.cs" t="Include" />
               <e p="Attachment.cs" t="Include" />
               <e p="AttachmentMonetaryAccountPayment.cs" t="Include" />
@@ -241,10 +264,8 @@
               <e p="BunqMeMerchantAvailable.cs" t="Include" />
               <e p="CardBatchEntry.cs" t="Include" />
               <e p="CardCountryPermission.cs" t="Include" />
-              <e p="CardMagStripePermission.cs" t="Include" />
               <e p="CardPinAssignment.cs" t="Include" />
               <e p="CardPrimaryAccountNumber.cs" t="Include" />
-              <e p="CardVirtualPrimaryAccountNumber.cs" t="Include" />
               <e p="Certificate.cs" t="Include" />
               <e p="CoOwner.cs" t="Include" />
               <e p="DraftPaymentAnchorObject.cs" t="Include" />
@@ -270,8 +291,12 @@
               <e p="NotificationFilterUrl.cs" t="Include" />
               <e p="NotificationUrl.cs" t="Include" />
               <e p="OauthCallbackUrl.cs" t="Include" />
+              <e p="PaymentBatchAnchoredPayment.cs" t="Include" />
               <e p="PermittedDevice.cs" t="Include" />
               <e p="Pointer.cs" t="Include" />
+              <e p="RegistryEntryAttachment.cs" t="Include" />
+              <e p="RegistryEntryReference.cs" t="Include" />
+              <e p="RegistrySettlementItem.cs" t="Include" />
               <e p="RequestInquiryReference.cs" t="Include" />
               <e p="RequestReferenceSplitTheBillAnchorObject.cs" t="Include" />
               <e p="ScheduleAnchorObject.cs" t="Include" />
@@ -284,6 +309,7 @@
               <e p="TabTextWaitingScreen.cs" t="Include" />
               <e p="TabVisibility.cs" t="Include" />
               <e p="TaxResident.cs" t="Include" />
+              <e p="TransferwiseRequirementField.cs" t="Include" />
               <e p="Ubo.cs" t="Include" />
               <e p="UserApiKeyAnchoredUser.cs" t="Include" />
               <e p="WhitelistResultViewAnchoredObject.cs" t="Include" />
@@ -318,7 +344,6 @@
       <e p="BunqSdk.sln" t="IncludeFlat" />
       <e p="BunqSdk.Tests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="bunq-test.conf" t="Include" />
         <e p="BunqSdk.Tests.csproj" t="IncludeRecursive" />
         <e p="BunqSdkTestBase.cs" t="Include" />
         <e p="Config.cs" t="Include" />
@@ -361,8 +386,6 @@
         </e>
         <e p="README.md" t="Include" />
         <e p="Resources" t="Include">
-          <e p="bunq_App_Icon_Square@4x.png" t="Include" />
-          <e p="chain.cert" t="Include" />
           <e p="config.example.json" t="Include" />
           <e p="credentials.pfx" t="Include" />
           <e p="NotificationUrlJsons" t="Include">
@@ -380,6 +403,7 @@
             <e p="ShareInviteBankInquiry.json" t="Include" />
             <e p="ShareInviteBankResponse.json" t="Include" />
           </e>
+          <e p="vader.png" t="Include" />
         </e>
         <e p="Util" t="Include">
           <e p="TestPriorityAttribute.cs" t="Include" />
@@ -389,8 +413,8 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>
-    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_BunqSdk.-793722045.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.1/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.1/resharper-host/local/Transient/ReSharperHost/v201/SolutionCaches/_BunqSdk.-414566701.00" t="ExcludeRecursive" />
   </component>
   <component name="RiderRiderContentModelStore">
     <excludedPaths />

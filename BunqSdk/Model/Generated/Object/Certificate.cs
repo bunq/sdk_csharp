@@ -1,6 +1,5 @@
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -8,26 +7,23 @@ namespace Bunq.Sdk.Model.Generated.Object
     /// </summary>
     public class Certificate : BunqModel
     {
-        /// <summary>
-        /// A single certificate in the chain in .PEM format.
-        /// </summary>
-        [JsonProperty(PropertyName = "certificate")]
-        public string CertificateString { get; set; }
-
         public Certificate(string certificateString)
         {
             CertificateString = certificateString;
         }
+
+        /// <summary>
+        ///     A single certificate in the chain in .PEM format.
+        /// </summary>
+        [JsonProperty(PropertyName = "certificate")]
+        public string CertificateString { get; set; }
 
 
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.CertificateString != null)
-            {
-                return false;
-            }
+            if (CertificateString != null) return false;
 
             return true;
         }
@@ -36,7 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public static Certificate CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<Certificate>(json);
+            return CreateFromJsonString<Certificate>(json);
         }
     }
 }

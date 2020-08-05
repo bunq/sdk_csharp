@@ -1,16 +1,15 @@
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Used to view a customer.
+    ///     Used to view a customer.
     /// </summary>
     public class Customer : BunqModel
     {
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_BILLING_ACCOUNT_ID = "billing_account_id";
 
@@ -18,31 +17,31 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
 
         /// <summary>
-        /// The primary billing account account's id.
+        ///     The primary billing account account's id.
         /// </summary>
         [JsonProperty(PropertyName = "billing_account_id")]
         public string BillingAccountId { get; set; }
 
         /// <summary>
-        /// The preferred notification type for invoices.
+        ///     The preferred notification type for invoices.
         /// </summary>
         [JsonProperty(PropertyName = "invoice_notification_preference")]
         public string InvoiceNotificationPreference { get; set; }
 
         /// <summary>
-        /// The id of the customer.
+        ///     The id of the customer.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp of the customer object's creation.
+        ///     The timestamp of the customer object's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp of the customer object's last update.
+        ///     The timestamp of the customer object's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
@@ -52,30 +51,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
-            if (this.Created != null)
-            {
-                return false;
-            }
+            if (Created != null) return false;
 
-            if (this.Updated != null)
-            {
-                return false;
-            }
+            if (Updated != null) return false;
 
-            if (this.BillingAccountId != null)
-            {
-                return false;
-            }
+            if (BillingAccountId != null) return false;
 
-            if (this.InvoiceNotificationPreference != null)
-            {
-                return false;
-            }
+            if (InvoiceNotificationPreference != null) return false;
 
             return true;
         }
@@ -84,7 +68,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static Customer CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<Customer>(json);
+            return CreateFromJsonString<Customer>(json);
         }
     }
 }
