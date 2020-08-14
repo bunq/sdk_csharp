@@ -16,7 +16,7 @@ namespace Bunq.Sdk.Model.Core
             {ApiEnvironmentType.SANDBOX.TypeString, AUTH_URI_FORMAT_SANDBOX},
             {ApiEnvironmentType.PRODUCTION.TypeString, AUTH_URI_FORMAT_PRODUCTION},
         };
-        
+
         /// <summary>
         /// Auth constants.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Bunq.Sdk.Model.Core
         /// The Authorization URI to redirect the user to.
         /// </summary>
         public string AuthorizationUri => authorizationUri;
-        
+
         /// <summary>
         /// Create new instance of the model.
         /// </summary>
@@ -53,20 +53,29 @@ namespace Bunq.Sdk.Model.Core
             string state = null
         )
         {
-            Dictionary<string, string> allRequestParameter = new Dictionary<string, string>()
-            {
-                {FIELD_REDIRECT_URI, redirectUri},
-                {FIELD_RESPONSE_TYPE, responseType.TypeString},
-                {FIELD_CLIENT_ID, client.ClientId},
-            };
+            Dictionary<string, string> allRequestParameter = new Dictionary<string, string>();
 
-            if (!String.IsNullOrEmpty(state)) {
+            allRequestParameter.Add(FIELD_REDIRECT_URI, redirectUri);
+            allRequestParameter.Add(FIELD_RESPONSE_TYPE, responseType.TypeString);
+
+            if (!String.IsNullOrEmpty(client.ClientId))
+            {
+                allRequestParameter.Add(FIELD_CLIENT_ID, client.ClientId);
+            }
+
+            if (!String.IsNullOrEmpty(state))
+            {
                 allRequestParameter.Add(FIELD_STATE, state);
             }
-            
+
             return new OauthAuthorizationUri(
                 String.Format(DetermineTokenUriFormat(), HttpUtils.CreateQueryString(allRequestParameter))
             );
+        }
+        
+        public String GetAuthorizationUri()
+        {
+            return authorizationUri;
         }
 
         public override bool IsAllFieldNull()
@@ -78,7 +87,7 @@ namespace Bunq.Sdk.Model.Core
 
             return true;
         }
-        
+
         private static String DetermineTokenUriFormat()
         {
             return AUTH_URI_FORMAT_MAP[BunqContext.ApiContext.EnvironmentType.TypeString];
