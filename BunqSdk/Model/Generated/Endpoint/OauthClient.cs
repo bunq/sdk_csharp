@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Bunq.Sdk.Http;
@@ -61,6 +62,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "callback_url")]
         public List<OauthCallbackUrl> CallbackUrl { get; set; }
 
+        public OauthClient(String status) {
+            Status = status;
+        }
 
         /// <summary>
         /// </summary>
