@@ -1,71 +1,67 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Create a credential of a user for server authentication, or delete the credential of a user for server
-    /// authentication.
+    ///     Create a credential of a user for server authentication, or delete the credential of a user for server
+    ///     authentication.
     /// </summary>
     public class UserCredentialPasswordIp : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user/{0}/credential-password-ip/{1}";
 
         protected const string ENDPOINT_URL_LISTING = "user/{0}/credential-password-ip";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "CredentialPasswordIp";
 
         /// <summary>
-        /// The id of the credential.
+        ///     The id of the credential.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp of the credential object's creation.
+        ///     The timestamp of the credential object's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp of the credential object's last update.
+        ///     The timestamp of the credential object's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        /// The status of the credential.
+        ///     The status of the credential.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// When the status is PENDING_FIRST_USE: when the credential expires.
+        ///     When the status is PENDING_FIRST_USE: when the credential expires.
         /// </summary>
         [JsonProperty(PropertyName = "expiry_time")]
         public string ExpiryTime { get; set; }
 
         /// <summary>
-        /// When the status is PENDING_FIRST_USE: the value of the token.
+        ///     When the status is PENDING_FIRST_USE: the value of the token.
         /// </summary>
         [JsonProperty(PropertyName = "token_value")]
         public string TokenValue { get; set; }
 
         /// <summary>
-        /// When the status is ACTIVE: the details of the device that may use the credential.
+        ///     When the status is ACTIVE: the details of the device that may use the credential.
         /// </summary>
         [JsonProperty(PropertyName = "permitted_device")]
         public PermittedDevice PermittedDevice { get; set; }
@@ -106,40 +102,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
-            if (this.Created != null)
-            {
-                return false;
-            }
+            if (Created != null) return false;
 
-            if (this.Updated != null)
-            {
-                return false;
-            }
+            if (Updated != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
-            if (this.ExpiryTime != null)
-            {
-                return false;
-            }
+            if (ExpiryTime != null) return false;
 
-            if (this.TokenValue != null)
-            {
-                return false;
-            }
+            if (TokenValue != null) return false;
 
-            if (this.PermittedDevice != null)
-            {
-                return false;
-            }
+            if (PermittedDevice != null) return false;
 
             return true;
         }
@@ -148,7 +123,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static UserCredentialPasswordIp CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<UserCredentialPasswordIp>(json);
+            return CreateFromJsonString<UserCredentialPasswordIp>(json);
         }
     }
 }

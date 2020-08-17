@@ -7,7 +7,6 @@ using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
 namespace Bunq.Sdk.Json
@@ -19,7 +18,7 @@ namespace Bunq.Sdk.Json
     {
         protected readonly Dictionary<Type, JsonConverter> converterRegistry = new Dictionary<Type, JsonConverter>();
 
-        public BunqContractResolver(IReadOnlyCollection<Type> typesToExclude=null)
+        public BunqContractResolver(IReadOnlyCollection<Type> typesToExclude = null)
         {
             RegisterConverter(typeof(ApiEnvironmentType), new ApiEnvironmentTypeConverter());
             RegisterConverter(typeof(Geolocation), new GeolocationConverter());
@@ -36,9 +35,9 @@ namespace Bunq.Sdk.Json
 
             if (typesToExclude == null)
             {
-                return;                
+                return;
             }
-            
+
             foreach (var type in typesToExclude)
             {
                 converterRegistry.Remove(type);
@@ -71,7 +70,7 @@ namespace Bunq.Sdk.Json
                     ? converterRegistry[typeof(IAnchorObjectInterface)]
                     : null;
             }
-            
+
             return converterRegistry.ContainsKey(objectType) ? converterRegistry[objectType] : null;
         }
     }

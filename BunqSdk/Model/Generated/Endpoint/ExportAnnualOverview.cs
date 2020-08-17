@@ -1,23 +1,21 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Used to create new and read existing annual overviews of all the user's monetary accounts. Once created, annual
-    /// overviews can be downloaded in PDF format via the 'export-annual-overview/{id}/content' endpoint.
+    ///     Used to create new and read existing annual overviews of all the user's monetary accounts. Once created, annual
+    ///     overviews can be downloaded in PDF format via the 'export-annual-overview/{id}/content' endpoint.
     /// </summary>
     public class ExportAnnualOverview : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/export-annual-overview";
 
@@ -26,48 +24,48 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_LISTING = "user/{0}/export-annual-overview";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_YEAR = "year";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "ExportAnnualOverview";
 
         /// <summary>
-        /// The year for which the overview is.
+        ///     The year for which the overview is.
         /// </summary>
         [JsonProperty(PropertyName = "year")]
         public int? Year { get; set; }
 
         /// <summary>
-        /// The id of the annual overview as created on the server.
+        ///     The id of the annual overview as created on the server.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp of the annual overview 's creation.
+        ///     The timestamp of the annual overview 's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp of the annual overview 's last update.
+        ///     The timestamp of the annual overview 's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        /// The user to which this annual overview belongs.
+        ///     The user to which this annual overview belongs.
         /// </summary>
         [JsonProperty(PropertyName = "alias_user")]
         public LabelUser AliasUser { get; set; }
 
 
         /// <summary>
-        /// Create a new annual overview for a specific year. An overview can be generated only for a past year.
+        ///     Create a new annual overview for a specific year. An overview can be generated only for a past year.
         /// </summary>
         /// <param name="year">The year for which the overview is.</param>
         public static BunqResponse<int> Create(int? year, IDictionary<string, string> customHeaders = null)
@@ -78,7 +76,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_YEAR, year},
+                {FIELD_YEAR, year}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -89,7 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get an annual overview for a user by its id.
+        ///     Get an annual overview for a user by its id.
         /// </summary>
         public static BunqResponse<ExportAnnualOverview> Get(int exportAnnualOverviewId,
             IDictionary<string, string> customHeaders = null)
@@ -119,7 +117,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// List all the annual overviews for a user.
+        ///     List all the annual overviews for a user.
         /// </summary>
         public static BunqResponse<List<ExportAnnualOverview>> List(IDictionary<string, string> urlParams = null,
             IDictionary<string, string> customHeaders = null)
@@ -139,30 +137,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
-            if (this.Created != null)
-            {
-                return false;
-            }
+            if (Created != null) return false;
 
-            if (this.Updated != null)
-            {
-                return false;
-            }
+            if (Updated != null) return false;
 
-            if (this.Year != null)
-            {
-                return false;
-            }
+            if (Year != null) return false;
 
-            if (this.AliasUser != null)
-            {
-                return false;
-            }
+            if (AliasUser != null) return false;
 
             return true;
         }
@@ -171,7 +154,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static ExportAnnualOverview CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<ExportAnnualOverview>(json);
+            return CreateFromJsonString<ExportAnnualOverview>(json);
         }
     }
 }

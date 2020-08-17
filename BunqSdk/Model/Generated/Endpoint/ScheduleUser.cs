@@ -1,34 +1,29 @@
-using Bunq.Sdk.Context;
-using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
-using Bunq.Sdk.Model.Core;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using System;
+using Bunq.Sdk.Http;
+using Bunq.Sdk.Model.Core;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// view for reading the scheduled definitions.
+    ///     view for reading the scheduled definitions.
     /// </summary>
     public class ScheduleUser : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/schedule";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "ScheduleUser";
 
         /// <summary>
-        /// Get a collection of scheduled definition for all accessible monetary accounts of the user. You can add the
-        /// parameter type to filter the response. When
-        /// type={SCHEDULE_DEFINITION_PAYMENT,SCHEDULE_DEFINITION_PAYMENT_BATCH} is provided only schedule definition
-        /// object that relate to these definitions are returned.
+        ///     Get a collection of scheduled definition for all accessible monetary accounts of the user. You can add the
+        ///     parameter type to filter the response. When
+        ///     type={SCHEDULE_DEFINITION_PAYMENT,SCHEDULE_DEFINITION_PAYMENT_BATCH} is provided only schedule definition
+        ///     object that relate to these definitions are returned.
         /// </summary>
         public static BunqResponse<List<ScheduleUser>> List(IDictionary<string, string> urlParams = null,
             IDictionary<string, string> customHeaders = null)
@@ -55,7 +50,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static ScheduleUser CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<ScheduleUser>(json);
+            return CreateFromJsonString<ScheduleUser>(json);
         }
     }
 }

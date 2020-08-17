@@ -1,35 +1,31 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
 using Bunq.Sdk.Exception;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Using this call you can retrieve information of the user you are logged in as. This includes your user id, which
-    /// is referred to in endpoints.
+    ///     Using this call you can retrieve information of the user you are logged in as. This includes your user id, which
+    ///     is referred to in endpoints.
     /// </summary>
     public class User : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        /// Error constants.
+        ///     Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user/{0}";
 
         protected const string ENDPOINT_URL_LISTING = "user";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "User";
 
@@ -60,7 +56,42 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
 
         /// <summary>
-        /// Get a specific user.
+        /// </summary>
+        public BunqModel GetReferencedObject()
+        {
+            if (UserLight != null) return UserLight;
+
+            if (UserPerson != null) return UserPerson;
+
+            if (UserCompany != null) return UserCompany;
+
+            if (UserApiKey != null) return UserApiKey;
+
+            if (UserPaymentServiceProvider != null) return UserPaymentServiceProvider;
+
+            throw new BunqException(ERROR_NULL_FIELDS);
+        }
+
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (UserLight != null) return false;
+
+            if (UserPerson != null) return false;
+
+            if (UserCompany != null) return false;
+
+            if (UserApiKey != null) return false;
+
+            if (UserPaymentServiceProvider != null) return false;
+
+            return true;
+        }
+
+
+        /// <summary>
+        ///     Get a specific user.
         /// </summary>
         public static BunqResponse<User> Get(IDictionary<string, string> customHeaders = null)
         {
@@ -74,7 +105,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get a collection of all available users.
+        ///     Get a collection of all available users.
         /// </summary>
         public static BunqResponse<List<User>> List(IDictionary<string, string> urlParams = null,
             IDictionary<string, string> customHeaders = null)
@@ -88,76 +119,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             return FromJsonList<User>(responseRaw);
         }
 
-
-        /// <summary>
-        /// </summary>
-        public BunqModel GetReferencedObject()
-        {
-            if (this.UserLight != null)
-            {
-                return this.UserLight;
-            }
-
-            if (this.UserPerson != null)
-            {
-                return this.UserPerson;
-            }
-
-            if (this.UserCompany != null)
-            {
-                return this.UserCompany;
-            }
-
-            if (this.UserApiKey != null)
-            {
-                return this.UserApiKey;
-            }
-
-            if (this.UserPaymentServiceProvider != null)
-            {
-                return this.UserPaymentServiceProvider;
-            }
-
-            throw new BunqException(ERROR_NULL_FIELDS);
-        }
-
-        /// <summary>
-        /// </summary>
-        public override bool IsAllFieldNull()
-        {
-            if (this.UserLight != null)
-            {
-                return false;
-            }
-
-            if (this.UserPerson != null)
-            {
-                return false;
-            }
-
-            if (this.UserCompany != null)
-            {
-                return false;
-            }
-
-            if (this.UserApiKey != null)
-            {
-                return false;
-            }
-
-            if (this.UserPaymentServiceProvider != null)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         /// <summary>
         /// </summary>
         public static User CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<User>(json);
+            return CreateFromJsonString<User>(json);
         }
     }
 }

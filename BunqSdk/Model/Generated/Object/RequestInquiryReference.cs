@@ -1,6 +1,5 @@
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -9,13 +8,13 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class RequestInquiryReference : BunqModel
     {
         /// <summary>
-        /// The type of request inquiry. Can be RequestInquiry or RequestInquiryBatch.
+        ///     The type of request inquiry. Can be RequestInquiry or RequestInquiryBatch.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// The id of the request inquiry (batch).
+        ///     The id of the request inquiry (batch).
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
@@ -25,15 +24,9 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Type != null)
-            {
-                return false;
-            }
+            if (Type != null) return false;
 
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
             return true;
         }
@@ -42,7 +35,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public static RequestInquiryReference CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<RequestInquiryReference>(json);
+            return CreateFromJsonString<RequestInquiryReference>(json);
         }
     }
 }

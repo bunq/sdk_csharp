@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
@@ -9,7 +8,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace Bunq.Sdk.Json
 {
-    public class BunqMeTabResultInquiryConverter: JsonConverter
+    public class BunqMeTabResultInquiryConverter : JsonConverter
     {
         /// <summary>
         /// Field constants.
@@ -31,16 +30,16 @@ namespace Bunq.Sdk.Json
             JObject jsonObject = JObject.Load(reader);
 
             BunqMeTabResultInquiry tabResultInquiry = JsonConvert.DeserializeObject<BunqMeTabResultInquiry>(
-                jsonObject.ToString(), 
+                jsonObject.ToString(),
                 GetSerializerSettingsWithoutTabResultInquiryResolver()
             );
 
             JObject paymentJsonObjectWrapped = (JObject) jsonObject.GetValue(FIELD_PAYMENT);
             JObject paymentJsonObject = (JObject) paymentJsonObjectWrapped.GetValue(OBJECT_TYPE_PAYMENT);
-            
+
             Payment paymentObject = Payment.CreateFromJsonString(paymentJsonObject.ToString());
             tabResultInquiry.Payment = paymentObject;
-            
+
             return tabResultInquiry;
         }
 

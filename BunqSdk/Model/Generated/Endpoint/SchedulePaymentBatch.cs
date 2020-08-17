@@ -1,22 +1,20 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Endpoint for schedule payment batches.
+    ///     Endpoint for schedule payment batches.
     /// </summary>
     public class SchedulePaymentBatch : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/schedule-payment-batch";
 
@@ -24,7 +22,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/schedule-payment-batch/{2}";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_PAYMENTS = "payments";
 
@@ -32,13 +30,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
 
         /// <summary>
-        /// The payment details.
+        ///     The payment details.
         /// </summary>
         [JsonProperty(PropertyName = "payments")]
         public List<SchedulePaymentEntry> Payments { get; set; }
 
         /// <summary>
-        /// The schedule details.
+        ///     The schedule details.
         /// </summary>
         [JsonProperty(PropertyName = "schedule")]
         public Schedule Schedule { get; set; }
@@ -58,7 +56,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
             {
                 {FIELD_PAYMENTS, payments},
-                {FIELD_SCHEDULE, schedule},
+                {FIELD_SCHEDULE, schedule}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -85,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
             {
                 {FIELD_PAYMENTS, payments},
-                {FIELD_SCHEDULE, schedule},
+                {FIELD_SCHEDULE, schedule}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -118,15 +116,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Payments != null)
-            {
-                return false;
-            }
+            if (Payments != null) return false;
 
-            if (this.Schedule != null)
-            {
-                return false;
-            }
+            if (Schedule != null) return false;
 
             return true;
         }
@@ -135,7 +127,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static SchedulePaymentBatch CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<SchedulePaymentBatch>(json);
+            return CreateFromJsonString<SchedulePaymentBatch>(json);
         }
     }
 }

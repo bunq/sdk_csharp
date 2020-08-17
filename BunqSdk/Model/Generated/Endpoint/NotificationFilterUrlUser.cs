@@ -1,39 +1,37 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Manage the url notification filters for a user.
+    ///     Manage the url notification filters for a user.
     /// </summary>
     public class NotificationFilterUrlUser : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/notification-filter-url";
 
         protected const string ENDPOINT_URL_LISTING = "user/{0}/notification-filter-url";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_NOTIFICATION_FILTERS = "notification_filters";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "NotificationFilterUrl";
 
         /// <summary>
-        /// The types of notifications that will result in a url notification for this user.
+        ///     The types of notifications that will result in a url notification for this user.
         /// </summary>
         [JsonProperty(PropertyName = "notification_filters")]
         public List<NotificationFilterUrl> NotificationFilters { get; set; }
@@ -50,7 +48,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_NOTIFICATION_FILTERS, notificationFilters},
+                {FIELD_NOTIFICATION_FILTERS, notificationFilters}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -80,10 +78,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.NotificationFilters != null)
-            {
-                return false;
-            }
+            if (NotificationFilters != null) return false;
 
             return true;
         }
@@ -92,7 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static NotificationFilterUrlUser CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<NotificationFilterUrlUser>(json);
+            return CreateFromJsonString<NotificationFilterUrlUser>(json);
         }
     }
 }

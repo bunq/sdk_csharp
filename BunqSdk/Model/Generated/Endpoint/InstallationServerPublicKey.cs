@@ -1,38 +1,34 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
 using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Using /installation/_/server-public-key you can request the ServerPublicKey again. This is done by referring to
-    /// the id of the Installation.
+    ///     Using /installation/_/server-public-key you can request the ServerPublicKey again. This is done by referring to
+    ///     the id of the Installation.
     /// </summary>
     public class InstallationServerPublicKey : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "installation/{0}/server-public-key";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "ServerPublicKey";
 
         /// <summary>
-        /// The server's public key for this Installation.
+        ///     The server's public key for this Installation.
         /// </summary>
         [JsonProperty(PropertyName = "server_public_key")]
         public string ServerPublicKey { get; set; }
 
         /// <summary>
-        /// Show the ServerPublicKey for this Installation.
+        ///     Show the ServerPublicKey for this Installation.
         /// </summary>
         public static BunqResponse<List<InstallationServerPublicKey>> List(int installationId,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
@@ -52,10 +48,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.ServerPublicKey != null)
-            {
-                return false;
-            }
+            if (ServerPublicKey != null) return false;
 
             return true;
         }
@@ -64,7 +57,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static InstallationServerPublicKey CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<InstallationServerPublicKey>(json);
+            return CreateFromJsonString<InstallationServerPublicKey>(json);
         }
     }
 }

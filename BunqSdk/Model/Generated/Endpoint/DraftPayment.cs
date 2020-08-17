@@ -1,23 +1,21 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// A DraftPayment is like a regular Payment, but it needs to be accepted by the sending party before the actual
-    /// Payment is done.
+    ///     A DraftPayment is like a regular Payment, but it needs to be accepted by the sending party before the actual
+    ///     Payment is done.
     /// </summary>
     public class DraftPayment : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/draft-payment";
 
@@ -26,7 +24,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/draft-payment/{2}";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_STATUS = "status";
 
@@ -36,92 +34,101 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SCHEDULE = "schedule";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "DraftPayment";
 
         /// <summary>
-        /// The status of the DraftPayment.
+        ///     The status of the DraftPayment.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// The entries in the DraftPayment.
+        ///     The entries in the DraftPayment.
         /// </summary>
         [JsonProperty(PropertyName = "entries")]
         public List<DraftPaymentEntry> Entries { get; set; }
 
         /// <summary>
-        /// The last updated_timestamp that you received for this DraftPayment. This needs to be provided to prevent
-        /// race conditions.
+        ///     The last updated_timestamp that you received for this DraftPayment. This needs to be provided to prevent
+        ///     race conditions.
         /// </summary>
         [JsonProperty(PropertyName = "previous_updated_timestamp")]
         public string PreviousUpdatedTimestamp { get; set; }
 
         /// <summary>
-        /// The number of accepts that are required for the draft payment to receive status ACCEPTED. Currently only 1
-        /// is valid.
+        ///     The number of accepts that are required for the draft payment to receive status ACCEPTED. Currently only 1
+        ///     is valid.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_required_accepts")]
         public int? NumberOfRequiredAccepts { get; set; }
 
         /// <summary>
-        /// The schedule details.
+        ///     The schedule details.
         /// </summary>
         [JsonProperty(PropertyName = "schedule")]
         public Schedule Schedule { get; set; }
 
         /// <summary>
-        /// The id of the created DrafPayment.
+        ///     The id of the created DrafPayment.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The id of the MonetaryAccount the DraftPayment applies to.
+        ///     The id of the MonetaryAccount the DraftPayment applies to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
 
         /// <summary>
-        /// The label of the User who created the DraftPayment.
+        ///     The label of the User who created the DraftPayment.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
         public LabelUser UserAliasCreated { get; set; }
 
         /// <summary>
-        /// All responses to this draft payment.
+        ///     All responses to this draft payment.
         /// </summary>
         [JsonProperty(PropertyName = "responses")]
         public List<DraftPaymentResponse> Responses { get; set; }
 
         /// <summary>
-        /// The type of the DraftPayment.
+        ///     The type of the DraftPayment.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// The Payment or PaymentBatch. This will only be present after the DraftPayment has been accepted.
+        ///     The Payment or PaymentBatch. This will only be present after the DraftPayment has been accepted.
         /// </summary>
         [JsonProperty(PropertyName = "object")]
         public DraftPaymentAnchorObject Object { get; set; }
 
         /// <summary>
-        /// The reference to the object used for split the bill. Can be RequestInquiry or RequestInquiryBatch
+        ///     The reference to the object used for split the bill. Can be RequestInquiry or RequestInquiryBatch
         /// </summary>
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
 
 
         /// <summary>
-        /// Create a new DraftPayment.
+        ///     Create a new DraftPayment.
         /// </summary>
-        /// <param name="entries">The list of entries in the DraftPayment. Each entry will result in a payment when the DraftPayment is accepted.</param>
-        /// <param name="numberOfRequiredAccepts">The number of accepts that are required for the draft payment to receive status ACCEPTED. Currently only 1 is valid.</param>
+        /// <param name="entries">
+        ///     The list of entries in the DraftPayment. Each entry will result in a payment when the
+        ///     DraftPayment is accepted.
+        /// </param>
+        /// <param name="numberOfRequiredAccepts">
+        ///     The number of accepts that are required for the draft payment to receive status
+        ///     ACCEPTED. Currently only 1 is valid.
+        /// </param>
         /// <param name="status">The status of the DraftPayment.</param>
-        /// <param name="previousUpdatedTimestamp">The last updated_timestamp that you received for this DraftPayment. This needs to be provided to prevent race conditions.</param>
+        /// <param name="previousUpdatedTimestamp">
+        ///     The last updated_timestamp that you received for this DraftPayment. This needs
+        ///     to be provided to prevent race conditions.
+        /// </param>
         /// <param name="schedule">The schedule details when creating or updating a scheduled payment.</param>
         public static BunqResponse<int> Create(List<DraftPaymentEntry> entries, int? numberOfRequiredAccepts,
             int? monetaryAccountId = null, string status = null, string previousUpdatedTimestamp = null,
@@ -137,7 +144,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_ENTRIES, entries},
                 {FIELD_PREVIOUS_UPDATED_TIMESTAMP, previousUpdatedTimestamp},
                 {FIELD_NUMBER_OF_REQUIRED_ACCEPTS, numberOfRequiredAccepts},
-                {FIELD_SCHEDULE, schedule},
+                {FIELD_SCHEDULE, schedule}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -150,11 +157,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Update a DraftPayment.
+        ///     Update a DraftPayment.
         /// </summary>
         /// <param name="status">The status of the DraftPayment.</param>
-        /// <param name="entries">The list of entries in the DraftPayment. Each entry will result in a payment when the DraftPayment is accepted.</param>
-        /// <param name="previousUpdatedTimestamp">The last updated_timestamp that you received for this DraftPayment. This needs to be provided to prevent race conditions.</param>
+        /// <param name="entries">
+        ///     The list of entries in the DraftPayment. Each entry will result in a payment when the
+        ///     DraftPayment is accepted.
+        /// </param>
+        /// <param name="previousUpdatedTimestamp">
+        ///     The last updated_timestamp that you received for this DraftPayment. This needs
+        ///     to be provided to prevent race conditions.
+        /// </param>
         /// <param name="schedule">The schedule details when creating or updating a scheduled payment.</param>
         public static BunqResponse<int> Update(int draftPaymentId, int? monetaryAccountId = null, string status = null,
             List<DraftPaymentEntry> entries = null, string previousUpdatedTimestamp = null, Schedule schedule = null,
@@ -169,7 +182,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_STATUS, status},
                 {FIELD_ENTRIES, entries},
                 {FIELD_PREVIOUS_UPDATED_TIMESTAMP, previousUpdatedTimestamp},
-                {FIELD_SCHEDULE, schedule},
+                {FIELD_SCHEDULE, schedule}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -182,7 +195,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get a listing of all DraftPayments from a given MonetaryAccount.
+        ///     Get a listing of all DraftPayments from a given MonetaryAccount.
         /// </summary>
         public static BunqResponse<List<DraftPayment>> List(int? monetaryAccountId = null,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
@@ -200,7 +213,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Get a specific DraftPayment.
+        ///     Get a specific DraftPayment.
         /// </summary>
         public static BunqResponse<DraftPayment> Get(int draftPaymentId, int? monetaryAccountId = null,
             IDictionary<string, string> customHeaders = null)
@@ -221,55 +234,25 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
-            if (this.MonetaryAccountId != null)
-            {
-                return false;
-            }
+            if (MonetaryAccountId != null) return false;
 
-            if (this.UserAliasCreated != null)
-            {
-                return false;
-            }
+            if (UserAliasCreated != null) return false;
 
-            if (this.Responses != null)
-            {
-                return false;
-            }
+            if (Responses != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
-            if (this.Type != null)
-            {
-                return false;
-            }
+            if (Type != null) return false;
 
-            if (this.Entries != null)
-            {
-                return false;
-            }
+            if (Entries != null) return false;
 
-            if (this.Object != null)
-            {
-                return false;
-            }
+            if (Object != null) return false;
 
-            if (this.RequestReferenceSplitTheBill != null)
-            {
-                return false;
-            }
+            if (RequestReferenceSplitTheBill != null) return false;
 
-            if (this.Schedule != null)
-            {
-                return false;
-            }
+            if (Schedule != null) return false;
 
             return true;
         }
@@ -278,7 +261,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static DraftPayment CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<DraftPayment>(json);
+            return CreateFromJsonString<DraftPayment>(json);
         }
     }
 }

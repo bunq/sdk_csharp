@@ -1,39 +1,37 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Create a batch of tab items.
+    ///     Create a batch of tab items.
     /// </summary>
     public class TabItemShopBatch : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE =
             "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-item-batch";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_TAB_ITEMS = "tab_items";
 
 
         /// <summary>
-        /// The list of tab items in the batch.
+        ///     The list of tab items in the batch.
         /// </summary>
         [JsonProperty(PropertyName = "tab_items")]
         public List<TabItemShop> TabItems { get; set; }
 
         /// <summary>
-        /// Create tab items as a batch.
+        ///     Create tab items as a batch.
         /// </summary>
         /// <param name="tabItems">The list of tab items we want to create in a single batch. Limited to 50 items per batch.</param>
         public static BunqResponse<int> Create(int cashRegisterId, string tabUuid, List<TabItemShop> tabItems,
@@ -45,7 +43,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_TAB_ITEMS, tabItems},
+                {FIELD_TAB_ITEMS, tabItems}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -62,10 +60,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.TabItems != null)
-            {
-                return false;
-            }
+            if (TabItems != null) return false;
 
             return true;
         }
@@ -74,7 +69,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static TabItemShopBatch CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<TabItemShopBatch>(json);
+            return CreateFromJsonString<TabItemShopBatch>(json);
         }
     }
 }

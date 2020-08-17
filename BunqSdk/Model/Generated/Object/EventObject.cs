@@ -2,7 +2,6 @@ using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -11,7 +10,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class EventObject : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        /// Error constants.
+        ///     Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
@@ -161,145 +160,61 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public BunqModel GetReferencedObject()
         {
-            if (this.BunqMeTab != null)
-            {
-                return this.BunqMeTab;
-            }
+            if (BunqMeTab != null) return BunqMeTab;
 
-            if (this.BunqMeTabResultResponse != null)
-            {
-                return this.BunqMeTabResultResponse;
-            }
+            if (BunqMeTabResultResponse != null) return BunqMeTabResultResponse;
 
-            if (this.BunqMeFundraiserResult != null)
-            {
-                return this.BunqMeFundraiserResult;
-            }
+            if (BunqMeFundraiserResult != null) return BunqMeFundraiserResult;
 
-            if (this.Card != null)
-            {
-                return this.Card;
-            }
+            if (Card != null) return Card;
 
-            if (this.CardDebit != null)
-            {
-                return this.CardDebit;
-            }
+            if (CardDebit != null) return CardDebit;
 
-            if (this.DraftPayment != null)
-            {
-                return this.DraftPayment;
-            }
+            if (DraftPayment != null) return DraftPayment;
 
-            if (this.FeatureAnnouncement != null)
-            {
-                return this.FeatureAnnouncement;
-            }
+            if (FeatureAnnouncement != null) return FeatureAnnouncement;
 
-            if (this.IdealMerchantTransaction != null)
-            {
-                return this.IdealMerchantTransaction;
-            }
+            if (IdealMerchantTransaction != null) return IdealMerchantTransaction;
 
-            if (this.Invoice != null)
-            {
-                return this.Invoice;
-            }
+            if (Invoice != null) return Invoice;
 
-            if (this.ScheduledPayment != null)
-            {
-                return this.ScheduledPayment;
-            }
+            if (ScheduledPayment != null) return ScheduledPayment;
 
-            if (this.ScheduledPaymentBatch != null)
-            {
-                return this.ScheduledPaymentBatch;
-            }
+            if (ScheduledPaymentBatch != null) return ScheduledPaymentBatch;
 
-            if (this.ScheduledInstance != null)
-            {
-                return this.ScheduledInstance;
-            }
+            if (ScheduledInstance != null) return ScheduledInstance;
 
-            if (this.MasterCardAction != null)
-            {
-                return this.MasterCardAction;
-            }
+            if (MasterCardAction != null) return MasterCardAction;
 
-            if (this.BankSwitchServiceNetherlandsIncomingPayment != null)
-            {
-                return this.BankSwitchServiceNetherlandsIncomingPayment;
-            }
+            if (BankSwitchServiceNetherlandsIncomingPayment != null) return BankSwitchServiceNetherlandsIncomingPayment;
 
-            if (this.Payment != null)
-            {
-                return this.Payment;
-            }
+            if (Payment != null) return Payment;
 
-            if (this.PaymentBatch != null)
-            {
-                return this.PaymentBatch;
-            }
+            if (PaymentBatch != null) return PaymentBatch;
 
-            if (this.RequestInquiryBatch != null)
-            {
-                return this.RequestInquiryBatch;
-            }
+            if (RequestInquiryBatch != null) return RequestInquiryBatch;
 
-            if (this.RequestInquiry != null)
-            {
-                return this.RequestInquiry;
-            }
+            if (RequestInquiry != null) return RequestInquiry;
 
-            if (this.RequestResponse != null)
-            {
-                return this.RequestResponse;
-            }
+            if (RequestResponse != null) return RequestResponse;
 
-            if (this.RewardRecipient != null)
-            {
-                return this.RewardRecipient;
-            }
+            if (RewardRecipient != null) return RewardRecipient;
 
-            if (this.RewardSender != null)
-            {
-                return this.RewardSender;
-            }
+            if (RewardSender != null) return RewardSender;
 
-            if (this.ShareInviteBankInquiryBatch != null)
-            {
-                return this.ShareInviteBankInquiryBatch;
-            }
+            if (ShareInviteBankInquiryBatch != null) return ShareInviteBankInquiryBatch;
 
-            if (this.ShareInviteBankInquiry != null)
-            {
-                return this.ShareInviteBankInquiry;
-            }
+            if (ShareInviteBankInquiry != null) return ShareInviteBankInquiry;
 
-            if (this.ShareInviteBankResponse != null)
-            {
-                return this.ShareInviteBankResponse;
-            }
+            if (ShareInviteBankResponse != null) return ShareInviteBankResponse;
 
-            if (this.SofortMerchantTransaction != null)
-            {
-                return this.SofortMerchantTransaction;
-            }
+            if (SofortMerchantTransaction != null) return SofortMerchantTransaction;
 
-            if (this.TabResultInquiry != null)
-            {
-                return this.TabResultInquiry;
-            }
+            if (TabResultInquiry != null) return TabResultInquiry;
 
-            if (this.TabResultResponse != null)
-            {
-                return this.TabResultResponse;
-            }
+            if (TabResultResponse != null) return TabResultResponse;
 
-            if (this.TransferwisePayment != null)
-            {
-                return this.TransferwisePayment;
-            }
+            if (TransferwisePayment != null) return TransferwisePayment;
 
             throw new BunqException(ERROR_NULL_FIELDS);
         }
@@ -308,145 +223,61 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.BunqMeTab != null)
-            {
-                return false;
-            }
+            if (BunqMeTab != null) return false;
 
-            if (this.BunqMeTabResultResponse != null)
-            {
-                return false;
-            }
+            if (BunqMeTabResultResponse != null) return false;
 
-            if (this.BunqMeFundraiserResult != null)
-            {
-                return false;
-            }
+            if (BunqMeFundraiserResult != null) return false;
 
-            if (this.Card != null)
-            {
-                return false;
-            }
+            if (Card != null) return false;
 
-            if (this.CardDebit != null)
-            {
-                return false;
-            }
+            if (CardDebit != null) return false;
 
-            if (this.DraftPayment != null)
-            {
-                return false;
-            }
+            if (DraftPayment != null) return false;
 
-            if (this.FeatureAnnouncement != null)
-            {
-                return false;
-            }
+            if (FeatureAnnouncement != null) return false;
 
-            if (this.IdealMerchantTransaction != null)
-            {
-                return false;
-            }
+            if (IdealMerchantTransaction != null) return false;
 
-            if (this.Invoice != null)
-            {
-                return false;
-            }
+            if (Invoice != null) return false;
 
-            if (this.ScheduledPayment != null)
-            {
-                return false;
-            }
+            if (ScheduledPayment != null) return false;
 
-            if (this.ScheduledPaymentBatch != null)
-            {
-                return false;
-            }
+            if (ScheduledPaymentBatch != null) return false;
 
-            if (this.ScheduledInstance != null)
-            {
-                return false;
-            }
+            if (ScheduledInstance != null) return false;
 
-            if (this.MasterCardAction != null)
-            {
-                return false;
-            }
+            if (MasterCardAction != null) return false;
 
-            if (this.BankSwitchServiceNetherlandsIncomingPayment != null)
-            {
-                return false;
-            }
+            if (BankSwitchServiceNetherlandsIncomingPayment != null) return false;
 
-            if (this.Payment != null)
-            {
-                return false;
-            }
+            if (Payment != null) return false;
 
-            if (this.PaymentBatch != null)
-            {
-                return false;
-            }
+            if (PaymentBatch != null) return false;
 
-            if (this.RequestInquiryBatch != null)
-            {
-                return false;
-            }
+            if (RequestInquiryBatch != null) return false;
 
-            if (this.RequestInquiry != null)
-            {
-                return false;
-            }
+            if (RequestInquiry != null) return false;
 
-            if (this.RequestResponse != null)
-            {
-                return false;
-            }
+            if (RequestResponse != null) return false;
 
-            if (this.RewardRecipient != null)
-            {
-                return false;
-            }
+            if (RewardRecipient != null) return false;
 
-            if (this.RewardSender != null)
-            {
-                return false;
-            }
+            if (RewardSender != null) return false;
 
-            if (this.ShareInviteBankInquiryBatch != null)
-            {
-                return false;
-            }
+            if (ShareInviteBankInquiryBatch != null) return false;
 
-            if (this.ShareInviteBankInquiry != null)
-            {
-                return false;
-            }
+            if (ShareInviteBankInquiry != null) return false;
 
-            if (this.ShareInviteBankResponse != null)
-            {
-                return false;
-            }
+            if (ShareInviteBankResponse != null) return false;
 
-            if (this.SofortMerchantTransaction != null)
-            {
-                return false;
-            }
+            if (SofortMerchantTransaction != null) return false;
 
-            if (this.TabResultInquiry != null)
-            {
-                return false;
-            }
+            if (TabResultInquiry != null) return false;
 
-            if (this.TabResultResponse != null)
-            {
-                return false;
-            }
+            if (TabResultResponse != null) return false;
 
-            if (this.TransferwisePayment != null)
-            {
-                return false;
-            }
+            if (TransferwisePayment != null) return false;
 
             return true;
         }
@@ -455,7 +286,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public static EventObject CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<EventObject>(json);
+            return CreateFromJsonString<EventObject>(json);
         }
     }
 }

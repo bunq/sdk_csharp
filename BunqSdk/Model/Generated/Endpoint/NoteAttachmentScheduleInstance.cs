@@ -1,22 +1,20 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Used to manage attachment notes.
+    ///     Used to manage attachment notes.
     /// </summary>
     public class NoteAttachmentScheduleInstance : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE =
             "user/{0}/monetary-account/{1}/schedule/{2}/schedule-instance/{3}/note-attachment";
@@ -34,55 +32,55 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             "user/{0}/monetary-account/{1}/schedule/{2}/schedule-instance/{3}/note-attachment/{4}";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_DESCRIPTION = "description";
 
         public const string FIELD_ATTACHMENT_ID = "attachment_id";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "NoteAttachment";
 
         /// <summary>
-        /// Optional description of the attachment.
+        ///     Optional description of the attachment.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
-        /// The reference to the uploaded file to attach to this note.
+        ///     The reference to the uploaded file to attach to this note.
         /// </summary>
         [JsonProperty(PropertyName = "attachment_id")]
         public int? AttachmentId { get; set; }
 
         /// <summary>
-        /// The id of the note.
+        ///     The id of the note.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// The timestamp of the note's creation.
+        ///     The timestamp of the note's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        /// The timestamp of the note's last update.
+        ///     The timestamp of the note's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        /// The label of the user who created this note.
+        ///     The label of the user who created this note.
         /// </summary>
         [JsonProperty(PropertyName = "label_user_creator")]
         public LabelUser LabelUserCreator { get; set; }
 
         /// <summary>
-        /// The attachment attached to the note.
+        ///     The attachment attached to the note.
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
         public List<AttachmentMonetaryAccountPayment> Attachment { get; set; }
@@ -102,7 +100,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
             {
                 {FIELD_DESCRIPTION, description},
-                {FIELD_ATTACHMENT_ID, attachmentId},
+                {FIELD_ATTACHMENT_ID, attachmentId}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -127,7 +125,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_DESCRIPTION, description},
+                {FIELD_DESCRIPTION, description}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -157,7 +155,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        /// Manage the notes for a given user.
+        ///     Manage the notes for a given user.
         /// </summary>
         public static BunqResponse<List<NoteAttachmentScheduleInstance>> List(int scheduleId, int scheduleInstanceId,
             int? monetaryAccountId = null, IDictionary<string, string> urlParams = null,
@@ -198,35 +196,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
-            {
-                return false;
-            }
+            if (Id != null) return false;
 
-            if (this.Created != null)
-            {
-                return false;
-            }
+            if (Created != null) return false;
 
-            if (this.Updated != null)
-            {
-                return false;
-            }
+            if (Updated != null) return false;
 
-            if (this.LabelUserCreator != null)
-            {
-                return false;
-            }
+            if (LabelUserCreator != null) return false;
 
-            if (this.Description != null)
-            {
-                return false;
-            }
+            if (Description != null) return false;
 
-            if (this.Attachment != null)
-            {
-                return false;
-            }
+            if (Attachment != null) return false;
 
             return true;
         }
@@ -235,7 +215,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static NoteAttachmentScheduleInstance CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<NoteAttachmentScheduleInstance>(json);
+            return CreateFromJsonString<NoteAttachmentScheduleInstance>(json);
         }
     }
 }

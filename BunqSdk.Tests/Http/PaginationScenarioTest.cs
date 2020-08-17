@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Generated.Endpoint;
@@ -18,6 +17,7 @@ namespace Bunq.Sdk.Tests.Http
         /// Constants for scenario testing.
         /// </summary>
         private const int PaymentListingPageSize = 2;
+
         private const int PaymentRequiredCountMinimum = PaymentListingPageSize * 2;
         private const int NumberZero = 0;
 

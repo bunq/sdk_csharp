@@ -1,32 +1,27 @@
-using Bunq.Sdk.Context;
-using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
-using Bunq.Sdk.Model.Core;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using System;
+using Bunq.Sdk.Http;
+using Bunq.Sdk.Model.Core;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Fetch the raw content of an attachment with given ID. The raw content is the base64 of a file, without any JSON
-    /// wrapping.
+    ///     Fetch the raw content of an attachment with given ID. The raw content is the base64 of a file, without any JSON
+    ///     wrapping.
     /// </summary>
     public class AttachmentConversationContent : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/chat-conversation/{1}/attachment/{2}/content";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "AttachmentConversationContent";
 
         /// <summary>
-        /// Get the raw content of a specific attachment.
+        ///     Get the raw content of a specific attachment.
         /// </summary>
         public static BunqResponse<byte[]> List(int chatConversationId, int attachmentId,
             IDictionary<string, string> customHeaders = null)
@@ -53,7 +48,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static AttachmentConversationContent CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<AttachmentConversationContent>(json);
+            return CreateFromJsonString<AttachmentConversationContent>(json);
         }
     }
 }

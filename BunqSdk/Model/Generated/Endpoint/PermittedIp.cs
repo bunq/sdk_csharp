@@ -1,21 +1,19 @@
-using Bunq.Sdk.Context;
+using System.Collections.Generic;
+using System.Text;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Manage the IPs which may be used for a credential of a user for server authentication.
+    ///     Manage the IPs which may be used for a credential of a user for server authentication.
     /// </summary>
     public class PermittedIp : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        ///     Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user/{0}/credential-password-ip/{1}/ip/{2}";
 
@@ -24,26 +22,26 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/credential-password-ip/{1}/ip/{2}";
 
         /// <summary>
-        /// Field constants.
+        ///     Field constants.
         /// </summary>
         public const string FIELD_IP = "ip";
 
         public const string FIELD_STATUS = "status";
 
         /// <summary>
-        /// Object type.
+        ///     Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "PermittedIp";
 
         /// <summary>
-        /// The IP address.
+        ///     The IP address.
         /// </summary>
         [JsonProperty(PropertyName = "ip")]
         public string Ip { get; set; }
 
         /// <summary>
-        /// The status of the IP. May be "ACTIVE" or "INACTIVE". It is only possible to make requests from "ACTIVE" IP
-        /// addresses. Only "ACTIVE" IPs will be billed.
+        ///     The status of the IP. May be "ACTIVE" or "INACTIVE". It is only possible to make requests from "ACTIVE" IP
+        ///     addresses. Only "ACTIVE" IPs will be billed.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
@@ -68,7 +66,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="ip">The IP address.</param>
-        /// <param name="status">The status of the IP. May be "ACTIVE" or "INACTIVE". It is only possible to make requests from "ACTIVE" IP addresses. Only "ACTIVE" IPs will be billed.</param>
+        /// <param name="status">
+        ///     The status of the IP. May be "ACTIVE" or "INACTIVE". It is only possible to make requests from
+        ///     "ACTIVE" IP addresses. Only "ACTIVE" IPs will be billed.
+        /// </param>
         public static BunqResponse<int> Create(int credentialPasswordIpId, string ip, string status = null,
             IDictionary<string, string> customHeaders = null)
         {
@@ -79,7 +80,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
             {
                 {FIELD_IP, ip},
-                {FIELD_STATUS, status},
+                {FIELD_STATUS, status}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -108,7 +109,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         /// <summary>
         /// </summary>
-        /// <param name="status">The status of the IP. May be "ACTIVE" or "INACTIVE". It is only possible to make requests from "ACTIVE" IP addresses. Only "ACTIVE" IPs will be billed.</param>
+        /// <param name="status">
+        ///     The status of the IP. May be "ACTIVE" or "INACTIVE". It is only possible to make requests from
+        ///     "ACTIVE" IP addresses. Only "ACTIVE" IPs will be billed.
+        /// </param>
         public static BunqResponse<int> Update(int credentialPasswordIpId, int permittedIpId, string status = null,
             IDictionary<string, string> customHeaders = null)
         {
@@ -118,7 +122,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_STATUS, status},
+                {FIELD_STATUS, status}
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -135,15 +139,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Ip != null)
-            {
-                return false;
-            }
+            if (Ip != null) return false;
 
-            if (this.Status != null)
-            {
-                return false;
-            }
+            if (Status != null) return false;
 
             return true;
         }
@@ -152,7 +150,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public static PermittedIp CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<PermittedIp>(json);
+            return CreateFromJsonString<PermittedIp>(json);
         }
     }
 }
