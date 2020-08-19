@@ -10,7 +10,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class RequestReferenceSplitTheBillAnchorObject : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        ///     Error constants.
+        /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
@@ -70,25 +70,55 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public BunqModel GetReferencedObject()
         {
-            if (BillingInvoice != null) return BillingInvoice;
+            if (this.BillingInvoice != null)
+            {
+                return this.BillingInvoice;
+            }
 
-            if (DraftPayment != null) return DraftPayment;
+            if (this.DraftPayment != null)
+            {
+                return this.DraftPayment;
+            }
 
-            if (MasterCardAction != null) return MasterCardAction;
+            if (this.MasterCardAction != null)
+            {
+                return this.MasterCardAction;
+            }
 
-            if (Payment != null) return Payment;
+            if (this.Payment != null)
+            {
+                return this.Payment;
+            }
 
-            if (PaymentBatch != null) return PaymentBatch;
+            if (this.PaymentBatch != null)
+            {
+                return this.PaymentBatch;
+            }
 
-            if (RequestResponse != null) return RequestResponse;
+            if (this.RequestResponse != null)
+            {
+                return this.RequestResponse;
+            }
 
-            if (ScheduleInstance != null) return ScheduleInstance;
+            if (this.ScheduleInstance != null)
+            {
+                return this.ScheduleInstance;
+            }
 
-            if (TabResultResponse != null) return TabResultResponse;
+            if (this.TabResultResponse != null)
+            {
+                return this.TabResultResponse;
+            }
 
-            if (WhitelistResult != null) return WhitelistResult;
+            if (this.WhitelistResult != null)
+            {
+                return this.WhitelistResult;
+            }
 
-            if (TransferwisePayment != null) return TransferwisePayment;
+            if (this.TransferwisePayment != null)
+            {
+                return this.TransferwisePayment;
+            }
 
             throw new BunqException(ERROR_NULL_FIELDS);
         }
@@ -97,25 +127,55 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (BillingInvoice != null) return false;
+            if (this.BillingInvoice != null)
+            {
+                return false;
+            }
 
-            if (DraftPayment != null) return false;
+            if (this.DraftPayment != null)
+            {
+                return false;
+            }
 
-            if (MasterCardAction != null) return false;
+            if (this.MasterCardAction != null)
+            {
+                return false;
+            }
 
-            if (Payment != null) return false;
+            if (this.Payment != null)
+            {
+                return false;
+            }
 
-            if (PaymentBatch != null) return false;
+            if (this.PaymentBatch != null)
+            {
+                return false;
+            }
 
-            if (RequestResponse != null) return false;
+            if (this.RequestResponse != null)
+            {
+                return false;
+            }
 
-            if (ScheduleInstance != null) return false;
+            if (this.ScheduleInstance != null)
+            {
+                return false;
+            }
 
-            if (TabResultResponse != null) return false;
+            if (this.TabResultResponse != null)
+            {
+                return false;
+            }
 
-            if (WhitelistResult != null) return false;
+            if (this.WhitelistResult != null)
+            {
+                return false;
+            }
 
-            if (TransferwisePayment != null) return false;
+            if (this.TransferwisePayment != null)
+            {
+                return false;
+            }
 
             return true;
         }

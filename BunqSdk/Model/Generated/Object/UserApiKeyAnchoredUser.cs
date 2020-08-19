@@ -10,7 +10,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class UserApiKeyAnchoredUser : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        ///     Error constants.
+        /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
@@ -35,11 +35,20 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public BunqModel GetReferencedObject()
         {
-            if (UserPerson != null) return UserPerson;
+            if (this.UserPerson != null)
+            {
+                return this.UserPerson;
+            }
 
-            if (UserCompany != null) return UserCompany;
+            if (this.UserCompany != null)
+            {
+                return this.UserCompany;
+            }
 
-            if (UserPaymentServiceProvider != null) return UserPaymentServiceProvider;
+            if (this.UserPaymentServiceProvider != null)
+            {
+                return this.UserPaymentServiceProvider;
+            }
 
             throw new BunqException(ERROR_NULL_FIELDS);
         }
@@ -48,11 +57,20 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (UserPerson != null) return false;
+            if (this.UserPerson != null)
+            {
+                return false;
+            }
 
-            if (UserCompany != null) return false;
+            if (this.UserCompany != null)
+            {
+                return false;
+            }
 
-            if (UserPaymentServiceProvider != null) return false;
+            if (this.UserPaymentServiceProvider != null)
+            {
+                return false;
+            }
 
             return true;
         }

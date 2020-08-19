@@ -7,28 +7,27 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Once your CashRegister has been activated you can use it to create Tabs. A Tab is a template for a payment. In
-    ///     contrast to requests a Tab is not pointed towards a specific user. Any user can pay the Tab as long as it is
-    ///     made visible by you. The creation of a Tab happens with /tab-usage-single or /tab-usage-multiple. A
-    ///     TabUsageSingle is a Tab that can be paid once. A TabUsageMultiple is a Tab that can be paid multiple times by
-    ///     different users.
+    /// Once your CashRegister has been activated you can use it to create Tabs. A Tab is a template for a payment. In
+    /// contrast to requests a Tab is not pointed towards a specific user. Any user can pay the Tab as long as it is
+    /// made visible by you. The creation of a Tab happens with /tab-usage-single or /tab-usage-multiple. A
+    /// TabUsageSingle is a Tab that can be paid once. A TabUsageMultiple is a Tab that can be paid multiple times by
+    /// different users.
     /// </summary>
     public class Tab : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        ///     Error constants.
+        /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}";
-
         protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/cash-register/{2}/tab";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "Tab";
 
@@ -44,30 +43,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
 
         /// <summary>
-        /// </summary>
-        public BunqModel GetReferencedObject()
-        {
-            if (TabUsageSingle != null) return TabUsageSingle;
-
-            if (TabUsageMultiple != null) return TabUsageMultiple;
-
-            throw new BunqException(ERROR_NULL_FIELDS);
-        }
-
-        /// <summary>
-        /// </summary>
-        public override bool IsAllFieldNull()
-        {
-            if (TabUsageSingle != null) return false;
-
-            if (TabUsageMultiple != null) return false;
-
-            return true;
-        }
-
-
-        /// <summary>
-        ///     Get a specific tab. This returns a TabUsageSingle or TabUsageMultiple.
+        /// Get a specific tab. This returns a TabUsageSingle or TabUsageMultiple.
         /// </summary>
         public static BunqResponse<Tab> Get(int cashRegisterId, string tabUuid, int? monetaryAccountId = null,
             IDictionary<string, string> customHeaders = null)
@@ -84,7 +60,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Get a collection of tabs.
+        /// Get a collection of tabs.
         /// </summary>
         public static BunqResponse<List<Tab>> List(int cashRegisterId, int? monetaryAccountId = null,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
@@ -99,6 +75,41 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                         DetermineMonetaryAccountId(monetaryAccountId), cashRegisterId), urlParams, customHeaders);
 
             return FromJsonList<Tab>(responseRaw);
+        }
+
+
+        /// <summary>
+        /// </summary>
+        public BunqModel GetReferencedObject()
+        {
+            if (this.TabUsageSingle != null)
+            {
+                return this.TabUsageSingle;
+            }
+
+            if (this.TabUsageMultiple != null)
+            {
+                return this.TabUsageMultiple;
+            }
+
+            throw new BunqException(ERROR_NULL_FIELDS);
+        }
+
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.TabUsageSingle != null)
+            {
+                return false;
+            }
+
+            if (this.TabUsageMultiple != null)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>

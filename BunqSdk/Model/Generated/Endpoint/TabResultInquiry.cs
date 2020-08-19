@@ -6,40 +6,39 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to view TabResultInquiry objects belonging to a tab. A TabResultInquiry is an object that holds details on
-    ///     both the tab and a single payment made for that tab.
+    /// Used to view TabResultInquiry objects belonging to a tab. A TabResultInquiry is an object that holds details on
+    /// both the tab and a single payment made for that tab.
     /// </summary>
     public class TabResultInquiry : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ =
             "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-result-inquiry/{4}";
-
         protected const string ENDPOINT_URL_LISTING =
             "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/tab-result-inquiry";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "TabResultInquiry";
 
         /// <summary>
-        ///     The Tab details.
+        /// The Tab details.
         /// </summary>
         [JsonProperty(PropertyName = "tab")]
         public Tab Tab { get; set; }
 
         /// <summary>
-        ///     The payment made for the Tab.
+        /// The payment made for the Tab.
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; set; }
 
 
         /// <summary>
-        ///     Used to view a single TabResultInquiry belonging to a tab.
+        /// Used to view a single TabResultInquiry belonging to a tab.
         /// </summary>
         public static BunqResponse<TabResultInquiry> Get(int cashRegisterId, string tabUuid, int tabResultInquiryId,
             int? monetaryAccountId = null, IDictionary<string, string> customHeaders = null)
@@ -56,7 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Used to view a list of TabResultInquiry objects belonging to a tab.
+        /// Used to view a list of TabResultInquiry objects belonging to a tab.
         /// </summary>
         public static BunqResponse<List<TabResultInquiry>> List(int cashRegisterId, string tabUuid,
             int? monetaryAccountId = null, IDictionary<string, string> urlParams = null,
@@ -80,9 +79,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Tab != null) return false;
+            if (this.Tab != null)
+            {
+                return false;
+            }
 
-            if (Payment != null) return false;
+            if (this.Payment != null)
+            {
+                return false;
+            }
 
             return true;
         }

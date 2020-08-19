@@ -5,32 +5,26 @@ namespace Bunq.Sdk.Model.Generated.Object
 {
     /// <summary>
     /// </summary>
-    public class Issuer : BunqModel
+    public class TransferwiseRequirementFieldGroupValuesAllowed : BunqModel
     {
         /// <summary>
-        /// The BIC code.
+        /// The key.
         /// </summary>
-        [JsonProperty(PropertyName = "bic")]
-        public string Bic { get; set; }
+        [JsonProperty(PropertyName = "key")]
+        public string Key { get; set; }
 
         /// <summary>
-        /// The name of the bank.
+        /// The label.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-
-
-        public Issuer(string bic)
-        {
-            Bic = bic;
-        }
 
 
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (this.Bic != null)
+            if (this.Key != null)
             {
                 return false;
             }
@@ -45,9 +39,9 @@ namespace Bunq.Sdk.Model.Generated.Object
 
         /// <summary>
         /// </summary>
-        public static Issuer CreateFromJsonString(string json)
+        public static TransferwiseRequirementFieldGroupValuesAllowed CreateFromJsonString(string json)
         {
-            return CreateFromJsonString<Issuer>(json);
+            return CreateFromJsonString<TransferwiseRequirementFieldGroupValuesAllowed>(json);
         }
     }
 }

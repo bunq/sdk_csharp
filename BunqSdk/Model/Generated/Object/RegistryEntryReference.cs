@@ -8,13 +8,13 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class RegistryEntryReference : BunqModel
     {
         /// <summary>
-        ///     The object type that will be linked to the RegistryEntry.
+        /// The object type that will be linked to the RegistryEntry.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        ///     The ID of the object that will be used for the RegistryEntry.
+        /// The ID of the object that will be used for the RegistryEntry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }

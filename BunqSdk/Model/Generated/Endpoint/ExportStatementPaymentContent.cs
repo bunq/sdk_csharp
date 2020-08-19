@@ -5,17 +5,17 @@ using Bunq.Sdk.Model.Core;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Fetch the raw content of a payment statement export.
+    /// Fetch the raw content of a payment statement export.
     /// </summary>
     public class ExportStatementPaymentContent : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/event/{2}/statement/{3}/content";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "ExportStatementPayment";
 

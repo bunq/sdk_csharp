@@ -10,7 +10,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class ScheduleInstanceAnchorObject : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        ///     Error constants.
+        /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
@@ -30,9 +30,15 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public BunqModel GetReferencedObject()
         {
-            if (Payment != null) return Payment;
+            if (this.Payment != null)
+            {
+                return this.Payment;
+            }
 
-            if (PaymentBatch != null) return PaymentBatch;
+            if (this.PaymentBatch != null)
+            {
+                return this.PaymentBatch;
+            }
 
             throw new BunqException(ERROR_NULL_FIELDS);
         }
@@ -41,9 +47,15 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Payment != null) return false;
+            if (this.Payment != null)
+            {
+                return false;
+            }
 
-            if (PaymentBatch != null) return false;
+            if (this.PaymentBatch != null)
+            {
+                return false;
+            }
 
             return true;
         }

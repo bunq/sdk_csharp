@@ -8,13 +8,13 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class DraftPaymentResponse : BunqModel
     {
         /// <summary>
-        ///     The status with which was responded.
+        /// The status with which was responded.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        ///     The user that responded to the DraftPayment.
+        /// The user that responded to the DraftPayment.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
         public LabelUser UserAliasCreated { get; set; }
@@ -24,9 +24,15 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Status != null) return false;
+            if (this.Status != null)
+            {
+                return false;
+            }
 
-            if (UserAliasCreated != null) return false;
+            if (this.UserAliasCreated != null)
+            {
+                return false;
+            }
 
             return true;
         }

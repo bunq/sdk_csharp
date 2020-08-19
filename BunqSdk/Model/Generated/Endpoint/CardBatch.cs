@@ -9,33 +9,33 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to update multiple cards in a batch.
+    /// Used to update multiple cards in a batch.
     /// </summary>
     public class CardBatch : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/card-batch";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_CARDS = "cards";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_POST = "CardBatch";
 
         /// <summary>
-        ///     The cards that need to be updated.
+        /// The cards that need to be updated.
         /// </summary>
         [JsonProperty(PropertyName = "cards")]
         public List<CardBatchEntry> Cards { get; set; }
 
         /// <summary>
-        ///     The ids of the cards that have been updated.
+        /// The ids of the cards that have been updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated_card_ids")]
         public List<BunqId> UpdatedCardIds { get; set; }
@@ -53,7 +53,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_CARDS, cards}
+                {FIELD_CARDS, cards},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -68,7 +68,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (UpdatedCardIds != null) return false;
+            if (this.UpdatedCardIds != null)
+            {
+                return false;
+            }
 
             return true;
         }

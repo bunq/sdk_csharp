@@ -8,19 +8,19 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class Ubo : BunqModel
     {
         /// <summary>
-        ///     The name of the ultimate beneficiary owner.
+        /// The name of the ultimate beneficiary owner.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        ///     The date of birth of the ultimate beneficiary owner.
+        /// The date of birth of the ultimate beneficiary owner.
         /// </summary>
         [JsonProperty(PropertyName = "date_of_birth")]
         public string DateOfBirth { get; set; }
 
         /// <summary>
-        ///     The nationality of the ultimate beneficiary owner.
+        /// The nationality of the ultimate beneficiary owner.
         /// </summary>
         [JsonProperty(PropertyName = "nationality")]
         public string Nationality { get; set; }
@@ -30,11 +30,20 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Name != null) return false;
+            if (this.Name != null)
+            {
+                return false;
+            }
 
-            if (DateOfBirth != null) return false;
+            if (this.DateOfBirth != null)
+            {
+                return false;
+            }
 
-            if (Nationality != null) return false;
+            if (this.Nationality != null)
+            {
+                return false;
+            }
 
             return true;
         }

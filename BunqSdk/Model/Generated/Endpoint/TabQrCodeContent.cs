@@ -5,25 +5,25 @@ using Bunq.Sdk.Model.Core;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     This call returns the raw content of the QR code that links to this Tab. When a bunq user scans this QR code
-    ///     with the bunq app the Tab will be shown on his/her device.
+    /// This call returns the raw content of the QR code that links to this Tab. When a bunq user scans this QR code
+    /// with the bunq app the Tab will be shown on his/her device.
     /// </summary>
     public class TabQrCodeContent : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING =
             "user/{0}/monetary-account/{1}/cash-register/{2}/tab/{3}/qr-code-content";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "TabQrCodeContent";
 
         /// <summary>
-        ///     Returns the raw content of the QR code that links to this Tab. The raw content is the binary representation
-        ///     of a file, without any JSON wrapping.
+        /// Returns the raw content of the QR code that links to this Tab. The raw content is the binary representation
+        /// of a file, without any JSON wrapping.
         /// </summary>
         public static BunqResponse<byte[]> List(int cashRegisterId, string tabUuid, int? monetaryAccountId = null,
             IDictionary<string, string> customHeaders = null)

@@ -310,6 +310,10 @@
               <e p="TabVisibility.cs" t="Include" />
               <e p="TaxResident.cs" t="Include" />
               <e p="TransferwiseRequirementField.cs" t="Include" />
+              <e p="TransferwiseRequirementFieldGroup.cs" t="Include" />
+              <e p="TransferwiseRequirementFieldGroupValidationAsync.cs" t="Include" />
+              <e p="TransferwiseRequirementFieldGroupValidationAsyncParams.cs" t="Include" />
+              <e p="TransferwiseRequirementFieldGroupValuesAllowed.cs" t="Include" />
               <e p="Ubo.cs" t="Include" />
               <e p="UserApiKeyAnchoredUser.cs" t="Include" />
               <e p="WhitelistResultViewAnchoredObject.cs" t="Include" />

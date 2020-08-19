@@ -8,32 +8,31 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used for managing OAuth Client Callback URLs.
+    /// Used for managing OAuth Client Callback URLs.
     /// </summary>
     public class OauthCallbackUrl : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user/{0}/oauth-client/{1}/callback-url/{2}";
-
         protected const string ENDPOINT_URL_CREATE = "user/{0}/oauth-client/{1}/callback-url";
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/oauth-client/{1}/callback-url/{2}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/oauth-client/{1}/callback-url";
         protected const string ENDPOINT_URL_DELETE = "user/{0}/oauth-client/{1}/callback-url/{2}";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_URL = "url";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "OauthCallbackUrl";
 
         /// <summary>
-        ///     The URL for this callback.
+        /// The URL for this callback.
         /// </summary>
         [JsonProperty(PropertyName = "url")]
         public string Url { get; set; }
@@ -65,7 +64,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_URL, url}
+                {FIELD_URL, url},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -87,7 +86,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_URL, url}
+                {FIELD_URL, url},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -134,7 +133,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Url != null) return false;
+            if (this.Url != null)
+            {
+                return false;
+            }
 
             return true;
         }

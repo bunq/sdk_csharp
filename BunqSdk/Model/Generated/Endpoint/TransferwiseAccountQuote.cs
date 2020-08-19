@@ -9,78 +9,76 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to manage recipient accounts with Transferwise.
+    /// Used to manage recipient accounts with Transferwise.
     /// </summary>
     public class TransferwiseAccountQuote : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/transferwise-quote/{1}/transferwise-recipient";
-
         protected const string ENDPOINT_URL_READ = "user/{0}/transferwise-quote/{1}/transferwise-recipient/{2}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/transferwise-quote/{1}/transferwise-recipient";
         protected const string ENDPOINT_URL_DELETE = "user/{0}/transferwise-quote/{1}/transferwise-recipient/{2}";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_COUNTRY = "country";
-
         public const string FIELD_NAME_ACCOUNT_HOLDER = "name_account_holder";
         public const string FIELD_TYPE = "type";
         public const string FIELD_DETAIL = "detail";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "TransferwiseRecipient";
 
         /// <summary>
-        ///     The country of the account.
+        /// The country of the account.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
 
         /// <summary>
-        ///     The name of the account holder.
+        /// The name of the account holder.
         /// </summary>
         [JsonProperty(PropertyName = "name_account_holder")]
         public string NameAccountHolder { get; set; }
 
         /// <summary>
-        ///     The chosen recipient account type. The possible options are provided dynamically in the response endpoint.
+        /// The chosen recipient account type. The possible options are provided dynamically in the response endpoint.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        ///     The fields which were specified as "required" and have since been filled by the user. Always provide the
-        ///     full list.
+        /// The fields which were specified as "required" and have since been filled by the user. Always provide the
+        /// full list.
         /// </summary>
         [JsonProperty(PropertyName = "detail")]
         public List<TransferwiseRequirementField> Detail { get; set; }
 
         /// <summary>
-        ///     Transferwise's id of the account.
+        /// Transferwise's id of the account.
         /// </summary>
         [JsonProperty(PropertyName = "account_id")]
         public string AccountId { get; set; }
 
         /// <summary>
-        ///     The currency the account.
+        /// The currency the account.
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; set; }
 
         /// <summary>
-        ///     The account number.
+        /// The account number.
         /// </summary>
         [JsonProperty(PropertyName = "account_number")]
         public string AccountNumber { get; set; }
 
         /// <summary>
-        ///     The bank code.
+        /// The bank code.
         /// </summary>
         [JsonProperty(PropertyName = "bank_code")]
         public string BankCode { get; set; }
@@ -89,15 +87,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="nameAccountHolder">The name of the account holder.</param>
-        /// <param name="type">
-        ///     The chosen recipient account type. The possible options are provided dynamically in the response
-        ///     endpoint.
-        /// </param>
+        /// <param name="type">The chosen recipient account type. The possible options are provided dynamically in the response endpoint.</param>
         /// <param name="country">The country of the receiving account.</param>
-        /// <param name="detail">
-        ///     The fields which were specified as "required" and have since been filled by the user. Always
-        ///     provide the full list.
-        /// </param>
+        /// <param name="detail">The fields which were specified as "required" and have since been filled by the user. Always provide the full list.</param>
         public static BunqResponse<int> Create(int transferwiseQuoteId, string nameAccountHolder, string type,
             string country = null, List<TransferwiseRequirementField> detail = null,
             IDictionary<string, string> customHeaders = null)
@@ -111,7 +103,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_COUNTRY, country},
                 {FIELD_NAME_ACCOUNT_HOLDER, nameAccountHolder},
                 {FIELD_TYPE, type},
-                {FIELD_DETAIL, detail}
+                {FIELD_DETAIL, detail},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -173,17 +165,35 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (AccountId != null) return false;
+            if (this.AccountId != null)
+            {
+                return false;
+            }
 
-            if (Currency != null) return false;
+            if (this.Currency != null)
+            {
+                return false;
+            }
 
-            if (Country != null) return false;
+            if (this.Country != null)
+            {
+                return false;
+            }
 
-            if (NameAccountHolder != null) return false;
+            if (this.NameAccountHolder != null)
+            {
+                return false;
+            }
 
-            if (AccountNumber != null) return false;
+            if (this.AccountNumber != null)
+            {
+                return false;
+            }
 
-            if (BankCode != null) return false;
+            if (this.BankCode != null)
+            {
+                return false;
+            }
 
             return true;
         }

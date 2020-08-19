@@ -9,31 +9,31 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class RegistrySettlementItem : BunqModel
     {
         /// <summary>
-        ///     The amount of the RegistrySettlementItem.
+        /// The amount of the RegistrySettlementItem.
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
 
         /// <summary>
-        ///     The membership of the user that has to pay.
+        /// The membership of the user that has to pay.
         /// </summary>
         [JsonProperty(PropertyName = "membership_paying")]
         public RegistryMembership MembershipPaying { get; set; }
 
         /// <summary>
-        ///     The membership of the user that will receive money.
+        /// The membership of the user that will receive money.
         /// </summary>
         [JsonProperty(PropertyName = "membership_receiving")]
         public RegistryMembership MembershipReceiving { get; set; }
 
         /// <summary>
-        ///     The LabelMonetaryAccount of the user that has to pay the request.
+        /// The LabelMonetaryAccount of the user that has to pay the request.
         /// </summary>
         [JsonProperty(PropertyName = "paying_user_alias")]
         public MonetaryAccountReference PayingUserAlias { get; set; }
 
         /// <summary>
-        ///     The LabelMonetaryAccount of the user that will receive the amount.
+        /// The LabelMonetaryAccount of the user that will receive the amount.
         /// </summary>
         [JsonProperty(PropertyName = "receiving_user_alias")]
         public MonetaryAccountReference ReceivingUserAlias { get; set; }
@@ -43,15 +43,30 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Amount != null) return false;
+            if (this.Amount != null)
+            {
+                return false;
+            }
 
-            if (MembershipPaying != null) return false;
+            if (this.MembershipPaying != null)
+            {
+                return false;
+            }
 
-            if (MembershipReceiving != null) return false;
+            if (this.MembershipReceiving != null)
+            {
+                return false;
+            }
 
-            if (PayingUserAlias != null) return false;
+            if (this.PayingUserAlias != null)
+            {
+                return false;
+            }
 
-            if (ReceivingUserAlias != null) return false;
+            if (this.ReceivingUserAlias != null)
+            {
+                return false;
+            }
 
             return true;
         }

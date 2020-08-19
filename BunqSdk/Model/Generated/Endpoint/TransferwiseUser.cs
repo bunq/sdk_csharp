@@ -8,60 +8,59 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to manage Transferwise users.
+    /// Used to manage Transferwise users.
     /// </summary>
     public class TransferwiseUser : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/transferwise-user";
-
         protected const string ENDPOINT_URL_LISTING = "user/{0}/transferwise-user";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_OAUTH_CODE = "oauth_code";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "TransferwiseUser";
 
         /// <summary>
-        ///     The OAuth code returned by Transferwise we should be using to gain access to the user's Transferwise
-        ///     account.
+        /// The OAuth code returned by Transferwise we should be using to gain access to the user's Transferwise
+        /// account.
         /// </summary>
         [JsonProperty(PropertyName = "oauth_code")]
         public string OauthCode { get; set; }
 
         /// <summary>
-        ///     The id of the TransferwiseUser.
+        /// The id of the TransferwiseUser.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The timestamp of the TransferwiseUser's creation.
+        /// The timestamp of the TransferwiseUser's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        ///     The timestamp of the TransferwiseUser's last update.
+        /// The timestamp of the TransferwiseUser's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        ///     The name the user is registered with at TransferWise.
+        /// The name the user is registered with at TransferWise.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        ///     The email the user is registered with at TransferWise.
+        /// The email the user is registered with at TransferWise.
         /// </summary>
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
@@ -69,10 +68,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
         /// <summary>
         /// </summary>
-        /// <param name="oauthCode">
-        ///     The OAuth code returned by Transferwise we should be using to gain access to the user's
-        ///     Transferwise account.
-        /// </param>
+        /// <param name="oauthCode">The OAuth code returned by Transferwise we should be using to gain access to the user's Transferwise account.</param>
         public static BunqResponse<int> Create(string oauthCode = null,
             IDictionary<string, string> customHeaders = null)
         {
@@ -82,7 +78,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_OAUTH_CODE, oauthCode}
+                {FIELD_OAUTH_CODE, oauthCode},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -112,15 +108,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (Created != null) return false;
+            if (this.Created != null)
+            {
+                return false;
+            }
 
-            if (Updated != null) return false;
+            if (this.Updated != null)
+            {
+                return false;
+            }
 
-            if (Name != null) return false;
+            if (this.Name != null)
+            {
+                return false;
+            }
 
-            if (Email != null) return false;
+            if (this.Email != null)
+            {
+                return false;
+            }
 
             return true;
         }

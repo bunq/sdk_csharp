@@ -5,26 +5,25 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to update and read up monetary account profiles, to keep the balance between specific thresholds.
+    /// Used to update and read up monetary account profiles, to keep the balance between specific thresholds.
     /// </summary>
     public class MonetaryAccountProfile : BunqModel
     {
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_PROFILE_FILL = "profile_fill";
-
         public const string FIELD_PROFILE_DRAIN = "profile_drain";
 
 
         /// <summary>
-        ///     The profile settings for triggering the fill of a monetary account.
+        /// The profile settings for triggering the fill of a monetary account.
         /// </summary>
         [JsonProperty(PropertyName = "profile_fill")]
         public MonetaryAccountProfileFill ProfileFill { get; set; }
 
         /// <summary>
-        ///     The profile settings for moving excesses to a savings account
+        /// The profile settings for moving excesses to a savings account
         /// </summary>
         [JsonProperty(PropertyName = "profile_drain")]
         public MonetaryAccountProfileDrain ProfileDrain { get; set; }
@@ -34,9 +33,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (ProfileFill != null) return false;
+            if (this.ProfileFill != null)
+            {
+                return false;
+            }
 
-            if (ProfileDrain != null) return false;
+            if (this.ProfileDrain != null)
+            {
+                return false;
+            }
 
             return true;
         }

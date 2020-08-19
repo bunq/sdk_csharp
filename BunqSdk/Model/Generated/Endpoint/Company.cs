@@ -9,24 +9,22 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Create and manage companies.
+    /// Create and manage companies.
     /// </summary>
     public class Company : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/company";
-
         protected const string ENDPOINT_URL_READ = "user/{0}/company/{1}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/company";
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/company/{1}";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_NAME = "name";
-
         public const string FIELD_ADDRESS_MAIN = "address_main";
         public const string FIELD_ADDRESS_POSTAL = "address_postal";
         public const string FIELD_COUNTRY = "country";
@@ -36,54 +34,54 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_AVATAR_UUID = "avatar_uuid";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "UserCompany";
 
         /// <summary>
-        ///     The company name.
+        /// The company name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        ///     The company's main address.
+        /// The company's main address.
         /// </summary>
         [JsonProperty(PropertyName = "address_main")]
         public Address AddressMain { get; set; }
 
         /// <summary>
-        ///     The company's postal address.
+        /// The company's postal address.
         /// </summary>
         [JsonProperty(PropertyName = "address_postal")]
         public Address AddressPostal { get; set; }
 
         /// <summary>
-        ///     The country where the company is registered.
+        /// The country where the company is registered.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
 
         /// <summary>
-        ///     The names and birth dates of the company's ultimate beneficiary owners. Minimum zero, maximum four.
+        /// The names and birth dates of the company's ultimate beneficiary owners. Minimum zero, maximum four.
         /// </summary>
         [JsonProperty(PropertyName = "ubo")]
         public List<Ubo> Ubo { get; set; }
 
         /// <summary>
-        ///     The company's chamber of commerce number.
+        /// The company's chamber of commerce number.
         /// </summary>
         [JsonProperty(PropertyName = "chamber_of_commerce_number")]
         public string ChamberOfCommerceNumber { get; set; }
 
         /// <summary>
-        ///     The company's legal form.
+        /// The company's legal form.
         /// </summary>
         [JsonProperty(PropertyName = "legal_form")]
         public string LegalForm { get; set; }
 
         /// <summary>
-        ///     The public UUID of the company's avatar.
+        /// The public UUID of the company's avatar.
         /// </summary>
         [JsonProperty(PropertyName = "avatar_uuid")]
         public string AvatarUuid { get; set; }
@@ -121,7 +119,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_UBO, ubo},
                 {FIELD_CHAMBER_OF_COMMERCE_NUMBER, chamberOfCommerceNumber},
                 {FIELD_LEGAL_FORM, legalForm},
-                {FIELD_AVATAR_UUID, avatarUuid}
+                {FIELD_AVATAR_UUID, avatarUuid},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -171,7 +169,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_AVATAR_UUID, avatarUuid}
+                {FIELD_AVATAR_UUID, avatarUuid},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -186,7 +184,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (UserCompany != null) return false;
+            if (this.UserCompany != null)
+            {
+                return false;
+            }
 
             return true;
         }
