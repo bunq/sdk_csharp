@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Xunit;

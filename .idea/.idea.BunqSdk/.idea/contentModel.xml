@@ -373,6 +373,7 @@
             </e>
             <e p="Object" t="Include">
               <e p="NotificationUrlTest.cs" t="Include" />
+              <e p="OauthAuthorizationUriTest.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -387,7 +388,6 @@
         <e p="README.md" t="Include" />
         <e p="Resources" t="Include">
           <e p="config.example.json" t="Include" />
-          <e p="credentials.pfx" t="Include" />
           <e p="NotificationUrlJsons" t="Include">
             <e p="BunqMeTab.json" t="Include" />
             <e p="ChatMessageAnnouncement.json" t="Include" />

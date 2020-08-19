@@ -62,15 +62,15 @@ namespace Bunq.Sdk.Tests.Context
             contextJson.SelectToken(FieldSessionContext)[FieldExpiryTime] = expiredTime.ToString();
 
             var expiredApiContext = ApiContext.FromJson(contextJson.ToString());
-         
+
             Assert.NotEqual(apiContext, expiredApiContext);
-            
+
             BunqContext.UpdateApiContext(expiredApiContext);
-            
+
             Assert.Equal(expiredApiContext, BunqContext.ApiContext);
-            
+
             BunqContext.UserContext.RefreshUserContext();
-            
+
             Assert.True(BunqContext.ApiContext.IsSessionActive());
         }
     }

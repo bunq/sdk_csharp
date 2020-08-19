@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Tests.Model.Core
     ///     NotificationFilterUrlUserInternal
     ///     NotificationFilterPushUserInternal
     /// </summary>
-    public class NotificationFilterTest: BunqSdkTestBase, IClassFixture<NotificationFilterTest>
+    public class NotificationFilterTest : BunqSdkTestBase, IClassFixture<NotificationFilterTest>
     {
         /// <summary>
         /// Filter constants.
@@ -28,12 +28,13 @@ namespace Bunq.Sdk.Tests.Model.Core
         public void TestNotificationFilterUrlMonetaryAccount()
         {
             SetUpApiContext();
-            
+
             NotificationFilterUrl notificationFilter = GetNotificationFilterUrl();
-            List<NotificationFilterUrl> allCreatedNotificationFilter = NotificationFilterUrlMonetaryAccountInternal.CreateWithListResponse(
-                GetPrimaryMonetaryAccount().Id.Value,
-                new List<NotificationFilterUrl>() {notificationFilter}
-            ).Value;
+            List<NotificationFilterUrl> allCreatedNotificationFilter = NotificationFilterUrlMonetaryAccountInternal
+                .CreateWithListResponse(
+                    GetPrimaryMonetaryAccount().Id.Value,
+                    new List<NotificationFilterUrl>() {notificationFilter}
+                ).Value;
 
             Assert.True(allCreatedNotificationFilter.Count == 1);
         }
@@ -47,12 +48,14 @@ namespace Bunq.Sdk.Tests.Model.Core
             SetUpApiContext();
 
             NotificationFilterUrl notificationFilter = GetNotificationFilterUrl();
-            List<NotificationFilterUrl> allCreatedNotificationFilter = NotificationFilterUrlUserInternal.CreateWithListResponse(
-                new List<NotificationFilterUrl>() {notificationFilter}
-            ).Value;
+            List<NotificationFilterUrl> allCreatedNotificationFilter = NotificationFilterUrlUserInternal
+                .CreateWithListResponse(
+                    new List<NotificationFilterUrl>() {notificationFilter}
+                ).Value;
 
             Assert.True(allCreatedNotificationFilter.Count == 1);
         }
+
         /// <summary>
         /// Test NotificationFilterPushUser creation.
         /// </summary>
@@ -62,9 +65,10 @@ namespace Bunq.Sdk.Tests.Model.Core
             SetUpApiContext();
 
             NotificationFilterPush notificationFilter = GetNotificationFilterPush();
-            List<NotificationFilterPush> allCreatedNotificationFilter = NotificationFilterPushUserInternal.CreateWithListResponse(
-                new List<NotificationFilterPush>() {notificationFilter}
-            ).Value;
+            List<NotificationFilterPush> allCreatedNotificationFilter = NotificationFilterPushUserInternal
+                .CreateWithListResponse(
+                    new List<NotificationFilterPush>() {notificationFilter}
+                ).Value;
 
             Assert.True(allCreatedNotificationFilter.Count == 1);
         }
@@ -78,12 +82,12 @@ namespace Bunq.Sdk.Tests.Model.Core
             SetUpApiContext();
 
             List<NotificationFilterPush> allCreatedNotificationFilterPushUser =
-                    NotificationFilterPushUserInternal.CreateWithListResponse().Value;
+                NotificationFilterPushUserInternal.CreateWithListResponse().Value;
             List<NotificationFilterUrl> allCreatedNotificationFilterUrlUser =
                 NotificationFilterUrlUserInternal.CreateWithListResponse().Value;
             List<NotificationFilterUrl> allCreatedNotificationFilterUrlMonetaryAccount =
-                    NotificationFilterUrlMonetaryAccountInternal.CreateWithListResponse().Value;
-            
+                NotificationFilterUrlMonetaryAccountInternal.CreateWithListResponse().Value;
+
             Assert.Empty(allCreatedNotificationFilterPushUser);
             Assert.Empty(allCreatedNotificationFilterUrlUser);
             Assert.Empty(allCreatedNotificationFilterUrlMonetaryAccount);
@@ -92,17 +96,17 @@ namespace Bunq.Sdk.Tests.Model.Core
             Assert.StrictEqual(0, NotificationFilterUrlUserInternal.List().Value.Count);
             Assert.StrictEqual(0, NotificationFilterUrlMonetaryAccountInternal.List().Value.Count);
         }
-        
+
         private NotificationFilterUrl GetNotificationFilterUrl()
         {
             return new NotificationFilterUrl(FILTER_CATEGORY_MUTATION, FILTER_CALLBACK_URL);
         }
-        
+
         private NotificationFilterPush GetNotificationFilterPush()
         {
             return new NotificationFilterPush(FILTER_CATEGORY_MUTATION);
         }
-        
+
         private MonetaryAccountBank GetPrimaryMonetaryAccount()
         {
             return BunqContext.UserContext.PrimaryMonetaryAccountBank;

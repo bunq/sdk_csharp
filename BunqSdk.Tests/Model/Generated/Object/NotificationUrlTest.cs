@@ -1,8 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices.ComTypes;
-using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json.Linq;
@@ -16,10 +13,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         /// Getter constans.
         /// </summary>
         private const string GetPayment = "Payment";
-
         private const string GetBunqMeTab = "BunqMeTab";
-        private const string GetChatMessageAnnouncement = "ChatMessageAnnouncement";
-        private const string GetChatMessage = "ChatMessage";
         private const string GetDraftPayment = "DraftPayment";
         private const string GetMasterCardAction = "MasterCardAction";
         private const string GetMonetaryAccountBank = "MonetaryAccountBank";
@@ -36,13 +30,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         /// Model json paths constants.
         /// </summary>
         private const string BasePathJsonModel = "../../../Resources/NotificationUrlJsons";
-
         private const string JsonPathMutationModel = BasePathJsonModel + "/Mutation.json";
         private const string JsonPathBunqMeTabModel = BasePathJsonModel + "/BunqMeTab.json";
-
-        private const string JsonPathChatMessageAnnouncementModel = BasePathJsonModel +
-                                                                    "/ChatMessageAnnouncement.json";
-
         private const string JsonPathDraftPaymentModel = BasePathJsonModel + "/DraftPayment.json";
         private const string JsonPathMasterCardActionModel = BasePathJsonModel + "/MasterCardAction.json";
         private const string JsonPathMonetaryAccountBankModel = BasePathJsonModel + "/MonetaryAccountBank.json";
@@ -51,12 +40,8 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
         private const string JsonPathRequestResponseModel = BasePathJsonModel + "/RequestResponse.json";
         private const string JsonPathSchedulePaymentModel = BasePathJsonModel + "/ScheduledPayment.json";
         private const string JsonPathScheduleInstanceModel = BasePathJsonModel + "/ScheduledInstance.json";
-
-        private const string JsonPathShareInviteBankInquiryModel = BasePathJsonModel +
-                                                                   "/ShareInviteBankInquiry.json";
-
-        private const string JsonPathShareInviteBankResponseModel = BasePathJsonModel +
-                                                                    "/ShareInviteBankResponse.json";
+        private const string JsonPathShareInviteBankInquiryModel = BasePathJsonModel + "/ShareInviteBankInquiry.json";
+        private const string JsonPathShareInviteBankResponseModel = BasePathJsonModel + "/ShareInviteBankResponse.json";
 
         /// <summary>
         /// Model root key.

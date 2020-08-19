@@ -86,9 +86,9 @@ namespace Bunq.Sdk.Tests
         {
             var permittedIpsString = GetConfig()[FIELD_PERMITTED_IPS].ToString();
 
-            return permittedIpsString.Length == LENGTH_NONE ?
-                new string[LENGTH_NONE] :
-                permittedIpsString.Split(DELIMITER_IPS);
+            return permittedIpsString.Length == LENGTH_NONE
+                ? new string[LENGTH_NONE]
+                : permittedIpsString.Split(DELIMITER_IPS);
         }
 
         public static string GetApiKey()

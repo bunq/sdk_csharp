@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Bunq.Sdk.Context;
-using Bunq.Sdk.Exception;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
 using Xunit;
@@ -21,7 +19,6 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// Card constants.
         /// </summary>
         private const string CardPinAssignmentTypePrimary = "PRIMARY";
-
         private const string PinCode = "4045";
         private const int NonnegativeIntegerMinimum = 0;
         private const int CardSecondLineLengthMaximum = 20;
@@ -32,7 +29,6 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// Number constants.
         /// </summary>
         private const int BaseDecimal = 10;
-
         private const int NumberOne = 1;
 
         /// <summary>

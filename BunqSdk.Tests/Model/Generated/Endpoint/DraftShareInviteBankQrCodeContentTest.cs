@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using Bunq.Sdk.Context;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Bunq.Sdk.Model.Generated.Object;
 using Xunit;
@@ -19,7 +18,6 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// Config values.
         /// </summary>
         private const string FilenameQrCodeImage = "tmp/qrcode.png";
-
         private const int TimeUnitAmountZero = 0;
         private const int TimeUnitAmountOne = 1;
         private const string FormatDate = "yyyy-MM-dd HH:mm:ss";
@@ -39,6 +37,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             var qrContent = DraftShareInviteBankQrCodeContent.List(draftId).Value;
 
             var fileOut = new FileInfo(FilenameQrCodeImage);
+            
+            Debug.Assert(fileOut.Directory != null, "fileOut.Directory != null");
+            
             fileOut.Directory.Create();
             File.WriteAllBytes(fileOut.FullName, qrContent);
         }
