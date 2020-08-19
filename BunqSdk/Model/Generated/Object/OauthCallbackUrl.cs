@@ -8,25 +8,25 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class OauthCallbackUrl : BunqModel
     {
         /// <summary>
-        ///     The id of the callback URL.
+        /// The id of the callback URL.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The timestamp of the callback URL's creation.
+        /// The timestamp of the callback URL's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        ///     The timestamp of the callback URL's last update.
+        /// The timestamp of the callback URL's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        ///     The Callback URL.
+        /// The Callback URL.
         /// </summary>
         [JsonProperty(PropertyName = "url")]
         public string Url { get; set; }
@@ -36,13 +36,25 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (Created != null) return false;
+            if (this.Created != null)
+            {
+                return false;
+            }
 
-            if (Updated != null) return false;
+            if (this.Updated != null)
+            {
+                return false;
+            }
 
-            if (Url != null) return false;
+            if (this.Url != null)
+            {
+                return false;
+            }
 
             return true;
         }

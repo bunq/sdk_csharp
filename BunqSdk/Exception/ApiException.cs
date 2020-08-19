@@ -1,5 +1,4 @@
-﻿
-namespace Bunq.Sdk.Exception
+﻿namespace Bunq.Sdk.Exception
 {
     public class ApiException : System.Exception
     {
@@ -15,5 +14,5 @@ namespace Bunq.Sdk.Exception
             ResponseCode = responseCode;
             ResponseId = responseId;
         }
-    }   
+    }
 }

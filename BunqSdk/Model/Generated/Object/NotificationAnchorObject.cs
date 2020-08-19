@@ -10,7 +10,7 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class NotificationAnchorObject : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        ///     Error constants.
+        /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
@@ -130,49 +130,115 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public BunqModel GetReferencedObject()
         {
-            if (BunqMeFundraiserResult != null) return BunqMeFundraiserResult;
+            if (this.BunqMeFundraiserResult != null)
+            {
+                return this.BunqMeFundraiserResult;
+            }
 
-            if (BunqMeTab != null) return BunqMeTab;
+            if (this.BunqMeTab != null)
+            {
+                return this.BunqMeTab;
+            }
 
-            if (BunqMeTabResultInquiry != null) return BunqMeTabResultInquiry;
+            if (this.BunqMeTabResultInquiry != null)
+            {
+                return this.BunqMeTabResultInquiry;
+            }
 
-            if (BunqMeTabResultResponse != null) return BunqMeTabResultResponse;
+            if (this.BunqMeTabResultResponse != null)
+            {
+                return this.BunqMeTabResultResponse;
+            }
 
-            if (ChatMessage != null) return ChatMessage;
+            if (this.ChatMessage != null)
+            {
+                return this.ChatMessage;
+            }
 
-            if (DraftPayment != null) return DraftPayment;
+            if (this.DraftPayment != null)
+            {
+                return this.DraftPayment;
+            }
 
-            if (IdealMerchantTransaction != null) return IdealMerchantTransaction;
+            if (this.IdealMerchantTransaction != null)
+            {
+                return this.IdealMerchantTransaction;
+            }
 
-            if (Invoice != null) return Invoice;
+            if (this.Invoice != null)
+            {
+                return this.Invoice;
+            }
 
-            if (MasterCardAction != null) return MasterCardAction;
+            if (this.MasterCardAction != null)
+            {
+                return this.MasterCardAction;
+            }
 
-            if (MonetaryAccount != null) return MonetaryAccount;
+            if (this.MonetaryAccount != null)
+            {
+                return this.MonetaryAccount;
+            }
 
-            if (Payment != null) return Payment;
+            if (this.Payment != null)
+            {
+                return this.Payment;
+            }
 
-            if (PaymentBatch != null) return PaymentBatch;
+            if (this.PaymentBatch != null)
+            {
+                return this.PaymentBatch;
+            }
 
-            if (RequestInquiry != null) return RequestInquiry;
+            if (this.RequestInquiry != null)
+            {
+                return this.RequestInquiry;
+            }
 
-            if (RequestInquiryBatch != null) return RequestInquiryBatch;
+            if (this.RequestInquiryBatch != null)
+            {
+                return this.RequestInquiryBatch;
+            }
 
-            if (RequestResponse != null) return RequestResponse;
+            if (this.RequestResponse != null)
+            {
+                return this.RequestResponse;
+            }
 
-            if (ShareInviteBankInquiry != null) return ShareInviteBankInquiry;
+            if (this.ShareInviteBankInquiry != null)
+            {
+                return this.ShareInviteBankInquiry;
+            }
 
-            if (ShareInviteBankResponse != null) return ShareInviteBankResponse;
+            if (this.ShareInviteBankResponse != null)
+            {
+                return this.ShareInviteBankResponse;
+            }
 
-            if (ScheduledPayment != null) return ScheduledPayment;
+            if (this.ScheduledPayment != null)
+            {
+                return this.ScheduledPayment;
+            }
 
-            if (ScheduledInstance != null) return ScheduledInstance;
+            if (this.ScheduledInstance != null)
+            {
+                return this.ScheduledInstance;
+            }
 
-            if (TabResultInquiry != null) return TabResultInquiry;
+            if (this.TabResultInquiry != null)
+            {
+                return this.TabResultInquiry;
+            }
 
-            if (TabResultResponse != null) return TabResultResponse;
+            if (this.TabResultResponse != null)
+            {
+                return this.TabResultResponse;
+            }
 
-            if (User != null) return User;
+            if (this.User != null)
+            {
+                return this.User;
+            }
 
             throw new BunqException(ERROR_NULL_FIELDS);
         }
@@ -181,49 +247,115 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (BunqMeFundraiserResult != null) return false;
+            if (this.BunqMeFundraiserResult != null)
+            {
+                return false;
+            }
 
-            if (BunqMeTab != null) return false;
+            if (this.BunqMeTab != null)
+            {
+                return false;
+            }
 
-            if (BunqMeTabResultInquiry != null) return false;
+            if (this.BunqMeTabResultInquiry != null)
+            {
+                return false;
+            }
 
-            if (BunqMeTabResultResponse != null) return false;
+            if (this.BunqMeTabResultResponse != null)
+            {
+                return false;
+            }
 
-            if (ChatMessage != null) return false;
+            if (this.ChatMessage != null)
+            {
+                return false;
+            }
 
-            if (DraftPayment != null) return false;
+            if (this.DraftPayment != null)
+            {
+                return false;
+            }
 
-            if (IdealMerchantTransaction != null) return false;
+            if (this.IdealMerchantTransaction != null)
+            {
+                return false;
+            }
 
-            if (Invoice != null) return false;
+            if (this.Invoice != null)
+            {
+                return false;
+            }
 
-            if (MasterCardAction != null) return false;
+            if (this.MasterCardAction != null)
+            {
+                return false;
+            }
 
-            if (MonetaryAccount != null) return false;
+            if (this.MonetaryAccount != null)
+            {
+                return false;
+            }
 
-            if (Payment != null) return false;
+            if (this.Payment != null)
+            {
+                return false;
+            }
 
-            if (PaymentBatch != null) return false;
+            if (this.PaymentBatch != null)
+            {
+                return false;
+            }
 
-            if (RequestInquiry != null) return false;
+            if (this.RequestInquiry != null)
+            {
+                return false;
+            }
 
-            if (RequestInquiryBatch != null) return false;
+            if (this.RequestInquiryBatch != null)
+            {
+                return false;
+            }
 
-            if (RequestResponse != null) return false;
+            if (this.RequestResponse != null)
+            {
+                return false;
+            }
 
-            if (ShareInviteBankInquiry != null) return false;
+            if (this.ShareInviteBankInquiry != null)
+            {
+                return false;
+            }
 
-            if (ShareInviteBankResponse != null) return false;
+            if (this.ShareInviteBankResponse != null)
+            {
+                return false;
+            }
 
-            if (ScheduledPayment != null) return false;
+            if (this.ScheduledPayment != null)
+            {
+                return false;
+            }
 
-            if (ScheduledInstance != null) return false;
+            if (this.ScheduledInstance != null)
+            {
+                return false;
+            }
 
-            if (TabResultInquiry != null) return false;
+            if (this.TabResultInquiry != null)
+            {
+                return false;
+            }
 
-            if (TabResultResponse != null) return false;
+            if (this.TabResultResponse != null)
+            {
+                return false;
+            }
 
-            if (User != null) return false;
+            if (this.User != null)
+            {
+                return false;
+            }
 
             return true;
         }

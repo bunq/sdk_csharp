@@ -6,29 +6,29 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Using /installation/_/server-public-key you can request the ServerPublicKey again. This is done by referring to
-    ///     the id of the Installation.
+    /// Using /installation/_/server-public-key you can request the ServerPublicKey again. This is done by referring to
+    /// the id of the Installation.
     /// </summary>
     public class InstallationServerPublicKey : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "installation/{0}/server-public-key";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "ServerPublicKey";
 
         /// <summary>
-        ///     The server's public key for this Installation.
+        /// The server's public key for this Installation.
         /// </summary>
         [JsonProperty(PropertyName = "server_public_key")]
         public string ServerPublicKey { get; set; }
 
         /// <summary>
-        ///     Show the ServerPublicKey for this Installation.
+        /// Show the ServerPublicKey for this Installation.
         /// </summary>
         public static BunqResponse<List<InstallationServerPublicKey>> List(int installationId,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
@@ -48,7 +48,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (ServerPublicKey != null) return false;
+            if (this.ServerPublicKey != null)
+            {
+                return false;
+            }
 
             return true;
         }

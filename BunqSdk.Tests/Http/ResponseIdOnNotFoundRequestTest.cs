@@ -10,11 +10,11 @@ namespace Bunq.Sdk.Tests.Http
         public void TestBadRequestWithResponseId()
         {
             SetUpTestCase();
-            
+
             var caughtException = Assert.Throws<NotFoundException>(
                 () => Payment.Get(0)
             );
-            
+
             Assert.NotNull(caughtException.ResponseId);
         }
     }

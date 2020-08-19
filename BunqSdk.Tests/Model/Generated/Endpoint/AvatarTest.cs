@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Xunit;
@@ -36,10 +35,10 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 
             var attachmentUuidFromAvatar = Avatar.Get(avatarUuid).Value
                 .Image.First().AttachmentPublicUuid;
-            var revievedFileContentByte = AttachmentPublicContent.List(attachmentUuidFromAvatar).Value;
+            var receivedFileContentByte = AttachmentPublicContent.List(attachmentUuidFromAvatar).Value;
 
             Assert.Equal(attachmentUuid, attachmentUuidFromAvatar);
-            Assert.Equal(fileContentByte, revievedFileContentByte);
+            Assert.Equal(fileContentByte, receivedFileContentByte);
         }
 
         private static string UploadAvatarAndGetUuid(byte[] fileContentByte)

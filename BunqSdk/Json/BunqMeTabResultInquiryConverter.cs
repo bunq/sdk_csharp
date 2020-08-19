@@ -13,19 +13,20 @@ namespace Bunq.Sdk.Json
         /// <summary>
         /// Field constants.
         /// </summary>
-        protected const String FIELD_PAYMENT = "payment";
-        
+        protected const string FIELD_PAYMENT = "payment";
+
         /// <summary>
         /// Object type constants.
         /// </summary>
-        protected const String OBJECT_TYPE_PAYMENT = "Payment";
-        
+        protected const string OBJECT_TYPE_PAYMENT = "Payment";
+
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             new JsonSerializer().Serialize(writer, value);
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
             JObject jsonObject = JObject.Load(reader);
 

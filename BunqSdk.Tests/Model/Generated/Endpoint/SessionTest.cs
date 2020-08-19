@@ -1,9 +1,6 @@
-﻿using System;
-using System.IO;
-using Bunq.Sdk.Context;
+﻿using System.IO;
 using Bunq.Sdk.Model.Generated.Endpoint;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
 {
@@ -19,9 +16,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         private const int SessionIdDummy = 0;
 
         /// <summary>
-        /// Tests the deleteion of the current session.
+        /// Tests the deletion of the current session.
         ///
-        /// This test has no asserion as it is testing to see if the code runs without errors.
+        /// This test has no assertion as it is testing to see if the code runs without errors.
         /// </summary>
         [Fact]
         public void TestSessionDeletion()

@@ -7,37 +7,44 @@ namespace Bunq.Sdk.Model.Generated.Object
     /// </summary>
     public class CardPinAssignment : BunqModel
     {
-        public CardPinAssignment(string type)
-        {
-            Type = type;
-        }
-
         /// <summary>
-        ///     PIN type. Can be PRIMARY, SECONDARY or TERTIARY
+        /// PIN type. Can be PRIMARY, SECONDARY or TERTIARY
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        ///     The 4 digit PIN to be assigned to this account.
+        /// The 4 digit PIN to be assigned to this account.
         /// </summary>
         [JsonProperty(PropertyName = "pin_code")]
         public string PinCode { get; set; }
 
         /// <summary>
-        ///     The ID of the monetary account to assign to this pin for the card.
+        /// The ID of the monetary account to assign to this pin for the card.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
+
+
+        public CardPinAssignment(string type)
+        {
+            Type = type;
+        }
 
 
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Type != null) return false;
+            if (this.Type != null)
+            {
+                return false;
+            }
 
-            if (MonetaryAccountId != null) return false;
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
 
             return true;
         }

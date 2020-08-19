@@ -117,7 +117,7 @@ namespace Bunq.Sdk.Security
 
                 var seq = binaryReader.ReadBytes(15);
 
-                if (!Helpers.CompareBytearrays(seq, seqOid)) return null;
+                if (!Helpers.CompareByteArrays(seq, seqOid)) return null;
 
                 shortValue = binaryReader.ReadUInt16();
 
@@ -269,10 +269,10 @@ namespace Bunq.Sdk.Security
 
         #region UTIL METHODS
 
-        private static RSAParameters DecodeRsaPrivateKeyToRsaParameters(byte[] privkey)
+        private static RSAParameters DecodeRsaPrivateKeyToRsaParameters(byte[] privateKey)
         {
             var rsaParams = new RSAParameters();
-            var memoryStream = new MemoryStream(privkey);
+            var memoryStream = new MemoryStream(privateKey);
             var binaryReader = new BinaryReader(memoryStream);
 
             try
@@ -365,11 +365,11 @@ namespace Bunq.Sdk.Security
             {
                 count -= 1;
             }
+
             binr.BaseStream.Seek(-1, SeekOrigin.Current);
 
             return count;
         }
-
 
         private static bool CompareByteArrays(IReadOnlyCollection<byte> a, IReadOnlyList<byte> b)
         {
@@ -604,10 +604,12 @@ namespace Bunq.Sdk.Security
             {
                 a = arcs[0] * 40;
             }
+
             if (arcs.Count >= 2)
             {
                 a += arcs[1];
             }
+
             octets.Add((byte) (a));
 
             for (var i = 2; i < arcs.Count; i++)

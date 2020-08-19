@@ -18,12 +18,12 @@ namespace Bunq.Sdk.Exception
         private const int HTTP_RESPONSE_CODE_METHOD_NOT_ALLOWED = 405;
         private const int HTTP_RESPONSE_CODE_TOO_MANY_REQUESTS = 429;
         private const int HTTP_RESPONSE_CODE_INTERNAL_SERVER_ERROR = 500;
-        
+
         /// <summary>
         /// String format constants.
         /// </summary>
         private const string FORMAT_ERROR_MESSAGE = "Response id to help bunq debug: {0}. \n Error message: {1}";
-        
+
         /// <returns>The exception that belongs to this status code.</returns>
         public static ApiException CreateExceptionForResponse(
             int responseCode,
@@ -50,10 +50,10 @@ namespace Bunq.Sdk.Exception
                 case HTTP_RESPONSE_CODE_INTERNAL_SERVER_ERROR:
                     return new PleaseContactBunqException(responseCode, errorMessage, responseId);
                 default:
-                     return new UnknownApiErrorException(responseCode, errorMessage, responseId);
+                    return new UnknownApiErrorException(responseCode, errorMessage, responseId);
             }
         }
-        
+
         /// <summary>
         /// Formats the exception message accordingly.
         /// </summary>

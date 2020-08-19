@@ -7,13 +7,13 @@ using Bunq.Sdk.Model.Generated.Endpoint;
 
 namespace Bunq.Sdk.Model.Core
 {
-    public class PaymentServiceProviderCredentialInternal: PaymentServiceProviderCredential
+    public class PaymentServiceProviderCredentialInternal : PaymentServiceProviderCredential
     {
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "CredentialPasswordIp";
-        
+
         public static BunqResponse<PaymentServiceProviderCredential> CreateWithApiContext(
             string clientPaymentServiceProviderCertificate,
             string clientPaymentServiceProviderCertificateChain, string clientPublicKeySignature,

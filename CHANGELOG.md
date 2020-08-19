@@ -2,7 +2,16 @@
 
 ## [Unreleased](https://github.com/bunq/sdk_csharp/tree/HEAD)
 
-[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.13.0...HEAD)
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.14.0...HEAD)
+
+**Implemented enhancements:**
+
+- Add a test for OauthAuthorizationUri [\#142](https://github.com/bunq/sdk_csharp/issues/142)
+- Added a test for OauthAuthorizationUri [\#143](https://github.com/bunq/sdk_csharp/pull/143) ([angelomelonas](https://github.com/angelomelonas))
+
+## [1.14.0](https://github.com/bunq/sdk_csharp/tree/1.14.0) (2020-08-05)
+
+[Full Changelog](https://github.com/bunq/sdk_csharp/compare/1.13.0...1.14.0)
 
 **Closed issues:**
 
@@ -280,6 +289,7 @@
 - Bunq SDK needs two minor refactors [\#11](https://github.com/bunq/sdk_csharp/issues/11)
 - add proxy support, make httpClient instance variable \[\#15\] [\#16](https://github.com/bunq/sdk_csharp/pull/16) ([dnl-blkv](https://github.com/dnl-blkv))
 - add methods to serialize and de-serialize ApiContext, fix Card \[\#13\] [\#14](https://github.com/bunq/sdk_csharp/pull/14) ([dnl-blkv](https://github.com/dnl-blkv))
+- \#5 Introduce BunqResponse [\#6](https://github.com/bunq/sdk_csharp/pull/6) ([dnl-blkv](https://github.com/dnl-blkv))
 
 **Fixed bugs:**
 
@@ -305,7 +315,6 @@
 **Implemented enhancements:**
 
 - Complete project info [\#3](https://github.com/bunq/sdk_csharp/issues/3)
-- \#5 Introduce BunqResponse [\#6](https://github.com/bunq/sdk_csharp/pull/6) ([dnl-blkv](https://github.com/dnl-blkv))
 - Added readme for tests  [\#2](https://github.com/bunq/sdk_csharp/pull/2) ([OGKevin](https://github.com/OGKevin))
 - Add first wave unit-tests [\#1](https://github.com/bunq/sdk_csharp/pull/1) ([OGKevin](https://github.com/OGKevin))
 

@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Security
 {
     internal class Helpers
     {
-        internal static bool CompareBytearrays(byte[] a, byte[] b)
+        internal static bool CompareByteArrays(byte[] a, byte[] b)
         {
             if (a.Length != b.Length)
                 return false;

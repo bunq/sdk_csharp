@@ -9,56 +9,55 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to manage text notes.
+    /// Used to manage text notes.
     /// </summary>
     public class NoteTextSchedulePayment : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/schedule-payment/{2}/note-text";
-
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/schedule-payment/{2}/note-text/{3}";
         protected const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/schedule-payment/{2}/note-text/{3}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/schedule-payment/{2}/note-text";
         protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/schedule-payment/{2}/note-text/{3}";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_CONTENT = "content";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "NoteText";
 
         /// <summary>
-        ///     The content of the note.
+        /// The content of the note.
         /// </summary>
         [JsonProperty(PropertyName = "content")]
         public string Content { get; set; }
 
         /// <summary>
-        ///     The id of the note.
+        /// The id of the note.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The timestamp of the note's creation.
+        /// The timestamp of the note's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        ///     The timestamp of the note's last update.
+        /// The timestamp of the note's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        ///     The label of the user who created this note.
+        /// The label of the user who created this note.
         /// </summary>
         [JsonProperty(PropertyName = "label_user_creator")]
         public LabelUser LabelUserCreator { get; set; }
@@ -76,7 +75,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_CONTENT, content}
+                {FIELD_CONTENT, content},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -100,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_CONTENT, content}
+                {FIELD_CONTENT, content},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -129,7 +128,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Manage the notes for a given user.
+        /// Manage the notes for a given user.
         /// </summary>
         public static BunqResponse<List<NoteTextSchedulePayment>> List(int schedulePaymentId,
             int? monetaryAccountId = null, IDictionary<string, string> urlParams = null,
@@ -168,15 +167,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (Created != null) return false;
+            if (this.Created != null)
+            {
+                return false;
+            }
 
-            if (Updated != null) return false;
+            if (this.Updated != null)
+            {
+                return false;
+            }
 
-            if (LabelUserCreator != null) return false;
+            if (this.LabelUserCreator != null)
+            {
+                return false;
+            }
 
-            if (Content != null) return false;
+            if (this.Content != null)
+            {
+                return false;
+            }
 
             return true;
         }

@@ -8,55 +8,54 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used for managing OAuth Clients.
+    /// Used for managing OAuth Clients.
     /// </summary>
     public class OauthClient : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user/{0}/oauth-client/{1}";
-
         protected const string ENDPOINT_URL_CREATE = "user/{0}/oauth-client";
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/oauth-client/{1}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/oauth-client";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_STATUS = "status";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "OauthClient";
 
         /// <summary>
-        ///     The status of the pack group, can be ACTIVE, CANCELLED or CANCELLED_PENDING.
+        /// The status of the pack group, can be ACTIVE, CANCELLED or CANCELLED_PENDING.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        ///     Id of the client.
+        /// Id of the client.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The Client ID associated with this Oauth Client
+        /// The Client ID associated with this Oauth Client
         /// </summary>
         [JsonProperty(PropertyName = "client_id")]
         public string ClientId { get; set; }
 
         /// <summary>
-        ///     Secret associated with this Oauth Client
+        /// Secret associated with this Oauth Client
         /// </summary>
         [JsonProperty(PropertyName = "secret")]
         public string Secret { get; set; }
 
         /// <summary>
-        ///     The callback URLs which are bound to this Oauth Client
+        /// The callback URLs which are bound to this Oauth Client
         /// </summary>
         [JsonProperty(PropertyName = "callback_url")]
         public List<OauthCallbackUrl> CallbackUrl { get; set; }
@@ -86,7 +85,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_STATUS, status}
+                {FIELD_STATUS, status},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -108,7 +107,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_STATUS, status}
+                {FIELD_STATUS, status},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -138,15 +137,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (Status != null) return false;
+            if (this.Status != null)
+            {
+                return false;
+            }
 
-            if (ClientId != null) return false;
+            if (this.ClientId != null)
+            {
+                return false;
+            }
 
-            if (Secret != null) return false;
+            if (this.Secret != null)
+            {
+                return false;
+            }
 
-            if (CallbackUrl != null) return false;
+            if (this.CallbackUrl != null)
+            {
+                return false;
+            }
 
             return true;
         }

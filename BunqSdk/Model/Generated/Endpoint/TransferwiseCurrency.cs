@@ -6,34 +6,34 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to get a list of supported currencies for Transferwise.
+    /// Used to get a list of supported currencies for Transferwise.
     /// </summary>
     public class TransferwiseCurrency : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/transferwise-currency";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "TransferwiseCurrency";
 
         /// <summary>
-        ///     The currency code.
+        /// The currency code.
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; set; }
 
         /// <summary>
-        ///     The currency name.
+        /// The currency name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        ///     The country code associated with the currency.
+        /// The country code associated with the currency.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
@@ -59,11 +59,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Currency != null) return false;
+            if (this.Currency != null)
+            {
+                return false;
+            }
 
-            if (Name != null) return false;
+            if (this.Name != null)
+            {
+                return false;
+            }
 
-            if (Country != null) return false;
+            if (this.Country != null)
+            {
+                return false;
+            }
 
             return true;
         }

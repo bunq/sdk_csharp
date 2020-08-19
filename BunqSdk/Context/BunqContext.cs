@@ -6,15 +6,17 @@ namespace Bunq.Sdk.Context
     public static class BunqContext
     {
         private const string ErrorApicontextHasNotBeenLoaded = "apiContext has not been loaded.";
-        private const string ErrorUserContextHasNotBeenLoaded = "userContext has not been loaded, you can load this by loading apiContext.";
+        private const string ErrorUserContextHasNotBeenLoaded =
+            "userContext has not been loaded, you can load this by loading apiContext.";
         private static ApiContext apiContext;
         private static UserContext userContext;
-        
-        public static ApiContext ApiContext {
+
+        public static ApiContext ApiContext
+        {
             get
             {
                 AssertApiContextIsLoaded();
-                
+
                 return apiContext;
             }
             private set => apiContext = value ?? throw new ArgumentNullException(nameof(value));

@@ -11,7 +11,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
-using Bunq.Sdk.Http;
 
 namespace Bunq.Sdk.Security
 {
@@ -28,7 +27,6 @@ namespace Bunq.Sdk.Security
         /// </summary>
         private const string NEWLINE = "\n";
         private const string WINDOWS_NEWLINE = "\r\n";
-        private const string FORMAT_METHOD_AND_ENDPOINT_STRING = "{0} /v1/{1}";
         private const string HEADER_NAME_PREFIX_X_BUNQ = "X-Bunq-";
         private const string DELIMITER_HEADER_VALUE = ",";
         private const string FORMAT_HEADER_STRING = "{0}: {1}";
@@ -92,7 +90,7 @@ namespace Bunq.Sdk.Security
         /// The index after the firts character in a string. 
         /// </summary>
         private const int INDEX_LAST_FIRST_CHAR = 1;
-        
+
         /// <summary>
         /// Regex constants.
         /// </summary>
@@ -116,7 +114,7 @@ namespace Bunq.Sdk.Security
 
             return requestContent == null ? new byte[ARRAY_LENGTH_EMPTY] : requestContent.ReadAsByteArrayAsync().Result;
         }
-        
+
         private static string GetHeaderNameCorrectlyCased(string headerName)
         {
             headerName = headerName.ToLower();
@@ -126,9 +124,9 @@ namespace Bunq.Sdk.Security
             return matches.Cast<Match>().Aggregate(
                 headerName,
                 (current, match) => current.Replace(
-                        match.Groups[INDEX_FIRST].Value, match.Groups[INDEX_FIRST].Value.ToUpper()
-                    )
-                );
+                    match.Groups[INDEX_FIRST].Value, match.Groups[INDEX_FIRST].Value.ToUpper()
+                )
+            );
         }
 
         private static string GenerateHeadersSortedString(
@@ -156,7 +154,7 @@ namespace Bunq.Sdk.Security
         public static string GetPublicKeyFormattedString(RSA keyPair)
         {
             var publicKey = keyPair.ExportParameters(false);
-            
+
             var publicKeyBytes = RsaKeyUtils.PublicKeyToX509(publicKey);
 
             return string.Format(FORMAT_PUBLIC_KEY, WrapBase64(Convert.ToBase64String(publicKeyBytes)));
@@ -202,8 +200,8 @@ namespace Bunq.Sdk.Security
         {
             var privateKeyStringTrimmed = privateKeyString
                 .Replace(WINDOWS_NEWLINE, NEWLINE)
-                .Replace(RSA_PRIVATE_KEY_START, String.Empty)
-                .Replace(RSA_PRIVATE_KEY_END, String.Empty)
+                .Replace(RSA_PRIVATE_KEY_START, string.Empty)
+                .Replace(RSA_PRIVATE_KEY_END, string.Empty)
                 .Trim();
 
             return RsaKeyUtils.DecodeRsaPrivateKey(Convert.FromBase64String(privateKeyStringTrimmed));
@@ -321,7 +319,8 @@ namespace Bunq.Sdk.Security
             ))
             {
                 // Validated signature with headers. (Deprecated, but implemented for backwards compatibility.)
-            } else if (serverPublicKey.VerifyData(
+            }
+            else if (serverPublicKey.VerifyData(
                 bodyBytes,
                 serverSignature,
                 HashAlgorithmName.SHA256,
@@ -339,8 +338,8 @@ namespace Bunq.Sdk.Security
         private static byte[] GenerateResponseHeadBytes(HttpResponseMessage responseMessage)
         {
             var requestHeadString = (int) responseMessage.StatusCode + NEWLINE +
-                GenerateResponseHeadersSortedString(responseMessage) + NEWLINE +
-                NEWLINE;
+                                    GenerateResponseHeadersSortedString(responseMessage) + NEWLINE +
+                                    NEWLINE;
 
             return Encoding.UTF8.GetBytes(requestHeadString);
         }
@@ -354,7 +353,7 @@ namespace Bunq.Sdk.Security
                 )
             );
         }
-        
+
         /// <summary>
         /// Creates a PEM-formatted certificate string from a given X509Certificate object
         /// string.
@@ -365,7 +364,7 @@ namespace Bunq.Sdk.Security
 
             return string.Format(FORMAT_CERTIFICATE, WrapBase64(Convert.ToBase64String(certificateBytes)));
         }
-        
+
         /// <summary>
         /// Wraps a base64 string to 64-character wide lines according to typical certificate/key export rules.
         /// </summary>
@@ -377,19 +376,19 @@ namespace Bunq.Sdk.Security
             for (var ctr = 0; ctr <= base64.Length / 64; ctr++)
             {
                 builder.Append(base64.Substring(ctr * 64,
-                    ctr * 64 + 64 <= base64.Length
-                        ? 64
-                        : base64.Length - ctr * 64))
+                        ctr * 64 + 64 <= base64.Length
+                            ? 64
+                            : base64.Length - ctr * 64))
                     .Append(NEWLINE);
             }
 
             return builder.ToString().Trim();
         }
-        
+
         public static string ExportCertificateCollectionToPEM(X509CertificateCollection certChain)
         {
             var builder = new StringBuilder();
-            
+
             foreach (var chainElement in certChain)
             {
                 builder.Append(ExportCertificateToPEM(chainElement)).Append(NEWLINE);

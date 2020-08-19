@@ -7,31 +7,38 @@ namespace Bunq.Sdk.Model.Generated.Object
     /// </summary>
     public class Issuer : BunqModel
     {
-        public Issuer(string bic)
-        {
-            Bic = bic;
-        }
-
         /// <summary>
-        ///     The BIC code.
+        /// The BIC code.
         /// </summary>
         [JsonProperty(PropertyName = "bic")]
         public string Bic { get; set; }
 
         /// <summary>
-        ///     The name of the bank.
+        /// The name of the bank.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
+
+
+        public Issuer(string bic)
+        {
+            Bic = bic;
+        }
 
 
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Bic != null) return false;
+            if (this.Bic != null)
+            {
+                return false;
+            }
 
-            if (Name != null) return false;
+            if (this.Name != null)
+            {
+                return false;
+            }
 
             return true;
         }

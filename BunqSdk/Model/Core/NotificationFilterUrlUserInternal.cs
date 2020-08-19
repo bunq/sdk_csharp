@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Model.Core
         /// <summary>
         /// Field constants.
         /// </summary>
-        private const String OBJECT_TYPE_GET = "NotificationFilterUrl";
+        private const string OBJECT_TYPE_GET = "NotificationFilterUrl";
 
         /// <summary>
         /// Create notification filters with list response type.
@@ -38,7 +38,7 @@ namespace Bunq.Sdk.Model.Core
         /// </summary>
         public static BunqResponse<List<NotificationFilterUrl>> CreateWithListResponse(
             List<NotificationFilterUrl> allNotificationFilter,
-            Dictionary<String, String> customHeaders
+            Dictionary<string, string> customHeaders
         ) {
             ApiClient apiClient = new ApiClient(GetApiContext());
 

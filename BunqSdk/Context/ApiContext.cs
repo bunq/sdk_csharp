@@ -65,8 +65,7 @@ namespace Bunq.Sdk.Context
         [JsonProperty(PropertyName = "session_context")]
         public SessionContext SessionContext { get; private set; }
 
-        [JsonProperty(PropertyName = "proxy")]
-        public string Proxy { get; private set; }
+        [JsonProperty(PropertyName = "proxy")] public string Proxy { get; private set; }
 
         [JsonConstructor]
         private ApiContext()
@@ -102,7 +101,7 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Create and initialize an API Context.
         /// </summary>
-        public static ApiContext CreateForPsd2(ApiEnvironmentType environmentType, X509Certificate2 publicCertificate, 
+        public static ApiContext CreateForPsd2(ApiEnvironmentType environmentType, X509Certificate2 publicCertificate,
             X509CertificateCollection certificateChain, string deviceDescription, List<string> permittedIps,
             string proxy = null)
         {
@@ -115,7 +114,7 @@ namespace Bunq.Sdk.Context
             apiContext.ApiKey = apiContext.InitializePsd2Credential(publicCertificate, certificateChain);
             apiContext.RegisterDevice(deviceDescription, permittedIps);
             apiContext.InitializeSessionContext();
-            
+
             return apiContext;
         }
 
@@ -127,7 +126,7 @@ namespace Bunq.Sdk.Context
             var stringToSign = SecurityUtils.GetPublicKeyFormattedString(sessionKeyPair) + sessionToken;
             var bytesToSign = Encoding.UTF8.GetBytes(stringToSign);
 
-            var signature = Convert.ToBase64String(publicCertificate.GetRSAPrivateKey().SignData(bytesToSign, 0, 
+            var signature = Convert.ToBase64String(publicCertificate.GetRSAPrivateKey().SignData(bytesToSign, 0,
                 bytesToSign.Length, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1));
 
             var paymentServiceProviderCredential = PaymentServiceProviderCredentialInternal.CreateWithApiContext(
@@ -224,11 +223,10 @@ namespace Bunq.Sdk.Context
             {
                 return false;
             }
-            
+
             ResetSession();
 
             return true;
-
         }
 
         public bool IsSessionActive()
@@ -237,7 +235,7 @@ namespace Bunq.Sdk.Context
             {
                 return false;
             }
-            
+
             var timeToExpiry = SessionContext.ExpiryTime.Subtract(DateTime.Now);
             var timeToExpiryMinimum = new TimeSpan(
                 TIME_UNIT_COUNT_NONE,

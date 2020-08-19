@@ -16,9 +16,8 @@ namespace Bunq.Sdk.Http
 {
     public class ApiClient
     {
-        
         /// <summary>
-        /// Error constatns.
+        /// Error constants.
         /// </summary>
         private static string ERROR_COULD_NOT_DETERMINE_RESPONSE_ID_HEADER =
             "The response header \"X-Bunq-Client-Response-Id\" or \"x-bunq-client-response-id\" could not be found.";
@@ -64,7 +63,7 @@ namespace Bunq.Sdk.Http
         /// Values for the default headers
         /// </summary>
         private const string CACHE_CONTROL_NONE = "no-cache";
-        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/1.14.0";
+        private const string USER_AGENT_BUNQ = "bunq-sdk-csharp/1.14.1";
         private const string LANGUAGE_EN_US = "en_US";
         private const string REGION_NL_NL = "nl_NL";
         private const string GEOLOCATION_ZERO = "0 0 0 0 NL";
@@ -157,7 +156,7 @@ namespace Bunq.Sdk.Http
             {
                 BunqContext.UpdateApiContext(apiContext);
             }
-            
+
             SetDefaultHeaders(requestMessage);
             SetHeaders(requestMessage, customHeaders);
             SetSessionHeaders(requestMessage);

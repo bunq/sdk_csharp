@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
 using Bunq.Sdk.Json;
@@ -37,7 +37,7 @@ namespace Bunq.Sdk.Tests
         /// Constants for monetary account.
         /// </summary>
         protected const string MonetaryAccountDescription = "Test C# monetary account";
-        
+
         /// <summary>
         /// Image constants.
         /// </summary>
@@ -45,23 +45,23 @@ namespace Bunq.Sdk.Tests
         protected const string ContentType = "image/png";
         protected const string AttachmentDescription = "C# sdk image test.";
         protected const string AttachmentPathIn = "/vader.png";
-        
+
         /// <summary>
         /// Device registration constants.
         /// </summary>
         private const string DeviceDescription = "Csharp test device";
-        
+
         /// <summary>
         /// Pointer type constants.
         /// </summary>
         private const string PointerTypeEmail = "EMAIL";
-        
+
         /// <summary>
         /// Email constants.
         /// </summary>
         private const string EmailBravo = "bravo@bunq.com";
         private const string EmailSuggarDaddy = "sugardaddy@bunq.com";
-        
+
         /// <summary>
         /// Spending money constants.
         /// </summary>
@@ -69,7 +69,7 @@ namespace Bunq.Sdk.Tests
         private const string SpendingMoneyRequestDescription = "sdk c# test, thanks daddy.";
 
         protected static MonetaryAccountBank SecondMonetaryAccountBank;
-        
+
         /// <summary>
         /// Gets an Api Context, re-creates if needed and returns it.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Bunq.Sdk.Tests
             SetUpApiContext();
             SecondMonetaryAccountBank = SetUpSecondMonetaryAccount();
             RequestSpendingMoney();
-            System.Threading.Thread.Sleep(500); // ensure requests are auto accepted.
+            Thread.Sleep(500); // ensure requests are auto accepted.
             BunqContext.UserContext.RefreshUserContext();
         }
 
@@ -96,12 +96,12 @@ namespace Bunq.Sdk.Tests
                 var sandboxUser = GenerateNewSandboxUser();
                 apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, sandboxUser.ApiKey, DeviceDescription);
             }
-            
+
             BunqContext.LoadApiContext(apiContext);
 
             return apiContext;
         }
-        
+
         private static SandboxUser GenerateNewSandboxUser()
         {
             var httpClient = new HttpClient();
@@ -117,7 +117,7 @@ namespace Bunq.Sdk.Tests
 
             var responseString = requestTask.Result.Content.ReadAsStringAsync().Result;
             var responseJson = BunqJsonConvert.DeserializeObject<JObject>(responseString);
-            
+
             return BunqJsonConvert.DeserializeObject<SandboxUser>(responseJson.First.First.First.First.First
                 .ToString());
         }
@@ -136,33 +136,33 @@ namespace Bunq.Sdk.Tests
                 new Pointer(PointerTypeEmail, EmailSuggarDaddy),
                 SpendingMoneyRequestDescription,
                 false
-                );
-            
+            );
+
             RequestInquiry.Create(
                 new Amount(SpendingMoneyAmount, PaymentCurrency),
                 new Pointer(PointerTypeEmail, EmailSuggarDaddy),
                 SpendingMoneyRequestDescription,
                 false,
                 SecondMonetaryAccountBank.Id
-                );
+            );
         }
 
         protected static Pointer GetPointerBravo()
         {
             return new Pointer(PointerTypeEmail, EmailBravo);
         }
-        
+
         protected static Pointer GetAlias()
         {
-            var userContex = BunqContext.UserContext;
+            var userContext = BunqContext.UserContext;
 
-            if (userContex.IsOnlyUserPersonSet())
+            if (userContext.IsOnlyUserPersonSet())
             {
-                return userContex.UserPerson.Alias.First();
+                return userContext.UserPerson.Alias.First();
             }
-            else if (userContex.IsOnlyUserCompanySet())
+            else if (userContext.IsOnlyUserCompanySet())
             {
-                return userContex.UserCompany.Alias.First();
+                return userContext.UserCompany.Alias.First();
             }
             else
             {

@@ -7,31 +7,38 @@ namespace Bunq.Sdk.Model.Generated.Object
     /// </summary>
     public class RegistryEntryAttachment : BunqModel
     {
-        public RegistryEntryAttachment(int? id)
-        {
-            Id = id;
-        }
-
         /// <summary>
-        ///     The id of the attachment.
+        /// The id of the attachment.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The id of the monetary account to which the attachment belongs.
+        /// The id of the monetary account to which the attachment belongs.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
+
+
+        public RegistryEntryAttachment(int? id)
+        {
+            Id = id;
+        }
 
 
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (MonetaryAccountId != null) return false;
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
 
             return true;
         }

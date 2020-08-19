@@ -17,7 +17,6 @@ namespace Bunq.Sdk.Tests.Http
         /// Constants for scenario testing.
         /// </summary>
         private const int PaymentListingPageSize = 2;
-
         private const int PaymentRequiredCountMinimum = PaymentListingPageSize * 2;
         private const int NumberZero = 0;
 

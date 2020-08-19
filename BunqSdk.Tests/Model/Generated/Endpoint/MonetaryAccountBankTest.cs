@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Bunq.Sdk.Context;
-using Bunq.Sdk.Model.Generated.Endpoint;
+﻿using Bunq.Sdk.Model.Generated.Endpoint;
 using Xunit;
 
 namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
@@ -15,13 +13,12 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
         /// Config values
         /// </summary>
         private const string Status = "CANCELLED";
-
         private const string SubStatus = "REDEMPTION_VOLUNTARY";
         private const string Reason = "OTHER";
         private const string ReasonDescription = "Because this is a test";
 
         /// <summary>
-        /// Tests the creation of a new monetary account. This accoult will then be removed afterwards.
+        /// Tests the creation of a new monetary account. This account will then be removed afterwards.
         /// </summary>
         [Fact]
         public void TestCreationNewMonetaryAccount()

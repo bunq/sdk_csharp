@@ -8,13 +8,13 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class Error : BunqModel
     {
         /// <summary>
-        ///     The error description (in English).
+        /// The error description (in English).
         /// </summary>
         [JsonProperty(PropertyName = "error_description")]
         public string ErrorDescription { get; set; }
 
         /// <summary>
-        ///     The error description (in the user language).
+        /// The error description (in the user language).
         /// </summary>
         [JsonProperty(PropertyName = "error_description_translated")]
         public string ErrorDescriptionTranslated { get; set; }
@@ -24,9 +24,15 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (ErrorDescription != null) return false;
+            if (this.ErrorDescription != null)
+            {
+                return false;
+            }
 
-            if (ErrorDescriptionTranslated != null) return false;
+            if (this.ErrorDescriptionTranslated != null)
+            {
+                return false;
+            }
 
             return true;
         }

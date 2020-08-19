@@ -16,12 +16,12 @@ namespace Bunq.Sdk.Model.Core
             {ApiEnvironmentType.SANDBOX.TypeString, AUTH_URI_FORMAT_SANDBOX},
             {ApiEnvironmentType.PRODUCTION.TypeString, AUTH_URI_FORMAT_PRODUCTION},
         };
-        
+
         /// <summary>
         /// Auth constants.
         /// </summary>
-        protected const String AUTH_URI_FORMAT_SANDBOX = "https://oauth.sandbox.bunq.com/auth?{0}";
-        protected const String AUTH_URI_FORMAT_PRODUCTION = "https://oauth.bunq.com/auth?{0}";
+        protected const string AUTH_URI_FORMAT_SANDBOX = "https://oauth.sandbox.bunq.com/auth?{0}";
+        protected const string AUTH_URI_FORMAT_PRODUCTION = "https://oauth.bunq.com/auth?{0}";
 
         /// <summary>
         /// Field constants.
@@ -37,7 +37,7 @@ namespace Bunq.Sdk.Model.Core
         /// The Authorization URI to redirect the user to.
         /// </summary>
         public string AuthorizationUri => authorizationUri;
-        
+
         /// <summary>
         /// Create new instance of the model.
         /// </summary>
@@ -53,33 +53,42 @@ namespace Bunq.Sdk.Model.Core
             string state = null
         )
         {
-            Dictionary<string, string> allRequestParameter = new Dictionary<string, string>()
-            {
-                {FIELD_REDIRECT_URI, redirectUri},
-                {FIELD_RESPONSE_TYPE, responseType.TypeString},
-                {FIELD_CLIENT_ID, client.ClientId},
-            };
+            Dictionary<string, string> allRequestParameter = new Dictionary<string, string>();
 
-            if (!String.IsNullOrEmpty(state)) {
+            allRequestParameter.Add(FIELD_REDIRECT_URI, redirectUri);
+            allRequestParameter.Add(FIELD_RESPONSE_TYPE, responseType.TypeString);
+
+            if (!string.IsNullOrEmpty(client.ClientId))
+            {
+                allRequestParameter.Add(FIELD_CLIENT_ID, client.ClientId);
+            }
+
+            if (!string.IsNullOrEmpty(state))
+            {
                 allRequestParameter.Add(FIELD_STATE, state);
             }
-            
+
             return new OauthAuthorizationUri(
-                String.Format(DetermineTokenUriFormat(), HttpUtils.CreateQueryString(allRequestParameter))
+                string.Format(DetermineTokenUriFormat(), HttpUtils.CreateQueryString(allRequestParameter))
             );
+        }
+        
+        public string GetAuthorizationUri()
+        {
+            return authorizationUri;
         }
 
         public override bool IsAllFieldNull()
         {
-            if (!String.IsNullOrEmpty(authorizationUri))
+            if (!string.IsNullOrEmpty(authorizationUri))
             {
                 return false;
             }
 
             return true;
         }
-        
-        private static String DetermineTokenUriFormat()
+
+        private static string DetermineTokenUriFormat()
         {
             return AUTH_URI_FORMAT_MAP[BunqContext.ApiContext.EnvironmentType.TypeString];
         }

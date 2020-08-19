@@ -6,29 +6,29 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     An incoming payment made towards an account of an external bank and redirected to a bunq account via switch
-    ///     service.
+    /// An incoming payment made towards an account of an external bank and redirected to a bunq account via switch
+    /// service.
     /// </summary>
     public class BankSwitchServiceNetherlandsIncomingPayment : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/switch-service-payment/{2}";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "BankSwitchServiceNetherlandsIncomingPayment";
 
         /// <summary>
-        ///     The bank switch service details.
+        /// The bank switch service details.
         /// </summary>
         [JsonProperty(PropertyName = "bank_switch_service")]
         public BankSwitchServiceNetherlandsIncoming BankSwitchService { get; set; }
 
         /// <summary>
-        ///     The payment made using bank switch service.
+        /// The payment made using bank switch service.
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; set; }
@@ -57,9 +57,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (BankSwitchService != null) return false;
+            if (this.BankSwitchService != null)
+            {
+                return false;
+            }
 
-            if (Payment != null) return false;
+            if (this.Payment != null)
+            {
+                return false;
+            }
 
             return true;
         }

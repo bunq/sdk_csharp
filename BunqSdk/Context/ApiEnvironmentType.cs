@@ -41,9 +41,9 @@ namespace Bunq.Sdk.Context
 
         public override bool Equals(object obj)
         {
-            if (obj is ApiEnvironmentType)
+            if (obj is ApiEnvironmentType type)
             {
-                return (obj as ApiEnvironmentType).TypeString.Equals(TypeString);
+                return type.TypeString.Equals(TypeString);
             }
             else
             {
