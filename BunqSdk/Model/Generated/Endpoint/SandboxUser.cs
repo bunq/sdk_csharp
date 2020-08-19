@@ -8,22 +8,22 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to create a sandbox user.
+    /// Used to create a sandbox user.
     /// </summary>
     public class SandboxUser : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "sandbox-user";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_POST = "ApiKey";
 
         /// <summary>
-        ///     The API key of the newly created sandbox user.
+        /// The API key of the newly created sandbox user.
         /// </summary>
         [JsonProperty(PropertyName = "api_key")]
         public string ApiKey { get; set; }
@@ -36,7 +36,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var apiClient = new ApiClient(GetApiContext());
 
-            var requestMap = new Dictionary<string, object>();
+            var requestMap = new Dictionary<string, object>
+            {
+            };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(ENDPOINT_URL_CREATE, requestBytes, customHeaders);
@@ -49,7 +51,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (ApiKey != null) return false;
+            if (this.ApiKey != null)
+            {
+                return false;
+            }
 
             return true;
         }

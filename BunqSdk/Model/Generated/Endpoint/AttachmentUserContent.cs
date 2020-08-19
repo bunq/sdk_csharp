@@ -5,23 +5,23 @@ using Bunq.Sdk.Model.Core;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Fetch the raw content of a user attachment with given ID. The raw content is the binary representation of a
-    ///     file, without any JSON wrapping.
+    /// Fetch the raw content of a user attachment with given ID. The raw content is the binary representation of a
+    /// file, without any JSON wrapping.
     /// </summary>
     public class AttachmentUserContent : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/attachment/{1}/content";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "AttachmentUserContent";
 
         /// <summary>
-        ///     Get the raw content of a specific attachment.
+        /// Get the raw content of a specific attachment.
         /// </summary>
         public static BunqResponse<byte[]> List(int attachmentId, IDictionary<string, string> customHeaders = null)
         {

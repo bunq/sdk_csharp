@@ -9,23 +9,21 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Endpoint for retrieving details for the cards the user has access to.
+    /// Endpoint for retrieving details for the cards the user has access to.
     /// </summary>
     public class Card : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/card/{1}";
-
         protected const string ENDPOINT_URL_READ = "user/{0}/card/{1}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/card";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_PIN_CODE = "pin_code";
-
         public const string FIELD_ACTIVATION_CODE = "activation_code";
         public const string FIELD_STATUS = "status";
         public const string FIELD_CARD_LIMIT = "card_limit";
@@ -36,201 +34,187 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_PUT = "CardDebit";
-
         private const string OBJECT_TYPE_GET = "CardDebit";
 
         /// <summary>
-        ///     The plaintext pin code. Requests require encryption to be enabled.
+        /// The plaintext pin code. Requests require encryption to be enabled.
         /// </summary>
         [JsonProperty(PropertyName = "pin_code")]
         public string PinCode { get; set; }
 
         /// <summary>
-        ///     DEPRECATED: Activate a card by setting status to ACTIVE when the order_status is ACCEPTED_FOR_PRODUCTION.
+        /// DEPRECATED: Activate a card by setting status to ACTIVE when the order_status is ACCEPTED_FOR_PRODUCTION.
         /// </summary>
         [JsonProperty(PropertyName = "activation_code")]
         public string ActivationCode { get; set; }
 
         /// <summary>
-        ///     The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN, CANCELLED, EXPIRED or
-        ///     PIN_TRIES_EXCEEDED.
+        /// The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN, CANCELLED, EXPIRED or
+        /// PIN_TRIES_EXCEEDED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        ///     The spending limit for the card.
+        /// The spending limit for the card.
         /// </summary>
         [JsonProperty(PropertyName = "card_limit")]
         public Amount CardLimit { get; set; }
 
         /// <summary>
-        ///     The ATM spending limit for the card.
+        /// The ATM spending limit for the card.
         /// </summary>
         [JsonProperty(PropertyName = "card_limit_atm")]
         public Amount CardLimitAtm { get; set; }
 
         /// <summary>
-        ///     The countries for which to grant (temporary) permissions to use the card.
+        /// The countries for which to grant (temporary) permissions to use the card.
         /// </summary>
         [JsonProperty(PropertyName = "country_permission")]
         public List<CardCountryPermission> CountryPermission { get; set; }
 
         /// <summary>
-        ///     Array of Types, PINs, account IDs assigned to the card.
+        /// Array of Types, PINs, account IDs assigned to the card.
         /// </summary>
         [JsonProperty(PropertyName = "pin_code_assignment")]
         public List<CardPinAssignment> PinCodeAssignment { get; set; }
 
         /// <summary>
-        ///     Array of PANs and their attributes.
+        /// Array of PANs and their attributes.
         /// </summary>
         [JsonProperty(PropertyName = "primary_account_numbers")]
         public List<CardPrimaryAccountNumber> PrimaryAccountNumbers { get; set; }
 
         /// <summary>
-        ///     ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
-        ///     not supplied.
+        /// ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
+        /// not supplied.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
         public int? MonetaryAccountIdFallback { get; set; }
 
         /// <summary>
-        ///     The id of the card.
+        /// The id of the card.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The timestamp of the card's creation.
+        /// The timestamp of the card's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        ///     The timestamp of the card's last update.
+        /// The timestamp of the card's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        ///     The public UUID of the card.
+        /// The public UUID of the card.
         /// </summary>
         [JsonProperty(PropertyName = "public_uuid")]
         public string PublicUuid { get; set; }
 
         /// <summary>
-        ///     The type of the card. Can be MAESTRO, MASTERCARD.
+        /// The type of the card. Can be MAESTRO, MASTERCARD.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        ///     The sub-type of the card.
+        /// The sub-type of the card.
         /// </summary>
         [JsonProperty(PropertyName = "sub_type")]
         public string SubType { get; set; }
 
         /// <summary>
-        ///     The second line of text on the card
+        /// The second line of text on the card
         /// </summary>
         [JsonProperty(PropertyName = "second_line")]
         public string SecondLine { get; set; }
 
         /// <summary>
-        ///     ID of the user who is owner of the card.
+        /// ID of the user who is owner of the card.
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
         public int? UserId { get; set; }
 
         /// <summary>
-        ///     The sub-status of the card. Can be NONE or REPLACED.
+        /// The sub-status of the card. Can be NONE or REPLACED.
         /// </summary>
         [JsonProperty(PropertyName = "sub_status")]
         public string SubStatus { get; set; }
 
         /// <summary>
-        ///     The order status of the card. Can be NEW_CARD_REQUEST_RECEIVED, CARD_REQUEST_PENDING, SENT_FOR_PRODUCTION,
-        ///     ACCEPTED_FOR_PRODUCTION, DELIVERED_TO_CUSTOMER, CARD_UPDATE_REQUESTED, CARD_UPDATE_PENDING,
-        ///     CARD_UPDATE_SENT, CARD_UPDATE_ACCEPTED, VIRTUAL_DELIVERY, NEW_CARD_REQUEST_PENDING_USER_APPROVAL,
-        ///     SENT_FOR_DELIVERY or NEW_CARD_REQUEST_CANCELLED.
+        /// The order status of the card. Can be NEW_CARD_REQUEST_RECEIVED, CARD_REQUEST_PENDING, SENT_FOR_PRODUCTION,
+        /// ACCEPTED_FOR_PRODUCTION, DELIVERED_TO_CUSTOMER, CARD_UPDATE_REQUESTED, CARD_UPDATE_PENDING,
+        /// CARD_UPDATE_SENT, CARD_UPDATE_ACCEPTED, VIRTUAL_DELIVERY, NEW_CARD_REQUEST_PENDING_USER_APPROVAL,
+        /// SENT_FOR_DELIVERY or NEW_CARD_REQUEST_CANCELLED.
         /// </summary>
         [JsonProperty(PropertyName = "order_status")]
         public string OrderStatus { get; set; }
 
         /// <summary>
-        ///     Expiry date of the card.
+        /// Expiry date of the card.
         /// </summary>
         [JsonProperty(PropertyName = "expiry_date")]
         public string ExpiryDate { get; set; }
 
         /// <summary>
-        ///     The user's name on the card.
+        /// The user's name on the card.
         /// </summary>
         [JsonProperty(PropertyName = "name_on_card")]
         public string NameOnCard { get; set; }
 
         /// <summary>
-        ///     The monetary account this card was ordered on and the label user that owns the card.
+        /// The monetary account this card was ordered on and the label user that owns the card.
         /// </summary>
         [JsonProperty(PropertyName = "label_monetary_account_ordered")]
         public MonetaryAccountReference LabelMonetaryAccountOrdered { get; set; }
 
         /// <summary>
-        ///     The monetary account that this card is currently linked to and the label user viewing it.
+        /// The monetary account that this card is currently linked to and the label user viewing it.
         /// </summary>
         [JsonProperty(PropertyName = "label_monetary_account_current")]
         public MonetaryAccountReference LabelMonetaryAccountCurrent { get; set; }
 
         /// <summary>
-        ///     The country that is domestic to the card. Defaults to country of residence of user.
+        /// The country that is domestic to the card. Defaults to country of residence of user.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
 
         /// <summary>
-        ///     A tracking link provided by our shipment provider.
+        /// A tracking link provided by our shipment provider.
         /// </summary>
         [JsonProperty(PropertyName = "card_shipment_tracking_url")]
         public string CardShipmentTrackingUrl { get; set; }
 
         /// <summary>
-        ///     The amount saved through ZeroFX on this card.
+        /// The amount saved through ZeroFX on this card.
         /// </summary>
         [JsonProperty(PropertyName = "amount_saved_zero_fx")]
         public Amount AmountSavedZeroFx { get; set; }
 
 
         /// <summary>
-        ///     Update the card details. Allow to change pin code, status, limits, country permissions and the monetary
-        ///     account connected to the card. When the card has been received, it can be also activated through this
-        ///     endpoint.
+        /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary
+        /// account connected to the card. When the card has been received, it can be also activated through this
+        /// endpoint.
         /// </summary>
         /// <param name="pinCode">The plaintext pin code. Requests require encryption to be enabled.</param>
-        /// <param name="activationCode">
-        ///     DEPRECATED: Activate a card by setting status to ACTIVE when the order_status is
-        ///     ACCEPTED_FOR_PRODUCTION.
-        /// </param>
-        /// <param name="status">
-        ///     The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN or CANCELLED, and can
-        ///     only be set to LOST/STOLEN/CANCELLED when order status is
-        ///     ACCEPTED_FOR_PRODUCTION/DELIVERED_TO_CUSTOMER/CARD_UPDATE_REQUESTED/CARD_UPDATE_SENT/CARD_UPDATE_ACCEPTED. Can only
-        ///     be set to DEACTIVATED after initial activation, i.e. order_status is
-        ///     DELIVERED_TO_CUSTOMER/CARD_UPDATE_REQUESTED/CARD_UPDATE_SENT/CARD_UPDATE_ACCEPTED. Mind that all the possible
-        ///     choices (apart from ACTIVE and DEACTIVATED) are permanent and cannot be changed after.
-        /// </param>
+        /// <param name="activationCode">DEPRECATED: Activate a card by setting status to ACTIVE when the order_status is ACCEPTED_FOR_PRODUCTION.</param>
+        /// <param name="status">The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN or CANCELLED, and can only be set to LOST/STOLEN/CANCELLED when order status is ACCEPTED_FOR_PRODUCTION/DELIVERED_TO_CUSTOMER/CARD_UPDATE_REQUESTED/CARD_UPDATE_SENT/CARD_UPDATE_ACCEPTED. Can only be set to DEACTIVATED after initial activation, i.e. order_status is DELIVERED_TO_CUSTOMER/CARD_UPDATE_REQUESTED/CARD_UPDATE_SENT/CARD_UPDATE_ACCEPTED. Mind that all the possible choices (apart from ACTIVE and DEACTIVATED) are permanent and cannot be changed after.</param>
         /// <param name="cardLimit">The spending limit for the card.</param>
         /// <param name="cardLimitAtm">The ATM spending limit for the card.</param>
         /// <param name="countryPermission">The countries for which to grant (temporary) permissions to use the card.</param>
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="primaryAccountNumbers">Array of PANs and their attributes.</param>
-        /// <param name="monetaryAccountIdFallback">
-        ///     ID of the MA to be used as fallback for this card if insufficient balance.
-        ///     Fallback account is removed if not supplied.
-        /// </param>
+        /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
         public static BunqResponse<Card> Update(int cardId, string pinCode = null, string activationCode = null,
             string status = null, Amount cardLimit = null, Amount cardLimitAtm = null,
             List<CardCountryPermission> countryPermission = null, List<CardPinAssignment> pinCodeAssignment = null,
@@ -251,7 +235,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_COUNTRY_PERMISSION, countryPermission},
                 {FIELD_PIN_CODE_ASSIGNMENT, pinCodeAssignment},
                 {FIELD_PRIMARY_ACCOUNT_NUMBERS, primaryAccountNumbers},
-                {FIELD_MONETARY_ACCOUNT_ID_FALLBACK, monetaryAccountIdFallback}
+                {FIELD_MONETARY_ACCOUNT_ID_FALLBACK, monetaryAccountIdFallback},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -262,7 +246,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Return the details of a specific card.
+        /// Return the details of a specific card.
         /// </summary>
         public static BunqResponse<Card> Get(int cardId, IDictionary<string, string> customHeaders = null)
         {
@@ -276,7 +260,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Return all the cards available to the user.
+        /// Return all the cards available to the user.
         /// </summary>
         public static BunqResponse<List<Card>> List(IDictionary<string, string> urlParams = null,
             IDictionary<string, string> customHeaders = null)
@@ -296,53 +280,125 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (Created != null) return false;
+            if (this.Created != null)
+            {
+                return false;
+            }
 
-            if (Updated != null) return false;
+            if (this.Updated != null)
+            {
+                return false;
+            }
 
-            if (PublicUuid != null) return false;
+            if (this.PublicUuid != null)
+            {
+                return false;
+            }
 
-            if (Type != null) return false;
+            if (this.Type != null)
+            {
+                return false;
+            }
 
-            if (SubType != null) return false;
+            if (this.SubType != null)
+            {
+                return false;
+            }
 
-            if (SecondLine != null) return false;
+            if (this.SecondLine != null)
+            {
+                return false;
+            }
 
-            if (UserId != null) return false;
+            if (this.UserId != null)
+            {
+                return false;
+            }
 
-            if (Status != null) return false;
+            if (this.Status != null)
+            {
+                return false;
+            }
 
-            if (SubStatus != null) return false;
+            if (this.SubStatus != null)
+            {
+                return false;
+            }
 
-            if (OrderStatus != null) return false;
+            if (this.OrderStatus != null)
+            {
+                return false;
+            }
 
-            if (ExpiryDate != null) return false;
+            if (this.ExpiryDate != null)
+            {
+                return false;
+            }
 
-            if (NameOnCard != null) return false;
+            if (this.NameOnCard != null)
+            {
+                return false;
+            }
 
-            if (PrimaryAccountNumbers != null) return false;
+            if (this.PrimaryAccountNumbers != null)
+            {
+                return false;
+            }
 
-            if (CardLimit != null) return false;
+            if (this.CardLimit != null)
+            {
+                return false;
+            }
 
-            if (CardLimitAtm != null) return false;
+            if (this.CardLimitAtm != null)
+            {
+                return false;
+            }
 
-            if (CountryPermission != null) return false;
+            if (this.CountryPermission != null)
+            {
+                return false;
+            }
 
-            if (LabelMonetaryAccountOrdered != null) return false;
+            if (this.LabelMonetaryAccountOrdered != null)
+            {
+                return false;
+            }
 
-            if (LabelMonetaryAccountCurrent != null) return false;
+            if (this.LabelMonetaryAccountCurrent != null)
+            {
+                return false;
+            }
 
-            if (PinCodeAssignment != null) return false;
+            if (this.PinCodeAssignment != null)
+            {
+                return false;
+            }
 
-            if (MonetaryAccountIdFallback != null) return false;
+            if (this.MonetaryAccountIdFallback != null)
+            {
+                return false;
+            }
 
-            if (Country != null) return false;
+            if (this.Country != null)
+            {
+                return false;
+            }
 
-            if (CardShipmentTrackingUrl != null) return false;
+            if (this.CardShipmentTrackingUrl != null)
+            {
+                return false;
+            }
 
-            if (AmountSavedZeroFx != null) return false;
+            if (this.AmountSavedZeroFx != null)
+            {
+                return false;
+            }
 
             return true;
         }

@@ -8,13 +8,13 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class PermittedDevice : BunqModel
     {
         /// <summary>
-        ///     The description of the device that may use the credential.
+        /// The description of the device that may use the credential.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
-        ///     The IP address of the device that may use the credential.
+        /// The IP address of the device that may use the credential.
         /// </summary>
         [JsonProperty(PropertyName = "ip")]
         public string Ip { get; set; }
@@ -24,9 +24,15 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Description != null) return false;
+            if (this.Description != null)
+            {
+                return false;
+            }
 
-            if (Ip != null) return false;
+            if (this.Ip != null)
+            {
+                return false;
+            }
 
             return true;
         }

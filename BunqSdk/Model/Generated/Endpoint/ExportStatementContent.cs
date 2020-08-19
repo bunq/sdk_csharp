@@ -5,19 +5,19 @@ using Bunq.Sdk.Model.Core;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Fetch the raw content of a statement export. The returned file format could be MT940, CSV or PDF depending on
-    ///     the statement format specified during the statement creation. The doc won't display the response of a request to
-    ///     get the content of a statement export.
+    /// Fetch the raw content of a statement export. The returned file format could be MT940, CSV or PDF depending on
+    /// the statement format specified during the statement creation. The doc won't display the response of a request to
+    /// get the content of a statement export.
     /// </summary>
     public class ExportStatementContent : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/customer-statement/{2}/content";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "ExportStatementContent";
 

@@ -7,6 +7,31 @@ namespace Bunq.Sdk.Model.Generated.Object
     /// </summary>
     public class MonetaryAccountProfileDrain : BunqModel
     {
+        /// <summary>
+        /// The status of the profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The goal balance.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance_preferred")]
+        public Amount BalancePreferred { get; set; }
+
+        /// <summary>
+        /// The high threshold balance.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance_threshold_high")]
+        public Amount BalanceThresholdHigh { get; set; }
+
+        /// <summary>
+        /// The savings monetary account.
+        /// </summary>
+        [JsonProperty(PropertyName = "savings_account_alias")]
+        public MonetaryAccountReference SavingsAccountAlias { get; set; }
+
+
         public MonetaryAccountProfileDrain(string status, Amount balancePreferred, Amount balanceThresholdHigh,
             MonetaryAccountReference savingsAccountAlias)
         {
@@ -16,42 +41,30 @@ namespace Bunq.Sdk.Model.Generated.Object
             SavingsAccountAlias = savingsAccountAlias;
         }
 
-        /// <summary>
-        ///     The status of the profile.
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
-
-        /// <summary>
-        ///     The goal balance.
-        /// </summary>
-        [JsonProperty(PropertyName = "balance_preferred")]
-        public Amount BalancePreferred { get; set; }
-
-        /// <summary>
-        ///     The high threshold balance.
-        /// </summary>
-        [JsonProperty(PropertyName = "balance_threshold_high")]
-        public Amount BalanceThresholdHigh { get; set; }
-
-        /// <summary>
-        ///     The savings monetary account.
-        /// </summary>
-        [JsonProperty(PropertyName = "savings_account_alias")]
-        public MonetaryAccountReference SavingsAccountAlias { get; set; }
-
 
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Status != null) return false;
+            if (this.Status != null)
+            {
+                return false;
+            }
 
-            if (BalancePreferred != null) return false;
+            if (this.BalancePreferred != null)
+            {
+                return false;
+            }
 
-            if (BalanceThresholdHigh != null) return false;
+            if (this.BalanceThresholdHigh != null)
+            {
+                return false;
+            }
 
-            if (SavingsAccountAlias != null) return false;
+            if (this.SavingsAccountAlias != null)
+            {
+                return false;
+            }
 
             return true;
         }

@@ -5,18 +5,18 @@ using Bunq.Sdk.Model.Core;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Endpoint for operations over the current session.
+    /// Endpoint for operations over the current session.
     /// </summary>
     public class Session : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_DELETE = "session/{0}";
 
 
         /// <summary>
-        ///     Deletes the current session.
+        /// Deletes the current session.
         /// </summary>
         public static BunqResponse<object> Delete(int sessionId, IDictionary<string, string> customHeaders = null)
         {

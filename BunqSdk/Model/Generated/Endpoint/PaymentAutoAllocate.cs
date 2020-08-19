@@ -9,83 +9,81 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Manage a users automatic payment auto allocated settings.
+    /// Manage a users automatic payment auto allocated settings.
     /// </summary>
     public class PaymentAutoAllocate : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/payment-auto-allocate";
-
         protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/payment-auto-allocate/{2}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/payment-auto-allocate";
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/payment-auto-allocate/{2}";
         protected const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/payment-auto-allocate/{2}";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_PAYMENT_ID = "payment_id";
-
         public const string FIELD_TYPE = "type";
         public const string FIELD_DEFINITION = "definition";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "PaymentAutoAllocate";
 
         /// <summary>
-        ///     The payment that should be used to define the triggers for the payment auto allocate.
+        /// The payment that should be used to define the triggers for the payment auto allocate.
         /// </summary>
         [JsonProperty(PropertyName = "payment_id")]
         public int? PaymentId { get; set; }
 
         /// <summary>
-        ///     The type.
+        /// The type.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        ///     The definition of how the money should be allocated.
+        /// The definition of how the money should be allocated.
         /// </summary>
         [JsonProperty(PropertyName = "definition")]
         public List<PaymentAutoAllocateDefinition> Definition { get; set; }
 
         /// <summary>
-        ///     The id of the PaymentAutoAllocate.
+        /// The id of the PaymentAutoAllocate.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The timestamp when the PaymentAutoAllocate was created.
+        /// The timestamp when the PaymentAutoAllocate was created.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        ///     The timestamp when the PaymentAutoAllocate was last updated.
+        /// The timestamp when the PaymentAutoAllocate was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        ///     The status.
+        /// The status.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        ///     The amount on which this payment auto allocate will be triggered.
+        /// The amount on which this payment auto allocate will be triggered.
         /// </summary>
         [JsonProperty(PropertyName = "trigger_amount")]
         public Amount TriggerAmount { get; set; }
 
         /// <summary>
-        ///     The payment that was used to define the triggers for this payment auto allocate.
+        /// The payment that was used to define the triggers for this payment auto allocate.
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; set; }
@@ -108,7 +106,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 {FIELD_PAYMENT_ID, paymentId},
                 {FIELD_TYPE, type},
-                {FIELD_DEFINITION, definition}
+                {FIELD_DEFINITION, definition},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -165,7 +163,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_DEFINITION, definition}
+                {FIELD_DEFINITION, definition},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -198,19 +196,40 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (Created != null) return false;
+            if (this.Created != null)
+            {
+                return false;
+            }
 
-            if (Updated != null) return false;
+            if (this.Updated != null)
+            {
+                return false;
+            }
 
-            if (Type != null) return false;
+            if (this.Type != null)
+            {
+                return false;
+            }
 
-            if (Status != null) return false;
+            if (this.Status != null)
+            {
+                return false;
+            }
 
-            if (TriggerAmount != null) return false;
+            if (this.TriggerAmount != null)
+            {
+                return false;
+            }
 
-            if (Payment != null) return false;
+            if (this.Payment != null)
+            {
+                return false;
+            }
 
             return true;
         }

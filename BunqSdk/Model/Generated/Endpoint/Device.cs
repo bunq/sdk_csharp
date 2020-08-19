@@ -7,24 +7,23 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to get a Device or a listing of Devices. Creating a DeviceServer should happen via /device-server
+    /// Used to get a Device or a listing of Devices. Creating a DeviceServer should happen via /device-server
     /// </summary>
     public class Device : BunqModel, IAnchorObjectInterface
     {
         /// <summary>
-        ///     Error constants.
+        /// Error constants.
         /// </summary>
         private const string ERROR_NULL_FIELDS = "All fields of an extended model or object are null.";
 
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "device/{0}";
-
         protected const string ENDPOINT_URL_LISTING = "device";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "Device";
 
@@ -33,27 +32,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "DeviceServer")]
         public DeviceServer DeviceServer { get; set; }
 
-
         /// <summary>
-        /// </summary>
-        public BunqModel GetReferencedObject()
-        {
-            if (DeviceServer != null) return DeviceServer;
-
-            throw new BunqException(ERROR_NULL_FIELDS);
-        }
-
-        /// <summary>
-        /// </summary>
-        public override bool IsAllFieldNull()
-        {
-            if (DeviceServer != null) return false;
-
-            return true;
-        }
-
-        /// <summary>
-        ///     Get a single Device. A Device is either a DevicePhone or a DeviceServer.
+        /// Get a single Device. A Device is either a DevicePhone or a DeviceServer.
         /// </summary>
         public static BunqResponse<Device> Get(int deviceId, IDictionary<string, string> customHeaders = null)
         {
@@ -67,7 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Get a collection of Devices. A Device is either a DevicePhone or a DeviceServer.
+        /// Get a collection of Devices. A Device is either a DevicePhone or a DeviceServer.
         /// </summary>
         public static BunqResponse<List<Device>> List(IDictionary<string, string> urlParams = null,
             IDictionary<string, string> customHeaders = null)
@@ -79,6 +59,31 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw = apiClient.Get(ENDPOINT_URL_LISTING, urlParams, customHeaders);
 
             return FromJsonList<Device>(responseRaw);
+        }
+
+
+        /// <summary>
+        /// </summary>
+        public BunqModel GetReferencedObject()
+        {
+            if (this.DeviceServer != null)
+            {
+                return this.DeviceServer;
+            }
+
+            throw new BunqException(ERROR_NULL_FIELDS);
+        }
+
+        /// <summary>
+        /// </summary>
+        public override bool IsAllFieldNull()
+        {
+            if (this.DeviceServer != null)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>

@@ -8,13 +8,13 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class BudgetRestriction : BunqModel
     {
         /// <summary>
-        ///     The amount of the budget given to the invited user.
+        /// The amount of the budget given to the invited user.
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
 
         /// <summary>
-        ///     The duration for a budget restriction. Valid values are DAILY, WEEKLY, MONTHLY, YEARLY.
+        /// The duration for a budget restriction. Valid values are DAILY, WEEKLY, MONTHLY, YEARLY.
         /// </summary>
         [JsonProperty(PropertyName = "frequency")]
         public string Frequency { get; set; }
@@ -24,9 +24,15 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Amount != null) return false;
+            if (this.Amount != null)
+            {
+                return false;
+            }
 
-            if (Frequency != null) return false;
+            if (this.Frequency != null)
+            {
+                return false;
+            }
 
             return true;
         }

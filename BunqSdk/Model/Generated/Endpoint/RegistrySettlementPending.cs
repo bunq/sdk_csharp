@@ -7,28 +7,28 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to manage pending Slice group settlements.
+    /// Used to manage pending Slice group settlements.
     /// </summary>
     public class RegistrySettlementPending : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/registry/{1}/registry-settlement-pending";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "RegistrySettlementPending";
 
         /// <summary>
-        ///     List of RegistrySettlementItems
+        /// List of RegistrySettlementItems
         /// </summary>
         [JsonProperty(PropertyName = "items")]
         public List<RegistrySettlementItem> Items { get; set; }
 
         /// <summary>
-        ///     Get a listing of all pending Slice group settlements.
+        /// Get a listing of all pending Slice group settlements.
         /// </summary>
         public static BunqResponse<List<RegistrySettlementPending>> List(int registryId,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
@@ -48,7 +48,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Items != null) return false;
+            if (this.Items != null)
+            {
+                return false;
+            }
 
             return true;
         }

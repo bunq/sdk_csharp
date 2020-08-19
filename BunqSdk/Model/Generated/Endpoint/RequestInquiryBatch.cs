@@ -9,67 +9,65 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Create a batch of requests for payment, or show the request batches of a monetary account.
+    /// Create a batch of requests for payment, or show the request batches of a monetary account.
     /// </summary>
     public class RequestInquiryBatch : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/request-inquiry-batch";
-
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/request-inquiry-batch/{2}";
         protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/request-inquiry-batch/{2}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/request-inquiry-batch";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_REQUEST_INQUIRIES = "request_inquiries";
-
         public const string FIELD_STATUS = "status";
         public const string FIELD_TOTAL_AMOUNT_INQUIRED = "total_amount_inquired";
         public const string FIELD_EVENT_ID = "event_id";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "RequestInquiryBatch";
 
         /// <summary>
-        ///     The list of requests that were made.
+        /// The list of requests that were made.
         /// </summary>
         [JsonProperty(PropertyName = "request_inquiries")]
         public List<RequestInquiry> RequestInquiries { get; set; }
 
         /// <summary>
-        ///     The status of the request.
+        /// The status of the request.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        ///     The total amount originally inquired for this batch.
+        /// The total amount originally inquired for this batch.
         /// </summary>
         [JsonProperty(PropertyName = "total_amount_inquired")]
         public Amount TotalAmountInquired { get; set; }
 
         /// <summary>
-        ///     The ID of the associated event if the request batch was made using 'split the bill'.
+        /// The ID of the associated event if the request batch was made using 'split the bill'.
         /// </summary>
         [JsonProperty(PropertyName = "event_id")]
         public int? EventId { get; set; }
 
         /// <summary>
-        ///     The reference to the object used for split the bill. Can be Payment, PaymentBatch, ScheduleInstance,
-        ///     RequestResponse and MasterCardAction
+        /// The reference to the object used for split the bill. Can be Payment, PaymentBatch, ScheduleInstance,
+        /// RequestResponse and MasterCardAction
         /// </summary>
         [JsonProperty(PropertyName = "reference_split_the_bill")]
         public RequestReferenceSplitTheBillAnchorObject ReferenceSplitTheBill { get; set; }
 
 
         /// <summary>
-        ///     Create a request batch by sending an array of single request objects, that will become part of the batch.
+        /// Create a request batch by sending an array of single request objects, that will become part of the batch.
         /// </summary>
         /// <param name="requestInquiries">The list of request inquiries we want to send in 1 batch.</param>
         /// <param name="totalAmountInquired">The total amount originally inquired for this batch.</param>
@@ -88,7 +86,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_REQUEST_INQUIRIES, requestInquiries},
                 {FIELD_STATUS, status},
                 {FIELD_TOTAL_AMOUNT_INQUIRED, totalAmountInquired},
-                {FIELD_EVENT_ID, eventId}
+                {FIELD_EVENT_ID, eventId},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -101,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Revoke a request batch. The status of all the requests will be set to REVOKED.
+        /// Revoke a request batch. The status of all the requests will be set to REVOKED.
         /// </summary>
         /// <param name="status">The status of the request.</param>
         public static BunqResponse<int> Update(int requestInquiryBatchId, int? monetaryAccountId = null,
@@ -113,7 +111,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
 
             var requestMap = new Dictionary<string, object>
             {
-                {FIELD_STATUS, status}
+                {FIELD_STATUS, status},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -126,7 +124,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Return the details of a specific request batch.
+        /// Return the details of a specific request batch.
         /// </summary>
         public static BunqResponse<RequestInquiryBatch> Get(int requestInquiryBatchId, int? monetaryAccountId = null,
             IDictionary<string, string> customHeaders = null)
@@ -143,7 +141,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Return all the request batches for a monetary account.
+        /// Return all the request batches for a monetary account.
         /// </summary>
         public static BunqResponse<List<RequestInquiryBatch>> List(int? monetaryAccountId = null,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
@@ -165,11 +163,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (RequestInquiries != null) return false;
+            if (this.RequestInquiries != null)
+            {
+                return false;
+            }
 
-            if (TotalAmountInquired != null) return false;
+            if (this.TotalAmountInquired != null)
+            {
+                return false;
+            }
 
-            if (ReferenceSplitTheBill != null) return false;
+            if (this.ReferenceSplitTheBill != null)
+            {
+                return false;
+            }
 
             return true;
         }

@@ -7,35 +7,35 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     This call is used to upload an attachment that can be referenced to in payment requests and payments sent from a
-    ///     specific monetary account. Attachments supported are png, jpg and gif.
+    /// This call is used to upload an attachment that can be referenced to in payment requests and payments sent from a
+    /// specific monetary account. Attachments supported are png, jpg and gif.
     /// </summary>
     public class AttachmentMonetaryAccount : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/attachment";
 
 
         /// <summary>
-        ///     The attachment.
+        /// The attachment.
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; set; }
 
         /// <summary>
-        ///     The ID of the attachment created.
+        /// The ID of the attachment created.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
 
         /// <summary>
-        ///     Create a new monetary account attachment. Create a POST request with a payload that contains the binary
-        ///     representation of the file, without any JSON wrapping. Make sure you define the MIME type (i.e. image/jpeg)
-        ///     in the Content-Type header. You are required to provide a description of the attachment using the
-        ///     X-Bunq-Attachment-Description header.
+        /// Create a new monetary account attachment. Create a POST request with a payload that contains the binary
+        /// representation of the file, without any JSON wrapping. Make sure you define the MIME type (i.e. image/jpeg)
+        /// in the Content-Type header. You are required to provide a description of the attachment using the
+        /// X-Bunq-Attachment-Description header.
         /// </summary>
         public static BunqResponse<int> Create(byte[] requestBytes, int? monetaryAccountId = null,
             IDictionary<string, string> customHeaders = null)
@@ -56,9 +56,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Attachment != null) return false;
+            if (this.Attachment != null)
+            {
+                return false;
+            }
 
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
             return true;
         }

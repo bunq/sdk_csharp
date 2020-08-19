@@ -9,25 +9,23 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to manage Slice group payment.
+    /// Used to manage Slice group payment.
     /// </summary>
     public class RegistryEntry : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/registry/{1}/registry-entry";
-
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/registry/{1}/registry-entry/{2}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/registry/{1}/registry-entry";
         protected const string ENDPOINT_URL_READ = "user/{0}/registry/{1}/registry-entry/{2}";
         protected const string ENDPOINT_URL_DELETE = "user/{0}/registry/{1}/registry-entry/{2}";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_ALIAS_OWNER = "alias_owner";
-
         public const string FIELD_AMOUNT = "amount";
         public const string FIELD_OBJECT_REFERENCE = "object_reference";
         public const string FIELD_DESCRIPTION = "description";
@@ -35,121 +33,115 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_ATTACHMENT = "attachment";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "RegistryEntry";
 
         /// <summary>
-        ///     The Alias of the party we are allocating money for.
+        /// The Alias of the party we are allocating money for.
         /// </summary>
         [JsonProperty(PropertyName = "alias_owner")]
         public MonetaryAccountReference AliasOwner { get; set; }
 
         /// <summary>
-        ///     The Amount of the RegistryEntry.
+        /// The Amount of the RegistryEntry.
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
 
         /// <summary>
-        ///     The object linked to the RegistryEntry.
+        /// The object linked to the RegistryEntry.
         /// </summary>
         [JsonProperty(PropertyName = "object_reference")]
         public RegistryEntryReference ObjectReference { get; set; }
 
         /// <summary>
-        ///     A description about the RegistryEntry.
+        /// A description about the RegistryEntry.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
-        ///     An array of AllocationItems.
+        /// An array of AllocationItems.
         /// </summary>
         [JsonProperty(PropertyName = "allocations")]
         public List<AllocationItem> Allocations { get; set; }
 
         /// <summary>
-        ///     The attachments attached to the payment.
+        /// The attachments attached to the payment.
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
         public List<RegistryEntryAttachment> Attachment { get; set; }
 
         /// <summary>
-        ///     The id of the RegistryEntry.
+        /// The id of the RegistryEntry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The timestamp of the MonetaryAccountBank's creation.
+        /// The timestamp of the MonetaryAccountBank's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        ///     The timestamp of the MonetaryAccountBank's last update.
+        /// The timestamp of the MonetaryAccountBank's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        ///     The id of the Registry.
+        /// The id of the Registry.
         /// </summary>
         [JsonProperty(PropertyName = "registry_id")]
         public int? RegistryId { get; set; }
 
         /// <summary>
-        ///     The status of the RegistryEntry.
+        /// The status of the RegistryEntry.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        ///     The RegistryEntry type. AUTO if created by Auto Slice, MANUAL for manually added entries.
+        /// The RegistryEntry type. AUTO if created by Auto Slice, MANUAL for manually added entries.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        ///     The LabelUser with the public information of the party of this RegistryEntry.
+        /// The LabelUser with the public information of the party of this RegistryEntry.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public LabelUser Alias { get; set; }
 
         /// <summary>
-        ///     The LabelUser with the public information of the counter party of this RegistryEntry.
+        /// The LabelUser with the public information of the counter party of this RegistryEntry.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_alias")]
         public LabelUser CounterpartyAlias { get; set; }
 
         /// <summary>
-        ///     The LabelUser with the public information of the User that created the RegistryEntry.
+        /// The LabelUser with the public information of the User that created the RegistryEntry.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
         public LabelUser UserAliasCreated { get; set; }
 
         /// <summary>
-        ///     The membership of the creator.
+        /// The membership of the creator.
         /// </summary>
         [JsonProperty(PropertyName = "membership_created")]
         public RegistryMembership MembershipCreated { get; set; }
 
         /// <summary>
-        ///     The membership of the owner.
+        /// The membership of the owner.
         /// </summary>
         [JsonProperty(PropertyName = "membership_owned")]
         public RegistryMembership MembershipOwned { get; set; }
 
-        /// <summary>
-        ///     The object that is connected to this RegistryEntry.
-        /// </summary>
-        [JsonProperty(PropertyName = "object")]
-        public BunqModel Object { get; set; }
-
 
         /// <summary>
-        ///     Create a new Slice group payment.
+        /// Create a new Slice group payment.
         /// </summary>
         /// <param name="amount">The Amount of the RegistryEntry.</param>
         /// <param name="allocations">An array of AllocationItems.</param>
@@ -172,7 +164,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_OBJECT_REFERENCE, objectReference},
                 {FIELD_DESCRIPTION, description},
                 {FIELD_ALLOCATIONS, allocations},
-                {FIELD_ATTACHMENT, attachment}
+                {FIELD_ATTACHMENT, attachment},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -183,7 +175,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Update a specific Slice group payment.
+        /// Update a specific Slice group payment.
         /// </summary>
         /// <param name="description">A description about the RegistryEntry.</param>
         /// <param name="allocations">An array of AllocationItems.</param>
@@ -200,7 +192,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 {FIELD_DESCRIPTION, description},
                 {FIELD_ALLOCATIONS, allocations},
-                {FIELD_ATTACHMENT, attachment}
+                {FIELD_ATTACHMENT, attachment},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -212,7 +204,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Get a listing of all Slice group payments.
+        /// Get a listing of all Slice group payments.
         /// </summary>
         public static BunqResponse<List<RegistryEntry>> List(int registryId,
             IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
@@ -228,7 +220,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Get a specific Slice group payment.
+        /// Get a specific Slice group payment.
         /// </summary>
         public static BunqResponse<RegistryEntry> Get(int registryId, int registryEntryId,
             IDictionary<string, string> customHeaders = null)
@@ -244,7 +236,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Delete a specific Slice group payment.
+        /// Delete a specific Slice group payment.
         /// </summary>
         public static BunqResponse<object> Delete(int registryId, int registryEntryId,
             IDictionary<string, string> customHeaders = null)
@@ -264,37 +256,80 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (Created != null) return false;
+            if (this.Created != null)
+            {
+                return false;
+            }
 
-            if (Updated != null) return false;
+            if (this.Updated != null)
+            {
+                return false;
+            }
 
-            if (RegistryId != null) return false;
+            if (this.RegistryId != null)
+            {
+                return false;
+            }
 
-            if (Status != null) return false;
+            if (this.Status != null)
+            {
+                return false;
+            }
 
-            if (Amount != null) return false;
+            if (this.Amount != null)
+            {
+                return false;
+            }
 
-            if (Description != null) return false;
+            if (this.Description != null)
+            {
+                return false;
+            }
 
-            if (Type != null) return false;
+            if (this.Type != null)
+            {
+                return false;
+            }
 
-            if (Alias != null) return false;
+            if (this.Alias != null)
+            {
+                return false;
+            }
 
-            if (CounterpartyAlias != null) return false;
+            if (this.CounterpartyAlias != null)
+            {
+                return false;
+            }
 
-            if (UserAliasCreated != null) return false;
+            if (this.UserAliasCreated != null)
+            {
+                return false;
+            }
 
-            if (MembershipCreated != null) return false;
+            if (this.MembershipCreated != null)
+            {
+                return false;
+            }
 
-            if (MembershipOwned != null) return false;
+            if (this.MembershipOwned != null)
+            {
+                return false;
+            }
 
-            if (Allocations != null) return false;
+            if (this.Allocations != null)
+            {
+                return false;
+            }
 
-            if (Object != null) return false;
-
-            if (Attachment != null) return false;
+            if (this.Attachment != null)
+            {
+                return false;
+            }
 
             return true;
         }

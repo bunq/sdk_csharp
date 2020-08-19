@@ -9,24 +9,22 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     With UserCompany you can retrieve information regarding the authenticated UserCompany and update specific
-    ///     fields.<br /><br />Notification filters can be set on a UserCompany level to receive callbacks. For more
-    ///     information check the <a href="/api/1/page/callbacks">dedicated callbacks page</a>.
+    /// With UserCompany you can retrieve information regarding the authenticated UserCompany and update specific
+    /// fields.<br/><br/>Notification filters can be set on a UserCompany level to receive callbacks. For more
+    /// information check the <a href="/api/1/page/callbacks">dedicated callbacks page</a>.
     /// </summary>
     public class UserCompany : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user-company/{0}";
-
         protected const string ENDPOINT_URL_UPDATE = "user-company/{0}";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_NAME = "name";
-
         public const string FIELD_PUBLIC_NICK_NAME = "public_nick_name";
         public const string FIELD_AVATAR_UUID = "avatar_uuid";
         public const string FIELD_ADDRESS_MAIN = "address_main";
@@ -43,220 +41,220 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "UserCompany";
 
         /// <summary>
-        ///     The company name.
+        /// The company name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        ///     The company's public nick name.
+        /// The company's public nick name.
         /// </summary>
         [JsonProperty(PropertyName = "public_nick_name")]
         public string PublicNickName { get; set; }
 
         /// <summary>
-        ///     The public UUID of the company's avatar.
+        /// The public UUID of the company's avatar.
         /// </summary>
         [JsonProperty(PropertyName = "avatar_uuid")]
         public string AvatarUuid { get; set; }
 
         /// <summary>
-        ///     The company's main address.
+        /// The company's main address.
         /// </summary>
         [JsonProperty(PropertyName = "address_main")]
         public Address AddressMain { get; set; }
 
         /// <summary>
-        ///     The company's postal address.
+        /// The company's postal address.
         /// </summary>
         [JsonProperty(PropertyName = "address_postal")]
         public Address AddressPostal { get; set; }
 
         /// <summary>
-        ///     The person's preferred language. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
-        ///     code, seperated by an underscore.
+        /// The person's preferred language. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
+        /// code, seperated by an underscore.
         /// </summary>
         [JsonProperty(PropertyName = "language")]
         public string Language { get; set; }
 
         /// <summary>
-        ///     The person's preferred region. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
-        ///     code, seperated by an underscore.
+        /// The person's preferred region. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
+        /// code, seperated by an underscore.
         /// </summary>
         [JsonProperty(PropertyName = "region")]
         public string Region { get; set; }
 
         /// <summary>
-        ///     The country as an ISO 3166-1 alpha-2 country code.
+        /// The country as an ISO 3166-1 alpha-2 country code.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
 
         /// <summary>
-        ///     The names of the company's ultimate beneficiary owners. Minimum zero, maximum four.
+        /// The names of the company's ultimate beneficiary owners. Minimum zero, maximum four.
         /// </summary>
         [JsonProperty(PropertyName = "ubo")]
         public List<Ubo> Ubo { get; set; }
 
         /// <summary>
-        ///     The company's chamber of commerce number.
+        /// The company's chamber of commerce number.
         /// </summary>
         [JsonProperty(PropertyName = "chamber_of_commerce_number")]
         public string ChamberOfCommerceNumber { get; set; }
 
         /// <summary>
-        ///     The company's legal form.
+        /// The company's legal form.
         /// </summary>
         [JsonProperty(PropertyName = "legal_form")]
         public string LegalForm { get; set; }
 
         /// <summary>
-        ///     The user status. Can be: ACTIVE, SIGNUP, RECOVERY.
+        /// The user status. Can be: ACTIVE, SIGNUP, RECOVERY.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        ///     The user sub-status. Can be: NONE, FACE_RESET, APPROVAL, APPROVAL_DIRECTOR, APPROVAL_PARENT,
-        ///     APPROVAL_SUPPORT, COUNTER_IBAN, IDEAL or SUBMIT.
+        /// The user sub-status. Can be: NONE, FACE_RESET, APPROVAL, APPROVAL_DIRECTOR, APPROVAL_PARENT,
+        /// APPROVAL_SUPPORT, COUNTER_IBAN, IDEAL or SUBMIT.
         /// </summary>
         [JsonProperty(PropertyName = "sub_status")]
         public string SubStatus { get; set; }
 
         /// <summary>
-        ///     The setting for the session timeout of the company in seconds.
+        /// The setting for the session timeout of the company in seconds.
         /// </summary>
         [JsonProperty(PropertyName = "session_timeout")]
         public int? SessionTimeout { get; set; }
 
         /// <summary>
-        ///     The amount the company can pay in the session without asking for credentials.
+        /// The amount the company can pay in the session without asking for credentials.
         /// </summary>
         [JsonProperty(PropertyName = "daily_limit_without_confirmation_login")]
         public Amount DailyLimitWithoutConfirmationLogin { get; set; }
 
         /// <summary>
-        ///     The id of the modified company.
+        /// The id of the modified company.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The timestamp of the company object's creation.
+        /// The timestamp of the company object's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        ///     The timestamp of the company object's last update.
+        /// The timestamp of the company object's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        ///     The company's public UUID.
+        /// The company's public UUID.
         /// </summary>
         [JsonProperty(PropertyName = "public_uuid")]
         public string PublicUuid { get; set; }
 
         /// <summary>
-        ///     The company's display name.
+        /// The company's display name.
         /// </summary>
         [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
 
         /// <summary>
-        ///     The aliases of the account.
+        /// The aliases of the account.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public List<Pointer> Alias { get; set; }
 
         /// <summary>
-        ///     The type of business entity.
+        /// The type of business entity.
         /// </summary>
         [JsonProperty(PropertyName = "type_of_business_entity")]
         public string TypeOfBusinessEntity { get; set; }
 
         /// <summary>
-        ///     The sector of industry.
+        /// The sector of industry.
         /// </summary>
         [JsonProperty(PropertyName = "sector_of_industry")]
         public string SectorOfIndustry { get; set; }
 
         /// <summary>
-        ///     The company's other bank account IBAN, through which we verify it.
+        /// The company's other bank account IBAN, through which we verify it.
         /// </summary>
         [JsonProperty(PropertyName = "counter_bank_iban")]
         public string CounterBankIban { get; set; }
 
         /// <summary>
-        ///     The company's avatar.
+        /// The company's avatar.
         /// </summary>
         [JsonProperty(PropertyName = "avatar")]
         public Avatar Avatar { get; set; }
 
         /// <summary>
-        ///     The version of the terms of service accepted by the user.
+        /// The version of the terms of service accepted by the user.
         /// </summary>
         [JsonProperty(PropertyName = "version_terms_of_service")]
         public string VersionTermsOfService { get; set; }
 
         /// <summary>
-        ///     The existing bunq alias for the company's primary director.
+        /// The existing bunq alias for the company's primary director.
         /// </summary>
         [JsonProperty(PropertyName = "director_alias")]
         public LabelUser DirectorAlias { get; set; }
 
         /// <summary>
-        ///     The existing bunq aliases for the company's directors.
+        /// The existing bunq aliases for the company's directors.
         /// </summary>
         [JsonProperty(PropertyName = "directors")]
         public List<LabelUser> Directors { get; set; }
 
         /// <summary>
-        ///     The types of notifications that will result in a push notification or URL callback for this UserCompany.
+        /// The types of notifications that will result in a push notification or URL callback for this UserCompany.
         /// </summary>
         [JsonProperty(PropertyName = "notification_filters")]
         public List<NotificationFilter> NotificationFilters { get; set; }
 
         /// <summary>
-        ///     The customer profile of the company.
+        /// The customer profile of the company.
         /// </summary>
         [JsonProperty(PropertyName = "customer")]
         public Customer Customer { get; set; }
 
         /// <summary>
-        ///     The customer limits of the company.
+        /// The customer limits of the company.
         /// </summary>
         [JsonProperty(PropertyName = "customer_limit")]
         public CustomerLimit CustomerLimit { get; set; }
 
         /// <summary>
-        ///     The subscription of the company.
+        /// The subscription of the company.
         /// </summary>
         [JsonProperty(PropertyName = "billing_contract")]
         public List<BillingContractSubscription> BillingContract { get; set; }
 
         /// <summary>
-        ///     The user deny reason.
+        /// The user deny reason.
         /// </summary>
         [JsonProperty(PropertyName = "deny_reason")]
         public string DenyReason { get; set; }
 
         /// <summary>
-        ///     The relations for this user.
+        /// The relations for this user.
         /// </summary>
         [JsonProperty(PropertyName = "relations")]
         public List<RelationUser> Relations { get; set; }
 
 
         /// <summary>
-        ///     Get a specific company.
+        /// Get a specific company.
         /// </summary>
         public static BunqResponse<UserCompany> Get(IDictionary<string, string> customHeaders = null)
         {
@@ -270,35 +268,23 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Modify a specific company's data.
+        /// Modify a specific company's data.
         /// </summary>
         /// <param name="name">The company name.</param>
         /// <param name="publicNickName">The company's nick name.</param>
         /// <param name="avatarUuid">The public UUID of the company's avatar.</param>
         /// <param name="addressMain">The user's main address.</param>
         /// <param name="addressPostal">The company's postal address.</param>
-        /// <param name="language">
-        ///     The person's preferred language. Formatted as a ISO 639-1 language code plus a ISO 3166-1
-        ///     alpha-2 country code, seperated by an underscore.
-        /// </param>
-        /// <param name="region">
-        ///     The person's preferred region. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2
-        ///     country code, seperated by an underscore.
-        /// </param>
+        /// <param name="language">The person's preferred language. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country code, seperated by an underscore.</param>
+        /// <param name="region">The person's preferred region. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country code, seperated by an underscore.</param>
         /// <param name="country">The country where the company is registered.</param>
         /// <param name="ubo">The names and birth dates of the company's ultimate beneficiary owners. Minimum zero, maximum four.</param>
         /// <param name="chamberOfCommerceNumber">The company's chamber of commerce number.</param>
         /// <param name="legalForm">The company's legal form.</param>
         /// <param name="status">The user status. Can be: ACTIVE, SIGNUP, RECOVERY.</param>
-        /// <param name="subStatus">
-        ///     The user sub-status. Can be: NONE, FACE_RESET, APPROVAL, APPROVAL_DIRECTOR, APPROVAL_PARENT,
-        ///     APPROVAL_SUPPORT, COUNTER_IBAN, IDEAL or SUBMIT.
-        /// </param>
+        /// <param name="subStatus">The user sub-status. Can be: NONE, FACE_RESET, APPROVAL, APPROVAL_DIRECTOR, APPROVAL_PARENT, APPROVAL_SUPPORT, COUNTER_IBAN, IDEAL or SUBMIT.</param>
         /// <param name="sessionTimeout">The setting for the session timeout of the company in seconds.</param>
-        /// <param name="dailyLimitWithoutConfirmationLogin">
-        ///     The amount the company can pay in the session without asking for
-        ///     credentials.
-        /// </param>
+        /// <param name="dailyLimitWithoutConfirmationLogin">The amount the company can pay in the session without asking for credentials.</param>
         public static BunqResponse<int> Update(string name = null, string publicNickName = null,
             string avatarUuid = null, Address addressMain = null, Address addressPostal = null, string language = null,
             string region = null, string country = null, List<Ubo> ubo = null, string chamberOfCommerceNumber = null,
@@ -325,7 +311,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_STATUS, status},
                 {FIELD_SUB_STATUS, subStatus},
                 {FIELD_SESSION_TIMEOUT, sessionTimeout},
-                {FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN, dailyLimitWithoutConfirmationLogin}
+                {FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN, dailyLimitWithoutConfirmationLogin},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -340,71 +326,170 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (Created != null) return false;
+            if (this.Created != null)
+            {
+                return false;
+            }
 
-            if (Updated != null) return false;
+            if (this.Updated != null)
+            {
+                return false;
+            }
 
-            if (PublicUuid != null) return false;
+            if (this.PublicUuid != null)
+            {
+                return false;
+            }
 
-            if (Name != null) return false;
+            if (this.Name != null)
+            {
+                return false;
+            }
 
-            if (DisplayName != null) return false;
+            if (this.DisplayName != null)
+            {
+                return false;
+            }
 
-            if (PublicNickName != null) return false;
+            if (this.PublicNickName != null)
+            {
+                return false;
+            }
 
-            if (Alias != null) return false;
+            if (this.Alias != null)
+            {
+                return false;
+            }
 
-            if (ChamberOfCommerceNumber != null) return false;
+            if (this.ChamberOfCommerceNumber != null)
+            {
+                return false;
+            }
 
-            if (LegalForm != null) return false;
+            if (this.LegalForm != null)
+            {
+                return false;
+            }
 
-            if (TypeOfBusinessEntity != null) return false;
+            if (this.TypeOfBusinessEntity != null)
+            {
+                return false;
+            }
 
-            if (SectorOfIndustry != null) return false;
+            if (this.SectorOfIndustry != null)
+            {
+                return false;
+            }
 
-            if (CounterBankIban != null) return false;
+            if (this.CounterBankIban != null)
+            {
+                return false;
+            }
 
-            if (Avatar != null) return false;
+            if (this.Avatar != null)
+            {
+                return false;
+            }
 
-            if (AddressMain != null) return false;
+            if (this.AddressMain != null)
+            {
+                return false;
+            }
 
-            if (AddressPostal != null) return false;
+            if (this.AddressPostal != null)
+            {
+                return false;
+            }
 
-            if (VersionTermsOfService != null) return false;
+            if (this.VersionTermsOfService != null)
+            {
+                return false;
+            }
 
-            if (DirectorAlias != null) return false;
+            if (this.DirectorAlias != null)
+            {
+                return false;
+            }
 
-            if (Directors != null) return false;
+            if (this.Directors != null)
+            {
+                return false;
+            }
 
-            if (Language != null) return false;
+            if (this.Language != null)
+            {
+                return false;
+            }
 
-            if (Country != null) return false;
+            if (this.Country != null)
+            {
+                return false;
+            }
 
-            if (Region != null) return false;
+            if (this.Region != null)
+            {
+                return false;
+            }
 
-            if (Ubo != null) return false;
+            if (this.Ubo != null)
+            {
+                return false;
+            }
 
-            if (Status != null) return false;
+            if (this.Status != null)
+            {
+                return false;
+            }
 
-            if (SubStatus != null) return false;
+            if (this.SubStatus != null)
+            {
+                return false;
+            }
 
-            if (SessionTimeout != null) return false;
+            if (this.SessionTimeout != null)
+            {
+                return false;
+            }
 
-            if (DailyLimitWithoutConfirmationLogin != null) return false;
+            if (this.DailyLimitWithoutConfirmationLogin != null)
+            {
+                return false;
+            }
 
-            if (NotificationFilters != null) return false;
+            if (this.NotificationFilters != null)
+            {
+                return false;
+            }
 
-            if (Customer != null) return false;
+            if (this.Customer != null)
+            {
+                return false;
+            }
 
-            if (CustomerLimit != null) return false;
+            if (this.CustomerLimit != null)
+            {
+                return false;
+            }
 
-            if (BillingContract != null) return false;
+            if (this.BillingContract != null)
+            {
+                return false;
+            }
 
-            if (DenyReason != null) return false;
+            if (this.DenyReason != null)
+            {
+                return false;
+            }
 
-            if (Relations != null) return false;
+            if (this.Relations != null)
+            {
+                return false;
+            }
 
             return true;
         }

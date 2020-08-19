@@ -9,25 +9,23 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     Used to manage Slice groups.
+    /// Used to manage Slice groups.
     /// </summary>
     public class Registry : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_CREATE = "user/{0}/registry";
-
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/registry/{1}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/registry";
         protected const string ENDPOINT_URL_READ = "user/{0}/registry/{1}";
         protected const string ENDPOINT_URL_DELETE = "user/{0}/registry/{1}";
 
         /// <summary>
-        ///     Field constants.
+        /// Field constants.
         /// </summary>
         public const string FIELD_CURRENCY = "currency";
-
         public const string FIELD_TITLE = "title";
         public const string FIELD_DESCRIPTION = "description";
         public const string FIELD_STATUS = "status";
@@ -37,109 +35,109 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_MEMBERSHIPS_PREVIOUS = "memberships_previous";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "Registry";
 
         /// <summary>
-        ///     The currency for the Registry as an ISO 4217 formatted currency code.
+        /// The currency for the Registry as an ISO 4217 formatted currency code.
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; set; }
 
         /// <summary>
-        ///     The title of the Registry.
+        /// The title of the Registry.
         /// </summary>
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
 
         /// <summary>
-        ///     A description about the Registry.
+        /// A description about the Registry.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
-        ///     The status of the Registry.
+        /// The status of the Registry.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        ///     The id of the last RegistryEntry that the user has seen.
+        /// The id of the last RegistryEntry that the user has seen.
         /// </summary>
         [JsonProperty(PropertyName = "last_registry_entry_seen_id")]
         public int? LastRegistryEntrySeenId { get; set; }
 
         /// <summary>
-        ///     The previous updated timestamp that you received for this Registry.
+        /// The previous updated timestamp that you received for this Registry.
         /// </summary>
         [JsonProperty(PropertyName = "previous_updated_timestamp")]
         public string PreviousUpdatedTimestamp { get; set; }
 
         /// <summary>
-        ///     List of memberships to replace the current one.
+        /// List of memberships to replace the current one.
         /// </summary>
         [JsonProperty(PropertyName = "memberships")]
         public List<RegistryMembership> Memberships { get; set; }
 
         /// <summary>
-        ///     Previous list of memberships.
+        /// Previous list of memberships.
         /// </summary>
         [JsonProperty(PropertyName = "memberships_previous")]
         public List<RegistryMembership> MembershipsPrevious { get; set; }
 
         /// <summary>
-        ///     The id of the Registry.
+        /// The id of the Registry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The timestamp of the Registry's creation.
+        /// The timestamp of the Registry's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        ///     The timestamp of the Registry's last update.
+        /// The timestamp of the Registry's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        ///     The number of RegistryEntries in this Registry that the user has not seen.
+        /// The number of RegistryEntries in this Registry that the user has not seen.
         /// </summary>
         [JsonProperty(PropertyName = "unseen_entries_count")]
         public int? UnseenEntriesCount { get; set; }
 
         /// <summary>
-        ///     The total amount spent in this Registry since the last settlement.
+        /// The total amount spent in this Registry since the last settlement.
         /// </summary>
         [JsonProperty(PropertyName = "total_amount_spent")]
         public Amount TotalAmountSpent { get; set; }
 
         /// <summary>
-        ///     Whether the Registry has previously been settled.
+        /// Whether the Registry has previously been settled.
         /// </summary>
         [JsonProperty(PropertyName = "is_previously_settled")]
         public bool? IsPreviouslySettled { get; set; }
 
         /// <summary>
-        ///     The settings for this Registry.
+        /// The settings for this Registry.
         /// </summary>
         [JsonProperty(PropertyName = "setting")]
         public RegistrySetting Setting { get; set; }
 
         /// <summary>
-        ///     The ID of the registry that currently has auto_add_card_transaction set to ALL.
+        /// The ID of the registry that currently has auto_add_card_transaction set to ALL.
         /// </summary>
         [JsonProperty(PropertyName = "registry_auto_add_card_transaction_enabled_id")]
         public int? RegistryAutoAddCardTransactionEnabledId { get; set; }
 
 
         /// <summary>
-        ///     Create a new Slice group.
+        /// Create a new Slice group.
         /// </summary>
         /// <param name="currency">The currency for the Registry as an ISO 4217 formatted currency code.</param>
         /// <param name="title">The title of the Registry.</param>
@@ -167,7 +165,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_LAST_REGISTRY_ENTRY_SEEN_ID, lastRegistryEntrySeenId},
                 {FIELD_PREVIOUS_UPDATED_TIMESTAMP, previousUpdatedTimestamp},
                 {FIELD_MEMBERSHIPS, memberships},
-                {FIELD_MEMBERSHIPS_PREVIOUS, membershipsPrevious}
+                {FIELD_MEMBERSHIPS_PREVIOUS, membershipsPrevious},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -178,7 +176,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Update a specific Slice group.
+        /// Update a specific Slice group.
         /// </summary>
         /// <param name="title">The title of the Registry.</param>
         /// <param name="description">A description about the Registry.</param>
@@ -204,7 +202,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_LAST_REGISTRY_ENTRY_SEEN_ID, lastRegistryEntrySeenId},
                 {FIELD_PREVIOUS_UPDATED_TIMESTAMP, previousUpdatedTimestamp},
                 {FIELD_MEMBERSHIPS, memberships},
-                {FIELD_MEMBERSHIPS_PREVIOUS, membershipsPrevious}
+                {FIELD_MEMBERSHIPS_PREVIOUS, membershipsPrevious},
             };
 
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -215,7 +213,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Get a listing of all Slice groups.
+        /// Get a listing of all Slice groups.
         /// </summary>
         public static BunqResponse<List<Registry>> List(IDictionary<string, string> urlParams = null,
             IDictionary<string, string> customHeaders = null)
@@ -231,7 +229,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Get a specific Slice group.
+        /// Get a specific Slice group.
         /// </summary>
         public static BunqResponse<Registry> Get(int registryId, IDictionary<string, string> customHeaders = null)
         {
@@ -245,7 +243,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         }
 
         /// <summary>
-        ///     Delete a specific Slice group.
+        /// Delete a specific Slice group.
         /// </summary>
         public static BunqResponse<object> Delete(int registryId, IDictionary<string, string> customHeaders = null)
         {
@@ -263,29 +261,65 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (Created != null) return false;
+            if (this.Created != null)
+            {
+                return false;
+            }
 
-            if (Updated != null) return false;
+            if (this.Updated != null)
+            {
+                return false;
+            }
 
-            if (Currency != null) return false;
+            if (this.Currency != null)
+            {
+                return false;
+            }
 
-            if (Title != null) return false;
+            if (this.Title != null)
+            {
+                return false;
+            }
 
-            if (Status != null) return false;
+            if (this.Status != null)
+            {
+                return false;
+            }
 
-            if (UnseenEntriesCount != null) return false;
+            if (this.UnseenEntriesCount != null)
+            {
+                return false;
+            }
 
-            if (TotalAmountSpent != null) return false;
+            if (this.TotalAmountSpent != null)
+            {
+                return false;
+            }
 
-            if (IsPreviouslySettled != null) return false;
+            if (this.IsPreviouslySettled != null)
+            {
+                return false;
+            }
 
-            if (Memberships != null) return false;
+            if (this.Memberships != null)
+            {
+                return false;
+            }
 
-            if (Setting != null) return false;
+            if (this.Setting != null)
+            {
+                return false;
+            }
 
-            if (RegistryAutoAddCardTransactionEnabledId != null) return false;
+            if (this.RegistryAutoAddCardTransactionEnabledId != null)
+            {
+                return false;
+            }
 
             return true;
         }

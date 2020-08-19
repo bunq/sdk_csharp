@@ -7,68 +7,67 @@ using Newtonsoft.Json;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    ///     List all the times a users payment was automatically allocated.
+    /// List all the times a users payment was automatically allocated.
     /// </summary>
     public class PaymentAutoAllocateInstance : BunqModel
     {
         /// <summary>
-        ///     Endpoint constants.
+        /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING =
             "user/{0}/monetary-account/{1}/payment-auto-allocate/{2}/instance";
-
         protected const string ENDPOINT_URL_READ =
             "user/{0}/monetary-account/{1}/payment-auto-allocate/{2}/instance/{3}";
 
         /// <summary>
-        ///     Object type.
+        /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "PaymentAutoAllocateInstance";
 
         /// <summary>
-        ///     The id of the PaymentAutoAllocateInstance.
+        /// The id of the PaymentAutoAllocateInstance.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
 
         /// <summary>
-        ///     The timestamp when the PaymentAutoAllocateInstance was created.
+        /// The timestamp when the PaymentAutoAllocateInstance was created.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
 
         /// <summary>
-        ///     The timestamp when the PaymentAutoAllocateInstance was last updated.
+        /// The timestamp when the PaymentAutoAllocateInstance was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
 
         /// <summary>
-        ///     The ID of the payment auto allocate this instance belongs to.
+        /// The ID of the payment auto allocate this instance belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "payment_auto_allocate_id")]
         public int? PaymentAutoAllocateId { get; set; }
 
         /// <summary>
-        ///     The status of the payment auto allocate instance. SUCCEEDED or FAILED.
+        /// The status of the payment auto allocate instance. SUCCEEDED or FAILED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        ///     The error message, if the payment auto allocating failed.
+        /// The error message, if the payment auto allocating failed.
         /// </summary>
         [JsonProperty(PropertyName = "error_message")]
         public List<Error> ErrorMessage { get; set; }
 
         /// <summary>
-        ///     The payment batch allocating all the payments.
+        /// The payment batch allocating all the payments.
         /// </summary>
         [JsonProperty(PropertyName = "payment_batch")]
         public PaymentBatch PaymentBatch { get; set; }
 
         /// <summary>
-        ///     The ID of the payment that triggered the allocating of the payments.
+        /// The ID of the payment that triggered the allocating of the payments.
         /// </summary>
         [JsonProperty(PropertyName = "payment_id")]
         public int? PaymentId { get; set; }
@@ -116,21 +115,45 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
-            if (Id != null) return false;
+            if (this.Id != null)
+            {
+                return false;
+            }
 
-            if (Created != null) return false;
+            if (this.Created != null)
+            {
+                return false;
+            }
 
-            if (Updated != null) return false;
+            if (this.Updated != null)
+            {
+                return false;
+            }
 
-            if (PaymentAutoAllocateId != null) return false;
+            if (this.PaymentAutoAllocateId != null)
+            {
+                return false;
+            }
 
-            if (Status != null) return false;
+            if (this.Status != null)
+            {
+                return false;
+            }
 
-            if (ErrorMessage != null) return false;
+            if (this.ErrorMessage != null)
+            {
+                return false;
+            }
 
-            if (PaymentBatch != null) return false;
+            if (this.PaymentBatch != null)
+            {
+                return false;
+            }
 
-            if (PaymentId != null) return false;
+            if (this.PaymentId != null)
+            {
+                return false;
+            }
 
             return true;
         }
