@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Object
             SetUpTestCase();
 
             string uri = OauthAuthorizationUri.Create(
-                OauthResponseType.CODE, TEST_REDIRECT_URI, new OauthClient(TEST_STATUS), TEST_STATE
+                OauthResponseType.CODE, TEST_REDIRECT_URI, new OauthClient {Status = TEST_STATUS}, TEST_STATE
             ).GetAuthorizationUri();
 
             Assert.Equal(TEST_EXPECT_URI, uri);

@@ -62,10 +62,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "callback_url")]
         public List<OauthCallbackUrl> CallbackUrl { get; set; }
 
-        public OauthClient(string status) {
-            Status = status;
-        }
-
         /// <summary>
         /// </summary>
         public static BunqResponse<OauthClient> Get(int oauthClientId, IDictionary<string, string> customHeaders = null)
