@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using Bunq.Sdk.Context;
 using Bunq.Sdk.Exception;
@@ -94,12 +96,31 @@ namespace Bunq.Sdk.Tests
             else
             {
                 var sandboxUser = GenerateNewSandboxUser();
-                apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, sandboxUser.ApiKey, DeviceDescription);
+                var allowedIps = GetAllowedIps();
+                apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, sandboxUser.ApiKey, DeviceDescription,
+                    allowedIps);
             }
             
             BunqContext.LoadApiContext(apiContext);
 
             return apiContext;
+        }
+
+        private static List<string> GetAllowedIps()
+        {
+            var environmentVariables = Environment.GetEnvironmentVariables();
+            if (environmentVariables.Contains("TRAVIS"))
+            {
+                return new List<string>
+                {
+                    "34.233.56.198", "34.234.4.53", "35.184.96.71", "35.184.226.236", "35.188.1.99", "35.188.73.34",
+                    "35.192.85.2", "35.192.136.167", "35.192.187.174", "35.193.7.13", "35.202.145.110",
+                    "35.224.112.202", "52.3.55.28", "52.45.185.117", "52.45.220.64", "52.54.31.11", "52.54.40.118",
+                    "54.208.31.17", "104.154.113.151", "104.154.120.187", "147.75.192.163", "147.75.198.203",
+                    "207.254.16.35", "207.254.16.36", "207.254.16.37", "207.254.16.38", "207.254.16.39"
+                };
+            }
+            return null;
         }
         
         private static SandboxUser GenerateNewSandboxUser()
