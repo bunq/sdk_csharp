@@ -9,12 +9,12 @@ namespace Bunq.Sdk.Context
     public class UserContext
     {
         /// <summary>
-        /// Error constatns.
+        /// Error constants.
         /// </summary>
         private const string ErrorUnexpectedUser = "\'\"{0}\" is unexpected user instance.\'";
-
         private const string ErrorNoActiveMonetaryAccountFound = "No active monetary account found.";
-        private const string ErrorPirmaryMonetaryAccountHasNotBeenLoaded = "Pirmary monetary account has not been loaded.";
+        private const string ErrorPirmaryMonetaryAccountHasNotBeenLoaded =
+            "Pirmary monetary account has not been loaded.";
         private const string MonetaryAccountStatusActive = "ACTIVE";
         private MonetaryAccountBank primaryMonetaryAccountBank;
 
@@ -73,6 +73,7 @@ namespace Bunq.Sdk.Context
             {
                 return;
             }
+
             var allMonetaryAccount = MonetaryAccountBank.List().Value;
 
             foreach (var accountBank in allMonetaryAccount)
@@ -100,7 +101,7 @@ namespace Bunq.Sdk.Context
         {
             return UserApiKey == null && UserCompany != null && UserPerson != null;
         }
-        
+
         public void RefreshUserContext()
         {
             SetUser(GetUserObject());

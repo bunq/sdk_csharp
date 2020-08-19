@@ -10,7 +10,7 @@ namespace Bunq.Sdk.Model.Core
         /// </summary>
         public static readonly OauthResponseType CODE = new OauthResponseType(RESPONSE_TYPE_CODE);
         private const string RESPONSE_TYPE_CODE = "code";
-        
+
         public string TypeString { get; private set; }
 
         private OauthResponseType(string typeString)

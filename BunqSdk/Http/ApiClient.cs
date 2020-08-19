@@ -16,9 +16,8 @@ namespace Bunq.Sdk.Http
 {
     public class ApiClient
     {
-        
         /// <summary>
-        /// Error constatns.
+        /// Error constants.
         /// </summary>
         private static string ERROR_COULD_NOT_DETERMINE_RESPONSE_ID_HEADER =
             "The response header \"X-Bunq-Client-Response-Id\" or \"x-bunq-client-response-id\" could not be found.";
@@ -157,7 +156,7 @@ namespace Bunq.Sdk.Http
             {
                 BunqContext.UpdateApiContext(apiContext);
             }
-            
+
             SetDefaultHeaders(requestMessage);
             SetHeaders(requestMessage, customHeaders);
             SetSessionHeaders(requestMessage);

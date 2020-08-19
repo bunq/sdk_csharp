@@ -17,7 +17,7 @@ namespace Bunq.Sdk.Tests.Context
         private const string ContextFilenameTest = "context-save-restore-test.conf";
 
         /// <summary>
-        /// Field constatns.
+        /// Field constants.
         /// </summary>
         private const string FieldSessionContext = "session_context";
         private const string FieldExpiryTime = "expiry_time";

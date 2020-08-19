@@ -93,7 +93,7 @@ namespace Bunq.Sdk.Json
                     paginationBody[idField] = int.Parse(param.Value);
                 }
                 else if (Pagination.PARAM_COUNT.Equals(param.Key) &&
-                    !paginationBody.ContainsKey(Pagination.PARAM_COUNT))
+                         !paginationBody.ContainsKey(Pagination.PARAM_COUNT))
                 {
                     paginationBody[Pagination.PARAM_COUNT] = int.Parse(param.Value);
                 }

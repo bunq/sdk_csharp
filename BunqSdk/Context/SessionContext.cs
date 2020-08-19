@@ -35,7 +35,7 @@ namespace Bunq.Sdk.Context
         /// </summary>
         [JsonProperty(PropertyName = "expiry_time")]
         public DateTime ExpiryTime { get; private set; }
-        
+
         [JsonProperty(PropertyName = "user_id")]
         public int UserId { get; private set; }
 
@@ -56,19 +56,19 @@ namespace Bunq.Sdk.Context
             if (sessionServer.UserCompany != null)
             {
                 Debug.Assert(sessionServer.UserCompany.Id != null, ErrorSessionserverUsercompanyIdNull);
-                
+
                 return sessionServer.UserCompany.Id.Value;
             }
             else if (sessionServer.UserPerson != null)
             {
                 Debug.Assert(sessionServer.UserPerson.Id != null, ErrorsessionserverUserpersonIdNull);
-                
+
                 return sessionServer.UserPerson.Id.Value;
             }
             else if (sessionServer.UserApiKey != null)
             {
                 Debug.Assert(sessionServer.UserApiKey.Id != null, ErrorSessionserverUserapikeyIdNull);
-                
+
                 return sessionServer.UserApiKey.Id.Value;
             }
             else if (sessionServer.UserPaymentServiceProvider != null)
@@ -77,7 +77,7 @@ namespace Bunq.Sdk.Context
                     sessionServer.UserPaymentServiceProvider.Id != null,
                     ErrorSessionserverUserpaymentserviceproviderkeyIdNull
                 );
-                
+
                 return sessionServer.UserPaymentServiceProvider.Id.Value;
             }
             else
@@ -116,7 +116,7 @@ namespace Bunq.Sdk.Context
 
             if (user.GetType() == typeof(UserPerson))
             {
-               sessionTimeout = ((UserPerson) user).SessionTimeout;
+                sessionTimeout = ((UserPerson) user).SessionTimeout;
             }
             else if (user.GetType() == typeof(UserCompany))
             {
@@ -145,6 +145,5 @@ namespace Bunq.Sdk.Context
                 return (double) sessionTimeout;
             }
         }
-        
     }
 }

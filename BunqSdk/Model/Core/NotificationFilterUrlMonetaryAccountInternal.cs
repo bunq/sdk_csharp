@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Model.Core
         /// <summary>
         /// Field constants.
         /// </summary>
-        private const String OBJECT_TYPE_GET = "NotificationFilterUrl";
+        private const string OBJECT_TYPE_GET = "NotificationFilterUrl";
 
         /// <summary>
         /// Create notification filters with list response type.
@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Model.Core
         {
             return CreateWithListResponse(null, new List<NotificationFilterUrl>(), null);
         }
-        
+
         /// <summary>
         /// Create notification filters with list response type.
         /// </summary>
@@ -40,21 +40,25 @@ namespace Bunq.Sdk.Model.Core
         public static BunqResponse<List<NotificationFilterUrl>> CreateWithListResponse(
             int? monetaryAccountId,
             List<NotificationFilterUrl> allNotificationFilter,
-            Dictionary<String, String> customHeaders
-        ) {
+            Dictionary<string, string> customHeaders
+        )
+        {
             ApiClient apiClient = new ApiClient(GetApiContext());
 
             if (customHeaders == null)
             {
                 customHeaders = new Dictionary<string, string>();
             }
-            
+
             Dictionary<string, object> requestMap = new Dictionary<string, object>();
             requestMap.Add(FIELD_NOTIFICATION_FILTERS, allNotificationFilter);
-            
+
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId)), requestBytes, customHeaders);
-            
+            var responseRaw =
+                apiClient.Post(
+                    string.Format(ENDPOINT_URL_CREATE, DetermineUserId(),
+                        DetermineMonetaryAccountId(monetaryAccountId)), requestBytes, customHeaders);
+
             return FromJsonList<NotificationFilterUrl>(responseRaw, OBJECT_TYPE_GET);
         }
     }

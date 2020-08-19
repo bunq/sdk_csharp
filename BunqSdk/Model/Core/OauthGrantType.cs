@@ -10,7 +10,7 @@ namespace Bunq.Sdk.Model.Core
         /// </summary>
         public static readonly OauthGrantType AUTHORIZATION_CODE = new OauthGrantType(GRANT_TYPE_AUTHORIZATION_CODE);
         private const string GRANT_TYPE_AUTHORIZATION_CODE = "authorization_code";
-        
+
         public string TypeString { get; private set; }
 
         private OauthGrantType(string typeString)
