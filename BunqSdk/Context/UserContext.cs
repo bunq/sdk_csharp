@@ -31,11 +31,10 @@ namespace Bunq.Sdk.Context
 
         public int UserId { get; }
 
-        public UserContext(int userId)
+        public UserContext(int userId, BunqModel user)
         {
             UserId = userId;
-
-            this.SetUser(GetUserObject());
+            SetUser(user);
         }
 
         private static BunqModel GetUserObject()
