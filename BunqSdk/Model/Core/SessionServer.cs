@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using Bunq.Sdk.Context;
+using Bunq.Sdk.Exception;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Generated.Endpoint;
@@ -9,6 +10,11 @@ namespace Bunq.Sdk.Model.Core
 {
     public class SessionServer : BunqModel
     {
+        /// <summary>
+        /// Error constants.
+        /// </summary>
+        protected const string ERROR_ALL_FIELD_NULL = "All fields of an extended model or object are null.";
+        
         /// <summary>
         /// Endpoint name.
         /// </summary>
@@ -77,25 +83,39 @@ namespace Bunq.Sdk.Model.Core
 
             return Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(sessionServerRequestBody));
         }
+        
+        public BunqModel GetReferencedUser() {
+            if (UserCompany == null && UserApiKey == null && UserPerson != null && UserPaymentServiceProvider == null) {
+                return UserPerson;
+            } else if (UserPerson == null && UserApiKey == null && UserCompany != null && UserPaymentServiceProvider == null) {
+                return UserCompany;
+            } else if (UserPerson == null && UserCompany == null && UserApiKey != null && UserPaymentServiceProvider == null) {
+                return UserApiKey;
+            } else if (UserPerson == null && UserCompany == null && UserApiKey == null && UserPaymentServiceProvider != null) {
+                return UserPaymentServiceProvider;
+            } else {
+                throw new BunqException(ERROR_ALL_FIELD_NULL);
+            }
+        }
 
         public override bool IsAllFieldNull()
         {
-            if (this.Id != null)
+            if (Id != null)
             {
                 return false;
             }
 
-            if (this.SessionToken != null)
+            if (SessionToken != null)
             {
                 return false;
             }
 
-            if (this.UserCompany != null)
+            if (UserCompany != null)
             {
                 return false;
             }
 
-            if (this.UserPerson != null)
+            if (UserPerson != null)
             {
                 return false;
             }

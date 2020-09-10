@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Context
     public class SessionContext
     {
         /// <summary>
-        /// Error constatns.
+        /// Error constants.
         /// </summary>
         private const string ErrorCouldNotDetermineUserId = "Could not determine user id.";
         private const string ErrorSessionserverUserapikeyIdNull = "sessionServer.UserApiKey.Id != null";
@@ -38,6 +38,8 @@ namespace Bunq.Sdk.Context
 
         [JsonProperty(PropertyName = "user_id")]
         public int UserId { get; private set; }
+        
+        public BunqModel User { get; private set; }
 
         [JsonConstructor]
         private SessionContext()
@@ -49,6 +51,7 @@ namespace Bunq.Sdk.Context
             Token = sessionServer.SessionToken.Token;
             ExpiryTime = DateTime.Now.AddSeconds(GetSessionTimeout(sessionServer));
             UserId = GetUserId(sessionServer);
+            User = sessionServer.GetReferencedUser();
         }
 
         private static int GetUserId(SessionServer sessionServer)
