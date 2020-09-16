@@ -93,8 +93,8 @@ namespace Bunq.Sdk.Tests
             }
             else
             {
-                var sandboxUser = GenerateNewSandboxUser();
-                apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, sandboxUser.ApiKey, DeviceDescription);
+                var sandboxUserPerson = GenerateNewSandboxUserPerson();
+                apiContext = ApiContext.Create(ApiEnvironmentType.SANDBOX, sandboxUserPerson.ApiKey, DeviceDescription);
             }
 
             BunqContext.LoadApiContext(apiContext);
@@ -102,7 +102,7 @@ namespace Bunq.Sdk.Tests
             return apiContext;
         }
 
-        private static SandboxUser GenerateNewSandboxUser()
+        private static SandboxUserPerson GenerateNewSandboxUserPerson()
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("X-Bunq-Client-Request-Id", "unique");
@@ -112,14 +112,15 @@ namespace Bunq.Sdk.Tests
             httpClient.DefaultRequestHeaders.Add("X-Bunq-Region", "en_US");
             httpClient.DefaultRequestHeaders.Add("User-Agent", "sdk_csharp_test_case");
 
-            var requestTask = httpClient.PostAsync(ApiEnvironmentType.SANDBOX.BaseUri + "sandbox-user", null);
+            var requestTask = httpClient.PostAsync(ApiEnvironmentType.SANDBOX.BaseUri + "sandbox-user-person", null);
             requestTask.Wait();
 
             var responseString = requestTask.Result.Content.ReadAsStringAsync().Result;
             var responseJson = BunqJsonConvert.DeserializeObject<JObject>(responseString);
 
-            return BunqJsonConvert.DeserializeObject<SandboxUser>(responseJson.First.First.First.First.First
-                .ToString());
+            return BunqJsonConvert.DeserializeObject<SandboxUserPerson>(
+                responseJson.First.First.First.First.First.ToString()
+            );
         }
 
         private static MonetaryAccountBank SetUpSecondMonetaryAccount()
