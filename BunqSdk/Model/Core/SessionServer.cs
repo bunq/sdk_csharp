@@ -13,12 +13,12 @@ namespace Bunq.Sdk.Model.Core
         /// <summary>
         /// Error constants.
         /// </summary>
-        protected const string ERROR_ALL_FIELD_NULL = "All fields of an extended model or object are null.";
+        private const string FIELD_ERROR_ALL_FIELD_NULL = "All fields of an extended model or object are null.";
         
         /// <summary>
         /// Endpoint name.
         /// </summary>
-        protected const string ENDPOINT_URL_POST = "session-server";
+        private const string FIELD_ENDPOINT_URL_POST = "session-server";
 
         /// <summary>
         /// Field constants.
@@ -72,7 +72,7 @@ namespace Bunq.Sdk.Model.Core
         {
             var apiClient = new ApiClient(apiContext);
             var requestBytes = GenerateRequestBodyBytes(apiContext.ApiKey);
-            var responseRaw = apiClient.Post(ENDPOINT_URL_POST, requestBytes, new Dictionary<string, string>());
+            var responseRaw = apiClient.Post(FIELD_ENDPOINT_URL_POST, requestBytes, new Dictionary<string, string>());
 
             return FromJsonArrayNested<SessionServer>(responseRaw);
         }
@@ -84,20 +84,6 @@ namespace Bunq.Sdk.Model.Core
             return Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(sessionServerRequestBody));
         }
         
-        public BunqModel GetReferencedUser() {
-            if (UserCompany == null && UserApiKey == null && UserPerson != null && UserPaymentServiceProvider == null) {
-                return UserPerson;
-            } else if (UserPerson == null && UserApiKey == null && UserCompany != null && UserPaymentServiceProvider == null) {
-                return UserCompany;
-            } else if (UserPerson == null && UserCompany == null && UserApiKey != null && UserPaymentServiceProvider == null) {
-                return UserApiKey;
-            } else if (UserPerson == null && UserCompany == null && UserApiKey == null && UserPaymentServiceProvider != null) {
-                return UserPaymentServiceProvider;
-            } else {
-                throw new BunqException(ERROR_ALL_FIELD_NULL);
-            }
-        }
-
         public override bool IsAllFieldNull()
         {
             if (Id != null)
@@ -121,6 +107,27 @@ namespace Bunq.Sdk.Model.Core
             }
 
             return true;
+        }
+        
+        public BunqModel GetUserReference()
+        {
+            if (UserCompany == null && UserApiKey == null && UserPerson != null && UserPaymentServiceProvider == null) {
+                return UserPerson;
+            }
+
+            if (UserPerson == null && UserApiKey == null && UserCompany != null && UserPaymentServiceProvider == null) {
+                return UserCompany;
+            }
+
+            if (UserPerson == null && UserCompany == null && UserApiKey != null && UserPaymentServiceProvider == null) {
+                return UserApiKey;
+            }
+
+            if (UserPerson == null && UserCompany == null && UserApiKey == null && UserPaymentServiceProvider != null) {
+                return UserPaymentServiceProvider;
+            }
+
+            throw new BunqException(FIELD_ERROR_ALL_FIELD_NULL);
         }
     }
 }

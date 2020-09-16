@@ -19,7 +19,7 @@ namespace Bunq.Sdk.Tests
         /// <summary>
         /// Error constants.
         /// </summary>
-        private const string ErrorCouldNotDetermineUserAlias = "Could not determine user alias.";
+        private const string FIELD_ERROR_COULD_NOT_DETERMINE_USER_ALIAS = "Could not determine user alias.";
 
         /// <summary>
         /// Name of the context configuration file.
@@ -161,14 +161,13 @@ namespace Bunq.Sdk.Tests
             {
                 return userContext.UserPerson.Alias.First();
             }
-            else if (userContext.IsOnlyUserCompanySet())
+
+            if (userContext.IsOnlyUserCompanySet())
             {
                 return userContext.UserCompany.Alias.First();
             }
-            else
-            {
-                throw new BunqException(ErrorCouldNotDetermineUserAlias);
-            }
+
+            throw new BunqException(FIELD_ERROR_COULD_NOT_DETERMINE_USER_ALIAS);
         }
     }
 }

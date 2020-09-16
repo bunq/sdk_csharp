@@ -24,7 +24,19 @@ These are the scenarios that are currently being tested:
 * Order a card with a second line
 
 Besides these scenarios, some code of ApiContext, ApiClient and the JSON module 
-are also tested :thumbs_up:.
+are also tested.
+
+## Installation
+To run the tests, you must first generate a `key.pem` and a `credentials.pfx`. 
+Navigate to the `/Resources` directory and execute the following the commands:
+
+```
+ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out chain.cert -days 365 -nodes -subj '/CN=My Test App PISP AISP/C=NL
+ openssl pkcs12 -inkey key.pem -in chain.cert -export -out credentials.pfx 
+```
+
+You will be requested to enter a passphrase. 
+Use the passphrase `secret` (as is defined in [`Psd2ApiContextTest.cs`](./BunqSdkCsharpTest/Context/Psd2ApiContextTest.cs)).
 
 ## Configuration
 To run the tests you must first setup the test configuration JSON. The example
