@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Tests
             return GetConfig()[FIELD_MONETARY_ACCOUNT_ID2].ToObject<int>();
         }
 
-        public static int GetMonetarytAccountId()
+        public static int GetMonetaryAccountId()
         {
             return GetConfig()[FIELD_MONETARY_ACCOUNT_ID].ToObject<int>();
         }
@@ -72,7 +72,7 @@ namespace Bunq.Sdk.Tests
             return GetConfig()[FIELD_ATTACHMENT_PUBLIC_TEST][FIELD_ATTACHMENT_PATH_IN].ToString();
         }
 
-        public static string GetAttachmentDescrpition()
+        public static string GetAttachmentDescription()
         {
             return GetConfig()[FIELD_ATTACHMENT_PUBLIC_TEST][FIELD_ATTACHMENT_DESCRIPTION].ToString();
         }

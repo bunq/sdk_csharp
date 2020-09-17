@@ -31,6 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_UBO = "ubo";
         public const string FIELD_CHAMBER_OF_COMMERCE_NUMBER = "chamber_of_commerce_number";
         public const string FIELD_LEGAL_FORM = "legal_form";
+        public const string FIELD_SUBSCRIPTION_TYPE = "subscription_type";
         public const string FIELD_AVATAR_UUID = "avatar_uuid";
 
         /// <summary>
@@ -81,6 +82,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string LegalForm { get; set; }
 
         /// <summary>
+        /// The subscription type for the company.
+        /// </summary>
+        [JsonProperty(PropertyName = "subscription_type")]
+        public string SubscriptionType { get; set; }
+
+        /// <summary>
         /// The public UUID of the company's avatar.
         /// </summary>
         [JsonProperty(PropertyName = "avatar_uuid")]
@@ -101,10 +108,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="legalForm">The company's legal form.</param>
         /// <param name="ubo">The names and birth dates of the company's ultimate beneficiary owners. Minimum zero, maximum four.</param>
         /// <param name="chamberOfCommerceNumber">The company's chamber of commerce number.</param>
+        /// <param name="subscriptionType">The subscription type for the company.</param>
         /// <param name="avatarUuid">The public UUID of the company's avatar.</param>
         public static BunqResponse<int> Create(string name, Address addressMain, Address addressPostal, string country,
-            string legalForm, List<Ubo> ubo = null, string chamberOfCommerceNumber = null, string avatarUuid = null,
-            IDictionary<string, string> customHeaders = null)
+            string legalForm, List<Ubo> ubo = null, string chamberOfCommerceNumber = null,
+            string subscriptionType = null, string avatarUuid = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
 
@@ -119,6 +127,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 {FIELD_UBO, ubo},
                 {FIELD_CHAMBER_OF_COMMERCE_NUMBER, chamberOfCommerceNumber},
                 {FIELD_LEGAL_FORM, legalForm},
+                {FIELD_SUBSCRIPTION_TYPE, subscriptionType},
                 {FIELD_AVATAR_UUID, avatarUuid},
             };
 

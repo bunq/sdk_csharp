@@ -49,7 +49,9 @@ namespace Bunq.Sdk.Context
         public static void LoadApiContext(ApiContext apiContextToLoad)
         {
             ApiContext = apiContextToLoad;
-            UserContext = new UserContext(apiContextToLoad.SessionContext.UserId);
+            UserContext = new UserContext(
+                apiContextToLoad.SessionContext.UserId,
+                apiContextToLoad.SessionContext.GetUserReference());
             UserContext.InitPrimaryMonetaryAccount();
         }
 

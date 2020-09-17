@@ -13,16 +13,17 @@ namespace Bunq.Sdk.Context
     public class SessionContext
     {
         /// <summary>
-        /// Error constatns.
+        /// Error constants.
         /// </summary>
-        private const string ErrorCouldNotDetermineUserId = "Could not determine user id.";
-        private const string ErrorSessionserverUserapikeyIdNull = "sessionServer.UserApiKey.Id != null";
-        private const string ErrorSessionserverUserpaymentserviceproviderkeyIdNull =
+        private const string FIELD_ERROR_COULD_NOT_DETERMINE_USER_ID = "Could not determine user id.";
+        private const string FIELD_ERROR_SESSION_SERVER_USER_API_KEY_ID_NULL = "sessionServer.UserApiKey.Id != null";
+        private const string FIELD_ERROR_SESSION_SERVER_USER_PAYMENT_SERVICE_PROVIDER_KEY_ID_NULL =
             "sessionServer.UserPaymentServiceProvider.Id != null";
-        private const string ErrorSessionserverUsercompanyIdNull = "sessionServer.UserCompany.Id != null";
-        private const string ErrorsessionserverUserpersonIdNull = "sessionServer.UserPerson.Id != null";
-        private const string ErrorCouldNotDetermineSessionTimeout = "Could not determine session timeout.";
-        private const string ErrorSessionTimeoutIsNull = "Session timeout is null.";
+        private const string FIELD_ERROR_SESSION_SERVER_USER_COMPANY_ID_NULL = "sessionServer.UserCompany.Id != null";
+        private const string FIELD_ERROR_SESSION_SERVER_USER_PERSON_ID_NULL = "sessionServer.UserPerson.Id != null";
+        private const string FIELD_ERROR_COULD_NOT_DETERMINE_SESSION_TIMEOUT = "Could not determine session timeout.";
+        private const string FIELD_ERROR_SESSION_TIMEOUT_IS_NULL = "Session timeout is null.";
+        private const string FIELD_ERROR_ALL_FIELD_NULL = "All fields of an extended model or object are null.";
 
         /// <summary>
         /// Session token returned as a response to POST /session-server.
@@ -39,6 +40,18 @@ namespace Bunq.Sdk.Context
         [JsonProperty(PropertyName = "user_id")]
         public int UserId { get; private set; }
 
+        [JsonProperty(PropertyName = "user_person")]
+        public UserPerson UserPerson { get; private set; }
+
+        [JsonProperty(PropertyName = "user_company")]
+        public UserCompany UserCompany { get; private set; }
+
+        [JsonProperty(PropertyName = "user_api_key")]
+        public UserApiKey UserApiKey { get; private set; }
+
+        [JsonProperty(PropertyName = "user_payment_service_provider")]
+        public UserPaymentServiceProvider UserPaymentServiceProvider { get; private set; }
+
         [JsonConstructor]
         private SessionContext()
         {
@@ -49,41 +62,70 @@ namespace Bunq.Sdk.Context
             Token = sessionServer.SessionToken.Token;
             ExpiryTime = DateTime.Now.AddSeconds(GetSessionTimeout(sessionServer));
             UserId = GetUserId(sessionServer);
+            SetUser(sessionServer.GetUserReference());
+        }
+
+        private void SetUser(BunqModel user)
+        {
+            if (user.GetType() == typeof(UserPerson))
+            {
+                UserPerson = (UserPerson) user;
+            }
+            else if (user.GetType() == typeof(UserCompany))
+            {
+                UserCompany = (UserCompany) user;
+            }
+            else if (user.GetType() == typeof(UserApiKey))
+            {
+                UserApiKey = (UserApiKey) user;
+            }
+            else if (user.GetType() == typeof(UserPaymentServiceProvider))
+            {
+                UserPaymentServiceProvider = (UserPaymentServiceProvider) user;
+            }
+            else
+            {
+                throw new BunqException(FIELD_ERROR_COULD_NOT_DETERMINE_SESSION_TIMEOUT);
+            }
         }
 
         private static int GetUserId(SessionServer sessionServer)
         {
             if (sessionServer.UserCompany != null)
             {
-                Debug.Assert(sessionServer.UserCompany.Id != null, ErrorSessionserverUsercompanyIdNull);
+                Debug.Assert(sessionServer.UserCompany.Id != null,
+                    FIELD_ERROR_SESSION_SERVER_USER_COMPANY_ID_NULL);
 
                 return sessionServer.UserCompany.Id.Value;
             }
-            else if (sessionServer.UserPerson != null)
+
+            if (sessionServer.UserPerson != null)
             {
-                Debug.Assert(sessionServer.UserPerson.Id != null, ErrorsessionserverUserpersonIdNull);
+                Debug.Assert(sessionServer.UserPerson.Id != null,
+                    FIELD_ERROR_SESSION_SERVER_USER_PERSON_ID_NULL);
 
                 return sessionServer.UserPerson.Id.Value;
             }
-            else if (sessionServer.UserApiKey != null)
+
+            if (sessionServer.UserApiKey != null)
             {
-                Debug.Assert(sessionServer.UserApiKey.Id != null, ErrorSessionserverUserapikeyIdNull);
+                Debug.Assert(sessionServer.UserApiKey.Id != null,
+                    FIELD_ERROR_SESSION_SERVER_USER_API_KEY_ID_NULL);
 
                 return sessionServer.UserApiKey.Id.Value;
             }
-            else if (sessionServer.UserPaymentServiceProvider != null)
+
+            if (sessionServer.UserPaymentServiceProvider != null)
             {
                 Debug.Assert(
                     sessionServer.UserPaymentServiceProvider.Id != null,
-                    ErrorSessionserverUserpaymentserviceproviderkeyIdNull
+                    FIELD_ERROR_SESSION_SERVER_USER_PAYMENT_SERVICE_PROVIDER_KEY_ID_NULL
                 );
 
                 return sessionServer.UserPaymentServiceProvider.Id.Value;
             }
-            else
-            {
-                throw new BunqException(ErrorCouldNotDetermineUserId);
-            }
+
+            throw new BunqException(FIELD_ERROR_COULD_NOT_DETERMINE_USER_ID);
         }
 
         private static double GetSessionTimeout(SessionServer sessionServer)
@@ -92,22 +134,23 @@ namespace Bunq.Sdk.Context
             {
                 return GetSessionTimeOutForUser(sessionServer.UserApiKey.RequestedByUser.GetReferencedObject());
             }
-            else if (sessionServer.UserCompany != null)
+
+            if (sessionServer.UserCompany != null)
             {
                 return GetSessionTimeOutForUser(sessionServer.UserCompany);
             }
-            else if (sessionServer.UserPerson != null)
+
+            if (sessionServer.UserPerson != null)
             {
                 return GetSessionTimeOutForUser(sessionServer.UserPerson);
             }
-            else if (sessionServer.UserPaymentServiceProvider != null)
+
+            if (sessionServer.UserPaymentServiceProvider != null)
             {
                 return GetSessionTimeOutForUser(sessionServer.UserPaymentServiceProvider);
             }
-            else
-            {
-                throw new BunqException(ErrorCouldNotDetermineSessionTimeout);
-            }
+
+            throw new BunqException(FIELD_ERROR_COULD_NOT_DETERMINE_SESSION_TIMEOUT);
         }
 
         private static double GetSessionTimeOutForUser(BunqModel user)
@@ -128,7 +171,7 @@ namespace Bunq.Sdk.Context
             }
             else
             {
-                throw new BunqException(ErrorCouldNotDetermineSessionTimeout);
+                throw new BunqException(FIELD_ERROR_COULD_NOT_DETERMINE_SESSION_TIMEOUT);
             }
 
             return GetDoubleFromSessionTimeout(sessionTimeout);
@@ -138,12 +181,38 @@ namespace Bunq.Sdk.Context
         {
             if (sessionTimeout == null)
             {
-                throw new BunqException(ErrorSessionTimeoutIsNull);
+                throw new BunqException(FIELD_ERROR_SESSION_TIMEOUT_IS_NULL);
             }
-            else
+
+            return (double) sessionTimeout;
+        }
+
+        public BunqModel GetUserReference()
+        {
+            if (UserCompany == null && UserApiKey == null && UserPerson != null && UserPaymentServiceProvider == null)
             {
-                return (double) sessionTimeout;
+                return UserPerson;
             }
+
+            if (UserPerson == null && UserApiKey == null && UserCompany != null &&
+                UserPaymentServiceProvider == null)
+            {
+                return UserCompany;
+            }
+
+            if (UserPerson == null && UserCompany == null && UserApiKey != null &&
+                UserPaymentServiceProvider == null)
+            {
+                return UserApiKey;
+            }
+
+            if (UserPerson == null && UserCompany == null && UserApiKey == null &&
+                UserPaymentServiceProvider != null)
+            {
+                return UserPaymentServiceProvider;
+            }
+
+            throw new BunqException(FIELD_ERROR_ALL_FIELD_NULL);
         }
     }
 }
