@@ -1,5 +1,6 @@
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -12,21 +13,22 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "ShareDetailPayment")]
         public ShareDetailPayment Payment { get; set; }
-
+    
         /// <summary>
         /// The share details for viewing a share. In the response 'read_only' is replaced by 'ShareDetailReadOnly'.
         /// </summary>
         [JsonProperty(PropertyName = "ShareDetailReadOnly")]
         public ShareDetailReadOnly ReadOnly { get; set; }
-
+    
         /// <summary>
         /// The share details for a draft payment share. In the response 'draft_payment' is replaced by
         /// 'ShareDetailDraftPayment'.
         /// </summary>
         [JsonProperty(PropertyName = "ShareDetailDraftPayment")]
         public ShareDetailDraftPayment DraftPayment { get; set; }
-
-
+    
+    
+    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -35,25 +37,25 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-
+    
             if (this.ReadOnly != null)
             {
                 return false;
             }
-
+    
             if (this.DraftPayment != null)
             {
                 return false;
             }
-
+    
             return true;
         }
-
+    
         /// <summary>
         /// </summary>
         public static ShareDetail CreateFromJsonString(string json)
         {
-            return CreateFromJsonString<ShareDetail>(json);
+            return BunqModel.CreateFromJsonString<ShareDetail>(json);
         }
     }
 }
