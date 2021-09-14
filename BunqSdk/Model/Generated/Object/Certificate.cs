@@ -1,5 +1,6 @@
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -12,13 +13,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "certificate")]
         public string CertificateString { get; set; }
-
+    
         public Certificate(string certificateString)
         {
             CertificateString = certificateString;
         }
-
-
+    
+    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -27,15 +28,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-
+    
             return true;
         }
-
+    
         /// <summary>
         /// </summary>
         public static Certificate CreateFromJsonString(string json)
         {
-            return CreateFromJsonString<Certificate>(json);
+            return BunqModel.CreateFromJsonString<Certificate>(json);
         }
     }
 }

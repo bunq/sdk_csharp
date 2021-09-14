@@ -1,7 +1,11 @@
-using System.Collections.Generic;
+using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
+using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -14,41 +18,39 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_LISTING = "user/{0}/mastercard-action-green-aggregation";
-
+    
         /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "MasterCardActionGreenAggregation";
-
+    
         /// <summary>
         /// The date of the aggregation.
         /// </summary>
         [JsonProperty(PropertyName = "date")]
         public string Date { get; set; }
-
+    
         /// <summary>
         /// The percentage of card payments that were done with a Green Card.
         /// </summary>
         [JsonProperty(PropertyName = "percentage")]
         public string Percentage { get; set; }
-
-
+    
+    
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<MasterCardActionGreenAggregation>> List(
-            IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<MasterCardActionGreenAggregation>> List( IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-
+    
             var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams,
-                customHeaders);
-
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams, customHeaders);
+    
             return FromJsonList<MasterCardActionGreenAggregation>(responseRaw, OBJECT_TYPE_GET);
         }
-
-
+    
+    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -57,20 +59,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             {
                 return false;
             }
-
+    
             if (this.Percentage != null)
             {
                 return false;
             }
-
+    
             return true;
         }
-
+    
         /// <summary>
         /// </summary>
         public static MasterCardActionGreenAggregation CreateFromJsonString(string json)
         {
-            return CreateFromJsonString<MasterCardActionGreenAggregation>(json);
+            return BunqModel.CreateFromJsonString<MasterCardActionGreenAggregation>(json);
         }
     }
 }
