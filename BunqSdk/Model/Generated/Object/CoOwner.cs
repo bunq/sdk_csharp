@@ -21,7 +21,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         public string Status { get; set; }
     
     
-        public CoOwner(MonetaryAccountReference alias)
+        public CoOwner(LabelUser alias)
         {
             Alias = alias;
         }
