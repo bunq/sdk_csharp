@@ -229,6 +229,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
     
         /// <summary>
+        /// A reference to the Refunds if they exist.
+        /// </summary>
+        [JsonProperty(PropertyName = "all_mastercard_action_refund")]
+        public List<MasterCardActionRefund> AllMastercardActionRefund { get; set; }
+    
+        /// <summary>
         /// The Card Presence type of the POS.
         /// </summary>
         [JsonProperty(PropertyName = "pos_card_presence")]
@@ -438,6 +444,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.RequestReferenceSplitTheBill != null)
+            {
+                return false;
+            }
+    
+            if (this.AllMastercardActionRefund != null)
             {
                 return false;
             }

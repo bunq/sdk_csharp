@@ -76,7 +76,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The user who cancelled the share if it has been revoked or rejected.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_cancelled")]
-        public LabelUser UserAliasCancelled { get; set; }
+        public MonetaryAccountReference UserAliasCancelled { get; set; }
     
         /// <summary>
         /// The id of the monetary account the ACCEPTED share applies to. null otherwise.

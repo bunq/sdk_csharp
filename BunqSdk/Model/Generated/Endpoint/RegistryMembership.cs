@@ -70,7 +70,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The label of the user that sent the invite.
         /// </summary>
         [JsonProperty(PropertyName = "invitor")]
-        public LabelUser Invitor { get; set; }
+        public MonetaryAccountReference Invitor { get; set; }
     
     
     

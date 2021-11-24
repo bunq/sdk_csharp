@@ -46,7 +46,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The label of the user to share with.
         /// </summary>
         [JsonProperty(PropertyName = "counter_user_alias")]
-        public LabelUser CounterUserAlias { get; set; }
+        public MonetaryAccountReference CounterUserAlias { get; set; }
     
         /// <summary>
         /// The id of the draft share invite bank.
@@ -102,13 +102,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The user who created the share.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
-        public LabelUser UserAliasCreated { get; set; }
+        public MonetaryAccountReference UserAliasCreated { get; set; }
     
         /// <summary>
         /// The user who revoked the share.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_revoked")]
-        public LabelUser UserAliasRevoked { get; set; }
+        public MonetaryAccountReference UserAliasRevoked { get; set; }
     
         /// <summary>
         /// The id of the monetary account the share applies to.

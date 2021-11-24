@@ -101,7 +101,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="tabAttachment">A list of AttachmentTab attached to the TabItem.</param>
         /// <param name="quantity">The quantity of the TabItem. Formatted as a number containing up to 15 digits, up to 15 decimals and using a dot.</param>
         /// <param name="amount">The money amount of the TabItem. Will not change the value of the corresponding Tab.</param>
-        public static BunqResponse<int> Create(int cashRegisterId, string tabUuid, string description, int? monetaryAccountId= null, string eanCode = null, string avatarAttachmentUuid = null, List<int?> tabAttachment = null, string quantity = null, Amount amount = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Create(int cashRegisterId, string tabUuid, string description, int? monetaryAccountId= null, string eanCode = null, string avatarAttachmentUuid = null, List<TabAttachment> tabAttachment = null, string quantity = null, Amount amount = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -132,7 +132,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="tabAttachment">A list of AttachmentTab attached to the TabItem.</param>
         /// <param name="quantity">The quantity of the TabItem. Formatted as a number containing up to 15 digits, up to 15 decimals and using a dot.</param>
         /// <param name="amount">The money amount of the TabItem. Will not change the value of the corresponding Tab.</param>
-        public static BunqResponse<int> Update(int cashRegisterId, string tabUuid, int tabItemShopId, int? monetaryAccountId= null, string description = null, string eanCode = null, string avatarAttachmentUuid = null, List<int?> tabAttachment = null, string quantity = null, Amount amount = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(int cashRegisterId, string tabUuid, int tabItemShopId, int? monetaryAccountId= null, string description = null, string eanCode = null, string avatarAttachmentUuid = null, List<TabAttachment> tabAttachment = null, string quantity = null, Amount amount = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

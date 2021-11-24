@@ -81,7 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Fields of the external model which we have stored so we know what they were at the time of the event.
         /// </summary>
         [JsonProperty(PropertyName = "object_data_at_event")]
-        public BunqModel ObjectDataAtEvent { get; set; }
+        public EventObject ObjectDataAtEvent { get; set; }
     
         /// <summary>
         /// Indicator whether this is the latest event for the object.

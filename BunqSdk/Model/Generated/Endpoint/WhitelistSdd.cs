@@ -19,9 +19,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Endpoint constants.
         /// </summary>
         protected const string ENDPOINT_URL_READ = "user/{0}/whitelist-sdd/{1}";
-        protected const string ENDPOINT_URL_CREATE = "user/{0}/whitelist-sdd";
-        protected const string ENDPOINT_URL_UPDATE = "user/{0}/whitelist-sdd/{1}";
-        protected const string ENDPOINT_URL_DELETE = "user/{0}/whitelist-sdd/{1}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/whitelist-sdd";
     
         /// <summary>
@@ -100,7 +97,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The user who created the whitelist entry.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
-        public LabelUser UserAliasCreated { get; set; }
+        public MonetaryAccountReference UserAliasCreated { get; set; }
     
     
         /// <summary>
@@ -114,65 +111,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId(), whitelistSddId), new Dictionary<string, string>(), customHeaders);
     
             return FromJson<WhitelistSdd>(responseRaw);
-        }
-    
-        /// <summary>
-        /// Create a new recurring SDD whitelist entry.
-        /// </summary>
-        /// <param name="monetaryAccountPayingId">ID of the monetary account of which you want to pay from.</param>
-        /// <param name="requestId">ID of the request for which you want to whitelist the originating SDD.</param>
-        /// <param name="maximumAmountPerMonth">The maximum amount of money that is allowed to be deducted based on the whitelist.</param>
-        public static BunqResponse<int> Create(int? monetaryAccountPayingId, int? requestId, Amount maximumAmountPerMonth, IDictionary<string, string> customHeaders = null)
-        {
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(GetApiContext());
-    
-            var requestMap = new Dictionary<string, object>
-    {
-    {FIELD_MONETARY_ACCOUNT_PAYING_ID, monetaryAccountPayingId},
-    {FIELD_REQUEST_ID, requestId},
-    {FIELD_MAXIMUM_AMOUNT_PER_MONTH, maximumAmountPerMonth},
-    };
-    
-            var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId()), requestBytes, customHeaders);
-    
-            return ProcessForId(responseRaw);
-        }
-    
-        /// <summary>
-        /// </summary>
-        /// <param name="monetaryAccountPayingId">ID of the monetary account of which you want to pay from.</param>
-        /// <param name="maximumAmountPerMonth">The maximum amount of money that is allowed to be deducted based on the whitelist.</param>
-        public static BunqResponse<int> Update(int whitelistSddId, int? monetaryAccountPayingId = null, Amount maximumAmountPerMonth = null, IDictionary<string, string> customHeaders = null)
-        {
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(GetApiContext());
-    
-            var requestMap = new Dictionary<string, object>
-    {
-    {FIELD_MONETARY_ACCOUNT_PAYING_ID, monetaryAccountPayingId},
-    {FIELD_MAXIMUM_AMOUNT_PER_MONTH, maximumAmountPerMonth},
-    };
-    
-            var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, DetermineUserId(), whitelistSddId), requestBytes, customHeaders);
-    
-            return ProcessForId(responseRaw);
-        }
-    
-        /// <summary>
-        /// </summary>
-        public static BunqResponse<object> Delete(int whitelistSddId, IDictionary<string, string> customHeaders = null)
-        {
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, DetermineUserId(), whitelistSddId), customHeaders);
-    
-            return new BunqResponse<object>(null, responseRaw.Headers);
         }
     
         /// <summary>

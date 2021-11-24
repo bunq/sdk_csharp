@@ -248,6 +248,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "relations")]
         public List<RelationUser> Relations { get; set; }
     
+        /// <summary>
+        /// The user's tax residence numbers for different countries.
+        /// </summary>
+        [JsonProperty(PropertyName = "tax_resident")]
+        public List<TaxResident> TaxResident { get; set; }
+    
     
         /// <summary>
         /// Get a specific company.
@@ -472,6 +478,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Relations != null)
+            {
+                return false;
+            }
+    
+            if (this.TaxResident != null)
             {
                 return false;
             }

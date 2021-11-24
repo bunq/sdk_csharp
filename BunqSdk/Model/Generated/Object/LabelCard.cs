@@ -42,7 +42,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The owner of this card.
         /// </summary>
         [JsonProperty(PropertyName = "label_user")]
-        public LabelUser LabelUser { get; set; }
+        public MonetaryAccountReference LabelUser { get; set; }
     
     
     

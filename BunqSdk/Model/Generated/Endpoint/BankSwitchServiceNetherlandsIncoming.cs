@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The label of the user creator of this switch service.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias")]
-        public LabelUser UserAlias { get; set; }
+        public MonetaryAccountReference UserAlias { get; set; }
     
         /// <summary>
         /// The sub status of the switch service.

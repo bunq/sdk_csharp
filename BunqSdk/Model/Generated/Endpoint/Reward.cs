@@ -66,7 +66,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The alias of the other user eligible for the reward award.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_alias")]
-        public LabelUser CounterpartyAlias { get; set; }
+        public MonetaryAccountReference CounterpartyAlias { get; set; }
     
         /// <summary>
         /// The amount that will be/was awarded as reward for the reward.

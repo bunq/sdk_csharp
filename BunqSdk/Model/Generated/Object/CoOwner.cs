@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The Alias of the co-owner.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
-        public LabelUser Alias { get; set; }
+        public MonetaryAccountReference Alias { get; set; }
     
         /// <summary>
         /// Can be: ACCEPTED, REJECTED, PENDING or REVOKED
@@ -21,7 +21,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         public string Status { get; set; }
     
     
-        public CoOwner(LabelUser alias)
+        public CoOwner(MonetaryAccountReference alias)
         {
             Alias = alias;
         }

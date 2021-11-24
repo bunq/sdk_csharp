@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The user to which this annual overview belongs.
         /// </summary>
         [JsonProperty(PropertyName = "alias_user")]
-        public LabelUser AliasUser { get; set; }
+        public MonetaryAccountReference AliasUser { get; set; }
     
     
         /// <summary>

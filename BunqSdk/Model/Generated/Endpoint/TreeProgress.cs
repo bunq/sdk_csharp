@@ -41,7 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The label of the user the progress belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "label_user")]
-        public LabelUser LabelUser { get; set; }
+        public MonetaryAccountReference LabelUser { get; set; }
     
     
         /// <summary>

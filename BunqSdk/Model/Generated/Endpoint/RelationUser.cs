@@ -26,13 +26,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The user's label.
         /// </summary>
         [JsonProperty(PropertyName = "label_user")]
-        public LabelUser LabelUser { get; set; }
+        public MonetaryAccountReference LabelUser { get; set; }
     
         /// <summary>
         /// The counter user's label.
         /// </summary>
         [JsonProperty(PropertyName = "counter_label_user")]
-        public LabelUser CounterLabelUser { get; set; }
+        public MonetaryAccountReference CounterLabelUser { get; set; }
     
         /// <summary>
         /// The requested relation type.

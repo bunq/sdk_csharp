@@ -196,13 +196,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="secondLine">The second line of text on the card, used as name/description for it. It can contain at most 17 characters and it can be empty.</param>
         /// <param name="nameOnCard">The user's name as it will be on the card. Check 'card-name' for the available card names for a user.</param>
         /// <param name="type">The type of card to order. Can be MASTERCARD.</param>
+        /// <param name="productType">The product type of the card to order.</param>
         /// <param name="preferredNameOnCard">The user's preferred name that can be put on the card.</param>
         /// <param name="alias">The pointer to the monetary account that will be connected at first with the card. Its IBAN code is also the one that will be printed on the card itself. The pointer must be of type IBAN.</param>
-        /// <param name="productType">The product type of the card to order.</param>
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
         /// <param name="orderStatus">The order status of this card. Can be CARD_REQUEST_PENDING or VIRTUAL_DELIVERY.</param>
-        public static BunqResponse<CardCredit> Create(string secondLine, string nameOnCard, string type, string preferredNameOnCard = null, Pointer alias = null, string productType = null, List<CardPinAssignment> pinCodeAssignment = null, int? monetaryAccountIdFallback = null, string orderStatus = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CardCredit> Create(string secondLine, string nameOnCard, string type, string productType, string preferredNameOnCard = null, Pointer alias = null, List<CardPinAssignment> pinCodeAssignment = null, int? monetaryAccountIdFallback = null, string orderStatus = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

@@ -18,7 +18,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The user that responded to the DraftPayment.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
-        public LabelUser UserAliasCreated { get; set; }
+        public MonetaryAccountReference UserAliasCreated { get; set; }
     
     
     

@@ -67,6 +67,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
     
+        /// <summary>
+        /// The source of the user at TransferWise.
+        /// </summary>
+        [JsonProperty(PropertyName = "source")]
+        public string Source { get; set; }
+    
     
         /// <summary>
         /// </summary>
@@ -127,6 +133,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Email != null)
+            {
+                return false;
+            }
+    
+            if (this.Source != null)
             {
                 return false;
             }

@@ -86,7 +86,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The label of the User who created the DraftPayment.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
-        public LabelUser UserAliasCreated { get; set; }
+        public MonetaryAccountReference UserAliasCreated { get; set; }
     
         /// <summary>
         /// All responses to this draft payment.

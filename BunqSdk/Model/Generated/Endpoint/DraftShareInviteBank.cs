@@ -59,7 +59,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The user who created the draft share invite.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
-        public LabelUser UserAliasCreated { get; set; }
+        public MonetaryAccountReference UserAliasCreated { get; set; }
     
         /// <summary>
         /// The id of the share invite bank response this draft share belongs to.
