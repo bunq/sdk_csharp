@@ -1,5 +1,6 @@
 using Bunq.Sdk.Model.Core;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bunq.Sdk.Model.Generated.Object
 {
@@ -12,13 +13,13 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-
+    
         public BunqId(int? id)
         {
             Id = id;
         }
-
-
+    
+    
         /// <summary>
         /// </summary>
         public override bool IsAllFieldNull()
@@ -27,15 +28,15 @@ namespace Bunq.Sdk.Model.Generated.Object
             {
                 return false;
             }
-
+    
             return true;
         }
-
+    
         /// <summary>
         /// </summary>
         public static BunqId CreateFromJsonString(string json)
         {
-            return CreateFromJsonString<BunqId>(json);
+            return BunqModel.CreateFromJsonString<BunqId>(json);
         }
     }
 }

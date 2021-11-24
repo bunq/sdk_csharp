@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Json
             }
             else
             {
-                writer.WriteRaw(BunqJsonConvert.SerializeObject(monetaryAccountReference.Pointer));
+                writer.WriteRawValue(BunqJsonConvert.SerializeObject(monetaryAccountReference.Pointer));
             }
         }
 
