@@ -183,13 +183,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The label that's displayed to the counterparty with the mutation. Includes user.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
-        public LabelUser UserAliasCreated { get; set; }
+        public MonetaryAccountReference UserAliasCreated { get; set; }
     
         /// <summary>
         /// The label that's displayed to the counterparty with the mutation. Includes user.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_revoked")]
-        public LabelUser UserAliasRevoked { get; set; }
+        public MonetaryAccountReference UserAliasRevoked { get; set; }
     
         /// <summary>
         /// The id of the batch if the request was part of a batch.

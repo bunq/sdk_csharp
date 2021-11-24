@@ -110,7 +110,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The label of the user that requested the refund.
         /// </summary>
         [JsonProperty(PropertyName = "user_refund_requested")]
-        public LabelUser UserRefundRequested { get; set; }
+        public MonetaryAccountReference UserRefundRequested { get; set; }
     
         /// <summary>
         /// The id of the MonetaryAccount the RequestResponse was received on.

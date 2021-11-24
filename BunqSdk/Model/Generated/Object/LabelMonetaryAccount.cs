@@ -30,7 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The user this monetary account belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "label_user")]
-        public LabelUser LabelUser { get; set; }
+        public MonetaryAccountReference LabelUser { get; set; }
     
         /// <summary>
         /// The country of the user. Formatted as a ISO 3166-1 alpha-2 country code.

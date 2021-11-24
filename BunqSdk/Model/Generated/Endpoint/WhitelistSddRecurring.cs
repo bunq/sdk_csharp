@@ -100,7 +100,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The user who created the whitelist entry.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
-        public LabelUser UserAliasCreated { get; set; }
+        public MonetaryAccountReference UserAliasCreated { get; set; }
     
     
         /// <summary>

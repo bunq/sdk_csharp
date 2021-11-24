@@ -35,6 +35,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_LEGAL_FORM = "legal_form";
         public const string FIELD_SUBSCRIPTION_TYPE = "subscription_type";
         public const string FIELD_AVATAR_UUID = "avatar_uuid";
+        public const string FIELD_VAT_NUMBER = "vat_number";
     
         /// <summary>
         /// Object type.
@@ -96,6 +97,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string AvatarUuid { get; set; }
     
         /// <summary>
+        /// All the vat numbers of the company
+        /// </summary>
+        [JsonProperty(PropertyName = "vat_number")]
+        public CompanyVatNumber VatNumber { get; set; }
+    
+        /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "UserCompany")]
         public UserCompany UserCompany { get; set; }
@@ -108,11 +115,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="addressPostal">The company's postal address.</param>
         /// <param name="country">The country where the company is registered.</param>
         /// <param name="legalForm">The company's legal form.</param>
+        /// <param name="subscriptionType">The subscription type for the company.</param>
         /// <param name="ubo">The names and birth dates of the company's ultimate beneficiary owners. Minimum zero, maximum four.</param>
         /// <param name="chamberOfCommerceNumber">The company's chamber of commerce number.</param>
-        /// <param name="subscriptionType">The subscription type for the company.</param>
         /// <param name="avatarUuid">The public UUID of the company's avatar.</param>
-        public static BunqResponse<int> Create(string name, Address addressMain, Address addressPostal, string country, string legalForm, List<Ubo> ubo = null, string chamberOfCommerceNumber = null, string subscriptionType = null, string avatarUuid = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="vatNumber">All the vat numbers of the company</param>
+        public static BunqResponse<int> Create(string name, Address addressMain, Address addressPostal, string country, string legalForm, string subscriptionType, List<Ubo> ubo = null, string chamberOfCommerceNumber = null, string avatarUuid = null, CompanyVatNumber vatNumber = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -129,6 +137,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_LEGAL_FORM, legalForm},
     {FIELD_SUBSCRIPTION_TYPE, subscriptionType},
     {FIELD_AVATAR_UUID, avatarUuid},
+    {FIELD_VAT_NUMBER, vatNumber},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));

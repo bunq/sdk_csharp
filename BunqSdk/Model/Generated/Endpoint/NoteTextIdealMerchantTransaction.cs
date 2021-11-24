@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The label of the user who created this note.
         /// </summary>
         [JsonProperty(PropertyName = "label_user_creator")]
-        public LabelUser LabelUserCreator { get; set; }
+        public MonetaryAccountReference LabelUserCreator { get; set; }
     
     
         /// <summary>
