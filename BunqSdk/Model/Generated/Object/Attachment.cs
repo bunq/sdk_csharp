@@ -20,6 +20,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "content_type")]
         public string ContentType { get; set; }
     
+        /// <summary>
+        /// The URLs where the file can be downloaded.
+        /// </summary>
+        [JsonProperty(PropertyName = "urls")]
+        public List<AttachmentUrl> Urls { get; set; }
+    
     
     
         /// <summary>
@@ -32,6 +38,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.ContentType != null)
+            {
+                return false;
+            }
+    
+            if (this.Urls != null)
             {
                 return false;
             }
