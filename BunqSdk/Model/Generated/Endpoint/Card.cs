@@ -174,6 +174,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string NameOnCard { get; set; }
     
         /// <summary>
+        /// The payment account reference number associated with the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_account_reference")]
+        public string PaymentAccountReference { get; set; }
+    
+        /// <summary>
         /// The monetary account this card was ordered on and the label user that owns the card.
         /// </summary>
         [JsonProperty(PropertyName = "label_monetary_account_ordered")]
@@ -343,6 +349,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.PrimaryAccountNumbers != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentAccountReference != null)
             {
                 return false;
             }
