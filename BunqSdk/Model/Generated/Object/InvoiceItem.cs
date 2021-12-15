@@ -9,6 +9,12 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class InvoiceItem : BunqModel
     {
         /// <summary>
+        /// The id of the invoice item.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
+    
+        /// <summary>
         /// The billing date of the item.
         /// </summary>
         [JsonProperty(PropertyName = "billing_date")]
@@ -68,6 +74,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
             if (this.BillingDate != null)
             {
                 return false;
