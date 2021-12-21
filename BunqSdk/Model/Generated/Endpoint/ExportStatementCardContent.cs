@@ -19,7 +19,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        protected const string ENDPOINT_URL_LISTING = "user/{0}/card/{1}/card-statement/{2}/content";
+        protected const string ENDPOINT_URL_LISTING = "user/{0}/card/{1}/export-statement-card/{2}/content";
     
         /// <summary>
         /// Object type.
@@ -28,12 +28,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<byte[]> List(int cardId, int cardStatementId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<byte[]> List(int cardId, int exportStatementCardId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId(), cardId, cardStatementId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId(), cardId, exportStatementCardId), new Dictionary<string, string>(), customHeaders);
     
             return new BunqResponse<byte[]>(responseRaw.BodyBytes, responseRaw.Headers);
         }
