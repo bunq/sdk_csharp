@@ -62,6 +62,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "province")]
         public string Province { get; set; }
     
+        /// <summary>
+        /// To show whether user created or updated her address for app event listing.
+        /// </summary>
+        [JsonProperty(PropertyName = "is_user_address_updated")]
+        public bool? IsUserAddressUpdated { get; set; }
+    
     
         public Address(string street, string houseNumber, string postalCode, string city, string country)
         {
@@ -118,6 +124,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.MailboxName != null)
+            {
+                return false;
+            }
+    
+            if (this.IsUserAddressUpdated != null)
             {
                 return false;
             }
