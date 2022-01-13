@@ -62,6 +62,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "merchant_available")]
         public List<BunqMeMerchantAvailable> MerchantAvailable { get; set; }
     
+        /// <summary>
+        /// Provided if the user has enabled their invite link.
+        /// </summary>
+        [JsonProperty(PropertyName = "invite_profile_name")]
+        public string InviteProfileName { get; set; }
+    
     
     
         /// <summary>
@@ -99,6 +105,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.MerchantAvailable != null)
+            {
+                return false;
+            }
+    
+            if (this.InviteProfileName != null)
             {
                 return false;
             }
