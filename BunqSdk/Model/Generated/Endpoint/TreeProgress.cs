@@ -38,6 +38,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public double? ProgressTreeNext { get; set; }
     
         /// <summary>
+        /// URL of the invite profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "url_invite_profile")]
+        public string UrlInviteProfile { get; set; }
+    
+        /// <summary>
         /// The label of the user the progress belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "label_user")]
@@ -68,6 +74,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.ProgressTreeNext != null)
+            {
+                return false;
+            }
+    
+            if (this.UrlInviteProfile != null)
             {
                 return false;
             }
