@@ -252,6 +252,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
         public int? EligibleWhitelistId { get; set; }
     
+        /// <summary>
+        /// The status of the additional authentication performed (3ds) by the user for this transaction.
+        /// </summary>
+        [JsonProperty(PropertyName = "additional_authentication_status")]
+        public string AdditionalAuthenticationStatus { get; set; }
+    
     
         /// <summary>
         /// </summary>
@@ -464,6 +470,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.EligibleWhitelistId != null)
+            {
+                return false;
+            }
+    
+            if (this.AdditionalAuthenticationStatus != null)
             {
                 return false;
             }
