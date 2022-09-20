@@ -18,6 +18,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
+        protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/schedule-payment-batch/{2}";
         protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/schedule-payment-batch";
         protected const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/schedule-payment-batch/{2}";
         protected const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/schedule-payment-batch/{2}";
@@ -28,6 +29,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_PAYMENTS = "payments";
         public const string FIELD_SCHEDULE = "schedule";
     
+        /// <summary>
+        /// Object type.
+        /// </summary>
+        private const string OBJECT_TYPE_GET = "ScheduledPaymentBatch";
     
         /// <summary>
         /// The payment details.
@@ -41,6 +46,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "schedule")]
         public Schedule Schedule { get; set; }
     
+    
+        /// <summary>
+        /// </summary>
+        public static BunqResponse<SchedulePaymentBatch> Get(int schedulePaymentBatchId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+    
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), schedulePaymentBatchId), new Dictionary<string, string>(), customHeaders);
+    
+            return FromJson<SchedulePaymentBatch>(responseRaw, OBJECT_TYPE_GET);
+        }
     
         /// <summary>
         /// </summary>
