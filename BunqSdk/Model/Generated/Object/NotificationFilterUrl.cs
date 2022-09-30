@@ -15,6 +15,18 @@ namespace Bunq.Sdk.Model.Generated.Object
         public string Category { get; set; }
     
         /// <summary>
+        /// The users this filter pertains to.
+        /// </summary>
+        [JsonProperty(PropertyName = "all_user_id")]
+        public List<string> AllUserId { get; set; }
+    
+        /// <summary>
+        /// The MAs this filter pertains to.
+        /// </summary>
+        [JsonProperty(PropertyName = "all_monetary_account_id")]
+        public List<string> AllMonetaryAccountId { get; set; }
+    
+        /// <summary>
         /// The URL to which the callback should be made.
         /// </summary>
         [JsonProperty(PropertyName = "notification_target")]
@@ -66,6 +78,16 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.Category != null)
+            {
+                return false;
+            }
+    
+            if (this.AllUserId != null)
+            {
+                return false;
+            }
+    
+            if (this.AllMonetaryAccountId != null)
             {
                 return false;
             }

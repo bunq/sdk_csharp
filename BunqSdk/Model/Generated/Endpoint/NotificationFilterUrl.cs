@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// <summary>
     /// Manage the url notification filters for a user.
     /// </summary>
-    public class NotificationFilterUrlUser : BunqModel
+    public class NotificationFilterUrl : BunqModel
     {
         /// <summary>
         /// Endpoint constants.
@@ -59,7 +59,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<NotificationFilterUrlUser>> List( IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<NotificationFilterUrl>> List( IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -67,7 +67,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(GetApiContext());
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams, customHeaders);
     
-            return FromJsonList<NotificationFilterUrlUser>(responseRaw, OBJECT_TYPE_GET);
+            return FromJsonList<NotificationFilterUrl>(responseRaw, OBJECT_TYPE_GET);
         }
     
     
@@ -85,9 +85,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static NotificationFilterUrlUser CreateFromJsonString(string json)
+        public static NotificationFilterUrl CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<NotificationFilterUrlUser>(json);
+            return BunqModel.CreateFromJsonString<NotificationFilterUrl>(json);
         }
     }
 }

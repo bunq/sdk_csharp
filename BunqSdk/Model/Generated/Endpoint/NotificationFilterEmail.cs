@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// <summary>
     /// Manage the email notification filters for a user.
     /// </summary>
-    public class NotificationFilterEmailUser : BunqModel
+    public class NotificationFilterEmail : BunqModel
     {
         /// <summary>
         /// Endpoint constants.
@@ -41,7 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="notificationFilters">The types of notifications that will result in a email notification for this user.</param>
-        public static BunqResponse<NotificationFilterEmailUser> Create(List<NotificationFilterEmail> notificationFilters = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<NotificationFilterEmail> Create(List<NotificationFilterEmail> notificationFilters = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -55,12 +55,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
             var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId()), requestBytes, customHeaders);
     
-            return FromJson<NotificationFilterEmailUser>(responseRaw, OBJECT_TYPE_POST);
+            return FromJson<NotificationFilterEmail>(responseRaw, OBJECT_TYPE_POST);
         }
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<NotificationFilterEmailUser>> List( IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<NotificationFilterEmail>> List( IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -68,7 +68,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(GetApiContext());
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams, customHeaders);
     
-            return FromJsonList<NotificationFilterEmailUser>(responseRaw, OBJECT_TYPE_GET);
+            return FromJsonList<NotificationFilterEmail>(responseRaw, OBJECT_TYPE_GET);
         }
     
     
@@ -86,9 +86,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static NotificationFilterEmailUser CreateFromJsonString(string json)
+        public static NotificationFilterEmail CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<NotificationFilterEmailUser>(json);
+            return BunqModel.CreateFromJsonString<NotificationFilterEmail>(json);
         }
     }
 }
