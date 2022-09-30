@@ -14,6 +14,19 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
     
+        /// <summary>
+        /// The users this filter pertains to.
+        /// </summary>
+        [JsonProperty(PropertyName = "all_user_id")]
+        public List<string> AllUserId { get; set; }
+    
+        /// <summary>
+        /// The MAs this filter pertains to.
+        /// </summary>
+        [JsonProperty(PropertyName = "all_monetary_account_id")]
+        public List<string> AllMonetaryAccountId { get; set; }
+    
+    
         public NotificationFilterPush(string category)
         {
             Category = category;
@@ -25,6 +38,16 @@ namespace Bunq.Sdk.Model.Generated.Object
         public override bool IsAllFieldNull()
         {
             if (this.Category != null)
+            {
+                return false;
+            }
+    
+            if (this.AllUserId != null)
+            {
+                return false;
+            }
+    
+            if (this.AllMonetaryAccountId != null)
             {
                 return false;
             }
