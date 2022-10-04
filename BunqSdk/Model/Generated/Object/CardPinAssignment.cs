@@ -15,6 +15,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         public string Type { get; set; }
     
         /// <summary>
+        /// Routing type. Can be MANUAL or AUTOMATIC
+        /// </summary>
+        [JsonProperty(PropertyName = "routing_type")]
+        public string RoutingType { get; set; }
+    
+        /// <summary>
         /// The 4 digit PIN to be assigned to this account.
         /// </summary>
         [JsonProperty(PropertyName = "pin_code")]
