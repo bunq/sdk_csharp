@@ -78,7 +78,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? MonetaryAccountId { get; set; }
     
         /// <summary>
-        /// The type of the bunq.me Tab. Can be BUNQ_ME or SPLIT_RECEIPT.
+        /// The type of the bunq.me Tab. Should be BUNQ_ME
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
