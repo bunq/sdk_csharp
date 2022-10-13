@@ -46,6 +46,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
     
+        /// <summary>
+        /// The account status of a user
+        /// </summary>
+        [JsonProperty(PropertyName = "user_status")]
+        public string UserStatus { get; set; }
+    
+        /// <summary>
+        /// The account status of a user
+        /// </summary>
+        [JsonProperty(PropertyName = "counter_user_status")]
+        public string CounterUserStatus { get; set; }
+    
     
     
         /// <summary>
@@ -78,6 +90,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.UserStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterUserStatus != null)
             {
                 return false;
             }
