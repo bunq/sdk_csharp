@@ -113,16 +113,6 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "TabResultInquiry")]
-        public TabResultInquiry TabResultInquiry { get; set; }
-    
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "TabResultResponse")]
-        public TabResultResponse TabResultResponse { get; set; }
-    
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "User")]
         public User User { get; set; }
     
@@ -225,16 +215,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             if (this.ScheduledInstance != null)
             {
                 return this.ScheduledInstance;
-            }
-    
-            if (this.TabResultInquiry != null)
-            {
-                return this.TabResultInquiry;
-            }
-    
-            if (this.TabResultResponse != null)
-            {
-                return this.TabResultResponse;
             }
     
             if (this.User != null)
@@ -340,16 +320,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.ScheduledInstance != null)
-            {
-                return false;
-            }
-    
-            if (this.TabResultInquiry != null)
-            {
-                return false;
-            }
-    
-            if (this.TabResultResponse != null)
             {
                 return false;
             }
