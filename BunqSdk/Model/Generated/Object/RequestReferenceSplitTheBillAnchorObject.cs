@@ -53,11 +53,6 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "TabResultResponse")]
-        public TabResultResponse TabResultResponse { get; set; }
-    
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "WhitelistResult")]
         public WhitelistResult WhitelistResult { get; set; }
     
@@ -105,11 +100,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             if (this.ScheduleInstance != null)
             {
                 return this.ScheduleInstance;
-            }
-    
-            if (this.TabResultResponse != null)
-            {
-                return this.TabResultResponse;
             }
     
             if (this.WhitelistResult != null)
@@ -160,11 +150,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.ScheduleInstance != null)
-            {
-                return false;
-            }
-    
-            if (this.TabResultResponse != null)
             {
                 return false;
             }
