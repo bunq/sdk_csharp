@@ -47,11 +47,6 @@ namespace Bunq.Sdk.Model.Generated.Object
                 return false;
             }
     
-            if (this.ExpiryTime != null)
-            {
-                return false;
-            }
-    
             return true;
         }
     
