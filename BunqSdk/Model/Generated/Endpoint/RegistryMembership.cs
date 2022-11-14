@@ -13,10 +13,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Field constants.
         /// </summary>
+        public const string FIELD_UUID = "uuid";
         public const string FIELD_ALIAS = "alias";
         public const string FIELD_STATUS = "status";
         public const string FIELD_AUTO_ADD_CARD_TRANSACTION = "auto_add_card_transaction";
     
+    
+        /// <summary>
+        /// The UUID of the membership.
+        /// </summary>
+        [JsonProperty(PropertyName = "uuid")]
+        public string Uuid { get; set; }
     
         /// <summary>
         /// The LabelMonetaryAccount of the user who belongs to this RegistryMembership.
@@ -78,6 +85,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
+            if (this.Uuid != null)
+            {
+                return false;
+            }
+    
             if (this.Alias != null)
             {
                 return false;
