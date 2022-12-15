@@ -44,7 +44,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Amount { get; set; }
     
         /// <summary>
-        /// When the secure code expires.
+        /// When the identity check expires.
         /// </summary>
         [JsonProperty(PropertyName = "expiry_time")]
         public string ExpiryTime { get; set; }
