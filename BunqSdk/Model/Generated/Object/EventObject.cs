@@ -123,11 +123,6 @@ namespace Bunq.Sdk.Model.Generated.Object
     
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "ShareInviteBankInquiryBatch")]
-        public ShareInviteBankInquiryBatch ShareInviteBankInquiryBatch { get; set; }
-    
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "ShareInviteBankInquiry")]
         public ShareInviteMonetaryAccountInquiry ShareInviteBankInquiry { get; set; }
     
@@ -255,11 +250,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             if (this.RewardSender != null)
             {
                 return this.RewardSender;
-            }
-    
-            if (this.ShareInviteBankInquiryBatch != null)
-            {
-                return this.ShareInviteBankInquiryBatch;
             }
     
             if (this.ShareInviteBankInquiry != null)
@@ -390,11 +380,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.RewardSender != null)
-            {
-                return false;
-            }
-    
-            if (this.ShareInviteBankInquiryBatch != null)
             {
                 return false;
             }
