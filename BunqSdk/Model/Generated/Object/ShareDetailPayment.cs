@@ -38,12 +38,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "view_new_events")]
         public bool? ViewNewEvents { get; set; }
     
-        /// <summary>
-        /// The budget restriction.
-        /// </summary>
-        [JsonProperty(PropertyName = "budget")]
-        public BudgetRestriction Budget { get; set; }
-    
     
         public ShareDetailPayment(bool? makePayments, bool? viewBalance, bool? viewOldEvents, bool? viewNewEvents)
         {
@@ -79,11 +73,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.ViewNewEvents != null)
-            {
-                return false;
-            }
-    
-            if (this.Budget != null)
             {
                 return false;
             }
