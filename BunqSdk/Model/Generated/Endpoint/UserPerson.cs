@@ -26,6 +26,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Field constants.
         /// </summary>
+        public const string FIELD_SUBSCRIPTION_TYPE = "subscription_type";
         public const string FIELD_FIRST_NAME = "first_name";
         public const string FIELD_MIDDLE_NAME = "middle_name";
         public const string FIELD_LAST_NAME = "last_name";
@@ -55,6 +56,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "UserPerson";
+    
+        /// <summary>
+        /// The subscription type the user should start on.
+        /// </summary>
+        [JsonProperty(PropertyName = "subscription_type")]
+        public string SubscriptionType { get; set; }
     
         /// <summary>
         /// The person's first name.
