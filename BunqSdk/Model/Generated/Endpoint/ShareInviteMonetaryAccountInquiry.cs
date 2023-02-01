@@ -29,6 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Field constants.
         /// </summary>
         public const string FIELD_COUNTER_USER_ALIAS = "counter_user_alias";
+        public const string FIELD_ACCESS_TYPE = "access_type";
         public const string FIELD_DRAFT_SHARE_INVITE_BANK_ID = "draft_share_invite_bank_id";
         public const string FIELD_SHARE_DETAIL = "share_detail";
         public const string FIELD_STATUS = "status";
@@ -49,21 +50,25 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public MonetaryAccountReference CounterUserAlias { get; set; }
     
         /// <summary>
-        /// The id of the draft share invite bank.
+        /// Type of access that is in place.
+        /// </summary>
+        [JsonProperty(PropertyName = "access_type")]
+        public string AccessType { get; set; }
+    
+        /// <summary>
+        /// DEPRECATED: USE `access_type` INSTEAD | The id of the draft share invite bank.
         /// </summary>
         [JsonProperty(PropertyName = "draft_share_invite_bank_id")]
         public int? DraftShareInviteBankId { get; set; }
     
         /// <summary>
-        /// The share details. Only one of these objects is returned.
+        /// DEPRECATED: USE `access_type` INSTEAD | The share details. Only one of these objects may be passed.
         /// </summary>
         [JsonProperty(PropertyName = "share_detail")]
         public ShareDetail ShareDetail { get; set; }
     
         /// <summary>
-        /// The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted),
-        /// ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED,
-        /// CANCELLATION_REJECTED (for canceling mutual connects)
+        /// The status of the share. Can be ACTIVE, REVOKED, REJECTED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
@@ -75,19 +80,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Relationship { get; set; }
     
         /// <summary>
-        /// The share type, either STANDARD or MUTUAL.
+        /// DEPRECATED: USE `access_type` INSTEAD | The share type, either STANDARD or MUTUAL.
         /// </summary>
         [JsonProperty(PropertyName = "share_type")]
         public string ShareType { get; set; }
     
         /// <summary>
-        /// The start date of this share.
+        /// DEPRECATED: USE `access_type` INSTEAD | The start date of this share.
         /// </summary>
         [JsonProperty(PropertyName = "start_date")]
         public string StartDate { get; set; }
     
         /// <summary>
-        /// The expiration date of this share.
+        /// DEPRECATED: USE `access_type` INSTEAD | The expiration date of this share.
         /// </summary>
         [JsonProperty(PropertyName = "end_date")]
         public string EndDate { get; set; }
@@ -128,14 +133,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// account, specifying the permission the other bunq user will have on it.
         /// </summary>
         /// <param name="counterUserAlias">The pointer of the user to share with.</param>
-        /// <param name="shareDetail">The share details. Only one of these objects may be passed.</param>
-        /// <param name="status">The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted), ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED, CANCELLATION_REJECTED (for canceling mutual connects).</param>
-        /// <param name="draftShareInviteBankId">The id of the draft share invite bank.</param>
+        /// <param name="accessType">Type of access that is wanted, one of VIEW_BALANCE, VIEW_TRANSACTION, DRAFT_PAYMENT or FULL_TRANSIENT</param>
+        /// <param name="draftShareInviteBankId">DEPRECATED: USE `access_type` INSTEAD | The id of the draft share invite bank.</param>
+        /// <param name="shareDetail">DEPRECATED: USE `access_type` INSTEAD | The share details. Only one of these objects may be passed.</param>
+        /// <param name="status">The status of the share. Can be ACTIVE, REVOKED, REJECTED.</param>
         /// <param name="relationship">The relationship: COMPANY_DIRECTOR, COMPANY_EMPLOYEE, etc</param>
-        /// <param name="shareType">The share type, either STANDARD or MUTUAL.</param>
-        /// <param name="startDate">The start date of this share.</param>
-        /// <param name="endDate">The expiration date of this share.</param>
-        public static BunqResponse<int> Create(Pointer counterUserAlias, ShareDetail shareDetail, string status, int? monetaryAccountId= null, int? draftShareInviteBankId = null, string relationship = null, string shareType = null, string startDate = null, string endDate = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="shareType">DEPRECATED: USE `access_type` INSTEAD | The share type, either STANDARD or MUTUAL.</param>
+        /// <param name="startDate">DEPRECATED: USE `access_type` INSTEAD | The start date of this share.</param>
+        /// <param name="endDate">DEPRECATED: USE `access_type` INSTEAD | The expiration date of this share.</param>
+        public static BunqResponse<int> Create(Pointer counterUserAlias, int? monetaryAccountId= null, string accessType = null, int? draftShareInviteBankId = null, ShareDetail shareDetail = null, string status = null, string relationship = null, string shareType = null, string startDate = null, string endDate = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -144,6 +150,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
     {
     {FIELD_COUNTER_USER_ALIAS, counterUserAlias},
+    {FIELD_ACCESS_TYPE, accessType},
     {FIELD_DRAFT_SHARE_INVITE_BANK_ID, draftShareInviteBankId},
     {FIELD_SHARE_DETAIL, shareDetail},
     {FIELD_STATUS, status},
@@ -176,11 +183,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// [DEPRECATED - use /share-invite-monetary-account-response] Update the details of a share. This includes
         /// updating status (revoking or cancelling it), granted permission and validity period of this share.
         /// </summary>
-        /// <param name="shareDetail">The share details. Only one of these objects may be passed.</param>
-        /// <param name="status">The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted), ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED, CANCELLATION_REJECTED (for canceling mutual connects).</param>
-        /// <param name="startDate">The start date of this share.</param>
-        /// <param name="endDate">The expiration date of this share.</param>
-        public static BunqResponse<int> Update(int shareInviteMonetaryAccountInquiryId, int? monetaryAccountId= null, ShareDetail shareDetail = null, string status = null, string startDate = null, string endDate = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="accessType">Type of access that is wanted, one of VIEW_BALANCE, VIEW_TRANSACTION, DRAFT_PAYMENT or FULL_TRANSIENT</param>
+        /// <param name="shareDetail">DEPRECATED: USE `access_type` INSTEAD | The share details. Only one of these objects may be passed.</param>
+        /// <param name="status">The status of the share. Can be ACTIVE, REVOKED, REJECTED.</param>
+        /// <param name="startDate">DEPRECATED: USE `access_type` INSTEAD | The start date of this share.</param>
+        /// <param name="endDate">DEPRECATED: USE `access_type` INSTEAD | The expiration date of this share.</param>
+        public static BunqResponse<int> Update(int shareInviteMonetaryAccountInquiryId, int? monetaryAccountId= null, string accessType = null, ShareDetail shareDetail = null, string status = null, string startDate = null, string endDate = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -188,6 +196,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var requestMap = new Dictionary<string, object>
     {
+    {FIELD_ACCESS_TYPE, accessType},
     {FIELD_SHARE_DETAIL, shareDetail},
     {FIELD_STATUS, status},
     {FIELD_START_DATE, startDate},
@@ -245,37 +254,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.DraftShareInviteBankId != null)
-            {
-                return false;
-            }
-    
-            if (this.ShareDetail != null)
-            {
-                return false;
-            }
-    
             if (this.Status != null)
             {
                 return false;
             }
     
+            if (this.AccessType != null)
+            {
+                return false;
+            }
+    
             if (this.Relationship != null)
-            {
-                return false;
-            }
-    
-            if (this.ShareType != null)
-            {
-                return false;
-            }
-    
-            if (this.StartDate != null)
-            {
-                return false;
-            }
-    
-            if (this.EndDate != null)
             {
                 return false;
             }
