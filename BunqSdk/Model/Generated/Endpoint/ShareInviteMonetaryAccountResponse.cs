@@ -35,9 +35,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         private const string OBJECT_TYPE_GET = "ShareInviteMonetaryAccountResponse";
     
         /// <summary>
-        /// The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted),
-        /// ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED,
-        /// CANCELLATION_REJECTED (for canceling mutual connects)
+        /// The status of the share. Can be ACTIVE, REVOKED, REJECTED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
@@ -95,6 +93,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "share_detail")]
         public ShareDetail ShareDetail { get; set; }
+    
+        /// <summary>
+        /// Type of access that is wanted, one of VIEW_BALANCE, VIEW_TRANSACTION, DRAFT_PAYMENT or FULL_TRANSIENT
+        /// </summary>
+        [JsonProperty(PropertyName = "access_type")]
+        public string AccessType { get; set; }
     
         /// <summary>
         /// All of the relation users towards this MA.
@@ -218,6 +222,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.ShareDetail != null)
+            {
+                return false;
+            }
+    
+            if (this.AccessType != null)
             {
                 return false;
             }
