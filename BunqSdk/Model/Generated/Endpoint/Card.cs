@@ -203,12 +203,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "card_shipment_tracking_url")]
         public string CardShipmentTrackingUrl { get; set; }
     
-        /// <summary>
-        /// The amount saved through ZeroFX on this card.
-        /// </summary>
-        [JsonProperty(PropertyName = "amount_saved_zero_fx")]
-        public Amount AmountSavedZeroFx { get; set; }
-    
     
         /// <summary>
         /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary
@@ -399,11 +393,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CardShipmentTrackingUrl != null)
-            {
-                return false;
-            }
-    
-            if (this.AmountSavedZeroFx != null)
             {
                 return false;
             }
