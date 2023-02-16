@@ -1,7 +1,12 @@
+using Bunq.Sdk.Context;
+using Bunq.Sdk.Http;
+using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
+using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
@@ -10,6 +15,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// </summary>
     public class MonetaryAccountExternal : BunqModel
     {
+        /// <summary>
+        /// Endpoint constants.
+        /// </summary>
+        protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account-external/{1}";
+        protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account-external";
+    
         /// <summary>
         /// Field constants.
         /// </summary>
@@ -24,6 +35,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DISPLAY_NAME = "display_name";
         public const string FIELD_SETTING = "setting";
     
+        /// <summary>
+        /// Object type.
+        /// </summary>
+        private const string OBJECT_TYPE_GET = "MonetaryAccountExternal";
     
         /// <summary>
         /// The currency of the MonetaryAccountExternal as an ISO 4217 formatted currency code.
@@ -155,6 +170,31 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "all_auto_save_id")]
         public List<BunqId> AllAutoSaveId { get; set; }
     
+    
+        /// <summary>
+        /// </summary>
+        public static BunqResponse<MonetaryAccountExternal> Get(int monetaryAccountExternalId, IDictionary<string, string> customHeaders = null)
+        {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+    
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId(), monetaryAccountExternalId), new Dictionary<string, string>(), customHeaders);
+    
+            return FromJson<MonetaryAccountExternal>(responseRaw, OBJECT_TYPE_GET);
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static BunqResponse<List<MonetaryAccountExternal>> List( IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        {
+            if (urlParams == null) urlParams = new Dictionary<string, string>();
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+    
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams, customHeaders);
+    
+            return FromJsonList<MonetaryAccountExternal>(responseRaw, OBJECT_TYPE_GET);
+        }
     
     
         /// <summary>
