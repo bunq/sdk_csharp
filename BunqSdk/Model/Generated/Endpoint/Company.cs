@@ -36,6 +36,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SUBSCRIPTION_TYPE = "subscription_type";
         public const string FIELD_AVATAR_UUID = "avatar_uuid";
         public const string FIELD_VAT_NUMBER = "vat_number";
+        public const string FIELD_SIGNUP_TRACK_TYPE = "signup_track_type";
     
         /// <summary>
         /// Object type.
@@ -103,6 +104,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public CompanyVatNumber VatNumber { get; set; }
     
         /// <summary>
+        /// The type of signup track the user is following.
+        /// </summary>
+        [JsonProperty(PropertyName = "signup_track_type")]
+        public string SignupTrackType { get; set; }
+    
+        /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "UserCompany")]
         public UserCompany UserCompany { get; set; }
@@ -120,7 +127,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="chamberOfCommerceNumber">The company's chamber of commerce number.</param>
         /// <param name="avatarUuid">The public UUID of the company's avatar.</param>
         /// <param name="vatNumber">All the vat numbers of the company</param>
-        public static BunqResponse<int> Create(string name, Address addressMain, Address addressPostal, string country, string legalForm, string subscriptionType, List<Ubo> ubo = null, string chamberOfCommerceNumber = null, string avatarUuid = null, CompanyVatNumber vatNumber = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="signupTrackType">The type of signup track the user is following.</param>
+        public static BunqResponse<int> Create(string name, Address addressMain, Address addressPostal, string country, string legalForm, string subscriptionType, List<Ubo> ubo = null, string chamberOfCommerceNumber = null, string avatarUuid = null, CompanyVatNumber vatNumber = null, string signupTrackType = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -138,6 +146,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_SUBSCRIPTION_TYPE, subscriptionType},
     {FIELD_AVATAR_UUID, avatarUuid},
     {FIELD_VAT_NUMBER, vatNumber},
+    {FIELD_SIGNUP_TRACK_TYPE, signupTrackType},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
