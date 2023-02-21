@@ -51,6 +51,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_SESSION_TIMEOUT = "session_timeout";
         public const string FIELD_DAILY_LIMIT_WITHOUT_CONFIRMATION_LOGIN = "daily_limit_without_confirmation_login";
         public const string FIELD_DISPLAY_NAME = "display_name";
+        public const string FIELD_SIGNUP_TRACK_TYPE = "signup_track_type";
     
         /// <summary>
         /// Object type.
@@ -209,6 +210,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
+    
+        /// <summary>
+        /// The type of signup track the user is following.
+        /// </summary>
+        [JsonProperty(PropertyName = "signup_track_type")]
+        public string SignupTrackType { get; set; }
     
         /// <summary>
         /// The id of the modified person object.
