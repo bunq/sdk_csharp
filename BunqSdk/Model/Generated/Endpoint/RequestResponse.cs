@@ -211,6 +211,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
     
+        /// <summary>
+        /// The ID of the latest event for the request.
+        /// </summary>
+        [JsonProperty(PropertyName = "event_id")]
+        public int? EventId { get; set; }
+    
     
         /// <summary>
         /// Update the status to accept or reject the RequestResponse.
@@ -407,6 +413,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.RequestReferenceSplitTheBill != null)
+            {
+                return false;
+            }
+    
+            if (this.EventId != null)
             {
                 return false;
             }

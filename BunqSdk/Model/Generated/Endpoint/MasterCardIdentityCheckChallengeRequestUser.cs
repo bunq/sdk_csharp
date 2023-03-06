@@ -61,6 +61,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "counterparty_alias")]
         public MonetaryAccountReference CounterpartyAlias { get; set; }
     
+        /// <summary>
+        /// The ID of the latest event for the identity check.
+        /// </summary>
+        [JsonProperty(PropertyName = "event_id")]
+        public int? EventId { get; set; }
+    
     
         /// <summary>
         /// </summary>
@@ -120,6 +126,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CounterpartyAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.EventId != null)
             {
                 return false;
             }
