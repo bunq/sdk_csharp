@@ -225,6 +225,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "event_id")]
         public int? EventId { get; set; }
     
+        /// <summary>
+        /// The ID of the monetary account this user prefers to pay the request from.
+        /// </summary>
+        [JsonProperty(PropertyName = "monetary_account_preferred_id")]
+        public int? MonetaryAccountPreferredId { get; set; }
+    
     
         /// <summary>
         /// Update the status to accept or reject the RequestResponse.
@@ -428,6 +434,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.EventId != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountPreferredId != null)
             {
                 return false;
             }
