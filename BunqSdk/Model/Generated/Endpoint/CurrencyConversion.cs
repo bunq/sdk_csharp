@@ -81,10 +81,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string GroupUuid { get; set; }
     
         /// <summary>
-        /// The type of this conversion in the pair.
+        /// The type of this conversion.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
+    
+        /// <summary>
+        /// The order type, buying or selling.
+        /// </summary>
+        [JsonProperty(PropertyName = "order_type")]
+        public string OrderType { get; set; }
     
         /// <summary>
         /// The label of the monetary account.
@@ -181,6 +187,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.OrderType != null)
             {
                 return false;
             }
