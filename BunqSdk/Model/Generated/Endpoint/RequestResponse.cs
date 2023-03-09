@@ -32,6 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_STATUS = "status";
         public const string FIELD_ADDRESS_SHIPPING = "address_shipping";
         public const string FIELD_ADDRESS_BILLING = "address_billing";
+        public const string FIELD_CURRENCY_CONVERSION_QUOTE_ID = "currency_conversion_quote_id";
     
         /// <summary>
         /// Object type.
@@ -63,6 +64,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "address_billing")]
         public Address AddressBilling { get; set; }
+    
+        /// <summary>
+        /// When the request is accepted on a monetary account with a different currency, a quote is expected to
+        /// convert.
+        /// </summary>
+        [JsonProperty(PropertyName = "currency_conversion_quote_id")]
+        public int? CurrencyConversionQuoteId { get; set; }
     
         /// <summary>
         /// The id of the Request Response.
@@ -225,7 +233,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="status">The responding status of the RequestResponse. Can be ACCEPTED or REJECTED.</param>
         /// <param name="addressShipping">The shipping Address to return to the user who created the RequestInquiry. Should only be provided if 'require_address' is set to SHIPPING, BILLING_SHIPPING or OPTIONAL.</param>
         /// <param name="addressBilling">The billing Address to return to the user who created the RequestInquiry. Should only be provided if 'require_address' is set to BILLING, BILLING_SHIPPING or OPTIONAL.</param>
-        public static BunqResponse<RequestResponse> Update(int requestResponseId, int? monetaryAccountId= null, Amount amountResponded = null, string status = null, Address addressShipping = null, Address addressBilling = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="currencyConversionQuoteId">When the request is accepted on a monetary account with a different currency, a quote is expected to convert.</param>
+        public static BunqResponse<RequestResponse> Update(int requestResponseId, int? monetaryAccountId= null, Amount amountResponded = null, string status = null, Address addressShipping = null, Address addressBilling = null, int? currencyConversionQuoteId = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -237,6 +246,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_STATUS, status},
     {FIELD_ADDRESS_SHIPPING, addressShipping},
     {FIELD_ADDRESS_BILLING, addressBilling},
+    {FIELD_CURRENCY_CONVERSION_QUOTE_ID, currencyConversionQuoteId},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
