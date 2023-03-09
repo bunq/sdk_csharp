@@ -38,6 +38,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string CategoryTranslated { get; set; }
     
         /// <summary>
+        /// The color of the category.
+        /// </summary>
+        [JsonProperty(PropertyName = "category_color")]
+        public string CategoryColor { get; set; }
+    
+        /// <summary>
+        /// The icon of the category.
+        /// </summary>
+        [JsonProperty(PropertyName = "category_icon")]
+        public string CategoryIcon { get; set; }
+    
+        /// <summary>
         /// The total amount of the transactions in the category.
         /// </summary>
         [JsonProperty(PropertyName = "amount_total")]
@@ -47,7 +59,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The number of the transactions in the category.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_transactions")]
-        public double? NumberOfTransactions { get; set; }
+        public int? NumberOfTransactions { get; set; }
     
     
         /// <summary>
@@ -74,6 +86,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CategoryTranslated != null)
+            {
+                return false;
+            }
+    
+            if (this.CategoryColor != null)
+            {
+                return false;
+            }
+    
+            if (this.CategoryIcon != null)
             {
                 return false;
             }

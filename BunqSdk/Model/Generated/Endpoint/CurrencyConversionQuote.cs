@@ -28,6 +28,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_AMOUNT = "amount";
         public const string FIELD_CURRENCY_SOURCE = "currency_source";
         public const string FIELD_CURRENCY_TARGET = "currency_target";
+        public const string FIELD_ORDER_TYPE = "order_type";
         public const string FIELD_COUNTERPARTY_ALIAS = "counterparty_alias";
         public const string FIELD_STATUS = "status";
     
@@ -54,6 +55,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "currency_target")]
         public string CurrencyTarget { get; set; }
+    
+        /// <summary>
+        /// The type of the quote, SELL or BUY.
+        /// </summary>
+        [JsonProperty(PropertyName = "order_type")]
+        public string OrderType { get; set; }
     
         /// <summary>
         /// The Alias of the party we are transferring the money to.
@@ -116,8 +123,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="currencySource">The currency we are converting.</param>
         /// <param name="currencyTarget">The currency we are converting towards.</param>
         /// <param name="counterpartyAlias">The Alias of the party we are transferring the money to.</param>
+        /// <param name="orderType">The type of the quote, SELL or BUY.</param>
         /// <param name="status">The status of the quote.</param>
-        public static BunqResponse<int> Create(Amount amount, string currencySource, string currencyTarget, Pointer counterpartyAlias, int? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Create(Amount amount, string currencySource, string currencyTarget, Pointer counterpartyAlias, int? monetaryAccountId= null, string orderType = null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -128,6 +136,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_AMOUNT, amount},
     {FIELD_CURRENCY_SOURCE, currencySource},
     {FIELD_CURRENCY_TARGET, currencyTarget},
+    {FIELD_ORDER_TYPE, orderType},
     {FIELD_COUNTERPARTY_ALIAS, counterpartyAlias},
     {FIELD_STATUS, status},
     };
