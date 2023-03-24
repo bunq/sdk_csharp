@@ -27,12 +27,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         public Amount BalanceThresholdLow { get; set; }
     
         /// <summary>
-        /// The method used to fill the monetary account. Currently only iDEAL is supported, and it is the default one.
-        /// </summary>
-        [JsonProperty(PropertyName = "method_fill")]
-        public string MethodFill { get; set; }
-    
-        /// <summary>
         /// The bank the fill is supposed to happen from, with BIC and bank name.
         /// </summary>
         [JsonProperty(PropertyName = "issuer")]
@@ -62,11 +56,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.BalanceThresholdLow != null)
-            {
-                return false;
-            }
-    
-            if (this.MethodFill != null)
             {
                 return false;
             }
