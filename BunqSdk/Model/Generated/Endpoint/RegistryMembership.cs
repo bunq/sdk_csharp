@@ -17,6 +17,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_ALIAS = "alias";
         public const string FIELD_STATUS = "status";
         public const string FIELD_AUTO_ADD_CARD_TRANSACTION = "auto_add_card_transaction";
+        public const string FIELD_MEMBERSHIP_TICOUNT_ID = "membership_ticount_id";
     
     
         /// <summary>
@@ -42,6 +43,14 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "auto_add_card_transaction")]
         public string AutoAddCardTransaction { get; set; }
+    
+        /// <summary>
+        /// The original TricountId of the membership for backwards compatibility. May be used as an alternative to the
+        /// UUID to identify specific memberships to allow clients to sync changes made offline before the Tricount
+        /// migration.
+        /// </summary>
+        [JsonProperty(PropertyName = "membership_ticount_id")]
+        public int? MembershipTicountId { get; set; }
     
         /// <summary>
         /// The balance of this RegistryMembership.
