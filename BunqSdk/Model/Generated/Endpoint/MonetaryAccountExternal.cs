@@ -18,13 +18,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
+        protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account-external";
         protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account-external/{1}";
+        protected const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account-external/{1}";
         protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account-external";
     
         /// <summary>
         /// Field constants.
         /// </summary>
         public const string FIELD_CURRENCY = "currency";
+        public const string FIELD_SERVICE = "service";
         public const string FIELD_DESCRIPTION = "description";
         public const string FIELD_DAILY_LIMIT = "daily_limit";
         public const string FIELD_AVATAR_UUID = "avatar_uuid";
@@ -45,6 +48,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; set; }
+    
+        /// <summary>
+        /// The service the MonetaryAccountExternal is connected with.
+        /// </summary>
+        [JsonProperty(PropertyName = "service")]
+        public string Service { get; set; }
     
         /// <summary>
         /// The description of the MonetaryAccountExternal. Defaults to 'bunq account'.
@@ -173,6 +182,46 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
+        /// <param name="currency">The currency of the MonetaryAccountExternal as an ISO 4217 formatted currency code.</param>
+        /// <param name="service">The service the MonetaryAccountExternal is connected with.</param>
+        /// <param name="description">The description of the MonetaryAccountExternal. Defaults to 'bunq account'.</param>
+        /// <param name="dailyLimit">The daily spending limit Amount of the MonetaryAccountExternal. Defaults to 1000 EUR. Currency must match the MonetaryAccountExternal's currency. Limited to 10000 EUR.</param>
+        /// <param name="avatarUuid">The UUID of the Avatar of the MonetaryAccountExternal.</param>
+        /// <param name="status">The status of the MonetaryAccountExternal. Ignored in POST requests (always set to ACTIVE) can be CANCELLED or PENDING_REOPEN in PUT requests to cancel (close) or reopen the MonetaryAccountExternal. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
+        /// <param name="subStatus">The sub-status of the MonetaryAccountExternal providing extra information regarding the status. Should be ignored for POST requests. In case of PUT requests with status CANCELLED it can only be REDEMPTION_VOLUNTARY, while with status PENDING_REOPEN it can only be NONE. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
+        /// <param name="reason">The reason for voluntarily cancelling (closing) the MonetaryAccountExternal, can only be OTHER. Should only be specified if updating the status to CANCELLED.</param>
+        /// <param name="reasonDescription">The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountExternal. Can be any user provided message. Should only be specified if updating the status to CANCELLED.</param>
+        /// <param name="displayName">The legal name of the user / company using this monetary account.</param>
+        /// <param name="setting">The settings of the MonetaryAccountExternal.</param>
+        public static BunqResponse<int> Create(string currency, string service, string description = null, Amount dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null, string reason = null, string reasonDescription = null, string displayName = null, MonetaryAccountSetting setting = null, IDictionary<string, string> customHeaders = null)
+        {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+    
+            var apiClient = new ApiClient(GetApiContext());
+    
+            var requestMap = new Dictionary<string, object>
+    {
+    {FIELD_CURRENCY, currency},
+    {FIELD_SERVICE, service},
+    {FIELD_DESCRIPTION, description},
+    {FIELD_DAILY_LIMIT, dailyLimit},
+    {FIELD_AVATAR_UUID, avatarUuid},
+    {FIELD_STATUS, status},
+    {FIELD_SUB_STATUS, subStatus},
+    {FIELD_REASON, reason},
+    {FIELD_REASON_DESCRIPTION, reasonDescription},
+    {FIELD_DISPLAY_NAME, displayName},
+    {FIELD_SETTING, setting},
+    };
+    
+            var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId()), requestBytes, customHeaders);
+    
+            return ProcessForId(responseRaw);
+        }
+    
+        /// <summary>
+        /// </summary>
         public static BunqResponse<MonetaryAccountExternal> Get(int monetaryAccountExternalId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -181,6 +230,42 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId(), monetaryAccountExternalId), new Dictionary<string, string>(), customHeaders);
     
             return FromJson<MonetaryAccountExternal>(responseRaw, OBJECT_TYPE_GET);
+        }
+    
+        /// <summary>
+        /// </summary>
+        /// <param name="description">The description of the MonetaryAccountExternal. Defaults to 'bunq account'.</param>
+        /// <param name="dailyLimit">The daily spending limit Amount of the MonetaryAccountExternal. Defaults to 1000 EUR. Currency must match the MonetaryAccountExternal's currency. Limited to 10000 EUR.</param>
+        /// <param name="avatarUuid">The UUID of the Avatar of the MonetaryAccountExternal.</param>
+        /// <param name="status">The status of the MonetaryAccountExternal. Ignored in POST requests (always set to ACTIVE) can be CANCELLED or PENDING_REOPEN in PUT requests to cancel (close) or reopen the MonetaryAccountExternal. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
+        /// <param name="subStatus">The sub-status of the MonetaryAccountExternal providing extra information regarding the status. Should be ignored for POST requests. In case of PUT requests with status CANCELLED it can only be REDEMPTION_VOLUNTARY, while with status PENDING_REOPEN it can only be NONE. When updating the status and/or sub_status no other fields can be updated in the same request (and vice versa).</param>
+        /// <param name="reason">The reason for voluntarily cancelling (closing) the MonetaryAccountExternal, can only be OTHER. Should only be specified if updating the status to CANCELLED.</param>
+        /// <param name="reasonDescription">The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountExternal. Can be any user provided message. Should only be specified if updating the status to CANCELLED.</param>
+        /// <param name="displayName">The legal name of the user / company using this monetary account.</param>
+        /// <param name="setting">The settings of the MonetaryAccountExternal.</param>
+        public static BunqResponse<int> Update(int monetaryAccountExternalId, string description = null, Amount dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null, string reason = null, string reasonDescription = null, string displayName = null, MonetaryAccountSetting setting = null, IDictionary<string, string> customHeaders = null)
+        {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+    
+            var apiClient = new ApiClient(GetApiContext());
+    
+            var requestMap = new Dictionary<string, object>
+    {
+    {FIELD_DESCRIPTION, description},
+    {FIELD_DAILY_LIMIT, dailyLimit},
+    {FIELD_AVATAR_UUID, avatarUuid},
+    {FIELD_STATUS, status},
+    {FIELD_SUB_STATUS, subStatus},
+    {FIELD_REASON, reason},
+    {FIELD_REASON_DESCRIPTION, reasonDescription},
+    {FIELD_DISPLAY_NAME, displayName},
+    {FIELD_SETTING, setting},
+    };
+    
+            var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, DetermineUserId(), monetaryAccountExternalId), requestBytes, customHeaders);
+    
+            return ProcessForId(responseRaw);
         }
     
         /// <summary>
