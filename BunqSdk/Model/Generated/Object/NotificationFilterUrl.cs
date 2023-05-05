@@ -27,6 +27,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         public List<string> AllMonetaryAccountId { get; set; }
     
         /// <summary>
+        /// Type of verification required for the connection.
+        /// </summary>
+        [JsonProperty(PropertyName = "all_verification_type")]
+        public List<string> AllVerificationType { get; set; }
+    
+        /// <summary>
         /// The URL to which the callback should be made.
         /// </summary>
         [JsonProperty(PropertyName = "notification_target")]
@@ -88,6 +94,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.AllMonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.AllVerificationType != null)
             {
                 return false;
             }
