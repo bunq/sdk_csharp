@@ -35,7 +35,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE_GET = "BunqMeFundraiserProfileModel";
+        private const string OBJECT_TYPE_GET = "BunqMeFundraiserProfile";
     
         /// <summary>
         /// Id of the monetary account on which you want to receive bunq.me payments.

@@ -71,6 +71,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "invite_profile_name")]
         public string InviteProfileName { get; set; }
     
+        /// <summary>
+        /// List of available merchants.
+        /// </summary>
+        [JsonProperty(PropertyName = "merchant_available")]
+        public List<BunqMeMerchantAvailable> MerchantAvailable { get; set; }
+    
     
     
         /// <summary>
@@ -118,6 +124,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.InviteProfileName != null)
+            {
+                return false;
+            }
+    
+            if (this.MerchantAvailable != null)
             {
                 return false;
             }
