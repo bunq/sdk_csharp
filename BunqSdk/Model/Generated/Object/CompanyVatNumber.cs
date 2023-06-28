@@ -9,6 +9,12 @@ namespace Bunq.Sdk.Model.Generated.Object
     public class CompanyVatNumber : BunqModel
     {
         /// <summary>
+        /// The VAT identification number type.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
+    
+        /// <summary>
         /// The country of the VAT identification number.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
