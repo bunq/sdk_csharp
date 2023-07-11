@@ -252,6 +252,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
         public int? EligibleWhitelistId { get; set; }
     
+        /// <summary>
+        /// The cashback payout item for this action or null
+        /// </summary>
+        [JsonProperty(PropertyName = "cashback_payout_item")]
+        public CashbackPayoutItem CashbackPayoutItem { get; set; }
+    
     
         /// <summary>
         /// </summary>
@@ -464,6 +470,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.EligibleWhitelistId != null)
+            {
+                return false;
+            }
+    
+            if (this.CashbackPayoutItem != null)
             {
                 return false;
             }
