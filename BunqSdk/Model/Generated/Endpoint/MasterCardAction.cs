@@ -258,6 +258,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "cashback_payout_item")]
         public CashbackPayoutItem CashbackPayoutItem { get; set; }
     
+        /// <summary>
+        /// The report for this transaction
+        /// </summary>
+        [JsonProperty(PropertyName = "mastercard_action_report")]
+        public MasterCardActionReport MastercardActionReport { get; set; }
+    
     
         /// <summary>
         /// </summary>
@@ -475,6 +481,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CashbackPayoutItem != null)
+            {
+                return false;
+            }
+    
+            if (this.MastercardActionReport != null)
             {
                 return false;
             }
