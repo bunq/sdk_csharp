@@ -138,12 +138,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public Avatar Avatar { get; set; }
     
         /// <summary>
-        /// The maximum Amount the MonetaryAccountSavings can be 'in the red'. Must be 0 EUR or omitted.
-        /// </summary>
-        [JsonProperty(PropertyName = "overdraft_limit")]
-        public Amount OverdraftLimit { get; set; }
-    
-        /// <summary>
         /// The current available balance Amount of the MonetaryAccountSavings.
         /// </summary>
         [JsonProperty(PropertyName = "balance")]
@@ -178,6 +172,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "savings_goal_progress")]
         public double? SavingsGoalProgress { get; set; }
+    
+        /// <summary>
+        /// The number of payments that can be made from this savings account
+        /// </summary>
+        [JsonProperty(PropertyName = "number_of_payment_remaining")]
+        public string NumberOfPaymentRemaining { get; set; }
     
         /// <summary>
         /// The ids of the AutoSave.
@@ -331,11 +331,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.OverdraftLimit != null)
-            {
-                return false;
-            }
-    
             if (this.Balance != null)
             {
                 return false;
@@ -397,6 +392,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.SavingsGoalProgress != null)
+            {
+                return false;
+            }
+    
+            if (this.NumberOfPaymentRemaining != null)
             {
                 return false;
             }
