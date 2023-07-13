@@ -54,6 +54,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Updated { get; set; }
     
         /// <summary>
+        /// The status of the the blacklist.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+    
+        /// <summary>
         /// Hash of the merchant we are blacklisting.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_hash")]
@@ -81,6 +87,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Updated != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
             {
                 return false;
             }
