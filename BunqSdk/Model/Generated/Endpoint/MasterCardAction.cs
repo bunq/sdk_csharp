@@ -185,6 +185,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public LabelCard LabelCard { get; set; }
     
         /// <summary>
+        /// The identification string of the merchant.
+        /// </summary>
+        [JsonProperty(PropertyName = "merchant_id")]
+        public string MerchantId { get; set; }
+    
+        /// <summary>
         /// If this is a tokenisation action, this shows the status of the token.
         /// </summary>
         [JsonProperty(PropertyName = "token_status")]
@@ -427,6 +433,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.LabelCard != null)
+            {
+                return false;
+            }
+    
+            if (this.MerchantId != null)
             {
                 return false;
             }
