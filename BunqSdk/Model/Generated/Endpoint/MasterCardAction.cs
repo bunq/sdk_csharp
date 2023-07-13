@@ -264,6 +264,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "mastercard_action_report")]
         public MasterCardActionReport MastercardActionReport { get; set; }
     
+        /// <summary>
+        /// The blacklist enabled for the merchant of this transaction
+        /// </summary>
+        [JsonProperty(PropertyName = "blacklist")]
+        public UserBlacklistMasterCardMerchant Blacklist { get; set; }
+    
     
         /// <summary>
         /// </summary>
@@ -486,6 +492,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.MastercardActionReport != null)
+            {
+                return false;
+            }
+    
+            if (this.Blacklist != null)
             {
                 return false;
             }
