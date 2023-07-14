@@ -62,6 +62,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public int? NumberOfStrategyChangeAnnualUsed { get; set; }
     
         /// <summary>
+        /// The external identifier of the portfolio.
+        /// </summary>
+        [JsonProperty(PropertyName = "external_identifier")]
+        public string ExternalIdentifier { get; set; }
+    
+        /// <summary>
         /// The investment portfolio balance.
         /// </summary>
         [JsonProperty(PropertyName = "balance")]
@@ -105,6 +111,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Name != null)
+            {
+                return false;
+            }
+    
+            if (this.ExternalIdentifier != null)
             {
                 return false;
             }
