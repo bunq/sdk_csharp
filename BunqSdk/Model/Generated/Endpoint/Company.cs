@@ -99,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string AvatarUuid { get; set; }
     
         /// <summary>
-        /// All the vat numbers of the company
+        /// DEPRECATED All the vat numbers of the company
         /// </summary>
         [JsonProperty(PropertyName = "vat_number")]
         public CompanyVatNumber VatNumber { get; set; }
@@ -133,7 +133,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="ubo">The names and birth dates of the company's ultimate beneficiary owners. Minimum zero, maximum four.</param>
         /// <param name="chamberOfCommerceNumber">The company's chamber of commerce number.</param>
         /// <param name="avatarUuid">The public UUID of the company's avatar.</param>
-        /// <param name="vatNumber">All the vat numbers of the company</param>
+        /// <param name="vatNumber">DEPRECATED All the vat numbers of the company</param>
         /// <param name="vatNumbers">All the vat numbers of the company</param>
         /// <param name="signupTrackType">The type of signup track the user is following.</param>
         public static BunqResponse<int> Create(string name, Address addressMain, Address addressPostal, string country, string legalForm, string subscriptionType, List<Ubo> ubo = null, string chamberOfCommerceNumber = null, string avatarUuid = null, CompanyVatNumber vatNumber = null, List<CompanyVatNumber> vatNumbers = null, string signupTrackType = null, IDictionary<string, string> customHeaders = null)
