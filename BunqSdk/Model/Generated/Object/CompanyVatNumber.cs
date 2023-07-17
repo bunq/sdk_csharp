@@ -38,6 +38,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
+            if (this.Type != null)
+            {
+                return false;
+            }
+    
             if (this.Country != null)
             {
                 return false;
