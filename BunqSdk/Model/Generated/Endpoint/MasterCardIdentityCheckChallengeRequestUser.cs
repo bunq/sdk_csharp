@@ -56,6 +56,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Description { get; set; }
     
         /// <summary>
+        /// The return url for the merchant app after the challenge is accepted or rejected.
+        /// </summary>
+        [JsonProperty(PropertyName = "url_merchant_app")]
+        public string UrlMerchantApp { get; set; }
+    
+        /// <summary>
         /// The monetary account label of the counterparty.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_alias")]
@@ -121,6 +127,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.UrlMerchantApp != null)
             {
                 return false;
             }
