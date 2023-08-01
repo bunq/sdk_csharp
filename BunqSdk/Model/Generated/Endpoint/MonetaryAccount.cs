@@ -64,6 +64,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "MonetaryAccountInvestment")]
         public MonetaryAccountInvestment MonetaryAccountInvestment { get; set; }
     
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "MonetaryAccountExternalSavings")]
+        public MonetaryAccountExternalSavings MonetaryAccountExternalSavings { get; set; }
+    
     
         /// <summary>
         /// Get a specific MonetaryAccount.
@@ -127,6 +132,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return this.MonetaryAccountInvestment;
             }
     
+            if (this.MonetaryAccountExternalSavings != null)
+            {
+                return this.MonetaryAccountExternalSavings;
+            }
+    
             throw new BunqException(ERROR_NULL_FIELDS);
         }
     
@@ -160,6 +170,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.MonetaryAccountInvestment != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccountExternalSavings != null)
             {
                 return false;
             }
