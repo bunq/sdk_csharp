@@ -30,6 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_MONETARY_ACCOUNT_PAYING_ID = "monetary_account_paying_id";
         public const string FIELD_REQUEST_ID = "request_id";
         public const string FIELD_MAXIMUM_AMOUNT_PER_MONTH = "maximum_amount_per_month";
+        public const string FIELD_MAXIMUM_AMOUNT_PER_PAYMENT = "maximum_amount_per_payment";
     
         /// <summary>
         /// Object type.
@@ -53,6 +54,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "maximum_amount_per_month")]
         public Amount MaximumAmountPerMonth { get; set; }
+    
+        /// <summary>
+        /// The maximum amount per payment that can be deducted from the target account.
+        /// </summary>
+        [JsonProperty(PropertyName = "maximum_amount_per_payment")]
+        public Amount MaximumAmountPerPayment { get; set; }
     
         /// <summary>
         /// The ID of the whitelist entry.
@@ -121,8 +128,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="monetaryAccountPayingId">ID of the monetary account of which you want to pay from.</param>
         /// <param name="requestId">ID of the request for which you want to whitelist the originating SDD.</param>
-        /// <param name="maximumAmountPerMonth">The maximum amount of money that is allowed to be deducted based on the whitelist.</param>
-        public static BunqResponse<int> Create(int? monetaryAccountPayingId, int? requestId, Amount maximumAmountPerMonth = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="maximumAmountPerMonth">The maximum amount of money that is allowed to be deducted per month based on the whitelist.</param>
+        /// <param name="maximumAmountPerPayment">The maximum amount of money that is allowed to be deducted per payment based on the whitelist.</param>
+        public static BunqResponse<int> Create(int? monetaryAccountPayingId, int? requestId, Amount maximumAmountPerMonth = null, Amount maximumAmountPerPayment = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -133,6 +141,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_MONETARY_ACCOUNT_PAYING_ID, monetaryAccountPayingId},
     {FIELD_REQUEST_ID, requestId},
     {FIELD_MAXIMUM_AMOUNT_PER_MONTH, maximumAmountPerMonth},
+    {FIELD_MAXIMUM_AMOUNT_PER_PAYMENT, maximumAmountPerPayment},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -144,8 +153,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="monetaryAccountPayingId">ID of the monetary account of which you want to pay from.</param>
-        /// <param name="maximumAmountPerMonth">The maximum amount of money that is allowed to be deducted based on the whitelist.</param>
-        public static BunqResponse<int> Update(int whitelistSddRecurringId, int? monetaryAccountPayingId = null, Amount maximumAmountPerMonth = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="maximumAmountPerMonth">The maximum amount of money that is allowed to be deducted per month based on the whitelist.</param>
+        /// <param name="maximumAmountPerPayment">The maximum amount of money that is allowed to be deducted per payment based on the whitelist.</param>
+        public static BunqResponse<int> Update(int whitelistSddRecurringId, int? monetaryAccountPayingId = null, Amount maximumAmountPerMonth = null, Amount maximumAmountPerPayment = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -155,6 +165,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {
     {FIELD_MONETARY_ACCOUNT_PAYING_ID, monetaryAccountPayingId},
     {FIELD_MAXIMUM_AMOUNT_PER_MONTH, maximumAmountPerMonth},
+    {FIELD_MAXIMUM_AMOUNT_PER_PAYMENT, maximumAmountPerPayment},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -235,6 +246,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.MaximumAmountPerMonth != null)
+            {
+                return false;
+            }
+    
+            if (this.MaximumAmountPerPayment != null)
             {
                 return false;
             }

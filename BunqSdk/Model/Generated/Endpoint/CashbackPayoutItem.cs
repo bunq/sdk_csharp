@@ -34,12 +34,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "transaction_category")]
         public AdditionalTransactionInformationCategory TransactionCategory { get; set; }
     
-        /// <summary>
-        /// The ID of the event of the mastercard action that triggered this cashback.
-        /// </summary>
-        [JsonProperty(PropertyName = "mastercard_action_event_id")]
-        public int? MastercardActionEventId { get; set; }
-    
     
     
         /// <summary>
@@ -62,11 +56,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.TransactionCategory != null)
-            {
-                return false;
-            }
-    
-            if (this.MastercardActionEventId != null)
             {
                 return false;
             }
