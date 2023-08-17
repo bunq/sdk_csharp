@@ -35,6 +35,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
         public const string FIELD_PRIMARY_ACCOUNT_NUMBERS = "primary_account_numbers";
         public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
+        public const string FIELD_CANCELLATION_REASON = "cancellation_reason";
     
         /// <summary>
         /// Object type.
@@ -106,6 +107,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
         public int? MonetaryAccountIdFallback { get; set; }
+    
+        /// <summary>
+        /// The reason for card cancellation.
+        /// </summary>
+        [JsonProperty(PropertyName = "cancellation_reason")]
+        public string CancellationReason { get; set; }
     
         /// <summary>
         /// The id of the card.
@@ -219,7 +226,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="primaryAccountNumbers">Array of PANs and their attributes.</param>
         /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
-        public static BunqResponse<Card> Update(int cardId, string pinCode = null, string activationCode = null, string status = null, string orderStatus = null, Amount cardLimit = null, Amount cardLimitAtm = null, List<CardCountryPermission> countryPermission = null, List<CardPinAssignment> pinCodeAssignment = null, List<CardPrimaryAccountNumber> primaryAccountNumbers = null, int? monetaryAccountIdFallback = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="cancellationReason">The reason for card cancellation.</param>
+        public static BunqResponse<Card> Update(int cardId, string pinCode = null, string activationCode = null, string status = null, string orderStatus = null, Amount cardLimit = null, Amount cardLimitAtm = null, List<CardCountryPermission> countryPermission = null, List<CardPinAssignment> pinCodeAssignment = null, List<CardPrimaryAccountNumber> primaryAccountNumbers = null, int? monetaryAccountIdFallback = null, string cancellationReason = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -237,6 +245,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_PIN_CODE_ASSIGNMENT, pinCodeAssignment},
     {FIELD_PRIMARY_ACCOUNT_NUMBERS, primaryAccountNumbers},
     {FIELD_MONETARY_ACCOUNT_ID_FALLBACK, monetaryAccountIdFallback},
+    {FIELD_CANCELLATION_REASON, cancellationReason},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
