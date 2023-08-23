@@ -276,6 +276,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "blacklist")]
         public UserBlacklistMasterCardMerchant Blacklist { get; set; }
     
+        /// <summary>
+        /// The status of the additional authentication performed (3ds) by the user for this transaction.
+        /// </summary>
+        [JsonProperty(PropertyName = "additional_authentication_status")]
+        public string AdditionalAuthenticationStatus { get; set; }
+    
+        /// <summary>
+        /// Status checking the provided PIN.
+        /// </summary>
+        [JsonProperty(PropertyName = "pin_status")]
+        public string PinStatus { get; set; }
+    
     
         /// <summary>
         /// </summary>
@@ -508,6 +520,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Blacklist != null)
+            {
+                return false;
+            }
+    
+            if (this.AdditionalAuthenticationStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.PinStatus != null)
             {
                 return false;
             }
