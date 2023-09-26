@@ -48,20 +48,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "pin_code")]
         public string PinCode { get; set; }
-    
         /// <summary>
         /// DEPRECATED: Activate a card by setting status to ACTIVE when the order_status is ACCEPTED_FOR_PRODUCTION.
         /// </summary>
         [JsonProperty(PropertyName = "activation_code")]
         public string ActivationCode { get; set; }
-    
         /// <summary>
         /// The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN, CANCELLED, EXPIRED or
         /// PIN_TRIES_EXCEEDED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The order status of the card. Can be NEW_CARD_REQUEST_RECEIVED, CARD_REQUEST_PENDING, SENT_FOR_PRODUCTION,
         /// ACCEPTED_FOR_PRODUCTION, DELIVERED_TO_CUSTOMER, CARD_UPDATE_REQUESTED, CARD_UPDATE_PENDING,
@@ -70,146 +67,122 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "order_status")]
         public string OrderStatus { get; set; }
-    
         /// <summary>
         /// The spending limit for the card.
         /// </summary>
         [JsonProperty(PropertyName = "card_limit")]
         public Amount CardLimit { get; set; }
-    
         /// <summary>
         /// The ATM spending limit for the card.
         /// </summary>
         [JsonProperty(PropertyName = "card_limit_atm")]
         public Amount CardLimitAtm { get; set; }
-    
         /// <summary>
         /// The countries for which to grant (temporary) permissions to use the card.
         /// </summary>
         [JsonProperty(PropertyName = "country_permission")]
         public List<CardCountryPermission> CountryPermission { get; set; }
-    
         /// <summary>
         /// Array of Types, PINs, account IDs assigned to the card.
         /// </summary>
         [JsonProperty(PropertyName = "pin_code_assignment")]
         public List<CardPinAssignment> PinCodeAssignment { get; set; }
-    
         /// <summary>
         /// Array of PANs and their attributes.
         /// </summary>
         [JsonProperty(PropertyName = "primary_account_numbers")]
         public List<CardPrimaryAccountNumber> PrimaryAccountNumbers { get; set; }
-    
         /// <summary>
         /// ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
         /// not supplied.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
         public int? MonetaryAccountIdFallback { get; set; }
-    
         /// <summary>
         /// The reason for card cancellation.
         /// </summary>
         [JsonProperty(PropertyName = "cancellation_reason")]
         public string CancellationReason { get; set; }
-    
         /// <summary>
         /// The id of the card.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the card's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the card's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The public UUID of the card.
         /// </summary>
         [JsonProperty(PropertyName = "public_uuid")]
         public string PublicUuid { get; set; }
-    
         /// <summary>
         /// The type of the card. Can be MAESTRO, MASTERCARD.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The sub-type of the card.
         /// </summary>
         [JsonProperty(PropertyName = "sub_type")]
         public string SubType { get; set; }
-    
         /// <summary>
         /// The second line of text on the card
         /// </summary>
         [JsonProperty(PropertyName = "second_line")]
         public string SecondLine { get; set; }
-    
         /// <summary>
         /// ID of the user who is owner of the card.
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
         public int? UserId { get; set; }
-    
         /// <summary>
         /// The sub-status of the card. Can be NONE or REPLACED.
         /// </summary>
         [JsonProperty(PropertyName = "sub_status")]
         public string SubStatus { get; set; }
-    
         /// <summary>
         /// Expiry date of the card.
         /// </summary>
         [JsonProperty(PropertyName = "expiry_date")]
         public string ExpiryDate { get; set; }
-    
         /// <summary>
         /// The user's name on the card.
         /// </summary>
         [JsonProperty(PropertyName = "name_on_card")]
         public string NameOnCard { get; set; }
-    
         /// <summary>
         /// The payment account reference number associated with the card.
         /// </summary>
         [JsonProperty(PropertyName = "payment_account_reference")]
         public string PaymentAccountReference { get; set; }
-    
         /// <summary>
         /// The monetary account this card was ordered on and the label user that owns the card.
         /// </summary>
         [JsonProperty(PropertyName = "label_monetary_account_ordered")]
         public MonetaryAccountReference LabelMonetaryAccountOrdered { get; set; }
-    
         /// <summary>
         /// The monetary account that this card is currently linked to and the label user viewing it.
         /// </summary>
         [JsonProperty(PropertyName = "label_monetary_account_current")]
         public MonetaryAccountReference LabelMonetaryAccountCurrent { get; set; }
-    
         /// <summary>
         /// The country that is domestic to the card. Defaults to country of residence of user.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
-    
         /// <summary>
         /// A tracking link provided by our shipment provider.
         /// </summary>
         [JsonProperty(PropertyName = "card_shipment_tracking_url")]
         public string CardShipmentTrackingUrl { get; set; }
-    
     
         /// <summary>
         /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary

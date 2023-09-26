@@ -30,37 +30,31 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
-    
         /// <summary>
         /// The translated category.
         /// </summary>
         [JsonProperty(PropertyName = "category_translated")]
         public string CategoryTranslated { get; set; }
-    
         /// <summary>
         /// The color of the category.
         /// </summary>
         [JsonProperty(PropertyName = "category_color")]
         public string CategoryColor { get; set; }
-    
         /// <summary>
         /// The icon of the category.
         /// </summary>
         [JsonProperty(PropertyName = "category_icon")]
         public string CategoryIcon { get; set; }
-    
         /// <summary>
         /// The total amount of the transactions in the category.
         /// </summary>
         [JsonProperty(PropertyName = "amount_total")]
         public Amount AmountTotal { get; set; }
-    
         /// <summary>
         /// The number of the transactions in the category.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_transactions")]
         public int? NumberOfTransactions { get; set; }
-    
     
         /// <summary>
         /// </summary>

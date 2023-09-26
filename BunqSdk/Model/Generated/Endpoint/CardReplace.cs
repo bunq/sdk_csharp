@@ -37,31 +37,26 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "name_on_card")]
         public string NameOnCard { get; set; }
-    
         /// <summary>
         /// The user's preferred name that can be put on the card.
         /// </summary>
         [JsonProperty(PropertyName = "preferred_name_on_card")]
         public string PreferredNameOnCard { get; set; }
-    
         /// <summary>
         /// Array of Types, PINs, account IDs assigned to the card.
         /// </summary>
         [JsonProperty(PropertyName = "pin_code_assignment")]
         public List<CardPinAssignment> PinCodeAssignment { get; set; }
-    
         /// <summary>
         /// The second line on the card.
         /// </summary>
         [JsonProperty(PropertyName = "second_line")]
         public string SecondLine { get; set; }
-    
         /// <summary>
         /// The id of the new card.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
     
         /// <summary>
         /// Request a card replacement.

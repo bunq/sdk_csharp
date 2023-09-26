@@ -41,50 +41,42 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
-    
         /// <summary>
         /// The name of the account holder.
         /// </summary>
         [JsonProperty(PropertyName = "name_account_holder")]
         public string NameAccountHolder { get; set; }
-    
         /// <summary>
         /// The chosen recipient account type. The possible options are provided dynamically in the response endpoint.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The fields which were specified as "required" and have since been filled by the user. Always provide the
         /// full list.
         /// </summary>
         [JsonProperty(PropertyName = "detail")]
         public List<TransferwiseRequirementField> Detail { get; set; }
-    
         /// <summary>
         /// Transferwise's id of the account.
         /// </summary>
         [JsonProperty(PropertyName = "account_id")]
         public string AccountId { get; set; }
-    
         /// <summary>
         /// The currency the account.
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; set; }
-    
         /// <summary>
         /// The account number.
         /// </summary>
         [JsonProperty(PropertyName = "account_number")]
         public string AccountNumber { get; set; }
-    
         /// <summary>
         /// The bank code.
         /// </summary>
         [JsonProperty(PropertyName = "bank_code")]
         public string BankCode { get; set; }
-    
     
         /// <summary>
         /// </summary>

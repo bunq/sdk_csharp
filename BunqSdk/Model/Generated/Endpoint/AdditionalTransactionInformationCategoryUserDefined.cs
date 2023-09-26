@@ -34,31 +34,26 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
-    
         /// <summary>
         /// Whether this category is active. Only relevant for user-defined categories.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The description of the category.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-    
         /// <summary>
         /// The color of the category.
         /// </summary>
         [JsonProperty(PropertyName = "color")]
         public string Color { get; set; }
-    
         /// <summary>
         /// The icon of the category.
         /// </summary>
         [JsonProperty(PropertyName = "icon")]
         public string Icon { get; set; }
-    
     
         /// <summary>
         /// </summary>

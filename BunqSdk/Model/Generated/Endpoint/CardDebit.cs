@@ -44,50 +44,42 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "second_line")]
         public string SecondLine { get; set; }
-    
         /// <summary>
         /// The user's name as will be on the card
         /// </summary>
         [JsonProperty(PropertyName = "name_on_card")]
         public string NameOnCard { get; set; }
-    
         /// <summary>
         /// The user's preferred name that can be put on the card.
         /// </summary>
         [JsonProperty(PropertyName = "preferred_name_on_card")]
         public string PreferredNameOnCard { get; set; }
-    
         /// <summary>
         /// The label for the user who requested the card.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public MonetaryAccountReference Alias { get; set; }
-    
         /// <summary>
         /// The type of the card. Can be MAESTRO, MASTERCARD.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The product type of the card to order.
         /// </summary>
         [JsonProperty(PropertyName = "product_type")]
         public string ProductType { get; set; }
-    
         /// <summary>
         /// Array of Types, PINs, account IDs assigned to the card.
         /// </summary>
         [JsonProperty(PropertyName = "pin_code_assignment")]
         public List<CardPinAssignment> PinCodeAssignment { get; set; }
-    
         /// <summary>
         /// ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
         /// not supplied.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
         public int? MonetaryAccountIdFallback { get; set; }
-    
         /// <summary>
         /// The order status of the card. Can be NEW_CARD_REQUEST_RECEIVED, CARD_REQUEST_PENDING, SENT_FOR_PRODUCTION,
         /// ACCEPTED_FOR_PRODUCTION, DELIVERED_TO_CUSTOMER, CARD_UPDATE_REQUESTED, CARD_UPDATE_PENDING,
@@ -96,79 +88,66 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "order_status")]
         public string OrderStatus { get; set; }
-    
         /// <summary>
         /// The id of the card.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp when the card was crated.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp when the card was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The public UUID of the card.
         /// </summary>
         [JsonProperty(PropertyName = "public_uuid")]
         public string PublicUuid { get; set; }
-    
         /// <summary>
         /// The sub_type of card.
         /// </summary>
         [JsonProperty(PropertyName = "sub_type")]
         public string SubType { get; set; }
-    
         /// <summary>
         /// The status to set for the card. After ordering the card it will be DEACTIVATED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The expiry date of the card.
         /// </summary>
         [JsonProperty(PropertyName = "expiry_date")]
         public string ExpiryDate { get; set; }
-    
         /// <summary>
         /// The countries for which to grant (temporary) permissions to use the card.
         /// </summary>
         [JsonProperty(PropertyName = "country_permission")]
         public List<CardCountryPermission> CountryPermission { get; set; }
-    
         /// <summary>
         /// The monetary account this card was ordered on and the label user that owns the card.
         /// </summary>
         [JsonProperty(PropertyName = "label_monetary_account_ordered")]
         public MonetaryAccountReference LabelMonetaryAccountOrdered { get; set; }
-    
         /// <summary>
         /// The monetary account that this card is currently linked to and the label user viewing it.
         /// </summary>
         [JsonProperty(PropertyName = "label_monetary_account_current")]
         public MonetaryAccountReference LabelMonetaryAccountCurrent { get; set; }
-    
         /// <summary>
         /// The country that is domestic to the card. Defaults to country of residence of user.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
-    
         /// <summary>
         /// A tracking link provided by our shipment provider.
         /// </summary>
         [JsonProperty(PropertyName = "card_shipment_tracking_url")]
         public string CardShipmentTrackingUrl { get; set; }
-    
     
         /// <summary>
         /// Create a new debit card request.

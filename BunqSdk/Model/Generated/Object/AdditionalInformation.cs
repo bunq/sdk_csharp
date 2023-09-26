@@ -13,31 +13,26 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
-    
         /// <summary>
         /// The reason to refund, required for chargeback.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }
-    
         /// <summary>
         /// Comment about the refund.
         /// </summary>
         [JsonProperty(PropertyName = "comment")]
         public string Comment { get; set; }
-    
         /// <summary>
         /// The Attachments to attach to the refund request.
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
         public List<AttachmentMasterCardActionRefund> Attachment { get; set; }
-    
         /// <summary>
         /// Proof that the user acknowledged the terms and conditions for chargebacks.
         /// </summary>
         [JsonProperty(PropertyName = "terms_and_conditions")]
         public string TermsAndConditions { get; set; }
-    
     
     
         /// <summary>

@@ -49,78 +49,65 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-    
         /// <summary>
         /// The company's main address.
         /// </summary>
         [JsonProperty(PropertyName = "address_main")]
         public Address AddressMain { get; set; }
-    
         /// <summary>
         /// The company's postal address.
         /// </summary>
         [JsonProperty(PropertyName = "address_postal")]
         public Address AddressPostal { get; set; }
-    
         /// <summary>
         /// The country where the company is registered.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
-    
         /// <summary>
         /// The names and birth dates of the company's ultimate beneficiary owners. Minimum zero, maximum four.
         /// </summary>
         [JsonProperty(PropertyName = "ubo")]
         public List<Ubo> Ubo { get; set; }
-    
         /// <summary>
         /// The company's chamber of commerce number.
         /// </summary>
         [JsonProperty(PropertyName = "chamber_of_commerce_number")]
         public string ChamberOfCommerceNumber { get; set; }
-    
         /// <summary>
         /// The company's legal form.
         /// </summary>
         [JsonProperty(PropertyName = "legal_form")]
         public string LegalForm { get; set; }
-    
         /// <summary>
         /// The subscription type for the company.
         /// </summary>
         [JsonProperty(PropertyName = "subscription_type")]
         public string SubscriptionType { get; set; }
-    
         /// <summary>
         /// The public UUID of the company's avatar.
         /// </summary>
         [JsonProperty(PropertyName = "avatar_uuid")]
         public string AvatarUuid { get; set; }
-    
         /// <summary>
         /// DEPRECATED All the vat numbers of the company
         /// </summary>
         [JsonProperty(PropertyName = "vat_number")]
         public CompanyVatNumber VatNumber { get; set; }
-    
         /// <summary>
         /// All the vat numbers of the company
         /// </summary>
         [JsonProperty(PropertyName = "vat_numbers")]
         public List<CompanyVatNumber> VatNumbers { get; set; }
-    
         /// <summary>
         /// The type of signup track the user is following.
         /// </summary>
         [JsonProperty(PropertyName = "signup_track_type")]
         public string SignupTrackType { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "UserCompany")]
         public UserCompany UserCompany { get; set; }
-    
     
         /// <summary>
         /// </summary>

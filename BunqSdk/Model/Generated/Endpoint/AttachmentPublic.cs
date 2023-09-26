@@ -33,25 +33,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "uuid")]
         public string Uuid { get; set; }
-    
         /// <summary>
         /// The timestamp of the attachment's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the attachment's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The attachment.
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; set; }
-    
     
         /// <summary>
         /// Create a new public attachment. Create a POST request with a payload that contains a binary representation

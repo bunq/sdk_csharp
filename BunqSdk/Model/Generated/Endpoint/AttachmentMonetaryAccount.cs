@@ -27,13 +27,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; set; }
-    
         /// <summary>
         /// The ID of the attachment created.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
     
         /// <summary>
         /// Create a new monetary account attachment. Create a POST request with a payload that contains the binary

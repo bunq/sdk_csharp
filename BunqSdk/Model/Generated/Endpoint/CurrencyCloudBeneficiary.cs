@@ -41,68 +41,57 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-    
         /// <summary>
         /// The country of the beneficiary.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
-    
         /// <summary>
         /// The currency of the beneficiary.
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; set; }
-    
         /// <summary>
         /// The payment type this requirement is for.
         /// </summary>
         [JsonProperty(PropertyName = "payment_type")]
         public string PaymentType { get; set; }
-    
         /// <summary>
         /// The legal entity type of the beneficiary.
         /// </summary>
         [JsonProperty(PropertyName = "legal_entity_type")]
         public string LegalEntityType { get; set; }
-    
         /// <summary>
         /// All fields that were required by CurrencyCloud. Obtained through the CurrencyCloudBeneficiaryRequirement
         /// listing.
         /// </summary>
         [JsonProperty(PropertyName = "all_field")]
         public List<string> AllField { get; set; }
-    
         /// <summary>
         /// The id of the profile.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the beneficiaries creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the beneficiaries last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The account number to display for the beneficiary.
         /// </summary>
         [JsonProperty(PropertyName = "account_number")]
         public string AccountNumber { get; set; }
-    
         /// <summary>
         /// The external identifier of the beneficiary.
         /// </summary>
         [JsonProperty(PropertyName = "external_identifier")]
         public string ExternalIdentifier { get; set; }
-    
     
         /// <summary>
         /// </summary>

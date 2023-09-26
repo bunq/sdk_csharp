@@ -38,37 +38,30 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "MonetaryAccountBank")]
         public MonetaryAccountBank MonetaryAccountBank { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "MonetaryAccountJoint")]
         public MonetaryAccountJoint MonetaryAccountJoint { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "MonetaryAccountLight")]
         public MonetaryAccountLight MonetaryAccountLight { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "MonetaryAccountSavings")]
         public MonetaryAccountSavings MonetaryAccountSavings { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "MonetaryAccountExternal")]
         public MonetaryAccountExternal MonetaryAccountExternal { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "MonetaryAccountInvestment")]
         public MonetaryAccountInvestment MonetaryAccountInvestment { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "MonetaryAccountExternalSavings")]
         public MonetaryAccountExternalSavings MonetaryAccountExternalSavings { get; set; }
-    
     
         /// <summary>
         /// Get a specific MonetaryAccount.

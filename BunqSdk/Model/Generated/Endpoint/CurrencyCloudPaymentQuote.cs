@@ -31,13 +31,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "pointers")]
         public List<Pointer> Pointers { get; set; }
-    
         /// <summary>
         /// The amount that we'll charge the user with.
         /// </summary>
         [JsonProperty(PropertyName = "amount_fee")]
         public Amount AmountFee { get; set; }
-    
     
         /// <summary>
         /// </summary>

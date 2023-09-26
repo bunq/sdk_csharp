@@ -30,25 +30,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "number_of_tree")]
         public double? NumberOfTree { get; set; }
-    
         /// <summary>
         /// The progress towards the next tree.
         /// </summary>
         [JsonProperty(PropertyName = "progress_tree_next")]
         public double? ProgressTreeNext { get; set; }
-    
         /// <summary>
         /// URL of the invite profile.
         /// </summary>
         [JsonProperty(PropertyName = "url_invite_profile")]
         public string UrlInviteProfile { get; set; }
-    
         /// <summary>
         /// The label of the user the progress belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "label_user")]
         public MonetaryAccountReference LabelUser { get; set; }
-    
     
         /// <summary>
         /// </summary>

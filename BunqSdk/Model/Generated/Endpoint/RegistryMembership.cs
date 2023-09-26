@@ -25,25 +25,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "uuid")]
         public string Uuid { get; set; }
-    
         /// <summary>
         /// The LabelMonetaryAccount of the user who belongs to this RegistryMembership.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public MonetaryAccountReference Alias { get; set; }
-    
         /// <summary>
         /// The status of the RegistryMembership.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The setting for for adding automatically card transactions to the registry.
         /// </summary>
         [JsonProperty(PropertyName = "auto_add_card_transaction")]
         public string AutoAddCardTransaction { get; set; }
-    
         /// <summary>
         /// The original TricountId of the membership for backwards compatibility. May be used as an alternative to the
         /// UUID to identify specific memberships to allow clients to sync changes made offline before the Tricount
@@ -51,43 +47,36 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "membership_ticount_id")]
         public int? MembershipTicountId { get; set; }
-    
         /// <summary>
         /// The balance of this RegistryMembership.
         /// </summary>
         [JsonProperty(PropertyName = "balance")]
         public Amount Balance { get; set; }
-    
         /// <summary>
         /// The total amount spent of this RegistryMembership.
         /// </summary>
         [JsonProperty(PropertyName = "total_amount_spent")]
         public Amount TotalAmountSpent { get; set; }
-    
         /// <summary>
         /// The status of the settlement of the Registry. Can be PENDING or SETTLED.
         /// </summary>
         [JsonProperty(PropertyName = "status_settlement")]
         public string StatusSettlement { get; set; }
-    
         /// <summary>
         /// The registry id.
         /// </summary>
         [JsonProperty(PropertyName = "registry_id")]
         public int? RegistryId { get; set; }
-    
         /// <summary>
         /// The registry title.
         /// </summary>
         [JsonProperty(PropertyName = "registry_title")]
         public string RegistryTitle { get; set; }
-    
         /// <summary>
         /// The label of the user that sent the invite.
         /// </summary>
         [JsonProperty(PropertyName = "invitor")]
         public MonetaryAccountReference Invitor { get; set; }
-    
     
     
         /// <summary>

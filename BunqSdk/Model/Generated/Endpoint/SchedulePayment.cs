@@ -41,19 +41,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
         public SchedulePaymentEntry Payment { get; set; }
-    
         /// <summary>
         /// The schedule details.
         /// </summary>
         [JsonProperty(PropertyName = "schedule")]
         public Schedule Schedule { get; set; }
-    
         /// <summary>
         /// The schedule status, options: ACTIVE, FINISHED, CANCELLED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
     
         /// <summary>
         /// </summary>

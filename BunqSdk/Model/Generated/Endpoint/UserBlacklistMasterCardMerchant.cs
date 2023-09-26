@@ -22,54 +22,45 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "merchant_id")]
         public string MerchantId { get; set; }
-    
         /// <summary>
         /// The name of the merchant.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_name")]
         public string MerchantName { get; set; }
-    
         /// <summary>
         /// Identifier of the merchant we are blacklisting.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_identifier")]
         public string MerchantIdentifier { get; set; }
-    
         /// <summary>
         /// The id of the blacklist.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the object's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the object's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The status of the the blacklist.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// Hash of the merchant we are blacklisting.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_hash")]
         public string MerchantHash { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "merchant_avatar")]
         public Avatar MerchantAvatar { get; set; }
-    
     
     
         /// <summary>

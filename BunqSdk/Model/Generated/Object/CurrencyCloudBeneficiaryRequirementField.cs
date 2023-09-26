@@ -13,25 +13,21 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "label")]
         public string Label { get; set; }
-    
         /// <summary>
         /// The name of the field.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-    
         /// <summary>
         /// The expression to validate field input.
         /// </summary>
         [JsonProperty(PropertyName = "validation_expression")]
         public string ValidationExpression { get; set; }
-    
         /// <summary>
         /// The type of data to input. Determines the keyboard to display.
         /// </summary>
         [JsonProperty(PropertyName = "input_type")]
         public string InputType { get; set; }
-    
     
     
         /// <summary>

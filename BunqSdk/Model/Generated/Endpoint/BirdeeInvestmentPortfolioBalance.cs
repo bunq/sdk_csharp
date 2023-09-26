@@ -15,43 +15,36 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "amount_available")]
         public Amount AmountAvailable { get; set; }
-    
         /// <summary>
         /// The total amount deposited.
         /// </summary>
         [JsonProperty(PropertyName = "amount_deposit_total")]
         public Amount AmountDepositTotal { get; set; }
-    
         /// <summary>
         /// The total amount withdrawn.
         /// </summary>
         [JsonProperty(PropertyName = "amount_withdrawal_total")]
         public Amount AmountWithdrawalTotal { get; set; }
-    
         /// <summary>
         /// The total fee amount.
         /// </summary>
         [JsonProperty(PropertyName = "amount_fee_total")]
         public Amount AmountFeeTotal { get; set; }
-    
         /// <summary>
         /// The difference between the netto deposited amount and the current valuation.
         /// </summary>
         [JsonProperty(PropertyName = "amount_profit")]
         public Amount AmountProfit { get; set; }
-    
         /// <summary>
         /// The amount that's sent to Birdee, but pending investment on the portfolio.
         /// </summary>
         [JsonProperty(PropertyName = "amount_deposit_pending")]
         public Amount AmountDepositPending { get; set; }
-    
         /// <summary>
         /// The amount that's sent to Birdee, but pending withdrawal.
         /// </summary>
         [JsonProperty(PropertyName = "amount_withdrawal_pending")]
         public Amount AmountWithdrawalPending { get; set; }
-    
     
     
         /// <summary>

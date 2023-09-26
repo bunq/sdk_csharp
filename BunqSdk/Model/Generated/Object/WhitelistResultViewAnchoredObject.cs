@@ -14,19 +14,16 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The RequestResponse object
         /// </summary>
         [JsonProperty(PropertyName = "requestResponse")]
         public RequestResponse RequestResponse { get; set; }
-    
         /// <summary>
         /// The DraftPayment object
         /// </summary>
         [JsonProperty(PropertyName = "draftPayment")]
         public DraftPayment DraftPayment { get; set; }
-    
     
     
         /// <summary>

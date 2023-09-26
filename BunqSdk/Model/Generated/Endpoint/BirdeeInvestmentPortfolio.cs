@@ -24,61 +24,51 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "risk_profile_type")]
         public string RiskProfileType { get; set; }
-    
         /// <summary>
         /// The investment theme.
         /// </summary>
         [JsonProperty(PropertyName = "investment_theme")]
         public string InvestmentTheme { get; set; }
-    
         /// <summary>
         /// The name associated with the investment portfolio.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-    
         /// <summary>
         /// The investment goal.
         /// </summary>
         [JsonProperty(PropertyName = "goal")]
         public BirdeeInvestmentPortfolioGoal Goal { get; set; }
-    
         /// <summary>
         /// Status of the portfolio.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// Maximum number of strategy changes in a year.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_strategy_change_annual_maximum")]
         public int? NumberOfStrategyChangeAnnualMaximum { get; set; }
-    
         /// <summary>
         /// Maximum number of strategy changes used.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_strategy_change_annual_used")]
         public int? NumberOfStrategyChangeAnnualUsed { get; set; }
-    
         /// <summary>
         /// The external identifier of the portfolio.
         /// </summary>
         [JsonProperty(PropertyName = "external_identifier")]
         public string ExternalIdentifier { get; set; }
-    
         /// <summary>
         /// The investment portfolio balance.
         /// </summary>
         [JsonProperty(PropertyName = "balance")]
         public BirdeeInvestmentPortfolioBalance Balance { get; set; }
-    
         /// <summary>
         /// The allocations of the investment portfolio.
         /// </summary>
         [JsonProperty(PropertyName = "allocations")]
         public List<BirdeePortfolioAllocation> Allocations { get; set; }
-    
     
     
         /// <summary>

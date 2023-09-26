@@ -20,47 +20,38 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "BillingInvoice")]
         public Invoice BillingInvoice { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "DraftPayment")]
         public DraftPayment DraftPayment { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "MasterCardAction")]
         public MasterCardAction MasterCardAction { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "Payment")]
         public Payment Payment { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "PaymentBatch")]
         public PaymentBatch PaymentBatch { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "RequestResponse")]
         public RequestResponse RequestResponse { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ScheduleInstance")]
         public ScheduleInstance ScheduleInstance { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "WhitelistResult")]
         public WhitelistResult WhitelistResult { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "TransferwisePayment")]
         public TransferwiseTransfer TransferwisePayment { get; set; }
-    
     
     
         /// <summary>

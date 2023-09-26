@@ -39,13 +39,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "certificate_chain")]
         public string CertificateChain { get; set; }
-    
         /// <summary>
         /// The id generated for the pinned certificate chain.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
     
         /// <summary>
         /// Pin the certificate chain.

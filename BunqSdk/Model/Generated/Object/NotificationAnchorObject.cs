@@ -20,102 +20,82 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "BunqMeFundraiserResult")]
         public BunqMeFundraiserResult BunqMeFundraiserResult { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "BunqMeTab")]
         public BunqMeTab BunqMeTab { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "BunqMeTabResultInquiry")]
         public BunqMeTabResultInquiry BunqMeTabResultInquiry { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "BunqMeTabResultResponse")]
         public BunqMeTabResultResponse BunqMeTabResultResponse { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ChatMessage")]
         public ChatMessage ChatMessage { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "DraftPayment")]
         public DraftPayment DraftPayment { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IdealMerchantTransaction")]
         public IdealMerchantTransaction IdealMerchantTransaction { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "Invoice")]
         public Invoice Invoice { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "MasterCardAction")]
         public MasterCardAction MasterCardAction { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "MonetaryAccount")]
         public MonetaryAccount MonetaryAccount { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "Payment")]
         public Payment Payment { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "PaymentBatch")]
         public PaymentBatch PaymentBatch { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "RequestInquiry")]
         public RequestInquiry RequestInquiry { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "RequestInquiryBatch")]
         public RequestInquiryBatch RequestInquiryBatch { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "RequestResponse")]
         public RequestResponse RequestResponse { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ShareInviteBankInquiry")]
         public ShareInviteMonetaryAccountInquiry ShareInviteBankInquiry { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ShareInviteBankResponse")]
         public ShareInviteMonetaryAccountResponse ShareInviteBankResponse { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ScheduledPayment")]
         public SchedulePayment ScheduledPayment { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "ScheduledInstance")]
         public ScheduleInstance ScheduledInstance { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "User")]
         public User User { get; set; }
-    
     
     
         /// <summary>
