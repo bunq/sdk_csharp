@@ -56,6 +56,18 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public string Description { get; set; }
     
         /// <summary>
+        /// Textual explanation of the decision.
+        /// </summary>
+        [JsonProperty(PropertyName = "decision_description")]
+        public string DecisionDescription { get; set; }
+    
+        /// <summary>
+        /// Textual explanation of the decision in user's language.
+        /// </summary>
+        [JsonProperty(PropertyName = "decision_description_translated")]
+        public string DecisionDescriptionTranslated { get; set; }
+    
+        /// <summary>
         /// The return url for the merchant app after the challenge is accepted or rejected.
         /// </summary>
         [JsonProperty(PropertyName = "url_merchant_app")]
@@ -127,6 +139,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.DecisionDescription != null)
+            {
+                return false;
+            }
+    
+            if (this.DecisionDescriptionTranslated != null)
             {
                 return false;
             }
