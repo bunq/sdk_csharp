@@ -13,13 +13,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The id of the request inquiry (batch).
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
     
     
         /// <summary>

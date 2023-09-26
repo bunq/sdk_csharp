@@ -31,49 +31,41 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp when the PaymentAutoAllocateInstance was created.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp when the PaymentAutoAllocateInstance was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The ID of the payment auto allocate this instance belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "payment_auto_allocate_id")]
         public int? PaymentAutoAllocateId { get; set; }
-    
         /// <summary>
         /// The status of the payment auto allocate instance. SUCCEEDED or FAILED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The error message, if the payment auto allocating failed.
         /// </summary>
         [JsonProperty(PropertyName = "error_message")]
         public List<Error> ErrorMessage { get; set; }
-    
         /// <summary>
         /// The payment batch allocating all the payments.
         /// </summary>
         [JsonProperty(PropertyName = "payment_batch")]
         public PaymentBatch PaymentBatch { get; set; }
-    
         /// <summary>
         /// The ID of the payment that triggered the allocating of the payments.
         /// </summary>
         [JsonProperty(PropertyName = "payment_id")]
         public int? PaymentId { get; set; }
-    
     
         /// <summary>
         /// </summary>

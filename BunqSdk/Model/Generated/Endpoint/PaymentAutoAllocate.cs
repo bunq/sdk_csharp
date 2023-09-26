@@ -41,55 +41,46 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "payment_id")]
         public int? PaymentId { get; set; }
-    
         /// <summary>
         /// The type.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The definition of how the money should be allocated.
         /// </summary>
         [JsonProperty(PropertyName = "definition")]
         public List<PaymentAutoAllocateDefinition> Definition { get; set; }
-    
         /// <summary>
         /// The id of the PaymentAutoAllocate.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp when the PaymentAutoAllocate was created.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp when the PaymentAutoAllocate was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The status.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The amount on which this payment auto allocate will be triggered.
         /// </summary>
         [JsonProperty(PropertyName = "trigger_amount")]
         public Amount TriggerAmount { get; set; }
-    
         /// <summary>
         /// The payment that was used to define the triggers for this payment auto allocate.
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; set; }
-    
     
         /// <summary>
         /// </summary>

@@ -23,37 +23,31 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "mastercard_action_id")]
         public int? MastercardActionId { get; set; }
-    
         /// <summary>
         /// The id of mastercard action being reported.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The id of mastercard action being reported.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The reported merchant.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_id")]
         public string MerchantId { get; set; }
-    
         /// <summary>
         /// The name of the merchant.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_name")]
         public string MerchantName { get; set; }
-    
         /// <summary>
         /// The monetary account label of the merchant.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_alias")]
         public MonetaryAccountReference CounterpartyAlias { get; set; }
-    
     
     
         /// <summary>

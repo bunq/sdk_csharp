@@ -13,25 +13,21 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// Routing type. Can be MANUAL or AUTOMATIC
         /// </summary>
         [JsonProperty(PropertyName = "routing_type")]
         public string RoutingType { get; set; }
-    
         /// <summary>
         /// The 4 digit PIN to be assigned to this account.
         /// </summary>
         [JsonProperty(PropertyName = "pin_code")]
         public string PinCode { get; set; }
-    
         /// <summary>
         /// The ID of the monetary account to assign to this pin for the card.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
-    
     
         public CardPinAssignment(string type)
         {

@@ -13,19 +13,16 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The country of the VAT identification number.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
-    
         /// <summary>
         /// The VAT identification number number.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
-    
     
         public CompanyVatNumber(string country, string value)
         {

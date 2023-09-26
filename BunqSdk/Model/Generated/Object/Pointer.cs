@@ -13,25 +13,21 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The alias value.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
-    
         /// <summary>
         /// The alias name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-    
         /// <summary>
         /// The pointer service. Only required for external counterparties.
         /// </summary>
         [JsonProperty(PropertyName = "service")]
         public string Service { get; set; }
-    
     
         public Pointer(string type, string value)
         {

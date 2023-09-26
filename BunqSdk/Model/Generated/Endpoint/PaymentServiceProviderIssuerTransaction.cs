@@ -43,61 +43,51 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_alias")]
         public MonetaryAccountReference CounterpartyAlias { get; set; }
-    
         /// <summary>
         /// The money amount of this transaction
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
-    
         /// <summary>
         /// The description of this transaction, to be shown to the user and to the counter party.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-    
         /// <summary>
         /// The url to which the user should be redirected once the transaction is accepted or rejected.
         /// </summary>
         [JsonProperty(PropertyName = "url_redirect")]
         public string UrlRedirect { get; set; }
-    
         /// <summary>
         /// The (optional) expiration time of the transaction. Defaults to 10 minutes.
         /// </summary>
         [JsonProperty(PropertyName = "time_expiry")]
         public string TimeExpiry { get; set; }
-    
         /// <summary>
         /// The status of the transaction. Can only be used for cancelling the transaction.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The id of this transaction.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The time this transaction was created.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The time this transaction was last updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The public uuid used to identify this transaction.
         /// </summary>
         [JsonProperty(PropertyName = "public_uuid")]
         public string PublicUuid { get; set; }
-    
     
         /// <summary>
         /// </summary>

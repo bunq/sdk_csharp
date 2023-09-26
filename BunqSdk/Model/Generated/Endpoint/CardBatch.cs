@@ -35,13 +35,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "cards")]
         public List<CardBatchEntry> Cards { get; set; }
-    
         /// <summary>
         /// The ids of the cards that have been updated.
         /// </summary>
         [JsonProperty(PropertyName = "updated_card_ids")]
         public List<BunqId> UpdatedCardIds { get; set; }
-    
     
         /// <summary>
         /// </summary>

@@ -36,55 +36,46 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The transaction amount.
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public string Amount { get; set; }
-    
         /// <summary>
         /// When the identity check expires.
         /// </summary>
         [JsonProperty(PropertyName = "expiry_time")]
         public string ExpiryTime { get; set; }
-    
         /// <summary>
         /// The description of the purchase. NULL if no description is given.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-    
         /// <summary>
         /// Textual explanation of the decision.
         /// </summary>
         [JsonProperty(PropertyName = "decision_description")]
         public string DecisionDescription { get; set; }
-    
         /// <summary>
         /// Textual explanation of the decision in user's language.
         /// </summary>
         [JsonProperty(PropertyName = "decision_description_translated")]
         public string DecisionDescriptionTranslated { get; set; }
-    
         /// <summary>
         /// The return url for the merchant app after the challenge is accepted or rejected.
         /// </summary>
         [JsonProperty(PropertyName = "url_merchant_app")]
         public string UrlMerchantApp { get; set; }
-    
         /// <summary>
         /// The monetary account label of the counterparty.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_alias")]
         public MonetaryAccountReference CounterpartyAlias { get; set; }
-    
         /// <summary>
         /// The ID of the latest event for the identity check.
         /// </summary>
         [JsonProperty(PropertyName = "event_id")]
         public int? EventId { get; set; }
-    
     
         /// <summary>
         /// </summary>

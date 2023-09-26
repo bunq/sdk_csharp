@@ -13,19 +13,16 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "key")]
         public string Key { get; set; }
-    
         /// <summary>
         /// The parameter label.
         /// </summary>
         [JsonProperty(PropertyName = "parameter_name")]
         public string ParameterName { get; set; }
-    
         /// <summary>
         /// Shows whether the parameter is required or not.
         /// </summary>
         [JsonProperty(PropertyName = "required")]
         public bool? Required { get; set; }
-    
     
     
         /// <summary>

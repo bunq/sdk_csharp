@@ -39,97 +39,81 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The card to link to the shared monetary account. Used only if share_detail is ShareDetailCardPayment.
         /// </summary>
         [JsonProperty(PropertyName = "card_id")]
         public int? CardId { get; set; }
-    
         /// <summary>
         /// The id of the ShareInviteBankResponse.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the ShareInviteBankResponse creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the ShareInviteBankResponse last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The monetary account and user who created the share.
         /// </summary>
         [JsonProperty(PropertyName = "counter_alias")]
         public MonetaryAccountReference CounterAlias { get; set; }
-    
         /// <summary>
         /// The user who cancelled the share if it has been revoked or rejected.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_cancelled")]
         public MonetaryAccountReference UserAliasCancelled { get; set; }
-    
         /// <summary>
         /// The id of the monetary account the ACCEPTED share applies to. null otherwise.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
-    
         /// <summary>
         /// The id of the draft share invite bank.
         /// </summary>
         [JsonProperty(PropertyName = "draft_share_invite_bank_id")]
         public int? DraftShareInviteBankId { get; set; }
-    
         /// <summary>
         /// The share details.
         /// </summary>
         [JsonProperty(PropertyName = "share_detail")]
         public ShareDetail ShareDetail { get; set; }
-    
         /// <summary>
         /// Type of access that is wanted, one of VIEW_BALANCE, VIEW_TRANSACTION, DRAFT_PAYMENT or FULL_TRANSIENT
         /// </summary>
         [JsonProperty(PropertyName = "access_type")]
         public string AccessType { get; set; }
-    
         /// <summary>
         /// All of the relation users towards this MA.
         /// </summary>
         [JsonProperty(PropertyName = "relation_user")]
         public RelationUser RelationUser { get; set; }
-    
         /// <summary>
         /// The share type, either STANDARD or MUTUAL.
         /// </summary>
         [JsonProperty(PropertyName = "share_type")]
         public string ShareType { get; set; }
-    
         /// <summary>
         /// The start date of this share.
         /// </summary>
         [JsonProperty(PropertyName = "start_date")]
         public string StartDate { get; set; }
-    
         /// <summary>
         /// The expiration date of this share.
         /// </summary>
         [JsonProperty(PropertyName = "end_date")]
         public string EndDate { get; set; }
-    
         /// <summary>
         /// The description of this share. It is basically the monetary account description.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-    
     
         /// <summary>
         /// Return the details of a specific share a user was invited to.

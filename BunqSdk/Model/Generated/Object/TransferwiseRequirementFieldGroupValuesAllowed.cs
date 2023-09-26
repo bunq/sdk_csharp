@@ -13,13 +13,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "key")]
         public string Key { get; set; }
-    
         /// <summary>
         /// The label.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-    
     
     
         /// <summary>

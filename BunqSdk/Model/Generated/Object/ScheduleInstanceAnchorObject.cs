@@ -20,12 +20,10 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "Payment")]
         public Payment Payment { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "PaymentBatch")]
         public PaymentBatch PaymentBatch { get; set; }
-    
     
     
         /// <summary>

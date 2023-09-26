@@ -39,38 +39,32 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
-    
         /// <summary>
         /// The name of the account holder.
         /// </summary>
         [JsonProperty(PropertyName = "name_account_holder")]
         public string NameAccountHolder { get; set; }
-    
         /// <summary>
         /// A possible recipient account type.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The fields which were specified as "required" and have since been filled by the user. Always provide the
         /// full list.
         /// </summary>
         [JsonProperty(PropertyName = "detail")]
         public List<TransferwiseRequirementField> Detail { get; set; }
-    
         /// <summary>
         /// The label of the possible recipient account type to show to the user.
         /// </summary>
         [JsonProperty(PropertyName = "label")]
         public string Label { get; set; }
-    
         /// <summary>
         /// The fields which the user needs to fill.
         /// </summary>
         [JsonProperty(PropertyName = "fields")]
         public List<TransferwiseRequirementField> Fields { get; set; }
-    
     
         /// <summary>
         /// </summary>

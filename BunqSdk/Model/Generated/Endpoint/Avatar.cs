@@ -40,19 +40,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "attachment_public_uuid")]
         public string AttachmentPublicUuid { get; set; }
-    
         /// <summary>
         /// The UUID of the created avatar.
         /// </summary>
         [JsonProperty(PropertyName = "uuid")]
         public string Uuid { get; set; }
-    
         /// <summary>
         /// The content type of the image.
         /// </summary>
         [JsonProperty(PropertyName = "image")]
         public List<Image> Image { get; set; }
-    
     
         /// <summary>
         /// </summary>

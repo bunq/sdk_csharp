@@ -43,79 +43,66 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
-    
         /// <summary>
         /// The currency we are converting.
         /// </summary>
         [JsonProperty(PropertyName = "currency_source")]
         public string CurrencySource { get; set; }
-    
         /// <summary>
         /// The currency we are converting towards.
         /// </summary>
         [JsonProperty(PropertyName = "currency_target")]
         public string CurrencyTarget { get; set; }
-    
         /// <summary>
         /// The type of the quote, SELL or BUY.
         /// </summary>
         [JsonProperty(PropertyName = "order_type")]
         public string OrderType { get; set; }
-    
         /// <summary>
         /// The Alias of the party we are transferring the money to.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_alias")]
         public MonetaryAccountReference CounterpartyAlias { get; set; }
-    
         /// <summary>
         /// The status of the quote.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The id of the quote.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the quote's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the quote's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The amount to convert.
         /// </summary>
         [JsonProperty(PropertyName = "amount_source")]
         public Amount AmountSource { get; set; }
-    
         /// <summary>
         /// The amount to convert to.
         /// </summary>
         [JsonProperty(PropertyName = "amount_target")]
         public Amount AmountTarget { get; set; }
-    
         /// <summary>
         /// The conversion rate.
         /// </summary>
         [JsonProperty(PropertyName = "rate")]
         public string Rate { get; set; }
-    
         /// <summary>
         /// Timestamp for when this quote expires and the user should request a new one.
         /// </summary>
         [JsonProperty(PropertyName = "time_expiry")]
         public string TimeExpiry { get; set; }
-    
     
         /// <summary>
         /// </summary>

@@ -13,13 +13,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public MonetaryAccountReference Alias { get; set; }
-    
         /// <summary>
         /// Can be: ACCEPTED, REJECTED, PENDING or REVOKED
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
     
         public CoOwner(MonetaryAccountReference alias)
         {

@@ -15,49 +15,41 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
         public string UserId { get; set; }
-    
         /// <summary>
         /// The counter user's ID.
         /// </summary>
         [JsonProperty(PropertyName = "counter_user_id")]
         public string CounterUserId { get; set; }
-    
         /// <summary>
         /// The user's label.
         /// </summary>
         [JsonProperty(PropertyName = "label_user")]
         public MonetaryAccountReference LabelUser { get; set; }
-    
         /// <summary>
         /// The counter user's label.
         /// </summary>
         [JsonProperty(PropertyName = "counter_label_user")]
         public MonetaryAccountReference CounterLabelUser { get; set; }
-    
         /// <summary>
         /// The requested relation type.
         /// </summary>
         [JsonProperty(PropertyName = "relationship")]
         public string Relationship { get; set; }
-    
         /// <summary>
         /// The request's status, only for UPDATE.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The account status of a user
         /// </summary>
         [JsonProperty(PropertyName = "user_status")]
         public string UserStatus { get; set; }
-    
         /// <summary>
         /// The account status of a user
         /// </summary>
         [JsonProperty(PropertyName = "counter_user_status")]
         public string CounterUserStatus { get; set; }
-    
     
     
         /// <summary>
