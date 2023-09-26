@@ -13,7 +13,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN or CANCELLED, and can only be set
         /// to LOST/STOLEN/CANCELLED when order status is
@@ -24,32 +23,27 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The spending limit for the card.
         /// </summary>
         [JsonProperty(PropertyName = "card_limit")]
         public Amount CardLimit { get; set; }
-    
         /// <summary>
         /// The ATM spending limit for the card.
         /// </summary>
         [JsonProperty(PropertyName = "card_limit_atm")]
         public Amount CardLimitAtm { get; set; }
-    
         /// <summary>
         /// The countries for which to grant (temporary) permissions to use the card.
         /// </summary>
         [JsonProperty(PropertyName = "country_permission")]
         public List<CardCountryPermission> CountryPermission { get; set; }
-    
         /// <summary>
         /// ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if
         /// not supplied.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
         public int? MonetaryAccountIdFallback { get; set; }
-    
     
         public CardBatchEntry(int? id)
         {

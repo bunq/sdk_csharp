@@ -20,17 +20,14 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "UserPerson")]
         public UserPerson UserPerson { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "UserCompany")]
         public UserCompany UserCompany { get; set; }
-    
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "UserPaymentServiceProvider")]
         public UserPaymentServiceProvider UserPaymentServiceProvider { get; set; }
-    
     
     
         /// <summary>

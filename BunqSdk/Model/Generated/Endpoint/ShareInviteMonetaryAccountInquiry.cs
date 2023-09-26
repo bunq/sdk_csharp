@@ -48,85 +48,71 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "counter_user_alias")]
         public MonetaryAccountReference CounterUserAlias { get; set; }
-    
         /// <summary>
         /// Type of access that is in place.
         /// </summary>
         [JsonProperty(PropertyName = "access_type")]
         public string AccessType { get; set; }
-    
         /// <summary>
         /// DEPRECATED: USE `access_type` INSTEAD | The id of the draft share invite bank.
         /// </summary>
         [JsonProperty(PropertyName = "draft_share_invite_bank_id")]
         public int? DraftShareInviteBankId { get; set; }
-    
         /// <summary>
         /// DEPRECATED: USE `access_type` INSTEAD | The share details. Only one of these objects may be passed.
         /// </summary>
         [JsonProperty(PropertyName = "share_detail")]
         public ShareDetail ShareDetail { get; set; }
-    
         /// <summary>
         /// The status of the share. Can be ACTIVE, REVOKED, REJECTED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The relationship: COMPANY_DIRECTOR, COMPANY_EMPLOYEE, etc
         /// </summary>
         [JsonProperty(PropertyName = "relationship")]
         public string Relationship { get; set; }
-    
         /// <summary>
         /// DEPRECATED: USE `access_type` INSTEAD | The share type, either STANDARD or MUTUAL.
         /// </summary>
         [JsonProperty(PropertyName = "share_type")]
         public string ShareType { get; set; }
-    
         /// <summary>
         /// DEPRECATED: USE `access_type` INSTEAD | The start date of this share.
         /// </summary>
         [JsonProperty(PropertyName = "start_date")]
         public string StartDate { get; set; }
-    
         /// <summary>
         /// DEPRECATED: USE `access_type` INSTEAD | The expiration date of this share.
         /// </summary>
         [JsonProperty(PropertyName = "end_date")]
         public string EndDate { get; set; }
-    
         /// <summary>
         /// The label of the monetary account that's being shared.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public MonetaryAccountReference Alias { get; set; }
-    
         /// <summary>
         /// The user who created the share.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_created")]
         public MonetaryAccountReference UserAliasCreated { get; set; }
-    
         /// <summary>
         /// The user who revoked the share.
         /// </summary>
         [JsonProperty(PropertyName = "user_alias_revoked")]
         public MonetaryAccountReference UserAliasRevoked { get; set; }
-    
         /// <summary>
         /// The id of the monetary account the share applies to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
-    
         /// <summary>
         /// The id of the newly created share invite.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
     
         /// <summary>
         /// [DEPRECATED - use /share-invite-monetary-account-response] Create a new share inquiry for a monetary

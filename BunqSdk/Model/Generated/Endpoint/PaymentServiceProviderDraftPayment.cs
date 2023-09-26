@@ -44,49 +44,41 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "sender_iban")]
         public string SenderIban { get; set; }
-    
         /// <summary>
         /// The name of the sender.
         /// </summary>
         [JsonProperty(PropertyName = "sender_name")]
         public string SenderName { get; set; }
-    
         /// <summary>
         /// The IBAN of the counterparty.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_iban")]
         public string CounterpartyIban { get; set; }
-    
         /// <summary>
         /// The name of the counterparty.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_name")]
         public string CounterpartyName { get; set; }
-    
         /// <summary>
         /// Description of the payment.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-    
         /// <summary>
         /// The amount of the draft payment
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
-    
         /// <summary>
         /// The status of the draft payment
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The sender IBAN.
         /// </summary>
         [JsonProperty(PropertyName = "receiver_iban")]
         public string ReceiverIban { get; set; }
-    
     
         /// <summary>
         /// </summary>

@@ -37,43 +37,36 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "state")]
         public string State { get; set; }
-    
         /// <summary>
         /// The schedule start time (UTC).
         /// </summary>
         [JsonProperty(PropertyName = "time_start")]
         public string TimeStart { get; set; }
-    
         /// <summary>
         /// The schedule end time (UTC).
         /// </summary>
         [JsonProperty(PropertyName = "time_end")]
         public string TimeEnd { get; set; }
-    
         /// <summary>
         /// The message when the scheduled instance has run and failed due to user error.
         /// </summary>
         [JsonProperty(PropertyName = "error_message")]
         public List<Error> ErrorMessage { get; set; }
-    
         /// <summary>
         /// The scheduled object. (Payment, PaymentBatch)
         /// </summary>
         [JsonProperty(PropertyName = "scheduled_object")]
         public ScheduleAnchorObject ScheduledObject { get; set; }
-    
         /// <summary>
         /// The result object of this schedule instance. (Payment, PaymentBatch)
         /// </summary>
         [JsonProperty(PropertyName = "result_object")]
         public ScheduleInstanceAnchorObject ResultObject { get; set; }
-    
         /// <summary>
         /// The reference to the object used for split the bill. Can be RequestInquiry or RequestInquiryBatch
         /// </summary>
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
-    
     
         /// <summary>
         /// </summary>

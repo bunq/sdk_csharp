@@ -36,31 +36,26 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "notification_filter_failed_ids")]
         public string NotificationFilterFailedIds { get; set; }
-    
         /// <summary>
         /// The types of notifications that will result in a url notification for this user.
         /// </summary>
         [JsonProperty(PropertyName = "notification_filters")]
         public List<NotificationFilter> NotificationFilters { get; set; }
-    
         /// <summary>
         /// The category of the failed notification.
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
-    
         /// <summary>
         /// The event type of the failed notification.
         /// </summary>
         [JsonProperty(PropertyName = "event_type")]
         public string EventType { get; set; }
-    
         /// <summary>
         /// The object id used to generate the body of the notification.
         /// </summary>
         [JsonProperty(PropertyName = "object_id")]
         public int? ObjectId { get; set; }
-    
     
         /// <summary>
         /// </summary>

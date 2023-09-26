@@ -29,19 +29,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; set; }
-    
         /// <summary>
         /// The currency name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-    
         /// <summary>
         /// The country code associated with the currency.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
-    
     
         /// <summary>
         /// </summary>

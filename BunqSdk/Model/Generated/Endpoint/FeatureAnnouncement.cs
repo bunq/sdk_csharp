@@ -30,25 +30,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "avatar")]
         public Avatar Avatar { get; set; }
-    
         /// <summary>
         /// The event overview title of the feature display
         /// </summary>
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
-    
         /// <summary>
         /// The event overview subtitle of the feature display
         /// </summary>
         [JsonProperty(PropertyName = "sub_title")]
         public string SubTitle { get; set; }
-    
         /// <summary>
         /// The type of the feature announcement so apps can override with their own stuff if desired
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
     
         /// <summary>
         /// </summary>

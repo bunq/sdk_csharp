@@ -36,43 +36,36 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "oauth_code")]
         public string OauthCode { get; set; }
-    
         /// <summary>
         /// The id of the TransferwiseUser.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the TransferwiseUser's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the TransferwiseUser's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The name the user is registered with at TransferWise.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-    
         /// <summary>
         /// The email the user is registered with at TransferWise.
         /// </summary>
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
-    
         /// <summary>
         /// The source of the user at TransferWise.
         /// </summary>
         [JsonProperty(PropertyName = "source")]
         public string Source { get; set; }
-    
     
         /// <summary>
         /// </summary>

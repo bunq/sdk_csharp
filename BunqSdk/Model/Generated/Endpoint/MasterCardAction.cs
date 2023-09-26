@@ -31,263 +31,220 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The id of the monetary account this action links to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
-    
         /// <summary>
         /// The id of the card this action links to.
         /// </summary>
         [JsonProperty(PropertyName = "card_id")]
         public int? CardId { get; set; }
-    
         /// <summary>
         /// The amount of the transaction in local currency.
         /// </summary>
         [JsonProperty(PropertyName = "amount_local")]
         public Amount AmountLocal { get; set; }
-    
         /// <summary>
         /// The amount of the transaction in local currency.
         /// </summary>
         [JsonProperty(PropertyName = "amount_converted")]
         public Amount AmountConverted { get; set; }
-    
         /// <summary>
         /// The amount of the transaction in the monetary account's currency.
         /// </summary>
         [JsonProperty(PropertyName = "amount_billing")]
         public Amount AmountBilling { get; set; }
-    
         /// <summary>
         /// The original amount in local currency.
         /// </summary>
         [JsonProperty(PropertyName = "amount_original_local")]
         public Amount AmountOriginalLocal { get; set; }
-    
         /// <summary>
         /// The original amount in the monetary account's currency.
         /// </summary>
         [JsonProperty(PropertyName = "amount_original_billing")]
         public Amount AmountOriginalBilling { get; set; }
-    
         /// <summary>
         /// The fee amount as charged by the merchant, if applicable.
         /// </summary>
         [JsonProperty(PropertyName = "amount_fee")]
         public Amount AmountFee { get; set; }
-    
         /// <summary>
         /// The response code by which authorised transaction can be identified as authorised by bunq.
         /// </summary>
         [JsonProperty(PropertyName = "card_authorisation_id_response")]
         public string CardAuthorisationIdResponse { get; set; }
-    
         /// <summary>
         /// Why the transaction was denied, if it was denied, or just ALLOWED.
         /// </summary>
         [JsonProperty(PropertyName = "decision")]
         public string Decision { get; set; }
-    
         /// <summary>
         /// The payment status of the transaction. For example PAYMENT_SUCCESSFUL, for a successful payment.
         /// </summary>
         [JsonProperty(PropertyName = "payment_status")]
         public string PaymentStatus { get; set; }
-    
         /// <summary>
         /// Empty if allowed, otherwise a textual explanation of why it was denied.
         /// </summary>
         [JsonProperty(PropertyName = "decision_description")]
         public string DecisionDescription { get; set; }
-    
         /// <summary>
         /// Empty if allowed, otherwise a textual explanation of why it was denied in user's language.
         /// </summary>
         [JsonProperty(PropertyName = "decision_description_translated")]
         public string DecisionDescriptionTranslated { get; set; }
-    
         /// <summary>
         /// Empty if allowed or if no relevant Together topic exists, otherwise contains the URL for a Together topic
         /// with more information about the decision.
         /// </summary>
         [JsonProperty(PropertyName = "decision_together_url")]
         public string DecisionTogetherUrl { get; set; }
-    
         /// <summary>
         /// The description for this transaction to display.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
-    
         /// <summary>
         /// The status in the authorisation process.
         /// </summary>
         [JsonProperty(PropertyName = "authorisation_status")]
         public string AuthorisationStatus { get; set; }
-    
         /// <summary>
         /// The type of transaction that was delivered using the card.
         /// </summary>
         [JsonProperty(PropertyName = "authorisation_type")]
         public string AuthorisationType { get; set; }
-    
         /// <summary>
         /// The type of entry mode the user used. Can be 'ATM', 'ICC', 'MAGNETIC_STRIPE' or 'E_COMMERCE'.
         /// </summary>
         [JsonProperty(PropertyName = "pan_entry_mode_user")]
         public string PanEntryModeUser { get; set; }
-    
         /// <summary>
         /// The setlement status in the authorisation process.
         /// </summary>
         [JsonProperty(PropertyName = "settlement_status")]
         public string SettlementStatus { get; set; }
-    
         /// <summary>
         /// The clearing status of the authorisation. Can be 'PENDING', 'FIRST_PRESENTMENT_COMPLETE' or
         /// 'REFUND_LENIENCY'.
         /// </summary>
         [JsonProperty(PropertyName = "clearing_status")]
         public string ClearingStatus { get; set; }
-    
         /// <summary>
         /// The maturity date.
         /// </summary>
         [JsonProperty(PropertyName = "maturity_date")]
         public string MaturityDate { get; set; }
-    
         /// <summary>
         /// The city where the message originates from as announced by the terminal.
         /// </summary>
         [JsonProperty(PropertyName = "city")]
         public string City { get; set; }
-    
         /// <summary>
         /// The monetary account label of the account that this action is created for.
         /// </summary>
         [JsonProperty(PropertyName = "alias")]
         public MonetaryAccountReference Alias { get; set; }
-    
         /// <summary>
         /// The monetary account label of the counterparty.
         /// </summary>
         [JsonProperty(PropertyName = "counterparty_alias")]
         public MonetaryAccountReference CounterpartyAlias { get; set; }
-    
         /// <summary>
         /// The label of the card.
         /// </summary>
         [JsonProperty(PropertyName = "label_card")]
         public LabelCard LabelCard { get; set; }
-    
         /// <summary>
         /// The identification string of the merchant.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_id")]
         public string MerchantId { get; set; }
-    
         /// <summary>
         /// If this is a tokenisation action, this shows the status of the token.
         /// </summary>
         [JsonProperty(PropertyName = "token_status")]
         public string TokenStatus { get; set; }
-    
         /// <summary>
         /// If this is a reservation, the moment the reservation will expire.
         /// </summary>
         [JsonProperty(PropertyName = "reservation_expiry_time")]
         public string ReservationExpiryTime { get; set; }
-    
         /// <summary>
         /// The time when the processing of the clearing is expired, refunding the authorisation.
         /// </summary>
         [JsonProperty(PropertyName = "clearing_expiry_time")]
         public string ClearingExpiryTime { get; set; }
-    
         /// <summary>
         /// The type of the limit applied to validate if this MasterCardAction was within the spending limits. The
         /// returned string matches the limit types as defined in the card endpoint.
         /// </summary>
         [JsonProperty(PropertyName = "applied_limit")]
         public string AppliedLimit { get; set; }
-    
         /// <summary>
         /// The secure code id for this mastercard action or null.
         /// </summary>
         [JsonProperty(PropertyName = "secure_code_id")]
         public int? SecureCodeId { get; set; }
-    
         /// <summary>
         /// The ID of the wallet provider as defined by MasterCard. 420 = bunq Android app with Tap&Pay; 103 = Apple
         /// Pay.
         /// </summary>
         [JsonProperty(PropertyName = "wallet_provider_id")]
         public string WalletProviderId { get; set; }
-    
         /// <summary>
         /// The reference to the object used for split the bill. Can be RequestInquiry or RequestInquiryBatch
         /// </summary>
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
-    
         /// <summary>
         /// A reference to the Refunds if they exist.
         /// </summary>
         [JsonProperty(PropertyName = "all_mastercard_action_refund")]
         public List<MasterCardActionRefund> AllMastercardActionRefund { get; set; }
-    
         /// <summary>
         /// The Card Presence type of the POS.
         /// </summary>
         [JsonProperty(PropertyName = "pos_card_presence")]
         public string PosCardPresence { get; set; }
-    
         /// <summary>
         /// The Card Holder Presence type of the POS.
         /// </summary>
         [JsonProperty(PropertyName = "pos_card_holder_presence")]
         public string PosCardHolderPresence { get; set; }
-    
         /// <summary>
         /// The whitelist id for this action or null.
         /// </summary>
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
         public int? EligibleWhitelistId { get; set; }
-    
         /// <summary>
         /// The cashback payout item for this action or null
         /// </summary>
         [JsonProperty(PropertyName = "cashback_payout_item")]
         public CashbackPayoutItem CashbackPayoutItem { get; set; }
-    
         /// <summary>
         /// The report for this transaction
         /// </summary>
         [JsonProperty(PropertyName = "mastercard_action_report")]
         public MasterCardActionReport MastercardActionReport { get; set; }
-    
         /// <summary>
         /// The blacklist enabled for the merchant of this transaction
         /// </summary>
         [JsonProperty(PropertyName = "blacklist")]
         public UserBlacklistMasterCardMerchant Blacklist { get; set; }
-    
         /// <summary>
         /// The status of the additional authentication performed (3ds) by the user for this transaction.
         /// </summary>
         [JsonProperty(PropertyName = "additional_authentication_status")]
         public string AdditionalAuthenticationStatus { get; set; }
-    
         /// <summary>
         /// Status checking the provided PIN.
         /// </summary>
         [JsonProperty(PropertyName = "pin_status")]
         public string PinStatus { get; set; }
-    
     
         /// <summary>
         /// </summary>

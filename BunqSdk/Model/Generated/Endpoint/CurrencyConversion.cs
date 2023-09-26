@@ -31,85 +31,71 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the conversion's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the conversion's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The status of the conversion.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The expected delivery date of the conversion.
         /// </summary>
         [JsonProperty(PropertyName = "date_delivery_expected")]
         public string DateDeliveryExpected { get; set; }
-    
         /// <summary>
         /// The rate of the conversion.
         /// </summary>
         [JsonProperty(PropertyName = "rate")]
         public string Rate { get; set; }
-    
         /// <summary>
         /// The amount of the conversion.
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
-    
         /// <summary>
         /// The amount of the counter conversion.
         /// </summary>
         [JsonProperty(PropertyName = "counter_amount")]
         public Amount CounterAmount { get; set; }
-    
         /// <summary>
         /// The group uuid of the conversion.
         /// </summary>
         [JsonProperty(PropertyName = "group_uuid")]
         public string GroupUuid { get; set; }
-    
         /// <summary>
         /// The type of this conversion.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The order type, buying or selling.
         /// </summary>
         [JsonProperty(PropertyName = "order_type")]
         public string OrderType { get; set; }
-    
         /// <summary>
         /// The label of the monetary account.
         /// </summary>
         [JsonProperty(PropertyName = "label_monetary_account")]
         public MonetaryAccountReference LabelMonetaryAccount { get; set; }
-    
         /// <summary>
         /// The label of the counter monetary account.
         /// </summary>
         [JsonProperty(PropertyName = "counter_label_monetary_account")]
         public MonetaryAccountReference CounterLabelMonetaryAccount { get; set; }
-    
         /// <summary>
         /// The payment associated with this conversion.
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; set; }
-    
     
         /// <summary>
         /// </summary>

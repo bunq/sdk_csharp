@@ -13,13 +13,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "amount_target")]
         public Amount AmountTarget { get; set; }
-    
         /// <summary>
         /// The investment goal end time.
         /// </summary>
         [JsonProperty(PropertyName = "time_end")]
         public string TimeEnd { get; set; }
-    
     
     
         /// <summary>

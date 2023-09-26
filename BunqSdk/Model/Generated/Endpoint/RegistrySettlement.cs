@@ -32,55 +32,46 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the RegistrySettlement's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the RegistrySettlement's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The timestamp of the Registry's settlement.
         /// </summary>
         [JsonProperty(PropertyName = "settlement_time")]
         public string SettlementTime { get; set; }
-    
         /// <summary>
         /// The total amount spent for the RegistrySettlement.
         /// </summary>
         [JsonProperty(PropertyName = "total_amount_spent")]
         public Amount TotalAmountSpent { get; set; }
-    
         /// <summary>
         /// The number of RegistryEntry's associated with this RegistrySettlement.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_entries")]
         public int? NumberOfEntries { get; set; }
-    
         /// <summary>
         /// The membership of the user that settled the Registry.
         /// </summary>
         [JsonProperty(PropertyName = "settled_by_alias")]
         public RegistryMembership SettledByAlias { get; set; }
-    
         /// <summary>
         /// The membership of the user that has settled the registry.
         /// </summary>
         [JsonProperty(PropertyName = "membership_settled")]
         public RegistryMembership MembershipSettled { get; set; }
-    
         /// <summary>
         /// List of RegistrySettlementItems
         /// </summary>
         [JsonProperty(PropertyName = "items")]
         public List<RegistrySettlementItem> Items { get; set; }
-    
     
         /// <summary>
         /// Create a new Slice group settlement.

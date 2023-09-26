@@ -39,49 +39,41 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "date_start")]
         public string DateStart { get; set; }
-    
         /// <summary>
         /// The date until which statement shows transactions.
         /// </summary>
         [JsonProperty(PropertyName = "date_end")]
         public string DateEnd { get; set; }
-    
         /// <summary>
         /// The regional format of a CSV statement.
         /// </summary>
         [JsonProperty(PropertyName = "regional_format")]
         public string RegionalFormat { get; set; }
-    
         /// <summary>
         /// The id of the customer statement model.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the statement model's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the statement model's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The status of the export.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The card for which this statement was created.
         /// </summary>
         [JsonProperty(PropertyName = "card_id")]
         public int? CardId { get; set; }
-    
     
         /// <summary>
         /// </summary>

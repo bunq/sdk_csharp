@@ -32,32 +32,27 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "recipient_id")]
         public string RecipientId { get; set; }
-    
         /// <summary>
         /// The fields which were specified as "required" and have since been filled by the user. Always provide the
         /// full list.
         /// </summary>
         [JsonProperty(PropertyName = "detail")]
         public List<TransferwiseRequirementField> Detail { get; set; }
-    
         /// <summary>
         /// A possible transfer type.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The label of the possible transfer type to show to the user.
         /// </summary>
         [JsonProperty(PropertyName = "label")]
         public string Label { get; set; }
-    
         /// <summary>
         /// The fields which the user needs to fill.
         /// </summary>
         [JsonProperty(PropertyName = "fields")]
         public List<TransferwiseRequirementField> Fields { get; set; }
-    
     
         /// <summary>
         /// </summary>

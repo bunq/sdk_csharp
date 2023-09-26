@@ -15,25 +15,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
         /// <summary>
         /// The amount of cashback earned.
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
-    
         /// <summary>
         /// The cashback rate.
         /// </summary>
         [JsonProperty(PropertyName = "rate_applied")]
         public string RateApplied { get; set; }
-    
         /// <summary>
         /// The transaction category that this cashback is for.
         /// </summary>
         [JsonProperty(PropertyName = "transaction_category")]
         public AdditionalTransactionInformationCategory TransactionCategory { get; set; }
-    
     
     
         /// <summary>

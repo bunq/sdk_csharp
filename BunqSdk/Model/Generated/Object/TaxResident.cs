@@ -13,19 +13,16 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
-    
         /// <summary>
         /// The tax number.
         /// </summary>
         [JsonProperty(PropertyName = "tax_number")]
         public string TaxNumber { get; set; }
-    
         /// <summary>
         /// The status of the tax number. Either CONFIRMED or UNCONFIRMED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
-    
     
         public TaxResident(string country, string taxNumber)
         {

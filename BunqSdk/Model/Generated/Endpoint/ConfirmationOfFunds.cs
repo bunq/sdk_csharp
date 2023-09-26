@@ -36,19 +36,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "pointer_iban")]
         public MonetaryAccountReference PointerIban { get; set; }
-    
         /// <summary>
         /// The amount we want to check for.
         /// </summary>
         [JsonProperty(PropertyName = "amount")]
         public Amount Amount { get; set; }
-    
         /// <summary>
         /// Whether the account has sufficient funds.
         /// </summary>
         [JsonProperty(PropertyName = "has_sufficient_funds")]
         public bool? HasSufficientFunds { get; set; }
-    
     
         /// <summary>
         /// </summary>

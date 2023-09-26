@@ -13,13 +13,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
         /// The URL where the attachment can be downloaded.
         /// </summary>
         [JsonProperty(PropertyName = "url")]
         public string Url { get; set; }
-    
     
     
         /// <summary>

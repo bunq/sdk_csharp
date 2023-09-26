@@ -13,25 +13,21 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the callback URL's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the callback URL's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The Callback URL.
         /// </summary>
         [JsonProperty(PropertyName = "url")]
         public string Url { get; set; }
-    
     
     
         /// <summary>

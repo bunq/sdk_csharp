@@ -39,31 +39,26 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "content")]
         public string Content { get; set; }
-    
         /// <summary>
         /// The id of the note.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
-    
         /// <summary>
         /// The timestamp of the note's creation.
         /// </summary>
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
-    
         /// <summary>
         /// The timestamp of the note's last update.
         /// </summary>
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
-    
         /// <summary>
         /// The label of the user who created this note.
         /// </summary>
         [JsonProperty(PropertyName = "label_user_creator")]
         public MonetaryAccountReference LabelUserCreator { get; set; }
-    
     
         /// <summary>
         /// </summary>

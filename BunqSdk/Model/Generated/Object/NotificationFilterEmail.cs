@@ -13,19 +13,16 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
-    
         /// <summary>
         /// The users this filter pertains to.
         /// </summary>
         [JsonProperty(PropertyName = "all_user_id")]
         public List<string> AllUserId { get; set; }
-    
         /// <summary>
         /// The MAs this filter pertains to.
         /// </summary>
         [JsonProperty(PropertyName = "all_monetary_account_id")]
         public List<string> AllMonetaryAccountId { get; set; }
-    
     
         public NotificationFilterEmail(string category)
         {

@@ -29,19 +29,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "payment_type")]
         public string PaymentType { get; set; }
-    
         /// <summary>
         /// The entity type this requirement is for.
         /// </summary>
         [JsonProperty(PropertyName = "legal_entity_type")]
         public string LegalEntityType { get; set; }
-    
         /// <summary>
         /// The fields that are required.
         /// </summary>
         [JsonProperty(PropertyName = "all_field")]
         public List<CurrencyCloudBeneficiaryRequirementField> AllField { get; set; }
-    
     
         /// <summary>
         /// </summary>
