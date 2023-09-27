@@ -109,10 +109,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="amount">The amount to convert.</param>
         /// <param name="currencySource">The currency we are converting.</param>
         /// <param name="currencyTarget">The currency we are converting towards.</param>
-        /// <param name="counterpartyAlias">The Alias of the party we are transferring the money to.</param>
         /// <param name="orderType">The type of the quote, SELL or BUY.</param>
+        /// <param name="counterpartyAlias">The Alias of the party we are transferring the money to.</param>
         /// <param name="status">The status of the quote.</param>
-        public static BunqResponse<int> Create(Amount amount, string currencySource, string currencyTarget, Pointer counterpartyAlias, int? monetaryAccountId= null, string orderType = null, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Create(Amount amount, string currencySource, string currencyTarget, string orderType, Pointer counterpartyAlias, int? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
