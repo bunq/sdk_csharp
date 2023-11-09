@@ -52,6 +52,10 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "TransferwisePayment")]
         public TransferwiseTransfer TransferwisePayment { get; set; }
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "CurrencyConversion")]
+        public CurrencyConversion CurrencyConversion { get; set; }
     
     
         /// <summary>
@@ -103,6 +107,11 @@ namespace Bunq.Sdk.Model.Generated.Object
                 return this.TransferwisePayment;
             }
     
+            if (this.CurrencyConversion != null)
+            {
+                return this.CurrencyConversion;
+            }
+    
             throw new BunqException(ERROR_NULL_FIELDS);
         }
     
@@ -151,6 +160,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.TransferwisePayment != null)
+            {
+                return false;
+            }
+    
+            if (this.CurrencyConversion != null)
             {
                 return false;
             }
