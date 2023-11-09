@@ -56,6 +56,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "object_id")]
         public int? ObjectId { get; set; }
+        /// <summary>
+        /// The exception bunq encountered when processing the callback.
+        /// </summary>
+        [JsonProperty(PropertyName = "exception_message")]
+        public string ExceptionMessage { get; set; }
+        /// <summary>
+        /// The response code (or null) received from the endpoint.
+        /// </summary>
+        [JsonProperty(PropertyName = "response_code")]
+        public int? ResponseCode { get; set; }
     
         /// <summary>
         /// </summary>
@@ -111,6 +121,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.ObjectId != null)
+            {
+                return false;
+            }
+    
+            if (this.ExceptionMessage != null)
+            {
+                return false;
+            }
+    
+            if (this.ResponseCode != null)
             {
                 return false;
             }
