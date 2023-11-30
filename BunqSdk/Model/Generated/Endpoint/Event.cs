@@ -79,6 +79,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "is_event_latest_for_object")]
         public bool? IsEventLatestForObject { get; set; }
+        /// <summary>
+        /// Indicator whether this is event can be reassigned to another Monetary Account.
+        /// </summary>
+        [JsonProperty(PropertyName = "is_event_reassignable")]
+        public bool? IsEventReassignable { get; set; }
     
         /// <summary>
         /// Get a specific event for a given user.
@@ -164,6 +169,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.IsEventLatestForObject != null)
+            {
+                return false;
+            }
+    
+            if (this.IsEventReassignable != null)
             {
                 return false;
             }
