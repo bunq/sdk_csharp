@@ -183,6 +183,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "card_shipment_tracking_url")]
         public string CardShipmentTrackingUrl { get; set; }
+        /// <summary>
+        /// Whether this card is eligible for a free replacement.
+        /// </summary>
+        [JsonProperty(PropertyName = "is_eligible_for_free_replacement")]
+        public bool? IsEligibleForFreeReplacement { get; set; }
     
         /// <summary>
         /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary
@@ -375,6 +380,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CardShipmentTrackingUrl != null)
+            {
+                return false;
+            }
+    
+            if (this.IsEligibleForFreeReplacement != null)
             {
                 return false;
             }
