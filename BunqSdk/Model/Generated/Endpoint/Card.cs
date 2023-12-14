@@ -35,6 +35,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_PIN_CODE_ASSIGNMENT = "pin_code_assignment";
         public const string FIELD_PRIMARY_ACCOUNT_NUMBERS = "primary_account_numbers";
         public const string FIELD_MONETARY_ACCOUNT_ID_FALLBACK = "monetary_account_id_fallback";
+        public const string FIELD_PREFERRED_NAME_ON_CARD = "preferred_name_on_card";
+        public const string FIELD_SECOND_LINE = "second_line";
         public const string FIELD_CANCELLATION_REASON = "cancellation_reason";
     
         /// <summary>
@@ -99,6 +101,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
         public int? MonetaryAccountIdFallback { get; set; }
         /// <summary>
+        /// The user's preferred name on the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "preferred_name_on_card")]
+        public string PreferredNameOnCard { get; set; }
+        /// <summary>
+        /// The second line of text on the card
+        /// </summary>
+        [JsonProperty(PropertyName = "second_line")]
+        public string SecondLine { get; set; }
+        /// <summary>
         /// The reason for card cancellation.
         /// </summary>
         [JsonProperty(PropertyName = "cancellation_reason")]
@@ -133,11 +145,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "sub_type")]
         public string SubType { get; set; }
-        /// <summary>
-        /// The second line of text on the card
-        /// </summary>
-        [JsonProperty(PropertyName = "second_line")]
-        public string SecondLine { get; set; }
         /// <summary>
         /// ID of the user who is owner of the card.
         /// </summary>
@@ -204,8 +211,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="primaryAccountNumbers">Array of PANs and their attributes.</param>
         /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
+        /// <param name="preferredNameOnCard">The user's preferred name as it will be on the card.</param>
+        /// <param name="secondLine">The second line of text on the card</param>
         /// <param name="cancellationReason">The reason for card cancellation.</param>
-        public static BunqResponse<Card> Update(int cardId, string pinCode = null, string activationCode = null, string status = null, string orderStatus = null, Amount cardLimit = null, Amount cardLimitAtm = null, List<CardCountryPermission> countryPermission = null, List<CardPinAssignment> pinCodeAssignment = null, List<CardPrimaryAccountNumber> primaryAccountNumbers = null, int? monetaryAccountIdFallback = null, string cancellationReason = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<Card> Update(int cardId, string pinCode = null, string activationCode = null, string status = null, string orderStatus = null, Amount cardLimit = null, Amount cardLimitAtm = null, List<CardCountryPermission> countryPermission = null, List<CardPinAssignment> pinCodeAssignment = null, List<CardPrimaryAccountNumber> primaryAccountNumbers = null, int? monetaryAccountIdFallback = null, string preferredNameOnCard = null, string secondLine = null, string cancellationReason = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -223,6 +232,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_PIN_CODE_ASSIGNMENT, pinCodeAssignment},
     {FIELD_PRIMARY_ACCOUNT_NUMBERS, primaryAccountNumbers},
     {FIELD_MONETARY_ACCOUNT_ID_FALLBACK, monetaryAccountIdFallback},
+    {FIELD_PREFERRED_NAME_ON_CARD, preferredNameOnCard},
+    {FIELD_SECOND_LINE, secondLine},
     {FIELD_CANCELLATION_REASON, cancellationReason},
     };
     
@@ -325,6 +336,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.NameOnCard != null)
+            {
+                return false;
+            }
+    
+            if (this.PreferredNameOnCard != null)
             {
                 return false;
             }
