@@ -181,6 +181,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "label_monetary_account_current")]
         public MonetaryAccountReference LabelMonetaryAccountCurrent { get; set; }
         /// <summary>
+        /// Current monetary account (only for prepaid credit cards).
+        /// </summary>
+        [JsonProperty(PropertyName = "monetary_account")]
+        public MonetaryAccount MonetaryAccount { get; set; }
+        /// <summary>
         /// The country that is domestic to the card. Defaults to country of residence of user.
         /// </summary>
         [JsonProperty(PropertyName = "country")]
@@ -376,6 +381,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.LabelMonetaryAccountCurrent != null)
+            {
+                return false;
+            }
+    
+            if (this.MonetaryAccount != null)
             {
                 return false;
             }
