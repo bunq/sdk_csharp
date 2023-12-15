@@ -245,6 +245,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "pin_status")]
         public string PinStatus { get; set; }
+        /// <summary>
+        /// The MCC provided.
+        /// </summary>
+        [JsonProperty(PropertyName = "merchant_category_code")]
+        public string MerchantCategoryCode { get; set; }
     
         /// <summary>
         /// </summary>
@@ -487,6 +492,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.PinStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.MerchantCategoryCode != null)
             {
                 return false;
             }
