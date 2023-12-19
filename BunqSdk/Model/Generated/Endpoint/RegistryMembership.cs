@@ -17,6 +17,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_ALIAS = "alias";
         public const string FIELD_STATUS = "status";
         public const string FIELD_AUTO_ADD_CARD_TRANSACTION = "auto_add_card_transaction";
+        public const string FIELD_SETTING = "setting";
         public const string FIELD_MEMBERSHIP_TICOUNT_ID = "membership_ticount_id";
     
     
@@ -36,10 +37,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
         /// <summary>
-        /// The setting for for adding automatically card transactions to the registry.
+        /// The setting for for adding automatically card transactions to the registry. (deprecated)
         /// </summary>
         [JsonProperty(PropertyName = "auto_add_card_transaction")]
         public string AutoAddCardTransaction { get; set; }
+        /// <summary>
+        /// Registry membership setting.
+        /// </summary>
+        [JsonProperty(PropertyName = "setting")]
+        public RegistryMembershipSetting Setting { get; set; }
         /// <summary>
         /// The original TricountId of the membership for backwards compatibility. May be used as an alternative to the
         /// UUID to identify specific memberships to allow clients to sync changes made offline before the Tricount
@@ -114,6 +120,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.AutoAddCardTransaction != null)
+            {
+                return false;
+            }
+    
+            if (this.Setting != null)
             {
                 return false;
             }
