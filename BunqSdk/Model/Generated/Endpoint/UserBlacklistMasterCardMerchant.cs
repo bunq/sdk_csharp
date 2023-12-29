@@ -12,26 +12,38 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_MERCHANT_ID = "merchant_id";
         public const string FIELD_MERCHANT_NAME = "merchant_name";
+        public const string FIELD_MERCHANT_ID = "merchant_id";
         public const string FIELD_MERCHANT_IDENTIFIER = "merchant_identifier";
+        public const string FIELD_MASTERCARD_MERCHANT_ID = "mastercard_merchant_id";
+        public const string FIELD_EXTERNAL_MERCHANT_ID = "external_merchant_id";
     
     
-        /// <summary>
-        /// The blacklisted merchant.
-        /// </summary>
-        [JsonProperty(PropertyName = "merchant_id")]
-        public string MerchantId { get; set; }
         /// <summary>
         /// The name of the merchant.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_name")]
         public string MerchantName { get; set; }
         /// <summary>
+        /// The blacklisted merchant.
+        /// </summary>
+        [JsonProperty(PropertyName = "merchant_id")]
+        public string MerchantId { get; set; }
+        /// <summary>
         /// Identifier of the merchant we are blacklisting.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_identifier")]
         public string MerchantIdentifier { get; set; }
+        /// <summary>
+        /// The blacklisted merchant.
+        /// </summary>
+        [JsonProperty(PropertyName = "mastercard_merchant_id")]
+        public string MastercardMerchantId { get; set; }
+        /// <summary>
+        /// Externally provided merchant identification.
+        /// </summary>
+        [JsonProperty(PropertyName = "external_merchant_id")]
+        public string ExternalMerchantId { get; set; }
         /// <summary>
         /// The id of the blacklist.
         /// </summary>
@@ -87,17 +99,27 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.MerchantId != null)
-            {
-                return false;
-            }
-    
             if (this.MerchantName != null)
             {
                 return false;
             }
     
+            if (this.MerchantId != null)
+            {
+                return false;
+            }
+    
             if (this.MerchantIdentifier != null)
+            {
+                return false;
+            }
+    
+            if (this.MastercardMerchantId != null)
+            {
+                return false;
+            }
+    
+            if (this.ExternalMerchantId != null)
             {
                 return false;
             }
