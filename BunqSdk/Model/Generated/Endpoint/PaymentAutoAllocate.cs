@@ -77,10 +77,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "trigger_amount")]
         public Amount TriggerAmount { get; set; }
         /// <summary>
-        /// The payment that was used to define the triggers for this payment auto allocate.
+        /// DEPRECATED: superseded by `payment_original` and `payment_latest`
         /// </summary>
         [JsonProperty(PropertyName = "payment")]
         public Payment Payment { get; set; }
+        /// <summary>
+        /// The payment that was used to define the triggers for this payment auto allocate.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_original")]
+        public Payment PaymentOriginal { get; set; }
+        /// <summary>
+        /// The latest payment allocated using this payment auto allocate.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_latest")]
+        public Payment PaymentLatest { get; set; }
     
         /// <summary>
         /// </summary>
@@ -199,6 +209,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Payment != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentOriginal != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentLatest != null)
             {
                 return false;
             }
