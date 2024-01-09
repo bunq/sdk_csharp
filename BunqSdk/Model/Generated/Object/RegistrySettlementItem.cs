@@ -34,6 +34,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "receiving_user_alias")]
         public MonetaryAccountReference ReceivingUserAlias { get; set; }
+        /// <summary>
+        /// The status of the RequestInquiry or DraftPayment for this settlement item.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_status")]
+        public string PaymentStatus { get; set; }
     
     
         /// <summary>
@@ -61,6 +66,11 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.ReceivingUserAlias != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentStatus != null)
             {
                 return false;
             }
