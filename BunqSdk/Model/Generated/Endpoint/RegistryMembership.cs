@@ -37,7 +37,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
         /// <summary>
-        /// The setting for for adding automatically card transactions to the registry. (deprecated)
+        /// The setting for adding automatically card transactions to the registry. (deprecated)
         /// </summary>
         [JsonProperty(PropertyName = "auto_add_card_transaction")]
         public string AutoAddCardTransaction { get; set; }
@@ -78,6 +78,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "registry_title")]
         public string RegistryTitle { get; set; }
+        /// <summary>
+        /// For dinner and grocery expenses.
+        /// </summary>
+        [JsonProperty(PropertyName = "registry_description")]
+        public string RegistryDescription { get; set; }
         /// <summary>
         /// The label of the user that sent the invite.
         /// </summary>
@@ -135,6 +140,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.RegistryTitle != null)
+            {
+                return false;
+            }
+    
+            if (this.RegistryDescription != null)
             {
                 return false;
             }
