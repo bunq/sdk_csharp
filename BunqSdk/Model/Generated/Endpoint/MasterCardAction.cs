@@ -226,11 +226,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "cashback_payout_item")]
         public CashbackPayoutItem CashbackPayoutItem { get; set; }
         /// <summary>
-        /// The report for this transaction
-        /// </summary>
-        [JsonProperty(PropertyName = "mastercard_action_report")]
-        public MasterCardActionReport MastercardActionReport { get; set; }
-        /// <summary>
         /// The blacklist enabled for the merchant of this transaction
         /// </summary>
         [JsonProperty(PropertyName = "blacklist")]
@@ -245,6 +240,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "pin_status")]
         public string PinStatus { get; set; }
+        /// <summary>
+        /// The report for this transaction
+        /// </summary>
+        [JsonProperty(PropertyName = "mastercard_action_report")]
+        public MasterCardActionReport MastercardActionReport { get; set; }
         /// <summary>
         /// The MCC provided.
         /// </summary>
@@ -476,11 +476,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.MastercardActionReport != null)
-            {
-                return false;
-            }
-    
             if (this.Blacklist != null)
             {
                 return false;
@@ -492,6 +487,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.PinStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.MastercardActionReport != null)
             {
                 return false;
             }
