@@ -88,6 +88,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "public_uuid")]
         public string PublicUuid { get; set; }
+        /// <summary>
+        /// The monetary account this transaction is made from.
+        /// </summary>
+        [JsonProperty(PropertyName = "alias")]
+        public MonetaryAccountReference Alias { get; set; }
     
         /// <summary>
         /// </summary>
@@ -215,6 +220,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.Alias != null)
             {
                 return false;
             }
