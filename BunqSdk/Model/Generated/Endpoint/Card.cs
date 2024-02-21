@@ -200,6 +200,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "is_eligible_for_free_replacement")]
         public bool? IsEligibleForFreeReplacement { get; set; }
+        /// <summary>
+        /// The card replacement for this card.
+        /// </summary>
+        [JsonProperty(PropertyName = "card_replacement")]
+        public CardReplacement CardReplacement { get; set; }
     
         /// <summary>
         /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary
@@ -411,6 +416,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.IsEligibleForFreeReplacement != null)
+            {
+                return false;
+            }
+    
+            if (this.CardReplacement != null)
             {
                 return false;
             }
