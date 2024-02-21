@@ -29,6 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_BUNQME_TAB_ENTRY = "bunqme_tab_entry";
         public const string FIELD_STATUS = "status";
+        public const string FIELD_EVENT_ID = "event_id";
     
         /// <summary>
         /// Object type.
@@ -45,6 +46,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
+        /// <summary>
+        /// The ID of the related event if the bunqMeTab made by 'split' functionality.
+        /// </summary>
+        [JsonProperty(PropertyName = "event_id")]
+        public int? EventId { get; set; }
         /// <summary>
         /// The id of the created bunq.me.
         /// </summary>
@@ -101,7 +107,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="bunqmeTabEntry">The bunq.me entry containing the payment information.</param>
         /// <param name="status">The status of the bunq.me. Ignored in POST requests but can be used for cancelling the bunq.me by setting status as CANCELLED with a PUT request.</param>
-        public static BunqResponse<int> Create(BunqMeTabEntry bunqmeTabEntry, int? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="eventId">The ID of the related event if the bunqMeTab made by 'split' functionality.</param>
+        public static BunqResponse<int> Create(BunqMeTabEntry bunqmeTabEntry, int? monetaryAccountId= null, string status = null, int? eventId = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -111,6 +118,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {
     {FIELD_BUNQME_TAB_ENTRY, bunqmeTabEntry},
     {FIELD_STATUS, status},
+    {FIELD_EVENT_ID, eventId},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
