@@ -94,14 +94,6 @@ namespace Bunq.Sdk.Model.Generated.Object
         public RequestResponse RequestResponse { get; set; }
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "RewardRecipient")]
-        public RewardRecipient RewardRecipient { get; set; }
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "RewardSender")]
-        public RewardSender RewardSender { get; set; }
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "ShareInviteBankInquiry")]
         public ShareInviteMonetaryAccountInquiry ShareInviteBankInquiry { get; set; }
         /// <summary>
@@ -215,16 +207,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             if (this.RequestResponse != null)
             {
                 return this.RequestResponse;
-            }
-    
-            if (this.RewardRecipient != null)
-            {
-                return this.RewardRecipient;
-            }
-    
-            if (this.RewardSender != null)
-            {
-                return this.RewardSender;
             }
     
             if (this.ShareInviteBankInquiry != null)
@@ -345,16 +327,6 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.RequestResponse != null)
-            {
-                return false;
-            }
-    
-            if (this.RewardRecipient != null)
-            {
-                return false;
-            }
-    
-            if (this.RewardSender != null)
             {
                 return false;
             }
