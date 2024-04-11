@@ -45,7 +45,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var apiClient = new ApiClient(GetApiContext());
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId()), urlParams, customHeaders);
     
-            return FromJsonList<InsightPreferenceDate>(responseRaw);
+            return FromJsonList<InsightPreferenceDate>(responseRaw, OBJECT_TYPE_GET);
         }
     
     
