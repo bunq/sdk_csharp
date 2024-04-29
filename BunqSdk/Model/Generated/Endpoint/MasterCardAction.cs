@@ -226,10 +226,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "cashback_payout_item")]
         public CashbackPayoutItem CashbackPayoutItem { get; set; }
         /// <summary>
-        /// The blacklist enabled for the merchant of this transaction
+        /// DEPRECATED. The blacklist enabled for the merchant of this transaction
         /// </summary>
         [JsonProperty(PropertyName = "blacklist")]
-        public UserBlacklistMasterCardMerchant Blacklist { get; set; }
+        public UserBlocklistMasterCardMerchant Blacklist { get; set; }
+        /// <summary>
+        /// The blocklist enabled for the merchant of this transaction
+        /// </summary>
+        [JsonProperty(PropertyName = "blocklist")]
+        public UserBlocklistMasterCardMerchant Blocklist { get; set; }
         /// <summary>
         /// The status of the additional authentication performed (3ds) by the user for this transaction.
         /// </summary>
@@ -477,6 +482,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Blacklist != null)
+            {
+                return false;
+            }
+    
+            if (this.Blocklist != null)
             {
                 return false;
             }

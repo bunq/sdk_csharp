@@ -5,9 +5,9 @@ using System.Collections.Generic;
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// Fetch blacklists of merchants created by user
+    /// Fetch blocklists of merchants created by user
     /// </summary>
-    public class UserBlacklistMasterCardMerchant : BunqModel
+    public class UserBlocklistMasterCardMerchant : BunqModel
     {
         /// <summary>
         /// Field constants.
@@ -25,17 +25,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "merchant_name")]
         public string MerchantName { get; set; }
         /// <summary>
-        /// The blacklisted merchant.
+        /// The blocklisted merchant.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_id")]
         public string MerchantId { get; set; }
         /// <summary>
-        /// Identifier of the merchant we are blacklisting.
+        /// Identifier of the merchant we are blocklisting.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_identifier")]
         public string MerchantIdentifier { get; set; }
         /// <summary>
-        /// The blacklisted merchant.
+        /// The blocklisted merchant.
         /// </summary>
         [JsonProperty(PropertyName = "mastercard_merchant_id")]
         public string MastercardMerchantId { get; set; }
@@ -45,7 +45,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "external_merchant_id")]
         public string ExternalMerchantId { get; set; }
         /// <summary>
-        /// The id of the blacklist.
+        /// The id of the blocklist.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public int? Id { get; set; }
@@ -60,12 +60,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "updated")]
         public string Updated { get; set; }
         /// <summary>
-        /// The status of the the blacklist.
+        /// The status of the the blocklist.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
         /// <summary>
-        /// Hash of the merchant we are blacklisting.
+        /// Hash of the merchant we are blocklisting.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_hash")]
         public string MerchantHash { get; set; }
@@ -139,9 +139,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static UserBlacklistMasterCardMerchant CreateFromJsonString(string json)
+        public static UserBlocklistMasterCardMerchant CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<UserBlacklistMasterCardMerchant>(json);
+            return BunqModel.CreateFromJsonString<UserBlocklistMasterCardMerchant>(json);
         }
     }
 }
