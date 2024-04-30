@@ -23,6 +23,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
+        /// <summary>
+        /// The id of the tax resident.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public int? Id { get; set; }
     
         public TaxResident(string country, string taxNumber)
         {
@@ -35,6 +40,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         public override bool IsAllFieldNull()
         {
+            if (this.Id != null)
+            {
+                return false;
+            }
+    
             if (this.Country != null)
             {
                 return false;
