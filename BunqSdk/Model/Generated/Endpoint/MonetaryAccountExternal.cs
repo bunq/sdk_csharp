@@ -49,7 +49,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; set; }
         /// <summary>
-        /// The service the MonetaryAccountExternal is connected with.
+        /// The external service the Monetary Account is connected with.
         /// </summary>
         [JsonProperty(PropertyName = "service")]
         public string Service { get; set; }
@@ -360,6 +360,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.AllAutoSaveId != null)
+            {
+                return false;
+            }
+    
+            if (this.Service != null)
             {
                 return false;
             }
