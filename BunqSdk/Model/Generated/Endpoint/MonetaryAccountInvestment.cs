@@ -25,6 +25,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DISPLAY_NAME = "display_name";
         public const string FIELD_SETTING = "setting";
         public const string FIELD_BIRDEE_INVESTMENT_PORTFOLIO = "birdee_investment_portfolio";
+        public const string FIELD_MONETARY_ACCOUNT_DEPOSIT_INITIAL_ID = "monetary_account_deposit_initial_id";
+        public const string FIELD_AMOUNT_DEPOSIT_INITIAL = "amount_deposit_initial";
     
     
         /// <summary>
@@ -91,6 +93,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "birdee_investment_portfolio")]
         public BirdeeInvestmentPortfolio BirdeeInvestmentPortfolio { get; set; }
+        /// <summary>
+        /// ID of the MA to be used for the initial deposit to the investment account.
+        /// </summary>
+        [JsonProperty(PropertyName = "monetary_account_deposit_initial_id")]
+        public int? MonetaryAccountDepositInitialId { get; set; }
+        /// <summary>
+        /// The amount to be transferred to the investment account as the initial deposit.
+        /// </summary>
+        [JsonProperty(PropertyName = "amount_deposit_initial")]
+        public Amount AmountDepositInitial { get; set; }
         /// <summary>
         /// The id of the MonetaryAccountInvestment.
         /// </summary>
