@@ -157,6 +157,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "all_auto_save_id")]
         public List<BunqId> AllAutoSaveId { get; set; }
+        /// <summary>
+        /// The open banking account for information about the external account.
+        /// </summary>
+        [JsonProperty(PropertyName = "open_banking_account")]
+        public OpenBankingAccount OpenBankingAccount { get; set; }
     
         /// <summary>
         /// </summary>
@@ -365,6 +370,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Service != null)
+            {
+                return false;
+            }
+    
+            if (this.OpenBankingAccount != null)
             {
                 return false;
             }
