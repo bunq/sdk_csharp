@@ -109,6 +109,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "sub_type")]
         public string SubType { get; set; }
         /// <summary>
+        /// Information about the expected arrival of the payment.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_arrival_expected")]
+        public PaymentArrivalExpected PaymentArrivalExpected { get; set; }
+        /// <summary>
         /// The status of the bunq.to payment.
         /// </summary>
         [JsonProperty(PropertyName = "bunqto_status")]
@@ -283,6 +288,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.SubType != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentArrivalExpected != null)
             {
                 return false;
             }
