@@ -13,14 +13,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_STATUS = "status";
+        public const string FIELD_ACCOUNT_INFORMATION_SERVICE_STATUS = "account_information_service_status";
+        public const string FIELD_PAYMENT_INFORMATION_SERVICE_STATUS = "payment_information_service_status";
     
     
         /// <summary>
-        /// Provider's status.
+        /// Whether we support Open Banking budgeting using the bank provider.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
+        [JsonProperty(PropertyName = "account_information_service_status")]
+        public string AccountInformationServiceStatus { get; set; }
+        /// <summary>
+        /// Whether we support top ups using the bank provider.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_information_service_status")]
+        public string PaymentInformationServiceStatus { get; set; }
         /// <summary>
         /// The name of the bank provider.
         /// </summary>
@@ -47,15 +53,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "all_payment_method_allowed_domestic")]
         public List<string> AllPaymentMethodAllowedDomestic { get; set; }
         /// <summary>
-        /// Whether this provider supports business banking.
+        /// Whether business banking is supported by the provider.
         /// </summary>
-        [JsonProperty(PropertyName = "is_audience_business_supported")]
-        public bool? IsAudienceBusinessSupported { get; set; }
+        [JsonProperty(PropertyName = "audience_business_status")]
+        public bool? AudienceBusinessStatus { get; set; }
         /// <summary>
-        /// Whether this provider supports brivate banking.
+        /// Whether personal banking is supported by the provider.
         /// </summary>
-        [JsonProperty(PropertyName = "is_audience_private_supported")]
-        public bool? IsAudiencePrivateSupported { get; set; }
+        [JsonProperty(PropertyName = "audience_private_status")]
+        public bool? AudiencePrivateStatus { get; set; }
         /// <summary>
         /// The avatar of the bank.
         /// </summary>
@@ -72,7 +78,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.Status != null)
+            if (this.AccountInformationServiceStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentInformationServiceStatus != null)
             {
                 return false;
             }
@@ -97,12 +108,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.IsAudienceBusinessSupported != null)
+            if (this.AudienceBusinessStatus != null)
             {
                 return false;
             }
     
-            if (this.IsAudiencePrivateSupported != null)
+            if (this.AudiencePrivateStatus != null)
             {
                 return false;
             }
