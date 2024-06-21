@@ -76,6 +76,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "event_id")]
         public int? EventId { get; set; }
+        /// <summary>
+        /// The ID of the card used for the authentication request of the identity check.
+        /// </summary>
+        [JsonProperty(PropertyName = "card_id")]
+        public int? CardId { get; set; }
     
         /// <summary>
         /// </summary>
@@ -155,6 +160,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.EventId != null)
+            {
+                return false;
+            }
+    
+            if (this.CardId != null)
             {
                 return false;
             }
