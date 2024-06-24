@@ -178,6 +178,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "payment_auto_allocate_instance")]
         public PaymentAutoAllocateInstance PaymentAutoAllocateInstance { get; set; }
+        /// <summary>
+        /// A reference to the PaymentSuspendedOutgoing if it exists.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_suspended_outgoing")]
+        public PaymentSuspendedOutgoing PaymentSuspendedOutgoing { get; set; }
     
         /// <summary>
         /// Create a new Payment.
@@ -368,6 +373,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.PaymentAutoAllocateInstance != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentSuspendedOutgoing != null)
             {
                 return false;
             }
