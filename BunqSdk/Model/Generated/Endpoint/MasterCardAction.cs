@@ -201,6 +201,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
         /// <summary>
+        /// The cardTokenization event awaiting acceptance by the user
+        /// </summary>
+        [JsonProperty(PropertyName = "card_tokenization_event")]
+        public List<string> CardTokenizationEvent { get; set; }
+        /// <summary>
         /// A reference to the Refunds if they exist.
         /// </summary>
         [JsonProperty(PropertyName = "all_mastercard_action_refund")]
@@ -452,6 +457,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.RequestReferenceSplitTheBill != null)
+            {
+                return false;
+            }
+    
+            if (this.CardTokenizationEvent != null)
             {
                 return false;
             }
