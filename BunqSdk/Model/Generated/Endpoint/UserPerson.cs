@@ -42,6 +42,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DOCUMENT_BACK_ATTACHMENT_ID = "document_back_attachment_id";
         public const string FIELD_DATE_OF_BIRTH = "date_of_birth";
         public const string FIELD_NATIONALITY = "nationality";
+        public const string FIELD_ALL_NATIONALITY = "all_nationality";
         public const string FIELD_LANGUAGE = "language";
         public const string FIELD_REGION = "region";
         public const string FIELD_GENDER = "gender";
@@ -138,6 +139,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "nationality")]
         public string Nationality { get; set; }
+        /// <summary>
+        /// All of the person's nationalities.
+        /// </summary>
+        [JsonProperty(PropertyName = "all_nationality")]
+        public List<string> AllNationality { get; set; }
         /// <summary>
         /// The person's preferred language. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country
         /// code, seperated by an underscore.
@@ -282,7 +288,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="documentFrontAttachmentId">The reference to the uploaded picture/scan of the front side of the identification document.</param>
         /// <param name="documentBackAttachmentId">The reference to the uploaded picture/scan of the back side of the identification document.</param>
         /// <param name="dateOfBirth">The person's date of birth. Accepts ISO8601 date formats.</param>
-        /// <param name="nationality">The person's nationality. Formatted as a SO 3166-1 alpha-2 country code.</param>
+        /// <param name="nationality">DEPRECATED. The person's nationality. Formatted as a SO 3166-1 alpha-2 country code.</param>
+        /// <param name="allNationality">All of the person's nationalities.</param>
         /// <param name="language">The person's preferred language. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country code, seperated by an underscore.</param>
         /// <param name="region">The person's preferred region. Formatted as a ISO 639-1 language code plus a ISO 3166-1 alpha-2 country code, seperated by an underscore.</param>
         /// <param name="gender">The person's gender. Can be: MALE, FEMALE and UNKNOWN.</param>
@@ -292,7 +299,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="sessionTimeout">The setting for the session timeout of the user in seconds.</param>
         /// <param name="dailyLimitWithoutConfirmationLogin">The amount the user can pay in the session without asking for credentials.</param>
         /// <param name="displayName">The person's legal name. Available legal names can be listed via the 'user/{user_id}/legal-name' endpoint.</param>
-        public static BunqResponse<int> Update(string firstName = null, string middleName = null, string lastName = null, string publicNickName = null, Address addressMain = null, Address addressPostal = null, string avatarUuid = null, List<TaxResident> taxResident = null, string documentType = null, string documentNumber = null, string documentCountryOfIssuance = null, int? documentFrontAttachmentId = null, int? documentBackAttachmentId = null, string dateOfBirth = null, string nationality = null, string language = null, string region = null, string gender = null, string status = null, string subStatus = null, Pointer legalGuardianAlias = null, int? sessionTimeout = null, Amount dailyLimitWithoutConfirmationLogin = null, string displayName = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(string firstName = null, string middleName = null, string lastName = null, string publicNickName = null, Address addressMain = null, Address addressPostal = null, string avatarUuid = null, List<TaxResident> taxResident = null, string documentType = null, string documentNumber = null, string documentCountryOfIssuance = null, int? documentFrontAttachmentId = null, int? documentBackAttachmentId = null, string dateOfBirth = null, string nationality = null, List<string> allNationality = null, string language = null, string region = null, string gender = null, string status = null, string subStatus = null, Pointer legalGuardianAlias = null, int? sessionTimeout = null, Amount dailyLimitWithoutConfirmationLogin = null, string displayName = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -315,6 +322,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_DOCUMENT_BACK_ATTACHMENT_ID, documentBackAttachmentId},
     {FIELD_DATE_OF_BIRTH, dateOfBirth},
     {FIELD_NATIONALITY, nationality},
+    {FIELD_ALL_NATIONALITY, allNationality},
     {FIELD_LANGUAGE, language},
     {FIELD_REGION, region},
     {FIELD_GENDER, gender},
@@ -423,6 +431,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Nationality != null)
+            {
+                return false;
+            }
+    
+            if (this.AllNationality != null)
             {
                 return false;
             }
