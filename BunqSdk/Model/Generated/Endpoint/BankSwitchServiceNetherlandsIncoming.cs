@@ -63,6 +63,26 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
         public Attachment Attachment { get; set; }
+        /// <summary>
+        /// Rejection reason enum.
+        /// </summary>
+        [JsonProperty(PropertyName = "rejection_reason")]
+        public string RejectionReason { get; set; }
+        /// <summary>
+        /// Rejection reason description to be shown to the user.
+        /// </summary>
+        [JsonProperty(PropertyName = "rejection_reason_description")]
+        public string RejectionReasonDescription { get; set; }
+        /// <summary>
+        /// Rejection reason description to be shown to the user, translated.
+        /// </summary>
+        [JsonProperty(PropertyName = "rejection_reason_description_translated")]
+        public string RejectionReasonDescriptionTranslated { get; set; }
+        /// <summary>
+        /// Rejection reason together URL.
+        /// </summary>
+        [JsonProperty(PropertyName = "rejection_reason_together_url")]
+        public string RejectionReasonTogetherUrl { get; set; }
     
     
         /// <summary>
@@ -110,6 +130,26 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Attachment != null)
+            {
+                return false;
+            }
+    
+            if (this.RejectionReason != null)
+            {
+                return false;
+            }
+    
+            if (this.RejectionReasonDescription != null)
+            {
+                return false;
+            }
+    
+            if (this.RejectionReasonDescriptionTranslated != null)
+            {
+                return false;
+            }
+    
+            if (this.RejectionReasonTogetherUrl != null)
             {
                 return false;
             }
