@@ -162,11 +162,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "open_banking_account")]
         public OpenBankingAccount OpenBankingAccount { get; set; }
-        /// <summary>
-        /// The credit line attached to this monetary MonetaryAccountExternal, if available.
-        /// </summary>
-        [JsonProperty(PropertyName = "credit_line")]
-        public CreditLine CreditLine { get; set; }
     
         /// <summary>
         /// </summary>
@@ -380,11 +375,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.OpenBankingAccount != null)
-            {
-                return false;
-            }
-    
-            if (this.CreditLine != null)
             {
                 return false;
             }
