@@ -96,11 +96,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
         public int? UserId { get; set; }
-        /// <summary>
-        /// The credit line attached to this monetary MonetaryAccountCard, if available.
-        /// </summary>
-        [JsonProperty(PropertyName = "credit_line")]
-        public CreditLine CreditLine { get; set; }
     
         /// <summary>
         /// Get a specific MonetaryAccountCard.
@@ -219,11 +214,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.UserId != null)
-            {
-                return false;
-            }
-    
-            if (this.CreditLine != null)
             {
                 return false;
             }

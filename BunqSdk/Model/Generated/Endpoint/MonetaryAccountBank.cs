@@ -161,11 +161,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "all_auto_save_id")]
         public List<BunqId> AllAutoSaveId { get; set; }
-        /// <summary>
-        /// The credit line attached to this monetary MonetaryAccountBank, if available.
-        /// </summary>
-        [JsonProperty(PropertyName = "credit_line")]
-        public CreditLine CreditLine { get; set; }
     
         /// <summary>
         /// Create new MonetaryAccountBank.
@@ -373,11 +368,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.AllAutoSaveId != null)
-            {
-                return false;
-            }
-    
-            if (this.CreditLine != null)
             {
                 return false;
             }
