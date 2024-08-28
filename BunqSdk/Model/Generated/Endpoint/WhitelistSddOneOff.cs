@@ -32,6 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_REQUEST_ID = "request_id";
         public const string FIELD_MAXIMUM_AMOUNT_PER_MONTH = "maximum_amount_per_month";
         public const string FIELD_MAXIMUM_AMOUNT_PER_PAYMENT = "maximum_amount_per_payment";
+        public const string FIELD_ROUTING_TYPE = "routing_type";
     
         /// <summary>
         /// Object type.
@@ -58,6 +59,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "maximum_amount_per_payment")]
         public Amount MaximumAmountPerPayment { get; set; }
+        /// <summary>
+        /// The type of routing for this whitelist.
+        /// </summary>
+        [JsonProperty(PropertyName = "routing_type")]
+        public string RoutingType { get; set; }
         /// <summary>
         /// The ID of the whitelist entry.
         /// </summary>
@@ -114,7 +120,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="requestId">ID of the request for which you want to whitelist the originating SDD.</param>
         /// <param name="maximumAmountPerMonth">The maximum amount of money that is allowed to be deducted per month based on the whitelist.</param>
         /// <param name="maximumAmountPerPayment">The maximum amount of money that is allowed to be deducted per payment based on the whitelist.</param>
-        public static BunqResponse<int> Create(int? monetaryAccountPayingId, int? requestId, Amount maximumAmountPerMonth = null, Amount maximumAmountPerPayment = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="routingType">The type of routing for this whitelist. Should be changed to non-optional CIT/technical#12806.</param>
+        public static BunqResponse<int> Create(int? monetaryAccountPayingId, int? requestId, Amount maximumAmountPerMonth = null, Amount maximumAmountPerPayment = null, string routingType = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -126,6 +133,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_REQUEST_ID, requestId},
     {FIELD_MAXIMUM_AMOUNT_PER_MONTH, maximumAmountPerMonth},
     {FIELD_MAXIMUM_AMOUNT_PER_PAYMENT, maximumAmountPerPayment},
+    {FIELD_ROUTING_TYPE, routingType},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -139,7 +147,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="monetaryAccountPayingId">ID of the monetary account of which you want to pay from.</param>
         /// <param name="maximumAmountPerMonth">The maximum amount of money that is allowed to be deducted per month based on the whitelist.</param>
         /// <param name="maximumAmountPerPayment">The maximum amount of money that is allowed to be deducted per payment based on the whitelist.</param>
-        public static BunqResponse<int> Update(int whitelistSddOneOffId, int? monetaryAccountPayingId = null, Amount maximumAmountPerMonth = null, Amount maximumAmountPerPayment = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="routingType">The type of routing for this whitelist. Should be changed to non-optional CIT/technical#12806.</param>
+        public static BunqResponse<int> Update(int whitelistSddOneOffId, int? monetaryAccountPayingId = null, Amount maximumAmountPerMonth = null, Amount maximumAmountPerPayment = null, string routingType = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -150,6 +159,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_MONETARY_ACCOUNT_PAYING_ID, monetaryAccountPayingId},
     {FIELD_MAXIMUM_AMOUNT_PER_MONTH, maximumAmountPerMonth},
     {FIELD_MAXIMUM_AMOUNT_PER_PAYMENT, maximumAmountPerPayment},
+    {FIELD_ROUTING_TYPE, routingType},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -235,6 +245,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.UserAliasCreated != null)
+            {
+                return false;
+            }
+    
+            if (this.RoutingType != null)
             {
                 return false;
             }
