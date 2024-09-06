@@ -178,6 +178,10 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "last_activity_timestamp")]
         public string LastActivityTimestamp { get; set; }
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "all_registry_gallery_attachment")]
+        public List<RegistryGalleryAttachment> AllRegistryGalleryAttachment { get; set; }
     
     
         /// <summary>
@@ -280,6 +284,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.AllRegistryEntry != null)
+            {
+                return false;
+            }
+    
+            if (this.AllRegistryGalleryAttachment != null)
             {
                 return false;
             }
