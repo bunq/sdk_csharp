@@ -204,7 +204,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The cardTokenization event awaiting acceptance by the user
         /// </summary>
         [JsonProperty(PropertyName = "card_tokenization_event")]
-        public List<string> CardTokenizationEvent { get; set; }
+        public Event CardTokenizationEvent { get; set; }
         /// <summary>
         /// A reference to the Refunds if they exist.
         /// </summary>
