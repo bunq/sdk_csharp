@@ -42,8 +42,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Object type.
         /// </summary>
-        private const string OBJECT_TYPE_PUT = "CardDebit";
-        private const string OBJECT_TYPE_GET = "CardDebit";
+        private const string OBJECT_TYPE_PUT = "Card";
+        private const string OBJECT_TYPE_GET = "Card";
     
         /// <summary>
         /// The plaintext pin code. Requests require encryption to be enabled.
@@ -205,6 +205,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "card_replacement")]
         public CardReplacement CardReplacement { get; set; }
+        /// <summary>
+        /// The generated CVC2 code for this card.
+        /// </summary>
+        [JsonProperty(PropertyName = "card_generated_cvc2")]
+        public CardGeneratedCvc2 CardGeneratedCvc2 { get; set; }
     
         /// <summary>
         /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary
@@ -421,6 +426,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CardReplacement != null)
+            {
+                return false;
+            }
+    
+            if (this.CardGeneratedCvc2 != null)
             {
                 return false;
             }
