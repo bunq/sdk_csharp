@@ -181,6 +181,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "mandate_identifier")]
         public string MandateIdentifier { get; set; }
         /// <summary>
+        /// Recommended registration action after IdealIssuerTransaction from iDEAL issuer transaction.
+        /// </summary>
+        [JsonProperty(PropertyName = "registration_action")]
+        public string RegistrationAction { get; set; }
+        /// <summary>
         /// The whitelist id for this action or null.
         /// </summary>
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
@@ -388,6 +393,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.MandateIdentifier != null)
+            {
+                return false;
+            }
+    
+            if (this.RegistrationAction != null)
             {
                 return false;
             }
