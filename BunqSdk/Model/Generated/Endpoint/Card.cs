@@ -210,6 +210,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "card_generated_cvc2")]
         public CardGeneratedCvc2 CardGeneratedCvc2 { get; set; }
+        /// <summary>
+        /// Whether this card is a limited edition metal card.
+        /// </summary>
+        [JsonProperty(PropertyName = "is_limited_edition")]
+        public bool? IsLimitedEdition { get; set; }
+        /// <summary>
+        /// The date for the member since field on the black metal card.
+        /// </summary>
+        [JsonProperty(PropertyName = "card_metal_member_since_date")]
+        public string CardMetalMemberSinceDate { get; set; }
     
         /// <summary>
         /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary
@@ -431,6 +441,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CardGeneratedCvc2 != null)
+            {
+                return false;
+            }
+    
+            if (this.IsLimitedEdition != null)
+            {
+                return false;
+            }
+    
+            if (this.CardMetalMemberSinceDate != null)
             {
                 return false;
             }
