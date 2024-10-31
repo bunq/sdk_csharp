@@ -149,11 +149,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "created")]
         public string Created { get; set; }
         /// <summary>
-        /// The number of RegistryEntries in this Registry that the user has not seen.
-        /// </summary>
-        [JsonProperty(PropertyName = "unseen_entries_count")]
-        public int? UnseenEntriesCount { get; set; }
-        /// <summary>
         /// The total amount spent in this Registry since the last settlement.
         /// </summary>
         [JsonProperty(PropertyName = "total_amount_spent")]
@@ -234,11 +229,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Status != null)
-            {
-                return false;
-            }
-    
-            if (this.UnseenEntriesCount != null)
             {
                 return false;
             }
