@@ -136,6 +136,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "public_uuid")]
         public string PublicUuid { get; set; }
         /// <summary>
+        /// DEPRECATED. ID of the user who is owner of the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "user_id")]
+        public int? UserId { get; set; }
+        /// <summary>
+        /// ID of the user who is owner of the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "user_owner_id")]
+        public int? UserOwnerId { get; set; }
+        /// <summary>
+        /// ID of the user who is holder of the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "user_holder_id")]
+        public int? UserHolderId { get; set; }
+        /// <summary>
         /// The type of the card. Can be MAESTRO, MASTERCARD.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
@@ -146,10 +161,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "sub_type")]
         public string SubType { get; set; }
         /// <summary>
-        /// ID of the user who is owner of the card.
+        /// The product type of the card.
         /// </summary>
-        [JsonProperty(PropertyName = "user_id")]
-        public int? UserId { get; set; }
+        [JsonProperty(PropertyName = "product_type")]
+        public string ProductType { get; set; }
+        /// <summary>
+        /// The product sub-type of the card.
+        /// </summary>
+        [JsonProperty(PropertyName = "product_sub_type")]
+        public string ProductSubType { get; set; }
+        /// <summary>
+        /// The first line of text on the card
+        /// </summary>
+        [JsonProperty(PropertyName = "first_line")]
+        public string FirstLine { get; set; }
         /// <summary>
         /// The sub-status of the card. Can be NONE or REPLACED.
         /// </summary>
@@ -198,8 +223,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Whether this card is eligible for a free replacement.
         /// </summary>
-        [JsonProperty(PropertyName = "is_eligible_for_free_replacement")]
-        public bool? IsEligibleForFreeReplacement { get; set; }
+        [JsonProperty(PropertyName = "is_card_eligible_for_free_replacement")]
+        public bool? IsCardEligibleForFreeReplacement { get; set; }
         /// <summary>
         /// The card replacement for this card.
         /// </summary>
@@ -220,6 +245,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "card_metal_member_since_date")]
         public string CardMetalMemberSinceDate { get; set; }
+        /// <summary>
+        /// Details of this card belonging to a company, if applicable.
+        /// </summary>
+        [JsonProperty(PropertyName = "company_employee_card")]
+        public CompanyEmployeeCard CompanyEmployeeCard { get; set; }
     
         /// <summary>
         /// Update the card details. Allow to change pin code, status, limits, country permissions and the monetary
@@ -320,6 +350,21 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
+            if (this.UserId != null)
+            {
+                return false;
+            }
+    
+            if (this.UserOwnerId != null)
+            {
+                return false;
+            }
+    
+            if (this.UserHolderId != null)
+            {
+                return false;
+            }
+    
             if (this.Type != null)
             {
                 return false;
@@ -330,12 +375,22 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.SecondLine != null)
+            if (this.ProductType != null)
             {
                 return false;
             }
     
-            if (this.UserId != null)
+            if (this.ProductSubType != null)
+            {
+                return false;
+            }
+    
+            if (this.FirstLine != null)
+            {
+                return false;
+            }
+    
+            if (this.SecondLine != null)
             {
                 return false;
             }
@@ -430,7 +485,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.IsEligibleForFreeReplacement != null)
+            if (this.IsCardEligibleForFreeReplacement != null)
             {
                 return false;
             }
@@ -451,6 +506,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CardMetalMemberSinceDate != null)
+            {
+                return false;
+            }
+    
+            if (this.CompanyEmployeeCard != null)
             {
                 return false;
             }
