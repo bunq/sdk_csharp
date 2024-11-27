@@ -14,7 +14,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
         /// <summary>
-        /// Routing type. Can be MANUAL or AUTOMATIC
+        /// Routing type.
         /// </summary>
         [JsonProperty(PropertyName = "routing_type")]
         public string RoutingType { get; set; }
@@ -28,6 +28,11 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
         public int? MonetaryAccountId { get; set; }
+        /// <summary>
+        /// The status of the card pin assignment.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
     
         public CardPinAssignment(string type)
         {
@@ -45,6 +50,16 @@ namespace Bunq.Sdk.Model.Generated.Object
             }
     
             if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.RoutingType != null)
             {
                 return false;
             }

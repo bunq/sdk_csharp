@@ -260,6 +260,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "merchant_category_code")]
         public string MerchantCategoryCode { get; set; }
+        /// <summary>
+        /// The receipt the company employee has to provide for this transaction.
+        /// </summary>
+        [JsonProperty(PropertyName = "company_employee_card_receipt")]
+        public CompanyEmployeeCardReceipt CompanyEmployeeCardReceipt { get; set; }
     
         /// <summary>
         /// </summary>
@@ -517,6 +522,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.MerchantCategoryCode != null)
+            {
+                return false;
+            }
+    
+            if (this.CompanyEmployeeCardReceipt != null)
             {
                 return false;
             }

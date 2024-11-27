@@ -73,9 +73,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        /// <param name="attachmentId">The reference to the uploaded file to attach to this note.</param>
         /// <param name="description">Optional description of the attachment.</param>
-        public static BunqResponse<int> Create(int mastercardActionId, int? attachmentId, int? monetaryAccountId= null, string description = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="attachmentId">The reference to the uploaded file to attach to this note.</param>
+        public static BunqResponse<int> Create(int mastercardActionId, string description, int? attachmentId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
