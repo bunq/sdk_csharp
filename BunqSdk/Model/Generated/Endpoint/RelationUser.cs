@@ -60,11 +60,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "all_company_employee_card")]
         public List<CompanyEmployeeCard> AllCompanyEmployeeCard { get; set; }
-        /// <summary>
-        /// The number of transactions that still need a receipt.
-        /// </summary>
-        [JsonProperty(PropertyName = "number_of_company_employee_card_receipt_pending")]
-        public int? NumberOfCompanyEmployeeCardReceiptPending { get; set; }
     
     
         /// <summary>
@@ -117,11 +112,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.AllCompanyEmployeeCard != null)
-            {
-                return false;
-            }
-    
-            if (this.NumberOfCompanyEmployeeCardReceiptPending != null)
             {
                 return false;
             }
