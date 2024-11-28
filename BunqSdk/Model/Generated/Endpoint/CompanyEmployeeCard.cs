@@ -13,7 +13,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Field constants.
         /// </summary>
-        public const string FIELD_ALIAS = "alias";
+        public const string FIELD_POINTER_COUNTER_USER = "pointer_counter_user";
+        public const string FIELD_POINTER_MONETARY_ACCOUNT = "pointer_monetary_account";
         public const string FIELD_TYPE = "type";
         public const string FIELD_PRODUCT_TYPE = "product_type";
         public const string FIELD_COMPANY_NAME_ON_CARD = "company_name_on_card";
@@ -24,10 +25,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
     
         /// <summary>
+        /// The pointer to the employee for which you want to create a card.
+        /// </summary>
+        [JsonProperty(PropertyName = "pointer_counter_user")]
+        public MonetaryAccountReference PointerCounterUser { get; set; }
+        /// <summary>
         /// The pointer to the monetary account that will be connected at first with the card.
         /// </summary>
-        [JsonProperty(PropertyName = "alias")]
-        public MonetaryAccountReference Alias { get; set; }
+        [JsonProperty(PropertyName = "pointer_monetary_account")]
+        public MonetaryAccountReference PointerMonetaryAccount { get; set; }
         /// <summary>
         /// The type of card to order.
         /// </summary>
@@ -69,15 +75,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "card")]
         public Card Card { get; set; }
         /// <summary>
-        /// The id of the relation user.
-        /// </summary>
-        [JsonProperty(PropertyName = "relation_user_id")]
-        public int? RelationUserId { get; set; }
-        /// <summary>
         /// The monthly spend for this employee on the card.
         /// </summary>
         [JsonProperty(PropertyName = "amount_spent_monthly")]
         public Amount AmountSpentMonthly { get; set; }
+        /// <summary>
+        /// The number of transactions that still need a receipt.
+        /// </summary>
+        [JsonProperty(PropertyName = "number_of_company_employee_card_receipt_pending")]
+        public int? NumberOfCompanyEmployeeCardReceiptPending { get; set; }
     
     
         /// <summary>
@@ -85,11 +91,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public override bool IsAllFieldNull()
         {
             if (this.Card != null)
-            {
-                return false;
-            }
-    
-            if (this.RelationUserId != null)
             {
                 return false;
             }
@@ -110,6 +111,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.AmountSpentMonthly != null)
+            {
+                return false;
+            }
+    
+            if (this.NumberOfCompanyEmployeeCardReceiptPending != null)
             {
                 return false;
             }
