@@ -66,6 +66,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "payment_id")]
         public int? PaymentId { get; set; }
+        /// <summary>
+        /// All Ginmon transaction orders executed with this instance.
+        /// </summary>
+        [JsonProperty(PropertyName = "all_ginmon_transaction_order")]
+        public List<GinmonTransaction> AllGinmonTransactionOrder { get; set; }
     
         /// <summary>
         /// </summary>
@@ -133,6 +138,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.PaymentId != null)
+            {
+                return false;
+            }
+    
+            if (this.AllGinmonTransactionOrder != null)
             {
                 return false;
             }
