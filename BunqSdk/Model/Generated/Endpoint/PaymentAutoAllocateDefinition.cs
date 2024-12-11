@@ -28,7 +28,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_DESCRIPTION = "description";
         public const string FIELD_AMOUNT = "amount";
         public const string FIELD_FRACTION = "fraction";
-        public const string FIELD_GINMON_COST_DISCLOSURE_ID = "ginmon_cost_disclosure_id";
     
         /// <summary>
         /// Object type.
@@ -60,11 +59,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "fraction")]
         public double? Fraction { get; set; }
-        /// <summary>
-        /// The id of the ginmon cost disclosure, if this definition is a scheduled order.
-        /// </summary>
-        [JsonProperty(PropertyName = "ginmon_cost_disclosure_id")]
-        public string GinmonCostDisclosureId { get; set; }
         /// <summary>
         /// The id of the PaymentAutoAllocateDefinition.
         /// </summary>
