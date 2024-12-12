@@ -231,6 +231,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "cashback_payout_item")]
         public CashbackPayoutItem CashbackPayoutItem { get; set; }
         /// <summary>
+        /// The point mutation for this action or null
+        /// </summary>
+        [JsonProperty(PropertyName = "point_mutation")]
+        public PointMutation PointMutation { get; set; }
+        /// <summary>
         /// DEPRECATED. The blacklist enabled for the merchant of this transaction
         /// </summary>
         [JsonProperty(PropertyName = "blacklist")]
@@ -492,6 +497,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CashbackPayoutItem != null)
+            {
+                return false;
+            }
+    
+            if (this.PointMutation != null)
             {
                 return false;
             }
