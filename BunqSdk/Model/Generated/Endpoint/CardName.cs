@@ -22,10 +22,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         protected const string ENDPOINT_URL_LISTING = "user/{0}/card-name";
     
         /// <summary>
+        /// Field constants.
+        /// </summary>
+        public const string FIELD_NAME = "name";
+    
+        /// <summary>
         /// Object type.
         /// </summary>
         private const string OBJECT_TYPE_GET = "CardUserNameArray";
     
+        /// <summary>
+        /// The card name.
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
         /// <summary>
         /// All possible variations (of suitable length) of user's legal name for the debit card.
         /// </summary>
