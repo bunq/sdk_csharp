@@ -183,6 +183,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "payment_suspended_outgoing")]
         public PaymentSuspendedOutgoing PaymentSuspendedOutgoing { get; set; }
+        /// <summary>
+        /// Incurred fee for the payment.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_fee")]
+        public PaymentFee PaymentFee { get; set; }
     
         /// <summary>
         /// Create a new Payment.
@@ -378,6 +383,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.PaymentSuspendedOutgoing != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentFee != null)
             {
                 return false;
             }
