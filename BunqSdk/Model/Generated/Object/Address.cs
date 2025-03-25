@@ -44,7 +44,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "extra")]
         public string Extra { get; set; }
         /// <summary>
-        /// The name on the mailbox (only used for Postal addresses).
+        /// The name on the mailbox (only used for Postal and Shipping addresses).
         /// </summary>
         [JsonProperty(PropertyName = "mailbox_name")]
         public string MailboxName { get; set; }
