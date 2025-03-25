@@ -228,6 +228,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "alias")]
         public List<Pointer> Alias { get; set; }
         /// <summary>
+        /// The person's shipping address.
+        /// </summary>
+        [JsonProperty(PropertyName = "address_shipping")]
+        public Address AddressShipping { get; set; }
+        /// <summary>
         /// The person's place of birth.
         /// </summary>
         [JsonProperty(PropertyName = "place_of_birth")]
@@ -411,6 +416,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.AddressPostal != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressShipping != null)
             {
                 return false;
             }

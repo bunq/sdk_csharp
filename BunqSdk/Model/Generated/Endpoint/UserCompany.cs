@@ -176,6 +176,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "avatar")]
         public Avatar Avatar { get; set; }
         /// <summary>
+        /// The company's shipping address.
+        /// </summary>
+        [JsonProperty(PropertyName = "address_shipping")]
+        public Address AddressShipping { get; set; }
+        /// <summary>
         /// The version of the terms of service accepted by the user.
         /// </summary>
         [JsonProperty(PropertyName = "version_terms_of_service")]
@@ -364,6 +369,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.AddressPostal != null)
+            {
+                return false;
+            }
+    
+            if (this.AddressShipping != null)
             {
                 return false;
             }
