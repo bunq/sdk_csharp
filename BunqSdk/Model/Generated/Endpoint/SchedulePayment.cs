@@ -29,6 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public const string FIELD_PAYMENT = "payment";
         public const string FIELD_SCHEDULE = "schedule";
+        public const string FIELD_PURPOSE = "purpose";
     
         /// <summary>
         /// Object type.
@@ -47,6 +48,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "schedule")]
         public Schedule Schedule { get; set; }
         /// <summary>
+        /// The schedule purpose.
+        /// </summary>
+        [JsonProperty(PropertyName = "purpose")]
+        public string Purpose { get; set; }
+        /// <summary>
         /// The schedule status, options: ACTIVE, FINISHED, CANCELLED.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
@@ -56,7 +62,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="payment">The payment details.</param>
         /// <param name="schedule">The schedule details when creating or updating a scheduled payment.</param>
-        public static BunqResponse<int> Create(SchedulePaymentEntry payment, Schedule schedule, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        /// <param name="purpose">The purpose of this scheduled payment.</param>
+        public static BunqResponse<int> Create(SchedulePaymentEntry payment, Schedule schedule, int? monetaryAccountId= null, string purpose = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -66,6 +73,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {
     {FIELD_PAYMENT, payment},
     {FIELD_SCHEDULE, schedule},
+    {FIELD_PURPOSE, purpose},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -149,6 +157,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.Purpose != null)
             {
                 return false;
             }
