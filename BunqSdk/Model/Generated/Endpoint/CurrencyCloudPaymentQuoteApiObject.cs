@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="pointers">The points we want to know the fees for.</param>
-        public static BunqResponse<int> Create(List<PointerObject> pointers, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(List<PointerObject> pointers, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

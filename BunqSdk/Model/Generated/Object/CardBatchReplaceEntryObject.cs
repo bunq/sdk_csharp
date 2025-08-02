@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The ID of the card that needs to be replaced.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The user's name as it will be on the card. Check 'card-name' for the available card names for a user.
         /// </summary>
@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "second_line")]
         public string SecondLine { get; set; }
     
-        public CardBatchReplaceEntryObject(int? id)
+        public CardBatchReplaceEntryObject(long? id)
         {
             Id = id;
         }

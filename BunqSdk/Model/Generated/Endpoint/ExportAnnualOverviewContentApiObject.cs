@@ -28,7 +28,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Used to retrieve the raw content of an annual overview.
         /// </summary>
-        public static BunqResponse<byte[]> List(int exportAnnualOverviewId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<byte[]> List(long exportAnnualOverviewId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

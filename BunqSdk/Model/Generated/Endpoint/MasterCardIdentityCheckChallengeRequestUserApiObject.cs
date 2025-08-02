@@ -75,16 +75,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the latest event for the identity check.
         /// </summary>
         [JsonProperty(PropertyName = "event_id")]
-        public int? EventId { get; set; }
+        public long? EventId { get; set; }
         /// <summary>
         /// The ID of the card used for the authentication request of the identity check.
         /// </summary>
         [JsonProperty(PropertyName = "card_id")]
-        public int? CardId { get; set; }
+        public long? CardId { get; set; }
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<MasterCardIdentityCheckChallengeRequestUserApiObject> Get(int masterCardIdentityCheckChallengeRequestUserId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<MasterCardIdentityCheckChallengeRequestUserApiObject> Get(long masterCardIdentityCheckChallengeRequestUserId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -97,7 +97,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="status">The status of the identity check. Can be ACCEPTED_PENDING_RESPONSE or REJECTED_PENDING_RESPONSE.</param>
-        public static BunqResponse<int> Update(int masterCardIdentityCheckChallengeRequestUserId, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long masterCardIdentityCheckChallengeRequestUserId, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

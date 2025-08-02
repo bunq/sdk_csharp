@@ -123,12 +123,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The reference to the uploaded picture/scan of the front side of the identification document.
         /// </summary>
         [JsonProperty(PropertyName = "document_front_attachment_id")]
-        public int? DocumentFrontAttachmentId { get; set; }
+        public long? DocumentFrontAttachmentId { get; set; }
         /// <summary>
         /// The reference to the uploaded picture/scan of the back side of the identification document.
         /// </summary>
         [JsonProperty(PropertyName = "document_back_attachment_id")]
-        public int? DocumentBackAttachmentId { get; set; }
+        public long? DocumentBackAttachmentId { get; set; }
         /// <summary>
         /// The person's date of birth. Accepts ISO8601 date formats.
         /// </summary>
@@ -181,7 +181,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The setting for the session timeout of the user in seconds.
         /// </summary>
         [JsonProperty(PropertyName = "session_timeout")]
-        public int? SessionTimeout { get; set; }
+        public long? SessionTimeout { get; set; }
         /// <summary>
         /// The amount the user can pay in the session without asking for credentials.
         /// </summary>
@@ -201,7 +201,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the modified person object.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the person object's creation.
         /// </summary>
@@ -304,7 +304,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="sessionTimeout">The setting for the session timeout of the user in seconds.</param>
         /// <param name="dailyLimitWithoutConfirmationLogin">The amount the user can pay in the session without asking for credentials.</param>
         /// <param name="displayName">The person's legal name. Available legal names can be listed via the 'user/{user_id}/legal-name' endpoint.</param>
-        public static BunqResponse<int> Update(string firstName = null, string middleName = null, string lastName = null, string publicNickName = null, AddressObject addressMain = null, AddressObject addressPostal = null, string avatarUuid = null, List<TaxResidentObject> taxResident = null, string documentType = null, string documentNumber = null, string documentCountryOfIssuance = null, int? documentFrontAttachmentId = null, int? documentBackAttachmentId = null, string dateOfBirth = null, string nationality = null, List<string> allNationality = null, string language = null, string region = null, string gender = null, string status = null, string subStatus = null, PointerObject legalGuardianAlias = null, int? sessionTimeout = null, AmountObject dailyLimitWithoutConfirmationLogin = null, string displayName = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(string firstName = null, string middleName = null, string lastName = null, string publicNickName = null, AddressObject addressMain = null, AddressObject addressPostal = null, string avatarUuid = null, List<TaxResidentObject> taxResident = null, string documentType = null, string documentNumber = null, string documentCountryOfIssuance = null, long? documentFrontAttachmentId = null, long? documentBackAttachmentId = null, string dateOfBirth = null, string nationality = null, List<string> allNationality = null, string language = null, string region = null, string gender = null, string status = null, string subStatus = null, PointerObject legalGuardianAlias = null, long? sessionTimeout = null, AmountObject dailyLimitWithoutConfirmationLogin = null, string displayName = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The payment that should be used to define the triggers for the payment auto allocate.
         /// </summary>
         [JsonProperty(PropertyName = "payment_id")]
-        public int? PaymentId { get; set; }
+        public long? PaymentId { get; set; }
         /// <summary>
         /// The type.
         /// </summary>
@@ -55,7 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the PaymentAutoAllocate.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp when the PaymentAutoAllocate was created.
         /// </summary>
@@ -97,7 +97,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="paymentId">The payment that should be used to define the triggers for the payment auto allocate.</param>
         /// <param name="type">Whether a payment should be sorted ONCE or RECURRING.</param>
         /// <param name="definition">The definition of how the money should be allocated.</param>
-        public static BunqResponse<int> Create(int? paymentId, string type, List<PaymentAutoAllocateDefinitionApiObject> definition, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long? paymentId, string type, List<PaymentAutoAllocateDefinitionApiObject> definition, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -118,7 +118,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<PaymentAutoAllocateApiObject> Get(int paymentAutoAllocateId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<PaymentAutoAllocateApiObject> Get(long paymentAutoAllocateId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -130,7 +130,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<PaymentAutoAllocateApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<PaymentAutoAllocateApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -144,7 +144,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="definition">The definition of how the money should be allocated.</param>
-        public static BunqResponse<int> Update(int paymentAutoAllocateId, int? monetaryAccountId= null, List<PaymentAutoAllocateDefinitionApiObject> definition = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long paymentAutoAllocateId, long? monetaryAccountId= null, List<PaymentAutoAllocateDefinitionApiObject> definition = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -163,7 +163,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int paymentAutoAllocateId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long paymentAutoAllocateId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

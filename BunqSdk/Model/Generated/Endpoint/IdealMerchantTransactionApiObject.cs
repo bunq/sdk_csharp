@@ -47,7 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the monetary account this ideal merchant transaction links to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The alias of the monetary account to add money to.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="amountRequested">The requested amount of money to add.</param>
         /// <param name="issuer">The BIC of the issuing bank to ask for money.</param>
-        public static BunqResponse<int> Create(AmountObject amountRequested, string issuer, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(AmountObject amountRequested, string issuer, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -123,7 +123,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<IdealMerchantTransactionApiObject> Get(int idealMerchantTransactionId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<IdealMerchantTransactionApiObject> Get(long idealMerchantTransactionId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -135,7 +135,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<IdealMerchantTransactionApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<IdealMerchantTransactionApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

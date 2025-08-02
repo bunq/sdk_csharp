@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="notificationFilters">The types of notifications that will result in a url notification for this user.</param>
-        public static BunqResponse<int> Create(List<NotificationFilterUrlObject> notificationFilters = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(List<NotificationFilterUrlObject> notificationFilters = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

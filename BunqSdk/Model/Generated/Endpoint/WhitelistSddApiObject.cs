@@ -37,12 +37,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The account from which payments will be deducted when a transaction is matched with this whitelist.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_paying_id")]
-        public int? MonetaryAccountPayingId { get; set; }
+        public long? MonetaryAccountPayingId { get; set; }
         /// <summary>
         /// ID of the request for which you want to whitelist the originating SDD.
         /// </summary>
         [JsonProperty(PropertyName = "request_id")]
-        public int? RequestId { get; set; }
+        public long? RequestId { get; set; }
         /// <summary>
         /// The monthly maximum amount that can be deducted from the target account.
         /// </summary>
@@ -52,12 +52,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the whitelist entry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The account to which payments will come in before possibly being 'redirected' by the whitelist.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_incoming_id")]
-        public int? MonetaryAccountIncomingId { get; set; }
+        public long? MonetaryAccountIncomingId { get; set; }
         /// <summary>
         /// The type of the SDD whitelist, can be CORE or B2B.
         /// </summary>
@@ -92,7 +92,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a specific recurring SDD whitelist entry.
         /// </summary>
-        public static BunqResponse<WhitelistSddApiObject> Get(int whitelistSddId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<WhitelistSddApiObject> Get(long whitelistSddId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

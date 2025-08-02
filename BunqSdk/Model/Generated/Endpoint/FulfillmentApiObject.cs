@@ -38,7 +38,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The user id this fulfillment is required for.
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
-        public int? UserId { get; set; }
+        public long? UserId { get; set; }
         /// <summary>
         /// The allowed statusses for this fulfillment.
         /// </summary>

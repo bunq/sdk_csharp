@@ -123,7 +123,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="vatNumber">DEPRECATED All the vat numbers of the company</param>
         /// <param name="vatNumbers">All the vat numbers of the company</param>
         /// <param name="signupTrackType">The type of signup track the user is following.</param>
-        public static BunqResponse<int> Create(string name, AddressObject addressMain, AddressObject addressPostal, string country, string legalForm, string subscriptionType, List<UboObject> ubo = null, string chamberOfCommerceNumber = null, string avatarUuid = null, CompanyVatNumberObject vatNumber = null, List<CompanyVatNumberObject> vatNumbers = null, string signupTrackType = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string name, AddressObject addressMain, AddressObject addressPostal, string country, string legalForm, string subscriptionType, List<UboObject> ubo = null, string chamberOfCommerceNumber = null, string avatarUuid = null, CompanyVatNumberObject vatNumber = null, List<CompanyVatNumberObject> vatNumbers = null, string signupTrackType = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -153,7 +153,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<CompanyApiObject> Get(int companyId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CompanyApiObject> Get(long companyId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -179,7 +179,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="avatarUuid">The public UUID of the company's avatar.</param>
-        public static BunqResponse<int> Update(int companyId, string avatarUuid = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long companyId, string avatarUuid = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

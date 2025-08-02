@@ -54,7 +54,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The number of the transactions in the category.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_transactions")]
-        public int? NumberOfTransactions { get; set; }
+        public long? NumberOfTransactions { get; set; }
     
         /// <summary>
         /// </summary>

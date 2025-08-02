@@ -72,7 +72,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="type">The chosen recipient account type. The possible options are provided dynamically in the response endpoint.</param>
         /// <param name="country">The country of the receiving account.</param>
         /// <param name="detail">The fields which were specified as "required" and have since been filled by the user. Always provide the full list.</param>
-        public static BunqResponse<int> Create(int transferwiseQuoteId, string nameAccountHolder, string type, string country = null, List<TransferwiseRequirementFieldObject> detail = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long transferwiseQuoteId, string nameAccountHolder, string type, string country = null, List<TransferwiseRequirementFieldObject> detail = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -94,7 +94,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<TransferwiseAccountRequirementApiObject>> List(int transferwiseQuoteId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<TransferwiseAccountRequirementApiObject>> List(long transferwiseQuoteId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

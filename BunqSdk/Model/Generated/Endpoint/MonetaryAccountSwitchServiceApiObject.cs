@@ -14,7 +14,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the monetary account.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the monetary account's creation.
         /// </summary>
@@ -46,10 +46,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "balance")]
         public AmountObject Balance { get; set; }
         /// <summary>
+        /// The current available balance amount of the MonetaryAccount, converted to the user's default currency.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance_converted")]
+        public AmountObject BalanceConverted { get; set; }
+        /// <summary>
         /// The profiles of the account.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_profile")]
-        public MonetaryAccountProfileApiObject MonetaryAccountProfile { get; set; }
+        public List<MonetaryAccountProfileApiObject> MonetaryAccountProfile { get; set; }
         /// <summary>
         /// The settings of the MonetaryAccount.
         /// </summary>
@@ -153,6 +158,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Balance != null)
+            {
+                return false;
+            }
+    
+            if (this.BalanceConverted != null)
             {
                 return false;
             }

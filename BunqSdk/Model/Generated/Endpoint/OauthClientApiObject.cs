@@ -42,7 +42,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Id of the client.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The display name of this Oauth Client
         /// </summary>
@@ -66,7 +66,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<OauthClientApiObject> Get(int oauthClientId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<OauthClientApiObject> Get(long oauthClientId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -79,7 +79,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="status">The status of the Oauth Client, can be ACTIVE or CANCELLED.</param>
-        public static BunqResponse<int> Create(string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -99,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="status">The status of the Oauth Client, can be ACTIVE or CANCELLED.</param>
-        public static BunqResponse<int> Update(int oauthClientId, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long oauthClientId, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

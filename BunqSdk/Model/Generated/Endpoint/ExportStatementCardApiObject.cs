@@ -30,7 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the customer statement model.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the statement model's creation.
         /// </summary>
@@ -65,11 +65,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The card for which this statement was created.
         /// </summary>
         [JsonProperty(PropertyName = "card_id")]
-        public int? CardId { get; set; }
+        public long? CardId { get; set; }
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<ExportStatementCardApiObject> Get(int cardId, int exportStatementCardId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ExportStatementCardApiObject> Get(long cardId, long exportStatementCardId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -81,7 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<ExportStatementCardApiObject>> List(int cardId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<ExportStatementCardApiObject>> List(long cardId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

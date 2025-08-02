@@ -53,7 +53,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the credential.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the credential object's creation.
         /// </summary>
@@ -87,7 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<PaymentServiceProviderCredentialApiObject> Get(int paymentServiceProviderCredentialId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<PaymentServiceProviderCredentialApiObject> Get(long paymentServiceProviderCredentialId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -102,7 +102,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="clientPaymentServiceProviderCertificate">Payment Services Directive 2 compatible QSEAL certificate</param>
         /// <param name="clientPaymentServiceProviderCertificateChain">Intermediate and root certificate belonging to the provided certificate.</param>
         /// <param name="clientPublicKeySignature">The Base64 encoded signature of the public key provided during installation and with the installation token appended as a nonce. Signed with the private key belonging to the QSEAL certificate.</param>
-        public static BunqResponse<int> Create(string clientPaymentServiceProviderCertificate, string clientPaymentServiceProviderCertificateChain, string clientPublicKeySignature, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string clientPaymentServiceProviderCertificate, string clientPaymentServiceProviderCertificateChain, string clientPublicKeySignature, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

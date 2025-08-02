@@ -38,12 +38,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The year for which the overview is.
         /// </summary>
         [JsonProperty(PropertyName = "year")]
-        public int? Year { get; set; }
+        public long? Year { get; set; }
         /// <summary>
         /// The id of the annual overview as created on the server.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the annual overview 's creation.
         /// </summary>
@@ -69,7 +69,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Create a new annual overview for a specific year. An overview can be generated only for a past year.
         /// </summary>
         /// <param name="year">The year for which the overview is.</param>
-        public static BunqResponse<int> Create(int? year, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long? year, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -89,7 +89,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get an annual overview for a user by its id.
         /// </summary>
-        public static BunqResponse<ExportAnnualOverviewApiObject> Get(int exportAnnualOverviewId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ExportAnnualOverviewApiObject> Get(long exportAnnualOverviewId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -101,7 +101,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int exportAnnualOverviewId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long exportAnnualOverviewId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

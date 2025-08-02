@@ -30,7 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the PaymentAutoAllocateInstance.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp when the PaymentAutoAllocateInstance was created.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the payment auto allocate this instance belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "payment_auto_allocate_id")]
-        public int? PaymentAutoAllocateId { get; set; }
+        public long? PaymentAutoAllocateId { get; set; }
         /// <summary>
         /// The status of the payment auto allocate instance. SUCCEEDED or FAILED.
         /// </summary>
@@ -65,7 +65,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the payment that triggered the allocating of the payments.
         /// </summary>
         [JsonProperty(PropertyName = "payment_id")]
-        public int? PaymentId { get; set; }
+        public long? PaymentId { get; set; }
         /// <summary>
         /// All Ginmon transaction orders executed with this instance.
         /// </summary>
@@ -74,7 +74,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<PaymentAutoAllocateInstanceApiObject>> List(int paymentAutoAllocateId, int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<PaymentAutoAllocateInstanceApiObject>> List(long paymentAutoAllocateId, long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -87,7 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<PaymentAutoAllocateInstanceApiObject> Get(int paymentAutoAllocateId, int paymentAutoAllocateInstanceId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<PaymentAutoAllocateInstanceApiObject> Get(long paymentAutoAllocateId, long paymentAutoAllocateInstanceId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

@@ -47,7 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<SchedulePaymentBatchApiObject> Get(int schedulePaymentBatchId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<SchedulePaymentBatchApiObject> Get(long schedulePaymentBatchId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -61,7 +61,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="payments">The payment details.</param>
         /// <param name="schedule">The schedule details when creating a scheduled payment.</param>
-        public static BunqResponse<int> Create(List<SchedulePaymentEntryObject> payments, ScheduleApiObject schedule, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(List<SchedulePaymentEntryObject> payments, ScheduleApiObject schedule, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -83,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="payments">The payment details.</param>
         /// <param name="schedule">The schedule details when creating a scheduled payment.</param>
-        public static BunqResponse<int> Update(int schedulePaymentBatchId, int? monetaryAccountId= null, List<SchedulePaymentEntryObject> payments = null, ScheduleApiObject schedule = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long schedulePaymentBatchId, long? monetaryAccountId= null, List<SchedulePaymentEntryObject> payments = null, ScheduleApiObject schedule = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -103,7 +103,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int schedulePaymentBatchId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long schedulePaymentBatchId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

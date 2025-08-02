@@ -34,7 +34,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Return all the known (trade) names for a specific user company.
         /// </summary>
-        public static BunqResponse<List<UserCompanyNameApiObject>> List(int userCompanyId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<UserCompanyNameApiObject>> List(long userCompanyId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

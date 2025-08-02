@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of mastercard action being reported.
         /// </summary>
         [JsonProperty(PropertyName = "mastercard_action_id")]
-        public int? MastercardActionId { get; set; }
+        public long? MastercardActionId { get; set; }
         /// <summary>
         /// The id of mastercard action being reported.
         /// </summary>

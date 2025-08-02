@@ -72,7 +72,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of this transaction.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The time this transaction was created.
         /// </summary>
@@ -102,7 +102,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="urlRedirect">The url to which the user should be redirected once the transaction is accepted or rejected.</param>
         /// <param name="timeExpiry">The (optional) expiration time of the transaction. Defaults to 10 minutes.</param>
         /// <param name="status">The status of the transaction. Can only be used for cancelling the transaction.</param>
-        public static BunqResponse<int> Create(PointerObject counterpartyAlias, AmountObject amount, string description, string urlRedirect, string timeExpiry = null, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(PointerObject counterpartyAlias, AmountObject amount, string description, string urlRedirect, string timeExpiry = null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -126,7 +126,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<PaymentServiceProviderIssuerTransactionApiObject> Get(int paymentServiceProviderIssuerTransactionId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<PaymentServiceProviderIssuerTransactionApiObject> Get(long paymentServiceProviderIssuerTransactionId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -139,7 +139,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="status">The status of the transaction. Can only be used for cancelling the transaction.</param>
-        public static BunqResponse<int> Update(int paymentServiceProviderIssuerTransactionId, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long paymentServiceProviderIssuerTransactionId, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

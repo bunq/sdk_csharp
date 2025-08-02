@@ -25,12 +25,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Company item id.
         /// </summary>
         [JsonProperty(PropertyName = "user_company_id")]
-        public int? UserCompanyId { get; set; }
+        public long? UserCompanyId { get; set; }
         /// <summary>
         /// Company employee item id.
         /// </summary>
         [JsonProperty(PropertyName = "user_employee_id")]
-        public int? UserEmployeeId { get; set; }
+        public long? UserEmployeeId { get; set; }
         /// <summary>
         /// The monthly spend for this employee on the card.
         /// </summary>

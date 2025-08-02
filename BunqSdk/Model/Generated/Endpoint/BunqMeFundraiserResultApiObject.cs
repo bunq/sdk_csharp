@@ -28,7 +28,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the bunq.me.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp when the bunq.me was created.
         /// </summary>
@@ -52,7 +52,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<BunqMeFundraiserResultApiObject> Get(int bunqMeFundraiserResultId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<BunqMeFundraiserResultApiObject> Get(long bunqMeFundraiserResultId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

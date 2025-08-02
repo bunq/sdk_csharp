@@ -42,7 +42,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the RequestResponse.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of when the RequestResponse was responded to.
         /// </summary>
@@ -57,7 +57,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the MonetaryAccount the RequestResponse was received on.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The requested Amount.
         /// </summary>
@@ -99,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The minimum age the user accepting the RequestResponse must have.
         /// </summary>
         [JsonProperty(PropertyName = "minimum_age")]
-        public int? MinimumAge { get; set; }
+        public long? MinimumAge { get; set; }
         /// <summary>
         /// Whether or not an address must be provided on accept.
         /// </summary>
@@ -139,7 +139,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The whitelist id for this action or null.
         /// </summary>
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
-        public int? EligibleWhitelistId { get; set; }
+        public long? EligibleWhitelistId { get; set; }
     
         /// <summary>
         /// Create a request from an ideal transaction.

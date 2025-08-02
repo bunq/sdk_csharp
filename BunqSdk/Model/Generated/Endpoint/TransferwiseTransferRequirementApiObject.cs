@@ -58,7 +58,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="recipientId">The id of the target account.</param>
         /// <param name="detail">The fields which were specified as "required" and have since been filled by the user. Always provide the full list.</param>
-        public static BunqResponse<int> Create(int transferwiseQuoteId, string recipientId, List<TransferwiseRequirementFieldObject> detail = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long transferwiseQuoteId, string recipientId, List<TransferwiseRequirementFieldObject> detail = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

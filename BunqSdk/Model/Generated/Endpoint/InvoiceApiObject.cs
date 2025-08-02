@@ -18,8 +18,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/invoice";
         protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/invoice/{2}";
+        protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/invoice";
     
         /// <summary>
         /// Field constants.
@@ -52,7 +52,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the invoice object.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the invoice object's creation.
         /// </summary>
@@ -136,7 +136,19 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<InvoiceApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<InvoiceApiObject> Get(long invoiceId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        {
+            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+    
+            var apiClient = new ApiClient(GetApiContext());
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), invoiceId), new Dictionary<string, string>(), customHeaders);
+    
+            return FromJson<InvoiceApiObject>(responseRaw, OBJECT_TYPE_GET);
+        }
+    
+        /// <summary>
+        /// </summary>
+        public static BunqResponse<List<InvoiceApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -145,18 +157,6 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId)), urlParams, customHeaders);
     
             return FromJsonList<InvoiceApiObject>(responseRaw, OBJECT_TYPE_GET);
-        }
-    
-        /// <summary>
-        /// </summary>
-        public static BunqResponse<InvoiceApiObject> Get(int invoiceId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
-        {
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), invoiceId), new Dictionary<string, string>(), customHeaders);
-    
-            return FromJson<InvoiceApiObject>(responseRaw, OBJECT_TYPE_GET);
         }
     
     

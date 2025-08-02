@@ -97,7 +97,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// ID of the MA to be used for the initial deposit to the investment account.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_deposit_initial_id")]
-        public int? MonetaryAccountDepositInitialId { get; set; }
+        public long? MonetaryAccountDepositInitialId { get; set; }
         /// <summary>
         /// The amount to be transferred to the investment account as the initial deposit.
         /// </summary>
@@ -107,7 +107,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the MonetaryAccountInvestment.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the MonetaryAccountInvestment's creation.
         /// </summary>
@@ -152,12 +152,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the User who owns the MonetaryAccountInvestment.
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
-        public int? UserId { get; set; }
+        public long? UserId { get; set; }
         /// <summary>
         /// The profiles of the account.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_profile")]
-        public MonetaryAccountProfileApiObject MonetaryAccountProfile { get; set; }
+        public List<MonetaryAccountProfileApiObject> MonetaryAccountProfile { get; set; }
         /// <summary>
         /// The ids of the AutoSave.
         /// </summary>
@@ -168,6 +168,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "fulfillments")]
         public List<FulfillmentApiObject> Fulfillments { get; set; }
+        /// <summary>
+        /// The current available balance amount of the MonetaryAccount, converted to the user's default currency.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance_converted")]
+        public AmountObject BalanceConverted { get; set; }
         /// <summary>
         /// The budgets of the MonetaryAccount.
         /// </summary>
@@ -310,6 +315,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.BirdeeInvestmentPortfolio != null)
+            {
+                return false;
+            }
+    
+            if (this.BalanceConverted != null)
             {
                 return false;
             }

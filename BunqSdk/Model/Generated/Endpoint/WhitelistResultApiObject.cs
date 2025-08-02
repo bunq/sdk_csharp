@@ -14,12 +14,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the whitelist entry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The account from which payments will be deducted when a transaction is matched with this whitelist.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_paying_id")]
-        public int? MonetaryAccountPayingId { get; set; }
+        public long? MonetaryAccountPayingId { get; set; }
         /// <summary>
         /// The status of the WhitelistResult.
         /// </summary>

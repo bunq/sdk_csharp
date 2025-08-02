@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the credential.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the credential object's creation.
         /// </summary>
@@ -65,7 +65,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<UserCredentialPasswordIpApiObject> Get(int userCredentialPasswordIpId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<UserCredentialPasswordIpApiObject> Get(long userCredentialPasswordIpId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

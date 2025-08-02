@@ -14,7 +14,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the user.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the user object's creation.
         /// </summary>

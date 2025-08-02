@@ -43,7 +43,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The sort order of the category.
         /// </summary>
         [JsonProperty(PropertyName = "order")]
-        public int? Order { get; set; }
+        public long? Order { get; set; }
         /// <summary>
         /// The description of the category.
         /// </summary>

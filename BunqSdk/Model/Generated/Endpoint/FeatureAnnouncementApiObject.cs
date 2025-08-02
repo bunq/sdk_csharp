@@ -48,7 +48,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<FeatureAnnouncementApiObject> Get(int featureAnnouncementId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<FeatureAnnouncementApiObject> Get(long featureAnnouncementId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

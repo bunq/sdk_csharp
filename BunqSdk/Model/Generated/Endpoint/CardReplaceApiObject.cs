@@ -56,7 +56,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the new card.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
     
         /// <summary>
         /// Request a card replacement.
@@ -65,7 +65,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="preferredNameOnCard">The user's preferred name that can be put on the card.</param>
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="secondLine">The second line on the card.</param>
-        public static BunqResponse<int> Create(int cardId, string nameOnCard = null, string preferredNameOnCard = null, List<CardPinAssignmentObject> pinCodeAssignment = null, string secondLine = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long cardId, string nameOnCard = null, string preferredNameOnCard = null, List<CardPinAssignmentObject> pinCodeAssignment = null, string secondLine = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

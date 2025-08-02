@@ -46,11 +46,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the monetary account where Tap to Pay transactions should be paid out to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_payout_id")]
-        public int? MonetaryAccountPayoutId { get; set; }
+        public long? MonetaryAccountPayoutId { get; set; }
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<CompanyEmployeeSettingAdyenCardTransactionApiObject> Get(int companyEmployeeSettingAdyenCardTransactionId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CompanyEmployeeSettingAdyenCardTransactionApiObject> Get(long companyEmployeeSettingAdyenCardTransactionId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

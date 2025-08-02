@@ -67,7 +67,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the customer statement model.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the statement model's creation.
         /// </summary>
@@ -87,7 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// MT940 Statement number. Unique per monetary account.
         /// </summary>
         [JsonProperty(PropertyName = "statement_number")]
-        public int? StatementNumber { get; set; }
+        public long? StatementNumber { get; set; }
         /// <summary>
         /// The monetary account for which this statement was created.
         /// </summary>
@@ -101,7 +101,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="dateEnd">The end date for making statements.</param>
         /// <param name="regionalFormat">Required for CSV exports. The regional format of the statement, can be UK_US (comma-separated) or EUROPEAN (semicolon-separated).</param>
         /// <param name="includeAttachment">Only for PDF exports. Includes attachments to mutations in the export, such as scanned receipts.</param>
-        public static BunqResponse<int> Create(string statementFormat, string dateStart, string dateEnd, int? monetaryAccountId= null, string regionalFormat = null, bool? includeAttachment = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string statementFormat, string dateStart, string dateEnd, long? monetaryAccountId= null, string regionalFormat = null, bool? includeAttachment = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -124,7 +124,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<ExportStatementApiObject> Get(int exportStatementId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ExportStatementApiObject> Get(long exportStatementId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -136,7 +136,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<ExportStatementApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<ExportStatementApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -149,7 +149,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int exportStatementId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long exportStatementId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

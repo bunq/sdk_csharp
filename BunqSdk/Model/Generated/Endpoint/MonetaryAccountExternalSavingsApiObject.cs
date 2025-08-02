@@ -112,7 +112,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the MonetaryAccountExternalSavings.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the MonetaryAccountExternalSavings's creation.
         /// </summary>
@@ -157,12 +157,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the User who owns the MonetaryAccountExternalSavings.
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
-        public int? UserId { get; set; }
+        public long? UserId { get; set; }
         /// <summary>
         /// The profiles of the account.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_profile")]
-        public MonetaryAccountProfileApiObject MonetaryAccountProfile { get; set; }
+        public List<MonetaryAccountProfileApiObject> MonetaryAccountProfile { get; set; }
         /// <summary>
         /// The ids of the AutoSave.
         /// </summary>
@@ -183,6 +183,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "number_of_payment_remaining")]
         public string NumberOfPaymentRemaining { get; set; }
+        /// <summary>
+        /// The current available balance amount of the MonetaryAccount, converted to the user's default currency.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance_converted")]
+        public AmountObject BalanceConverted { get; set; }
         /// <summary>
         /// The budgets of the MonetaryAccount.
         /// </summary>
@@ -228,7 +233,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="displayName">The legal name of the user / company using this monetary account.</param>
         /// <param name="setting">The settings of the MonetaryAccountExternalSavings.</param>
         /// <param name="savingsGoal">The Savings Goal set for this MonetaryAccountSavings.</param>
-        public static BunqResponse<int> Create(string currency, string service, string description = null, AmountObject dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null, string reason = null, string reasonDescription = null, string displayName = null, MonetaryAccountSettingObject setting = null, AmountObject savingsGoal = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string currency, string service, string description = null, AmountObject dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null, string reason = null, string reasonDescription = null, string displayName = null, MonetaryAccountSettingObject setting = null, AmountObject savingsGoal = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -258,7 +263,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<MonetaryAccountExternalSavingsApiObject> Get(int monetaryAccountExternalSavingsId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<MonetaryAccountExternalSavingsApiObject> Get(long monetaryAccountExternalSavingsId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -280,7 +285,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="displayName">The legal name of the user / company using this monetary account.</param>
         /// <param name="setting">The settings of the MonetaryAccountExternalSavings.</param>
         /// <param name="savingsGoal">The Savings Goal set for this MonetaryAccountSavings.</param>
-        public static BunqResponse<int> Update(int monetaryAccountExternalSavingsId, string description = null, AmountObject dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null, string reason = null, string reasonDescription = null, string displayName = null, MonetaryAccountSettingObject setting = null, AmountObject savingsGoal = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long monetaryAccountExternalSavingsId, string description = null, AmountObject dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null, string reason = null, string reasonDescription = null, string displayName = null, MonetaryAccountSettingObject setting = null, AmountObject savingsGoal = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -445,6 +450,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.NumberOfPaymentRemaining != null)
+            {
+                return false;
+            }
+    
+            if (this.BalanceConverted != null)
             {
                 return false;
             }

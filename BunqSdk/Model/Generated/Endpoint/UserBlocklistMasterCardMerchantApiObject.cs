@@ -48,7 +48,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the blocklist.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the object's creation.
         /// </summary>

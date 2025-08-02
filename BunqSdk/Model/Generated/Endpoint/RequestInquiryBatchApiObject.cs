@@ -55,7 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the associated event if the request batch was made using 'split the bill'.
         /// </summary>
         [JsonProperty(PropertyName = "event_id")]
-        public int? EventId { get; set; }
+        public long? EventId { get; set; }
         /// <summary>
         /// The reference to the object used for split the bill. Can be Payment, PaymentBatch, ScheduleInstance,
         /// RequestResponse and MasterCardAction
@@ -70,7 +70,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="totalAmountInquired">The total amount originally inquired for this batch.</param>
         /// <param name="status">The status of the request.</param>
         /// <param name="eventId">The ID of the associated event if the request batch was made using 'split the bill'.</param>
-        public static BunqResponse<int> Create(List<RequestInquiryApiObject> requestInquiries, AmountObject totalAmountInquired, int? monetaryAccountId= null, string status = null, int? eventId = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(List<RequestInquiryApiObject> requestInquiries, AmountObject totalAmountInquired, long? monetaryAccountId= null, string status = null, long? eventId = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -94,7 +94,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Revoke a request batch. The status of all the requests will be set to REVOKED.
         /// </summary>
         /// <param name="status">The status of the request.</param>
-        public static BunqResponse<int> Update(int requestInquiryBatchId, int? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long requestInquiryBatchId, long? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -114,7 +114,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Return the details of a specific request batch.
         /// </summary>
-        public static BunqResponse<RequestInquiryBatchApiObject> Get(int requestInquiryBatchId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<RequestInquiryBatchApiObject> Get(long requestInquiryBatchId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -127,7 +127,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Return all the request batches for a monetary account.
         /// </summary>
-        public static BunqResponse<List<RequestInquiryBatchApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<RequestInquiryBatchApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

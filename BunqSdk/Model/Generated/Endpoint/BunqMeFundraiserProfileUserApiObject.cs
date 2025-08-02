@@ -41,7 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Id of the monetary account on which you want to receive bunq.me payments.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The color chosen for the bunq.me fundraiser profile in hexadecimal format.
         /// </summary>
@@ -76,7 +76,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Id of the user owning the profile.
         /// </summary>
         [JsonProperty(PropertyName = "owner_user_id")]
-        public int? OwnerUserId { get; set; }
+        public long? OwnerUserId { get; set; }
         /// <summary>
         /// The LabelMonetaryAccount with the public information of the User and the MonetaryAccount that created the
         /// bunq.me fundraiser profile.
@@ -96,7 +96,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<BunqMeFundraiserProfileUserApiObject> Get(int bunqMeFundraiserProfileUserId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<BunqMeFundraiserProfileUserApiObject> Get(long bunqMeFundraiserProfileUserId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

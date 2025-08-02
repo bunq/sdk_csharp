@@ -37,12 +37,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The original card that belongs to the CardReplacement.
         /// </summary>
         [JsonProperty(PropertyName = "card_id")]
-        public int? CardId { get; set; }
+        public long? CardId { get; set; }
         /// <summary>
         /// The new card that replaces the original card in the CardReplacement.
         /// </summary>
         [JsonProperty(PropertyName = "card_new_id")]
-        public int? CardNewId { get; set; }
+        public long? CardNewId { get; set; }
     
     
         /// <summary>

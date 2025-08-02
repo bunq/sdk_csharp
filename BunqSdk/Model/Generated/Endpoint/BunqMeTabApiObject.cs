@@ -50,12 +50,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the related event if the bunqMeTab made by 'split' functionality.
         /// </summary>
         [JsonProperty(PropertyName = "event_id")]
-        public int? EventId { get; set; }
+        public long? EventId { get; set; }
         /// <summary>
         /// The id of the created bunq.me.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp when the bunq.me was created.
         /// </summary>
@@ -75,7 +75,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the MonetaryAccount the bunq.me was sent from.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The type of the bunq.me Tab. Should be BUNQ_ME
         /// </summary>
@@ -108,7 +108,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="bunqmeTabEntry">The bunq.me entry containing the payment information.</param>
         /// <param name="status">The status of the bunq.me. Ignored in POST requests but can be used for cancelling the bunq.me by setting status as CANCELLED with a PUT request.</param>
         /// <param name="eventId">The ID of the related event if the bunqMeTab made by 'split' functionality.</param>
-        public static BunqResponse<int> Create(BunqMeTabEntryApiObject bunqmeTabEntry, int? monetaryAccountId= null, string status = null, int? eventId = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(BunqMeTabEntryApiObject bunqmeTabEntry, long? monetaryAccountId= null, string status = null, long? eventId = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -130,7 +130,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="status">The status of the bunq.me. Ignored in POST requests but can be used for cancelling the bunq.me by setting status as CANCELLED with a PUT request.</param>
-        public static BunqResponse<int> Update(int bunqMeTabId, int? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long bunqMeTabId, long? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -149,7 +149,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<BunqMeTabApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<BunqMeTabApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -162,7 +162,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<BunqMeTabApiObject> Get(int bunqMeTabId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<BunqMeTabApiObject> Get(long bunqMeTabId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

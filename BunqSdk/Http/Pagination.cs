@@ -20,10 +20,10 @@ namespace Bunq.Sdk.Http
         public const string PARAM_FUTURE_ID = "future_id";
         public const string PARAM_COUNT = "count";
 
-        public int? OlderId { get; set; }
-        public int? NewerId { get; set; }
-        public int? FutureId { get; set; }
-        public int? Count { get; set; }
+        public long? OlderId { get; set; }
+        public long? NewerId { get; set; }
+        public long? FutureId { get; set; }
+        public long? Count { get; set; }
 
         /// <summary>
         /// Get the URL params required to request the next page of the listing.
@@ -58,7 +58,7 @@ namespace Bunq.Sdk.Http
             }
         }
 
-        private int? NextId
+        private long? NextId
         {
             get { return HasNextPageAssured() ? NewerId : FutureId; }
         }

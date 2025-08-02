@@ -71,7 +71,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the profile.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the beneficiaries creation.
         /// </summary>
@@ -101,7 +101,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="paymentType">The payment type this requirement is for.</param>
         /// <param name="legalEntityType">The legal entity type of the beneficiary.</param>
         /// <param name="allField">All fields that were required by CurrencyCloud. Obtained through the CurrencyCloudBeneficiaryRequirement listing.</param>
-        public static BunqResponse<int> Create(string name, string country, string currency, string paymentType, string legalEntityType, List<string> allField, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string name, string country, string currency, string paymentType, string legalEntityType, List<string> allField, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -125,7 +125,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<CurrencyCloudBeneficiaryApiObject> Get(int currencyCloudBeneficiaryId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CurrencyCloudBeneficiaryApiObject> Get(long currencyCloudBeneficiaryId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

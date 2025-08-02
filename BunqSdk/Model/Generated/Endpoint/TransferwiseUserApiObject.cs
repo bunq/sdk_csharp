@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the TransferwiseUser.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the TransferwiseUser's creation.
         /// </summary>
@@ -70,7 +70,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="oauthCode">The OAuth code returned by Transferwise we should be using to gain access to the user's Transferwise account.</param>
-        public static BunqResponse<int> Create(string oauthCode = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string oauthCode = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

@@ -32,7 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the event.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the event's creation.
         /// </summary>
@@ -88,7 +88,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a specific event for a given user.
         /// </summary>
-        public static BunqResponse<EventApiObject> Get(int eventId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<EventApiObject> Get(long eventId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

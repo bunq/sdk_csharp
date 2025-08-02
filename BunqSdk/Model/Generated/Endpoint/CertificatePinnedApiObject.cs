@@ -43,13 +43,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id generated for the pinned certificate chain.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
     
         /// <summary>
         /// Pin the certificate chain.
         /// </summary>
         /// <param name="certificateChain">The certificate chain in .PEM format.</param>
-        public static BunqResponse<int> Create(List<CertificateObject> certificateChain, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(List<CertificateObject> certificateChain, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -69,7 +69,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Remove the pinned certificate chain with the specific ID.
         /// </summary>
-        public static BunqResponse<object> Delete(int certificatePinnedId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long certificatePinnedId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -96,7 +96,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get the pinned certificate chain with the specified ID.
         /// </summary>
-        public static BunqResponse<CertificatePinnedApiObject> Get(int certificatePinnedId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CertificatePinnedApiObject> Get(long certificatePinnedId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

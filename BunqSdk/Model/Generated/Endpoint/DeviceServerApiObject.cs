@@ -54,7 +54,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the DeviceServer as created on the server.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the DeviceServer's creation.
         /// </summary>
@@ -87,7 +87,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="description">The description of the DeviceServer. This is only for your own reference when reading the DeviceServer again.</param>
         /// <param name="secret">The API key. You can request an API key in the bunq app.</param>
         /// <param name="permittedIps">An array of IPs (v4 or v6) this DeviceServer will be able to do calls from. These will be linked to the API key.</param>
-        public static BunqResponse<int> Create(string description, string secret, List<string> permittedIps = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string description, string secret, List<string> permittedIps = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -109,7 +109,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get one of your DeviceServers.
         /// </summary>
-        public static BunqResponse<DeviceServerApiObject> Get(int deviceServerId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<DeviceServerApiObject> Get(long deviceServerId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

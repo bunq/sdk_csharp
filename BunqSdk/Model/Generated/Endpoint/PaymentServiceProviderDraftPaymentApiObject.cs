@@ -89,7 +89,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="amount">The Amount to transfer with the Payment. Must be bigger than 0.</param>
         /// <param name="senderName">The name of the sender.</param>
         /// <param name="status">The new status of the Draft Payment. Can only be set to REJECTED or CANCELLED by update.</param>
-        public static BunqResponse<int> Create(string senderIban, string counterpartyIban, string counterpartyName, string description, AmountObject amount, string senderName = null, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string senderIban, string counterpartyIban, string counterpartyName, string description, AmountObject amount, string senderName = null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -115,7 +115,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="status">The new status of the Draft Payment. Can only be set to REJECTED or CANCELLED by update.</param>
-        public static BunqResponse<int> Update(int paymentServiceProviderDraftPaymentId, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long paymentServiceProviderDraftPaymentId, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -147,7 +147,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<PaymentServiceProviderDraftPaymentApiObject> Get(int paymentServiceProviderDraftPaymentId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<PaymentServiceProviderDraftPaymentApiObject> Get(long paymentServiceProviderDraftPaymentId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

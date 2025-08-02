@@ -38,7 +38,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<BankSwitchServiceNetherlandsIncomingPaymentApiObject> Get(int bankSwitchServiceNetherlandsIncomingPaymentId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<BankSwitchServiceNetherlandsIncomingPaymentApiObject> Get(long bankSwitchServiceNetherlandsIncomingPaymentId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

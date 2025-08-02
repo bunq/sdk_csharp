@@ -83,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The number of transactions that still need a receipt.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_company_employee_card_receipt_pending")]
-        public int? NumberOfCompanyEmployeeCardReceiptPending { get; set; }
+        public long? NumberOfCompanyEmployeeCardReceiptPending { get; set; }
         /// <summary>
         /// The company employee's monthly cumulative card limit.
         /// </summary>

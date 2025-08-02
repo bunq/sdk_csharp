@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the rib as created on the server.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the RIB's creation.
         /// </summary>
@@ -46,7 +46,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Create a new RIB.
         /// </summary>
-        public static BunqResponse<int> Create(int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -65,7 +65,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a RIB for a monetary account by its id.
         /// </summary>
-        public static BunqResponse<ExportRibApiObject> Get(int exportRibId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ExportRibApiObject> Get(long exportRibId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -77,7 +77,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int exportRibId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long exportRibId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -90,7 +90,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// List all the RIBs for a monetary account.
         /// </summary>
-        public static BunqResponse<List<ExportRibApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<ExportRibApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

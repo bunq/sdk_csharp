@@ -84,7 +84,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The minimum age the user accepting the RequestInquiry must have.
         /// </summary>
         [JsonProperty(PropertyName = "minimum_age")]
-        public int? MinimumAge { get; set; }
+        public long? MinimumAge { get; set; }
         /// <summary>
         /// Whether or not an address must be provided on accept.
         /// </summary>
@@ -122,12 +122,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the associated event if the request was made using 'split the bill'.
         /// </summary>
         [JsonProperty(PropertyName = "event_id")]
-        public int? EventId { get; set; }
+        public long? EventId { get; set; }
         /// <summary>
         /// The id of the created RequestInquiry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the payment request's creation.
         /// </summary>
@@ -152,7 +152,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the monetary account the request response applies to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The responded amount.
         /// </summary>
@@ -172,12 +172,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the batch if the request was part of a batch.
         /// </summary>
         [JsonProperty(PropertyName = "batch_id")]
-        public int? BatchId { get; set; }
+        public long? BatchId { get; set; }
         /// <summary>
         /// The id of the scheduled job if the request was scheduled.
         /// </summary>
         [JsonProperty(PropertyName = "scheduled_id")]
-        public int? ScheduledId { get; set; }
+        public long? ScheduledId { get; set; }
         /// <summary>
         /// The url that points to the bunq.me request.
         /// </summary>
@@ -222,7 +222,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="allowAmountHigher">[DEPRECATED] Whether or not the accepting user can choose to accept with a higher amount than requested. Defaults to false.</param>
         /// <param name="redirectUrl">The URL which the user is sent to after accepting or rejecting the Request.</param>
         /// <param name="eventId">The ID of the associated event if the request was made using 'split the bill'.</param>
-        public static BunqResponse<int> Create(AmountObject amountInquired, PointerObject counterpartyAlias, string description, bool? allowBunqme, int? monetaryAccountId= null, List<BunqIdObject> attachment = null, string merchantReference = null, string status = null, int? minimumAge = null, string requireAddress = null, bool? wantTip = null, bool? allowAmountLower = null, bool? allowAmountHigher = null, string redirectUrl = null, int? eventId = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(AmountObject amountInquired, PointerObject counterpartyAlias, string description, bool? allowBunqme, long? monetaryAccountId= null, List<BunqIdObject> attachment = null, string merchantReference = null, string status = null, long? minimumAge = null, string requireAddress = null, bool? wantTip = null, bool? allowAmountLower = null, bool? allowAmountHigher = null, string redirectUrl = null, long? eventId = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -256,7 +256,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Revoke a request for payment, by updating the status to REVOKED.
         /// </summary>
         /// <param name="status">The status of the RequestInquiry. Ignored in POST requests but can be used for revoking (cancelling) the RequestInquiry by setting REVOKED with a PUT request.</param>
-        public static BunqResponse<RequestInquiryApiObject> Update(int requestInquiryId, int? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<RequestInquiryApiObject> Update(long requestInquiryId, long? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -277,7 +277,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Get all payment requests for a user's monetary account. bunqme_share_url is always null if the counterparty
         /// is a bunq user.
         /// </summary>
-        public static BunqResponse<List<RequestInquiryApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<RequestInquiryApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -292,7 +292,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Get the details of a specific payment request, including its status. bunqme_share_url is always null if the
         /// counterparty is a bunq user.
         /// </summary>
-        public static BunqResponse<RequestInquiryApiObject> Get(int requestInquiryId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<RequestInquiryApiObject> Get(long requestInquiryId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

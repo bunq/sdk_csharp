@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The id of the event.
         /// </summary>
         [JsonProperty(PropertyName = "event_id")]
-        public int? EventId { get; set; }
+        public long? EventId { get; set; }
     
     
         /// <summary>

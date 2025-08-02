@@ -72,7 +72,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the quote.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the quote's creation.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="orderType">The type of the quote, SELL or BUY.</param>
         /// <param name="counterpartyAlias">The Alias of the party we are transferring the money to.</param>
         /// <param name="status">The status of the quote.</param>
-        public static BunqResponse<int> Create(AmountObject amount, string currencySource, string currencyTarget, string orderType, PointerObject counterpartyAlias, int? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(AmountObject amount, string currencySource, string currencyTarget, string orderType, PointerObject counterpartyAlias, long? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -136,7 +136,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<CurrencyConversionQuoteApiObject> Get(int currencyConversionQuoteId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CurrencyConversionQuoteApiObject> Get(long currencyConversionQuoteId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -149,7 +149,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="status">The status of the quote.</param>
-        public static BunqResponse<CurrencyConversionQuoteApiObject> Update(int currencyConversionQuoteId, int? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CurrencyConversionQuoteApiObject> Update(long currencyConversionQuoteId, long? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
