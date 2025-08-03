@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
             DeleteMonetaryAccount(monetaryAccountToCloseId);
         }
 
-        private static void DeleteMonetaryAccount(int idToClose)
+        private static void DeleteMonetaryAccount(long idToClose)
         {
             MonetaryAccountBankApiObject.Update(idToClose, status: Status, subStatus: SubStatus, reason: Reason,
                 reasonDescription: ReasonDescription);
