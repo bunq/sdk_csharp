@@ -31,12 +31,12 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Measure of any time unit when none of it is needed.
         /// </summary>
-        private const long TIME_UNIT_COUNT_NONE = 0;
+        private const int TIME_UNIT_COUNT_NONE = 0;
 
         /// <summary>
         /// Minimum time to session expiry not requiring session reset.
         /// </summary>
-        private const long TIME_TO_SESSION_EXPIRY_MINIMUM_SECONDS = 30;
+        private const int TIME_TO_SESSION_EXPIRY_MINIMUM_SECONDS = 30;
 
         /// <summary>
         /// Default path to store the serialized context.

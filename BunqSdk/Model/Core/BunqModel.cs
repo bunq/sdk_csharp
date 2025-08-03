@@ -218,12 +218,12 @@ namespace Bunq.Sdk.Model.Core
             return BunqContext.ApiContext;
         }
 
-        protected static int DetermineUserId()
+        protected static long DetermineUserId()
         {
             return BunqContext.UserContext.UserId;
         }
 
-        protected static int DetermineMonetaryAccountId(int? monetaryAccountId = null)
+        protected static long DetermineMonetaryAccountId(long? monetaryAccountId = null)
         {
             return monetaryAccountId ?? BunqContext.UserContext.PrimaryMonetaryAccountBank.Id.Value;
         }
