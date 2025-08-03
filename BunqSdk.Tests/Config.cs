@@ -51,14 +51,14 @@ namespace Bunq.Sdk.Tests
             return new PointerObject(type, alias);
         }
 
-        public static int GetSecondMonetaryAccountId()
+        public static long GetSecondMonetaryAccountId()
         {
-            return GetConfig()[FIELD_MONETARY_ACCOUNT_ID2].ToObject<int>();
+            return GetConfig()[FIELD_MONETARY_ACCOUNT_ID2].ToObject<long>();
         }
 
-        public static int GetMonetaryAccountId()
+        public static long GetMonetaryAccountId()
         {
-            return GetConfig()[FIELD_MONETARY_ACCOUNT_ID].ToObject<int>();
+            return GetConfig()[FIELD_MONETARY_ACCOUNT_ID].ToObject<long>();
         }
 
         public static string GetAttachmentPathIn()
@@ -90,9 +90,9 @@ namespace Bunq.Sdk.Tests
             return GetConfig()[FIELD_API_KEY].ToString();
         }
 
-        public static int GetUserId()
+        public static long GetUserId()
         {
-            return GetConfig()[FIELD_USER_ID].ToObject<int>();
+            return GetConfig()[FIELD_USER_ID].ToObject<long>();
         }
 
         private static JObject GetConfig()
