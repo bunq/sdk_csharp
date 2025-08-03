@@ -48,12 +48,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Maximum number of strategy changes in a year.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_strategy_change_annual_maximum")]
-        public int? NumberOfStrategyChangeAnnualMaximum { get; set; }
+        public long? NumberOfStrategyChangeAnnualMaximum { get; set; }
         /// <summary>
         /// Maximum number of strategy changes used.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_strategy_change_annual_used")]
-        public int? NumberOfStrategyChangeAnnualUsed { get; set; }
+        public long? NumberOfStrategyChangeAnnualUsed { get; set; }
         /// <summary>
         /// The external identifier of the portfolio.
         /// </summary>

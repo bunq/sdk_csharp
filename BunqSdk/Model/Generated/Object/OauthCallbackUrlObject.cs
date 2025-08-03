@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The id of the callback URL.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the callback URL's creation.
         /// </summary>

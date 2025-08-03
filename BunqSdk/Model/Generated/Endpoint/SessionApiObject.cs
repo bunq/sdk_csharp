@@ -23,7 +23,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Deletes the current session.
         /// </summary>
-        public static BunqResponse<object> Delete(int sessionId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long sessionId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

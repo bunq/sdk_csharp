@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Model.Core
         /// Create notification filters with list response type.
         /// </summary>
         public static BunqResponse<List<NotificationFilterUrlObject>> CreateWithListResponse(
-            int monetaryAccountId,
+            long monetaryAccountId,
             List<NotificationFilterUrlObject> allNotificationFilter
         )
         {
@@ -38,7 +38,7 @@ namespace Bunq.Sdk.Model.Core
         /// Create notification filters with list response type.
         /// </summary>
         public static BunqResponse<List<NotificationFilterUrlObject>> CreateWithListResponse(
-            int? monetaryAccountId,
+            long? monetaryAccountId,
             List<NotificationFilterUrlObject> allNotificationFilter,
             Dictionary<string, string> customHeaders
         )

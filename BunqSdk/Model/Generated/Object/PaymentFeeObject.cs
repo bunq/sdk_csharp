@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The id of the invoice related to possible payment fee.
         /// </summary>
         [JsonProperty(PropertyName = "invoice_id")]
-        public int? InvoiceId { get; set; }
+        public long? InvoiceId { get; set; }
     
     
         /// <summary>

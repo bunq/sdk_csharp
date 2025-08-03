@@ -39,7 +39,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The id of the draft payment entry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The LabelMonetaryAccount containing the public information of 'this' (party) side of the DraftPayment.
         /// </summary>

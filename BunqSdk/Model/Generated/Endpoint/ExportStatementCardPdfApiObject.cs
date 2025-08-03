@@ -47,7 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the customer statement model.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the statement model's creation.
         /// </summary>
@@ -67,13 +67,13 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The card for which this statement was created.
         /// </summary>
         [JsonProperty(PropertyName = "card_id")]
-        public int? CardId { get; set; }
+        public long? CardId { get; set; }
     
         /// <summary>
         /// </summary>
         /// <param name="dateStart">The start date for making statements.</param>
         /// <param name="dateEnd">The end date for making statements.</param>
-        public static BunqResponse<int> Create(int cardId, string dateStart, string dateEnd, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long cardId, string dateStart, string dateEnd, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -93,7 +93,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<ExportStatementCardPdfApiObject> Get(int cardId, int exportStatementCardPdfId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ExportStatementCardPdfApiObject> Get(long cardId, long exportStatementCardPdfId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -105,7 +105,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<ExportStatementCardPdfApiObject>> List(int cardId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<ExportStatementCardPdfApiObject>> List(long cardId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -118,7 +118,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int cardId, int exportStatementCardPdfId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long cardId, long exportStatementCardPdfId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

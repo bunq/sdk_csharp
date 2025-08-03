@@ -41,15 +41,35 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
         /// <summary>
-        /// The account status of a user
+        /// The account status of a user.
         /// </summary>
         [JsonProperty(PropertyName = "user_status")]
         public string UserStatus { get; set; }
         /// <summary>
-        /// The account status of a user
+        /// The account sub-status of the user.
+        /// </summary>
+        [JsonProperty(PropertyName = "user_sub_status")]
+        public string UserSubStatus { get; set; }
+        /// <summary>
+        /// The account verification status of the user.
+        /// </summary>
+        [JsonProperty(PropertyName = "user_verification_status")]
+        public string UserVerificationStatus { get; set; }
+        /// <summary>
+        /// The account sub-status of the counter user.
         /// </summary>
         [JsonProperty(PropertyName = "counter_user_status")]
         public string CounterUserStatus { get; set; }
+        /// <summary>
+        /// The account sub-status of the counter user.
+        /// </summary>
+        [JsonProperty(PropertyName = "counter_user_sub_status")]
+        public string CounterUserSubStatus { get; set; }
+        /// <summary>
+        /// The account verification status of the counter user.
+        /// </summary>
+        [JsonProperty(PropertyName = "counter_user_verification_status")]
+        public string CounterUserVerificationStatus { get; set; }
         /// <summary>
         /// Tap to Pay settings for the company employee.
         /// </summary>
@@ -101,7 +121,27 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
+            if (this.UserSubStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.UserVerificationStatus != null)
+            {
+                return false;
+            }
+    
             if (this.CounterUserStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterUserSubStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.CounterUserVerificationStatus != null)
             {
                 return false;
             }

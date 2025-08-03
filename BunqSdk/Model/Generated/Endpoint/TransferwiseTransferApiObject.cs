@@ -113,7 +113,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="monetaryAccountId">The id of the monetary account the payment should be made from.</param>
         /// <param name="recipientId">The id of the target account.</param>
-        public static BunqResponse<int> Create(int transferwiseQuoteId, string monetaryAccountId, string recipientId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long transferwiseQuoteId, string monetaryAccountId, string recipientId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -133,7 +133,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<TransferwiseTransferApiObject> Get(int transferwiseQuoteId, int transferwiseTransferId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<TransferwiseTransferApiObject> Get(long transferwiseQuoteId, long transferwiseTransferId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -145,7 +145,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<TransferwiseTransferApiObject>> List(int transferwiseQuoteId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<TransferwiseTransferApiObject>> List(long transferwiseQuoteId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

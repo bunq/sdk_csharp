@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the invoice export model.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the invoice export's creation.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<InvoiceExportPdfApiObject> Get(int invoiceId, int invoiceExportPdfId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<InvoiceExportPdfApiObject> Get(long invoiceId, long invoiceExportPdfId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<int> Create(int invoiceId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long invoiceId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -80,7 +80,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<int> Update(int invoiceId, int invoiceExportPdfId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long invoiceId, long invoiceExportPdfId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -98,7 +98,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int invoiceId, int invoiceExportPdfId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long invoiceId, long invoiceExportPdfId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

@@ -41,7 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the cvc code.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the cvc code's creation.
         /// </summary>
@@ -72,7 +72,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Generate a new CVC2 code for a card.
         /// </summary>
         /// <param name="type">The type of generated cvc2. Can be STATIC or GENERATED.</param>
-        public static BunqResponse<int> Create(int cardId, string type = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long cardId, string type = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -92,7 +92,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get the details for a specific generated CVC2 code.
         /// </summary>
-        public static BunqResponse<CardGeneratedCvc2ApiObject> Get(int cardId, int cardGeneratedCvc2Id, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CardGeneratedCvc2ApiObject> Get(long cardId, long cardGeneratedCvc2Id, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -105,7 +105,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="type">The type of generated cvc2. Can be STATIC or GENERATED.</param>
-        public static BunqResponse<int> Update(int cardId, int cardGeneratedCvc2Id, string type = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long cardId, long cardGeneratedCvc2Id, string type = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -125,7 +125,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get all generated CVC2 codes for a card.
         /// </summary>
-        public static BunqResponse<List<CardGeneratedCvc2ApiObject>> List(int cardId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<CardGeneratedCvc2ApiObject>> List(long cardId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

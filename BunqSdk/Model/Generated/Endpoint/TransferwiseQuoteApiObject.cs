@@ -58,7 +58,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the quote.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the quote's creation.
         /// </summary>
@@ -101,7 +101,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="currencyTarget">The target currency.</param>
         /// <param name="amountSource">The source amount. Required if target amount is left empty.</param>
         /// <param name="amountTarget">The target amount. Required if source amount is left empty.</param>
-        public static BunqResponse<int> Create(string currencySource, string currencyTarget, AmountObject amountSource = null, AmountObject amountTarget = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string currencySource, string currencyTarget, AmountObject amountSource = null, AmountObject amountTarget = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -123,7 +123,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<TransferwiseQuoteApiObject> Get(int transferwiseQuoteId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<TransferwiseQuoteApiObject> Get(long transferwiseQuoteId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

@@ -41,7 +41,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<OauthCallbackUrlApiObject> Get(int oauthClientId, int oauthCallbackUrlId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<OauthCallbackUrlApiObject> Get(long oauthClientId, long oauthCallbackUrlId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -54,7 +54,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="url">The URL for this callback.</param>
-        public static BunqResponse<int> Create(int oauthClientId, string url, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long oauthClientId, string url, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -74,7 +74,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="url">The URL for this callback.</param>
-        public static BunqResponse<int> Update(int oauthClientId, int oauthCallbackUrlId, string url = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long oauthClientId, long oauthCallbackUrlId, string url = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -93,7 +93,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<OauthCallbackUrlApiObject>> List(int oauthClientId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<OauthCallbackUrlApiObject>> List(long oauthClientId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -106,7 +106,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int oauthClientId, int oauthCallbackUrlId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long oauthClientId, long oauthCallbackUrlId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

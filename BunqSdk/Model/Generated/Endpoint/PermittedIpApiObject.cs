@@ -47,7 +47,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<PermittedIpApiObject> Get(int credentialPasswordIpId, int permittedIpId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<PermittedIpApiObject> Get(long credentialPasswordIpId, long permittedIpId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -61,7 +61,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="ip">The IP address.</param>
         /// <param name="status">The status of the IP. May be "ACTIVE" or "INACTIVE". It is only possible to make requests from "ACTIVE" IP addresses. Only "ACTIVE" IPs will be billed.</param>
-        public static BunqResponse<int> Create(int credentialPasswordIpId, string ip, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long credentialPasswordIpId, string ip, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -81,7 +81,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<PermittedIpApiObject>> List(int credentialPasswordIpId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<PermittedIpApiObject>> List(long credentialPasswordIpId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -95,7 +95,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="status">The status of the IP. May be "ACTIVE" or "INACTIVE". It is only possible to make requests from "ACTIVE" IP addresses. Only "ACTIVE" IPs will be billed.</param>
-        public static BunqResponse<int> Update(int credentialPasswordIpId, int permittedIpId, string status = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long credentialPasswordIpId, long permittedIpId, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

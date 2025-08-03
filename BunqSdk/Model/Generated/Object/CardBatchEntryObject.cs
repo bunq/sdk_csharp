@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The ID of the card that needs to be updated.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The status to set for the card. Can be ACTIVE, DEACTIVATED, LOST, STOLEN or CANCELLED, and can only be set
         /// to LOST/STOLEN/CANCELLED when order status is
@@ -43,9 +43,9 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// not supplied.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
-        public int? MonetaryAccountIdFallback { get; set; }
+        public long? MonetaryAccountIdFallback { get; set; }
     
-        public CardBatchEntryObject(int? id)
+        public CardBatchEntryObject(long? id)
         {
             Id = id;
         }

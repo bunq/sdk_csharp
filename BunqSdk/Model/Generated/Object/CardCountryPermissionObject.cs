@@ -22,7 +22,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The id of the card country permission entry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
     
         public CardCountryPermissionObject(string country)
         {

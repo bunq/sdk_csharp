@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Used to retrieve the raw content of an RIB.
         /// </summary>
-        public static BunqResponse<byte[]> List(int exportRibId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<byte[]> List(long exportRibId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

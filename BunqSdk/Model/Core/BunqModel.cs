@@ -39,15 +39,15 @@ namespace Bunq.Sdk.Model.Core
         }
 
         /// <summary>
-        /// De-serializes an ID object and returns its integer value.
+        /// De-serializes an ID object and returns its long value.
         /// </summary>
-        protected static BunqResponse<int> ProcessForId(BunqResponseRaw responseRaw)
+        protected static BunqResponse<long> ProcessForId(BunqResponseRaw responseRaw)
         {
             var responseItemObject = GetResponseItemObject(responseRaw);
             var unwrappedItemJsonString = GetUnwrappedItemJsonString(responseItemObject, FIELD_ID);
             var responseValue = BunqJsonConvert.DeserializeObject<Id>(unwrappedItemJsonString).IdInt;
 
-            return new BunqResponse<int>(responseValue, responseRaw.Headers);
+            return new BunqResponse<long>(responseValue, responseRaw.Headers);
         }
 
         private static JObject GetResponseItemObject(BunqResponseRaw responseRaw)
@@ -218,12 +218,12 @@ namespace Bunq.Sdk.Model.Core
             return BunqContext.ApiContext;
         }
 
-        protected static int DetermineUserId()
+        protected static long DetermineUserId()
         {
             return BunqContext.UserContext.UserId;
         }
 
-        protected static int DetermineMonetaryAccountId(int? monetaryAccountId = null)
+        protected static long DetermineMonetaryAccountId(long? monetaryAccountId = null)
         {
             return monetaryAccountId ?? BunqContext.UserContext.PrimaryMonetaryAccountBank.Id.Value;
         }

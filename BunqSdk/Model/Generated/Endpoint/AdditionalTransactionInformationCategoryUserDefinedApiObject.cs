@@ -62,7 +62,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="description">The description of the category.</param>
         /// <param name="color">The color of the category.</param>
         /// <param name="icon">The icon of the category.</param>
-        public static BunqResponse<int> Create(string status, string category = null, string description = null, string color = null, string icon = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string status, string category = null, string description = null, string color = null, string icon = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

@@ -12,7 +12,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The ID for this Virtual PAN.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The description for this PAN.
         /// </summary>
@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The ID of the monetary account to assign to this PAN, only for Online Cards.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The UUID for this Virtual PAN.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
     
-        public CardPrimaryAccountNumberObject(int? id)
+        public CardPrimaryAccountNumberObject(long? id)
         {
             Id = id;
         }

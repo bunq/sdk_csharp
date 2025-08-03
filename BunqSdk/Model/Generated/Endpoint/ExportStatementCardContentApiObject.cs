@@ -28,7 +28,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<byte[]> List(int cardId, int exportStatementCardId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<byte[]> List(long cardId, long exportStatementCardId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

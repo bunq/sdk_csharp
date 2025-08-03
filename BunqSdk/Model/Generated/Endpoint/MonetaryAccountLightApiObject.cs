@@ -80,7 +80,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the MonetaryAccountLight.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the MonetaryAccountLight's creation.
         /// </summary>
@@ -115,7 +115,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the User who owns the MonetaryAccountLight.
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
-        public int? UserId { get; set; }
+        public long? UserId { get; set; }
         /// <summary>
         /// The ShareInviteBankResponse when the MonetaryAccount is accessed by the User via a share/connect.
         /// </summary>
@@ -167,10 +167,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "fulfillments")]
         public List<FulfillmentApiObject> Fulfillments { get; set; }
         /// <summary>
+        /// The current available balance amount of the MonetaryAccount, converted to the user's default currency.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance_converted")]
+        public AmountObject BalanceConverted { get; set; }
+        /// <summary>
         /// The profiles of the account.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_profile")]
-        public MonetaryAccountProfileApiObject MonetaryAccountProfile { get; set; }
+        public List<MonetaryAccountProfileApiObject> MonetaryAccountProfile { get; set; }
         /// <summary>
         /// The budgets of the MonetaryAccount.
         /// </summary>
@@ -338,6 +343,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Fulfillments != null)
+            {
+                return false;
+            }
+    
+            if (this.BalanceConverted != null)
             {
                 return false;
             }

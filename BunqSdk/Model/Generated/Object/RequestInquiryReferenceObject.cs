@@ -17,7 +17,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The id of the request inquiry (batch).
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
     
     
         /// <summary>

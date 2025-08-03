@@ -2,6 +2,7 @@ using Bunq.Sdk.Context;
 using Bunq.Sdk.Http;
 using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
+using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
@@ -26,6 +27,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// Field constants.
         /// </summary>
         public const string FIELD_PAYMENTS = "payments";
+        public const string FIELD_EXECUTION_TYPE = "execution_type";
+        public const string FIELD_STATUS = "status";
     
         /// <summary>
         /// Object type.
@@ -37,12 +40,54 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "payments")]
         public List<PaymentApiObject> Payments { get; set; }
+        /// <summary>
+        /// Whether the payment batch should be executed synchronously or asynchronously.
+        /// </summary>
+        [JsonProperty(PropertyName = "execution_type")]
+        public string ExecutionType { get; set; }
+        /// <summary>
+        /// The status of the payment batch.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+        /// <summary>
+        /// The ID of the monetary account that this payment batch belongs to.
+        /// </summary>
+        [JsonProperty(PropertyName = "monetary_account_id")]
+        public long? MonetaryAccountId { get; set; }
+        /// <summary>
+        /// The label to display for the monetary account.
+        /// </summary>
+        [JsonProperty(PropertyName = "label")]
+        public MonetaryAccountReference Label { get; set; }
+        /// <summary>
+        /// The total amount of the payment batch.
+        /// </summary>
+        [JsonProperty(PropertyName = "amount_total")]
+        public AmountObject AmountTotal { get; set; }
+        /// <summary>
+        /// The total amount of the successful payments in the batch.
+        /// </summary>
+        [JsonProperty(PropertyName = "amount_successful")]
+        public AmountObject AmountSuccessful { get; set; }
+        /// <summary>
+        /// The ID of the latest event for the payment batch.
+        /// </summary>
+        [JsonProperty(PropertyName = "event_id")]
+        public long? EventId { get; set; }
+        /// <summary>
+        /// The entries that are part of this batch.
+        /// </summary>
+        [JsonProperty(PropertyName = "entries")]
+        public List<PaymentBatchEntryApiObject> Entries { get; set; }
     
         /// <summary>
         /// Create a payment batch by sending an array of single payment objects, that will become part of the batch.
         /// </summary>
         /// <param name="payments">The list of payments we want to send in a single batch.</param>
-        public static BunqResponse<int> Create(List<PaymentApiObject> payments, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        /// <param name="executionType">Whether the payment batch should be executed synchronously or asynchronously.</param>
+        /// <param name="status">The status of the payment batch, used to retry failed payments.</param>
+        public static BunqResponse<long> Create(List<PaymentApiObject> payments, long? monetaryAccountId= null, string executionType = null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -51,6 +96,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             var requestMap = new Dictionary<string, object>
     {
     {FIELD_PAYMENTS, payments},
+    {FIELD_EXECUTION_TYPE, executionType},
+    {FIELD_STATUS, status},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -62,7 +109,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Revoke a bunq.to payment batch. The status of all the payments will be set to REVOKED.
         /// </summary>
-        public static BunqResponse<int> Update(int paymentBatchId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        /// <param name="status">The status of the payment batch, used to retry failed payments.</param>
+        public static BunqResponse<long> Update(long paymentBatchId, long? monetaryAccountId= null, string status = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -70,6 +118,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
             var requestMap = new Dictionary<string, object>
     {
+    {FIELD_STATUS, status},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -81,7 +130,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Return the details of a specific payment batch.
         /// </summary>
-        public static BunqResponse<PaymentBatchApiObject> Get(int paymentBatchId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<PaymentBatchApiObject> Get(long paymentBatchId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -94,7 +143,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Return all the payment batches for a monetary account.
         /// </summary>
-        public static BunqResponse<List<PaymentBatchApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<PaymentBatchApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -110,7 +159,47 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         public override bool IsAllFieldNull()
         {
+            if (this.MonetaryAccountId != null)
+            {
+                return false;
+            }
+    
+            if (this.ExecutionType != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.Label != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountTotal != null)
+            {
+                return false;
+            }
+    
+            if (this.AmountSuccessful != null)
+            {
+                return false;
+            }
+    
+            if (this.EventId != null)
+            {
+                return false;
+            }
+    
             if (this.Payments != null)
+            {
+                return false;
+            }
+    
+            if (this.Entries != null)
             {
                 return false;
             }

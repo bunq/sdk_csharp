@@ -27,7 +27,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The ID of the monetary account to assign to this pin for the card.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The status of the card pin assignment.
         /// </summary>

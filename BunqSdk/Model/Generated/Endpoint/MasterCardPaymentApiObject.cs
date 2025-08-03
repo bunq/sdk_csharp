@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the Payment.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp when the Payment was done.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// outgoing Payment).
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The Amount transferred by the Payment. Will be negative for outgoing Payments and positive for incoming
         /// Payments (relative to the MonetaryAccount indicated by monetary_account_id).
@@ -122,12 +122,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the PaymentBatch if this Payment was part of one.
         /// </summary>
         [JsonProperty(PropertyName = "batch_id")]
-        public int? BatchId { get; set; }
+        public long? BatchId { get; set; }
         /// <summary>
         /// The id of the JobScheduled if the Payment was scheduled.
         /// </summary>
         [JsonProperty(PropertyName = "scheduled_id")]
-        public int? ScheduledId { get; set; }
+        public long? ScheduledId { get; set; }
         /// <summary>
         /// A shipping Address provided with the Payment, currently unused.
         /// </summary>
@@ -171,7 +171,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<MasterCardPaymentApiObject>> List(int mastercardActionId, int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<MasterCardPaymentApiObject>> List(long mastercardActionId, long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

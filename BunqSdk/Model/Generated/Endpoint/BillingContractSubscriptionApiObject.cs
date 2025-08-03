@@ -39,7 +39,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the billing contract.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp when the billing contract was made.
         /// </summary>
@@ -64,7 +64,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The version of the billing contract.
         /// </summary>
         [JsonProperty(PropertyName = "contract_version")]
-        public int? ContractVersion { get; set; }
+        public long? ContractVersion { get; set; }
         /// <summary>
         /// The subscription type the user will have after a subscription downgrade. Will be null if downgrading is not
         /// possible.

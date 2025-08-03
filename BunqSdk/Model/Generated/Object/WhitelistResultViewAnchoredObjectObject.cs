@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The ID of the whitelist entry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The RequestResponse object
         /// </summary>

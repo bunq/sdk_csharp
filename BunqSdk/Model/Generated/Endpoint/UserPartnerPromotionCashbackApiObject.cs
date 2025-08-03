@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The number of transactions that are still eligible for this promotion.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_transaction_remaining")]
-        public int? NumberOfTransactionRemaining { get; set; }
+        public long? NumberOfTransactionRemaining { get; set; }
         /// <summary>
         /// The promotion that the user signed up with.
         /// </summary>

@@ -30,17 +30,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the whitelist entry.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The account to which payments will come in before possibly being 'redirected' by the whitelist.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_incoming_id")]
-        public int? MonetaryAccountIncomingId { get; set; }
+        public long? MonetaryAccountIncomingId { get; set; }
         /// <summary>
         /// The account from which payments will be deducted when a transaction is matched with this whitelist.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_paying_id")]
-        public int? MonetaryAccountPayingId { get; set; }
+        public long? MonetaryAccountPayingId { get; set; }
         /// <summary>
         /// The type of the SDD whitelist, can be CORE or B2B.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a specific SDD whitelist entry.
         /// </summary>
-        public static BunqResponse<WhitelistSddMonetaryAccountPayingApiObject> Get(int whitelistSddMonetaryAccountPayingId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<WhitelistSddMonetaryAccountPayingApiObject> Get(long whitelistSddMonetaryAccountPayingId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -93,7 +93,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a listing of all SDD whitelist entries for a target monetary account.
         /// </summary>
-        public static BunqResponse<List<WhitelistSddMonetaryAccountPayingApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<WhitelistSddMonetaryAccountPayingApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

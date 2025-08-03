@@ -17,7 +17,7 @@ namespace Bunq.Sdk.Model.Core
         /// more at this link <a href="https://bunq.com/en/apikey-dynamic-ip"
         /// target="_blank">https://bunq.com/en/apikey-dynamic-ip</a>.
         /// </summary>
-        public static BunqResponse<int> Create(ApiContext apiContext, string description, string secret,
+        public static BunqResponse<long> Create(ApiContext apiContext, string description, string secret,
             List<string> permittedIps = null,
             IDictionary<string, string> customHeaders = null)
         {

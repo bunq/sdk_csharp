@@ -106,7 +106,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the MonetaryAccountSavings.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the MonetaryAccountSavings's creation.
         /// </summary>
@@ -151,12 +151,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the User who owns the MonetaryAccountSavings.
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
-        public int? UserId { get; set; }
+        public long? UserId { get; set; }
         /// <summary>
         /// The profiles of the account.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_profile")]
-        public MonetaryAccountProfileApiObject MonetaryAccountProfile { get; set; }
+        public List<MonetaryAccountProfileApiObject> MonetaryAccountProfile { get; set; }
         /// <summary>
         /// The progress in percentages for the Savings Goal set for this MonetaryAccountSavings.
         /// </summary>
@@ -182,6 +182,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "co_owner_invite")]
         public CoOwnerInviteResponseApiObject CoOwnerInvite { get; set; }
+        /// <summary>
+        /// The current available balance amount of the MonetaryAccount, converted to the user's default currency.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance_converted")]
+        public AmountObject BalanceConverted { get; set; }
         /// <summary>
         /// The budgets of the MonetaryAccount.
         /// </summary>
@@ -217,7 +222,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="allCoOwner">The users the account will be joint with.</param>
         /// <param name="setting">The settings of the MonetaryAccountSavings.</param>
         /// <param name="savingsGoal">The Savings Goal set for this MonetaryAccountSavings.</param>
-        public static BunqResponse<int> Create(string currency, string description = null, AmountObject dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null, string reason = null, string reasonDescription = null, List<CoOwnerObject> allCoOwner = null, MonetaryAccountSettingObject setting = null, AmountObject savingsGoal = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string currency, string description = null, AmountObject dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null, string reason = null, string reasonDescription = null, List<CoOwnerObject> allCoOwner = null, MonetaryAccountSettingObject setting = null, AmountObject savingsGoal = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -247,7 +252,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a specific MonetaryAccountSavings.
         /// </summary>
-        public static BunqResponse<MonetaryAccountSavingsApiObject> Get(int monetaryAccountSavingsId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<MonetaryAccountSavingsApiObject> Get(long monetaryAccountSavingsId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -269,7 +274,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="reasonDescription">The optional free-form reason for voluntarily cancelling (closing) the MonetaryAccountSavings. Can be any user provided message. Should only be specified if updating the status to CANCELLED.</param>
         /// <param name="setting">The settings of the MonetaryAccountSavings.</param>
         /// <param name="savingsGoal">The Savings Goal set for this MonetaryAccountSavings.</param>
-        public static BunqResponse<int> Update(int monetaryAccountSavingsId, string description = null, AmountObject dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null, string reason = null, string reasonDescription = null, MonetaryAccountSettingObject setting = null, AmountObject savingsGoal = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long monetaryAccountSavingsId, string description = null, AmountObject dailyLimit = null, string avatarUuid = null, string status = null, string subStatus = null, string reason = null, string reasonDescription = null, MonetaryAccountSettingObject setting = null, AmountObject savingsGoal = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -439,6 +444,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CoOwnerInvite != null)
+            {
+                return false;
+            }
+    
+            if (this.BalanceConverted != null)
             {
                 return false;
             }

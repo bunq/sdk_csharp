@@ -66,12 +66,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// convert.
         /// </summary>
         [JsonProperty(PropertyName = "currency_conversion_quote_id")]
-        public int? CurrencyConversionQuoteId { get; set; }
+        public long? CurrencyConversionQuoteId { get; set; }
         /// <summary>
         /// The id of the Request Response.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp when the Request Response was created.
         /// </summary>
@@ -111,7 +111,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the MonetaryAccount the RequestResponse was received on.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The requested Amount.
         /// </summary>
@@ -143,7 +143,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The minimum age the user accepting the RequestResponse must have.
         /// </summary>
         [JsonProperty(PropertyName = "minimum_age")]
-        public int? MinimumAge { get; set; }
+        public long? MinimumAge { get; set; }
         /// <summary>
         /// Whether or not an address must be provided on accept.
         /// </summary>
@@ -189,7 +189,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The whitelist id for this action or null.
         /// </summary>
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
-        public int? EligibleWhitelistId { get; set; }
+        public long? EligibleWhitelistId { get; set; }
         /// <summary>
         /// The reference to the object used for split the bill. Can be RequestInquiry or RequestInquiryBatch
         /// </summary>
@@ -199,12 +199,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the latest event for the request.
         /// </summary>
         [JsonProperty(PropertyName = "event_id")]
-        public int? EventId { get; set; }
+        public long? EventId { get; set; }
         /// <summary>
         /// The ID of the monetary account this user prefers to pay the request from.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_preferred_id")]
-        public int? MonetaryAccountPreferredId { get; set; }
+        public long? MonetaryAccountPreferredId { get; set; }
     
         /// <summary>
         /// Update the status to accept or reject the RequestResponse.
@@ -214,7 +214,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="addressShipping">The shipping Address to return to the user who created the RequestInquiry. Should only be provided if 'require_address' is set to SHIPPING, BILLING_SHIPPING or OPTIONAL.</param>
         /// <param name="addressBilling">The billing Address to return to the user who created the RequestInquiry. Should only be provided if 'require_address' is set to BILLING, BILLING_SHIPPING or OPTIONAL.</param>
         /// <param name="currencyConversionQuoteId">When the request is accepted on a monetary account with a different currency, a quote is expected to convert.</param>
-        public static BunqResponse<RequestResponseApiObject> Update(int requestResponseId, int? monetaryAccountId= null, AmountObject amountResponded = null, string status = null, AddressObject addressShipping = null, AddressObject addressBilling = null, int? currencyConversionQuoteId = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<RequestResponseApiObject> Update(long requestResponseId, long? monetaryAccountId= null, AmountObject amountResponded = null, string status = null, AddressObject addressShipping = null, AddressObject addressBilling = null, long? currencyConversionQuoteId = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -238,7 +238,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get all RequestResponses for a MonetaryAccount.
         /// </summary>
-        public static BunqResponse<List<RequestResponseApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<RequestResponseApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -252,7 +252,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get the details for a specific existing RequestResponse.
         /// </summary>
-        public static BunqResponse<RequestResponseApiObject> Get(int requestResponseId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<RequestResponseApiObject> Get(long requestResponseId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

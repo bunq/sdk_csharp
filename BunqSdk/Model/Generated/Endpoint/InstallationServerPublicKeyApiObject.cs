@@ -34,7 +34,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Show the ServerPublicKey for this Installation.
         /// </summary>
-        public static BunqResponse<List<InstallationServerPublicKeyApiObject>> List(int installationId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<InstallationServerPublicKeyApiObject>> List(long installationId, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

@@ -30,7 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the attachment.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the attachment's creation.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a specific attachment. The header of the response contains the content-type of the attachment.
         /// </summary>
-        public static BunqResponse<AttachmentUserApiObject> Get(int attachmentUserId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<AttachmentUserApiObject> Get(long attachmentUserId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

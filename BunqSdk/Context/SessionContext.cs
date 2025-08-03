@@ -38,7 +38,7 @@ namespace Bunq.Sdk.Context
         public DateTime ExpiryTime { get; private set; }
 
         [JsonProperty(PropertyName = "user_id")]
-        public int UserId { get; private set; }
+        public long UserId { get; private set; }
 
         [JsonProperty(PropertyName = "user_person")]
         public UserPersonApiObject UserPerson { get; private set; }
@@ -89,7 +89,7 @@ namespace Bunq.Sdk.Context
             }
         }
 
-        private static int GetUserId(SessionServer sessionServer)
+        private static long GetUserId(SessionServer sessionServer)
         {
             if (sessionServer.UserCompany != null)
             {
@@ -155,7 +155,7 @@ namespace Bunq.Sdk.Context
 
         private static double GetSessionTimeOutForUser(BunqModel user)
         {
-            int? sessionTimeout;
+            long? sessionTimeout;
 
             if (user.GetType() == typeof(UserPersonApiObject))
             {
@@ -177,7 +177,7 @@ namespace Bunq.Sdk.Context
             return GetDoubleFromSessionTimeout(sessionTimeout);
         }
 
-        private static double GetDoubleFromSessionTimeout(int? sessionTimeout)
+        private static double GetDoubleFromSessionTimeout(long? sessionTimeout)
         {
             if (sessionTimeout == null)
             {

@@ -43,7 +43,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the note.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the note's creation.
         /// </summary>
@@ -63,7 +63,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="content">The content of the note.</param>
-        public static BunqResponse<int> Create(int openBankingMerchantTransactionId, int? monetaryAccountId= null, string content = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long openBankingMerchantTransactionId, long? monetaryAccountId= null, string content = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -83,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="content">The content of the note.</param>
-        public static BunqResponse<int> Update(int openBankingMerchantTransactionId, int noteTextOpenBankingMerchantTransactionId, int? monetaryAccountId= null, string content = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long openBankingMerchantTransactionId, long noteTextOpenBankingMerchantTransactionId, long? monetaryAccountId= null, string content = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -102,7 +102,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int openBankingMerchantTransactionId, int noteTextOpenBankingMerchantTransactionId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long openBankingMerchantTransactionId, long noteTextOpenBankingMerchantTransactionId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -114,7 +114,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<NoteTextOpenBankingMerchantTransactionApiObject>> List(int openBankingMerchantTransactionId, int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<NoteTextOpenBankingMerchantTransactionApiObject>> List(long openBankingMerchantTransactionId, long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -127,7 +127,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<NoteTextOpenBankingMerchantTransactionApiObject> Get(int openBankingMerchantTransactionId, int noteTextOpenBankingMerchantTransactionId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<NoteTextOpenBankingMerchantTransactionApiObject> Get(long openBankingMerchantTransactionId, long noteTextOpenBankingMerchantTransactionId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

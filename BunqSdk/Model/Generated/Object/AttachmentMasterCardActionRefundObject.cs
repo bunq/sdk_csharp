@@ -12,9 +12,9 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The id of the attached Attachment.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
     
-        public AttachmentMasterCardActionRefundObject(int? id)
+        public AttachmentMasterCardActionRefundObject(long? id)
         {
             Id = id;
         }

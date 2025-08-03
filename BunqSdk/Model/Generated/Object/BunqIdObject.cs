@@ -12,9 +12,9 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// An integer ID of an object. Unique per object type.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
     
-        public BunqIdObject(int? id)
+        public BunqIdObject(long? id)
         {
             Id = id;
         }

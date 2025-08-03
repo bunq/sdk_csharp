@@ -29,9 +29,9 @@ namespace Bunq.Sdk.Context
             private set => primaryMonetaryAccountBank = value ?? throw new ArgumentNullException(nameof(value));
         }
 
-        public int UserId { get; }
+        public long UserId { get; }
 
-        public UserContext(int userId, BunqModel user)
+        public UserContext(long userId, BunqModel user)
         {
             UserId = userId;
             SetUser(user);

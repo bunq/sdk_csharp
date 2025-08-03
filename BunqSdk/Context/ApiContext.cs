@@ -46,7 +46,7 @@ namespace Bunq.Sdk.Context
         /// <summary>
         /// Dummy ID to pass to Session endpoint.
         /// </summary>
-        private const int SESSION_ID_DUMMY = 0;
+        private const long SESSION_ID_DUMMY = 0;
 
         /// <summary>
         /// Encoding of the serialized context.

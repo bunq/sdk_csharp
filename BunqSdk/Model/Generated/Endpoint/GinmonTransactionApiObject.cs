@@ -64,7 +64,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the event of transaction.
         /// </summary>
         [JsonProperty(PropertyName = "event_id")]
-        public int? EventId { get; set; }
+        public long? EventId { get; set; }
     
     
         /// <summary>

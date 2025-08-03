@@ -63,7 +63,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the PaymentAutoAllocateDefinition.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp when the PaymentAutoAllocateDefinition was created.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<PaymentAutoAllocateDefinitionApiObject>> List(int paymentAutoAllocateId, int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<PaymentAutoAllocateDefinitionApiObject>> List(long paymentAutoAllocateId, long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

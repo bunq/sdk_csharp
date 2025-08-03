@@ -19,7 +19,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The Id of the bunq.me tab that this BunqMeTabResultInquiry belongs to.
         /// </summary>
         [JsonProperty(PropertyName = "bunq_me_tab_id")]
-        public int? BunqMeTabId { get; set; }
+        public long? BunqMeTabId { get; set; }
     
     
         /// <summary>

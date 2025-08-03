@@ -57,7 +57,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// DEPRECATED: USE `access_type` INSTEAD | The id of the draft share invite bank.
         /// </summary>
         [JsonProperty(PropertyName = "draft_share_invite_bank_id")]
-        public int? DraftShareInviteBankId { get; set; }
+        public long? DraftShareInviteBankId { get; set; }
         /// <summary>
         /// DEPRECATED: USE `access_type` INSTEAD | The share details. Only one of these objects may be passed.
         /// </summary>
@@ -107,12 +107,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the monetary account the share applies to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The id of the newly created share invite.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
     
         /// <summary>
         /// [DEPRECATED - use /share-invite-monetary-account-response] Create a new share inquiry for a monetary
@@ -127,7 +127,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="shareType">DEPRECATED: USE `access_type` INSTEAD | The share type, either STANDARD or MUTUAL.</param>
         /// <param name="startDate">DEPRECATED: USE `access_type` INSTEAD | The start date of this share.</param>
         /// <param name="endDate">DEPRECATED: USE `access_type` INSTEAD | The expiration date of this share.</param>
-        public static BunqResponse<int> Create(PointerObject counterUserAlias, int? monetaryAccountId= null, string accessType = null, int? draftShareInviteBankId = null, ShareDetailObject shareDetail = null, string status = null, string relationship = null, string shareType = null, string startDate = null, string endDate = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(PointerObject counterUserAlias, long? monetaryAccountId= null, string accessType = null, long? draftShareInviteBankId = null, ShareDetailObject shareDetail = null, string status = null, string relationship = null, string shareType = null, string startDate = null, string endDate = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -155,7 +155,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// [DEPRECATED - use /share-invite-monetary-account-response] Get the details of a specific share inquiry.
         /// </summary>
-        public static BunqResponse<ShareInviteMonetaryAccountInquiryApiObject> Get(int shareInviteMonetaryAccountInquiryId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ShareInviteMonetaryAccountInquiryApiObject> Get(long shareInviteMonetaryAccountInquiryId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -174,7 +174,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="status">The status of the share. Can be ACTIVE, REVOKED, REJECTED.</param>
         /// <param name="startDate">DEPRECATED: USE `access_type` INSTEAD | The start date of this share.</param>
         /// <param name="endDate">DEPRECATED: USE `access_type` INSTEAD | The expiration date of this share.</param>
-        public static BunqResponse<int> Update(int shareInviteMonetaryAccountInquiryId, int? monetaryAccountId= null, string accessType = null, ShareDetailObject shareDetail = null, string status = null, string startDate = null, string endDate = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long shareInviteMonetaryAccountInquiryId, long? monetaryAccountId= null, string accessType = null, ShareDetailObject shareDetail = null, string status = null, string startDate = null, string endDate = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -199,7 +199,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// [DEPRECATED - use /share-invite-monetary-account-response] Get a list with all the share inquiries for a
         /// monetary account, only if the requesting user has permission to change the details of the various ones.
         /// </summary>
-        public static BunqResponse<List<ShareInviteMonetaryAccountInquiryApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<ShareInviteMonetaryAccountInquiryApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

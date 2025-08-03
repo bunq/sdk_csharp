@@ -36,7 +36,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the monetaryAccount
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The extension type of the monetaryAccount
         /// </summary>

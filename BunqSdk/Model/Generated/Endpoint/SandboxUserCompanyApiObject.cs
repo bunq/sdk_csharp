@@ -30,10 +30,15 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "api_key")]
         public string ApiKey { get; set; }
         /// <summary>
-        /// The user which was created.
+        /// The user company which was created.
         /// </summary>
-        [JsonProperty(PropertyName = "user")]
-        public UserApiObject User { get; set; }
+        [JsonProperty(PropertyName = "user_company")]
+        public UserCompanyApiObject UserCompany { get; set; }
+        /// <summary>
+        /// The director of the company which was created.
+        /// </summary>
+        [JsonProperty(PropertyName = "user_person")]
+        public UserPersonApiObject UserPerson { get; set; }
         /// <summary>
         /// The login code which the developer can use to log into their sandbox user.
         /// </summary>
@@ -68,7 +73,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.User != null)
+            if (this.UserCompany != null)
+            {
+                return false;
+            }
+    
+            if (this.UserPerson != null)
             {
                 return false;
             }

@@ -43,12 +43,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The card to link to the shared monetary account. Used only if share_detail is ShareDetailCardPayment.
         /// </summary>
         [JsonProperty(PropertyName = "card_id")]
-        public int? CardId { get; set; }
+        public long? CardId { get; set; }
         /// <summary>
         /// The id of the ShareInviteBankResponse.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the ShareInviteBankResponse creation.
         /// </summary>
@@ -73,12 +73,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the monetary account the ACCEPTED share applies to. null otherwise.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The id of the draft share invite bank.
         /// </summary>
         [JsonProperty(PropertyName = "draft_share_invite_bank_id")]
-        public int? DraftShareInviteBankId { get; set; }
+        public long? DraftShareInviteBankId { get; set; }
         /// <summary>
         /// The share details.
         /// </summary>
@@ -118,7 +118,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Return the details of a specific share a user was invited to.
         /// </summary>
-        public static BunqResponse<ShareInviteMonetaryAccountResponseApiObject> Get(int shareInviteMonetaryAccountResponseId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ShareInviteMonetaryAccountResponseApiObject> Get(long shareInviteMonetaryAccountResponseId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -133,7 +133,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="status">The status of the share. Can be PENDING, REVOKED (the user deletes the share inquiry before it's accepted), ACCEPTED, CANCELLED (the user deletes an active share) or CANCELLATION_PENDING, CANCELLATION_ACCEPTED, CANCELLATION_REJECTED (for canceling mutual connects)</param>
         /// <param name="cardId">The card to link to the shared monetary account. Used only if share_detail is ShareDetailCardPayment.</param>
-        public static BunqResponse<int> Update(int shareInviteMonetaryAccountResponseId, string status = null, int? cardId = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long shareInviteMonetaryAccountResponseId, string status = null, long? cardId = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

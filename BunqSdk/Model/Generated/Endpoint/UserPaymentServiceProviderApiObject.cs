@@ -29,7 +29,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the user.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the user object's creation.
         /// </summary>
@@ -96,11 +96,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The setting for the session timeout of the user in seconds.
         /// </summary>
         [JsonProperty(PropertyName = "session_timeout")]
-        public int? SessionTimeout { get; set; }
+        public long? SessionTimeout { get; set; }
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<UserPaymentServiceProviderApiObject> Get(int userPaymentServiceProviderId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<UserPaymentServiceProviderApiObject> Get(long userPaymentServiceProviderId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

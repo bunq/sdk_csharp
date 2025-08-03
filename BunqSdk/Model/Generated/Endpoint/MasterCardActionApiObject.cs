@@ -30,17 +30,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the MastercardAction.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The id of the monetary account this action links to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The id of the card this action links to.
         /// </summary>
         [JsonProperty(PropertyName = "card_id")]
-        public int? CardId { get; set; }
+        public long? CardId { get; set; }
         /// <summary>
         /// The amount of the transaction in local currency.
         /// </summary>
@@ -188,7 +188,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The secure code id for this mastercard action or null.
         /// </summary>
         [JsonProperty(PropertyName = "secure_code_id")]
-        public int? SecureCodeId { get; set; }
+        public long? SecureCodeId { get; set; }
         /// <summary>
         /// The ID of the wallet provider as defined by MasterCard. 420 = bunq Android app with Tap&Pay; 103 = Apple
         /// Pay.
@@ -224,7 +224,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The whitelist id for this action or null.
         /// </summary>
         [JsonProperty(PropertyName = "eligible_whitelist_id")]
-        public int? EligibleWhitelistId { get; set; }
+        public long? EligibleWhitelistId { get; set; }
         /// <summary>
         /// The cashback payout item for this action or null
         /// </summary>
@@ -273,7 +273,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<MasterCardActionApiObject> Get(int masterCardActionId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<MasterCardActionApiObject> Get(long masterCardActionId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -285,7 +285,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<MasterCardActionApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<MasterCardActionApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

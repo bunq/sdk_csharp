@@ -70,7 +70,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<ScheduleInstanceApiObject> Get(int scheduleId, int scheduleInstanceId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ScheduleInstanceApiObject> Get(long scheduleId, long scheduleInstanceId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -83,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="state">Change the state of the scheduleInstance from FAILED_USER_ERROR to RETRY.</param>
-        public static BunqResponse<int> Update(int scheduleId, int scheduleInstanceId, int? monetaryAccountId= null, string state = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long scheduleId, long scheduleInstanceId, long? monetaryAccountId= null, string state = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -102,7 +102,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<ScheduleInstanceApiObject>> List(int scheduleId, int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<ScheduleInstanceApiObject>> List(long scheduleId, long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

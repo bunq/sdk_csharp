@@ -39,7 +39,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a single Device. A Device is either a DevicePhone or a DeviceServer.
         /// </summary>
-        public static BunqResponse<DeviceApiObject> Get(int deviceId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<DeviceApiObject> Get(long deviceId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

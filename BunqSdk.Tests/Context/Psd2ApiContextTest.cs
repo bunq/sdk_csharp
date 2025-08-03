@@ -55,7 +55,7 @@ namespace Bunq.Sdk.Tests.Context
                 return;
             }
 
-            int clientId = OauthClientApiObject.Create().Value;
+            long clientId = OauthClientApiObject.Create().Value;
             OauthClientApiObject oauthClient = OauthClientApiObject.Get(clientId).Value;
             Assert.NotNull(oauthClient);
 

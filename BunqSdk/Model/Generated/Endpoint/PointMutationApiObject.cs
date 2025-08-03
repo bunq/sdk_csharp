@@ -13,7 +13,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The number of points earned.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_point")]
-        public int? NumberOfPoint { get; set; }
+        public long? NumberOfPoint { get; set; }
     
     
         /// <summary>

@@ -63,7 +63,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="payment">The payment details.</param>
         /// <param name="schedule">The schedule details when creating or updating a scheduled payment.</param>
         /// <param name="purpose">The purpose of this scheduled payment.</param>
-        public static BunqResponse<int> Create(SchedulePaymentEntryObject payment, ScheduleApiObject schedule, int? monetaryAccountId= null, string purpose = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(SchedulePaymentEntryObject payment, ScheduleApiObject schedule, long? monetaryAccountId= null, string purpose = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -84,7 +84,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int schedulePaymentId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long schedulePaymentId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -96,7 +96,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<SchedulePaymentApiObject> Get(int schedulePaymentId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<SchedulePaymentApiObject> Get(long schedulePaymentId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -108,7 +108,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<SchedulePaymentApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<SchedulePaymentApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -123,7 +123,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="payment">The payment details.</param>
         /// <param name="schedule">The schedule details when creating or updating a scheduled payment.</param>
-        public static BunqResponse<SchedulePaymentApiObject> Update(int schedulePaymentId, int? monetaryAccountId= null, SchedulePaymentEntryObject payment = null, ScheduleApiObject schedule = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<SchedulePaymentApiObject> Update(long schedulePaymentId, long? monetaryAccountId= null, SchedulePaymentEntryObject payment = null, ScheduleApiObject schedule = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

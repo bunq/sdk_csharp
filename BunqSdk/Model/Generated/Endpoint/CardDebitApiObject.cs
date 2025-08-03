@@ -80,7 +80,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// not supplied.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
-        public int? MonetaryAccountIdFallback { get; set; }
+        public long? MonetaryAccountIdFallback { get; set; }
         /// <summary>
         /// The order status of the card. Can be NEW_CARD_REQUEST_RECEIVED, CARD_REQUEST_PENDING, SENT_FOR_PRODUCTION,
         /// ACCEPTED_FOR_PRODUCTION, DELIVERED_TO_CUSTOMER, CARD_UPDATE_REQUESTED, CARD_UPDATE_PENDING,
@@ -93,7 +93,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the card.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the card's creation.
         /// </summary>
@@ -113,17 +113,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// DEPRECATED. ID of the user who is owner of the card.
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
-        public int? UserId { get; set; }
+        public long? UserId { get; set; }
         /// <summary>
         /// ID of the user who is owner of the card.
         /// </summary>
         [JsonProperty(PropertyName = "user_owner_id")]
-        public int? UserOwnerId { get; set; }
+        public long? UserOwnerId { get; set; }
         /// <summary>
         /// ID of the user who is holder of the card.
         /// </summary>
         [JsonProperty(PropertyName = "user_holder_id")]
-        public int? UserHolderId { get; set; }
+        public long? UserHolderId { get; set; }
         /// <summary>
         /// The sub-type of the card.
         /// </summary>
@@ -248,7 +248,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="pinCodeAssignment">Array of Types, PINs, account IDs assigned to the card.</param>
         /// <param name="monetaryAccountIdFallback">ID of the MA to be used as fallback for this card if insufficient balance. Fallback account is removed if not supplied.</param>
         /// <param name="orderStatus">The order status of this card. Can be CARD_REQUEST_PENDING or VIRTUAL_DELIVERY.</param>
-        public static BunqResponse<CardDebitApiObject> Create(string secondLine, string nameOnCard, string type, string productType, string preferredNameOnCard = null, PointerObject alias = null, List<CardPinAssignmentObject> pinCodeAssignment = null, int? monetaryAccountIdFallback = null, string orderStatus = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CardDebitApiObject> Create(string secondLine, string nameOnCard, string type, string productType, string preferredNameOnCard = null, PointerObject alias = null, List<CardPinAssignmentObject> pinCodeAssignment = null, long? monetaryAccountIdFallback = null, string orderStatus = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

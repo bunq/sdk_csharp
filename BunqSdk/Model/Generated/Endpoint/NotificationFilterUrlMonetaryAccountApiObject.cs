@@ -40,7 +40,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="notificationFilters">The types of notifications that will result in a url notification for this monetary account.</param>
-        public static BunqResponse<int> Create(int? monetaryAccountId= null, List<NotificationFilterUrlObject> notificationFilters = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long? monetaryAccountId= null, List<NotificationFilterUrlObject> notificationFilters = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -59,7 +59,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<List<NotificationFilterUrlMonetaryAccountApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<NotificationFilterUrlMonetaryAccountApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

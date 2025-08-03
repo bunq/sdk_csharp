@@ -22,12 +22,12 @@ namespace Bunq.Sdk.Model.Generated.Object
         /// The image height in pixels.
         /// </summary>
         [JsonProperty(PropertyName = "height")]
-        public int? Height { get; set; }
+        public long? Height { get; set; }
         /// <summary>
         /// The image width in pixels.
         /// </summary>
         [JsonProperty(PropertyName = "width")]
-        public int? Width { get; set; }
+        public long? Width { get; set; }
     
     
         /// <summary>

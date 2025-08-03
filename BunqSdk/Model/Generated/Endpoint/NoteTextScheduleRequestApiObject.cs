@@ -43,7 +43,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the note.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the note's creation.
         /// </summary>
@@ -63,7 +63,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="content">The content of the note.</param>
-        public static BunqResponse<int> Create(int scheduleRequestInquiryId, int? monetaryAccountId= null, string content = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long scheduleRequestInquiryId, long? monetaryAccountId= null, string content = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -83,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="content">The content of the note.</param>
-        public static BunqResponse<int> Update(int scheduleRequestInquiryId, int noteTextScheduleRequestId, int? monetaryAccountId= null, string content = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long scheduleRequestInquiryId, long noteTextScheduleRequestId, long? monetaryAccountId= null, string content = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -102,7 +102,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int scheduleRequestInquiryId, int noteTextScheduleRequestId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long scheduleRequestInquiryId, long noteTextScheduleRequestId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -115,7 +115,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Manage the notes for a given schedule request.
         /// </summary>
-        public static BunqResponse<List<NoteTextScheduleRequestApiObject>> List(int scheduleRequestInquiryId, int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<NoteTextScheduleRequestApiObject>> List(long scheduleRequestInquiryId, long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -128,7 +128,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<NoteTextScheduleRequestApiObject> Get(int scheduleRequestInquiryId, int noteTextScheduleRequestId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<NoteTextScheduleRequestApiObject> Get(long scheduleRequestInquiryId, long noteTextScheduleRequestId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

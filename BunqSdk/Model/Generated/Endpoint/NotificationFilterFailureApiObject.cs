@@ -55,7 +55,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The object id used to generate the body of the notification.
         /// </summary>
         [JsonProperty(PropertyName = "object_id")]
-        public int? ObjectId { get; set; }
+        public long? ObjectId { get; set; }
         /// <summary>
         /// The exception bunq encountered when processing the callback.
         /// </summary>
@@ -65,12 +65,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The response code (or null) received from the endpoint.
         /// </summary>
         [JsonProperty(PropertyName = "response_code")]
-        public int? ResponseCode { get; set; }
+        public long? ResponseCode { get; set; }
     
         /// <summary>
         /// </summary>
         /// <param name="notificationFilterFailedIds">The IDs to retry.</param>
-        public static BunqResponse<int> Create(string notificationFilterFailedIds, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(string notificationFilterFailedIds, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

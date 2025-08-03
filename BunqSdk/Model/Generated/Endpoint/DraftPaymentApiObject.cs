@@ -32,6 +32,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         public const string FIELD_PREVIOUS_UPDATED_TIMESTAMP = "previous_updated_timestamp";
         public const string FIELD_NUMBER_OF_REQUIRED_ACCEPTS = "number_of_required_accepts";
         public const string FIELD_SCHEDULE = "schedule";
+        public const string FIELD_PAYMENT_BATCH_EXECUTION_TYPE = "payment_batch_execution_type";
     
         /// <summary>
         /// Object type.
@@ -59,22 +60,27 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// is valid.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_required_accepts")]
-        public int? NumberOfRequiredAccepts { get; set; }
+        public long? NumberOfRequiredAccepts { get; set; }
         /// <summary>
         /// The schedule details.
         /// </summary>
         [JsonProperty(PropertyName = "schedule")]
         public ScheduleApiObject Schedule { get; set; }
         /// <summary>
+        /// The execution type that will be used when converting this draft payment to a payment batch.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_batch_execution_type")]
+        public string PaymentBatchExecutionType { get; set; }
+        /// <summary>
         /// The id of the created DrafPayment.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The id of the MonetaryAccount the DraftPayment applies to.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The label of the User who created the DraftPayment.
         /// </summary>
@@ -109,7 +115,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="status">The status of the DraftPayment.</param>
         /// <param name="previousUpdatedTimestamp">The last updated_timestamp that you received for this DraftPayment. This needs to be provided to prevent race conditions.</param>
         /// <param name="schedule">The schedule details when creating or updating a scheduled payment.</param>
-        public static BunqResponse<int> Create(List<DraftPaymentEntryObject> entries, int? numberOfRequiredAccepts, int? monetaryAccountId= null, string status = null, string previousUpdatedTimestamp = null, ScheduleApiObject schedule = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="paymentBatchExecutionType">The execution type that will be used when converting this draft payment to a payment batch.</param>
+        public static BunqResponse<long> Create(List<DraftPaymentEntryObject> entries, long? numberOfRequiredAccepts, long? monetaryAccountId= null, string status = null, string previousUpdatedTimestamp = null, ScheduleApiObject schedule = null, string paymentBatchExecutionType = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -122,6 +129,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_PREVIOUS_UPDATED_TIMESTAMP, previousUpdatedTimestamp},
     {FIELD_NUMBER_OF_REQUIRED_ACCEPTS, numberOfRequiredAccepts},
     {FIELD_SCHEDULE, schedule},
+    {FIELD_PAYMENT_BATCH_EXECUTION_TYPE, paymentBatchExecutionType},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -136,7 +144,8 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="status">The status of the DraftPayment.</param>
         /// <param name="previousUpdatedTimestamp">The last updated_timestamp that you received for this DraftPayment. This needs to be provided to prevent race conditions.</param>
         /// <param name="schedule">The schedule details when creating or updating a scheduled payment.</param>
-        public static BunqResponse<int> Update(int draftPaymentId, int? monetaryAccountId= null, string status = null, string previousUpdatedTimestamp = null, ScheduleApiObject schedule = null, IDictionary<string, string> customHeaders = null)
+        /// <param name="paymentBatchExecutionType">The execution type that will be used when converting this draft payment to a payment batch.</param>
+        public static BunqResponse<long> Update(long draftPaymentId, long? monetaryAccountId= null, string status = null, string previousUpdatedTimestamp = null, ScheduleApiObject schedule = null, string paymentBatchExecutionType = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -147,6 +156,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     {FIELD_STATUS, status},
     {FIELD_PREVIOUS_UPDATED_TIMESTAMP, previousUpdatedTimestamp},
     {FIELD_SCHEDULE, schedule},
+    {FIELD_PAYMENT_BATCH_EXECUTION_TYPE, paymentBatchExecutionType},
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
@@ -158,7 +168,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a listing of all DraftPayments from a given MonetaryAccount.
         /// </summary>
-        public static BunqResponse<List<DraftPaymentApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<DraftPaymentApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -172,7 +182,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a specific DraftPayment.
         /// </summary>
-        public static BunqResponse<DraftPaymentApiObject> Get(int draftPaymentId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<DraftPaymentApiObject> Get(long draftPaymentId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -233,6 +243,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Schedule != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentBatchExecutionType != null)
             {
                 return false;
             }

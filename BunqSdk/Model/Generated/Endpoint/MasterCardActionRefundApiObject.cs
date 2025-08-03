@@ -68,7 +68,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the refund.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the refund's creation.
         /// </summary>
@@ -99,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of mastercard action being refunded.
         /// </summary>
         [JsonProperty(PropertyName = "mastercard_action_id")]
-        public int? MastercardActionId { get; set; }
+        public long? MastercardActionId { get; set; }
         /// <summary>
         /// The monetary account label of the account that this action is created for.
         /// </summary>

@@ -99,7 +99,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// not supplied.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id_fallback")]
-        public int? MonetaryAccountIdFallback { get; set; }
+        public long? MonetaryAccountIdFallback { get; set; }
         /// <summary>
         /// The user's preferred name on the card.
         /// </summary>
@@ -119,7 +119,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the card.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the card's creation.
         /// </summary>
@@ -139,17 +139,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// DEPRECATED. ID of the user who is owner of the card.
         /// </summary>
         [JsonProperty(PropertyName = "user_id")]
-        public int? UserId { get; set; }
+        public long? UserId { get; set; }
         /// <summary>
         /// ID of the user who is owner of the card.
         /// </summary>
         [JsonProperty(PropertyName = "user_owner_id")]
-        public int? UserOwnerId { get; set; }
+        public long? UserOwnerId { get; set; }
         /// <summary>
         /// ID of the user who is holder of the card.
         /// </summary>
         [JsonProperty(PropertyName = "user_holder_id")]
-        public int? UserHolderId { get; set; }
+        public long? UserHolderId { get; set; }
         /// <summary>
         /// The type of the card. Can be MAESTRO, MASTERCARD.
         /// </summary>
@@ -269,7 +269,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="preferredNameOnCard">The user's preferred name as it will be on the card.</param>
         /// <param name="secondLine">The second line of text on the card</param>
         /// <param name="cancellationReason">The reason for card cancellation.</param>
-        public static BunqResponse<CardApiObject> Update(int cardId, string pinCode = null, string activationCode = null, string status = null, string orderStatus = null, AmountObject cardLimit = null, AmountObject cardLimitAtm = null, List<CardCountryPermissionObject> countryPermission = null, List<CardPinAssignmentObject> pinCodeAssignment = null, List<CardPrimaryAccountNumberObject> primaryAccountNumbers = null, int? monetaryAccountIdFallback = null, string preferredNameOnCard = null, string secondLine = null, string cancellationReason = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CardApiObject> Update(long cardId, string pinCode = null, string activationCode = null, string status = null, string orderStatus = null, AmountObject cardLimit = null, AmountObject cardLimitAtm = null, List<CardCountryPermissionObject> countryPermission = null, List<CardPinAssignmentObject> pinCodeAssignment = null, List<CardPrimaryAccountNumberObject> primaryAccountNumbers = null, long? monetaryAccountIdFallback = null, string preferredNameOnCard = null, string secondLine = null, string cancellationReason = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -301,7 +301,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Return the details of a specific card.
         /// </summary>
-        public static BunqResponse<CardApiObject> Get(int cardId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<CardApiObject> Get(long cardId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

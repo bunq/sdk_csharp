@@ -30,7 +30,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the invoice object.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the invoice object's creation.
         /// </summary>
@@ -122,7 +122,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<InvoiceByUserApiObject> Get(int invoiceByUserId, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<InvoiceByUserApiObject> Get(long invoiceByUserId, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

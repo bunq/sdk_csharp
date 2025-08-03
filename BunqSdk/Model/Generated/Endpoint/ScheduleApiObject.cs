@@ -53,7 +53,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The schedule recurrence size. For example size 4 and unit WEEKLY means the recurrence is every 4 weeks.
         /// </summary>
         [JsonProperty(PropertyName = "recurrence_size")]
-        public int? RecurrenceSize { get; set; }
+        public long? RecurrenceSize { get; set; }
         /// <summary>
         /// The schedule status, options: ACTIVE, FINISHED, CANCELLED.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a specific schedule definition for a given monetary account.
         /// </summary>
-        public static BunqResponse<ScheduleApiObject> Get(int scheduleId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<ScheduleApiObject> Get(long scheduleId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -83,7 +83,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// filter the response. When type={SCHEDULE_DEFINITION_PAYMENT,SCHEDULE_DEFINITION_PAYMENT_BATCH} is provided
         /// only schedule definition object that relate to these definitions are returned.
         /// </summary>
-        public static BunqResponse<List<ScheduleApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<ScheduleApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

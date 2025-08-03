@@ -34,7 +34,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The maximum number of transactions that can be made.
         /// </summary>
         [JsonProperty(PropertyName = "number_of_transaction_maximum")]
-        public int? NumberOfTransactionMaximum { get; set; }
+        public long? NumberOfTransactionMaximum { get; set; }
         /// <summary>
         /// The minimum amount of a transaction.
         /// </summary>

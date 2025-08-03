@@ -31,7 +31,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The ID of the attachment created.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
     
         /// <summary>
         /// Create a new monetary account attachment. Create a POST request with a payload that contains the binary
@@ -39,7 +39,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// in the Content-Type header. You are required to provide a description of the attachment using the
         /// X-Bunq-Attachment-Description header.
         /// </summary>
-        public static BunqResponse<int> Create(byte[] requestBytes, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(byte[] requestBytes, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

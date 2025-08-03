@@ -56,7 +56,7 @@ namespace Bunq.Sdk.Model.Core
             return Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(installationRequestBody));
         }
 
-        public int GetIdInt()
+        public long GetIdInt()
         {
             return id.IdInt;
         }

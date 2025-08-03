@@ -33,7 +33,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The day of month at which budgeting/insights should start.
         /// </summary>
         [JsonProperty(PropertyName = "day_of_month")]
-        public int? DayOfMonth { get; set; }
+        public long? DayOfMonth { get; set; }
     
         /// <summary>
         /// </summary>

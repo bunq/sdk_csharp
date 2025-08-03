@@ -119,7 +119,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The setting for the session timeout of the company in seconds.
         /// </summary>
         [JsonProperty(PropertyName = "session_timeout")]
-        public int? SessionTimeout { get; set; }
+        public long? SessionTimeout { get; set; }
         /// <summary>
         /// The amount the company can pay in the session without asking for credentials.
         /// </summary>
@@ -129,7 +129,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the modified company.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the company object's creation.
         /// </summary>
@@ -257,7 +257,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="subStatus">The user sub-status. Can be: NONE, FACE_RESET, APPROVAL, APPROVAL_DIRECTOR, APPROVAL_PARENT, APPROVAL_SUPPORT, COUNTER_IBAN, IDEAL or SUBMIT.</param>
         /// <param name="sessionTimeout">The setting for the session timeout of the company in seconds.</param>
         /// <param name="dailyLimitWithoutConfirmationLogin">The amount the company can pay in the session without asking for credentials.</param>
-        public static BunqResponse<int> Update(string name = null, string publicNickName = null, string avatarUuid = null, AddressObject addressMain = null, AddressObject addressPostal = null, string language = null, string region = null, string country = null, List<UboObject> ubo = null, string chamberOfCommerceNumber = null, string legalForm = null, string status = null, string subStatus = null, int? sessionTimeout = null, AmountObject dailyLimitWithoutConfirmationLogin = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(string name = null, string publicNickName = null, string avatarUuid = null, AddressObject addressMain = null, AddressObject addressPostal = null, string language = null, string region = null, string country = null, List<UboObject> ubo = null, string chamberOfCommerceNumber = null, string legalForm = null, string status = null, string subStatus = null, long? sessionTimeout = null, AmountObject dailyLimitWithoutConfirmationLogin = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

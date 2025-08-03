@@ -44,12 +44,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The reference to the uploaded file to attach to this note.
         /// </summary>
         [JsonProperty(PropertyName = "attachment_id")]
-        public int? AttachmentId { get; set; }
+        public long? AttachmentId { get; set; }
         /// <summary>
         /// The id of the note.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp of the note's creation.
         /// </summary>
@@ -75,7 +75,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         /// <param name="attachmentId">The reference to the uploaded file to attach to this note.</param>
         /// <param name="description">Optional description of the attachment.</param>
-        public static BunqResponse<int> Create(int whitelistId, int whitelistResultId, int? attachmentId, int? monetaryAccountId= null, string description = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(long whitelistId, long whitelistResultId, long? attachmentId, long? monetaryAccountId= null, string description = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -96,7 +96,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="description">Optional description of the attachment.</param>
-        public static BunqResponse<int> Update(int whitelistId, int whitelistResultId, int noteAttachmentWhitelistResultId, int? monetaryAccountId= null, string description = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Update(long whitelistId, long whitelistResultId, long noteAttachmentWhitelistResultId, long? monetaryAccountId= null, string description = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -115,7 +115,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int whitelistId, int whitelistResultId, int noteAttachmentWhitelistResultId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(long whitelistId, long whitelistResultId, long noteAttachmentWhitelistResultId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -128,7 +128,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Manage the notes for a given user.
         /// </summary>
-        public static BunqResponse<List<NoteAttachmentWhitelistResultApiObject>> List(int whitelistId, int whitelistResultId, int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<NoteAttachmentWhitelistResultApiObject>> List(long whitelistId, long whitelistResultId, long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
@@ -141,7 +141,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<NoteAttachmentWhitelistResultApiObject> Get(int whitelistId, int whitelistResultId, int noteAttachmentWhitelistResultId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<NoteAttachmentWhitelistResultApiObject> Get(long whitelistId, long whitelistResultId, long noteAttachmentWhitelistResultId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     

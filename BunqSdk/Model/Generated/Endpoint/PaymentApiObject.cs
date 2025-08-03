@@ -76,7 +76,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the created Payment.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>
         /// The timestamp when the Payment was done.
         /// </summary>
@@ -92,7 +92,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// outgoing Payment).
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_id")]
-        public int? MonetaryAccountId { get; set; }
+        public long? MonetaryAccountId { get; set; }
         /// <summary>
         /// The LabelMonetaryAccount containing the public information of 'this' (party) side of the Payment.
         /// </summary>
@@ -142,12 +142,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The id of the PaymentBatch if this Payment was part of one.
         /// </summary>
         [JsonProperty(PropertyName = "batch_id")]
-        public int? BatchId { get; set; }
+        public long? BatchId { get; set; }
         /// <summary>
         /// The id of the JobScheduled if the Payment was scheduled.
         /// </summary>
         [JsonProperty(PropertyName = "scheduled_id")]
-        public int? ScheduledId { get; set; }
+        public long? ScheduledId { get; set; }
         /// <summary>
         /// A shipping Address provided with the Payment, currently unused.
         /// </summary>
@@ -198,7 +198,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <param name="attachment">The Attachments to attach to the Payment.</param>
         /// <param name="merchantReference">Optional data to be included with the Payment specific to the merchant.</param>
         /// <param name="allowBunqto">Whether or not sending a bunq.to payment is allowed.</param>
-        public static BunqResponse<int> Create(AmountObject amount, PointerObject counterpartyAlias, string description, int? monetaryAccountId= null, List<AttachmentMonetaryAccountPaymentObject> attachment = null, string merchantReference = null, bool? allowBunqto = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<long> Create(AmountObject amount, PointerObject counterpartyAlias, string description, long? monetaryAccountId= null, List<AttachmentMonetaryAccountPaymentObject> attachment = null, string merchantReference = null, bool? allowBunqto = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -223,7 +223,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a specific previous Payment.
         /// </summary>
-        public static BunqResponse<PaymentApiObject> Get(int paymentId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<PaymentApiObject> Get(long paymentId, long? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -236,7 +236,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// Get a listing of all Payments performed on a given MonetaryAccount (incoming and outgoing).
         /// </summary>
-        public static BunqResponse<List<PaymentApiObject>> List(int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<PaymentApiObject>> List(long? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();

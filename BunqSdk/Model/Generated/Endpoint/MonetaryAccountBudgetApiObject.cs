@@ -39,12 +39,12 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// DEPRECATED. The monetary account's ID from/to which the missing/exceeding funds will be transferred.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_source_funding_id")]
-        public int? MonetaryAccountSourceFundingId { get; set; }
+        public long? MonetaryAccountSourceFundingId { get; set; }
         /// <summary>
         /// DEPRECATED. The day of the month for the automatic top-up.
         /// </summary>
         [JsonProperty(PropertyName = "payment_day_of_month")]
-        public int? PaymentDayOfMonth { get; set; }
+        public long? PaymentDayOfMonth { get; set; }
     
     
         /// <summary>
