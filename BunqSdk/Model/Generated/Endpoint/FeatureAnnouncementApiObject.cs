@@ -1,62 +1,71 @@
-using Bunq.Sdk.Context;
-using Bunq.Sdk.Http;
-using Bunq.Sdk.Json;
 using Bunq.Sdk.Model.Core;
 using Bunq.Sdk.Model.Generated.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace Bunq.Sdk.Model.Generated.Endpoint
 {
     /// <summary>
-    /// view for updating the feature display.
+    /// view for creating the feature announcement.
     /// </summary>
     public class FeatureAnnouncementApiObject : BunqModel
     {
         /// <summary>
-        /// Endpoint constants.
+        /// Field constants.
         /// </summary>
-        protected const string ENDPOINT_URL_READ = "user/{0}/feature-announcement/{1}";
+        public const string FIELD_AVATAR_UUID = "avatar_uuid";
+        public const string FIELD_TITLE = "title";
+        public const string FIELD_SUB_TITLE = "sub_title";
+        public const string FIELD_STATUS = "status";
+        public const string FIELD_FEATURE_ACCESS_ID = "feature_access_id";
+        public const string FIELD_CONTENT_TYPE = "content_type";
+    
     
         /// <summary>
-        /// Object type.
+        /// The avatar uuid.
         /// </summary>
-        private const string OBJECT_TYPE_GET = "FeatureAnnouncement";
-    
+        [JsonProperty(PropertyName = "avatar_uuid")]
+        public string AvatarUuid { get; set; }
+        /// <summary>
+        /// The event title of the feature announcement.
+        /// </summary>
+        [JsonProperty(PropertyName = "title")]
+        public List<string> Title { get; set; }
+        /// <summary>
+        /// The event sub title of the feature announcement.
+        /// </summary>
+        [JsonProperty(PropertyName = "sub_title")]
+        public List<string> SubTitle { get; set; }
+        /// <summary>
+        /// The status of the feature announcement.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+        /// <summary>
+        /// The feature access id that controls the feature announcement.
+        /// </summary>
+        [JsonProperty(PropertyName = "feature_access_id")]
+        public string FeatureAccessId { get; set; }
+        /// <summary>
+        /// The content type of the feature announcement.
+        /// </summary>
+        [JsonProperty(PropertyName = "content_type")]
+        public string ContentType { get; set; }
         /// <summary>
         /// The Avatar of the event overview.
         /// </summary>
         [JsonProperty(PropertyName = "avatar")]
         public AvatarObject Avatar { get; set; }
         /// <summary>
-        /// The event overview title of the feature display
-        /// </summary>
-        [JsonProperty(PropertyName = "title")]
-        public string Title { get; set; }
-        /// <summary>
-        /// The event overview subtitle of the feature display
-        /// </summary>
-        [JsonProperty(PropertyName = "sub_title")]
-        public string SubTitle { get; set; }
-        /// <summary>
-        /// The type of the feature announcement so apps can override with their own stuff if desired
+        /// The type of the feature announcement.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-    
         /// <summary>
+        /// The event sub title of the feature announcement.
         /// </summary>
-        public static BunqResponse<FeatureAnnouncementApiObject> Get(long featureAnnouncementId, IDictionary<string, string> customHeaders = null)
-        {
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-    
-            var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId(), featureAnnouncementId), new Dictionary<string, string>(), customHeaders);
-    
-            return FromJson<FeatureAnnouncementApiObject>(responseRaw, OBJECT_TYPE_GET);
-        }
+        [JsonProperty(PropertyName = "all_feature_announcement_content")]
+        public List<string> AllFeatureAnnouncementContent { get; set; }
     
     
         /// <summary>
@@ -79,6 +88,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.Type != null)
+            {
+                return false;
+            }
+    
+            if (this.Status != null)
+            {
+                return false;
+            }
+    
+            if (this.AllFeatureAnnouncementContent != null)
             {
                 return false;
             }

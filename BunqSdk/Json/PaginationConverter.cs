@@ -51,9 +51,9 @@ namespace Bunq.Sdk.Json
             return dictionary.ContainsKey(key) ? dictionary[key] : default(T);
         }
 
-        private static IDictionary<string, int?> ParsePaginationBody(JObject responseJson)
+        private static IDictionary<string, long?> ParsePaginationBody(JObject responseJson)
         {
-            var paginationBody = new Dictionary<string, int?>();
+            var paginationBody = new Dictionary<string, long?>();
             UpdatePaginationBodyFromResponseField(
                 paginationBody,
                 Pagination.PARAM_OLDER_ID,
@@ -79,7 +79,7 @@ namespace Bunq.Sdk.Json
             return paginationBody;
         }
 
-        private static void UpdatePaginationBodyFromResponseField(IDictionary<string, int?> paginationBody,
+        private static void UpdatePaginationBodyFromResponseField(IDictionary<string, long?> paginationBody,
             string idField, JObject responseJson, string responseField, string responseParam)
         {
             var responseToken = responseJson[responseField];
@@ -90,12 +90,12 @@ namespace Bunq.Sdk.Json
             {
                 if (responseParam.Equals(param.Key))
                 {
-                    paginationBody[idField] = int.Parse(param.Value);
+                    paginationBody[idField] = long.Parse(param.Value);
                 }
                 else if (Pagination.PARAM_COUNT.Equals(param.Key) &&
                          !paginationBody.ContainsKey(Pagination.PARAM_COUNT))
                 {
-                    paginationBody[Pagination.PARAM_COUNT] = int.Parse(param.Value);
+                    paginationBody[Pagination.PARAM_COUNT] = long.Parse(param.Value);
                 }
             }
         }

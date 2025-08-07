@@ -156,7 +156,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// The profiles of the account.
         /// </summary>
         [JsonProperty(PropertyName = "monetary_account_profile")]
-        public List<MonetaryAccountProfileApiObject> MonetaryAccountProfile { get; set; }
+        public MonetaryAccountProfileApiObject MonetaryAccountProfile { get; set; }
         /// <summary>
         /// The progress in percentages for the Savings Goal set for this MonetaryAccountSavings.
         /// </summary>
