@@ -8,7 +8,7 @@
     <PackageId>Bunq.Sdk</PackageId>
   </PropertyGroup>
   <PropertyGroup>
-    <VersionPrefix>1.14.18</VersionPrefix>
+    <VersionPrefix>1.28.2</VersionPrefix>
   </PropertyGroup>
   <PropertyGroup>
     <RootNamespace>Bunq.Sdk</RootNamespace>
